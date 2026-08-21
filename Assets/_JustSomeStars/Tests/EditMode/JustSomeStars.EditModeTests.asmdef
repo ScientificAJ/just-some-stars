@@ -3,7 +3,8 @@
   "rootNamespace": "JustSomeStars.Tests.EditMode",
   "references": [
     "JustSomeStars.Runtime",
-    "JustSomeStars.Editor"
+    "JustSomeStars.Editor",
+    "Unity.Addressables.Editor"
   ],
   "includePlatforms": [
     "Editor"

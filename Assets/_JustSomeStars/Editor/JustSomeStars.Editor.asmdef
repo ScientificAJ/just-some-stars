@@ -2,7 +2,8 @@
   "name": "JustSomeStars.Editor",
   "rootNamespace": "JustSomeStars.Editor",
   "references": [
-    "JustSomeStars.Runtime"
+    "JustSomeStars.Runtime",
+    "Unity.Addressables.Editor"
   ],
   "includePlatforms": [
     "Editor"

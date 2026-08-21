@@ -101,6 +101,8 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+/Assets/_JustSomeStars/GeneratedBuild/
+/Assets/_JustSomeStars/GeneratedBuild.meta
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
