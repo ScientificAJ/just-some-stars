@@ -104,3 +104,23 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# Local environment, signing, and service credentials
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile
+key.properties
+keystore.properties
+signing.properties
+google-services.json
+service-account*.json
+credentials*.json
+/.lim/
+/.limrun/
+/.argent/
