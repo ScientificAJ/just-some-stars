@@ -166,7 +166,9 @@ public interface IStoreService : IGameService
 - [x] Install Argent CLI `0.21.0`, verify its 74 tools, declare its project MCP server and install its official agent skills.
 - [x] Record every ShipKit/platform status and the correct future activation point in the agent environment manifest.
 - [x] Install and verify Unity's bundled Android SDK tools 16.0, ADB 36.0.0, NDK r27c and OpenJDK 17.0.18.
-- [ ] Connect/authorize the Realme Narzo and confirm it appears in `adb devices -l`.
+- [x] Select Limrun cloud Android as the primary runtime instead of requiring the
+  physical Realme Narzo; use Argent as the interaction/QA layer and create an
+  emulator only for an immediate APK test.
 - [x] Verify GitHub CLI authentication for `ScientificAJ` through a live `gh api user` request.
 - [ ] Reopen the workspace before using the newly installed project-scoped Argent MCP.
 
@@ -434,6 +436,9 @@ git commit -m "feat: add resilient game bootstrap"
 **Files:**
 - Create: `Assets/_JustSomeStars/Scenes/Core/Frontend.unity`
 - Create: `Assets/_JustSomeStars/Runtime/UI/FrontendController.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Development/DevelopmentBootstrapInstaller.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Development/DevelopmentRequiredServices.cs`
+- Create: `Assets/_JustSomeStars/Tests/PlayMode/DevelopmentBootstrapInstallerTests.cs`
 - Create: `docs/release/google-play-closed-test.md`
 - Create: `docs/release/galaxy-seller-setup.md`
 - Create: `codemagic.yaml`
@@ -441,38 +446,68 @@ git commit -m "feat: add resilient game bootstrap"
 
 **Interfaces:**
 - Consumes: Android Internal and Google Play CLI artifacts.
+- Consumes: Task 4's `GameBootstrapComposition`, five required roles and
+  `GameBootstrap.CompositionFactory` seam.
 - Produces: a valid launchable build with title, privacy link, version and quit/background behavior.
 
-- [ ] **Step 1: Create a minimal but truthful Frontend**
+- [ ] **Step 1: Test the development bootstrap composition before creating Frontend**
+
+Write PlayMode tests first. They must prove that a before-Boot installer supplies
+exactly Settings, LocalSave, Input, ContentCatalogue and ModeController; every
+role uses a distinct service instance; Boot initializes each once, reaches the
+literal `Frontend` destination and reverses cleanup exactly once. No missing-role
+bypass is permitted.
+
+- [ ] **Step 2: Install five truthful development services before Boot**
+
+Use a `RuntimeInitializeLoadType.BeforeSceneLoad` installer to set Task 4's
+composition factory before the Boot scene starts. Implement five distinct,
+clearly development-only service types: `DevelopmentSettingsService`,
+`DevelopmentLocalSaveService`, `DevelopmentInputService`,
+`DevelopmentContentCatalogueService` and `DevelopmentModeControllerService`.
+They represent only the launchable “Development Flight” skeleton and must not
+claim persistence, gameplay or content that does not exist. Task 6 replaces the
+Settings and Input registrations, Task 7 replaces LocalSave, and Task 8 replaces
+ContentCatalogue and ModeController; remove each development service as its real
+owner lands.
+
+- [ ] **Step 3: Create a minimal but truthful Frontend**
 
 It must show *Just Some Stars*, “Development Flight,” Settings, Credits and a disabled Continue button. It must not pretend unfinished gameplay exists.
 
-- [ ] **Step 2: Build and install on the Realme Narzo**
+- [ ] **Step 4: Build and validate on Limrun Android with Argent**
 
 ```bash
 "$JSS_UNITY_EDITOR" -batchmode -nographics -quit -projectPath "$PWD" \
   -executeMethod JustSomeStars.Editor.Build.BuildCli.BuildAndroidInternal
-adb install -r Builds/AndroidInternal/JustSomeStars-internal.apk
-adb shell monkey -p com.scientificaj.justsomestars -c android.intent.category.LAUNCHER 1
 ```
 
-Expected: Boot reaches Frontend, survives background/resume and logs no unhandled exception.
+Read the project-scoped Limrun Android and relevant Argent interaction/QA skills
+before using credits. Create or reuse a project-labelled Limrun Android emulator
+only after the APK exists, install the exact internal artifact, and use Argent as
+the primary discovery, interaction and evidence layer. Do not require the
+physical Realme Narzo for this runway gate, and delete the Limrun instance after
+the immediate test session so it does not consume idle credits.
 
-- [ ] **Step 3: Create Google Play app, upload the Google build and begin closed testing**
+Expected: Boot reaches Frontend, survives background/resume and logs no unhandled
+exception; the run preserves launch and QA evidence from the Limrun-backed
+Android target.
+
+- [ ] **Step 5: Create Google Play app, upload the Google build and begin closed testing**
 
 Register at least 12 legitimate testers and record opt-in start timestamps in `docs/release/google-play-closed-test.md`. The 14-day clock is not considered started until the required tester count is continuously opted in.
 
-- [ ] **Step 4: Connect the repository to Codemagic and reproduce the internal CLI build**
+- [ ] **Step 6: Connect the repository to Codemagic and reproduce the internal CLI build**
 
 Create a minimal `codemagic.yaml` that runs project validation, EditMode tests and `BuildAndroidInternal`. Store Unity credentials and future signing material only in encrypted Codemagic variables. Record the workflow and artifact location in `docs/tooling/codemagic.md`.
 
 Expected: a clean remote runner produces the same package ID and launchable artifact as the local CLI.
 
-- [ ] **Step 5: Create the Galaxy Seller app record**
+- [ ] **Step 7: Create the Galaxy Seller app record**
 
 Record seller status, application ID, package, signing choice and missing commercial/IAP prerequisites in `docs/release/galaxy-seller-setup.md`.
 
-- [ ] **Step 6: Commit only documentation and code—not console secrets**
+- [ ] **Step 8: Commit only documentation and code—not console secrets**
 
 ```bash
 git add Assets/_JustSomeStars docs/release docs/tooling/codemagic.md codemagic.yaml
