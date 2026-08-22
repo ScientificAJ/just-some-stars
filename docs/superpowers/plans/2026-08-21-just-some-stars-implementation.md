@@ -434,21 +434,56 @@ git commit -m "feat: add resilient game bootstrap"
 ### Task 5: Put the first skeleton build into the store testing runway
 
 **Files:**
+- Create: `Assets/TextMesh Pro.meta`
+- Create: `Assets/TextMesh Pro/` from the pinned official TMP Essential Resources package
+- Delete after import: `Assets/TextMesh Pro/Resources/Sprite Assets/` once
+  its sole generated Resources asset is removed and the folder is empty
+- Delete after import: `Assets/TextMesh Pro/Resources/Sprite Assets.meta`
 - Create: `Assets/_JustSomeStars/Scenes/Core/Frontend.unity`
+- Create: `Assets/_JustSomeStars/Scenes/Core/Frontend.unity.meta`
+- Create: `Assets/_JustSomeStars/Art.meta`
+- Create: `Assets/_JustSomeStars/Art/UI.meta`
+- Create: `Assets/_JustSomeStars/Art/UI/Generated.meta`
+- Create: `Assets/_JustSomeStars/Art/UI/Generated/FrontendUIActions.asset`
+- Create: `Assets/_JustSomeStars/Legal.meta`
+- Create: `Assets/_JustSomeStars/Legal/Apache-2.0.txt`
+- Create: `Assets/_JustSomeStars/Legal/Apache-2.0.txt.meta`
+- Create: `Assets/Plugins.meta`
+- Create: `Assets/Plugins/Android.meta`
+- Create: `Assets/Plugins/Android/AndroidManifest.xml`
+- Create: `Assets/Plugins/Android/AndroidManifest.xml.meta`
+- Create: `Assets/_JustSomeStars/Runtime/Development.meta`
+- Create: `Assets/_JustSomeStars/Runtime/UI.meta`
+- Create: `Assets/_JustSomeStars/Runtime/UI/FrontendContracts.cs`
 - Create: `Assets/_JustSomeStars/Runtime/UI/FrontendController.cs`
+- Create: `Assets/_JustSomeStars/Runtime/UI/FrontendView.cs`
+- Create: `Assets/_JustSomeStars/Runtime/UI/SafeAreaFitter.cs`
+- Create: `Assets/_JustSomeStars/Runtime/UI/UnityFrontendLifecycle.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Development/DevelopmentBootstrapInstaller.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Development/DevelopmentRequiredServices.cs`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/DevelopmentBootstrapInstallerTests.cs`
+- Create: `Assets/_JustSomeStars/Tests/PlayMode/DevelopmentBootstrapInstallerTests.cs.meta`
+- Create: `Assets/_JustSomeStars/Tests/PlayMode/FrontendControllerTests.cs`
+- Create: `Assets/_JustSomeStars/Tests/PlayMode/FrontendControllerTests.cs.meta`
+- Create: `Assets/_JustSomeStars/Tests/PlayMode/Task5LaunchIntegrationTests.cs`
+- Create: `Assets/_JustSomeStars/Tests/PlayMode/Task5LaunchIntegrationTests.cs.meta`
+- Create: `Assets/_JustSomeStars/Tests/EditMode/FrontendSceneAssetTests.cs`
+- Create: `Assets/_JustSomeStars/Tests/EditMode/FrontendSceneAssetTests.cs.meta`
 - Create: `docs/release/google-play-closed-test.md`
 - Create: `docs/release/galaxy-seller-setup.md`
 - Create: `codemagic.yaml`
 - Create: `docs/tooling/codemagic.md`
+- Modify: `Assets/_JustSomeStars/Runtime/JustSomeStars.Runtime.asmdef`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/JustSomeStars.PlayModeTests.asmdef`
+- Modify: `ProjectSettings/EditorBuildSettings.asset`
+- Modify: `ProjectSettings/ProjectSettings.asset`
+- Create: `ProjectSettings/URPProjectSettings.asset`
 
 **Interfaces:**
 - Consumes: Android Internal and Google Play CLI artifacts.
 - Consumes: Task 4's `GameBootstrapComposition`, five required roles and
   `GameBootstrap.CompositionFactory` seam.
-- Produces: a valid launchable build with title, privacy link, version and quit/background behavior.
+- Produces: a valid launchable build with title, local privacy panel, version and quit/background behavior.
 
 - [ ] **Step 1: Test the development bootstrap composition before creating Frontend**
 
@@ -469,16 +504,65 @@ They represent only the launchable “Development Flight” skeleton and must no
 claim persistence, gameplay or content that does not exist. Task 6 replaces the
 Settings and Input registrations, Task 7 replaces LocalSave, and Task 8 replaces
 ContentCatalogue and ModeController; remove each development service as its real
-owner lands.
+owner lands. `DevelopmentBootstrapInstaller` is the only composition-factory
+writer through Tasks 6 and 7; those tasks modify that root rather than adding
+competing runtime initializers. Task 8 renames it to the permanent
+`ApplicationBootstrapInstaller` after the final development service is removed.
+“Development-only” describes temporary capability, not `JSS_DEVELOPMENT`
+conditional compilation: this truthful skeleton must also launch in the Task 5
+Google and Galaxy test variants.
 
 - [ ] **Step 3: Create a minimal but truthful Frontend**
 
-It must show *Just Some Stars*, “Development Flight,” Settings, Credits and a disabled Continue button. It must not pretend unfinished gameplay exists.
+Generate `Frontend.unity` through the Unity Editor API, add it as the second
+enabled build scene after Boot and set the player product name to
+`Just Some Stars`. It must show *Just Some Stars*, “Development Flight,”
+`Version {Application.version}`, Settings, Credits, an in-app plain-language
+Privacy panel and a visibly disabled Continue button with an unfinished-gameplay
+explanation. Settings and Credits may open truthful local panels only. Do not
+invent an external privacy URL or bypass the future grown-up gate, and do not
+pretend unfinished gameplay exists. The root Android Back action exits normally;
+background/resume returns to the same Frontend without reinitializing services.
+
+Import the pinned official TMP Essential Resources through Unity's package
+payload and retain its canonical Liberation Sans source TTF and OFL files. The
+scene must serialize the exact OFL `TextAsset`; `Credits & Licenses` presents a
+product-credit wrapper followed by the complete license verbatim in a clipped,
+top-reset vertical ScrollRect. Because Task 5 uses no emoji sprites, set TMP's
+default sprite to null, disable emoji support and delete only the generated
+`Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset` so it is not pulled
+into the player through `Resources`. Once that generated folder is exactly
+empty, delete the `Sprite Assets` folder and its sibling folder `.meta` through
+the Unity AssetDatabase so a clean checkout cannot contain an orphaned folder
+meta. Retain the official source PNG, JSON and attribution outside `Resources`.
+Asset tests must reject every empty Assets directory, missing folder meta and
+orphaned meta; asset and artifact tests must prove the OFL is included/readable
+and the unused EmojiOne player payload is absent. The Task-5-only
+`FrontendUIActions.asset` is an explicit temporary input seam owned for
+replacement/deletion by Task 6.
+
+Import the canonical Apache License 2.0 text unchanged as
+`Assets/_JustSomeStars/Legal/Apache-2.0.txt`; pin its 11,358-byte length and
+SHA-256 `cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30`.
+The same clipped, top-reset `Credits & Licenses` flow must identify the shipped
+AndroidX, Kotlin, Kotlin coroutines, JetBrains annotations and Guava components,
+then present the complete Apache text verbatim after the complete OFL. Both
+canonical license assets are immutable player dependencies and artifact checks
+must find their exact bytes in the built APK.
+
+Enable Unity's supported custom main manifest and retain the complete pinned
+GameActivity template contract, including launcher/export/configuration,
+rotation/resizing, safe-area/notch, freeform, layout and predictive-Back
+metadata. Under AndroidX's existing `InitializationProvider`, remove only
+`androidx.emoji2.text.EmojiCompatInitializer` through the manifest merger while
+retaining exactly one `androidx.lifecycle.ProcessLifecycleInitializer`. Source,
+merged-manifest and final-APK checks must reject the Emoji initializer without
+removing the provider or lifecycle initializer.
 
 - [ ] **Step 4: Build and validate on Limrun Android with Argent**
 
 ```bash
-"$JSS_UNITY_EDITOR" -batchmode -nographics -quit -projectPath "$PWD" \
+"$JSS_UNITY_EDITOR" -batchmode -nographics -quit -buildTarget Android -projectPath "$PWD" \
   -executeMethod JustSomeStars.Editor.Build.BuildCli.BuildAndroidInternal
 ```
 
@@ -495,24 +579,90 @@ Android target.
 
 - [ ] **Step 5: Create Google Play app, upload the Google build and begin closed testing**
 
-Register at least 12 legitimate testers and record opt-in start timestamps in `docs/release/google-play-closed-test.md`. The 14-day clock is not considered started until the required tester count is continuously opted in.
+After the upload-key/App Signing custody decision is approved, build the Google
+artifact separately with `BuildGooglePlayRelease`, a unique monotonic
+`JSS_BUILD_NUMBER` and all four Google-specific signing variables. Validate the
+exact non-debug AAB at
+`Builds/GooglePlay/JustSomeStars-google-play.aab`; the internal APK is never an
+upload substitute. App creation, upload and tester coordination are explicit
+external-account gates.
+
+For a qualifying new personal Play developer account, register at least 12
+legitimate testers and record only aggregate/redacted evidence in
+`docs/release/google-play-closed-test.md`. Tester-list membership or a local
+timestamp does not start the clock: the closed release must be published, each
+tester must opt in and the required count must remain continuously opted in for
+14 days. Record whether this account is actually subject to that rule; never
+commit tester email addresses.
 
 - [ ] **Step 6: Connect the repository to Codemagic and reproduce the internal CLI build**
 
-Create a minimal `codemagic.yaml` that runs project validation, EditMode tests and `BuildAndroidInternal`. Store Unity credentials and future signing material only in encrypted Codemagic variables. Record the workflow and artifact location in `docs/tooling/codemagic.md`.
+Create a minimal `codemagic.yaml` that verifies a clean checkout and the locked
+Unity/project inputs, runs project-owned EditMode tests and the targeted Task 5
+PlayMode smoke, then invokes `BuildAndroidInternal` and inspects the exact APK.
+Task 9's `ProjectContentValidator` does not exist yet and must not be faked here.
+Store Unity Plus/Pro credentials and future signing material only in encrypted
+Codemagic variable groups. Record the workflow, test reports and exact artifact
+location in `docs/tooling/codemagic.md`.
 
-Expected: a clean remote runner produces the same package ID and launchable artifact as the local CLI.
+Repository connection, push and the remote build are explicit external gates.
+Expected after approval: a clean runner with the exact Unity patch available
+produces the same package ID, version, variant and artifact path as the local
+CLI. Debug APK bytes and debug certificate identity need not be identical.
 
 - [ ] **Step 7: Create the Galaxy Seller app record**
 
-Record seller status, application ID, package, signing choice and missing commercial/IAP prerequisites in `docs/release/galaxy-seller-setup.md`.
+Galaxy Seller mutation is an explicit external-account gate. Record the redacted
+seller/commercial status, application ID when safe, `.galaxy` package, Seller
+Portal-managed AAB signing choice and missing commercial/IAP prerequisites in
+`docs/release/galaxy-seller-setup.md`. Never invent a seller record or approval.
 
 - [ ] **Step 8: Commit only documentation and code—not console secrets**
 
 ```bash
-git add Assets/_JustSomeStars docs/release docs/tooling/codemagic.md codemagic.yaml
+test ! -e 'Assets/TextMesh Pro/Resources/Sprite Assets' \
+  && test ! -e 'Assets/TextMesh Pro/Resources/Sprite Assets.meta'
+git add -A -- 'Assets/TextMesh Pro.meta' 'Assets/TextMesh Pro/' \
+  Assets/Plugins.meta Assets/Plugins/Android.meta Assets/Plugins/Android \
+  Assets/_JustSomeStars/Art.meta Assets/_JustSomeStars/Art/UI.meta \
+  Assets/_JustSomeStars/Art/UI/Generated.meta \
+  Assets/_JustSomeStars/Art/UI/Generated \
+  Assets/_JustSomeStars/Legal.meta Assets/_JustSomeStars/Legal \
+  Assets/_JustSomeStars/Runtime/UI.meta Assets/_JustSomeStars/Runtime/UI \
+  Assets/_JustSomeStars/Runtime/Development.meta \
+  Assets/_JustSomeStars/Runtime/Development \
+  Assets/_JustSomeStars/Scenes/Core/Frontend.unity \
+  Assets/_JustSomeStars/Scenes/Core/Frontend.unity.meta \
+  Assets/_JustSomeStars/Runtime/JustSomeStars.Runtime.asmdef \
+  Assets/_JustSomeStars/Tests/EditMode \
+  Assets/_JustSomeStars/Tests/PlayMode \
+  ProjectSettings docs/release docs/tooling/codemagic.md codemagic.yaml \
+  docs/superpowers/plans/2026-08-21-just-some-stars-implementation.md
+git diff --cached --check -- . \
+  ':(exclude)Assets/TextMesh Pro/**' ':(exclude)**/*.meta' \
+  ':(exclude)**/*.unity' ':(exclude)**/*.asset' \
+  ':(exclude)ProjectSettings/*.asset'
+git diff --cached --name-status
+git status --short --untracked-files=all
 git commit -m "release: start Android store testing runway"
 ```
+
+The whitespace gate deliberately excludes Unity/package-generated serialized
+assets, metas, scenes and ProjectSettings because their canonical serializers
+emit whitespace that Git flags; do not hand-normalize those files. Their exact
+content, GUID/meta pairing, persistence and asset-tree integrity remain covered
+by the 210-test Unity suite and the staged-name/clean-checkout gates below.
+
+Before commit, the staged-name audit must contain every new Unity asset/source
+and its `.meta`, including all TMP files, the three Art parent metas, both
+Runtime parent metas, the Legal and Plugins/Android parent metas, both license
+and manifest file metas, `Frontend.unity.meta` and all four new test metas. The
+staged TMP tree must omit the deleted empty `Sprite Assets` folder meta. The
+status gate must show no unstaged or untracked Task 5 path and no generated
+patcher/probe/build residue. Rerun the project-owned suites and require exactly
+210 passing EditMode tests and 69 passing PlayMode tests, then validate every
+asset/meta pair, the absence of empty asset directories and the absence of
+orphaned metas again from a clean checkout before accepting CI evidence.
 
 ### Task 6: Implement settings, accessibility profiles and semantic input
 
@@ -521,12 +671,30 @@ git commit -m "release: start Android store testing runway"
 - Create: `Assets/_JustSomeStars/Runtime/Accessibility/SettingsService.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Input/JssInputActions.inputactions`
 - Create: `Assets/_JustSomeStars/Runtime/Input/InputRouter.cs`
+- Create: `Assets/_JustSomeStars/Runtime/UI/FrontendDependencies.cs`
+- Create: `Assets/_JustSomeStars/Runtime/UI/FrontendSettingsPanel.cs`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/SettingsServiceTests.cs`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/InputRouterTests.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Core/GameBootstrapComposition.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Core/SceneTransition.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Development/DevelopmentBootstrapInstaller.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Development/DevelopmentRequiredServices.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/UI/UnityFrontendLifecycle.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendController.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendView.cs`
+- Modify: `Assets/_JustSomeStars/Scenes/Core/Frontend.unity`
+- Modify: `Assets/_JustSomeStars/Tests/EditMode/FrontendSceneAssetTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/DevelopmentBootstrapInstallerTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/FrontendControllerTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/Task5LaunchIntegrationTests.cs`
+- Delete: `Assets/_JustSomeStars/Art/UI/Generated/FrontendUIActions.asset`
+- Delete: `Assets/_JustSomeStars/Art/UI/Generated/FrontendUIActions.asset.meta`
+- Delete after the asset is removed: `Assets/_JustSomeStars/Art/UI/Generated/`
+- Delete after the asset is removed: `Assets/_JustSomeStars/Art/UI/Generated.meta`
 
 **Interfaces:**
 - Produces: `GameSettings` with independent `PilotingAssist`, `ExplorationAssist`, `ScienceDepth`, presentation, audio and control values.
-- Produces: semantic actions `Move`, `Look`, `Primary`, `Secondary`, `Pause`, `Lens`, `PhotoMode` and `Recenter`.
+- Produces: semantic actions `Move`, `Look`, `Primary`, `Secondary`, `Pause`, `Lens`, `PhotoMode`, `Recenter` and UI `Back`/`Cancel`.
 
 - [ ] **Step 1: Write serialization/default tests**
 
@@ -547,16 +715,66 @@ Keep graphics/control device-local. Expose change events so UI, camera, input, s
 
 - [ ] **Step 3: Author Input System maps for UI, Surface, Flight and Lens**
 
-Every runtime action is semantic; gameplay code receives values from `InputRouter` rather than reading touch coordinates or keys directly.
+Every runtime action is semantic; gameplay and UI code receive values from
+`InputRouter` rather than reading touch coordinates or keys directly. The UI
+map owns pointer/click plus one semantic Back/Cancel path. Replace
+`UnityFrontendLifecycle`'s temporary private InputAction with an injected
+InputRouter/JssInputActions subscription, migrate the Frontend EventSystem to
+the canonical actions asset and delete Task 5's temporary
+`FrontendUIActions.asset`. After migration, the Frontend must have exactly one
+input authority and one Back/Cancel callback path.
+
+Perform the temporary asset cleanup through the Unity AssetDatabase: delete
+`FrontendUIActions.asset` so its asset `.meta` is removed with it, require the
+single-purpose `Art/UI/Generated` folder to be exactly empty, then delete that
+folder so its sibling `Generated.meta` is removed too. Rerun the asset-tree
+integrity test after the migration so no empty directory or orphaned meta can
+survive a clean checkout.
+
+Use explicit root-owned push injection, not `ServiceRegistry`, a static service
+locator or a second input authority. The development composition creates one
+`SettingsService` and one `InputRouter` and passes the exact instances in a
+typed `FrontendDependencies` payload owned by its `UnitySceneTransition`.
+Frontend controller/lifecycle components remain non-interactive until the
+transition has loaded the Frontend, pushed those dependencies through explicit
+`Configure(...)` methods and enabled their subscriptions; only then may routing
+report success. Scene reload pushes each current composition's instances once,
+and unload/shutdown removes every binding before the owning services stop.
+
+Replace the Task 5 Settings placeholder with a truthful local settings surface
+implemented by `FrontendSettingsPanel`. It reads and writes the injected
+`SettingsService`, persists device-local changes atomically, reflects external
+setting changes without duplicate callbacks and removes the placeholder copy.
+It must not imply account sync or cloud persistence.
 
 - [ ] **Step 4: Test left-handed control swap and mode-map switching**
 
-Expected: swapping layout changes screen placement, not semantic action names; only the active gameplay map produces commands.
+Expected: swapping layout changes screen placement, not semantic action names;
+only the active gameplay map produces commands. Tests also prove root Back,
+panel-close Back and disable/reenable behavior are delivered exactly once by
+InputRouter, the EventSystem uses `JssInputActions`, and the temporary actions
+asset and lifecycle-owned InputAction are absent. Controller/scene/real-launch
+tests prove injection happens before the Frontend becomes interactive, uses the
+exact composition-owned instances, survives reload with one subscription,
+unbinds on teardown and leaves no static locator or second authority. Settings
+tests exercise real controls, device-local persistence, re-open/reload state and
+the absence of Task 5's placeholder wording.
+
+Replace the development Settings and Input role registrations in the sole
+composition installer with `SettingsService` and `InputRouter`; remove their two
+development service types without adding another `BeforeSceneLoad` factory
+writer. Evolve `DevelopmentBootstrapInstallerTests` to expect those two concrete
+types while retaining exact roles/order/identity, cancellation and reverse
+cleanup coverage. Its runtime-initializer audit must identify calls to the
+`CompositionFactory` setter and assert exactly one `BeforeSceneLoad` writer;
+unrelated `BeforeSceneLoad` callbacks are permitted.
 
 - [ ] **Step 5: Commit**
 
 ```bash
-git add Assets/_JustSomeStars/Runtime/Accessibility Assets/_JustSomeStars/Runtime/Input Assets/_JustSomeStars/Tests
+test ! -e Assets/_JustSomeStars/Art/UI/Generated \
+  && test ! -e Assets/_JustSomeStars/Art/UI/Generated.meta
+git add -A Assets/_JustSomeStars/Runtime/Core Assets/_JustSomeStars/Runtime/Accessibility Assets/_JustSomeStars/Runtime/Input Assets/_JustSomeStars/Runtime/Development Assets/_JustSomeStars/Runtime/UI Assets/_JustSomeStars/Scenes/Core/Frontend.unity Assets/_JustSomeStars/Art/UI/Generated Assets/_JustSomeStars/Art/UI/Generated.meta Assets/_JustSomeStars/Tests
 git commit -m "feat: add semantic input and independent accessibility settings"
 ```
 
@@ -570,6 +788,9 @@ git commit -m "feat: add semantic input and independent accessibility settings"
 - Create: `Assets/_JustSomeStars/Runtime/Saving/SaveMerge.cs`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/LocalSaveServiceTests.cs`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/SaveMigratorTests.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Development/DevelopmentBootstrapInstaller.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Development/DevelopmentRequiredServices.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/DevelopmentBootstrapInstallerTests.cs`
 
 **Interfaces:**
 - Produces: `LoadAsync`, `SaveCheckpointAsync`, `RecoverAsync` and `Merge(GameSave local, GameSave cloud)`.
@@ -599,10 +820,16 @@ Malformed primary data loads the last-known-good backup and records a user-reada
 
 Expected: the last complete checkpoint always survives.
 
+Replace the development LocalSave role registration in the sole composition
+installer with `LocalSaveService` and remove the development LocalSave type.
+Update `DevelopmentBootstrapInstallerTests` so the exact canonical composition,
+cancellation and reverse-cleanup expectations use `LocalSaveService` while the
+remaining development roles stay explicit.
+
 - [ ] **Step 5: Commit**
 
 ```bash
-git add Assets/_JustSomeStars/Runtime/Saving Assets/_JustSomeStars/Tests/EditMode
+git add -A Assets/_JustSomeStars/Runtime/Saving Assets/_JustSomeStars/Runtime/Development Assets/_JustSomeStars/Tests
 git commit -m "feat: add recoverable versioned save system"
 ```
 
@@ -615,6 +842,17 @@ git commit -m "feat: add recoverable versioned save system"
 - Create: `Assets/_JustSomeStars/Content/SceneCatalog.asset`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/GameModeControllerTests.cs`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/SceneStreamServiceTests.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Core/ApplicationBootstrapInstaller.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Core/ApplicationBootstrapInstaller.cs.meta`
+- Rename: `Assets/_JustSomeStars/Tests/PlayMode/DevelopmentBootstrapInstallerTests.cs` to `Assets/_JustSomeStars/Tests/PlayMode/ApplicationBootstrapInstallerTests.cs`
+- Rename: `Assets/_JustSomeStars/Tests/PlayMode/DevelopmentBootstrapInstallerTests.cs.meta` to `Assets/_JustSomeStars/Tests/PlayMode/ApplicationBootstrapInstallerTests.cs.meta`
+- Rename: `Assets/_JustSomeStars/Tests/PlayMode/Task5LaunchIntegrationTests.cs` to `Assets/_JustSomeStars/Tests/PlayMode/ApplicationLaunchIntegrationTests.cs`
+- Rename: `Assets/_JustSomeStars/Tests/PlayMode/Task5LaunchIntegrationTests.cs.meta` to `Assets/_JustSomeStars/Tests/PlayMode/ApplicationLaunchIntegrationTests.cs.meta`
+- Delete: `Assets/_JustSomeStars/Runtime/Development/DevelopmentBootstrapInstaller.cs`
+- Delete: `Assets/_JustSomeStars/Runtime/Development/DevelopmentBootstrapInstaller.cs.meta`
+- Delete: `Assets/_JustSomeStars/Runtime/Development/DevelopmentRequiredServices.cs`
+- Delete: `Assets/_JustSomeStars/Runtime/Development/DevelopmentRequiredServices.cs.meta`
+- Delete: `Assets/_JustSomeStars/Runtime/Development.meta` after its final source is removed
 
 **Interfaces:**
 - Produces: guarded transitions among Frontend, Customization, Clubhouse, Flight, Surface, Lens, Dialogue and Cinematic.
@@ -641,10 +879,34 @@ Approach and landing masks can hold until destination scene activation succeeds.
 
 - [ ] **Step 4: Test repeated destination load/unload for leaked scenes and duplicate bootstrap objects**
 
+Replace the final development ContentCatalogue and ModeController roles with
+one explicit catalogue/streaming lifecycle owner and `GameModeController`.
+Rename the sole composition root to `ApplicationBootstrapInstaller`, delete the
+Development installer/services, and keep exactly one `BeforeSceneLoad` factory
+writer. The permanent root owns typed dependency injection separately from
+`GameServiceRole`, which remains lifecycle ordering rather than a service
+locator.
+
+Replace the development installer test rather than deleting its contract:
+`ApplicationBootstrapInstallerTests` must lock the permanent exact service
+types/order/identity, required-role no-bypass matrix, cancellation, fresh
+composition instances, explicit-factory non-clobbering and reverse exact-once
+cleanup. Its global initializer audit scans for `CompositionFactory` setter
+calls and proves exactly one `BeforeSceneLoad` writer while allowing unrelated
+callbacks. Migrate `Task5LaunchIntegrationTests` to
+`ApplicationLaunchIntegrationTests`, use `ApplicationBootstrapInstaller`, and
+preserve real Boot-to-Frontend activation, dependency injection, report
+identity and leak-free teardown after the Development namespace is deleted.
+
 - [ ] **Step 5: Commit**
 
 ```bash
-git add Assets/_JustSomeStars/Runtime/Core Assets/_JustSomeStars/Content Assets/_JustSomeStars/Tests
+test ! -e Assets/_JustSomeStars/Runtime/Development \
+  && test ! -e Assets/_JustSomeStars/Runtime/Development.meta
+git add -A Assets/_JustSomeStars/Runtime/Core \
+  Assets/_JustSomeStars/Runtime/Development \
+  Assets/_JustSomeStars/Runtime/Development.meta \
+  Assets/_JustSomeStars/Content Assets/_JustSomeStars/Tests
 git commit -m "feat: add explicit modes and additive destination streaming"
 ```
 
@@ -1122,6 +1384,11 @@ git commit -m "art: reach approved Mirra mobile quality bar"
 ### Task 21: Implement optional Google accounts and cloud save
 
 **Files:**
+- Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendController.cs`
+- Modify: `Assets/_JustSomeStars/Scenes/Core/Frontend.unity`
+- Modify: `Assets/_JustSomeStars/Tests/EditMode/FrontendSceneAssetTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/FrontendControllerTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/ApplicationLaunchIntegrationTests.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Accounts/IAccountService.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Accounts/GuestAccountService.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Accounts/FirebaseAccountService.cs`
@@ -1145,6 +1412,11 @@ Register both Android package IDs in one Firebase project. Store `google-service
 - [ ] **Step 3: Implement local guest flow and optional Google linking**
 
 The first run never blocks on Firebase. Linking migrates the active local save under the authenticated UID.
+Because this is the first task that introduces a real online service, replace
+Task 5's `NO ONLINE SERVICES` footer with state-derived truthful copy. The
+offline guest state and the available/linked/unavailable cloud states must each
+describe only the service state actually in effect; controller, scene and real
+launch tests must reject the stale Task 5 literal after Firebase lands.
 
 - [ ] **Step 4: Implement Firestore documents and UID-scoped rules**
 
@@ -1388,7 +1660,13 @@ git commit -m "feat: add launch cosmetic catalogue and editions"
 ### Task 28: Complete UI, localization and accessibility
 
 **Files:**
-- Create: `Assets/_JustSomeStars/Runtime/UI/`
+- Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendController.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendView.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendContracts.cs`
+- Modify: `Assets/_JustSomeStars/Scenes/Core/Frontend.unity`
+- Modify: `Assets/_JustSomeStars/Tests/EditMode/FrontendSceneAssetTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/FrontendControllerTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/ApplicationLaunchIntegrationTests.cs`
 - Create: `Assets/_JustSomeStars/Runtime/UI/PhotoModeController.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Accessibility/AccessibilityApplier.cs`
 - Create: `Assets/_JustSomeStars/Content/Localization/English/`
@@ -1403,7 +1681,25 @@ git commit -m "feat: add launch cosmetic catalogue and editions"
 
 - [ ] **Step 2: Implement responsive safe-area layouts for common phone and foldable aspect ratios**
 
-- [ ] **Step 3: Move every player-facing string to English localization tables**
+- [ ] **Step 3: Move every player-facing Task 5 and later string to English localization tables**
+
+This includes the Frontend title/status/version wrapper, disabled Continue
+explanation, Settings, Privacy, the Task-21 state-derived footer and the
+`Credits & Licenses` title and product-credit wrapper. Keep both canonical
+license `TextAsset` dependencies—the Liberation Sans OFL and Apache License
+2.0—immutable and verbatim: do not translate or copy either into a string table.
+The localized credits wrapper must identify the covered components, concatenate
+both raw license texts and preserve the same readable scroll access.
+
+Replace the Task 5 `Development Flight` status and disabled placeholder
+Continue state once real launch content exists. Present truthful New Game and
+Continue controls driven by the injected local-save/content state: New Game
+navigates into the real opening/customization route, while Continue is enabled
+only for a valid recoverable local save and navigates to its real checkpoint.
+No button may remain decorative or claim unavailable content. Controller,
+scene, integration and accessibility tests cover no-save, valid-save, corrupt
+save/recovery and unavailable-content states without weakening verbatim OFL
+scroll access.
 
 - [ ] **Step 4: Implement text scale, font choice, captions, speaker labels, color-safe symbols, contrast, reduced effects and left-handed controls**
 
@@ -1505,6 +1801,15 @@ git commit -m "perf: meet Android quality and thermal budgets"
 
 - [ ] **Step 2: Implement workflows for validation, EditMode, PlayMode, Addressables, Google and Galaxy builds**
 
+The targeted launch smoke now filters
+`JustSomeStars.Tests.PlayMode.ApplicationLaunchIntegrationTests`; do not retain
+the deleted Task 5 development test name after Task 8's installer migration.
+Retain or deliberately evolve Task 5's fail-closed Git LFS hydration and pointer
+checks, exact OFL and Apache payload checks, EmojiOne exclusion, effective
+GameActivity contract, EmojiCompat-initializer rejection and preserved
+ProcessLifecycle initializer. A later workflow must never silently weaken those
+artifact gates while adding store signing or publishing.
+
 - [ ] **Step 3: Verify clean Google and Galaxy CI builds match local package ID, version and symbols**
 
 - [ ] **Step 4: Use Limrun credits for Android install, launch, smoke, screenshot and demo validation**
@@ -1579,12 +1884,14 @@ git commit -m "feat: add consent-gated growth services"
 - [ ] **Step 1: Run the full automated suite and content validator from a clean checkout**
 
 ```bash
-"$JSS_UNITY_EDITOR" -batchmode -nographics -quit -projectPath "$PWD" \
+"$JSS_UNITY_EDITOR" -batchmode -nographics -quit -buildTarget Android -projectPath "$PWD" \
   -executeMethod JustSomeStars.Editor.Validation.ProjectContentValidator.ValidateForCi
-"$JSS_UNITY_EDITOR" -batchmode -nographics -quit -projectPath "$PWD" \
-  -runTests -testPlatform editmode -testResults Builds/TestResults/release-edit.xml
-"$JSS_UNITY_EDITOR" -batchmode -nographics -quit -projectPath "$PWD" \
-  -runTests -testPlatform playmode -testResults Builds/TestResults/release-play.xml
+"$JSS_UNITY_EDITOR" -batchmode -nographics -buildTarget Android -projectPath "$PWD" \
+  -runTests -testPlatform editmode -assemblyNames JustSomeStars.EditModeTests \
+  -testResults Builds/TestResults/release-edit.xml
+"$JSS_UNITY_EDITOR" -batchmode -nographics -buildTarget Android -projectPath "$PWD" \
+  -runTests -testPlatform playmode -assemblyNames JustSomeStars.PlayModeTests \
+  -testResults Builds/TestResults/release-play.xml
 ```
 
 - [ ] **Step 2: Execute the release matrix**

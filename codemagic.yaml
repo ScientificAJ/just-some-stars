@@ -1,0 +1,749 @@
+workflows:
+  android-internal:
+    name: Just Some Stars - Android Internal
+    instance_type: mac_mini_m2
+    max_build_duration: 120
+    environment:
+      unity: 6000.3.22f1
+      groups:
+        - jss_unity_ci
+      vars:
+        JSS_UNITY_VERSION: "6000.3.22f1"
+        JSS_UNITY_REVISION: "1c726e1fb402"
+    scripts:
+      - name: Hydrate and verify every tracked Git LFS object
+        script: |
+          set -euo pipefail
+          cd "$CM_BUILD_DIR"
+          command -v git-lfs >/dev/null 2>&1 || {
+            printf 'git-lfs is required before Unity activation.\n' >&2
+            exit 1
+          }
+          unset GIT_TRACE GIT_TRACE_PACKET GIT_TRACE_CURL GIT_CURL_VERBOSE
+          unset GIT_TRACE2 GIT_TRACE2_EVENT GIT_TRACE2_PERF
+          export GIT_TERMINAL_PROMPT=0
+          git lfs version
+          git lfs install --local --skip-smudge --skip-repo
+          git lfs pull --include="" --exclude=""
+          git lfs checkout
+
+          JSS_LFS_MANIFEST="$(mktemp "${TMPDIR:-/tmp}/jss-lfs-files.XXXXXX")"
+          jss_remove_lfs_manifest() {
+            rm -f "$JSS_LFS_MANIFEST"
+          }
+          trap jss_remove_lfs_manifest EXIT
+          git lfs ls-files --json > "$JSS_LFS_MANIFEST"
+          python3 - "$CM_BUILD_DIR" "$JSS_LFS_MANIFEST" <<'PY'
+          import hashlib
+          import json
+          import re
+          import struct
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          root = Path(sys.argv[1]).resolve()
+          manifest_path = Path(sys.argv[2])
+          with manifest_path.open(encoding="utf-8") as stream:
+              manifest = json.load(stream)
+          if not isinstance(manifest, dict):
+              raise SystemExit("Git LFS emitted a non-object JSON manifest")
+          entries = manifest.get("files")
+          if not isinstance(entries, list) or not entries:
+              raise SystemExit("the checkout enumerated no tracked Git LFS paths")
+
+          verified_paths = set()
+          for entry in entries:
+              if not isinstance(entry, dict):
+                  raise SystemExit("Git LFS emitted a malformed file entry")
+              relative_name = entry.get("name")
+              if not isinstance(relative_name, str) or not relative_name:
+                  raise SystemExit("Git LFS emitted an entry without a valid path")
+              if Path(relative_name).is_absolute():
+                  raise SystemExit(f"Git LFS emitted an absolute path: {relative_name}")
+              if relative_name in verified_paths:
+                  raise SystemExit(f"Git LFS emitted a duplicate path: {relative_name}")
+              worktree_path = root / relative_name
+              if worktree_path.is_symlink():
+                  raise SystemExit(f"tracked LFS path is a symlink: {relative_name}")
+              try:
+                  resolved_path = worktree_path.resolve(strict=True)
+                  resolved_path.relative_to(root)
+              except (FileNotFoundError, ValueError) as error:
+                  raise SystemExit(
+                      f"tracked LFS path is missing or escapes the checkout: {relative_name}"
+                  ) from error
+              if not resolved_path.is_file():
+                  raise SystemExit(f"tracked LFS path is not a file: {relative_name}")
+              if entry.get("oid_type") != "sha256":
+                  raise SystemExit(f"tracked LFS path has a non-SHA256 OID: {relative_name}")
+              expected_oid = entry.get("oid")
+              if not isinstance(expected_oid, str) or re.fullmatch(
+                  r"[0-9a-f]{64}", expected_oid
+              ) is None:
+                  raise SystemExit(f"tracked LFS path has an invalid OID: {relative_name}")
+              expected_size = entry.get("size")
+              if not isinstance(expected_size, int) or expected_size < 0:
+                  raise SystemExit(f"tracked LFS path has an invalid size: {relative_name}")
+              if entry.get("checkout") is not True or entry.get("downloaded") is not True:
+                  raise SystemExit(f"tracked LFS object is not hydrated: {relative_name}")
+
+              pointer_check = subprocess.run(
+                  [
+                      "git",
+                      "lfs",
+                      "pointer",
+                      "--check",
+                      f"--file={resolved_path}",
+                  ],
+                  cwd=root,
+                  stdout=subprocess.DEVNULL,
+                  stderr=subprocess.DEVNULL,
+                  check=False,
+              )
+              if pointer_check.returncode == 0:
+                  raise SystemExit(
+                      f"tracked LFS worktree file is still a pointer: {relative_name}"
+                  )
+              if pointer_check.returncode != 1:
+                  raise SystemExit(
+                      f"could not inspect tracked LFS worktree file: {relative_name}"
+                  )
+
+              digest = hashlib.sha256()
+              actual_size = 0
+              with resolved_path.open("rb") as stream:
+                  while chunk := stream.read(1024 * 1024):
+                      actual_size += len(chunk)
+                      digest.update(chunk)
+              if actual_size != expected_size:
+                  raise SystemExit(
+                      f"tracked LFS size mismatch for {relative_name}: "
+                      f"expected {expected_size}, got {actual_size}"
+                  )
+              actual_oid = digest.hexdigest()
+              if actual_oid != expected_oid:
+                  raise SystemExit(
+                      f"tracked LFS OID mismatch for {relative_name}: "
+                      f"expected {expected_oid}, got {actual_oid}"
+                  )
+              verified_paths.add(relative_name)
+              print(f"Verified hydrated Git LFS object: {relative_name}")
+
+          emoji_relative = "Assets/TextMesh Pro/Sprites/EmojiOne.png"
+          if emoji_relative not in verified_paths:
+              raise SystemExit(f"required retained LFS path is not tracked: {emoji_relative}")
+          emoji_path = root / emoji_relative
+          with emoji_path.open("rb") as stream:
+              png_header = stream.read(24)
+          png_signature = b"\x89PNG\r\n\x1a\n"
+          if (
+              len(png_header) != 24
+              or png_header[:8] != png_signature
+              or png_header[8:12] != b"\x00\x00\x00\r"
+              or png_header[12:16] != b"IHDR"
+          ):
+              raise SystemExit("retained EmojiOne.png does not have a real PNG/IHDR signature")
+          width, height = struct.unpack(">II", png_header[16:24])
+          if width == 0 or height == 0:
+              raise SystemExit("retained EmojiOne.png has invalid PNG dimensions")
+          print(f"Verified retained EmojiOne.png PNG signature: {width}x{height}")
+          PY
+          jss_remove_lfs_manifest
+          trap - EXIT
+
+      - name: Activate Unity Plus or Pro license
+        script: |
+          set -euo pipefail
+          set +x
+          : "${UNITY_HOME:?Codemagic did not provision the requested Unity editor}"
+          : "${UNITY_SERIAL:?Configure encrypted UNITY_SERIAL in jss_unity_ci}"
+          : "${UNITY_EMAIL:?Configure encrypted UNITY_EMAIL in jss_unity_ci}"
+          : "${UNITY_PASSWORD:?Configure encrypted UNITY_PASSWORD in jss_unity_ci}"
+          JSS_UNITY_EDITOR="$UNITY_HOME/Contents/MacOS/Unity"
+          test -x "$JSS_UNITY_EDITOR"
+          "$JSS_UNITY_EDITOR" \
+            -batchmode -nographics -quit -logFile /dev/null \
+            -serial "$UNITY_SERIAL" \
+            -username "$UNITY_EMAIL" \
+            -password "$UNITY_PASSWORD"
+
+      - name: Verify clean checkout and exact provisioned toolchain
+        script: |
+          set -euo pipefail
+          cd "$CM_BUILD_DIR"
+          mkdir -p Builds/TestResults Builds/Logs
+          JSS_EXPECTED_UNITY_HOME="/Applications/Unity/Hub/Editor/${JSS_UNITY_VERSION}/Unity.app"
+          JSS_UNITY_EDITOR="$UNITY_HOME/Contents/MacOS/Unity"
+          JSS_ANDROID_PLAYER="$UNITY_HOME/Contents/PlaybackEngines/AndroidPlayer"
+          test "$UNITY_HOME" = "$JSS_EXPECTED_UNITY_HOME"
+          test -x "$JSS_UNITY_EDITOR"
+          test -d "$JSS_ANDROID_PLAYER"
+          test -x "$JSS_ANDROID_PLAYER/OpenJDK/bin/java"
+          test -d "$JSS_ANDROID_PLAYER/SDK"
+          test -d "$JSS_ANDROID_PLAYER/NDK"
+          JSS_APKANALYZER="$JSS_ANDROID_PLAYER/SDK/cmdline-tools/16.0/bin/apkanalyzer"
+          JSS_AAPT="$JSS_ANDROID_PLAYER/SDK/build-tools/36.0.0/aapt"
+          test -x "$JSS_APKANALYZER"
+          test -x "$JSS_AAPT"
+          test -z "$(git status --porcelain=v1 --untracked-files=all)"
+          grep -Fx "m_EditorVersion: ${JSS_UNITY_VERSION}" \
+            ProjectSettings/ProjectVersion.txt
+          grep -Fx \
+            "m_EditorVersionWithRevision: ${JSS_UNITY_VERSION} (${JSS_UNITY_REVISION})" \
+            ProjectSettings/ProjectVersion.txt
+          JSS_EDITOR_PROBE_LOG="$(mktemp "${TMPDIR:-/tmp}/jss-unity-editor-probe.XXXXXX")"
+          jss_remove_editor_probe_log() {
+            rm -f "$JSS_EDITOR_PROBE_LOG"
+          }
+          trap jss_remove_editor_probe_log EXIT
+          "$JSS_UNITY_EDITOR" \
+            -batchmode -nographics -quit \
+            -projectPath "$CM_BUILD_DIR" \
+            -logFile "$JSS_EDITOR_PROBE_LOG"
+          grep -F "${JSS_UNITY_VERSION} (${JSS_UNITY_REVISION})" \
+            "$JSS_EDITOR_PROBE_LOG"
+          jss_remove_editor_probe_log
+          trap - EXIT
+          printf 'JSS_UNITY_EDITOR=%s\n' "$JSS_UNITY_EDITOR" >> "$CM_ENV"
+          printf 'JSS_APKANALYZER=%s\n' "$JSS_APKANALYZER" >> "$CM_ENV"
+          printf 'JSS_AAPT=%s\n' "$JSS_AAPT" >> "$CM_ENV"
+
+      - name: Run project-owned EditMode tests
+        script: |
+          set -euo pipefail
+          cd "$CM_BUILD_DIR"
+          "$JSS_UNITY_EDITOR" \
+            -batchmode -nographics -buildTarget Android \
+            -projectPath "$CM_BUILD_DIR" \
+            -runTests -testPlatform editmode \
+            -assemblyNames JustSomeStars.EditModeTests \
+            -testResults "$CM_BUILD_DIR/Builds/TestResults/codemagic-editmode.xml" \
+            -logFile "$CM_BUILD_DIR/Builds/Logs/codemagic-editmode.log"
+          python3 - "$CM_BUILD_DIR/Builds/TestResults/codemagic-editmode.xml" 210 <<'PY'
+          import sys
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+
+          report = Path(sys.argv[1])
+          expected = int(sys.argv[2])
+          if not report.is_file() or report.stat().st_size == 0:
+              raise SystemExit(f"missing or empty Unity test report: {report}")
+          root = ET.parse(report).getroot()
+          if root.tag.rsplit("}", 1)[-1] != "test-run":
+              raise SystemExit(f"unexpected Unity test-report root: {root.tag}")
+
+          def required_count(name):
+              value = root.attrib.get(name)
+              if value is None:
+                  raise SystemExit(f"Unity test report has no {name!r} count")
+              try:
+                  return int(value)
+              except ValueError as error:
+                  raise SystemExit(
+                      f"Unity test report has invalid {name!r} count: {value!r}"
+                  ) from error
+
+          result = root.attrib.get("result")
+          testcasecount = required_count("testcasecount")
+          total = required_count("total")
+          passed = required_count("passed")
+          failed = required_count("failed")
+          skipped = required_count("skipped")
+          inconclusive = required_count("inconclusive")
+          cases = sum(
+              1
+              for element in root.iter()
+              if element.tag.rsplit("}", 1)[-1] == "test-case"
+          )
+          if result != "Passed":
+              raise SystemExit(f"Unity test result was {result!r}, not 'Passed'")
+          if (failed, skipped, inconclusive) != (0, 0, 0):
+              raise SystemExit(
+                  "Unity test report is not clean: "
+                  f"failed={failed}, skipped={skipped}, "
+                  f"inconclusive={inconclusive}"
+              )
+          if (testcasecount, total, passed, cases) != (expected,) * 4:
+              raise SystemExit(
+                  "Unity selected-test count mismatch: "
+                  f"expected={expected}, testcasecount={testcasecount}, "
+                  f"total={total}, passed={passed}, test-case-elements={cases}"
+              )
+          print(f"Verified {expected} passing EditMode tests with no omissions.")
+          PY
+        test_report: Builds/TestResults/codemagic-editmode.xml
+
+      - name: Run Task 5 launch PlayMode smoke
+        script: |
+          set -euo pipefail
+          cd "$CM_BUILD_DIR"
+          "$JSS_UNITY_EDITOR" \
+            -batchmode -nographics -buildTarget Android \
+            -projectPath "$CM_BUILD_DIR" \
+            -runTests -testPlatform playmode \
+            -assemblyNames JustSomeStars.PlayModeTests \
+            -testFilter JustSomeStars.Tests.PlayMode.Task5LaunchIntegrationTests \
+            -testResults "$CM_BUILD_DIR/Builds/TestResults/codemagic-task5-playmode.xml" \
+            -logFile "$CM_BUILD_DIR/Builds/Logs/codemagic-task5-playmode.log"
+          python3 - "$CM_BUILD_DIR/Builds/TestResults/codemagic-task5-playmode.xml" 1 <<'PY'
+          import sys
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+
+          report = Path(sys.argv[1])
+          expected = int(sys.argv[2])
+          if not report.is_file() or report.stat().st_size == 0:
+              raise SystemExit(f"missing or empty Unity test report: {report}")
+          root = ET.parse(report).getroot()
+          if root.tag.rsplit("}", 1)[-1] != "test-run":
+              raise SystemExit(f"unexpected Unity test-report root: {root.tag}")
+
+          def required_count(name):
+              value = root.attrib.get(name)
+              if value is None:
+                  raise SystemExit(f"Unity test report has no {name!r} count")
+              try:
+                  return int(value)
+              except ValueError as error:
+                  raise SystemExit(
+                      f"Unity test report has invalid {name!r} count: {value!r}"
+                  ) from error
+
+          result = root.attrib.get("result")
+          testcasecount = required_count("testcasecount")
+          total = required_count("total")
+          passed = required_count("passed")
+          failed = required_count("failed")
+          skipped = required_count("skipped")
+          inconclusive = required_count("inconclusive")
+          cases = sum(
+              1
+              for element in root.iter()
+              if element.tag.rsplit("}", 1)[-1] == "test-case"
+          )
+          if result != "Passed":
+              raise SystemExit(f"Unity test result was {result!r}, not 'Passed'")
+          if (failed, skipped, inconclusive) != (0, 0, 0):
+              raise SystemExit(
+                  "Unity test report is not clean: "
+                  f"failed={failed}, skipped={skipped}, "
+                  f"inconclusive={inconclusive}"
+              )
+          if (testcasecount, total, passed, cases) != (expected,) * 4:
+              raise SystemExit(
+                  "Unity selected-test count mismatch: "
+                  f"expected={expected}, testcasecount={testcasecount}, "
+                  f"total={total}, passed={passed}, test-case-elements={cases}"
+              )
+          print(f"Verified {expected} passing Task 5 launch smoke with no omissions.")
+          PY
+        test_report: Builds/TestResults/codemagic-task5-playmode.xml
+
+      - name: Build Android Internal APK
+        script: |
+          set -euo pipefail
+          cd "$CM_BUILD_DIR"
+          unset JSS_BUILD_NUMBER
+          "$JSS_UNITY_EDITOR" \
+            -batchmode -nographics -quit -buildTarget Android \
+            -projectPath "$CM_BUILD_DIR" \
+            -executeMethod JustSomeStars.Editor.Build.BuildCli.BuildAndroidInternal \
+            -logFile "$CM_BUILD_DIR/Builds/Logs/codemagic-android-internal.log"
+
+      - name: Inspect exact internal artifact and player payload
+        script: |
+          set -euo pipefail
+          cd "$CM_BUILD_DIR"
+          JSS_INTERNAL_APK="$CM_BUILD_DIR/Builds/AndroidInternal/JustSomeStars-internal.apk"
+          JSS_APK_DIGEST="$JSS_INTERNAL_APK.sha256"
+          JSS_APK_FILE_LIST="$CM_BUILD_DIR/Builds/AndroidInternal/JustSomeStars-internal.files.txt"
+          JSS_APK_MANIFEST="$CM_BUILD_DIR/Builds/AndroidInternal/JustSomeStars-internal.manifest.xml"
+          JSS_APK_RESOURCES="$CM_BUILD_DIR/Builds/AndroidInternal/JustSomeStars-internal.resources.txt"
+          JSS_CANONICAL_OFL="$CM_BUILD_DIR/Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt"
+          JSS_CANONICAL_APACHE="$CM_BUILD_DIR/Assets/_JustSomeStars/Legal/Apache-2.0.txt"
+          jss_reject_unvalidated_artifact() {
+            if test -f "$JSS_INTERNAL_APK"; then
+              mv "$JSS_INTERNAL_APK" "$JSS_INTERNAL_APK.rejected"
+            fi
+            if test -f "$JSS_APK_DIGEST"; then
+              mv "$JSS_APK_DIGEST" "$JSS_APK_DIGEST.rejected"
+            fi
+          }
+          trap jss_reject_unvalidated_artifact EXIT
+          test -s "$JSS_INTERNAL_APK"
+          test -s "$JSS_CANONICAL_OFL"
+          test -s "$JSS_CANONICAL_APACHE"
+          unzip -tq "$JSS_INTERNAL_APK"
+          test "$("$JSS_APKANALYZER" manifest application-id "$JSS_INTERNAL_APK")" = "com.scientificaj.justsomestars"
+          test "$("$JSS_APKANALYZER" manifest version-name "$JSS_INTERNAL_APK")" = "1.0"
+          test "$("$JSS_APKANALYZER" manifest version-code "$JSS_INTERNAL_APK")" = "1"
+          test "$("$JSS_APKANALYZER" manifest debuggable "$JSS_INTERNAL_APK")" = "true"
+          "$JSS_APKANALYZER" manifest print "$JSS_INTERNAL_APK" > "$JSS_APK_MANIFEST"
+          "$JSS_AAPT" dump resources "$JSS_INTERNAL_APK" > "$JSS_APK_RESOURCES"
+          unzip -Z1 "$JSS_INTERNAL_APK" > "$JSS_APK_FILE_LIST"
+          grep -q '^lib/arm64-v8a/' "$JSS_APK_FILE_LIST"
+          python3 - \
+            "$JSS_INTERNAL_APK" \
+            "$JSS_CANONICAL_OFL" \
+            "$JSS_CANONICAL_APACHE" \
+            "$JSS_APK_MANIFEST" \
+            "$JSS_APK_RESOURCES" <<'PY'
+          import hashlib
+          import re
+          import sys
+          import xml.etree.ElementTree as ET
+          import zipfile
+          from pathlib import Path
+
+          apk = Path(sys.argv[1])
+          ofl_path = Path(sys.argv[2])
+          apache_path = Path(sys.argv[3])
+          manifest_path = Path(sys.argv[4])
+          resources_path = Path(sys.argv[5])
+          canonical_ofl = ofl_path.read_bytes()
+          canonical_apache = apache_path.read_bytes()
+          expected_ofl_sha256 = (
+              "37f8552e9a874ec10710dc0ede6a9adf168e6609fbd02a507f35629373b85a48"
+          )
+          expected_apache_sha256 = (
+              "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+          )
+          actual_ofl_sha256 = hashlib.sha256(canonical_ofl).hexdigest()
+          actual_apache_sha256 = hashlib.sha256(canonical_apache).hexdigest()
+          if actual_ofl_sha256 != expected_ofl_sha256:
+              raise SystemExit(
+                  "canonical Liberation Sans OFL bytes changed: "
+                  f"expected {expected_ofl_sha256}, got {actual_ofl_sha256}"
+              )
+          if len(canonical_apache) != 11358:
+              raise SystemExit(
+                  "canonical Apache-2.0 length changed: "
+                  f"expected 11358, got {len(canonical_apache)}"
+              )
+          if actual_apache_sha256 != expected_apache_sha256:
+              raise SystemExit(
+                  "canonical Apache-2.0 bytes changed: "
+                  f"expected {expected_apache_sha256}, got {actual_apache_sha256}"
+              )
+
+          emoji_asset_guid = "c41005c129ba4d66911b75229fd70b45"
+          emoji_image_guid = "dffef66376be4fa480fb02b19edbe903"
+          forbidden = {
+              "EmojiOne UTF-8 name": b"EmojiOne",
+              "EmojiOne UTF-16LE name": "EmojiOne".encode("utf-16le"),
+              "EmojiOne asset GUID text": emoji_asset_guid.encode("ascii"),
+              "EmojiOne asset GUID bytes": bytes.fromhex(emoji_asset_guid),
+              "EmojiOne image GUID text": emoji_image_guid.encode("ascii"),
+              "EmojiOne image GUID bytes": bytes.fromhex(emoji_image_guid),
+          }
+          ofl_members = []
+          apache_members = []
+          violations = []
+          with zipfile.ZipFile(apk) as archive:
+              for member in archive.infolist():
+                  if member.is_dir():
+                      continue
+                  payload = archive.read(member)
+                  if canonical_ofl in payload:
+                      ofl_members.append(member.filename)
+                  if canonical_apache in payload:
+                      apache_members.append(member.filename)
+                  for label, needle in forbidden.items():
+                      if needle in payload:
+                          violations.append(f"{label} in {member.filename}")
+
+          if not ofl_members:
+              raise SystemExit(
+                  "the exact canonical Liberation Sans OFL bytes are absent "
+                  "from all decompressed APK members"
+              )
+          if not apache_members:
+              raise SystemExit(
+                  "the exact canonical Apache-2.0 bytes are absent from all "
+                  "decompressed APK members"
+              )
+          if violations:
+              raise SystemExit(
+                  "unused EmojiOne player payload was found: " + "; ".join(violations)
+              )
+          print(
+              "Verified exact canonical Liberation Sans OFL bytes in player member(s): "
+              + ", ".join(ofl_members)
+          )
+          print(
+              "Verified exact canonical Apache-2.0 bytes in player member(s): "
+              + ", ".join(apache_members)
+          )
+          print("Verified EmojiOne name, asset GUID, and image GUID are absent.")
+
+          android = "http://schemas.android.com/apk/res/android"
+          attr = lambda name: f"{{{android}}}{name}"
+          manifest = ET.parse(manifest_path).getroot()
+          application = manifest.find("application")
+          if application is None:
+              raise SystemExit("final APK manifest has no application element")
+          expected_application = {
+              "enableOnBackInvokedCallback": "true",
+              "extractNativeLibs": "true",
+          }
+          for name, expected in expected_application.items():
+              actual = application.get(attr(name))
+              if actual != expected:
+                  raise SystemExit(
+                      f"final APK application android:{name} mismatch: "
+                      f"expected {expected!r}, got {actual!r}"
+                  )
+          if application.get(attr("appCategory")) not in {"game", "0"}:
+              raise SystemExit(
+                  "final APK application android:appCategory is not game/0"
+              )
+
+          resource_specs = {}
+          resource_pattern = re.compile(
+              r"spec resource (0x[0-9a-f]+) "
+              r"([^:\s]+):(style|string)/([^:\s]+):"
+          )
+          for match in resource_pattern.finditer(resources_path.read_text()):
+              resource_specs[match.group(1)] = (
+                  match.group(2),
+                  match.group(3),
+                  match.group(4),
+              )
+
+          def require_resource_reference(value, resource_type, resource_name):
+              match = re.fullmatch(r"@ref/(0x[0-9a-f]+)", value or "")
+              if match is None:
+                  raise SystemExit(
+                      f"final APK expected a compiled {resource_type}/"
+                      f"{resource_name} reference, got {value!r}"
+                  )
+              expected = (
+                  "com.scientificaj.justsomestars",
+                  resource_type,
+                  resource_name,
+              )
+              actual = resource_specs.get(match.group(1))
+              if actual != expected:
+                  raise SystemExit(
+                      f"final APK resource {match.group(1)} mismatch: "
+                      f"expected {expected!r}, got {actual!r}"
+                  )
+
+          def require_metadata(owner, name, expected_value=None):
+              matches = [
+                  node for node in owner.findall("meta-data")
+                  if node.get(attr("name")) == name
+              ]
+              if len(matches) != 1:
+                  raise SystemExit(
+                      f"final APK must contain exactly one {name!r} metadata entry"
+                  )
+              actual_value = matches[0].get(attr("value"))
+              if expected_value is not None and actual_value != expected_value:
+                  raise SystemExit(
+                      f"final APK metadata {name!r} mismatch: "
+                      f"expected {expected_value!r}, got {actual_value!r}"
+                  )
+              return actual_value
+
+          expected_application_metadata = {
+              "unity.splash-mode": "0",
+              "unity.splash-enable": "true",
+              "unity.launch-fullscreen": "true",
+              "unity.render-outside-safearea": "true",
+              "notch.config": "portrait|landscape",
+              "unity.auto-report-fully-drawn": "true",
+              "unity.strip-engine-code": "true",
+              "unity.run-without-focus": "false",
+              "unity.auto-set-game-state": "true",
+          }
+          for name, expected in expected_application_metadata.items():
+              require_metadata(application, name, expected)
+
+          all_activities = application.findall("activity")
+          activities = [
+              node for node in application.findall("activity")
+              if node.get(attr("name")) ==
+              "com.unity3d.player.UnityPlayerGameActivity"
+          ]
+          if len(all_activities) != 1 or len(activities) != 1:
+              raise SystemExit(
+                  "final APK must contain only one activity and it must be "
+                  "UnityPlayerGameActivity"
+              )
+          activity = activities[0]
+          expected_activity = {
+              "enabled": "true",
+              "exported": "true",
+              "hardwareAccelerated": "false",
+              "resizeableActivity": "true",
+          }
+          for name, expected in expected_activity.items():
+              actual = activity.get(attr(name))
+              if actual != expected:
+                  raise SystemExit(
+                      f"final APK GameActivity android:{name} mismatch: "
+                      f"expected {expected!r}, got {actual!r}"
+                  )
+          expected_compiled_activity = {
+              "configChanges": {
+                  "0x40003fff",
+                  "mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|"
+                  "orientation|screenLayout|uiMode|screenSize|smallestScreenSize|"
+                  "fontScale|layoutDirection|density",
+              },
+              "launchMode": {"2", "singleTask"},
+              "screenOrientation": {"13", "fullUser"},
+          }
+          for name, accepted in expected_compiled_activity.items():
+              actual = activity.get(attr(name))
+              if actual not in accepted:
+                  raise SystemExit(
+                      f"final APK GameActivity android:{name} mismatch: "
+                      f"expected one of {sorted(accepted)!r}, got {actual!r}"
+                  )
+          require_resource_reference(
+              activity.get(attr("theme")),
+              "style",
+              "BaseUnityGameActivityTheme",
+          )
+
+          intent_filters = activity.findall("intent-filter")
+          if len(intent_filters) != 1:
+              raise SystemExit(
+                  "final APK GameActivity must contain exactly one intent-filter"
+              )
+          intent_filter = intent_filters[0]
+          main_actions = [
+              node for node in intent_filter.findall("action")
+              if node.get(attr("name")) == "android.intent.action.MAIN"
+          ]
+          launcher_categories = [
+              node for node in intent_filter.findall("category")
+              if node.get(attr("name")) == "android.intent.category.LAUNCHER"
+          ]
+          if len(main_actions) != 1 or len(launcher_categories) != 1:
+              raise SystemExit(
+                  "final APK GameActivity must retain one MAIN action and one "
+                  "LAUNCHER category"
+              )
+          require_metadata(activity, "unityplayer.UnityActivity", "true")
+          require_metadata(activity, "android.app.lib_name", "game")
+          freeform_size = require_metadata(
+              activity,
+              "WindowManagerPreference:FreeformWindowSize",
+          )
+          require_resource_reference(
+              freeform_size,
+              "string",
+              "FreeformWindowSize_maximize",
+          )
+          freeform_orientation = require_metadata(
+              activity,
+              "WindowManagerPreference:FreeformWindowOrientation",
+          )
+          require_resource_reference(
+              freeform_orientation,
+              "string",
+              "FreeformWindowOrientation_landscape",
+          )
+          require_metadata(activity, "notch_support", "true")
+          layouts = activity.findall("layout")
+          if len(layouts) != 1:
+              raise SystemExit(
+                  "final APK GameActivity must contain exactly one layout element"
+              )
+          if (
+              layouts[0].get(attr("minHeight")) != "300px"
+              or layouts[0].get(attr("minWidth")) != "400px"
+          ):
+              raise SystemExit(
+                  "final APK GameActivity freeform layout bounds changed"
+              )
+
+          providers = [
+              node for node in application.findall("provider")
+              if node.get(attr("name")) == "androidx.startup.InitializationProvider"
+          ]
+          if len(providers) != 1:
+              raise SystemExit(
+                  "final APK must retain exactly one InitializationProvider"
+              )
+          provider = providers[0]
+          if (
+              provider.get(attr("authorities")) !=
+              "com.scientificaj.justsomestars.androidx-startup"
+              or provider.get(attr("exported")) != "false"
+          ):
+              raise SystemExit(
+                  "final APK InitializationProvider authority/export contract changed"
+              )
+          startup_metadata = provider.findall("meta-data")
+          emoji_initializers = [
+              node for node in startup_metadata
+              if node.get(attr("name")) ==
+              "androidx.emoji2.text.EmojiCompatInitializer"
+          ]
+          all_metadata = manifest.findall(".//meta-data")
+          global_emoji_initializers = [
+              node for node in all_metadata
+              if node.get(attr("name")) ==
+              "androidx.emoji2.text.EmojiCompatInitializer"
+          ]
+          global_process_initializers = [
+              node for node in all_metadata
+              if node.get(attr("name")) ==
+              "androidx.lifecycle.ProcessLifecycleInitializer"
+          ]
+          if emoji_initializers or global_emoji_initializers:
+              raise SystemExit("final APK still registers EmojiCompatInitializer")
+          process_initializers = [
+              node for node in startup_metadata
+              if node.get(attr("name")) ==
+              "androidx.lifecycle.ProcessLifecycleInitializer"
+          ]
+          if len(process_initializers) != 1 or len(global_process_initializers) != 1:
+              raise SystemExit(
+                  "final APK must retain exactly one ProcessLifecycleInitializer"
+              )
+          if process_initializers[0].get(attr("value")) != "androidx.startup":
+              raise SystemExit(
+                  "final APK ProcessLifecycleInitializer has the wrong value"
+              )
+          print(
+              "Verified canonical GameActivity, ProcessLifecycleInitializer, "
+              "and absence of EmojiCompatInitializer in the final APK manifest."
+          )
+          PY
+          test -z "$(git status --porcelain=v1 --untracked-files=all)"
+          shasum -a 256 "$JSS_INTERNAL_APK" > "$JSS_APK_DIGEST"
+          trap - EXIT
+
+    artifacts:
+      - Builds/AndroidInternal/JustSomeStars-internal.apk
+      - Builds/AndroidInternal/JustSomeStars-internal.apk.sha256
+      - Builds/AndroidInternal/JustSomeStars-internal.manifest.xml
+      - Builds/AndroidInternal/JustSomeStars-internal.resources.txt
+      - Builds/TestResults/codemagic-editmode.xml
+      - Builds/TestResults/codemagic-task5-playmode.xml
+      - Builds/Logs/codemagic-editmode.log
+      - Builds/Logs/codemagic-task5-playmode.log
+      - Builds/Logs/codemagic-android-internal.log
+
+    publishing:
+      scripts:
+        - name: Return Unity license seat
+          script: |
+            set -euo pipefail
+            set +x
+            : "${UNITY_HOME:?Codemagic did not provision the requested Unity editor}"
+            : "${UNITY_EMAIL:?Configure encrypted UNITY_EMAIL in jss_unity_ci}"
+            : "${UNITY_PASSWORD:?Configure encrypted UNITY_PASSWORD in jss_unity_ci}"
+            JSS_UNITY_EDITOR="$UNITY_HOME/Contents/MacOS/Unity"
+            test -x "$JSS_UNITY_EDITOR"
+            "$JSS_UNITY_EDITOR" \
+              -batchmode -nographics -quit -logFile /dev/null \
+              -returnlicense \
+              -username "$UNITY_EMAIL" \
+              -password "$UNITY_PASSWORD"
