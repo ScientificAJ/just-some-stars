@@ -6,6 +6,12 @@ namespace JustSomeStars.Runtime.UI
     [RequireComponent(typeof(RectTransform))]
     public sealed class SafeAreaFitter : MonoBehaviour
     {
+        [SerializeField]
+        private bool m_ApplyHorizontal = true;
+
+        [SerializeField]
+        private bool m_ApplyVertical = true;
+
         private RectTransform m_RectTransform;
         private Rect m_LastSafeArea;
         private int m_LastScreenWidth;
@@ -44,11 +50,11 @@ namespace JustSomeStars.Runtime.UI
             }
 
             m_RectTransform.anchorMin = new Vector2(
-                safeArea.xMin / screenWidth,
-                safeArea.yMin / screenHeight);
+                m_ApplyHorizontal ? safeArea.xMin / screenWidth : 0f,
+                m_ApplyVertical ? safeArea.yMin / screenHeight : 0f);
             m_RectTransform.anchorMax = new Vector2(
-                safeArea.xMax / screenWidth,
-                safeArea.yMax / screenHeight);
+                m_ApplyHorizontal ? safeArea.xMax / screenWidth : 1f,
+                m_ApplyVertical ? safeArea.yMax / screenHeight : 1f);
             m_RectTransform.offsetMin = Vector2.zero;
             m_RectTransform.offsetMax = Vector2.zero;
         }

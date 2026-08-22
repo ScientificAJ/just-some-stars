@@ -220,7 +220,7 @@ workflows:
             -assemblyNames JustSomeStars.EditModeTests \
             -testResults "$CM_BUILD_DIR/Builds/TestResults/codemagic-editmode.xml" \
             -logFile "$CM_BUILD_DIR/Builds/Logs/codemagic-editmode.log"
-          python3 - "$CM_BUILD_DIR/Builds/TestResults/codemagic-editmode.xml" 210 <<'PY'
+          python3 - "$CM_BUILD_DIR/Builds/TestResults/codemagic-editmode.xml" 211 <<'PY'
           import sys
           import xml.etree.ElementTree as ET
           from pathlib import Path

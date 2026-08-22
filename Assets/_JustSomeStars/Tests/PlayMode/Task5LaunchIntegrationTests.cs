@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using JustSomeStars.Runtime.Core;
 using JustSomeStars.Runtime.Development;
@@ -140,25 +141,29 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(
                 apacheLicense.text,
                 Does.Contain("Version 2.0, January 2004"));
+            var expectedCredits =
+                CreditsPrefix +
+                liberationLicense.text +
+                ApacheCreditsPrefix +
+                apacheLicense.text;
+            var visibleCredits = NormalizeVisibleText(panelBody.text);
             Assert.That(
-                panelBody.text,
-                Is.EqualTo(
-                    CreditsPrefix +
-                    liberationLicense.text +
-                    ApacheCreditsPrefix +
-                    apacheLicense.text));
+                visibleCredits,
+                Is.EqualTo(NormalizeVisibleText(expectedCredits)),
+                "Presentation-only line wrapping, rich-text headings, and " +
+                "license de-indentation must preserve every visible word.");
             Assert.That(
-                panelBody.text.IndexOf(
-                    liberationLicense.text,
+                visibleCredits.IndexOf(
+                    NormalizeVisibleText(liberationLicense.text),
                     System.StringComparison.Ordinal),
-                Is.LessThan(panelBody.text.IndexOf(
-                    ApacheCreditsPrefix,
+                Is.LessThan(visibleCredits.IndexOf(
+                    NormalizeVisibleText(ApacheCreditsPrefix),
                     System.StringComparison.Ordinal)),
                 "The Android dependency notice and Apache license must follow " +
                 "the complete Liberation Sans OFL.");
             Assert.That(
-                panelBody.text.EndsWith(
-                    apacheLicense.text,
+                visibleCredits.EndsWith(
+                    NormalizeVisibleText(apacheLicense.text),
                     System.StringComparison.Ordinal),
                 Is.True,
                 "Credits must end with the complete canonical Apache license.");
@@ -182,7 +187,7 @@ namespace JustSomeStars.Tests.PlayMode
             privacyButton.onClick.Invoke();
             Assert.That(panelTitle.text, Is.EqualTo("Privacy"));
             Assert.That(
-                panelBody.text,
+                NormalizeVisibleText(panelBody.text),
                 Is.EqualTo(
                     "This Development Flight does not ask for an account, " +
                     "collect gameplay progress, open web links, or offer " +
@@ -202,6 +207,9 @@ namespace JustSomeStars.Tests.PlayMode
                 Is.EqualTo(1f).Within(0.001f),
                 "Reopening Credits must reset the full license to its beginning.");
             closeButton.onClick.Invoke();
+            yield return WaitForCondition(
+                () => !localPanel.activeSelf,
+                "Frontend panel exit animation");
             Assert.That(localPanel.activeSelf, Is.False);
 
             var firstShutdown = bootstrap.ShutdownAsync().AsTask();
@@ -220,6 +228,15 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(SceneManager.GetActiveScene().name, Is.Not.EqualTo("Frontend"));
             Assert.That(SceneManager.GetActiveScene().name, Is.Not.EqualTo("Boot"));
             LogAssert.NoUnexpectedReceived();
+        }
+
+        private static string NormalizeVisibleText(string value)
+        {
+            var withoutRichText = Regex.Replace(
+                value ?? string.Empty,
+                "<[^>]+>",
+                string.Empty);
+            return Regex.Replace(withoutRichText, @"\s+", " ").Trim();
         }
 
         private static IEnumerator WaitForFrontendStartup()

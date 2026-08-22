@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,6 +31,9 @@ namespace JustSomeStars.Runtime.UI
         private GameObject m_PanelRoot;
 
         [SerializeField]
+        private RectTransform m_PanelFrame;
+
+        [SerializeField]
         private TMP_Text m_PanelTitle;
 
         [SerializeField]
@@ -40,6 +44,9 @@ namespace JustSomeStars.Runtime.UI
 
         [SerializeField]
         private Button m_CloseButton;
+
+        [SerializeField]
+        private FrontendMotionDirector m_MotionDirector;
 
         private bool m_IsListening;
 
@@ -112,8 +119,10 @@ namespace JustSomeStars.Runtime.UI
 
         public void ShowPanel(string title, string body)
         {
-            m_PanelTitle.text = title ?? string.Empty;
-            m_PanelBody.text = body ?? string.Empty;
+            var safeTitle = title ?? string.Empty;
+            ApplyPanelLayout(safeTitle == "Credits & Licenses");
+            m_PanelTitle.text = safeTitle;
+            m_PanelBody.text = FormatPanelBody(safeTitle, body ?? string.Empty);
             m_PanelRoot.SetActive(true);
             Canvas.ForceUpdateCanvases();
             LayoutRebuilder.ForceRebuildLayoutImmediate(
@@ -121,11 +130,110 @@ namespace JustSomeStars.Runtime.UI
             Canvas.ForceUpdateCanvases();
             m_PanelScrollRect.StopMovement();
             m_PanelScrollRect.verticalNormalizedPosition = 1f;
+            m_MotionDirector.ShowPanel(m_PanelRoot);
+        }
+
+        private void ApplyPanelLayout(bool isCredits)
+        {
+            var frameSize = m_PanelFrame.sizeDelta;
+            frameSize.y = isCredits ? 441f : 424f;
+            m_PanelFrame.sizeDelta = frameSize;
+
+            var titlePosition = m_PanelTitle.rectTransform.anchoredPosition;
+            titlePosition.y = isCredits ? -108f : -128f;
+            m_PanelTitle.rectTransform.anchoredPosition = titlePosition;
+
+            var scrollRect = m_PanelScrollRect.GetComponent<RectTransform>();
+            var scrollPosition = scrollRect.anchoredPosition;
+            scrollPosition.y = isCredits ? -160f : -194f;
+            scrollRect.anchoredPosition = scrollPosition;
+            var scrollSize = scrollRect.sizeDelta;
+            scrollSize.y = isCredits ? 180f : 118f;
+            scrollRect.sizeDelta = scrollSize;
+
+            var closeRect = m_CloseButton.GetComponent<RectTransform>();
+            var closePosition = closeRect.anchoredPosition;
+            closePosition.y = isCredits ? -343f : -313f;
+            closeRect.anchoredPosition = closePosition;
+        }
+
+        private static string FormatPanelBody(string title, string body)
+        {
+            if (title == "Settings")
+            {
+                return "Settings arrive in a later flight.\n" +
+                       "This screen does not save or\n" +
+                       "change controls yet.";
+            }
+
+            if (title == "Privacy")
+            {
+                return "This Development Flight does\n" +
+                       "not ask for an account, collect\n" +
+                       "gameplay progress, open web\n" +
+                       "links, or offer purchases.";
+            }
+
+            if (title != "Credits & Licenses")
+            {
+                return body;
+            }
+
+            var formatted = StripLeadingLineWhitespace(
+                body.Replace("\r\n", "\n"));
+            formatted = formatted.Replace(
+                "Just Some Stars is being built by ScientificAJ. This " +
+                "Development Flight contains a launch screen, not finished " +
+                "gameplay.",
+                "Just Some Stars is being built by\n" +
+                "ScientificAJ. This Development Flight\n" +
+                "contains a launch screen, not\n" +
+                "finished gameplay.");
+            formatted = formatted.Replace(
+                "Liberation Sans\n\n",
+                "<b><color=#F7D7AB>Liberation Sans</color></b>\n");
+            formatted = formatted.Replace(
+                "Android open-source components\n\n",
+                "<b><color=#F7D7AB>Android open-source components" +
+                "</color></b>\n");
+
+            const string apacheMarker = "\n\nApache License 2.0\n\n";
+            var apacheIndex = formatted.LastIndexOf(
+                apacheMarker,
+                StringComparison.Ordinal);
+            if (apacheIndex < 0)
+            {
+                return formatted;
+            }
+
+            return formatted.Substring(0, apacheIndex) +
+                   "\n\n<b><color=#F7D7AB>Apache License 2.0</color></b>\n" +
+                   "<size=14><line-height=150%>" +
+                   formatted.Substring(apacheIndex + apacheMarker.Length)
+                       .TrimStart('\n') +
+                   "</line-height></size>";
+        }
+
+        private static string StripLeadingLineWhitespace(string value)
+        {
+            var lines = value.Split('\n');
+            var result = new StringBuilder(value.Length);
+            for (var index = 0; index < lines.Length; index++)
+            {
+                if (index > 0)
+                {
+                    result.Append('\n');
+                }
+
+                result.Append(lines[index].TrimStart(' ', '\t'));
+            }
+
+            return result.ToString();
         }
 
         public void HidePanel()
         {
-            m_PanelRoot.SetActive(false);
+            m_MotionDirector.HidePanel(m_PanelRoot);
         }
 
         private bool HasCompleteBindings()
@@ -137,10 +245,12 @@ namespace JustSomeStars.Runtime.UI
                    m_CreditsButton != null &&
                    m_PrivacyButton != null &&
                    m_PanelRoot != null &&
+                   m_PanelFrame != null &&
                    m_PanelTitle != null &&
                    m_PanelBody != null &&
                    m_PanelScrollRect != null &&
-                   m_CloseButton != null;
+                   m_CloseButton != null &&
+                   m_MotionDirector != null;
         }
 
         private void HandleContinueClicked()

@@ -651,7 +651,7 @@ The whitespace gate deliberately excludes Unity/package-generated serialized
 assets, metas, scenes and ProjectSettings because their canonical serializers
 emit whitespace that Git flags; do not hand-normalize those files. Their exact
 content, GUID/meta pairing, persistence and asset-tree integrity remain covered
-by the 210-test Unity suite and the staged-name/clean-checkout gates below.
+by the 211-test Unity suite and the staged-name/clean-checkout gates below.
 
 Before commit, the staged-name audit must contain every new Unity asset/source
 and its `.meta`, including all TMP files, the three Art parent metas, both
@@ -660,7 +660,7 @@ and manifest file metas, `Frontend.unity.meta` and all four new test metas. The
 staged TMP tree must omit the deleted empty `Sprite Assets` folder meta. The
 status gate must show no unstaged or untracked Task 5 path and no generated
 patcher/probe/build residue. Rerun the project-owned suites and require exactly
-210 passing EditMode tests and 69 passing PlayMode tests, then validate every
+211 passing EditMode tests and 70 passing PlayMode tests, then validate every
 asset/meta pair, the absence of empty asset directories and the absence of
 orphaned metas again from a clean checkout before accepting CI evidence.
 

@@ -1,7 +1,7 @@
 # Codemagic Android Internal workflow
 
 Status as of 2026-08-22: **configuration and isolated Git LFS fixtures checked
-locally; a fresh 210-test EditMode XML, Codemagic scan, runner feasibility,
+locally; a fresh 211-test EditMode XML, Codemagic scan, runner feasibility,
 activation and remote run remain pending**.
 
 No repository connection, push, Codemagic build, account mutation, credential
@@ -27,7 +27,7 @@ scripts. The workflow scripts then run, in order:
    `6000.3.22f1 (1c726e1fb402)`, the editor's logged revision and its bundled
    Android Player, OpenJDK, SDK, NDK and `apkanalyzer` paths.
 4. The complete project-owned EditMode assembly runs and its XML must describe
-   exactly 210 passed tests with no failed, skipped or inconclusive tests.
+   exactly 211 passed tests with no failed, skipped or inconclusive tests.
 5. The real Task 5 Boot-to-Frontend PlayMode smoke class runs and its XML must
    describe exactly one passed test with no failed, skipped or inconclusive
    tests.
@@ -171,7 +171,7 @@ opens and limit discovery to a project-owned assembly:
 
 | Report | Required result | Selected/total/passed | Failed | Skipped | Inconclusive |
 |---|---:|---:|---:|---:|---:|
-| `Builds/TestResults/codemagic-editmode.xml` | `Passed` | `210 / 210 / 210` | `0` | `0` | `0` |
+| `Builds/TestResults/codemagic-editmode.xml` | `Passed` | `211 / 211 / 211` | `0` | `0` | `0` |
 | `Builds/TestResults/codemagic-task5-playmode.xml` | `Passed` | `1 / 1 / 1` | `0` | `0` | `0` |
 
 Each step parses the NUnit XML with Python's standard library and also counts
@@ -180,9 +180,10 @@ enough. Each script has a `test_report` field so Codemagic can expose the XML in
 the build overview, following its
 [test-report guidance](https://docs.codemagic.io/yaml-testing/testing/).
 
-The EditMode expectation includes the four responsive-layout tests and the
-empty-asset-directory test. The final local Android-active suite passed exactly
-`210 / 210`, but that local result does not satisfy the remote gate. Do not
+The EditMode expectation includes the four responsive-layout tests, the
+empty-asset-directory test, and the immutable redesign target/prefab contract.
+The final local Android-active suite must pass exactly `211 / 211`, but that
+local result does not satisfy the remote gate. Do not
 complete the Codemagic test gate until a newly generated remote report meets
 every count above.
 

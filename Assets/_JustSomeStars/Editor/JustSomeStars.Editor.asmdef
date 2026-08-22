@@ -3,7 +3,9 @@
   "rootNamespace": "JustSomeStars.Editor",
   "references": [
     "JustSomeStars.Runtime",
-    "Unity.Addressables.Editor"
+    "Unity.Addressables.Editor",
+    "Unity.TextMeshPro",
+    "UnityEngine.UI"
   ],
   "includePlatforms": [
     "Editor"

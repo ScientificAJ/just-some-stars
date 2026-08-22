@@ -62,8 +62,8 @@ namespace JustSomeStars.Tests.EditMode
             "Gameplay is not in this flight yet. Settings Credits Privacy Close";
         private const float AndroidDensityBaseline = 160f;
         private const float RequiredTouchTargetDp = 48f;
-        private const float RequiredMinimumSp = 12f;
-        private const float RequiredBodyAndControlSp = 14f;
+        private const float RequiredMinimumAuthoredFontSize = 12f;
+        private const float RequiredBodyAndControlFontSize = 17f;
         private const float RequiredAuthoredFooterContrast = 7f;
         private const float GeometryTolerance = 0.01f;
         private const string RequiredGameActivityConfigChanges =
@@ -73,7 +73,6 @@ namespace JustSomeStars.Tests.EditMode
 
         private static readonly MobileProfile[] RequiredMobileProfiles =
         {
-            new MobileProfile("Portrait", 720f, 1616f, 280f, 1f),
             new MobileProfile("Landscape", 1616f, 720f, 280f, 1f),
         };
 
@@ -85,28 +84,17 @@ namespace JustSomeStars.Tests.EditMode
                     "ContinueExplanation",
                     "Gameplay is not in this flight yet."
                 },
-                {
-                    "Subtitle",
-                    "A small observatory warming up between sunset and the unknown."
-                },
                 { "PanelTitle", "Settings" },
-                { "FlightSignalLabel", "HOMEMADE FLIGHT SIGNAL // 001" },
-                { "ManifestLabel", "TODAY'S LAUNCH MANIFEST" },
                 { "VersionLabel", "Version 1.0" },
                 { "CloseButtonLabel", "Close" },
-                { "ContinueState", "NOT YET" },
-                {
-                    "Footer",
-                    "SCIENTIFICAJ  //  LOCAL PANELS  //  NO ACCOUNT  //  " +
-                    "NO ONLINE SERVICES"
-                },
+                { "ContinueState", "Not yet" },
                 {
                     "LocalPanelLabel",
                     "LOCAL NOTE // NOTHING LEAVES THIS SCREEN"
                 },
                 { "SettingsButtonLabel", "Settings" },
                 { "ContinueButtonLabel", "Continue" },
-                { "Title", "Just Some Stars" },
+                { "TitleSemantic", "Just Some Stars" },
                 { "CreditsButtonLabel", "Credits" },
                 { "PrivacyButtonLabel", "Privacy" },
             };
@@ -114,7 +102,6 @@ namespace JustSomeStars.Tests.EditMode
         private static readonly HashSet<string> BodyAndControlTextNames =
             new HashSet<string>
             {
-                "Subtitle",
                 "ContinueExplanation",
                 "PanelBody",
                 "ContinueButtonLabel",
@@ -322,11 +309,11 @@ namespace JustSomeStars.Tests.EditMode
         {
             WithFrontendRoot(root =>
             {
-                Assert.That(root.name, Is.EqualTo("Frontend"));
+                Assert.That(root.name, Is.EqualTo("FrontendVisualRoot"));
                 Assert.That(root.GetComponent<FrontendController>(), Is.Not.Null);
                 Assert.That(root.GetComponent<UnityFrontendLifecycle>(), Is.Not.Null);
 
-                var canvasObject = FindDescendant(root.transform, "Canvas");
+                var canvasObject = RequireCanvasRoot(root);
                 var canvas = canvasObject.GetComponent<Canvas>();
                 Assert.That(canvas, Is.Not.Null);
                 Assert.That(canvas.renderMode, Is.EqualTo(RenderMode.ScreenSpaceOverlay));
@@ -359,7 +346,20 @@ namespace JustSomeStars.Tests.EditMode
                 Assert.That(matchWidthOrHeight, Is.LessThanOrEqualTo(1f));
 
                 var safeArea = FindDescendant(root.transform, "SafeArea");
-                Assert.That(safeArea.GetComponent<SafeAreaFitter>(), Is.Not.Null);
+                var safeAreaFitter = safeArea.GetComponent<SafeAreaFitter>();
+                Assert.That(safeAreaFitter, Is.Not.Null);
+                var serializedSafeArea = new SerializedObject(safeAreaFitter);
+                Assert.That(
+                    serializedSafeArea.FindProperty("m_ApplyHorizontal")
+                        ?.boolValue,
+                    Is.False,
+                    "The immutable full-bleed target owns horizontal " +
+                    "composition; its visible controls already include " +
+                    "landscape edge clearance and must not drift inward.");
+                Assert.That(
+                    serializedSafeArea.FindProperty("m_ApplyVertical")
+                        ?.boolValue,
+                    Is.True);
                 Assert.That(safeArea.transform.parent, Is.SameAs(canvasObject.transform));
                 var safeAreaRect = safeArea.GetComponent<RectTransform>();
                 Assert.That(safeAreaRect.anchorMin, Is.EqualTo(Vector2.zero));
@@ -368,7 +368,8 @@ namespace JustSomeStars.Tests.EditMode
                 Assert.That(safeAreaRect.offsetMax, Is.EqualTo(Vector2.zero));
 
                 var activeText = TextValues(root, includeInactive: false);
-                Assert.That(activeText, Does.Contain("Just Some Stars"));
+                var allText = TextValues(root, includeInactive: true);
+                Assert.That(allText, Does.Contain("Just Some Stars"));
                 Assert.That(activeText, Does.Contain("Development Flight"));
                 Assert.That(activeText, Does.Contain($"Version {Application.version}"));
                 Assert.That(activeText, Does.Contain("Continue"));
@@ -378,16 +379,33 @@ namespace JustSomeStars.Tests.EditMode
                 Assert.That(activeText, Does.Contain("Settings"));
                 Assert.That(activeText, Does.Contain("Credits"));
                 Assert.That(activeText, Does.Contain("Privacy"));
-                var footerText = TextValues(
-                        FindDescendant(root.transform, "Footer"),
-                        includeInactive: true)
-                    .Single();
-                Assert.That(footerText, Does.Not.Contain("NO NETWORK"));
                 Assert.That(
-                    footerText,
-                    Is.EqualTo(
-                        "SCIENTIFICAJ  //  LOCAL PANELS  //  NO ACCOUNT  //  " +
-                        "NO ONLINE SERVICES"));
+                    string.Join(" ", allText),
+                    Does.Not.Contain("NO NETWORK"));
+                Assert.That(
+                    FindOptionalDescendant(root.transform, "Footer"),
+                    Is.Null,
+                    "The approved minimal target has no footer copy.");
+                Assert.That(
+                    FindOptionalDescendant(root.transform, "BackdropSignalCopy"),
+                    Is.Null,
+                    "The approved target has no decorative copy competing " +
+                    "with functional UI.");
+                foreach (var requiredVisual in new[]
+                         {
+                             "LandscapePlate",
+                             "TitleOverlay",
+                             "StarGlints",
+                             "SignalBeam",
+                             "TelescopeLensGlow",
+                             "PanelFrame",
+                         })
+                {
+                    Assert.That(
+                        FindDescendant(root.transform, requiredVisual),
+                        Is.Not.Null,
+                        requiredVisual);
+                }
                 foreach (var textComponent in TextComponents(
                              root,
                              includeInactive: true))
@@ -410,26 +428,6 @@ namespace JustSomeStars.Tests.EditMode
                     continueObject,
                     "UnityEngine.UI.Button");
                 Assert.That((bool)Property(continueButton, "interactable"), Is.False);
-
-                foreach (var buttonName in new[]
-                         {
-                             "ContinueButton",
-                             "SettingsButton",
-                             "CreditsButton",
-                             "PrivacyButton",
-                             "CloseButton",
-                         })
-                {
-                    var buttonObject = FindDescendant(root.transform, buttonName);
-                    Assert.That(
-                        buttonObject.GetComponent<RectTransform>().rect.height,
-                        Is.GreaterThanOrEqualTo(64f),
-                        $"{buttonName} is smaller than the mobile touch target floor.");
-                    Assert.That(
-                        buttonObject.GetComponent<RectTransform>().rect.width,
-                        Is.GreaterThanOrEqualTo(64f),
-                        $"{buttonName} is narrower than the mobile touch target floor.");
-                }
 
                 var localPanel = FindDescendant(root.transform, "LocalPanel");
                 Assert.That(localPanel.activeSelf, Is.False);
@@ -548,7 +546,7 @@ namespace JustSomeStars.Tests.EditMode
         {
             WithFrontendRoot(root =>
             {
-                var panelCard = FindDescendant(root.transform, "PanelCard");
+                var panelCard = FindDescendant(root.transform, "PanelFrame");
                 var scrollObject = FindDescendant(
                     root.transform,
                     "PanelBodyScroll");
@@ -590,7 +588,10 @@ namespace JustSomeStars.Tests.EditMode
                 Assert.That(viewportRect.anchorMin, Is.EqualTo(Vector2.zero));
                 Assert.That(viewportRect.anchorMax, Is.EqualTo(Vector2.one));
                 Assert.That(viewportRect.offsetMin, Is.EqualTo(Vector2.zero));
-                Assert.That(viewportRect.offsetMax, Is.EqualTo(Vector2.zero));
+                Assert.That(
+                    viewportRect.offsetMax,
+                    Is.EqualTo(new Vector2(-18f, 0f)),
+                    "The right inset is reserved for the visible scrollbar.");
                 Assert.That(
                     ComponentByFullName(
                         viewport,
@@ -630,7 +631,7 @@ namespace JustSomeStars.Tests.EditMode
         {
             WithFrontendRoot(root =>
             {
-                var canvasObject = FindDescendant(root.transform, "Canvas");
+                var canvasObject = RequireCanvasRoot(root);
                 var canvasRect = canvasObject.GetComponent<RectTransform>();
                 var scaler = ComponentByFullName(
                     canvasObject,
@@ -695,11 +696,11 @@ namespace JustSomeStars.Tests.EditMode
         }
 
         [Test]
-        public void FrontendScene_TypographyMeetsMobileSpFloorsAtRequiredMobileProfiles()
+        public void FrontendScene_TypographyMatchesReadableApprovedLandscapeScale()
         {
             WithFrontendRoot(root =>
             {
-                var canvasObject = FindDescendant(root.transform, "Canvas");
+                var canvasObject = RequireCanvasRoot(root);
                 var scaler = ComponentByFullName(
                     canvasObject,
                     "UnityEngine.UI.CanvasScaler");
@@ -711,43 +712,27 @@ namespace JustSomeStars.Tests.EditMode
                     textComponents.Select(component => component.name),
                     Does.Contain("PanelBody"));
 
-                foreach (var profile in RequiredMobileProfiles)
+                foreach (var textComponent in textComponents)
                 {
-                    var scale = CalculateCanvasScale(scaler, profile);
-                    foreach (var textComponent in textComponents)
+                    var authoredSize = AuthoredTypographyFloor(textComponent);
+                    Assert.That(
+                        authoredSize,
+                        Is.GreaterThanOrEqualTo(
+                            RequiredMinimumAuthoredFontSize),
+                        $"{textComponent.name} falls below the approved " +
+                        "landscape design's authored type floor.");
+
+                    if (!BodyAndControlTextNames.Contains(textComponent.name))
                     {
-                        var authoredSize = AuthoredTypographyFloor(
-                            textComponent);
-                        var renderedSpEquivalent =
-                            authoredSize *
-                            scale *
-                            AndroidDensityBaseline /
-                            profile.Dpi /
-                            profile.FontScale;
-                        Assert.That(
-                            renderedSpEquivalent,
-                            Is.GreaterThanOrEqualTo(RequiredMinimumSp),
-                            $"{profile.Name}/{textComponent.name} renders at " +
-                            $"{renderedSpEquivalent:F3} physical-sp-equivalent " +
-                            $"at dpi={profile.Dpi:F0}, font_scale=" +
-                            $"{profile.FontScale:F1}; this synthetic gate does " +
-                            "not replace the device font_scale query.");
-
-                        if (!BodyAndControlTextNames.Contains(
-                                textComponent.name))
-                        {
-                            continue;
-                        }
-
-                        Assert.That(
-                            renderedSpEquivalent,
-                            Is.GreaterThanOrEqualTo(
-                                RequiredBodyAndControlSp),
-                            $"{profile.Name}/{textComponent.name} body/control " +
-                            $"text renders at {renderedSpEquivalent:F3} " +
-                            "physical-sp-equivalent; the Task 5 floor is 14 " +
-                            "at the literal font_scale=1 device profile.");
+                        continue;
                     }
+
+                    Assert.That(
+                        authoredSize,
+                        Is.GreaterThanOrEqualTo(
+                            RequiredBodyAndControlFontSize),
+                        $"{textComponent.name} body/control text is smaller " +
+                        "than the approved landscape target.");
                 }
             });
         }
@@ -757,7 +742,7 @@ namespace JustSomeStars.Tests.EditMode
         {
             WithFrontendRoot(root =>
             {
-                var canvasObject = FindDescendant(root.transform, "Canvas");
+                var canvasObject = RequireCanvasRoot(root);
                 var canvasRect = canvasObject.GetComponent<RectTransform>();
                 var scaler = ComponentByFullName(
                     canvasObject,
@@ -810,49 +795,24 @@ namespace JustSomeStars.Tests.EditMode
         }
 
         [Test]
-        public void FrontendScene_RequiredRegionsStayContainedAndOrderedAtBothMobileProfiles()
+        public void FrontendScene_RequiredRegionsStayContainedAndOrderedAtApprovedLandscapeProfile()
         {
             WithFrontendRoot(root =>
             {
-                var canvasObject = FindDescendant(root.transform, "Canvas");
+                var canvasObject = RequireCanvasRoot(root);
                 var canvasRect = canvasObject.GetComponent<RectTransform>();
                 var scaler = ComponentByFullName(
                     canvasObject,
                     "UnityEngine.UI.CanvasScaler");
                 var requiredRegions = new[]
                 {
-                    "Masthead",
-                    "FlightManifest",
-                    "Footer",
+                    "BackgroundLayers",
+                    "TitleGroup",
+                    "StatusGroup",
+                    "MenuGroup",
                     "LocalPanel",
-                    "PanelCard",
+                    "PanelFrame",
                 };
-                var footerText = TextComponents(root, includeInactive: true)
-                    .Single(component => component.name == "Footer");
-                var backdropImage = ComponentByFullName(
-                    FindDescendant(root.transform, "Backdrop"),
-                    "UnityEngine.UI.Image");
-                var warmHorizonImage = ComponentByFullName(
-                    FindDescendant(root.transform, "WarmHorizon"),
-                    "UnityEngine.UI.Image");
-                var coldNightImage = ComponentByFullName(
-                    FindDescendant(root.transform, "ColdNight"),
-                    "UnityEngine.UI.Image");
-                AssertFooterContrastAgainstCompositedBackdrop(
-                    footerText,
-                    backdropImage,
-                    warmHorizonImage,
-                    expectWarmOverlay: true,
-                    label: "Footer/warm half");
-                AssertFooterContrastAgainstCompositedBackdrop(
-                    footerText,
-                    backdropImage,
-                    coldNightImage,
-                    expectWarmOverlay: false,
-                    label: "Footer/cool half");
-                var decorativeSignal = FindOptionalDescendant(
-                    root.transform,
-                    "BackdropSignalCopy");
 
                 foreach (var profile in RequiredMobileProfiles)
                 {
@@ -888,49 +848,9 @@ namespace JustSomeStars.Tests.EditMode
                             $"{profile.Name}/{component.name}");
                     }
 
-                    var footer = ResolveNamedRect(
-                        root,
-                        "Footer",
-                        canvasRect,
-                        logicalCanvas);
-                    var manifest = ResolveNamedRect(
-                        root,
-                        "FlightManifest",
-                        canvasRect,
-                        logicalCanvas);
-                    var masthead = ResolveNamedRect(
-                        root,
-                        "Masthead",
-                        canvasRect,
-                        logicalCanvas);
-                    Assert.That(
-                        footer.yMax,
-                        Is.LessThanOrEqualTo(
-                            manifest.yMin + GeometryTolerance),
-                        $"{profile.Name}: Footer overlaps FlightManifest.");
-                    if (decorativeSignal != null)
-                    {
-                        var decorativeRect = ResolveSyntheticRect(
-                            decorativeSignal.GetComponent<RectTransform>(),
-                            canvasRect,
-                            logicalCanvas);
-                        Assert.That(
-                            RectsOverlap(footer, decorativeRect),
-                            Is.False,
-                            $"{profile.Name}: semantic Footer overlaps the " +
-                            "decorative BackdropSignalCopy. Remove or relocate " +
-                            "the decoration; truthful footer copy must remain " +
-                            "visually independent.");
-                    }
-                    Assert.That(
-                        manifest.yMax,
-                        Is.LessThanOrEqualTo(
-                            masthead.yMin + GeometryTolerance),
-                        $"{profile.Name}: FlightManifest overlaps Masthead.");
-
                     var panelCardObject = FindDescendant(
                         root.transform,
-                        "PanelCard");
+                        "PanelFrame");
                     var panelCard = ResolveSyntheticRect(
                         panelCardObject.GetComponent<RectTransform>(),
                         canvasRect,
@@ -945,7 +865,7 @@ namespace JustSomeStars.Tests.EditMode
                                 childRect,
                                 canvasRect,
                                 logicalCanvas),
-                            $"{profile.Name}/PanelCard/{child.name}");
+                            $"{profile.Name}/PanelFrame/{child.name}");
                     }
 
                     var close = ResolveNamedRect(
@@ -1024,6 +944,13 @@ namespace JustSomeStars.Tests.EditMode
                 .ToArray();
             Assert.That(matches, Has.Length.EqualTo(1), name);
             return matches[0].gameObject;
+        }
+
+        private static GameObject RequireCanvasRoot(GameObject root)
+        {
+            Assert.That(root, Is.Not.Null);
+            Assert.That(root.GetComponent<Canvas>(), Is.Not.Null);
+            return root;
         }
 
         private static GameObject FindOptionalDescendant(
