@@ -18,6 +18,7 @@ namespace JustSomeStars.Runtime.Core
 
         private Task<StartupReport> m_StartupTask;
         private Task m_ShutdownTask;
+        private ISceneBindingLifecycle m_SceneBindingLifecycle;
         private bool m_ShutdownCancellationDisposed;
         private bool m_RouteCommitted;
 
@@ -40,9 +41,15 @@ namespace JustSomeStars.Runtime.Core
                         "GameBootstrap cannot start after shutdown has begun.");
                 }
 
-                m_StartupTask ??= RunStartupAsync(
-                    composition,
-                    cancellationToken);
+                if (m_StartupTask == null)
+                {
+                    m_SceneBindingLifecycle =
+                        composition.SceneTransition as ISceneBindingLifecycle;
+                    m_StartupTask = RunStartupAsync(
+                        composition,
+                        cancellationToken);
+                }
+
                 return new ValueTask<StartupReport>(m_StartupTask);
             }
         }
@@ -382,6 +389,8 @@ namespace JustSomeStars.Runtime.Core
 
         private async Task ShutdownInitializedServicesAsync(StartupReport report)
         {
+            ReleaseSceneBindings(report);
+
             IGameService[] initializedServices;
             lock (m_LifecycleGate)
             {
@@ -392,6 +401,30 @@ namespace JustSomeStars.Runtime.Core
             for (var index = initializedServices.Length - 1; index >= 0; index--)
             {
                 await ShutdownServiceAsync(initializedServices[index], report);
+            }
+        }
+
+        private void ReleaseSceneBindings(StartupReport report)
+        {
+            ISceneBindingLifecycle bindingLifecycle;
+            lock (m_LifecycleGate)
+            {
+                bindingLifecycle = m_SceneBindingLifecycle;
+                m_SceneBindingLifecycle = null;
+            }
+
+            if (bindingLifecycle == null)
+            {
+                return;
+            }
+
+            try
+            {
+                bindingLifecycle.ReleaseBindings();
+            }
+            catch (Exception exception)
+            {
+                report.AddCleanupFailure(exception);
             }
         }
 

@@ -1,38 +1,77 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace JustSomeStars.Runtime.UI
 {
     [DisallowMultipleComponent]
     public sealed class UnityFrontendLifecycle : MonoBehaviour, IFrontendLifecycle
     {
-        private InputAction m_BackAction;
+        private bool m_IsBound;
+
+        public bool IsConfigured => Dependencies != null;
+
+        public FrontendDependencies Dependencies { get; private set; }
 
         public event Action BackRequested;
 
         private void OnEnable()
         {
-            EnsureBackAction();
-            m_BackAction.performed += HandleBackPerformed;
-            m_BackAction.Enable();
+            Bind();
         }
 
         private void OnDisable()
         {
-            if (m_BackAction == null)
-            {
-                return;
-            }
-
-            m_BackAction.performed -= HandleBackPerformed;
-            m_BackAction.Disable();
+            Unbind();
         }
 
         private void OnDestroy()
         {
-            m_BackAction?.Dispose();
-            m_BackAction = null;
+            Unbind();
+        }
+
+        public void Configure(FrontendDependencies dependencies)
+        {
+            if (dependencies == null)
+            {
+                throw new ArgumentNullException(nameof(dependencies));
+            }
+
+            if (ReferenceEquals(Dependencies, dependencies))
+            {
+                return;
+            }
+
+            if (Dependencies != null)
+            {
+                throw new InvalidOperationException(
+                    "UnityFrontendLifecycle cannot be rebound to another composition.");
+            }
+
+            Dependencies = dependencies;
+            Bind();
+        }
+
+        internal void Release(FrontendDependencies dependencies)
+        {
+            if (dependencies == null)
+            {
+                throw new ArgumentNullException(nameof(dependencies));
+            }
+
+            if (Dependencies == null)
+            {
+                return;
+            }
+
+            if (!ReferenceEquals(Dependencies, dependencies))
+            {
+                throw new InvalidOperationException(
+                    "UnityFrontendLifecycle can only be released by its owning " +
+                    "composition.");
+            }
+
+            Unbind();
+            Dependencies = null;
         }
 
         public void RequestExit()
@@ -40,22 +79,30 @@ namespace JustSomeStars.Runtime.UI
             Application.Quit();
         }
 
-        private void EnsureBackAction()
+        private void Bind()
         {
-            if (m_BackAction != null)
+            if (m_IsBound || Dependencies == null || !isActiveAndEnabled)
             {
                 return;
             }
 
-            m_BackAction = new InputAction(
-                "Frontend Back",
-                InputActionType.Button,
-                "<Keyboard>/escape");
+            Dependencies.Input.BackRequested += HandleBackRequested;
+            m_IsBound = true;
         }
 
-        private void HandleBackPerformed(InputAction.CallbackContext context)
+        private void Unbind()
         {
-            _ = context;
+            if (!m_IsBound)
+            {
+                return;
+            }
+
+            Dependencies.Input.BackRequested -= HandleBackRequested;
+            m_IsBound = false;
+        }
+
+        private void HandleBackRequested()
+        {
             BackRequested?.Invoke();
         }
     }

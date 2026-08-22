@@ -1,8 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
+using System.Threading;
+using JustSomeStars.Runtime.Accessibility;
 using JustSomeStars.Runtime.Core;
+using JustSomeStars.Runtime.Input;
 using JustSomeStars.Runtime.UI;
 using NUnit.Framework;
 using UnityEngine;
@@ -40,6 +44,8 @@ namespace JustSomeStars.Tests.PlayMode
         private GameObject m_TestRoot;
         private readonly List<TextAsset> m_TestLicenses =
             new List<TextAsset>();
+        private readonly List<UnityEngine.Object> m_OwnedObjects =
+            new List<UnityEngine.Object>();
 
         [UnitySetUp]
         public IEnumerator SetUp()
@@ -66,6 +72,15 @@ namespace JustSomeStars.Tests.PlayMode
             }
 
             m_TestLicenses.Clear();
+            foreach (var owned in m_OwnedObjects)
+            {
+                if (owned != null)
+                {
+                    UnityEngine.Object.Destroy(owned);
+                }
+            }
+
+            m_OwnedObjects.Clear();
 
             yield return null;
         }
@@ -100,13 +115,14 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(
                 fixture.View.PanelBody,
                 Is.EqualTo(
-                    "Settings arrive in a later flight. This screen does not " +
-                    "save or change controls yet."));
+                    "Saved locally on this device. Nothing leaves this screen."));
+            Assert.That(fixture.SettingsPanel.ShowCount, Is.EqualTo(1));
 
             fixture.View.RaiseCredits();
             Assert.That(
                 fixture.View.PanelTitle,
                 Is.EqualTo("Credits & Licenses"));
+            Assert.That(fixture.SettingsPanel.HideCount, Is.EqualTo(1));
             Assert.That(
                 fixture.View.PanelBody,
                 Is.EqualTo(
@@ -221,7 +237,8 @@ namespace JustSomeStars.Tests.PlayMode
         public void Awake_WithMissingBindings_DisablesControllerAndReportsError()
         {
             const string expectedError =
-                "[JSS Frontend] FrontendController requires view and lifecycle sources.";
+                "[JSS Frontend] FrontendController requires view, lifecycle, and " +
+                "settings panel sources.";
             m_TestRoot = new GameObject("UnboundFrontendController");
             m_TestRoot.SetActive(false);
             var controller = m_TestRoot.AddComponent<FrontendController>();
@@ -274,7 +291,8 @@ namespace JustSomeStars.Tests.PlayMode
         public IEnumerator Awake_WithMalformedRealView_FailsClosedWithoutThrowing()
         {
             const string controllerError =
-                "[JSS Frontend] FrontendController requires view and lifecycle sources.";
+                "[JSS Frontend] FrontendController requires view, lifecycle, and " +
+                "settings panel sources.";
             const string viewError =
                 "[JSS Frontend] FrontendView has incomplete scene bindings.";
             m_TestRoot = new GameObject("MalformedFrontendFixture");
@@ -298,7 +316,7 @@ namespace JustSomeStars.Tests.PlayMode
         }
 
         [Test]
-        public void UnityLifecycle_InputSystemBackIsIdempotentAcrossReenable()
+        public void UnityLifecycle_InjectedInputBackIsIdempotentAcrossReenable()
         {
             Assert.That(
                 typeof(UnityFrontendLifecycle).GetMethod(
@@ -312,6 +330,17 @@ namespace JustSomeStars.Tests.PlayMode
             m_TestRoot = new GameObject("FrontendLifecycleFixture");
             m_TestRoot.SetActive(false);
             var lifecycle = m_TestRoot.AddComponent<UnityFrontendLifecycle>();
+            var settings = CreateSettingsService();
+            settings.InitializeAsync(CancellationToken.None)
+                .GetAwaiter()
+                .GetResult();
+            var actions = CreateCanonicalInputAsset();
+            var input = new InputRouter(actions, settings);
+            var inputResult = input.InitializeAsync(CancellationToken.None)
+                .GetAwaiter()
+                .GetResult();
+            Assert.That(inputResult.IsAvailable, Is.True);
+            var dependencies = new FrontendDependencies(settings, input);
             var backRequestCount = 0;
             lifecycle.BackRequested += () => backRequestCount++;
             Keyboard keyboard = null;
@@ -332,8 +361,11 @@ namespace JustSomeStars.Tests.PlayMode
                         .AllDeviceInputAlwaysGoesToGameView;
                 keyboard = InputSystem.AddDevice<Keyboard>();
                 m_TestRoot.SetActive(true);
+                lifecycle.Configure(dependencies);
 
-                var backAction = GetBackAction(lifecycle);
+                var backAction = actions.FindAction(
+                    "UI/Cancel",
+                    throwIfNotFound: true);
                 Assert.That(keyboard.enabled, Is.True);
                 Assert.That(backAction, Is.Not.Null);
                 Assert.That(backAction.enabled, Is.True);
@@ -343,7 +375,9 @@ namespace JustSomeStars.Tests.PlayMode
                 m_TestRoot.SetActive(true);
                 m_TestRoot.SetActive(false);
                 m_TestRoot.SetActive(true);
-                Assert.That(GetBackAction(lifecycle), Is.SameAs(backAction));
+                Assert.That(
+                    actions.FindAction("UI/Cancel", throwIfNotFound: true),
+                    Is.SameAs(backAction));
                 Assert.That(backAction.enabled, Is.True);
                 Assert.That(backAction.controls, Does.Contain(keyboard.escapeKey));
 
@@ -374,6 +408,9 @@ namespace JustSomeStars.Tests.PlayMode
                     {
                         InputSystem.RemoveDevice(keyboard);
                     }
+
+                    input.ShutdownAsync().GetAwaiter().GetResult();
+                    settings.ShutdownAsync().GetAwaiter().GetResult();
                 }
                 finally
                 {
@@ -397,6 +434,7 @@ namespace JustSomeStars.Tests.PlayMode
                 CreateLicense(TestLiberationLicenseText),
                 CreateLicense(TestApacheLicenseText));
             m_TestRoot.SetActive(true);
+            fixture.Controller.Configure(fixture.Dependencies);
             return fixture;
         }
 
@@ -408,9 +446,12 @@ namespace JustSomeStars.Tests.PlayMode
             m_TestRoot.SetActive(false);
             var view = m_TestRoot.AddComponent<FakeFrontendView>();
             var lifecycle = m_TestRoot.AddComponent<FakeFrontendLifecycle>();
+            var settingsPanel =
+                m_TestRoot.AddComponent<FakeFrontendSettingsPanel>();
             var controller = m_TestRoot.AddComponent<FrontendController>();
             SetPrivateField(controller, "m_ViewSource", view);
             SetPrivateField(controller, "m_LifecycleSource", lifecycle);
+            SetPrivateField(controller, "m_SettingsPanelSource", settingsPanel);
             SetPrivateFieldIfPresent(
                 controller,
                 "m_LiberationSansLicense",
@@ -420,7 +461,81 @@ namespace JustSomeStars.Tests.PlayMode
                 "m_ApacheLicense",
                 apacheLicense);
 
-            return new ControllerFixture(controller, view, lifecycle);
+            return new ControllerFixture(
+                controller,
+                view,
+                lifecycle,
+                settingsPanel,
+                CreateDependencies());
+        }
+
+        private FrontendDependencies CreateDependencies()
+        {
+            var settings = CreateSettingsService();
+            var actions = Own(ScriptableObject.CreateInstance<InputActionAsset>());
+            return new FrontendDependencies(
+                settings,
+                new InputRouter(actions, settings));
+        }
+
+        private SettingsService CreateSettingsService()
+        {
+            return new SettingsService(Path.Combine(
+                Path.GetTempPath(),
+                "JssTask6FrontendControllerTests",
+                Guid.NewGuid().ToString("N"),
+                "jss-settings-v1.json"));
+        }
+
+        private InputActionAsset CreateCanonicalInputAsset()
+        {
+            var asset = Own(ScriptableObject.CreateInstance<InputActionAsset>());
+            var ui = asset.AddActionMap("UI");
+            foreach (var actionName in new[]
+                     {
+                         "Navigate",
+                         "Submit",
+                         "Cancel",
+                         "Point",
+                         "Click",
+                         "RightClick",
+                         "MiddleClick",
+                         "ScrollWheel",
+                         "TrackedDevicePosition",
+                         "TrackedDeviceOrientation",
+                     })
+            {
+                ui.AddAction(actionName, InputActionType.Button);
+            }
+
+            ui.FindAction("Cancel", throwIfNotFound: true)
+                .AddBinding("<Keyboard>/escape");
+            foreach (var mapName in new[] { "Surface", "Flight", "Lens" })
+            {
+                var map = asset.AddActionMap(mapName);
+                foreach (var actionName in new[]
+                         {
+                             "Move",
+                             "Look",
+                             "Primary",
+                             "Secondary",
+                             "Pause",
+                             "Lens",
+                             "PhotoMode",
+                             "Recenter",
+                         })
+                {
+                    map.AddAction(actionName, InputActionType.Button);
+                }
+            }
+
+            return asset;
+        }
+
+        private T Own<T>(T instance) where T : UnityEngine.Object
+        {
+            m_OwnedObjects.Add(instance);
+            return instance;
         }
 
         private TextAsset CreateLicense(string text)
@@ -485,26 +600,20 @@ namespace JustSomeStars.Tests.PlayMode
             method.Invoke(controller, new object[] { isPaused });
         }
 
-        private static InputAction GetBackAction(
-            UnityFrontendLifecycle lifecycle)
-        {
-            var field = typeof(UnityFrontendLifecycle).GetField(
-                "m_BackAction",
-                BindingFlags.Instance | BindingFlags.NonPublic);
-            Assert.That(field, Is.Not.Null);
-            return field.GetValue(lifecycle) as InputAction;
-        }
-
         private sealed class ControllerFixture
         {
             public ControllerFixture(
                 FrontendController controller,
                 FakeFrontendView view,
-                FakeFrontendLifecycle lifecycle)
+                FakeFrontendLifecycle lifecycle,
+                FakeFrontendSettingsPanel settingsPanel,
+                FrontendDependencies dependencies)
             {
                 Controller = controller;
                 View = view;
                 Lifecycle = lifecycle;
+                SettingsPanel = settingsPanel;
+                Dependencies = dependencies;
             }
 
             public FrontendController Controller { get; }
@@ -512,6 +621,10 @@ namespace JustSomeStars.Tests.PlayMode
             public FakeFrontendView View { get; }
 
             public FakeFrontendLifecycle Lifecycle { get; }
+
+            public FakeFrontendSettingsPanel SettingsPanel { get; }
+
+            public FrontendDependencies Dependencies { get; }
         }
 
         public sealed class FakeFrontendView : MonoBehaviour, IFrontendView
@@ -664,6 +777,44 @@ namespace JustSomeStars.Tests.PlayMode
             public void RaiseBack()
             {
                 m_BackRequested?.Invoke();
+            }
+        }
+
+        public sealed class FakeFrontendSettingsPanel :
+            MonoBehaviour,
+            IFrontendSettingsPanel
+        {
+            public bool IsReady => true;
+
+            public bool IsConfigured => Dependencies != null;
+
+            public FrontendDependencies Dependencies { get; private set; }
+
+            public int ShowCount { get; private set; }
+
+            public int HideCount { get; private set; }
+
+            public void Configure(FrontendDependencies dependencies)
+            {
+                Dependencies = dependencies;
+            }
+
+            public void Release(FrontendDependencies dependencies)
+            {
+                if (ReferenceEquals(Dependencies, dependencies))
+                {
+                    Dependencies = null;
+                }
+            }
+
+            public void Show()
+            {
+                ShowCount++;
+            }
+
+            public void Hide()
+            {
+                HideCount++;
             }
         }
     }

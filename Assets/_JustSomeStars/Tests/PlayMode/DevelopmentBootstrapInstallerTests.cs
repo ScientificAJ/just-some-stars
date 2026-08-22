@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Threading;
 using System.Threading.Tasks;
+using JustSomeStars.Runtime.Accessibility;
 using JustSomeStars.Runtime.Core;
 using JustSomeStars.Runtime.Development;
+using JustSomeStars.Runtime.Input;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -26,9 +29,9 @@ namespace JustSomeStars.Tests.PlayMode
 
         private static readonly Type[] s_DevelopmentServiceTypes =
         {
-            typeof(DevelopmentSettingsService),
+            typeof(SettingsService),
             typeof(DevelopmentLocalSaveService),
-            typeof(DevelopmentInputService),
+            typeof(InputRouter),
             typeof(DevelopmentContentCatalogueService),
             typeof(DevelopmentModeControllerService),
         };
@@ -72,13 +75,27 @@ namespace JustSomeStars.Tests.PlayMode
                     .Select(_ => method))
                 .ToArray();
 
-            Assert.That(beforeSceneLoadMethods, Has.Length.EqualTo(1));
+            var compositionFactorySetter = typeof(GameBootstrap)
+                .GetProperty(
+                    nameof(GameBootstrap.CompositionFactory),
+                    BindingFlags.Public | BindingFlags.Static)
+                ?.SetMethod;
+            Assert.That(compositionFactorySetter, Is.Not.Null);
+            var compositionFactoryWriters = beforeSceneLoadMethods
+                .Where(method => CallsMethod(
+                    method,
+                    compositionFactorySetter))
+                .ToArray();
+
+            Assert.That(compositionFactoryWriters, Has.Length.EqualTo(1));
             Assert.That(
-                beforeSceneLoadMethods[0].DeclaringType,
+                compositionFactoryWriters[0].DeclaringType,
                 Is.EqualTo(typeof(DevelopmentBootstrapInstaller)));
-            Assert.That(beforeSceneLoadMethods[0].Name, Is.EqualTo("Install"));
-            Assert.That(beforeSceneLoadMethods[0].GetParameters(), Is.Empty);
-            Assert.That(beforeSceneLoadMethods[0].ReturnType, Is.EqualTo(typeof(void)));
+            Assert.That(compositionFactoryWriters[0].Name, Is.EqualTo("Install"));
+            Assert.That(compositionFactoryWriters[0].GetParameters(), Is.Empty);
+            Assert.That(
+                compositionFactoryWriters[0].ReturnType,
+                Is.EqualTo(typeof(void)));
         }
 
         [Test]
@@ -213,28 +230,34 @@ namespace JustSomeStars.Tests.PlayMode
                 var result = await registration.Service.InitializeAsync(
                     CancellationToken.None);
                 Assert.That(result.IsAvailable, Is.True);
+            }
 
+            foreach (var registration in composition.Services.Reverse())
+            {
                 await registration.Service.ShutdownAsync();
                 await registration.Service.ShutdownAsync();
 
-                Assert.That(
-                    observer.InitializeCount(registration.Service),
-                    Is.EqualTo(1));
-                Assert.That(
-                    observer.ShutdownCount(registration.Service),
-                    Is.EqualTo(1));
+                if (registration.Service is DevelopmentRequiredService)
+                {
+                    Assert.That(
+                        observer.InitializeCount(registration.Service),
+                        Is.EqualTo(1));
+                    Assert.That(
+                        observer.ShutdownCount(registration.Service),
+                        Is.EqualTo(1));
+                }
             }
 
             Assert.That(
                 observer.Events.Count(entry => entry.StartsWith(
                     "initialize:",
                     StringComparison.Ordinal)),
-                Is.EqualTo(5));
+                Is.EqualTo(3));
             Assert.That(
                 observer.Events.Count(entry => entry.StartsWith(
                     "shutdown:",
                     StringComparison.Ordinal)),
-                Is.EqualTo(5));
+                Is.EqualTo(3));
         }
 
         [UnityTest]
@@ -268,18 +291,18 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(transition.Destinations, Is.EqualTo(new[] { "Frontend" }));
             Assert.That(observer.Events, Is.EqualTo(new[]
             {
-                "initialize:DevelopmentSettingsService",
                 "initialize:DevelopmentLocalSaveService",
-                "initialize:DevelopmentInputService",
                 "initialize:DevelopmentContentCatalogueService",
                 "initialize:DevelopmentModeControllerService",
             }));
             Assert.That(
                 composition.Services.Select(registration => registration.Service)
+                    .OfType<DevelopmentRequiredService>()
                     .All(service => observer.InitializeCount(service) == 1),
                 Is.True);
             Assert.That(
                 composition.Services.Select(registration => registration.Service)
+                    .OfType<DevelopmentRequiredService>()
                     .All(service => observer.ShutdownCount(service) == 0),
                 Is.True,
                 "Successful services must remain owned until explicit shutdown.");
@@ -293,19 +316,16 @@ namespace JustSomeStars.Tests.PlayMode
 
             Assert.That(observer.Events, Is.EqualTo(new[]
             {
-                "initialize:DevelopmentSettingsService",
                 "initialize:DevelopmentLocalSaveService",
-                "initialize:DevelopmentInputService",
                 "initialize:DevelopmentContentCatalogueService",
                 "initialize:DevelopmentModeControllerService",
                 "shutdown:DevelopmentModeControllerService",
                 "shutdown:DevelopmentContentCatalogueService",
-                "shutdown:DevelopmentInputService",
                 "shutdown:DevelopmentLocalSaveService",
-                "shutdown:DevelopmentSettingsService",
             }));
             Assert.That(
                 composition.Services.Select(registration => registration.Service)
+                    .OfType<DevelopmentRequiredService>()
                     .All(service => observer.ShutdownCount(service) == 1),
                 Is.True);
 
@@ -368,6 +388,96 @@ namespace JustSomeStars.Tests.PlayMode
 
             Assert.Fail(
                 $"{operation} did not complete within {maximumFrames} frames.");
+        }
+
+        private static bool CallsMethod(MethodInfo method, MethodInfo target)
+        {
+            var body = method.GetMethodBody();
+            var bytes = body?.GetILAsByteArray();
+            if (bytes == null)
+            {
+                return false;
+            }
+
+            var oneByte = new OpCode[0x100];
+            var twoByte = new OpCode[0x100];
+            foreach (var field in typeof(OpCodes).GetFields(
+                         BindingFlags.Public | BindingFlags.Static))
+            {
+                if (field.GetValue(null) is not OpCode code)
+                {
+                    continue;
+                }
+
+                var value = unchecked((ushort)code.Value);
+                if (value < 0x100)
+                {
+                    oneByte[value] = code;
+                }
+                else if ((value & 0xff00) == 0xfe00)
+                {
+                    twoByte[value & 0xff] = code;
+                }
+            }
+
+            for (var offset = 0; offset < bytes.Length;)
+            {
+                var first = bytes[offset++];
+                var code = first == 0xfe
+                    ? twoByte[bytes[offset++]]
+                    : oneByte[first];
+                if (code.OperandType == OperandType.InlineMethod)
+                {
+                    var token = BitConverter.ToInt32(bytes, offset);
+                    var called = method.Module.ResolveMethod(token);
+                    if (called.Module == target.Module &&
+                        called.MetadataToken == target.MetadataToken)
+                    {
+                        return true;
+                    }
+                }
+
+                offset += OperandSize(code.OperandType, bytes, offset);
+            }
+
+            return false;
+        }
+
+        private static int OperandSize(
+            OperandType operandType,
+            byte[] bytes,
+            int offset)
+        {
+            switch (operandType)
+            {
+                case OperandType.InlineNone:
+                    return 0;
+                case OperandType.ShortInlineBrTarget:
+                case OperandType.ShortInlineI:
+                case OperandType.ShortInlineVar:
+                    return 1;
+                case OperandType.InlineVar:
+                    return 2;
+                case OperandType.InlineI:
+                case OperandType.InlineBrTarget:
+                case OperandType.InlineField:
+                case OperandType.InlineMethod:
+                case OperandType.InlineSig:
+                case OperandType.InlineString:
+                case OperandType.InlineTok:
+                case OperandType.ShortInlineR:
+                    return 4;
+                case OperandType.InlineI8:
+                case OperandType.InlineR:
+                    return 8;
+                case OperandType.InlineSwitch:
+                    return 4 + (BitConverter.ToInt32(bytes, offset) * 4);
+                default:
+                    throw new ArgumentOutOfRangeException(
+                        nameof(operandType),
+                        operandType,
+                        "Unsupported IL operand type.");
+            }
         }
 
         private static void DestroyAllBootstraps()

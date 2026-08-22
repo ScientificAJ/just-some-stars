@@ -119,6 +119,34 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &387149423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: UI/TrackedDevicePosition
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: bf9300ba3765bd0228665825d7ae812b, type: 3}
+  m_ActionId: 93c242bb-4ef0-4e70-a64b-f68ee91444f1
+--- !u!114 &553781610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: UI/TrackedDeviceOrientation
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: bf9300ba3765bd0228665825d7ae812b, type: 3}
+  m_ActionId: 608c8d86-5950-4e6f-8b85-d5998a78c22d
 --- !u!1 &913160072
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,17 +196,17 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: 11400000, guid: d5d79a9bd8ecfea2daefd4af70c0b93d, type: 2}
-  m_PointAction: {fileID: -8824712850810191140, guid: d5d79a9bd8ecfea2daefd4af70c0b93d, type: 2}
-  m_MoveAction: {fileID: -8318254370112570265, guid: d5d79a9bd8ecfea2daefd4af70c0b93d, type: 2}
-  m_SubmitAction: {fileID: -7567097919011474774, guid: d5d79a9bd8ecfea2daefd4af70c0b93d, type: 2}
-  m_CancelAction: {fileID: -3913884400190953194, guid: d5d79a9bd8ecfea2daefd4af70c0b93d, type: 2}
-  m_LeftClickAction: {fileID: 3427516588004292701, guid: d5d79a9bd8ecfea2daefd4af70c0b93d, type: 2}
-  m_MiddleClickAction: {fileID: -3534016653729412600, guid: d5d79a9bd8ecfea2daefd4af70c0b93d, type: 2}
-  m_RightClickAction: {fileID: -875150019517788745, guid: d5d79a9bd8ecfea2daefd4af70c0b93d, type: 2}
-  m_ScrollWheelAction: {fileID: 4113041553210368128, guid: d5d79a9bd8ecfea2daefd4af70c0b93d, type: 2}
-  m_TrackedDevicePositionAction: {fileID: 1446612266544525469, guid: d5d79a9bd8ecfea2daefd4af70c0b93d, type: 2}
-  m_TrackedDeviceOrientationAction: {fileID: -41872813559163775, guid: d5d79a9bd8ecfea2daefd4af70c0b93d, type: 2}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: bf9300ba3765bd0228665825d7ae812b, type: 3}
+  m_PointAction: {fileID: 1726806030}
+  m_MoveAction: {fileID: -8938646924312874169, guid: bf9300ba3765bd0228665825d7ae812b, type: 3}
+  m_SubmitAction: {fileID: 1276516967}
+  m_CancelAction: {fileID: 1176390437}
+  m_LeftClickAction: {fileID: -1850659457046197085, guid: bf9300ba3765bd0228665825d7ae812b, type: 3}
+  m_MiddleClickAction: {fileID: 1248998418}
+  m_RightClickAction: {fileID: 2072656720}
+  m_ScrollWheelAction: {fileID: 1851558874}
+  m_TrackedDevicePositionAction: {fileID: 387149423}
+  m_TrackedDeviceOrientationAction: {fileID: 553781610}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
@@ -198,6 +226,48 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!114 &1176390437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: UI/Cancel
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: bf9300ba3765bd0228665825d7ae812b, type: 3}
+  m_ActionId: d7f8a30f-dcf3-4610-b769-6d2f8d216916
+--- !u!114 &1248998418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: UI/MiddleClick
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: bf9300ba3765bd0228665825d7ae812b, type: 3}
+  m_ActionId: 101ac03c-2485-4715-834c-6ca7cb7e455c
+--- !u!114 &1276516967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: UI/Submit
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: bf9300ba3765bd0228665825d7ae812b, type: 3}
+  m_ActionId: 39d814a1-21ac-41bb-b60e-e4e195dba13c
 --- !u!1001 &1591612085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -303,6 +373,48 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 99408245193726009, guid: 50d85c5dbd62ea7d8b6a78f535af8ed2, type: 3}
   m_PrefabInstance: {fileID: 1591612085}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1726806030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: UI/Point
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: bf9300ba3765bd0228665825d7ae812b, type: 3}
+  m_ActionId: 1de6d853-6437-4920-81c3-4a75f0e635cf
+--- !u!114 &1851558874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: UI/ScrollWheel
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: bf9300ba3765bd0228665825d7ae812b, type: 3}
+  m_ActionId: 8c34d459-02b7-41a5-ac5c-b34455fee4a2
+--- !u!114 &2072656720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: UI/RightClick
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: bf9300ba3765bd0228665825d7ae812b, type: 3}
+  m_ActionId: 73867fa4-9ce7-418b-9a03-fcbf678f696a
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

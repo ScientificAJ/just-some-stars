@@ -22,7 +22,7 @@ contract of the task currently being executed.
 |---|---|---|---|
 | JSS-001 | Codemagic app/repository/workflow setup is complete, with 500 free macOS minutes available. The user approved deferring remote Unity execution because the account has Unity Personal and no Plus/Pro serial for CI activation. | Revisit only if a valid Unity CI license becomes available | None; do not spend build minutes |
 | JSS-002 | Produce the signed Google Play AAB, begin closed testing, and create the Galaxy Seller application record when a playable release candidate exists. | Growth and release package (Tasks 31–33) | None |
-| JSS-003 | Replace the temporary Settings and disabled Continue behavior with the real settings, save-state, input, and navigation flows. | Tasks 6–8 and the later Frontend integration task | None |
+| JSS-003 | Replace disabled Continue with the real save-state and navigation flows. Task 6's device-local Settings and semantic input replacements are complete. | Tasks 7–8 and the later Frontend integration task | None |
 | JSS-004 | Evolve the temporary offline/footer copy when the first real online service is introduced. | Task 21/28 integration | None |
 | JSS-005 | Investigate the two un-attributed persistent native allocations reported only during development-player process shutdown if they recur under stack-enabled profiling. | Later device/performance QA | None |
 | JSS-006 | Improve Unity-canvas device automation discovery so Argent does not require the documented logical-coordinate fallback; add local recording support only if the missing encoder becomes necessary. | Tooling/QA maintenance | None |
@@ -34,6 +34,7 @@ contract of the task currently being executed.
 |---|---|---|
 | Award-level Frontend redesign | 2026-08-22 — user approved | Approved landscape main screen and all local panels; EditMode `211/211`; PlayMode `70/70`; internal APK SHA-256 `9e85f4ec24d20c62a786997ac4a42dab132a79118e401f2c1d3efa61b3ff6b83` |
 | Release Runway local foundation | 2026-08-22 — user approved revised exit | Installable tested Android skeleton, pushed repository, Codemagic app/workflow configured with remote Unity execution explicitly deferred, and store submission moved to the final Growth and release package |
+| Task 6 — settings, accessibility and semantic input | 2026-08-22 — complete | Versioned atomic device-local settings; 20-control Frontend Settings surface; one project-wide semantic Input Router; composition-owned injection/reload/teardown; focused final gates `11/11` settings, `6/6` input, `11/11` assets, `11/11` controller, `1/1` motion, `12/12` bootstrap, `4/4` dependency/reload and `1/1` real launch; bounded critic PROCEED |
 
 ## Resolved or promoted findings
 

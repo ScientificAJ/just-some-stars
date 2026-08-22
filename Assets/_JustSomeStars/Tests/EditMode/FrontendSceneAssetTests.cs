@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,6 +24,8 @@ namespace JustSomeStars.Tests.EditMode
             "Assets/_JustSomeStars/Scenes/Core/Frontend.unity";
         private const string FrontendRuntimeFolder =
             "Assets/_JustSomeStars/Runtime/UI";
+        private const string FrontendVisualPrefabPath =
+            "Assets/_JustSomeStars/Prefabs/UI/FrontendVisualRoot.prefab";
         private const string FrontendFontAssetPath =
             "Assets/TextMesh Pro/Resources/Fonts & Materials/" +
             "LiberationSans SDF.asset";
@@ -56,7 +59,11 @@ namespace JustSomeStars.Tests.EditMode
         private const string EmojiAttributionPath =
             "Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt";
         private const string FrontendInputActionsAssetPath =
+            "Assets/_JustSomeStars/Runtime/Input/JssInputActions.inputactions";
+        private const string LegacyFrontendInputActionsAssetPath =
             "Assets/_JustSomeStars/Art/UI/Generated/FrontendUIActions.asset";
+        private const string LegacyFrontendInputFolderPath =
+            "Assets/_JustSomeStars/Art/UI/Generated";
         private const string RequiredLaunchCopy =
             "Just Some Stars Development Flight Version 1.0 Continue " +
             "Gameplay is not in this flight yet. Settings Credits Privacy Close";
@@ -450,6 +457,9 @@ namespace JustSomeStars.Tests.EditMode
                 Assert.That(controller, Is.Not.Null);
                 Assert.That(lifecycle, Is.Not.Null);
                 Assert.That(view, Is.Not.Null);
+                var settingsPanel = root.GetComponentInChildren<
+                    FrontendSettingsPanel>(true);
+                Assert.That(settingsPanel, Is.Not.Null);
 
                 var serializedController = new SerializedObject(controller);
                 Assert.That(
@@ -460,6 +470,10 @@ namespace JustSomeStars.Tests.EditMode
                     serializedController.FindProperty("m_LifecycleSource")
                         ?.objectReferenceValue,
                     Is.SameAs(lifecycle));
+                Assert.That(
+                    serializedController.FindProperty("m_SettingsPanelSource")
+                        ?.objectReferenceValue,
+                    Is.SameAs(settingsPanel));
                 var license = AssetDatabase.LoadAssetAtPath<TextAsset>(
                     LiberationLicenseAssetPath);
                 Assert.That(license, Is.Not.Null);
@@ -500,6 +514,7 @@ namespace JustSomeStars.Tests.EditMode
                              "m_PanelTitle",
                              "m_PanelBody",
                              "m_PanelScrollRect",
+                             "m_SettingsControlsRoot",
                              "m_CloseButton",
                          })
                 {
@@ -538,7 +553,92 @@ namespace JustSomeStars.Tests.EditMode
                 Assert.That(leftClickAction, Is.Not.Null);
                 Assert.That(BindingCount(pointAction), Is.GreaterThan(0));
                 Assert.That(BindingCount(leftClickAction), Is.GreaterThan(0));
+
+                AssertCanonicalTask6InputAsset((UnityEngine.Object)actionsAsset);
+                Assert.That(
+                    AssetDatabase.AssetPathExists(
+                        LegacyFrontendInputActionsAssetPath),
+                    Is.False);
+                Assert.That(
+                    AssetDatabase.AssetPathExists(
+                        LegacyFrontendInputFolderPath),
+                    Is.False);
+                Assert.That(
+                    typeof(UnityFrontendLifecycle)
+                        .GetFields(
+                            BindingFlags.Instance |
+                            BindingFlags.Public |
+                            BindingFlags.NonPublic)
+                        .Select(field => field.FieldType.FullName),
+                    Has.None.EqualTo("UnityEngine.InputSystem.InputAction"));
+
+                var serializedPanel = new SerializedObject(settingsPanel);
+                Assert.That(
+                    serializedPanel.FindProperty("m_Root")?.objectReferenceValue,
+                    Is.Not.Null);
+                Assert.That(
+                    serializedPanel.FindProperty("m_ScrollRect")
+                        ?.objectReferenceValue,
+                    Is.Not.Null);
+                AssertSettingsControlArray(
+                    serializedPanel,
+                    "m_DecreaseButtons");
+                AssertSettingsControlArray(
+                    serializedPanel,
+                    "m_IncreaseButtons");
+                AssertSettingsControlArray(
+                    serializedPanel,
+                    "m_ValueLabels");
+
+                var settingsControls = FindDescendant(
+                    root.transform,
+                    "SettingsControls");
+                var settingsViewport = FindDescendant(
+                    root.transform,
+                    "SettingsViewport");
+                var settingsContent = FindDescendant(
+                    root.transform,
+                    "SettingsContent");
+                Assert.That(
+                    settingsViewport.transform.parent,
+                    Is.SameAs(settingsControls.transform));
+                Assert.That(
+                    settingsContent.transform.parent,
+                    Is.SameAs(settingsViewport.transform));
+                var settingsScroll = ComponentByFullName(
+                    settingsControls,
+                    "UnityEngine.UI.ScrollRect");
+                Assert.That(settingsScroll, Is.Not.Null);
+                Assert.That(
+                    Property(settingsScroll, "viewport"),
+                    Is.SameAs(settingsViewport.GetComponent<RectTransform>()));
+                Assert.That(
+                    Property(settingsScroll, "content"),
+                    Is.SameAs(settingsContent.GetComponent<RectTransform>()));
+                Assert.That(
+                    (bool)Property(settingsScroll, "horizontal"),
+                    Is.False);
+                Assert.That(
+                    (bool)Property(settingsScroll, "vertical"),
+                    Is.True);
             });
+
+            var prefabRoot = PrefabUtility.LoadPrefabContents(
+                FrontendVisualPrefabPath);
+            try
+            {
+                Assert.That(
+                    prefabRoot.GetComponentInChildren<FrontendSettingsPanel>(true),
+                    Is.Not.Null,
+                    "The approved Frontend prefab is the settings UI authority.");
+                Assert.That(
+                    FindDescendant(prefabRoot.transform, "SettingsControls"),
+                    Is.Not.Null);
+            }
+            finally
+            {
+                PrefabUtility.UnloadPrefabContents(prefabRoot);
+            }
         }
 
         [Test]
@@ -639,7 +739,19 @@ namespace JustSomeStars.Tests.EditMode
                 var buttons = ComponentsByFullName(
                     root,
                     "UnityEngine.UI.Button");
-                Assert.That(buttons.Count, Is.EqualTo(5));
+                var settingsControls = FindDescendant(
+                    root.transform,
+                    "SettingsControls");
+                var settingsButtons = buttons
+                    .Where(button => button.transform.IsChildOf(
+                        settingsControls.transform))
+                    .ToArray();
+                var shellButtons = buttons
+                    .Where(button => !button.transform.IsChildOf(
+                        settingsControls.transform))
+                    .ToArray();
+                Assert.That(shellButtons, Has.Length.EqualTo(5));
+                Assert.That(settingsButtons, Has.Length.EqualTo(40));
 
                 foreach (var profile in RequiredMobileProfiles)
                 {
@@ -666,31 +778,38 @@ namespace JustSomeStars.Tests.EditMode
                             "height");
                     }
 
-                    var scrollObject = FindDescendant(
-                        root.transform,
-                        "PanelBodyScroll");
-                    var scrollRect = ComponentByFullName(
-                        scrollObject,
-                        "UnityEngine.UI.ScrollRect");
-                    var viewport = Property(scrollRect, "viewport") as
-                        RectTransform;
-                    Assert.That(viewport, Is.Not.Null);
-                    var viewportRect = ResolveSyntheticRect(
-                        viewport,
-                        canvasRect,
-                        logicalCanvas);
-                    AssertPhysicalAxisAtLeastDp(
-                        viewportRect.width,
-                        scale,
-                        profile,
-                        "PanelBodyScroll/Viewport",
-                        "width");
-                    AssertPhysicalAxisAtLeastDp(
-                        viewportRect.height,
-                        scale,
-                        profile,
-                        "PanelBodyScroll/Viewport",
-                        "height");
+                    foreach (var scrollObjectName in new[]
+                             {
+                                 "PanelBodyScroll",
+                                 "SettingsControls",
+                             })
+                    {
+                        var scrollObject = FindDescendant(
+                            root.transform,
+                            scrollObjectName);
+                        var scrollRect = ComponentByFullName(
+                            scrollObject,
+                            "UnityEngine.UI.ScrollRect");
+                        var viewport = Property(scrollRect, "viewport") as
+                            RectTransform;
+                        Assert.That(viewport, Is.Not.Null);
+                        var viewportRect = ResolveSyntheticRect(
+                            viewport,
+                            canvasRect,
+                            logicalCanvas);
+                        AssertPhysicalAxisAtLeastDp(
+                            viewportRect.width,
+                            scale,
+                            profile,
+                            scrollObjectName + "/" + viewport.name,
+                            "width");
+                        AssertPhysicalAxisAtLeastDp(
+                            viewportRect.height,
+                            scale,
+                            profile,
+                            scrollObjectName + "/" + viewport.name,
+                            "height");
+                    }
                 }
             });
         }
@@ -747,12 +866,17 @@ namespace JustSomeStars.Tests.EditMode
                 var scaler = ComponentByFullName(
                     canvasObject,
                     "UnityEngine.UI.CanvasScaler");
+                var settingsControls = FindDescendant(
+                    root.transform,
+                    "SettingsControls");
                 var textComponents = TextComponents(
                         root,
                         includeInactive: true)
                     .Where(component =>
                         component.name != "PanelBody" &&
-                        component.name != "BackdropSignalCopy")
+                        component.name != "BackdropSignalCopy" &&
+                        !component.transform.IsChildOf(
+                            settingsControls.transform))
                     .OrderBy(component => component.name)
                     .ToArray();
                 Assert.That(
@@ -804,6 +928,9 @@ namespace JustSomeStars.Tests.EditMode
                 var scaler = ComponentByFullName(
                     canvasObject,
                     "UnityEngine.UI.CanvasScaler");
+                var settingsControls = FindDescendant(
+                    root.transform,
+                    "SettingsControls");
                 var requiredRegions = new[]
                 {
                     "BackgroundLayers",
@@ -837,7 +964,10 @@ namespace JustSomeStars.Tests.EditMode
                                  includeInactive: true)
                              .Concat(ComponentsByFullName(
                                  root,
-                                 "UnityEngine.UI.Button")))
+                                 "UnityEngine.UI.Button"))
+                             .Where(component =>
+                                 !component.transform.IsChildOf(
+                                     settingsControls.transform)))
                     {
                         AssertRectContained(
                             logicalCanvas,
@@ -1651,6 +1781,120 @@ namespace JustSomeStars.Tests.EditMode
         {
             var bindings = Property(action, "bindings");
             return (int)Property(bindings, "Count");
+        }
+
+        private static void AssertSettingsControlArray(
+            SerializedObject panel,
+            string propertyName)
+        {
+            var property = panel.FindProperty(propertyName);
+            Assert.That(property, Is.Not.Null, propertyName);
+            Assert.That(
+                property.arraySize,
+                Is.EqualTo(FrontendSettingsPanel.ControlCount),
+                propertyName);
+            for (var index = 0; index < property.arraySize; index++)
+            {
+                Assert.That(
+                    property.GetArrayElementAtIndex(index).objectReferenceValue,
+                    Is.Not.Null,
+                    $"{propertyName}[{index}]");
+            }
+        }
+
+        private static void AssertCanonicalTask6InputAsset(
+            UnityEngine.Object actionsAsset)
+        {
+            Assert.That(actionsAsset, Is.Not.Null);
+            Assert.That(
+                AssetDatabase.GetAssetPath(actionsAsset),
+                Is.EqualTo(FrontendInputActionsAssetPath));
+            Assert.That(
+                actionsAsset.GetType().FullName,
+                Is.EqualTo("UnityEngine.InputSystem.InputActionAsset"));
+
+            var maps = ((IEnumerable)Property(actionsAsset, "actionMaps"))
+                .Cast<object>()
+                .ToDictionary(map => (string)Property(map, "name"));
+            Assert.That(
+                maps.Keys,
+                Is.EquivalentTo(new[] { "UI", "Surface", "Flight", "Lens" }));
+            AssertMapActions(
+                maps["UI"],
+                new[]
+                {
+                    "Navigate",
+                    "Submit",
+                    "Cancel",
+                    "Point",
+                    "Click",
+                    "RightClick",
+                    "MiddleClick",
+                    "ScrollWheel",
+                    "TrackedDevicePosition",
+                    "TrackedDeviceOrientation",
+                });
+            foreach (var mapName in new[] { "Surface", "Flight", "Lens" })
+            {
+                AssertMapActions(
+                    maps[mapName],
+                    new[]
+                    {
+                        "Move",
+                        "Look",
+                        "Primary",
+                        "Secondary",
+                        "Pause",
+                        "Lens",
+                        "PhotoMode",
+                        "Recenter",
+                    });
+            }
+
+            var uiActions = ((IEnumerable)Property(maps["UI"], "actions"))
+                .Cast<object>()
+                .ToDictionary(action => (string)Property(action, "name"));
+            AssertActionHasBinding(uiActions["Cancel"], "<Keyboard>/escape");
+            AssertActionHasBinding(
+                uiActions["Point"],
+                "<Touchscreen>/primaryTouch/position");
+            AssertActionHasBinding(
+                uiActions["Click"],
+                "<Touchscreen>/primaryTouch/press");
+
+            var inputSystemType = Type.GetType(
+                "UnityEngine.InputSystem.InputSystem, Unity.InputSystem",
+                throwOnError: false);
+            Assert.That(inputSystemType, Is.Not.Null);
+            var projectWideActions = inputSystemType.GetProperty(
+                "actions",
+                BindingFlags.Static | BindingFlags.Public);
+            Assert.That(projectWideActions, Is.Not.Null);
+            Assert.That(
+                projectWideActions.GetValue(null),
+                Is.SameAs(actionsAsset),
+                "InputRouter and the EventSystem must share Unity's one " +
+                "project-wide JssInputActions asset.");
+        }
+
+        private static void AssertMapActions(object map, string[] expectedNames)
+        {
+            var names = ((IEnumerable)Property(map, "actions"))
+                .Cast<object>()
+                .Select(action => (string)Property(action, "name"))
+                .ToArray();
+            Assert.That(names, Is.EquivalentTo(expectedNames));
+        }
+
+        private static void AssertActionHasBinding(
+            object action,
+            string expectedPath)
+        {
+            var paths = ((IEnumerable)Property(action, "bindings"))
+                .Cast<object>()
+                .Select(binding => (string)Property(binding, "path"))
+                .ToArray();
+            Assert.That(paths, Does.Contain(expectedPath));
         }
 
         private static UnityEngine.Object AssertStaticFrontendFont()

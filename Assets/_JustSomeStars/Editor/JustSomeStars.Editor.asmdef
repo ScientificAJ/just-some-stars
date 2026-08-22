@@ -4,6 +4,7 @@
   "references": [
     "JustSomeStars.Runtime",
     "Unity.Addressables.Editor",
+    "Unity.InputSystem",
     "Unity.TextMeshPro",
     "UnityEngine.UI"
   ],

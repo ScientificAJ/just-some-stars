@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using JustSomeStars.Runtime.Core;
 using JustSomeStars.Runtime.Development;
+using JustSomeStars.Runtime.Input;
 using JustSomeStars.Runtime.UI;
 using NUnit.Framework;
 using TMPro;
@@ -32,6 +34,9 @@ namespace JustSomeStars.Tests.PlayMode
 
         private string m_PreviousSceneName;
         private string m_PreviousScenePath;
+        private string m_SettingsPath;
+        private bool m_SettingsFileExisted;
+        private byte[] m_PreviousSettingsBytes;
 
         [UnitySetUp]
         public IEnumerator SetUp()
@@ -39,6 +44,14 @@ namespace JustSomeStars.Tests.PlayMode
             var activeScene = SceneManager.GetActiveScene();
             m_PreviousSceneName = activeScene.name;
             m_PreviousScenePath = activeScene.path;
+            m_SettingsPath = Path.GetFullPath(Path.Combine(
+                Application.dataPath,
+                "..",
+                "Library/JustSomeStars/Local/jss-settings-v1.json"));
+            m_SettingsFileExisted = File.Exists(m_SettingsPath);
+            m_PreviousSettingsBytes = m_SettingsFileExisted
+                ? File.ReadAllBytes(m_SettingsPath)
+                : null;
             GameBootstrap.CompositionFactory = null;
             yield return ShutdownAndDestroyAllBootstraps();
         }
@@ -49,6 +62,7 @@ namespace JustSomeStars.Tests.PlayMode
             yield return ShutdownAndDestroyAllBootstraps();
             GameBootstrap.CompositionFactory = null;
             yield return RestorePriorTestScene();
+            RestoreSettingsFile();
             Assert.That(FindAllBootstraps(), Is.Empty);
         }
 
@@ -105,6 +119,18 @@ namespace JustSomeStars.Tests.PlayMode
                     view.transform,
                     "PanelBodyScroll")
                 .GetComponent<ScrollRect>();
+            var settingsControls = FindDescendant(
+                view.transform,
+                "SettingsControls");
+            var settingsScroll = settingsControls.GetComponent<ScrollRect>();
+            var captionsDecrease = FindDescendant(
+                    view.transform,
+                    "Decrease03")
+                .GetComponent<Button>();
+            var captionsValue = FindDescendant(
+                    view.transform,
+                    "Value03")
+                .GetComponent<TextMeshProUGUI>();
             var continueButton = FindDescendant(view.transform, "ContinueButton")
                 .GetComponent<Button>();
             var settingsButton = FindDescendant(view.transform, "SettingsButton")
@@ -124,11 +150,45 @@ namespace JustSomeStars.Tests.PlayMode
             settingsButton.onClick.Invoke();
             Assert.That(localPanel.activeSelf, Is.True);
             Assert.That(panelTitle.text, Is.EqualTo("Settings"));
-            creditsButton.onClick.Invoke();
-            Assert.That(panelTitle.text, Is.EqualTo("Credits & Licenses"));
+            Assert.That(settingsControls.activeSelf, Is.True);
+            Assert.That(panelBodyScroll.gameObject.activeSelf, Is.False);
+            Assert.That(
+                settingsScroll.verticalNormalizedPosition,
+                Is.EqualTo(1f).Within(0.001f));
             var controller = UnityEngine.Object.FindFirstObjectByType<
                 FrontendController>(FindObjectsInactive.Include);
+            var lifecycle = UnityEngine.Object.FindFirstObjectByType<
+                UnityFrontendLifecycle>(FindObjectsInactive.Include);
+            var settingsPanel = UnityEngine.Object.FindFirstObjectByType<
+                FrontendSettingsPanel>(FindObjectsInactive.Include);
             Assert.That(controller, Is.Not.Null);
+            Assert.That(lifecycle, Is.Not.Null);
+            Assert.That(settingsPanel, Is.Not.Null);
+            Assert.That(controller.Dependencies, Is.Not.Null);
+            Assert.That(lifecycle.Dependencies,
+                Is.SameAs(controller.Dependencies));
+            Assert.That(settingsPanel.Dependencies,
+                Is.SameAs(controller.Dependencies));
+            Assert.That(controller.Dependencies.Input, Is.TypeOf<InputRouter>());
+            Assert.That(
+                controller.Dependencies.Input.Actions,
+                Is.SameAs(inputModule.actionsAsset));
+
+            var captionsBefore =
+                controller.Dependencies.Settings.Current.CaptionsEnabled;
+            captionsDecrease.onClick.Invoke();
+            Assert.That(
+                controller.Dependencies.Settings.Current.CaptionsEnabled,
+                Is.EqualTo(!captionsBefore));
+            Assert.That(
+                captionsValue.text,
+                Is.EqualTo(captionsBefore ? "Off" : "On"));
+            Assert.That(File.Exists(m_SettingsPath), Is.True);
+
+            creditsButton.onClick.Invoke();
+            Assert.That(panelTitle.text, Is.EqualTo("Credits & Licenses"));
+            Assert.That(settingsControls.activeSelf, Is.False);
+            Assert.That(panelBodyScroll.gameObject.activeSelf, Is.True);
             var liberationLicense = GetLicense(
                 controller,
                 "m_LiberationSansLicense");
@@ -217,6 +277,17 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(secondShutdown, Is.SameAs(firstShutdown));
             yield return WaitForTask(firstShutdown, "Task 5 bootstrap shutdown");
 
+            Assert.That(
+                controller.IsConfigured,
+                Is.False,
+                "Bootstrap shutdown must detach the Frontend controller before " +
+                "composition-owned services stop.");
+            Assert.That(lifecycle.IsConfigured, Is.False);
+            Assert.That(settingsPanel.IsConfigured, Is.False);
+            Assert.That(controller.Dependencies, Is.Null);
+            Assert.That(lifecycle.Dependencies, Is.Null);
+            Assert.That(settingsPanel.Dependencies, Is.Null);
+
             UnityEngine.Object.Destroy(bootstrap.gameObject);
             yield return WaitForCondition(
                 () => FindAllBootstraps().Length == 0,
@@ -237,6 +308,26 @@ namespace JustSomeStars.Tests.PlayMode
                 "<[^>]+>",
                 string.Empty);
             return Regex.Replace(withoutRichText, @"\s+", " ").Trim();
+        }
+
+        private void RestoreSettingsFile()
+        {
+            if (m_SettingsFileExisted)
+            {
+                var parent = Path.GetDirectoryName(m_SettingsPath);
+                if (!string.IsNullOrEmpty(parent))
+                {
+                    Directory.CreateDirectory(parent);
+                }
+
+                File.WriteAllBytes(m_SettingsPath, m_PreviousSettingsBytes);
+                return;
+            }
+
+            if (File.Exists(m_SettingsPath))
+            {
+                File.Delete(m_SettingsPath);
+            }
         }
 
         private static IEnumerator WaitForFrontendStartup()

@@ -43,6 +43,9 @@ namespace JustSomeStars.Runtime.UI
         private ScrollRect m_PanelScrollRect;
 
         [SerializeField]
+        private GameObject m_SettingsControlsRoot;
+
+        [SerializeField]
         private Button m_CloseButton;
 
         [SerializeField]
@@ -74,6 +77,7 @@ namespace JustSomeStars.Runtime.UI
             }
 
             m_PanelRoot.SetActive(false);
+            m_SettingsControlsRoot.SetActive(false);
         }
 
         private void OnEnable()
@@ -120,7 +124,12 @@ namespace JustSomeStars.Runtime.UI
         public void ShowPanel(string title, string body)
         {
             var safeTitle = title ?? string.Empty;
-            ApplyPanelLayout(safeTitle == "Credits & Licenses");
+            var isSettings = safeTitle == "Settings";
+            ApplyPanelLayout(
+                isCredits: safeTitle == "Credits & Licenses",
+                isSettings);
+            m_SettingsControlsRoot.SetActive(false);
+            m_PanelScrollRect.gameObject.SetActive(!isSettings);
             m_PanelTitle.text = safeTitle;
             m_PanelBody.text = FormatPanelBody(safeTitle, body ?? string.Empty);
             m_PanelRoot.SetActive(true);
@@ -133,7 +142,7 @@ namespace JustSomeStars.Runtime.UI
             m_MotionDirector.ShowPanel(m_PanelRoot);
         }
 
-        private void ApplyPanelLayout(bool isCredits)
+        private void ApplyPanelLayout(bool isCredits, bool isSettings)
         {
             var frameSize = m_PanelFrame.sizeDelta;
             frameSize.y = isCredits ? 441f : 424f;
@@ -151,6 +160,18 @@ namespace JustSomeStars.Runtime.UI
             scrollSize.y = isCredits ? 180f : 118f;
             scrollRect.sizeDelta = scrollSize;
 
+            if (isSettings)
+            {
+                var settingsRect =
+                    m_SettingsControlsRoot.GetComponent<RectTransform>();
+                var settingsPosition = settingsRect.anchoredPosition;
+                settingsPosition.y = -194f;
+                settingsRect.anchoredPosition = settingsPosition;
+                var settingsSize = settingsRect.sizeDelta;
+                settingsSize.y = 118f;
+                settingsRect.sizeDelta = settingsSize;
+            }
+
             var closeRect = m_CloseButton.GetComponent<RectTransform>();
             var closePosition = closeRect.anchoredPosition;
             closePosition.y = isCredits ? -343f : -313f;
@@ -161,9 +182,7 @@ namespace JustSomeStars.Runtime.UI
         {
             if (title == "Settings")
             {
-                return "Settings arrive in a later flight.\n" +
-                       "This screen does not save or\n" +
-                       "change controls yet.";
+                return body;
             }
 
             if (title == "Privacy")
@@ -249,6 +268,7 @@ namespace JustSomeStars.Runtime.UI
                    m_PanelTitle != null &&
                    m_PanelBody != null &&
                    m_PanelScrollRect != null &&
+                   m_SettingsControlsRoot != null &&
                    m_CloseButton != null &&
                    m_MotionDirector != null;
         }

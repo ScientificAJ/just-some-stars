@@ -1,6 +1,10 @@
 using System;
+using JustSomeStars.Runtime.Accessibility;
 using JustSomeStars.Runtime.Core;
+using JustSomeStars.Runtime.Input;
+using JustSomeStars.Runtime.UI;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace JustSomeStars.Runtime.Development
 {
@@ -31,18 +35,27 @@ namespace JustSomeStars.Runtime.Development
                 throw new ArgumentNullException(nameof(lifecycleObserver));
             }
 
+            var settings = new SettingsService();
+            var actions = InputSystem.actions;
+            if (actions == null)
+            {
+                throw new InvalidOperationException(
+                    "Unity project-wide JssInputActions is not configured.");
+            }
+
+            var input = new InputRouter(actions, settings);
             return new GameBootstrapComposition(
                 new[]
                 {
                     new GameServiceRegistration(
                         GameServiceRole.Settings,
-                        new DevelopmentSettingsService(lifecycleObserver)),
+                        settings),
                     new GameServiceRegistration(
                         GameServiceRole.LocalSave,
                         new DevelopmentLocalSaveService(lifecycleObserver)),
                     new GameServiceRegistration(
                         GameServiceRole.Input,
-                        new DevelopmentInputService(lifecycleObserver)),
+                        input),
                     new GameServiceRegistration(
                         GameServiceRole.ContentCatalogue,
                         new DevelopmentContentCatalogueService(lifecycleObserver)),
@@ -55,9 +68,39 @@ namespace JustSomeStars.Runtime.Development
 
         private static GameBootstrapComposition CreateComposition()
         {
-            return CreateComposition(
-                new UnitySceneTransition(),
-                NoOpDevelopmentServiceLifecycleObserver.Instance);
+            var settings = new SettingsService();
+            var actions = InputSystem.actions;
+            if (actions == null)
+            {
+                throw new InvalidOperationException(
+                    "Unity project-wide JssInputActions is not configured.");
+            }
+
+            var input = new InputRouter(actions, settings);
+            var dependencies = new FrontendDependencies(settings, input);
+            return new GameBootstrapComposition(
+                new[]
+                {
+                    new GameServiceRegistration(
+                        GameServiceRole.Settings,
+                        settings),
+                    new GameServiceRegistration(
+                        GameServiceRole.LocalSave,
+                        new DevelopmentLocalSaveService(
+                            NoOpDevelopmentServiceLifecycleObserver.Instance)),
+                    new GameServiceRegistration(
+                        GameServiceRole.Input,
+                        input),
+                    new GameServiceRegistration(
+                        GameServiceRole.ContentCatalogue,
+                        new DevelopmentContentCatalogueService(
+                            NoOpDevelopmentServiceLifecycleObserver.Instance)),
+                    new GameServiceRegistration(
+                        GameServiceRole.ModeController,
+                        new DevelopmentModeControllerService(
+                            NoOpDevelopmentServiceLifecycleObserver.Instance)),
+                },
+                new UnitySceneTransition(dependencies));
         }
     }
 }

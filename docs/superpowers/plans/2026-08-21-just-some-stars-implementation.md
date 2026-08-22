@@ -683,17 +683,24 @@ orphaned metas again from a clean checkout before accepting CI evidence.
 - Create: `Assets/_JustSomeStars/Runtime/UI/FrontendSettingsPanel.cs`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/SettingsServiceTests.cs`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/InputRouterTests.cs`
-- Modify: `Assets/_JustSomeStars/Runtime/Core/GameBootstrapComposition.cs`
+- Create: `Assets/_JustSomeStars/Tests/PlayMode/FrontendDependencyInjectionTests.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/AssemblyInfo.cs`
 - Modify: `Assets/_JustSomeStars/Runtime/Core/SceneTransition.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Core/ServiceStartupCoordinator.cs`
 - Modify: `Assets/_JustSomeStars/Runtime/Development/DevelopmentBootstrapInstaller.cs`
 - Modify: `Assets/_JustSomeStars/Runtime/Development/DevelopmentRequiredServices.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendContracts.cs`
 - Modify: `Assets/_JustSomeStars/Runtime/UI/UnityFrontendLifecycle.cs`
 - Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendController.cs`
 - Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendView.cs`
+- Modify: `Assets/_JustSomeStars/Editor/JustSomeStars.Editor.asmdef`
+- Modify: `Assets/_JustSomeStars/Prefabs/UI/FrontendVisualRoot.prefab`
 - Modify: `Assets/_JustSomeStars/Scenes/Core/Frontend.unity`
+- Modify: `ProjectSettings/EditorBuildSettings.asset`
 - Modify: `Assets/_JustSomeStars/Tests/EditMode/FrontendSceneAssetTests.cs`
 - Modify: `Assets/_JustSomeStars/Tests/PlayMode/DevelopmentBootstrapInstallerTests.cs`
 - Modify: `Assets/_JustSomeStars/Tests/PlayMode/FrontendControllerTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/FrontendMotionTests.cs`
 - Modify: `Assets/_JustSomeStars/Tests/PlayMode/Task5LaunchIntegrationTests.cs`
 - Delete: `Assets/_JustSomeStars/Art/UI/Generated/FrontendUIActions.asset`
 - Delete: `Assets/_JustSomeStars/Art/UI/Generated/FrontendUIActions.asset.meta`
@@ -704,7 +711,7 @@ orphaned metas again from a clean checkout before accepting CI evidence.
 - Produces: `GameSettings` with independent `PilotingAssist`, `ExplorationAssist`, `ScienceDepth`, presentation, audio and control values.
 - Produces: semantic actions `Move`, `Look`, `Primary`, `Secondary`, `Pause`, `Lens`, `PhotoMode`, `Recenter` and UI `Back`/`Cancel`.
 
-- [ ] **Step 1: Write serialization/default tests**
+- [x] **Step 1: Write serialization/default tests**
 
 ```csharp
 [Test]
@@ -717,11 +724,39 @@ public void Defaults_AreBalancedAndAccessibleBeforeOpening()
 }
 ```
 
-- [ ] **Step 2: Implement settings with atomic local persistence**
+Freeze settings schema version `1` before production code. `GameSettings`
+contains independent `PilotingAssist` and `ExplorationAssist`
+(`Guided`/`Balanced`/`Ace`), `ScienceDepth`
+(`Guided`/`Balanced`/`Deep`), captions, text scale, dyslexia-friendly type,
+dialogue speed, color-vision mode, reduced camera shake, reduced flashing,
+reduced motion, motion blur, particle density, presentation quality, separate
+music/dialogue/effects volumes, haptics, left-handed controls and touch
+sensitivity. Defaults are Balanced/Balanced/Balanced, captions on, text and
+dialogue scale `1`, standard color vision, reductions off, motion blur off,
+particle density `1`, Balanced quality, music `0.8`, dialogue `1`, effects
+`0.9`, haptics on, right-handed layout and sensitivity `1`. Numeric ranges are
+text `0.85..1.35`, dialogue `0.5..2`, particle/audio `0..1`, and sensitivity
+`0.5..2`; invalid enums, non-finite values, unsupported schema or any
+out-of-range persisted value invalidate the complete document and load safe
+defaults rather than a partially trusted profile.
+
+- [x] **Step 2: Implement settings with atomic local persistence**
 
 Keep graphics/control device-local. Expose change events so UI, camera, input, subtitles and VFX update without scene reload.
 
-- [ ] **Step 3: Author Input System maps for UI, Surface, Flight and Lens**
+The sole device-local document is `jss-settings-v1.json`: under
+`Library/JustSomeStars/Local/` while running in the Editor and under
+`Application.persistentDataPath` in a player. Missing data loads defaults
+without claiming persistence. A successful change writes and flushes a
+same-directory `.tmp`, atomically replaces the primary, swaps the in-memory
+snapshot and then raises exactly one change event. Write failure preserves the
+prior primary/current snapshot, emits no change event and removes only the
+owned temporary file. `Current` returns an owned snapshot; caller mutation
+cannot mutate service state. Applying an equal snapshot performs no write and
+raises no event. Reopening a new service instance must load the exact last
+successful snapshot.
+
+- [x] **Step 3: Author Input System maps for UI, Surface, Flight and Lens**
 
 Every runtime action is semantic; gameplay and UI code receive values from
 `InputRouter` rather than reading touch coordinates or keys directly. The UI
@@ -755,7 +790,29 @@ implemented by `FrontendSettingsPanel`. It reads and writes the injected
 setting changes without duplicate callbacks and removes the placeholder copy.
 It must not imply account sync or cloud persistence.
 
-- [ ] **Step 4: Test left-handed control swap and mode-map switching**
+Task 6 intentionally supersedes only the placeholder content inside the
+approved Settings modal. The immutable Frontend background, title, main menu,
+modal frame/material language, Close control, motion behavior, Credits,
+Privacy and disabled Continue states remain binding. The real authority is
+`FrontendVisualRoot.prefab`, so Task 6 modifies it and its motion contract as
+well as the scene instance; it does not hand-edit prefab or scene YAML.
+
+`JssInputActions.inputactions` is the one project-wide action asset and the
+exact asset referenced by `InputSystemUIInputModule` and `InputRouter`. Its UI
+map contains `Navigate`, `Submit`, `Cancel`, `Point`, `Click`, `RightClick`,
+`MiddleClick`, `ScrollWheel`, `TrackedDevicePosition` and
+`TrackedDeviceOrientation`. `Cancel` is the only product Back source and emits
+`InputRouter.BackRequested`. Surface, Flight and Lens each contain the same
+semantic `Move`, `Look`, `Primary`, `Secondary`, `Pause`, `Lens`, `PhotoMode`
+and `Recenter` actions. UI remains enabled after service initialization; zero
+or exactly one gameplay map may be enabled, and switching disables the prior
+gameplay map before enabling the next. Keyboard/mouse and gamepad bindings are
+authored now; UI pointer supports touch. Later gameplay HUDs bind touch through
+these semantic actions rather than introducing another asset. Left-handed
+settings swap the published movement/action screen sides without renaming or
+rebinding semantic actions; Task 6 does not invent the later Surface/Flight HUD.
+
+- [x] **Step 4: Test left-handed control swap and mode-map switching**
 
 Expected: swapping layout changes screen placement, not semantic action names;
 only the active gameplay map produces commands. Tests also prove root Back,
@@ -777,12 +834,12 @@ cleanup coverage. Its runtime-initializer audit must identify calls to the
 `CompositionFactory` setter and assert exactly one `BeforeSceneLoad` writer;
 unrelated `BeforeSceneLoad` callbacks are permitted.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 test ! -e Assets/_JustSomeStars/Art/UI/Generated \
   && test ! -e Assets/_JustSomeStars/Art/UI/Generated.meta
-git add -A Assets/_JustSomeStars/Runtime/Core Assets/_JustSomeStars/Runtime/Accessibility Assets/_JustSomeStars/Runtime/Input Assets/_JustSomeStars/Runtime/Development Assets/_JustSomeStars/Runtime/UI Assets/_JustSomeStars/Scenes/Core/Frontend.unity Assets/_JustSomeStars/Art/UI/Generated Assets/_JustSomeStars/Art/UI/Generated.meta Assets/_JustSomeStars/Tests
+git add -A Assets/_JustSomeStars/Editor/JustSomeStars.Editor.asmdef Assets/_JustSomeStars/Prefabs/UI/FrontendVisualRoot.prefab Assets/_JustSomeStars/Runtime/AssemblyInfo.cs Assets/_JustSomeStars/Runtime/Core Assets/_JustSomeStars/Runtime/Accessibility Assets/_JustSomeStars/Runtime/Input Assets/_JustSomeStars/Runtime/Development Assets/_JustSomeStars/Runtime/UI Assets/_JustSomeStars/Scenes/Core/Frontend.unity Assets/_JustSomeStars/Art/UI/Generated Assets/_JustSomeStars/Art/UI/Generated.meta Assets/_JustSomeStars/Tests ProjectSettings/EditorBuildSettings.asset
 git commit -m "feat: add semantic input and independent accessibility settings"
 ```
 

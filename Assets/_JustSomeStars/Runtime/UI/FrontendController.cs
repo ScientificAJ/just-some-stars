@@ -9,8 +9,7 @@ namespace JustSomeStars.Runtime.UI
             "Gameplay is not in this flight yet.";
         private const string SettingsTitle = "Settings";
         private const string SettingsBody =
-            "Settings arrive in a later flight. This screen does not save or " +
-            "change controls yet.";
+            "Saved locally on this device. Nothing leaves this screen.";
         private const string CreditsTitle = "Credits & Licenses";
         private const string CreditsBodyPrefix =
             "Just Some Stars is being built by ScientificAJ. This Development " +
@@ -27,7 +26,8 @@ namespace JustSomeStars.Runtime.UI
             "This Development Flight does not ask for an account, collect " +
             "gameplay progress, open web links, or offer purchases.";
         private const string MissingBindingsError =
-            "[JSS Frontend] FrontendController requires view and lifecycle sources.";
+            "[JSS Frontend] FrontendController requires view, lifecycle, and " +
+            "settings panel sources.";
         private const string MissingLiberationLicenseError =
             "[JSS Frontend] FrontendController requires a non-empty " +
             "Liberation Sans license asset.";
@@ -42,6 +42,9 @@ namespace JustSomeStars.Runtime.UI
         private MonoBehaviour m_LifecycleSource;
 
         [SerializeField]
+        private MonoBehaviour m_SettingsPanelSource;
+
+        [SerializeField]
         private TextAsset m_LiberationSansLicense;
 
         [SerializeField]
@@ -49,14 +52,21 @@ namespace JustSomeStars.Runtime.UI
 
         private IFrontendView m_View;
         private IFrontendLifecycle m_Lifecycle;
+        private IFrontendSettingsPanel m_SettingsPanel;
         private bool m_IsBound;
         private bool m_IsPanelVisible;
+
+        public bool IsConfigured => Dependencies != null;
+
+        public FrontendDependencies Dependencies { get; private set; }
 
         private void Awake()
         {
             m_View = m_ViewSource as IFrontendView;
             m_Lifecycle = m_LifecycleSource as IFrontendLifecycle;
-            if (m_View == null || !m_View.IsReady || m_Lifecycle == null)
+            m_SettingsPanel = m_SettingsPanelSource as IFrontendSettingsPanel;
+            if (m_View == null || !m_View.IsReady || m_Lifecycle == null ||
+                m_SettingsPanel == null || !m_SettingsPanel.IsReady)
             {
                 Debug.LogError(MissingBindingsError, this);
                 enabled = false;
@@ -79,10 +89,64 @@ namespace JustSomeStars.Runtime.UI
                 return;
             }
 
+        }
+
+        public void Configure(FrontendDependencies dependencies)
+        {
+            if (dependencies == null)
+            {
+                throw new System.ArgumentNullException(nameof(dependencies));
+            }
+
+            if (ReferenceEquals(Dependencies, dependencies))
+            {
+                return;
+            }
+
+            if (Dependencies != null)
+            {
+                throw new System.InvalidOperationException(
+                    "FrontendController cannot be rebound to another composition.");
+            }
+
+            if (m_View == null || m_Lifecycle == null || m_SettingsPanel == null)
+            {
+                throw new System.InvalidOperationException(
+                    "FrontendController cannot be configured with invalid bindings.");
+            }
+
+            m_SettingsPanel.Configure(dependencies);
+            Dependencies = dependencies;
             m_View.PresentVersion($"Version {Application.version}");
             m_View.PresentContinue(
                 interactable: false,
                 ContinueExplanation);
+            Bind();
+        }
+
+        internal void Release(FrontendDependencies dependencies)
+        {
+            if (dependencies == null)
+            {
+                throw new System.ArgumentNullException(nameof(dependencies));
+            }
+
+            if (Dependencies == null)
+            {
+                return;
+            }
+
+            if (!ReferenceEquals(Dependencies, dependencies))
+            {
+                throw new System.InvalidOperationException(
+                    "FrontendController can only be released by its owning " +
+                    "composition.");
+            }
+
+            Unbind();
+            HidePanel();
+            m_SettingsPanel.Release(dependencies);
+            Dependencies = null;
         }
 
         private void OnEnable()
@@ -109,7 +173,8 @@ namespace JustSomeStars.Runtime.UI
 
         private void Bind()
         {
-            if (m_IsBound || m_View == null || m_Lifecycle == null)
+            if (m_IsBound || Dependencies == null || m_View == null ||
+                m_Lifecycle == null || !isActiveAndEnabled)
             {
                 return;
             }
@@ -147,6 +212,7 @@ namespace JustSomeStars.Runtime.UI
         private void HandleSettingsRequested()
         {
             ShowPanel(SettingsTitle, SettingsBody);
+            m_SettingsPanel.Show();
         }
 
         private void HandleCreditsRequested()
@@ -182,6 +248,11 @@ namespace JustSomeStars.Runtime.UI
 
         private void ShowPanel(string title, string body)
         {
+            if (!string.Equals(title, SettingsTitle, System.StringComparison.Ordinal))
+            {
+                m_SettingsPanel.Hide();
+            }
+
             m_View.ShowPanel(title, body);
             m_IsPanelVisible = true;
         }
@@ -193,6 +264,7 @@ namespace JustSomeStars.Runtime.UI
                 return;
             }
 
+            m_SettingsPanel.Hide();
             m_View.HidePanel();
             m_IsPanelVisible = false;
         }

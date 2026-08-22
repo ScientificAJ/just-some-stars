@@ -31,4 +31,21 @@ namespace JustSomeStars.Runtime.UI
 
         void RequestExit();
     }
+
+    public interface IFrontendSettingsPanel
+    {
+        bool IsReady { get; }
+
+        bool IsConfigured { get; }
+
+        FrontendDependencies Dependencies { get; }
+
+        void Configure(FrontendDependencies dependencies);
+
+        void Release(FrontendDependencies dependencies);
+
+        void Show();
+
+        void Hide();
+    }
 }
