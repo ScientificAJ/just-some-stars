@@ -1,6 +1,7 @@
 # Galaxy Seller setup runway
 
-Status as of 2026-08-22: **external account gate pending**.
+Status as of 2026-08-22: **prepared and explicitly deferred to the Growth and
+release package (Tasks 31–33), when a playable release candidate exists**.
 
 No Galaxy Store Seller Portal app record, commercial-seller enrollment, signed
 Galaxy build, upload, review, or IAP setup was created or claimed while this
@@ -23,8 +24,9 @@ does not implement Galaxy billing. The native RevenueCat Galaxy bridge and its
 physical licensed-Samsung-device verification belong to Task 24.
 
 The Task 5 `codemagic.yaml` workflow creates only the internal debug APK; its
-macOS runner, Unity Plus/Pro activation and first remote run remain pending. It
-does not build, sign, upload or validate the Galaxy AAB. The CI-only
+remote Unity run is deliberately deferred because the account has Unity
+Personal and no Plus/Pro serial. It does not build, sign, upload or validate the
+Galaxy AAB. The CI-only
 `UNITY_SERIAL`, `UNITY_EMAIL` and `UNITY_PASSWORD` values must not be treated as
 Galaxy signing or Seller Portal credentials.
 
@@ -33,10 +35,10 @@ text. Before Unity activation, the internal workflow must enumerate and hydrate
 all indexed LFS objects, match their size and SHA-256, and prove that retained
 `Assets/TextMesh Pro/Sprites/EmojiOne.png` is a genuine PNG. This source-integrity
 gate does not include EmojiOne in the player and is not evidence of a signed or
-Seller-accepted Galaxy AAB. Remote LFS authentication and hydration remain
-pending.
+Seller-accepted Galaxy AAB. Remote LFS authentication and hydration are
+deferred with that run.
 
-## Seller and application record
+## Seller and application record for Task 33
 
 | Field | Current state |
 |---|---|
@@ -102,7 +104,10 @@ The free story must remain usable when Galaxy commerce is unavailable. An
 emulator result is never evidence that Galaxy commerce works; the technical plan
 requires licensed physical-device verification later.
 
-## External activation ledger
+## Deferred external activation ledger
+
+Every row below is intentionally deferred until the playable release-candidate
+gate. A `Pending` row is not a current Release Runway failure.
 
 | Gate | Status | Redacted evidence to add after completion |
 |---|---|---|

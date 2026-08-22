@@ -1,13 +1,14 @@
 # Codemagic Android Internal workflow
 
-Status as of 2026-08-22: **configuration and isolated Git LFS fixtures checked
-locally; a fresh 211-test EditMode XML, Codemagic scan, runner feasibility,
-activation and remote run remain pending**.
+Status as of 2026-08-22: **the Codemagic personal account, GitHub application,
+public repository and `setup/task-0-environment` workflow are connected;
+Codemagic found `codemagic.yaml`, and the account reports 500 free macOS minutes
+with 0 used**.
 
-No repository connection, push, Codemagic build, account mutation, credential
-entry or store action was performed while this file was written. Local YAML and
-shell validation does not prove that Codemagic accepted the file, provisioned a
-runner, activated Unity or produced an artifact.
+The account has Unity Personal and no Plus/Pro serial. Codemagic's documented
+cloud Unity route requires Plus/Pro, so the user explicitly deferred remote
+execution rather than spending minutes on a guaranteed activation failure. No
+remote build, Unity seat action or store action is claimed.
 
 ## Scope
 
@@ -73,11 +74,10 @@ The revision probe log lives in the runner's temporary directory and is removed
 on success or failure; only the matched non-secret version line reaches the job
 log.
 
-The account has not yet proved that it can allocate `mac_mini_m2`, that its
-plan/billing permits the runner, or that Codemagic's provisioner currently
-accepts this Unity patch for this application. Those are explicit remote gates;
-do not substitute another patch, revision, host or Android toolchain merely to
-make the job start.
+The account exposes 500 free macOS minutes, but no runner was allocated and the
+exact `mac_mini_m2`/Unity provisioner path was not exercised. Those checks are
+deferred with the remote run; do not substitute another patch, revision, host,
+Android toolchain or fake license value merely to make the job start.
 
 This follows Codemagic's official
 [Unity build guidance](https://docs.codemagic.io/yaml-quick-start/building-a-unity-app/)
@@ -256,26 +256,26 @@ version, variant, tests and canonical artifact path. Unity debug APK bytes and
 the machine-local debug certificate do not need to be identical to a local
 build.
 
-## External activation gate
+## External activation ledger
 
-Every row below is pending until the owner explicitly authorizes and verifies
-the corresponding external action.
+Connection/configuration work is complete. License-dependent rows are
+intentionally deferred, not failed or silently waived.
 
 | Gate | Status | Evidence to add after completion |
 |---|---|---|
-| Push the reviewed Task 5 revision | Pending | Commit SHA and branch |
-| Connect the GitHub repository to Codemagic | Pending | Redacted application/workflow reference |
-| Scan and accept `codemagic.yaml` | Pending | Codemagic validation result and UTC time |
-| Confirm account/plan access to `mac_mini_m2` | Pending | Non-secret runner summary |
-| Configure encrypted `jss_unity_ci` variables | Pending | Variable names only; never values |
-| Hydrate and verify every tracked Git LFS object | Pending | Enumerated paths and redacted fetch result |
-| Confirm a free Unity Plus/Pro seat | Pending | Redacted seat availability only |
-| Provision the exact editor and Android modules | Pending | Probe revision and non-secret module paths |
-| Start the first remote run | Pending | Run URL or ID and UTC start time |
-| Tests pass with exact expected counts | Pending | Codemagic test overview and retained XML paths |
-| Internal APK passes inspection | Pending | Size, SHA-256, package, version, ABI, debug and payload state |
-| Unity seat returns after the run | Pending | Redacted dashboard/job observation |
-| Clean runner leaves no tracked mutation | Pending | Final clean-worktree result |
+| Push the reviewed Task 5 revision | Complete | Branch `setup/task-0-environment`; Frontend commit `be24595` |
+| Connect the GitHub repository to Codemagic | Complete | `ScientificAJ/just-some-stars` application connected |
+| Scan and accept `codemagic.yaml` | Complete | Workflow detected from `setup/task-0-environment` |
+| Confirm account allowance | Complete | Personal account reports 500 free macOS minutes, 0 used |
+| Configure encrypted `jss_unity_ci` variables | Deferred | No Plus/Pro serial exists; never invent values |
+| Hydrate and verify every tracked Git LFS object | Deferred | Requires an authorized remote run |
+| Confirm a free Unity Plus/Pro seat | Deferred | Account has Unity Personal only |
+| Provision the exact editor and Android modules | Deferred | Requires an authorized remote run |
+| Start the first remote run | Deferred | User approved deferral; spend no minutes |
+| Tests pass with exact expected counts | Deferred | Local evidence does not claim a remote pass |
+| Internal APK passes remote inspection | Deferred | Local APK remains the authoritative current artifact |
+| Unity seat returns after the run | Not applicable | No seat was activated |
+| Clean runner leaves no tracked mutation | Deferred | No runner was allocated |
 
 Do not mark a row complete from a local run. If the account rejects the runner,
 schema, provisioned version or licensing method, stop and review the proposed

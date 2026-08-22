@@ -579,7 +579,7 @@ ShipKit perks unlock progressively after registration, project setup, store conn
 | RevenueCat | Ready | Account verified; **Just Some Stars** project created; Test Store active | Install Unity SDK; register both Android apps; create products, entitlements and Offerings; implement paywall; complete Test Store, Google and Galaxy purchases |
 | Layers | Claimed | Two months of Pro active | Finish onboarding with the repository/site/store context; define one growth hypothesis; install and verify its SDK using the family-safe analytics configuration; run and document a focused growth loop |
 | Junie | Claimed | 30 AI credits, valid through September 30 | Configure in the JetBrains development environment for focused C#, editor-tool and test assistance; validate all changes through normal review and tests |
-| Codemagic | Account ready | Account created and email verified | Connect the GitHub repository; call Unity CLI for tests and store builds; configure encrypted signing and service variables |
+| Codemagic | Connected; remote Unity deferred | Account, GitHub repository and `codemagic.yaml` workflow connected; 500 free macOS minutes available | Revisit Unity CLI execution only if a valid Plus/Pro CI license becomes available; never invent credentials or spend minutes on a guaranteed activation failure |
 | Lance | Claimed | **Just Some Stars** organization; Pro and 2,000 monthly credits; top-ups disabled | Preserve the account. Lance currently targets App Store/iOS submission, so it activates only if iOS becomes a deliberate platform; it is not forced into Android |
 | Limrun | Claimed | 2,000 credits with no expiry | Use agent-accessible Android emulators/device infrastructure for automated install, smoke, screenshot and demo validation when local hardware coverage is insufficient |
 | Tenjin | Account ready | Account and **Just Some Stars** company profile created | Register the shipped app; confirm/apply the Shipaton plan; use consent- and age-gated attribution to measure adult/eligible acquisition campaigns without sending child DOB or restricted identifiers |
@@ -607,7 +607,7 @@ ShipKit perks unlock progressively after registration, project setup, store conn
 ### 15.3 Milestone-triggered perk loop
 
 1. Unity project created: register exact package identifiers and update RevenueCat, Firebase, Layers, Tenjin and CI records.
-2. First Android build: connect Codemagic, Limrun and Argent when available; upload Google internal/closed testing build.
+2. First Android build: connect Codemagic, Limrun and Argent when available; validate the internal build locally and defer store upload until a playable release candidate.
 3. RevenueCat Test Store purchase: validate the entire entitlement and restore path.
 4. Store accounts connected: import real products, configure signing, start licensed billing tests and refresh ShipKit email.
 5. Public store release: finish Layers onboarding, activate the growth loop, register Tenjin app and prepare Noise launch work.
@@ -618,7 +618,7 @@ ShipKit perks unlock progressively after registration, project setup, store conn
 
 ### 16.1 Codemagic pipeline
 
-Codemagic runs:
+When a valid Plus/Pro CI license is available, Codemagic runs:
 
 1. Repository checkout and Unity dependency/cache restore.
 2. EditMode tests.
@@ -656,7 +656,7 @@ Keystores, passwords, RevenueCat keys, Firebase service credentials and store cr
 - Build Boot, Frontend and graybox Clubhouse.
 - Establish input, save, Addressables and scene loading.
 - Produce the first Realme Narzo build.
-- Create store listings and begin the Google closed-test clock with a valid skeleton build.
+- Prepare store runbooks and identifiers; defer listings and the Google closed-test clock until a playable release candidate exists.
 - Configure RevenueCat Test Store.
 - Begin the master style sheet and crew lineup.
 

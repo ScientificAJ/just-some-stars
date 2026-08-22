@@ -66,7 +66,7 @@ After reopening the workspace, confirm `mcp__argent__*` tools are present. Befor
 | RevenueCat | Account/project ready; Test Store active | Add Unity SDK, Android apps, products, entitlements and paywall after the Unity project/package IDs exist. |
 | Layers | Two months Pro claimed | Complete onboarding once the repository contains the real game site/store context. |
 | Junie | 30 credits claimed through September 30 | Install/configure after a compatible JetBrains IDE is installed. No supported JetBrains IDE is present yet. |
-| Codemagic | Account verified | Connect this repository and add Android workflows after the Unity project exists. |
+| Codemagic | Account/repository/workflow connected; 500 free macOS minutes available | Remote Unity execution is deferred because the account has Unity Personal and no Plus/Pro serial. Revisit only if a valid CI license becomes available. |
 | Lance | Organization and credits ready | Preserve for a later iOS/App Store path; not part of the Android launch. |
 | Limrun | Fully configured; 2,000 non-expiring credits | Remote Android emulator, automated interaction, screenshots and demo video. |
 | Argent | CLI, MCP declaration and skills configured | Run/inspect/control the Android app and create repeatable QA evidence. |

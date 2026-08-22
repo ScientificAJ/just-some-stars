@@ -1,6 +1,7 @@
 # Google Play closed-test runway
 
-Status as of 2026-08-22: **external account gates pending**.
+Status as of 2026-08-22: **prepared and explicitly deferred to the Growth and
+release package (Tasks 31–33), when a playable release candidate exists**.
 
 This is a redacted operational ledger, not proof of a Play Console app, upload,
 published closed release, tester opt-in, or elapsed testing period. No Google
@@ -24,11 +25,12 @@ The internal artifact
 APK. It must never be uploaded as the Google closed-test artifact.
 
 The Task 5 `codemagic.yaml` workflow also produces only that internal debug APK.
-Its macOS runner, Unity Plus/Pro activation and first remote run remain pending;
-even a future successful internal CI run would not prove that a signed Google
-AAB exists or that Play Console accepted it. `UNITY_SERIAL`, `UNITY_EMAIL` and
-`UNITY_PASSWORD` are CI license inputs, not Google signing credentials, and
-must remain separated from the four variables below.
+Its remote Unity run is deliberately deferred because the account has Unity
+Personal and no Plus/Pro serial; even a future successful internal CI run would
+not prove that a signed Google AAB exists or that Play Console accepted it.
+`UNITY_SERIAL`, `UNITY_EMAIL` and `UNITY_PASSWORD` are CI license inputs, not
+Google signing credentials, and must remain separated from the four variables
+below.
 
 No internal or future signed CI artifact is valid evidence if a tracked Git LFS
 path remained pointer text. The pre-activation workflow must enumerate and
@@ -36,9 +38,9 @@ hydrate every indexed LFS object, match its size and SHA-256, and verify that th
 retained `Assets/TextMesh Pro/Sprites/EmojiOne.png` is a genuine PNG. This
 repository-integrity check does not put EmojiOne into the player and does not
 substitute for signed-AAB inspection. Remote LFS authentication and hydration
-are still pending with the first authorized Codemagic run.
+are deferred with the Codemagic run.
 
-## Decisions and prerequisites
+## Decisions and prerequisites for Task 33
 
 The authorized account owner must resolve these before a signed build or console
 mutation:
@@ -90,7 +92,10 @@ Before upload, retain only non-secret evidence:
 Do not retain keystore paths, aliases, passwords, private certificate material,
 Play credentials, receipt data, or complete console exports.
 
-## Console and closed-test ledger
+## Deferred console and closed-test ledger
+
+Every row below is intentionally deferred until the playable release-candidate
+gate. A `Pending` row is not a current Release Runway failure.
 
 | Gate | Status | Redacted evidence |
 |---|---|---|
