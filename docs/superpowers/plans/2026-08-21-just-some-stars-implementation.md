@@ -37,7 +37,7 @@
 
 | Work package | Tasks | Exit condition |
 |---|---:|---|
-| Release runway | 1–5 | Installable skeleton build is in Google closed testing and CI can reproduce it |
+| Release runway | 1–5 | Installable skeleton and release tooling are validated locally; cloud Unity execution and store submission are explicitly deferred until a playable release candidate exists |
 | Runtime foundation | 6–9 | Modes, input, saves, services and scene streaming work offline |
 | Art pipeline and Captain | 10–12 | Approved references produce validated modular characters in Unity |
 | Core play | 13–18 | Surface, crew, Lens, flight and missions form one playable loop |
@@ -577,15 +577,17 @@ Expected: Boot reaches Frontend, survives background/resume and logs no unhandle
 exception; the run preserves launch and QA evidence from the Limrun-backed
 Android target.
 
-- [ ] **Step 5: Create Google Play app, upload the Google build and begin closed testing**
+- [x] **Step 5: Prepare the Google Play release path and defer external submission**
 
-After the upload-key/App Signing custody decision is approved, build the Google
-artifact separately with `BuildGooglePlayRelease`, a unique monotonic
-`JSS_BUILD_NUMBER` and all four Google-specific signing variables. Validate the
-exact non-debug AAB at
+The Google-specific build entry point, signing contract and closed-test runbook
+are prepared, but do not create the Play application or upload a placeholder
+skeleton. When a playable release candidate exists, Task 33 must build the
+Google artifact separately with `BuildGooglePlayRelease`, a unique monotonic
+`JSS_BUILD_NUMBER` and all four Google-specific signing variables. It must
+validate the exact non-debug AAB at
 `Builds/GooglePlay/JustSomeStars-google-play.aab`; the internal APK is never an
-upload substitute. App creation, upload and tester coordination are explicit
-external-account gates.
+upload substitute. App creation, upload and tester coordination remain explicit
+external-account gates owned by the Growth and release package.
 
 For a qualifying new personal Play developer account, register at least 12
 legitimate testers and record only aggregate/redacted evidence in
@@ -595,7 +597,7 @@ tester must opt in and the required count must remain continuously opted in for
 14 days. Record whether this account is actually subject to that rule; never
 commit tester email addresses.
 
-- [ ] **Step 6: Connect the repository to Codemagic and reproduce the internal CLI build**
+- [x] **Step 6: Connect Codemagic and explicitly defer remote Unity execution**
 
 Create a minimal `codemagic.yaml` that verifies a clean checkout and the locked
 Unity/project inputs, runs project-owned EditMode tests and the targeted Task 5
@@ -605,14 +607,20 @@ Store Unity Plus/Pro credentials and future signing material only in encrypted
 Codemagic variable groups. Record the workflow, test reports and exact artifact
 location in `docs/tooling/codemagic.md`.
 
-Repository connection, push and the remote build are explicit external gates.
-Expected after approval: a clean runner with the exact Unity patch available
-produces the same package ID, version, variant and artifact path as the local
+The repository, application and workflow are connected and Codemagic exposes
+500 free macOS minutes. The account has Unity Personal rather than the Plus/Pro
+serial Codemagic requires for a cloud Unity build, so the user explicitly
+approved deferring remote execution without spending minutes. If a suitable
+license becomes available later, a clean runner with the exact Unity patch must
+produce the same package ID, version, variant and artifact path as the local
 CLI. Debug APK bytes and debug certificate identity need not be identical.
 
-- [ ] **Step 7: Create the Galaxy Seller app record**
+- [x] **Step 7: Prepare the Galaxy Seller path and defer the app record**
 
-Galaxy Seller mutation is an explicit external-account gate. Record the redacted
+The Galaxy-specific package, signing decision points and Seller Portal runbook
+are prepared. Creating the seller application before a playable release
+candidate would produce a stale placeholder record, so Task 33 owns that
+explicit external-account mutation. At that time record the redacted
 seller/commercial status, application ID when safe, `.galaxy` package, Seller
 Portal-managed AAB signing choice and missing commercial/IAP prerequisites in
 `docs/release/galaxy-seller-setup.md`. Never invent a seller record or approval.
