@@ -369,7 +369,7 @@ Each entry point must set package ID, symbols, version code, output name, develo
 
 Expected: tests pass and `Builds/AndroidInternal/JustSomeStars-internal.apk` exists.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add Assets/_JustSomeStars/Editor Assets/_JustSomeStars/Tests ProjectSettings
@@ -834,7 +834,7 @@ cleanup coverage. Its runtime-initializer audit must identify calls to the
 `CompositionFactory` setter and assert exactly one `BeforeSceneLoad` writer;
 unrelated `BeforeSceneLoad` callbacks are permitted.
 
-- [x] **Step 5: Commit**
+- [ ] **Step 5: Commit**
 
 ```bash
 test ! -e Assets/_JustSomeStars/Art/UI/Generated \
@@ -847,6 +847,7 @@ git commit -m "feat: add semantic input and independent accessibility settings"
 
 **Files:**
 - Create: `Assets/_JustSomeStars/Runtime/Saving/GameSave.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Saving.meta`
 - Create: `Assets/_JustSomeStars/Runtime/Saving/ISaveService.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Saving/LocalSaveService.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Saving/SaveMigrator.cs`
@@ -860,8 +861,29 @@ git commit -m "feat: add semantic input and independent accessibility settings"
 **Interfaces:**
 - Produces: `LoadAsync`, `SaveCheckpointAsync`, `RecoverAsync` and `Merge(GameSave local, GameSave cloud)`.
 - Produces: schema version `1` containing story, Captain, discoveries, cosmetics, Atlas, birthday and metadata.
+- Persists to the version-independent `jss-save.json` path with sibling
+  `jss-save.json.tmp` and `jss-save.json.backup` files so a schema upgrade does
+  not strand the previous save behind a versioned filename.
+- `LoadSaveResult` distinguishes `Missing`, `LoadedPrimary`,
+  `RecoveredBackup`, `Unreadable` and `StorageUnavailable`. Recovery and
+  failure states carry concise player-readable copy. Missing or unreadable
+  local data never makes required-service startup unavailable, and unreadable
+  primary/backup bytes remain untouched until an explicit successful
+  checkpoint replaces them.
+- Version `1` is the first deployed format. The production migration registry
+  therefore performs an identity pass for version `1`, rejects future or
+  unsupported versions, and exposes ordered pure migration steps for fixture
+  tests and later schemas; it must not invent a fake version `0` format.
+- Merge policy is deterministic and preserves local-only photograph metadata:
+  story keeps the higher checkpoint ordinal; equal ordinals with different
+  checkpoint identities are a typed conflict; discovery, cosmetic and Atlas
+  identifiers are sorted unions; Captain appearance keeps the greater explicit
+  edit timestamp and equal-timestamp disagreement is a typed conflict; matching
+  birthdays merge claim history while differing dates are a typed conflict.
+  `SaveMergeConflictException` is the Task 21 seam for presenting a player
+  choice instead of silently overwriting genuinely incompatible state.
 
-- [ ] **Step 1: Write tests for atomic write, backup recovery and deterministic merge**
+- [x] **Step 1: Write tests for atomic write, backup recovery and deterministic merge**
 
 ```csharp
 [Test]
@@ -873,15 +895,15 @@ public void Merge_UnionsDiscoveriesAndKeepsFurthestCheckpoint()
 }
 ```
 
-- [ ] **Step 2: Implement JSON serialization through a replaceable serializer**
+- [x] **Step 2: Implement JSON serialization through a replaceable serializer**
 
 Write `save.tmp`, flush, move the current save to `save.backup`, then atomically replace it. Never overwrite the backup with unreadable data.
 
-- [ ] **Step 3: Implement corruption recovery and migration registry**
+- [x] **Step 3: Implement corruption recovery and migration registry**
 
 Malformed primary data loads the last-known-good backup and records a user-readable recovery result. Migrations are ordered, pure transformations and covered by fixture tests.
 
-- [ ] **Step 4: Run tests including simulated write interruption**
+- [x] **Step 4: Run tests including simulated write interruption**
 
 Expected: the last complete checkpoint always survives.
 
@@ -891,10 +913,10 @@ Update `DevelopmentBootstrapInstallerTests` so the exact canonical composition,
 cancellation and reverse-cleanup expectations use `LocalSaveService` while the
 remaining development roles stay explicit.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
-git add -A Assets/_JustSomeStars/Runtime/Saving Assets/_JustSomeStars/Runtime/Development Assets/_JustSomeStars/Tests
+git add -A -- Assets/_JustSomeStars/Runtime/Saving.meta Assets/_JustSomeStars/Runtime/Saving Assets/_JustSomeStars/Runtime/Development Assets/_JustSomeStars/Tests docs/superpowers/plans/2026-08-21-just-some-stars-implementation.md
 git commit -m "feat: add recoverable versioned save system"
 ```
 

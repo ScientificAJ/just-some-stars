@@ -2,6 +2,7 @@ using System;
 using JustSomeStars.Runtime.Accessibility;
 using JustSomeStars.Runtime.Core;
 using JustSomeStars.Runtime.Input;
+using JustSomeStars.Runtime.Saving;
 using JustSomeStars.Runtime.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -52,7 +53,7 @@ namespace JustSomeStars.Runtime.Development
                         settings),
                     new GameServiceRegistration(
                         GameServiceRole.LocalSave,
-                        new DevelopmentLocalSaveService(lifecycleObserver)),
+                        new LocalSaveService()),
                     new GameServiceRegistration(
                         GameServiceRole.Input,
                         input),
@@ -86,8 +87,7 @@ namespace JustSomeStars.Runtime.Development
                         settings),
                     new GameServiceRegistration(
                         GameServiceRole.LocalSave,
-                        new DevelopmentLocalSaveService(
-                            NoOpDevelopmentServiceLifecycleObserver.Instance)),
+                        new LocalSaveService()),
                     new GameServiceRegistration(
                         GameServiceRole.Input,
                         input),

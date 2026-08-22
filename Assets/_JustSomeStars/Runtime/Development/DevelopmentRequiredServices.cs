@@ -72,16 +72,6 @@ namespace JustSomeStars.Runtime.Development
         }
     }
 
-    internal sealed class DevelopmentLocalSaveService :
-        DevelopmentRequiredService
-    {
-        public DevelopmentLocalSaveService(
-            IDevelopmentServiceLifecycleObserver lifecycleObserver)
-            : base(lifecycleObserver)
-        {
-        }
-    }
-
     internal sealed class DevelopmentContentCatalogueService :
         DevelopmentRequiredService
     {

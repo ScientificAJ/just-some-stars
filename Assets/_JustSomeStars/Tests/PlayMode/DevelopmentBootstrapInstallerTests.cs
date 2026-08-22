@@ -10,6 +10,7 @@ using JustSomeStars.Runtime.Accessibility;
 using JustSomeStars.Runtime.Core;
 using JustSomeStars.Runtime.Development;
 using JustSomeStars.Runtime.Input;
+using JustSomeStars.Runtime.Saving;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -30,7 +31,7 @@ namespace JustSomeStars.Tests.PlayMode
         private static readonly Type[] s_DevelopmentServiceTypes =
         {
             typeof(SettingsService),
-            typeof(DevelopmentLocalSaveService),
+            typeof(LocalSaveService),
             typeof(InputRouter),
             typeof(DevelopmentContentCatalogueService),
             typeof(DevelopmentModeControllerService),
@@ -252,12 +253,12 @@ namespace JustSomeStars.Tests.PlayMode
                 observer.Events.Count(entry => entry.StartsWith(
                     "initialize:",
                     StringComparison.Ordinal)),
-                Is.EqualTo(3));
+                Is.EqualTo(2));
             Assert.That(
                 observer.Events.Count(entry => entry.StartsWith(
                     "shutdown:",
                     StringComparison.Ordinal)),
-                Is.EqualTo(3));
+                Is.EqualTo(2));
         }
 
         [UnityTest]
@@ -291,7 +292,6 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(transition.Destinations, Is.EqualTo(new[] { "Frontend" }));
             Assert.That(observer.Events, Is.EqualTo(new[]
             {
-                "initialize:DevelopmentLocalSaveService",
                 "initialize:DevelopmentContentCatalogueService",
                 "initialize:DevelopmentModeControllerService",
             }));
@@ -316,12 +316,10 @@ namespace JustSomeStars.Tests.PlayMode
 
             Assert.That(observer.Events, Is.EqualTo(new[]
             {
-                "initialize:DevelopmentLocalSaveService",
                 "initialize:DevelopmentContentCatalogueService",
                 "initialize:DevelopmentModeControllerService",
                 "shutdown:DevelopmentModeControllerService",
                 "shutdown:DevelopmentContentCatalogueService",
-                "shutdown:DevelopmentLocalSaveService",
             }));
             Assert.That(
                 composition.Services.Select(registration => registration.Service)
