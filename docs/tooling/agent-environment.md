@@ -46,6 +46,15 @@ For this Unity Android game, the useful path is: build an APK with Unity CLI, cr
 
 The user selected Limrun instead of the physical Realme Narzo as the primary Android runtime on 2026-08-21. Argent is the preferred control and QA layer over the available Android target; Limrun supplies the cloud device. `lim android list` was verified authenticated with zero running instances, so no credits were being consumed. Do not create an instance before an APK or an immediate device test requires one.
 
+Limrun supplies device creation, APK installation and the ADB tunnel; Argent is
+the sole UI discovery/interaction backend during the normal session. After an
+instance and tunneled serial exist, begin the repository-owned inspector lease
+described in `tools/qa/README.md`. Require that same lease before Argent MCP/CLI
+batches, end it during cleanup, then stop the tunnel and delete the paid
+instance. Never overlap Limrun UIAutomator/element-tree discovery with Argent.
+The guarded `limrun-uiautomator` fallback is allowed only after the Argent lease
+has ended.
+
 ## Argent
 
 Status: **ready for agent use after the next full Codex desktop restart**.
@@ -58,6 +67,12 @@ Status: **ready for agent use after the next full Codex desktop restart**.
 - Argent is free/open tooling. The separate hosted **Argent Cloud** product is still beta and is not required for local or Limrun-backed Android use.
 
 After reopening the workspace, confirm `mcp__argent__*` tools are present. Before the first device action, read the relevant Argent skill, call `list-devices`, and prefer a running Android target. Argent can drive and inspect the Unity APK, but its React Native-only debugger/profiler features do not apply to Unity. Never guess tap coordinates from screenshots; use its discovery tree first.
+
+Direct Argent MCP calls cannot be wrapped as child processes, so run
+`device_inspector_session.py require` immediately before each bounded MCP
+interaction batch. CLI calls should use its `run` subcommand, which holds the
+OS lock for the complete process. The active state contains no credential and
+lives only under ignored `Builds/DeviceSessions/`.
 
 ## ShipKit and platform availability
 

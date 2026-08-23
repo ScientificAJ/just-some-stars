@@ -30,8 +30,6 @@ contract of the task currently being executed.
 | JSS-008 | Replace Task 8's honest `Frontend` streaming-failure fallback with the real Clubhouse scene once that ship-hub scene exists. | Task 26 Clubhouse integration | None; Task 8 must not ship a fake hub scene |
 | JSS-009 | If typed events later publish across worker threads, define and test the stronger contract for a subscriber being disposed while its snapshotted callback is already in flight. | First cross-thread event producer | None; Task 9 guarantees type-safe snapshot dispatch and idempotent removal, not cancellation of an already-running callback |
 | JSS-010 | Consider introducing an `IGameEvent` marker only if arbitrary non-game payloads are actually published through the generic bus. | First event-vocabulary expansion | None; current callers and published contracts use only the six typed game events |
-| JSS-011 | Unity Test Framework 1.6 can enter PlayMode yet serialize an invalid `90 discovered / 0 recorded` aggregate with exit code 2 for the unfiltered or multi-class project suite. Exact-method and single-class results remain valid. | Task 31 CI/test-runner hardening | None; stop rerunning the invalid aggregate and retain focused affected-fixture evidence |
-| JSS-012 | Concurrent Limrun UIAutomator and Argent Android-devtools discovery can race on the same emulator, causing the auxiliary UIAutomator process to fail with `UiAutomationService ... already registered`. | Tooling/QA maintenance | None; the Unity app PID was unaffected, so avoid overlapping discovery backends and use one inspector at a time |
 
 ## Completed tasks
 
@@ -43,8 +41,14 @@ contract of the task currently being executed.
 | Task 7 — versioned local saves and recovery | 2026-08-23 — complete | Schema-v1 story/Captain/discovery/cosmetic/Atlas/photo/birthday metadata; durable temporary write and validated backup rotation; explicit recovery results; ordered future migration registry; deterministic merge with typed player-choice conflicts; focused final gates `14/14` local save, `8/8` migration, `12/12` bootstrap and `1/1` real launch; bounded critic PROCEED |
 | Task 8 — game modes and additive scene streaming | 2026-08-23 — complete | Exact guarded base-mode/overlay matrix and input/camera policies; version-1 Addressables scene catalogue at `jss.scene-catalog`; additive held activation, monotonic progress, exact-once cleanup, safe fallback and idempotent shutdown; permanent five-service bootstrap with no development initializer; focused final gates `7/7` modes, `2/2` catalogue, `12/12` streaming, `10/10` bootstrap and `1/1` real launch; all three bounded critic lifecycle findings reproduced and resolved |
 | Task 9 — content IDs, typed events and editor validation | 2026-08-23 — complete | Immutable validated `ContentId`; six typed event payloads and snapshot-dispatch bus; deterministic contributor-based validation for duplicate IDs and every required reference/binding family; runtime events `4/4`, content validation `9/9`, full EditMode `262/262`, affected PlayMode Boot `8/8`, bootstrap `11/11` and cross-fixture `2/2`; CLI validator green; Android APK SHA-256 `3b10344f54aa82d853c8c5459b3f87950b594bf56a138f23b041fc7a27d79933`; Limrun/Argent Boot-to-Frontend, same-PID resume and root-Back exit smoke passed; bounded critic blocker reproduced and resolved |
+| Runtime foundation QA remediation | 2026-08-23 — complete | JSS-011/JSS-012 promoted by the user; dependency-free tooling tests `11/11`; real isolated PlayMode manifest `90/90` across 10 Unity processes; one OS-locked inspector lease; bounded critic PROCEED |
 
 ## Resolved or promoted findings
 
 Move an entry here only when its owner task starts or the user explicitly
 promotes it. Record the resolving task or commit instead of deleting history.
+
+| ID | Resolution | Evidence |
+|---|---|---|
+| JSS-011 | Resolved by the 2026-08-23 runtime-foundation QA remediation. Full PlayMode verification now uses the source-validated fixture manifest and one Unity process per fixture; the invalid aggregate is no longer a gate. | Strict runner summary: 10 fixtures and `90/90` selected tests passed; stale/missing/malformed/zero-test reports fail closed. |
+| JSS-012 | Resolved by the 2026-08-23 runtime-foundation QA remediation. Limrun supplies the emulator/install/tunnel while an identity-bound lease gives exactly one UI-inspection backend ownership. | Cross-process tests prove competing Argent/Limrun-UIAutomator claims cannot both succeed and guarded commands retain the OS lock through completion. |

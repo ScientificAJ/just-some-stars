@@ -92,15 +92,17 @@ The Unity Editor is used interactively, but every test and release operation mus
 Canonical command shapes:
 
 ```bash
-"$JSS_UNITY_EDITOR" -batchmode -nographics -quit \
+"$JSS_UNITY_EDITOR" -batchmode -nographics -buildTarget Android \
   -projectPath "$JSS_PROJECT_PATH" \
   -runTests -testPlatform editmode \
+  -assemblyNames JustSomeStars.EditModeTests \
   -testResults "$JSS_ARTIFACTS/editmode-results.xml"
 
-"$JSS_UNITY_EDITOR" -batchmode -nographics -quit \
-  -projectPath "$JSS_PROJECT_PATH" \
-  -runTests -testPlatform playmode \
-  -testResults "$JSS_ARTIFACTS/playmode-results.xml"
+python3 tools/qa/playmode_suite.py \
+  --unity-editor "$JSS_UNITY_EDITOR" \
+  --project-path "$JSS_PROJECT_PATH" \
+  --output-directory "$JSS_ARTIFACTS/playmode-suite" \
+  --log-directory "$JSS_ARTIFACTS/playmode-suite-logs"
 
 "$JSS_UNITY_EDITOR" -batchmode -nographics -quit \
   -projectPath "$JSS_PROJECT_PATH" \
@@ -112,6 +114,13 @@ Canonical command shapes:
 ```
 
 The CLI owns build-number injection, scripting symbols, package selection, keystore selection, Addressables building, artifact naming and failure exit codes. Codemagic calls the same entry points used locally so CI cannot silently build a different product.
+
+Unity Test Framework 1.6 full-assembly PlayMode aggregation is not a release
+gate: it can report complete discovery while recording zero tests. The
+repository runner validates its fixture manifest against source, launches one
+Unity process per fixture, rejects missing/malformed/empty NUnit results and
+publishes a consolidated summary. Focused single-fixture Unity invocations
+remain valid. Test invocations omit `-quit`; build entry points retain it.
 
 ### 4.2 Blender MCP is part of the asset pipeline
 

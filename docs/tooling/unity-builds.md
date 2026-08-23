@@ -4,6 +4,34 @@ All local and CI Android builds use the same three Unity entry points. Every
 invocation must pass the exact Unity option `-buildTarget Android`; the build
 code deliberately refuses to switch targets inside the Editor process.
 
+## Tests
+
+Unity Test Framework `1.6.0` is reliable for a single PlayMode fixture in this
+project, but its unfiltered or multi-fixture batch path can discover the full
+suite and serialize zero results. The canonical full PlayMode command therefore
+uses the repository-owned isolated-fixture runner:
+
+```bash
+python3 tools/qa/playmode_suite.py \
+  --unity-editor /mnt/unity-data/Unity/Hub/Editor/6000.3.22f1/Editor/Unity \
+  --project-path /mnt/unity-data/JustSomeStars
+```
+
+Do not retry the invalid unfiltered aggregate or patch Unity's package cache.
+The runner verifies the committed manifest against the PlayMode source tree,
+uses one Android-active Unity process per fixture, strictly parses every NUnit
+XML, and writes an atomic summary. Focused development runs may still call one
+exact fixture or method directly. Unity test invocations omit `-quit`.
+
+The orchestration contract and device-inspector guard are documented in
+`tools/qa/README.md`; their dependency-free tests run with:
+
+```bash
+python3 -m unittest discover -s tools/qa/tests -v
+```
+
+## Builds
+
 Use Unity `6000.3.22f1` from the canonical project checkout:
 
 ```bash

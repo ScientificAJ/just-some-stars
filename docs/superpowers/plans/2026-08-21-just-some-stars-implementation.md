@@ -1135,6 +1135,58 @@ git add -A -- \
 git commit -m "feat: add typed events and content validation"
 ```
 
+### Runtime foundation QA remediation: deterministic PlayMode and device inspection
+
+This user-promoted remediation closes JSS-011 and JSS-012 after Task 9 without
+starting Task 10.
+
+**Files:**
+- Modify: `.gitignore`
+- Create: `tools/__init__.py`
+- Create: `tools/qa/__init__.py`
+- Create: `tools/qa/playmode-fixtures.txt`
+- Create: `tools/qa/playmode_suite.py`
+- Create: `tools/qa/device_inspector_session.py`
+- Create: `tools/qa/README.md`
+- Create: `tools/qa/tests/__init__.py`
+- Create: `tools/qa/tests/test_playmode_suite.py`
+- Create: `tools/qa/tests/test_device_inspector_session.py`
+- Modify: `docs/tooling/unity-builds.md`
+- Modify: `docs/tooling/agent-environment.md`
+- Modify: `outputs/just-some-stars-technical-build-plan.md`
+- Modify: `docs/issue-register.md`
+
+**Interfaces:**
+- Produces: exact source/manifest agreement and one fail-closed Unity process
+  per PlayMode fixture, with strict NUnit validation and an atomic aggregate.
+- Produces: an OS-locked inspector lease that prevents Argent and Limrun
+  UIAutomator from owning the same paid emulator session concurrently.
+
+- [x] **Step 1: Reproduce both missing orchestration contracts with dependency-free tests**
+
+- [x] **Step 2: Implement isolated-fixture PlayMode orchestration and strict report validation**
+
+- [x] **Step 3: Implement atomic, identity-bound single-inspector ownership**
+
+- [x] **Step 4: Run tool tests and the complete real PlayMode manifest once**
+
+- [x] **Step 5: Complete one bounded harsh-critic review and resolve only in-scope blockers**
+
+- [x] **Step 6: Mark JSS-011/JSS-012 resolved, commit, and stop before Task 10**
+
+```bash
+git add -A -- \
+  .gitignore \
+  tools/qa \
+  tools/__init__.py \
+  docs/tooling/unity-builds.md \
+  docs/tooling/agent-environment.md \
+  docs/issue-register.md \
+  docs/superpowers/plans/2026-08-21-just-some-stars-implementation.md \
+  outputs/just-some-stars-technical-build-plan.md
+git commit -m "test: harden runtime foundation QA orchestration"
+```
+
 ### Task 10: Produce and approve the character reference-sheet set
 
 **Files:**
