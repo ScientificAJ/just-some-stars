@@ -1304,21 +1304,28 @@ git commit -m "art: lock character reference sheets"
 - Create: `tools/blender/export_unity_fbx.py`
 - Create: `tools/blender/generate_lods.py`
 - Create: `tools/blender/README.md`
+- Create: `tools/blender/tests/test_character_pipeline.py`
 - Create: `Assets/_JustSomeStars/Editor/Importers/CharacterModelPostprocessor.cs`
+- Create: `Assets/_JustSomeStars/Editor/Importers/CharacterModelPostprocessor.cs.meta`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/CharacterImportPolicyTests.cs`
+- Create: `Assets/_JustSomeStars/Tests/EditMode/CharacterImportPolicyTests.cs.meta`
+- Create: `Assets/_JustSomeStars/Art/Characters/Source/Fixtures/task11-primitive.blend`
+- Create: `Assets/_JustSomeStars/Art/Characters/Export/Fixtures/task11-primitive.fbx`
+- Create: `Assets/_JustSomeStars/Art/Characters/Export/Fixtures/task11-primitive.jss-character.json`
+- Create through Unity: the matching `Source`, `Export`, `Fixtures` and asset `.meta` files.
 
 **Interfaces:**
 - Produces: deterministic meter scale, `-Z` forward/`Y` up FBX exports, naming policy, skeleton checks and LOD outputs.
 
-- [ ] **Step 1: Connect Blender MCP on port 9876 with only Poly Haven enabled**
+- [x] **Step 1: Connect Blender MCP on port 9876 with only Poly Haven enabled**
 
 Expected: MCP can inspect the default scene and execute a harmless object-list operation.
 
-- [ ] **Step 2: Implement scene setup and validator scripts**
+- [x] **Step 2: Implement scene setup and validator scripts**
 
 Validator must reject unapplied scale, non-manifold hero meshes, unnamed materials, unexpected bones, missing LOD collections and invalid object prefixes.
 
-- [ ] **Step 3: Implement batch FBX export**
+- [x] **Step 3: Implement batch FBX export**
 
 ```bash
 blender -b Assets/_JustSomeStars/Art/Characters/Source/captain.blend \
@@ -1327,18 +1334,34 @@ blender -b Assets/_JustSomeStars/Art/Characters/Source/captain.blend \
 
 Expected: clean FBX appears under `Assets/_JustSomeStars/Art/Characters/Export/` with a JSON validation report.
 
-- [ ] **Step 4: Implement Unity model postprocessing**
+- [x] **Step 4: Implement Unity model postprocessing**
 
 Set Humanoid where declared, import scale 1, material extraction policy, animation compression and LOD naming consistently.
 
-- [ ] **Step 5: Test one primitive rig round-trip before hero production**
+- [x] **Step 5: Test one primitive rig round-trip before hero production**
 
 Expected: Blender dimensions, Unity dimensions, forward direction, root motion and bone names match the report.
 
-- [ ] **Step 6: Commit scripts and importer**
+- [x] **Step 6: Commit scripts and importer**
 
 ```bash
-git add tools/blender Assets/_JustSomeStars/Editor/Importers Assets/_JustSomeStars/Tests
+git add -A -- \
+  tools/blender \
+  Assets/_JustSomeStars/Editor/Importers.meta \
+  Assets/_JustSomeStars/Editor/Importers \
+  Assets/_JustSomeStars/Art/Characters/Source.meta \
+  Assets/_JustSomeStars/Art/Characters/Source \
+  Assets/_JustSomeStars/Art/Characters/Export.meta \
+  Assets/_JustSomeStars/Art/Characters/Export \
+  Assets/_JustSomeStars/Tests/EditMode/CharacterImportPolicyTests.cs \
+  Assets/_JustSomeStars/Tests/EditMode/CharacterImportPolicyTests.cs.meta \
+  docs/superpowers/plans/2026-08-21-just-some-stars-implementation.md \
+  docs/issue-register.md
+git diff --cached --check
+git lfs ls-files --name-only | grep -Fx \
+  'Assets/_JustSomeStars/Art/Characters/Source/Fixtures/task11-primitive.blend'
+git lfs ls-files --name-only | grep -Fx \
+  'Assets/_JustSomeStars/Art/Characters/Export/Fixtures/task11-primitive.fbx'
 git commit -m "build: add Blender MCP asset validation pipeline"
 ```
 

@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "assetName": "task11-primitive",
+  "sourceAsset": "Assets/_JustSomeStars/Art/Characters/Source/Fixtures/task11-primitive.blend",
+  "sourceBlendSha256": "5819a180bff057da8c0b4f501b866c4884083d32a304e910866feb77879329e4",
+  "fbxAsset": "Assets/_JustSomeStars/Art/Characters/Export/Fixtures/task11-primitive.fbx",
+  "fbxSha256": "f904dbc4a4de6a1a12a558933bb2e1bb5715e115c3955ac1fdc96ed103e78933",
+  "blenderVersion": "5.2.0 LTS",
+  "rigKind": "Generic",
+  "units": {
+    "lengthUnit": "METERS",
+    "metersPerUnit": 1.0
+  },
+  "axes": {
+    "forward": "-Z",
+    "up": "Y",
+    "unityForward": "+Z"
+  },
+  "dimensionsMeters": {
+    "x": 0.5999996662139893,
+    "y": 0.39999985694885254,
+    "z": 1.600000023841858
+  },
+  "bones": [
+    "Hips",
+    "Root",
+    "Spine"
+  ],
+  "lods": {
+    "JSS_LOD0": {
+      "meshes": [
+        "CHR_Task11Primitive_LOD0"
+      ],
+      "triangles": 960
+    },
+    "JSS_LOD1": {
+      "meshes": [
+        "CHR_Task11Primitive_LOD1"
+      ],
+      "triangles": 480
+    },
+    "JSS_LOD2": {
+      "meshes": [
+        "CHR_Task11Primitive_LOD2"
+      ],
+      "triangles": 192
+    }
+  },
+  "materials": [
+    "MAT_Task11Canvas"
+  ],
+  "forwardMarker": "SOCKET_Forward",
+  "rootMotion": {
+    "bone": "Root",
+    "startFrame": 1,
+    "endFrame": 31,
+    "deltaMeters": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": -1.0
+    },
+    "distanceMeters": 1.0
+  },
+  "configuration": {
+    "globalScale": 1.0,
+    "applyUnitScale": true,
+    "forwardAxis": "-Z",
+    "upAxis": "Y",
+    "addLeafBones": false,
+    "useSelection": true
+  },
+  "validation": {
+    "isValid": true,
+    "issues": []
+  }
+}
