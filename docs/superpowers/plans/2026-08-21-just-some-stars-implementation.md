@@ -1203,6 +1203,51 @@ git commit -m "test: harden runtime foundation QA orchestration"
 **Interfaces:**
 - Produces: approved orthographic, scale-consistent inputs for Blender production.
 
+**Locked sheet ownership:**
+
+- `master-style-sheet.png` is the visual rulebook for the **entire cast**, not
+  one character. It must show a representative Captain, Mira, Juno, Kai, Bea
+  and Ori examples; shared face, eye, child-proportion, hand, foot, hair,
+  homemade-suit, Signal-glow, rendering, lighting, detail-density and
+  mobile-silhouette rules. It establishes the common style but does not replace
+  any character's final turnaround.
+- `crew-height-lineup.png` shows the Captain, Mira, Juno, Kai, Bea and Ori on
+  one floor line in neutral front poses, with numerical Blender-unit heights,
+  head-height guides and body-width/silhouette comparison.
+- `captain-body-families.png` covers only the Captain's three equal-capability
+  body families. Each family requires neutral front, side and back views,
+  exact proportions and matching shoulder, waist, hand, foot, clothing-fit,
+  skeleton and collider landmarks.
+- `captain-customization.png` covers only the Captain's interchangeable face,
+  skin, eyes, hair, colors, clothing, patches, gloves, boots, helmets,
+  backpacks and small accessories. It must demonstrate that shared clothing
+  fits all three body families.
+- `mira.png`, `juno.png`, `kai.png` and `bea.png` each cover only that named,
+  bespoke crew member. Every sheet requires a neutral front/side/back
+  turnaround, face close-up, hair construction, clothing layers, personal
+  palette, signature equipment, exact height, matching landmarks and a
+  mobile-size silhouette preview.
+- `ori.png` covers only Ori. It requires front, side and back views plus a top
+  view when needed, exact size beside a child silhouette, eye/display,
+  antenna, movement joints, scanner, opening panels, Signal-reactive parts,
+  lights and material separation for its dedicated non-humanoid rig.
+- `expressions.png` is a cast-wide grid with separate rows for the Captain,
+  Mira, Juno, Kai, Bea and Ori. Human rows cover neutral, happy, curious,
+  worried, afraid, surprised, determined, sad, blink and compact speaking-mouth
+  shapes. Ori's row communicates the same usable emotional range through its
+  eye, light, antenna, head angle and body pose.
+- `equipment.png` is the character-equipment sheet for the Captain's standard
+  exploration kit, Mira's observation tools, Juno's repair tools, Kai's
+  navigation/piloting gear, Bea's camera/Atlas gear, Ori's scanner/Signal
+  components and shared helmets, backpacks, gloves, boots and handheld tools.
+  It records scale, attachment position and owner; it does not cover ship or
+  environment props.
+- `material-callouts.png` is the cast-wide material/color rulebook for skin,
+  hair, suit fabric, stitched sections, rubber, painted plastic, scratched
+  metal, visor glass, patches, Ori's shell, screens, lights, Signal energy and
+  each character's palette. It identifies soft, rough, glossy, metallic,
+  transparent and emissive surfaces.
+
 - [ ] **Step 1: Generate the master style sheet and compare it with the approved quality image**
 
 Acceptance: warm storybook faces, practical homemade suits, Signal accents, readable mobile silhouettes and no copied franchise design language.
@@ -1219,7 +1264,12 @@ Each sheet contains neutral front, side and back views with matching clothing la
 
 - [ ] **Step 5: Record explicit approval for every sheet in `character-reference-approval.md`**
 
-No downstream Blender task starts for an unapproved row.
+The approval file contains one row for all 12 images, recording filename,
+characters covered, required views, scale consistency, visual-style
+consistency, mobile readability, equipment consistency, approval status,
+review notes and approval date. No downstream Blender task starts for an
+unapproved row, and approval of the master sheet never substitutes for approval
+of an individual character sheet.
 
 - [ ] **Step 6: Commit source and approved exports**
 

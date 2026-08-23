@@ -335,17 +335,39 @@ Tagged perception, camera visibility, reservations and authored recovery anchors
 
 Character generation follows this order:
 
-1. Master visual-style sheet.
-2. Full crew height and silhouette lineup.
-3. Captain sheets for all three body families.
-4. Captain customization and clothing sheets.
-5. Individual Mira, Juno, Kai and Bea sheets.
-6. Ori sheet.
-7. Facial-expression sheets.
-8. Equipment sheets.
-9. Material and color callouts.
+1. A master visual-style sheet for the entire cast. It includes representative
+   Captain, Mira, Juno, Kai, Bea and Ori examples and locks the shared face,
+   proportion, hair, homemade-suit, Signal, rendering, detail-density and
+   mobile-silhouette rules; it is not an individual turnaround.
+2. A full height/silhouette lineup containing the Captain, Mira, Juno, Kai,
+   Bea and Ori together on one floor line with exact Blender-unit heights.
+3. A Captain-only sheet with neutral front, side and back views for all three
+   equal-capability body families and their shared rig/clothing landmarks.
+4. A Captain-only customization sheet covering face, skin, eyes, hair,
+   clothing, colors and accessories across all three body families.
+5. Separate Mira, Juno, Kai and Bea sheets, each with one named character's
+   neutral front/side/back turnaround, face, hair, clothing, palette,
+   equipment, exact height and mobile silhouette.
+6. An Ori-only front/side/back mechanical sheet, adding a top view when needed
+   and identifying its eye, antenna, joints, scanner, panels, Signal parts,
+   lights, materials and exact size.
+7. One cast-wide expression grid with separate Captain, Mira, Juno, Kai, Bea
+   and Ori rows. Human rows include core emotions, blink and compact speech
+   shapes; Ori uses its eye, light, antenna, head and body pose.
+8. One character-equipment sheet covering each cast member's owned gear plus
+   shared wearable/handheld equipment, with scale and attachment callouts.
+9. One cast-wide material/color sheet covering skin, hair, fabrics, rubber,
+   plastic, metal, glass, patches, Ori's shell, screens, lights, Signal energy
+   and character palettes, including surface-response labels.
 
 Sheets use neutral orthographic front, side and back views at consistent scale in an animation-ready pose. A character cannot enter Blender production until the corresponding sheet is approved.
+
+The Task 10 package therefore contains exactly 12 approved images: the master
+sheet, lineup, two Captain sheets, five individual-character sheets and three
+cast-wide support sheets. The approval ledger records subject coverage,
+required views, scale/style consistency, mobile readability, equipment
+consistency, decision, notes and date for every image. A group-sheet approval
+does not implicitly approve an individual character.
 
 ### 8.2 Blender production sequence
 
