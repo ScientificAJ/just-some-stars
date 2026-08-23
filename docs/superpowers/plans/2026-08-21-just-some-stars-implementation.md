@@ -925,7 +925,9 @@ git commit -m "feat: add recoverable versioned save system"
 **Files:**
 - Create: `Assets/_JustSomeStars/Runtime/Core/GameMode.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Core/GameModeController.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Core/SceneCatalog.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Core/SceneStreamService.cs`
+- Create: `Assets/_JustSomeStars/Content.meta`
 - Create: `Assets/_JustSomeStars/Content/SceneCatalog.asset`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/GameModeControllerTests.cs`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/SceneStreamServiceTests.cs`
@@ -940,12 +942,79 @@ git commit -m "feat: add recoverable versioned save system"
 - Delete: `Assets/_JustSomeStars/Runtime/Development/DevelopmentRequiredServices.cs`
 - Delete: `Assets/_JustSomeStars/Runtime/Development/DevelopmentRequiredServices.cs.meta`
 - Delete: `Assets/_JustSomeStars/Runtime/Development.meta` after its final source is removed
+- Modify: `Assets/_JustSomeStars/Runtime/JustSomeStars.Runtime.asmdef`
+- Modify through Unity's Addressables Editor API: `Assets/AddressableAssetsData/AddressableAssetSettings.asset`
+- Modify through Unity's Addressables Editor API: `Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset`
 
 **Interfaces:**
 - Produces: guarded transitions among Frontend, Customization, Clubhouse, Flight, Surface, Lens, Dialogue and Cinematic.
 - Produces: `LoadDestinationAsync`, `UnloadDestinationAsync` and transition-progress events.
 
-- [ ] **Step 1: Write illegal-transition and cancellation tests**
+**Frozen Task 8 state contract:**
+
+- `Frontend` is the initial base mode. The complete directed base-mode matrix is
+  `Frontend -> Customization`; `Customization -> Frontend | Clubhouse`;
+  `Clubhouse -> Customization | Flight`; `Flight -> Clubhouse | Surface`;
+  `Surface -> Flight | Lens | Dialogue | Cinematic`; and
+  `Lens | Dialogue | Cinematic -> Surface`. A same-mode request is an idempotent
+  no-op. Every other edge is rejected before a runtime hook runs.
+- Exactly one mode/overlay transition may be in flight. A concurrent or
+  callback-reentrant request fails without changing state. A cancelled or
+  failed runtime hook restores the exact prior mode, overlay, input map and
+  camera-policy value before the operation settles.
+- `Pause`, `PhotoMode` and `Settings` are overlays, not base modes. At most one
+  overlay may be open; the same overlay is idempotent, replacement/nesting is
+  rejected, base-mode transitions are blocked while an overlay is open, and
+  close restores the exact underlying base mode. Settings is allowed in every
+  base mode; Pause is allowed in Clubhouse, Flight, Surface and Lens; PhotoMode
+  is allowed in Clubhouse, Flight and Surface.
+- Input mapping is exact: Flight uses `GameplayInputMode.Flight`, Surface uses
+  `GameplayInputMode.Surface`, Lens uses `GameplayInputMode.Lens`, every other
+  base mode and every overlay uses `GameplayInputMode.None`. The InputRouter's
+  UI map remains enabled. The mode runtime hook also receives an explicit
+  camera-policy value so later camera implementations attach without becoming
+  a second mode authority.
+
+**Frozen Task 8 catalogue and streaming contract:**
+
+- `SceneCatalog` is a version-1 `ScriptableObject`. Each entry has one trimmed,
+  ordinal-stable destination ID, one trimmed Addressables scene address and one
+  target `GameMode`. Empty IDs/addresses, duplicate IDs/addresses, duplicate
+  mode/address records, invalid modes and unsupported schema versions reject
+  the whole catalogue. The committed catalogue is acquired from the exact
+  Addressables key `jss.scene-catalog`; the Default Local Group contains that
+  exact asset entry. Destination entries remain empty until real scenes land,
+  rather than shipping pretend gameplay.
+- The current safe fallback is the existing `Frontend` scene and
+  `GameMode.Frontend`. This is explicitly temporary until Task 26 creates the
+  real Clubhouse scene; Task 26 must migrate the catalogue fallback to the ship
+  hub. A failure records one structured diagnostic, settles and releases every
+  issued operation, restores the prior active scene when possible, routes to
+  the configured safe fallback and recovers the mode through the dedicated
+  failure-recovery path. Cancellation performs cleanup but does not route to a
+  fallback or report a content failure.
+- Streaming has one owner and one in-flight operation. Concurrent load/unload
+  calls fail closed. Loading an already-owned destination and unloading with no
+  owned destination are idempotent results; another destination must be
+  unloaded before a new one loads. Loads are additive and held before
+  activation. Progress events are monotonic per operation and cover resolve,
+  load, activation, mode commit and completion/cleanup.
+- Cancellation before Addressables issue starts nothing. Cancellation after
+  issue cannot pretend to stop Unity: the service awaits load/activation
+  settlement, unloads any resulting scene, releases its handle exactly once,
+  restores the prior active scene and then completes as cancelled. Load,
+  activation or mode-hook failure follows the same exact cleanup before safe
+  fallback. Shutdown cancels the current operation, awaits settlement, unloads
+  an owned destination, releases catalog/scene handles once and is idempotent.
+- `ApplicationBootstrapInstaller` constructs five distinct required services in
+  exact order: `SettingsService`, `LocalSaveService`, `InputRouter`,
+  `SceneStreamService`, `GameModeController`. The stream service receives the
+  exact controller and scene transition instances by constructor; the
+  controller receives the exact InputRouter through its runtime hook. Typed
+  injection is composition-owned; `GameServiceRole` and `ServiceRegistry` are
+  never used as locators.
+
+- [x] **Step 1: Write illegal-transition and cancellation tests**
 
 ```csharp
 [Test]
@@ -956,15 +1025,15 @@ public void Surface_CannotJumpDirectlyToFrontendWithoutReturnFlow()
 }
 ```
 
-- [ ] **Step 2: Implement the transition table and mode-owned input/camera hooks**
+- [x] **Step 2: Implement the transition table and mode-owned input/camera hooks**
 
 Pause, Photo Mode and settings are overlay states and must restore the underlying mode exactly.
 
-- [ ] **Step 3: Implement Addressables scene streaming with progress and cancellation**
+- [x] **Step 3: Implement Addressables scene streaming with progress and cancellation**
 
 Approach and landing masks can hold until destination scene activation succeeds. Failure returns safely to the ship hub and records a diagnostic.
 
-- [ ] **Step 4: Test repeated destination load/unload for leaked scenes and duplicate bootstrap objects**
+- [x] **Step 4: Test repeated destination load/unload for leaked scenes and duplicate bootstrap objects**
 
 Replace the final development ContentCatalogue and ModeController roles with
 one explicit catalogue/streaming lifecycle owner and `GameModeController`.
@@ -985,15 +1054,21 @@ callbacks. Migrate `Task5LaunchIntegrationTests` to
 preserve real Boot-to-Frontend activation, dependency injection, report
 identity and leak-free teardown after the Development namespace is deleted.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 test ! -e Assets/_JustSomeStars/Runtime/Development \
   && test ! -e Assets/_JustSomeStars/Runtime/Development.meta
-git add -A Assets/_JustSomeStars/Runtime/Core \
+git add -A -- \
+  "Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" \
+  Assets/_JustSomeStars/Content.meta Assets/_JustSomeStars/Content \
+  Assets/_JustSomeStars/Runtime/Core \
   Assets/_JustSomeStars/Runtime/Development \
   Assets/_JustSomeStars/Runtime/Development.meta \
-  Assets/_JustSomeStars/Content Assets/_JustSomeStars/Tests
+  Assets/_JustSomeStars/Runtime/JustSomeStars.Runtime.asmdef \
+  Assets/_JustSomeStars/Tests \
+  docs/issue-register.md \
+  docs/superpowers/plans/2026-08-21-just-some-stars-implementation.md
 git commit -m "feat: add explicit modes and additive destination streaming"
 ```
 

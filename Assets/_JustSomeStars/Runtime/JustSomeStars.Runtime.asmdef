@@ -2,6 +2,8 @@
   "name": "JustSomeStars.Runtime",
   "rootNamespace": "JustSomeStars.Runtime",
   "references": [
+    "Unity.Addressables",
+    "Unity.ResourceManager",
     "Unity.InputSystem",
     "Unity.TextMeshPro",
     "UnityEngine.UI"

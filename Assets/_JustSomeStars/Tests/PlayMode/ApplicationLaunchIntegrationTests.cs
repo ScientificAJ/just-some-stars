@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using JustSomeStars.Runtime.Core;
-using JustSomeStars.Runtime.Development;
 using JustSomeStars.Runtime.Input;
 using JustSomeStars.Runtime.UI;
 using NUnit.Framework;
@@ -19,7 +18,7 @@ using UnityEngine.UI;
 
 namespace JustSomeStars.Tests.PlayMode
 {
-    public sealed class Task5LaunchIntegrationTests
+    public sealed class ApplicationLaunchIntegrationTests
     {
         private const string CreditsPrefix =
             "Just Some Stars is being built by ScientificAJ. This Development " +
@@ -67,9 +66,9 @@ namespace JustSomeStars.Tests.PlayMode
         }
 
         [UnityTest]
-        public IEnumerator RealBoot_WithDevelopmentInstaller_ActivatesFrontendOnce()
+        public IEnumerator RealBoot_WithApplicationInstaller_ActivatesFrontendOnce()
         {
-            DevelopmentBootstrapInstaller.Install();
+            ApplicationBootstrapInstaller.Install();
             Assert.That(GameBootstrap.CompositionFactory, Is.Not.Null);
 
             var bootLoad = SceneManager.LoadSceneAsync("Boot", LoadSceneMode.Single);
@@ -476,8 +475,9 @@ namespace JustSomeStars.Tests.PlayMode
             Func<bool> condition,
             string operation)
         {
-            const int maximumFrames = 600;
-            for (var frame = 0; frame < maximumFrames; frame++)
+            var timeout = TimeSpan.FromSeconds(10);
+            var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+            while (stopwatch.Elapsed < timeout)
             {
                 if (condition())
                 {
@@ -488,7 +488,8 @@ namespace JustSomeStars.Tests.PlayMode
             }
 
             Assert.Fail(
-                $"{operation} did not complete within {maximumFrames} frames.");
+                $"{operation} did not complete within {timeout.TotalSeconds:0} " +
+                "seconds.");
         }
 
         private static GameBootstrap[] FindAllBootstraps()
