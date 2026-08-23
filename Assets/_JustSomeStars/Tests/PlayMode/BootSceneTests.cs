@@ -17,15 +17,7 @@ namespace JustSomeStars.Tests.PlayMode
         [UnityTearDown]
         public IEnumerator TearDown()
         {
-            GameBootstrap.CompositionFactory = null;
-            foreach (var bootstrap in UnityEngine.Object.FindObjectsByType<GameBootstrap>(
-                         FindObjectsInactive.Include,
-                         FindObjectsSortMode.None))
-            {
-                UnityEngine.Object.Destroy(bootstrap.gameObject);
-            }
-
-            yield return null;
+            yield return ShutdownAndDestroyAllBootstraps();
         }
 
         [Test]
@@ -349,42 +341,36 @@ namespace JustSomeStars.Tests.PlayMode
         [UnityTest]
         public IEnumerator BootScene_RoutesExactlyOnceAndSurvivesSceneChanges()
         {
-            var events = new List<string>();
-            var transition = new RecordingSceneTransition(events);
-            GameBootstrap.CompositionFactory = () =>
-                new GameBootstrapComposition(
-                    CreateRegistrations(
-                        events,
-                        GameServiceRole.Settings,
-                        GameServiceRole.LocalSave,
-                        GameServiceRole.Input,
-                        GameServiceRole.ContentCatalogue,
-                        GameServiceRole.ModeController),
-                    transition);
+            yield return ShutdownAndDestroyAllBootstraps();
+            ApplicationBootstrapInstaller.Install();
+            Assert.That(GameBootstrap.CompositionFactory, Is.Not.Null);
 
             var load = SceneManager.LoadSceneAsync("Boot", LoadSceneMode.Single);
             Assert.That(load, Is.Not.Null);
             yield return load;
-            yield return WaitForBootstrapStartup();
+            yield return WaitForFrontendStartup();
 
             var bootstraps = UnityEngine.Object.FindObjectsByType<GameBootstrap>(
                 FindObjectsInactive.Include,
                 FindObjectsSortMode.None);
             Assert.That(bootstraps, Has.Length.EqualTo(1));
-            Assert.That(bootstraps[0].LastStartupReport, Is.Not.Null);
-            Assert.That(bootstraps[0].LastStartupReport.RoutedToFrontend, Is.True);
-            Assert.That(transition.Destinations, Is.EqualTo(new[] { "Frontend" }));
-
             var bootstrap = bootstraps[0];
-            var nextScene = SceneManager.CreateScene("Task4AfterBoot");
-            Assert.That(SceneManager.SetActiveScene(nextScene), Is.True);
-            var bootScene = SceneManager.GetSceneByName("Boot");
-            var unload = SceneManager.UnloadSceneAsync(bootScene);
-            Assert.That(unload, Is.Not.Null);
-            yield return unload;
-
-            Assert.That(bootstrap, Is.Not.Null);
+            Assert.That(bootstrap.LastStartupReport, Is.Not.Null);
+            Assert.That(bootstrap.LastStartupReport.IsSuccessful, Is.True);
+            Assert.That(bootstrap.LastStartupReport.RoutedToFrontend, Is.True);
+            Assert.That(
+                bootstrap.LastStartupReport.RequestedDestination,
+                Is.EqualTo("Frontend"));
+            Assert.That(
+                SceneManager.GetActiveScene().name,
+                Is.EqualTo("Frontend"));
+            Assert.That(bootstrap != null, Is.True);
             Assert.That(bootstrap.gameObject.scene.name, Is.EqualTo("DontDestroyOnLoad"));
+            Assert.That(
+                UnityEngine.Object.FindObjectsByType<GameBootstrap>(
+                    FindObjectsInactive.Include,
+                    FindObjectsSortMode.None),
+                Has.Length.EqualTo(1));
         }
 
         [UnityTest]
@@ -417,6 +403,72 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(transition.Destinations, Is.EqualTo(new[] { "Frontend" }));
         }
 
+        private static IEnumerator ShutdownAndDestroyAllBootstraps()
+        {
+            GameBootstrap.CompositionFactory = null;
+            var bootstraps = UnityEngine.Object.FindObjectsByType<GameBootstrap>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None);
+            var shutdownTasks = bootstraps
+                .Where(bootstrap => bootstrap != null)
+                .Select(bootstrap => bootstrap.ShutdownAsync().AsTask())
+                .Distinct()
+                .ToArray();
+            foreach (var shutdownTask in shutdownTasks)
+            {
+                yield return WaitForTask(
+                    shutdownTask,
+                    "BootSceneTests bootstrap shutdown");
+            }
+
+            foreach (var bootstrap in bootstraps)
+            {
+                if (bootstrap != null)
+                {
+                    UnityEngine.Object.Destroy(bootstrap.gameObject);
+                }
+            }
+
+            const float cleanupTimeoutSeconds = 10f;
+            var cleanupDeadline =
+                Time.realtimeSinceStartup + cleanupTimeoutSeconds;
+            while (Time.realtimeSinceStartup < cleanupDeadline)
+            {
+                var remaining = UnityEngine.Object.FindObjectsByType<GameBootstrap>(
+                    FindObjectsInactive.Include,
+                    FindObjectsSortMode.None);
+                if (remaining.Length == 0)
+                {
+                    yield break;
+                }
+
+                yield return null;
+            }
+
+            Assert.That(
+                UnityEngine.Object.FindObjectsByType<GameBootstrap>(
+                    FindObjectsInactive.Include,
+                    FindObjectsSortMode.None),
+                Is.Empty,
+                "BootSceneTests must start and finish without a retained bootstrap.");
+        }
+
+        private static IEnumerator WaitForTask(Task task, string operation)
+        {
+            const float timeoutSeconds = 10f;
+            var deadline = Time.realtimeSinceStartup + timeoutSeconds;
+            while (!task.IsCompleted && Time.realtimeSinceStartup < deadline)
+            {
+                yield return null;
+            }
+
+            Assert.That(
+                task.IsCompleted,
+                Is.True,
+                $"{operation} did not complete within {timeoutSeconds} seconds.");
+            task.GetAwaiter().GetResult();
+        }
+
         private static IReadOnlyList<GameServiceRegistration> CreateRegistrations(
             ICollection<string> events,
             params GameServiceRole[] roles)
@@ -430,8 +482,9 @@ namespace JustSomeStars.Tests.PlayMode
 
         private static IEnumerator WaitForBootstrapStartup()
         {
-            const int maximumFrames = 120;
-            for (var frame = 0; frame < maximumFrames; frame++)
+            const float timeoutSeconds = 10f;
+            var deadline = Time.realtimeSinceStartup + timeoutSeconds;
+            while (Time.realtimeSinceStartup < deadline)
             {
                 var bootstrap = UnityEngine.Object.FindFirstObjectByType<GameBootstrap>(
                     FindObjectsInactive.Include);
@@ -443,7 +496,33 @@ namespace JustSomeStars.Tests.PlayMode
                 yield return null;
             }
 
-            Assert.Fail("GameBootstrap did not finish startup within 120 frames.");
+            Assert.Fail(
+                $"GameBootstrap did not finish startup within {timeoutSeconds} seconds.");
+        }
+
+        private static IEnumerator WaitForFrontendStartup()
+        {
+            const float timeoutSeconds = 10f;
+            var deadline = Time.realtimeSinceStartup + timeoutSeconds;
+            while (Time.realtimeSinceStartup < deadline)
+            {
+                var bootstraps = UnityEngine.Object.FindObjectsByType<GameBootstrap>(
+                    FindObjectsInactive.Include,
+                    FindObjectsSortMode.None);
+                if (SceneManager.GetActiveScene().name == "Frontend" &&
+                    bootstraps.Length == 1 &&
+                    bootstraps[0] != null &&
+                    bootstraps[0].LastStartupReport != null)
+                {
+                    yield break;
+                }
+
+                yield return null;
+            }
+
+            Assert.Fail(
+                $"Boot-to-Frontend startup did not complete within " +
+                $"{timeoutSeconds} seconds.");
         }
 
         private sealed class RecordingService : IGameService

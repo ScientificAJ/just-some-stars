@@ -1076,19 +1076,27 @@ git commit -m "feat: add explicit modes and additive destination streaming"
 
 **Files:**
 - Create: `Assets/_JustSomeStars/Runtime/Core/ContentId.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Core/ContentId.cs.meta`
 - Create: `Assets/_JustSomeStars/Runtime/Core/GameEventBus.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Core/GameEventBus.cs.meta`
 - Create: `Assets/_JustSomeStars/Runtime/Core/GameEvents.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Core/GameEvents.cs.meta`
+- Create: `Assets/_JustSomeStars/Editor/Validation.meta`
 - Create: `Assets/_JustSomeStars/Editor/Validation/ProjectContentValidator.cs`
+- Create: `Assets/_JustSomeStars/Editor/Validation/ProjectContentValidator.cs.meta`
 - Create: `Assets/_JustSomeStars/Editor/Validation/ValidationReport.cs`
+- Create: `Assets/_JustSomeStars/Editor/Validation/ValidationReport.cs.meta`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/ContentValidationTests.cs`
+- Create: `Assets/_JustSomeStars/Tests/EditMode/ContentValidationTests.cs.meta`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/BootSceneTests.cs`
 
 **Interfaces:**
 - Produces: typed publish/subscribe without string event names.
 - Produces: CLI-callable `ProjectContentValidator.ValidateForCi()` that exits nonzero on content errors.
 
-- [ ] **Step 1: Write tests for duplicate IDs, missing references and subscriber cleanup**
+- [x] **Step 1: Write tests for duplicate IDs, missing references and subscriber cleanup**
 
-- [ ] **Step 2: Implement immutable `ContentId` and typed event records**
+- [x] **Step 2: Implement immutable `ContentId` and typed event records**
 
 ```csharp
 public readonly record struct ContentId(string Value);
@@ -1097,21 +1105,33 @@ public readonly record struct PhenomenonObserved(ContentId PhenomenonId);
 public readonly record struct SignalFragmentRecovered(ContentId FragmentId);
 ```
 
-- [ ] **Step 3: Implement project validators**
+The project is pinned to C# 9, so use semantically equivalent immutable
+`readonly struct` value types with ordinal equality and validated constructors;
+do not raise the language version solely to use C# 10 `record struct` syntax.
+
+- [x] **Step 3: Implement project validators**
 
 Validate duplicate IDs, mission links, dialogue references, science sources, Addressable keys, body-family cosmetic fits and store entitlement mappings.
 
-- [ ] **Step 4: Run validation through Unity CLI and confirm an intentionally broken fixture fails**
+- [x] **Step 4: Run validation through Unity CLI and confirm an intentionally broken fixture fails**
 
 ```bash
-"$JSS_UNITY_EDITOR" -batchmode -nographics -quit -projectPath "$PWD" \
+"$JSS_UNITY_EDITOR" -batchmode -nographics -quit -buildTarget Android \
+  -projectPath "$PWD" \
   -executeMethod JustSomeStars.Editor.Validation.ProjectContentValidator.ValidateForCi
 ```
 
-- [ ] **Step 5: Remove the broken fixture, rerun green and commit**
+- [x] **Step 5: Remove the broken fixture, rerun green and commit**
 
 ```bash
-git add Assets/_JustSomeStars
+git add -A -- \
+  Assets/_JustSomeStars/Runtime/Core \
+  Assets/_JustSomeStars/Editor/Validation.meta \
+  Assets/_JustSomeStars/Editor/Validation \
+  Assets/_JustSomeStars/Tests/EditMode \
+  Assets/_JustSomeStars/Tests/PlayMode/BootSceneTests.cs \
+  docs/issue-register.md \
+  docs/superpowers/plans/2026-08-21-just-some-stars-implementation.md
 git commit -m "feat: add typed events and content validation"
 ```
 
