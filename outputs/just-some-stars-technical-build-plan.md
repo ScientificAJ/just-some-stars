@@ -362,12 +362,31 @@ Character generation follows this order:
 
 Sheets use neutral orthographic front, side and back views at consistent scale in an animation-ready pose. A character cannot enter Blender production until the corresponding sheet is approved.
 
+Written labels, role descriptions, numerical dimensions, landmark diagrams and
+control notes are the production authority if an approved generated image has
+an incidental visual mismatch. Downstream modelers, riggers and animators must
+correct that mismatch in the real asset; they must not blindly trace it. This
+especially applies to matching facial expressions to their named semantics.
+
 The Task 10 package therefore contains exactly 12 approved images: the master
 sheet, lineup, two Captain sheets, five individual-character sheets and three
 cast-wide support sheets. The approval ledger records subject coverage,
 required views, scale/style consistency, mobile readability, equipment
 consistency, decision, notes and date for every image. A group-sheet approval
 does not implicitly approve an individual character.
+
+The shared Task 10 art direction approved on 2026-08-23 is **cinematic
+storybook realism**: the representative Captain and four named crew—five human
+children total—read as 12–14 years old at roughly 6–6.5 heads tall, with softly believable faces,
+slightly enlarged expressive eyes and modestly enlarged hands and boots for
+readability. Materials remain physically believable while silhouettes,
+features and homemade repaired exploration gear stay warmly stylized. The
+palette and lighting follow the warm-sunset/cool-starlight duality of
+`outputs/just-some-stars-mirra-gameplay-target-v1.png`, with restrained
+cyan/violet Signal accents. The approved direction excludes anime, chibi,
+photoreal-adult, toy-plastic, tactical-military, superhero, generic mascot and
+recognizable franchise design language. The binding decision and per-sheet
+status live in `docs/art/character-reference-approval.md`.
 
 ### 8.2 Blender production sequence
 

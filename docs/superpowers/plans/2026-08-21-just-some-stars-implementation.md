@@ -1248,21 +1248,33 @@ git commit -m "test: harden runtime foundation QA orchestration"
   each character's palette. It identifies soft, rough, glossy, metallic,
   transparent and emissive surfaces.
 
-- [ ] **Step 1: Generate the master style sheet and compare it with the approved quality image**
+- [x] **Step 1: Generate the master style sheet and compare it with the approved quality image**
 
 Acceptance: warm storybook faces, practical homemade suits, Signal accents, readable mobile silhouettes and no copied franchise design language.
 
-- [ ] **Step 2: Create the crew lineup and lock heights/body silhouettes**
+User-approved art-direction lock (2026-08-23): cinematic storybook realism for
+the five human characters, who read as 12–14 years old at approximately 6–6.5
+heads tall, with soft believable
+facial anatomy, slightly enlarged expressive eyes, modestly enlarged hands and
+boots, premium believable materials, practical repaired homemade exploration
+gear, restrained cyan/violet Signal accents and the warm-sunset/cool-starlight
+duality of `outputs/just-some-stars-mirra-gameplay-target-v1.png`. Avoid anime,
+chibi, photoreal-adult, toy-plastic, tactical-military, superhero, generic
+mobile-mascot and recognizable franchise design language. The final master
+sheet shows the representative Captain, Mira, Juno, Kai, Bea and Ori together;
+the user's approval is recorded in the Task 10 ledger.
+
+- [x] **Step 2: Create the crew lineup and lock heights/body silhouettes**
 
 Show all five kids and Ori on one ground plane with numerical Blender-unit height callouts.
 
-- [ ] **Step 3: Create Captain and individual-character orthographic sheets**
+- [x] **Step 3: Create Captain and individual-character orthographic sheets**
 
 Each sheet contains neutral front, side and back views with matching clothing landmarks and no perspective distortion.
 
-- [ ] **Step 4: Create expression, equipment and material sheets**
+- [x] **Step 4: Create expression, equipment and material sheets**
 
-- [ ] **Step 5: Record explicit approval for every sheet in `character-reference-approval.md`**
+- [x] **Step 5: Record explicit approval for every sheet in `character-reference-approval.md`**
 
 The approval file contains one row for all 12 images, recording filename,
 characters covered, required views, scale consistency, visual-style
@@ -1271,7 +1283,13 @@ review notes and approval date. No downstream Blender task starts for an
 unapproved row, and approval of the master sheet never substitutes for approval
 of an individual character sheet.
 
-- [ ] **Step 6: Commit source and approved exports**
+Written labels, role descriptions, numerical dimensions, landmark diagrams and
+control notes override incidental generated-image mistakes. Task 12 modelers
+and riggers and Task 29 animators must correct those mismatches in the actual
+assets instead of tracing them; expression labels describe the required final
+emotion even when a thumbnail is imperfect.
+
+- [x] **Step 6: Commit source and approved exports**
 
 ```bash
 git add Assets/_JustSomeStars/Art/Characters/References docs/art
