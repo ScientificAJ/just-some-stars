@@ -1,0 +1,409 @@
+{
+  "atlas": {
+    "format": "PNG",
+    "height": 384,
+    "path": "primitive-stage2.png",
+    "sha256": "61a7448e3cfb80b634095037bccbaeefbbc927d4ec9b4771cc7b1bc6a7e79d0e",
+    "width": 1024
+  },
+  "characterId": "primitive-stage2",
+  "clips": [
+    {
+      "cadenceFps": 12,
+      "facing": "Right",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            23,
+            20,
+            110,
+            178
+          ],
+          "contacts": [
+            "LeftFoot",
+            "RightFoot"
+          ],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.08333333333333333
+          ],
+          "rectPixels": {
+            "height": 192,
+            "width": 128,
+            "x": 0,
+            "y": 192
+          },
+          "registeredBaselinePixels": 177,
+          "registrationOffsetPixels": 1,
+          "sourceBaselinePixels": 176,
+          "spriteName": "primitive-stage2__primitive_idle_right__000"
+        },
+        {
+          "alphaBoundsPixels": [
+            24,
+            21,
+            110,
+            178
+          ],
+          "contacts": [
+            "LeftFoot",
+            "RightFoot"
+          ],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 1,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.08333333333333333
+          ],
+          "rectPixels": {
+            "height": 192,
+            "width": 128,
+            "x": 128,
+            "y": 192
+          },
+          "registeredBaselinePixels": 177,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 177,
+          "spriteName": "primitive-stage2__primitive_idle_right__001"
+        },
+        {
+          "alphaBoundsPixels": [
+            23,
+            20,
+            110,
+            178
+          ],
+          "contacts": [
+            "LeftFoot",
+            "RightFoot"
+          ],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 2,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.08333333333333333
+          ],
+          "rectPixels": {
+            "height": 192,
+            "width": 128,
+            "x": 256,
+            "y": 192
+          },
+          "registeredBaselinePixels": 177,
+          "registrationOffsetPixels": 1,
+          "sourceBaselinePixels": 176,
+          "spriteName": "primitive-stage2__primitive_idle_right__002"
+        },
+        {
+          "alphaBoundsPixels": [
+            24,
+            20,
+            110,
+            178
+          ],
+          "contacts": [
+            "LeftFoot",
+            "RightFoot"
+          ],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 3,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.08333333333333333
+          ],
+          "rectPixels": {
+            "height": 192,
+            "width": 128,
+            "x": 384,
+            "y": 192
+          },
+          "registeredBaselinePixels": 177,
+          "registrationOffsetPixels": 2,
+          "sourceBaselinePixels": 175,
+          "spriteName": "primitive-stage2__primitive_idle_right__003"
+        }
+      ],
+      "id": "primitive.idle.right",
+      "loopMode": "Loop",
+      "sourceStrip": "source/primitive-stage2-idle.png",
+      "sourceStripSha256": "6569e04553f3d313be9fa9f97cf650859efff225967671f9e7b9fb0d041d609f"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Right",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            26,
+            19,
+            113,
+            178
+          ],
+          "contacts": [
+            "LeftFoot"
+          ],
+          "durationSeconds": 0.083333333,
+          "events": [
+            {
+              "id": "step-left",
+              "kind": "FootContact"
+            }
+          ],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.08333333333333333
+          ],
+          "rectPixels": {
+            "height": 192,
+            "width": 128,
+            "x": 0,
+            "y": 0
+          },
+          "registeredBaselinePixels": 177,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 177,
+          "spriteName": "primitive-stage2__primitive_run_right__000"
+        },
+        {
+          "alphaBoundsPixels": [
+            26,
+            20,
+            112,
+            178
+          ],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 1,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.08333333333333333
+          ],
+          "rectPixels": {
+            "height": 192,
+            "width": 128,
+            "x": 128,
+            "y": 0
+          },
+          "registeredBaselinePixels": 177,
+          "registrationOffsetPixels": 2,
+          "sourceBaselinePixels": 175,
+          "spriteName": "primitive-stage2__primitive_run_right__001"
+        },
+        {
+          "alphaBoundsPixels": [
+            26,
+            20,
+            112,
+            178
+          ],
+          "contacts": [
+            "RightFoot"
+          ],
+          "durationSeconds": 0.083333333,
+          "events": [
+            {
+              "id": "step-right",
+              "kind": "FootContact"
+            }
+          ],
+          "index": 2,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.08333333333333333
+          ],
+          "rectPixels": {
+            "height": 192,
+            "width": 128,
+            "x": 256,
+            "y": 0
+          },
+          "registeredBaselinePixels": 177,
+          "registrationOffsetPixels": 3,
+          "sourceBaselinePixels": 174,
+          "spriteName": "primitive-stage2__primitive_run_right__002"
+        },
+        {
+          "alphaBoundsPixels": [
+            26,
+            21,
+            112,
+            178
+          ],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 3,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.08333333333333333
+          ],
+          "rectPixels": {
+            "height": 192,
+            "width": 128,
+            "x": 384,
+            "y": 0
+          },
+          "registeredBaselinePixels": 177,
+          "registrationOffsetPixels": 3,
+          "sourceBaselinePixels": 174,
+          "spriteName": "primitive-stage2__primitive_run_right__003"
+        },
+        {
+          "alphaBoundsPixels": [
+            26,
+            19,
+            113,
+            178
+          ],
+          "contacts": [
+            "LeftFoot"
+          ],
+          "durationSeconds": 0.083333333,
+          "events": [
+            {
+              "id": "step-left",
+              "kind": "FootContact"
+            }
+          ],
+          "index": 4,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.08333333333333333
+          ],
+          "rectPixels": {
+            "height": 192,
+            "width": 128,
+            "x": 512,
+            "y": 0
+          },
+          "registeredBaselinePixels": 177,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 177,
+          "spriteName": "primitive-stage2__primitive_run_right__004"
+        },
+        {
+          "alphaBoundsPixels": [
+            26,
+            20,
+            113,
+            178
+          ],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 5,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.08333333333333333
+          ],
+          "rectPixels": {
+            "height": 192,
+            "width": 128,
+            "x": 640,
+            "y": 0
+          },
+          "registeredBaselinePixels": 177,
+          "registrationOffsetPixels": 2,
+          "sourceBaselinePixels": 175,
+          "spriteName": "primitive-stage2__primitive_run_right__005"
+        },
+        {
+          "alphaBoundsPixels": [
+            27,
+            20,
+            113,
+            178
+          ],
+          "contacts": [
+            "RightFoot"
+          ],
+          "durationSeconds": 0.083333333,
+          "events": [
+            {
+              "id": "step-right",
+              "kind": "FootContact"
+            }
+          ],
+          "index": 6,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.08333333333333333
+          ],
+          "rectPixels": {
+            "height": 192,
+            "width": 128,
+            "x": 768,
+            "y": 0
+          },
+          "registeredBaselinePixels": 177,
+          "registrationOffsetPixels": 3,
+          "sourceBaselinePixels": 174,
+          "spriteName": "primitive-stage2__primitive_run_right__006"
+        },
+        {
+          "alphaBoundsPixels": [
+            26,
+            21,
+            113,
+            178
+          ],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 7,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.08333333333333333
+          ],
+          "rectPixels": {
+            "height": 192,
+            "width": 128,
+            "x": 896,
+            "y": 0
+          },
+          "registeredBaselinePixels": 177,
+          "registrationOffsetPixels": 3,
+          "sourceBaselinePixels": 174,
+          "spriteName": "primitive-stage2__primitive_run_right__007"
+        }
+      ],
+      "id": "primitive.run.right",
+      "loopMode": "Loop",
+      "sourceStrip": "source/primitive-stage2-run.png",
+      "sourceStripSha256": "fc969bcfde8aa3f3a899dd5550b6772a61f3094d23432146b04c53c6ac09b01e"
+    }
+  ],
+  "pixelsPerUnit": 128,
+  "processing": {
+    "alphaThreshold": 8,
+    "maximumBaselineCorrectionPixels": 3,
+    "maximumInteriorAlphaHolePixels": 0,
+    "repairMode": "complete-rows-only"
+  },
+  "schemaVersion": 1,
+  "sourceRequestSha256": "6f8fd0d12aa13195ed5ea05fe7e904fcd61fef637d6aa9886fa77263f2d255a1",
+  "validation": {
+    "isValid": true,
+    "issues": []
+  }
+}

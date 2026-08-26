@@ -1,0 +1,121 @@
+{
+  "alphaThreshold": 8,
+  "atlasColumns": 8,
+  "characterId": "primitive-stage2",
+  "clips": [
+    {
+      "cadenceFps": 12,
+      "contacts": [
+        [
+          "LeftFoot",
+          "RightFoot"
+        ],
+        [
+          "LeftFoot",
+          "RightFoot"
+        ],
+        [
+          "LeftFoot",
+          "RightFoot"
+        ],
+        [
+          "LeftFoot",
+          "RightFoot"
+        ]
+      ],
+      "events": [
+        [],
+        [],
+        [],
+        []
+      ],
+      "facing": "Right",
+      "frameCount": 4,
+      "id": "primitive.idle.right",
+      "loopMode": "Loop",
+      "pivotPixels": [
+        64,
+        16
+      ],
+      "sourceStrip": "source/primitive-stage2-idle.png"
+    },
+    {
+      "cadenceFps": 12,
+      "contacts": [
+        [
+          "LeftFoot"
+        ],
+        [],
+        [
+          "RightFoot"
+        ],
+        [],
+        [
+          "LeftFoot"
+        ],
+        [],
+        [
+          "RightFoot"
+        ],
+        []
+      ],
+      "events": [
+        [
+          {
+            "id": "step-left",
+            "kind": "FootContact"
+          }
+        ],
+        [],
+        [
+          {
+            "id": "step-right",
+            "kind": "FootContact"
+          }
+        ],
+        [],
+        [
+          {
+            "id": "step-left",
+            "kind": "FootContact"
+          }
+        ],
+        [],
+        [
+          {
+            "id": "step-right",
+            "kind": "FootContact"
+          }
+        ],
+        []
+      ],
+      "facing": "Right",
+      "frameCount": 8,
+      "id": "primitive.run.right",
+      "loopMode": "Loop",
+      "pivotPixels": [
+        64,
+        16
+      ],
+      "sourceStrip": "source/primitive-stage2-run.png"
+    }
+  ],
+  "facingMarker": {
+    "minimumPixels": 6,
+    "rgba": [
+      0,
+      224,
+      255,
+      255
+    ]
+  },
+  "frameHeight": 192,
+  "frameWidth": 128,
+  "maximumBaselineCorrectionPixels": 3,
+  "maximumInteriorAlphaHolePixels": 0,
+  "pixelsPerUnit": 128,
+  "repair": {
+    "mode": "complete-rows-only"
+  },
+  "schemaVersion": 1
+}

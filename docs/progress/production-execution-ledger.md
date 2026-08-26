@@ -45,9 +45,10 @@ implementation plans and issue register; it does not replace either authority.
 
 - Canonical repository: `/mnt/unity-data/JustSomeStars`.
 - Branch: `codex/task-12-modular-characters`.
-- Pre-checkpoint HEAD: `b26eb95d56c836811d264ec9ec7c667fa35d6fbb`.
-- Replacement Task 12 Stage 1 is complete and accepted. Its scoped checkpoint
-  commit and push close this ledger entry; Stage 2 is the next active stage.
+- Pre-Stage-2 HEAD: `f99336333e6946ccd50c1ec43ffdb8b2aa3ac617`.
+- Replacement Task 12 Stages 1 and 2 are complete and accepted. Stage 1 is
+  committed and pushed; the scoped Stage 2 checkpoint is ready to commit and
+  push before Stage 3 begins automatically.
 - The local Unity Editor demo was closed cleanly before final verification.
 - No APK or Limrun session is part of this Stage 1 checkpoint.
 
@@ -111,13 +112,57 @@ implementation plans and issue register; it does not replace either authority.
 - Stage 1 checkpoint: complete, committed and pushed on
   `codex/task-12-modular-characters`.
 
-## Immediate next task: replacement Task 12 Stage 2
+## Replacement Task 12 Stage 2 checkpoint
 
-Build the deterministic sprite-atlas pipeline defined by Task 3 in the pivot
-plan. The stage produces Python extraction/validation/assembly/preview tools,
-Unity sprite definitions/import/playback, one painterly primitive round trip,
-focused tests, motion evidence and a scoped commit. It does not yet claim final
-Captain, crew or Ori art.
+### Delivered scope
+
+- One public coherent-strip transaction covering extraction, structural-facing
+  validation, baseline registration, atlas/manifest assembly and preview.
+- Schema-checked output ownership: invalid requests clean only their owned
+  stale artifacts; markerless and differently owned paths are preserved.
+- Global normalized sprite-name collision rejection before publication.
+- Source-only facing markers, zero enclosed runtime alpha holes and stable
+  opaque painterly detail.
+- Scoped Unity atlas import, versioned `CharacterSpriteSet` definitions and
+  deterministic manifest-driven animation/events.
+- One temporary painterly primitive with four idle frames and eight alternating
+  run frames. It proves the pipeline, not final Captain or crew likeness.
+
+### Locked evidence identities
+
+- Source request SHA-256:
+  `6f8fd0d12aa13195ed5ea05fe7e904fcd61fef637d6aa9886fa77263f2d255a1`.
+- Idle source SHA-256:
+  `6569e04553f3d313be9fa9f97cf650859efff225967671f9e7b9fb0d041d609f`.
+- Run source SHA-256:
+  `fc969bcfde8aa3f3a899dd5550b6772a61f3094d23432146b04c53c6ac09b01e`.
+- Canonical atlas SHA-256:
+  `61a7448e3cfb80b634095037bccbaeefbbc927d4ec9b4771cc7b1bc6a7e79d0e`.
+- Canonical manifest SHA-256:
+  `507e9865978ed3eaf30573141f7fd4be759d056bb8ae8db7cbe560465dae1621`.
+- Final contact-sheet SHA-256:
+  `d2b8cf5aceb371f44e49ee99602f99f2532f1bc1c33f961d672f051cdfb52298`.
+- Final animated-preview SHA-256:
+  `27bb341f5aef897357e8147c0590ecd0c5d1517653b82cd77edeea3c40fe664c`.
+
+### Final gate
+
+- Python sprite-pipeline suite: `13/13` passed after authentic REDs for stale
+  owned cleanup, markerless overwrite, cross-character deletion, normalized
+  name collisions and runtime-pixel artifacts.
+- Unity `CharacterSpriteImportTests`: `6/6` passed.
+- Unity `SpriteAtlasAnimatorTests`: `4/4` passed.
+- Independent Stage 2 extreme critic: `PASS` after the bounded ownership,
+  collision and visual-pixel corrections.
+- No APK, full regression or Limrun session was used for this focused stage.
+
+## Immediate next task: replacement Task 12 Stage 3
+
+Produce the final Captain identity and body-family sprite package from the
+approved Task 10 references using the deterministic Stage 2 atlas contract.
+Continue autonomously through the remaining replacement Task 12 stages; the
+user-facing graphical approval remains at the Task 12 boundary, not between
+these internal stages.
 
 ## User-help queue
 
@@ -148,3 +193,8 @@ No user decision or external action is currently blocking progress.
   `6/7` RED; grounded painterly overscan replaced only the two affected layer
   margins. Fresh center/x=-2/x=+2 captures are clean, focused verification is
   `7/7`, and the same critic returned `PASS`.
+- 2026-08-26: Stage 2 completed the deterministic sprite-atlas round trip.
+  Its critic found unsafe ownership, normalized-name collision and runtime
+  alpha/marker artifacts. Each was reproduced with focused RED tests, corrected
+  without broad regression work, and re-reviewed to `PASS`; final focused gates
+  are Python `13/13`, EditMode `6/6` and PlayMode `4/4`.

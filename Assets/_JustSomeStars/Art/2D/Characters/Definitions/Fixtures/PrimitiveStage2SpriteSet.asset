@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7226071971114210771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: primitive.idle.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: primitive.idle.right
+  facing: 2
+  loopMode: 0
+  frames:
+  - {fileID: 6859162043305310768, guid: eb45fbfeee045bd239acc5223263c0a8, type: 3}
+  - {fileID: 1430608380011950222, guid: eb45fbfeee045bd239acc5223263c0a8, type: 3}
+  - {fileID: 521626390097457174, guid: eb45fbfeee045bd239acc5223263c0a8, type: 3}
+  - {fileID: -8696973823112249369, guid: eb45fbfeee045bd239acc5223263c0a8, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents: []
+--- !u!114 &-1135696531778729359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: primitive.run.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: primitive.run.right
+  facing: 2
+  loopMode: 0
+  frames:
+  - {fileID: -7038516779474240464, guid: eb45fbfeee045bd239acc5223263c0a8, type: 3}
+  - {fileID: -1488644403208208915, guid: eb45fbfeee045bd239acc5223263c0a8, type: 3}
+  - {fileID: 2459978452606137057, guid: eb45fbfeee045bd239acc5223263c0a8, type: 3}
+  - {fileID: -3564673700074377769, guid: eb45fbfeee045bd239acc5223263c0a8, type: 3}
+  - {fileID: 3028885549168903551, guid: eb45fbfeee045bd239acc5223263c0a8, type: 3}
+  - {fileID: 6975450769303779537, guid: eb45fbfeee045bd239acc5223263c0a8, type: 3}
+  - {fileID: -2686158670720421211, guid: eb45fbfeee045bd239acc5223263c0a8, type: 3}
+  - {fileID: -4524299291753990207, guid: eb45fbfeee045bd239acc5223263c0a8, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 6
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 0
+    id: step-left
+  - frameIndex: 2
+    kind: 0
+    id: step-right
+  - frameIndex: 4
+    kind: 0
+    id: step-left
+  - frameIndex: 6
+    kind: 0
+    id: step-right
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41759a4bdd9cbad87b0bb61030e13fb0, type: 3}
+  m_Name: PrimitiveStage2SpriteSet
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.CharacterSpriteSet
+  characterId: primitive-stage2
+  clips:
+  - {fileID: -7226071971114210771}
+  - {fileID: -1135696531778729359}
