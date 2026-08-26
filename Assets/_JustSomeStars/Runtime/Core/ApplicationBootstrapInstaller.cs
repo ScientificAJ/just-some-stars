@@ -1,6 +1,7 @@
 using System;
 using JustSomeStars.Runtime.Accessibility;
 using JustSomeStars.Runtime.Input;
+using JustSomeStars.Runtime.Player;
 using JustSomeStars.Runtime.Saving;
 using JustSomeStars.Runtime.UI;
 using UnityEngine;
@@ -57,12 +58,20 @@ namespace JustSomeStars.Runtime.Core
             var localSave = new LocalSaveService();
             var actions = RequireProjectActions();
             var input = new InputRouter(actions, settings);
-            var dependencies = new FrontendDependencies(settings, input);
-            var sceneTransition = new UnitySceneTransition(dependencies);
-            return CreateComposition(
+            var modeController = new GameModeController(
+                GameMode.Frontend,
+                new InputRouterGameModeRuntimeHooks(input));
+            var sceneTransition = new UnitySceneTransition(
+                new FrontendDependencies(settings, input),
+                new SurfaceGameplayDependencies(
+                    settings,
+                    input,
+                    modeController));
+            return CreateCompositionWithModeController(
                 settings,
                 localSave,
                 input,
+                modeController,
                 sceneTransition,
                 new AddressablesSceneCatalogSource(SceneCatalog.AddressablesKey),
                 new AddressablesSceneStreamBackend());
@@ -96,6 +105,25 @@ namespace JustSomeStars.Runtime.Core
             var modeController = new GameModeController(
                 GameMode.Frontend,
                 new InputRouterGameModeRuntimeHooks(input));
+            return CreateCompositionWithModeController(
+                settings,
+                localSave,
+                input,
+                modeController,
+                sceneTransition,
+                catalogSource,
+                sceneBackend);
+        }
+
+        private static GameBootstrapComposition CreateCompositionWithModeController(
+            SettingsService settings,
+            LocalSaveService localSave,
+            InputRouter input,
+            GameModeController modeController,
+            ISceneTransition sceneTransition,
+            ISceneCatalogSource catalogSource,
+            ISceneStreamBackend sceneBackend)
+        {
             var sceneStream = new SceneStreamService(
                 catalogSource,
                 sceneBackend,

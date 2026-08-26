@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using JustSomeStars.Runtime.Player;
 using JustSomeStars.Runtime.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,6 +18,8 @@ namespace JustSomeStars.Runtime.Core
 
     internal interface ISceneBindingLifecycle
     {
+        void BindActiveScene();
+
         void ReleaseBindings();
     }
 
@@ -25,10 +28,12 @@ namespace JustSomeStars.Runtime.Core
         ISceneBindingLifecycle
     {
         private readonly FrontendDependencies m_FrontendDependencies;
+        private readonly SurfaceGameplayDependencies m_SurfaceDependencies;
 
         private FrontendController m_Controller;
         private UnityFrontendLifecycle m_Lifecycle;
         private FrontendSettingsPanel m_SettingsPanel;
+        private SurfaceGameplayLifecycle2D m_SurfaceLifecycle;
 
         public UnitySceneTransition()
         {
@@ -38,6 +43,16 @@ namespace JustSomeStars.Runtime.Core
         {
             m_FrontendDependencies = frontendDependencies ??
                 throw new ArgumentNullException(nameof(frontendDependencies));
+        }
+
+        public UnitySceneTransition(
+            FrontendDependencies frontendDependencies,
+            SurfaceGameplayDependencies surfaceDependencies)
+        {
+            m_FrontendDependencies = frontendDependencies ??
+                throw new ArgumentNullException(nameof(frontendDependencies));
+            m_SurfaceDependencies = surfaceDependencies ??
+                throw new ArgumentNullException(nameof(surfaceDependencies));
         }
 
         public async ValueTask RouteAsync(
@@ -72,12 +87,63 @@ namespace JustSomeStars.Runtime.Core
                 await Task.Yield();
             }
 
+            BindActiveScene();
+        }
+
+        public void BindActiveScene()
+        {
+            var activeScene = SceneManager.GetActiveScene();
             if (string.Equals(
-                    destination,
+                    activeScene.name,
                     "Frontend",
                     StringComparison.Ordinal))
             {
                 ConfigureFrontend();
+                return;
+            }
+
+            var candidates = UnityEngine.Object.FindObjectsByType<
+                SurfaceGameplayLifecycle2D>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None);
+            SurfaceGameplayLifecycle2D match = null;
+            foreach (var candidate in candidates)
+            {
+                if (candidate.gameObject.scene != activeScene)
+                {
+                    continue;
+                }
+
+                if (match != null)
+                {
+                    throw new InvalidOperationException(
+                        "A routed gameplay scene must contain at most one " +
+                        "SurfaceGameplayLifecycle2D.");
+                }
+
+                match = candidate;
+            }
+
+            if (match == null)
+            {
+                return;
+            }
+
+            if (m_SurfaceDependencies == null)
+            {
+                throw new InvalidOperationException(
+                    "Surface routing requires composition-owned dependencies.");
+            }
+
+            m_SurfaceLifecycle = match;
+            try
+            {
+                m_SurfaceLifecycle.Configure(m_SurfaceDependencies);
+            }
+            catch
+            {
+                m_SurfaceLifecycle = null;
+                throw;
             }
         }
 
@@ -133,14 +199,11 @@ namespace JustSomeStars.Runtime.Core
             var controller = m_Controller;
             var lifecycle = m_Lifecycle;
             var settingsPanel = m_SettingsPanel;
+            var surfaceLifecycle = m_SurfaceLifecycle;
             m_Controller = null;
             m_Lifecycle = null;
             m_SettingsPanel = null;
-
-            if (m_FrontendDependencies == null)
-            {
-                return;
-            }
+            m_SurfaceLifecycle = null;
 
             var failures = new List<Exception>();
             TryRelease(
@@ -149,6 +212,16 @@ namespace JustSomeStars.Runtime.Core
                     if (controller != null)
                     {
                         controller.Release(m_FrontendDependencies);
+                    }
+                },
+                failures);
+            TryRelease(
+                () =>
+                {
+                    if (surfaceLifecycle != null &&
+                        m_SurfaceDependencies != null)
+                    {
+                        surfaceLifecycle.Release(m_SurfaceDependencies);
                     }
                 },
                 failures);

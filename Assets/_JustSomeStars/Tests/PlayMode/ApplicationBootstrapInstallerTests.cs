@@ -305,6 +305,22 @@ namespace JustSomeStars.Tests.PlayMode
             {
                 Assert.That(composition.SceneTransition,
                     Is.TypeOf<UnitySceneTransition>());
+                var surfaceDependencies = typeof(UnitySceneTransition).GetField(
+                    "m_SurfaceDependencies",
+                    BindingFlags.Instance | BindingFlags.NonPublic)
+                    ?.GetValue(composition.SceneTransition);
+                Assert.That(surfaceDependencies, Is.Not.Null,
+                    "The permanent composition must push its real input, settings " +
+                    "and mode services into routed 2.5D gameplay scenes.");
+                Assert.That(
+                    ReadProperty(surfaceDependencies, "Settings"),
+                    Is.SameAs(composition.Services[0].Service));
+                Assert.That(
+                    ReadProperty(surfaceDependencies, "Input"),
+                    Is.SameAs(composition.Services[2].Service));
+                Assert.That(
+                    ReadProperty(surfaceDependencies, "Modes"),
+                    Is.SameAs(composition.Services[4].Service));
             }
             else
             {
@@ -320,6 +336,15 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(
                 ((InputRouterGameModeRuntimeHooks)modes.RuntimeHooks).Input,
                 Is.SameAs(input));
+        }
+
+        private static object ReadProperty(object target, string propertyName)
+        {
+            var property = target.GetType().GetProperty(
+                propertyName,
+                BindingFlags.Instance | BindingFlags.Public);
+            Assert.That(property, Is.Not.Null, propertyName);
+            return property.GetValue(target);
         }
 
         private static void AssertServicesInitialized(

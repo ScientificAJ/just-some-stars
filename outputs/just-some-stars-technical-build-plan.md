@@ -1,16 +1,16 @@
 # Just Some Stars — Technical Build Plan
 
-**Status:** Approved and design-locked  
-**Approved:** 2026-08-21  
+**Status:** Approved and design-locked; 2.5D architecture amended 2026-08-25  
+**Approved:** 2026-08-21; 2.5D pivot approved 2026-08-25  
 **Date:** 2026-08-21  
 **Owner:** ScientificAJ  
 **Primary release:** Android mobile  
 **Stores:** Google Play and Samsung Galaxy Store  
 **Future platform:** Steam; iOS only if deliberately added later  
-**Engine:** Unity 6 LTS, Universal Render Pipeline  
+**Engine:** Unity 6 LTS, Universal Render Pipeline 2D Renderer for gameplay  
 **Repository:** [ScientificAJ/just-some-stars](https://github.com/ScientificAJ/just-some-stars)  
 **Narrative blueprint:** [astronomy-adventure-game-blueprint.md](./astronomy-adventure-game-blueprint.md)  
-**Approved visual target:** [just-some-stars-mirra-gameplay-target-v1.png](./just-some-stars-mirra-gameplay-target-v1.png)
+**Approved visual target:** [just-some-stars-2.5d-gameplay-target-v1.png](./just-some-stars-2.5d-gameplay-target-v1.png)
 
 ## 1. Purpose and precedence
 
@@ -22,28 +22,40 @@ The later decisions recorded here supersede four earlier blueprint assumptions:
 - The player's exact birthday may be privately stored for age handling and annual birthday gifts.
 - Monetization includes a large cosmetics catalogue, premium bundles, Explorer Edition, and future paid chapters.
 - Platform services are activated progressively as their project, store, or revenue prerequisites become available.
+- Surface exploration and ship flight use authored cinematic 2.5D routes rather
+  than free third-person full-3D play.
+- Shipping characters use coherent frame-atlas animation rather than Humanoid
+  rigs, skin weights, blendshapes and character FBX LODs.
 
 Chapter One remains a complete, free 45–60 minute story from the clubhouse opening through the return before dinner.
 
 ## Approved visual quality bar
 
-![Approved Just Some Stars Mirra gameplay quality bar](./just-some-stars-mirra-gameplay-target-v1.png)
+![Approved Just Some Stars 2.5D Mirra gameplay quality bar](./just-some-stars-2.5d-gameplay-target-v1.png)
 
 The image above is the canonical visual quality bar for the playable game, not merely concept art or promotional inspiration. Character production, environments, lighting, materials, VFX, animation, camera composition and mobile UI are judged against the level of cohesion and finish demonstrated by this frame.
 
 The release must preserve these qualities:
 
-- A cinematic stylized-3D presentation with believable materials and physically readable lighting.
+- A cinematic layered-2.5D presentation with painterly surfaces, believable
+  material response and physically readable lighting.
 - A powerful warm-sunset versus frozen-night color divide that communicates Mirra's tidal locking through the scene itself.
 - Clear child, Ori and ship silhouettes at mobile screen size.
 - Dense environmental detail organized around readable traversal rather than visual noise.
 - A handmade, child-built ship contrasted with precise Signal technology.
 - Atmospheric depth, grounded contact shadows, controlled reflections and restrained bloom.
-- Expressive, original characters with appealing proportions and production-quality clothing, hair and equipment.
+- Expressive frame-animated original characters with appealing proportions and
+  production-quality clothing, hair and equipment.
 - A polished touch HUD whose controls remain legible without dominating the view.
 - A strong objective focal point and composition that creates awe while clearly showing where the player should travel.
 
-The final game does not need to reproduce this exact frame pixel-for-pixel. It must match its perceived quality, art-direction coherence, readability, emotional impact and density on supported mobile hardware. Mirra is the first measurable benchmark; Koro/Vesper and Aster Veil must reach the same quality in their own approved palettes.
+The final game does not need to reproduce this exact frame pixel-for-pixel, but
+its separately owned layers must match the target's perceived quality,
+art-direction coherence, readability, emotional impact and density on
+supported mobile hardware. A flattened screenshot behind moving actors is not
+an acceptable implementation. Mirra is the first measurable benchmark;
+Koro/Vesper and Aster Veil must reach the same quality in their own approved
+palettes.
 
 Quality reviews compare representative device screenshots directly against this image at the Mirra benchmark, content-lock and release-candidate gates. A scene is not considered final merely because its mechanics work.
 
@@ -52,7 +64,7 @@ Quality reviews compare representative device screenshots directly against this 
 The first release must provide:
 
 - A complete opening-to-dinner Chapter One.
-- Third-person surface exploration and arcade-accessible spaceflight.
+- Side-view 2.5D surface exploration and arcade-accessible 2.5D spaceflight.
 - The Discovery Lens, scientific prediction, evidence collection, and Cosmic Atlas.
 - A customizable Captain with three properly fitted body families.
 - Five authored kid crew members and Ori, with two active companions plus Ori at full intelligence.
@@ -70,10 +82,11 @@ The game will not launch with advertisements, subscriptions, premium currency, l
 | Technology | Role |
 |---|---|
 | C# | Unity runtime, editor tooling, gameplay, crew intelligence, missions, saves, UI, services and tests |
-| Shader Graph | Shared skin, fabric, metal, ice, rock, atmosphere, visor, vegetation, hologram and Signal shaders |
+| Shader Graph | Sprite normal/emission response, fabric, metal, ice, rock, atmosphere, vegetation, hologram and Signal shaders |
 | HLSL | Only effects that Shader Graph cannot express efficiently |
-| Blender | Original characters, Ori, ship, signature props, environment kits, rigging, skinning and LODs |
-| Python | Blender automation, asset validation, batch export and content-processing tools; never runtime gameplay |
+| Sprite/painting tools and ImageGen | Canonical character strips, environment layers, props, effects and production references |
+| Blender | Optional preserved Task 11 pipeline for limited 3D props, reference renders or future experiments; not shipping character animation |
+| Python | Deterministic sprite extraction, registration, validation, atlas/preview assembly, optional Blender automation and content processing; never runtime gameplay |
 | JSON | Versioned cloud/local serialization, service configuration and external content interchange |
 | Unity ScriptableObjects | Missions, crew personalities, dialogue, phenomena, cosmetics, instruments, Atlas and tuning data |
 | Kotlin/Java | Android bridge code for Galaxy billing, Google identity and narrowly scoped native services |
@@ -122,20 +135,31 @@ Unity process per fixture, rejects missing/malformed/empty NUnit results and
 publishes a consolidated summary. Focused single-fixture Unity invocations
 remain valid. Test invocations omit `-quit`; build entry points retain it.
 
-### 4.2 Blender MCP is part of the asset pipeline
+### 4.2 Sprite production is the primary asset pipeline
 
-Blender MCP will be used for repetitive and scriptable Blender work:
+The shipping character path binds an approved identity, produces one coherent
+animation strip per declared clip, deterministically extracts and registers
+frames, validates alpha/scale/baseline/direction/cadence, assembles a versioned
+atlas and emits contact sheets plus motion previews. The game-specific
+pipeline adapts the `hatch-pet` principles but does not use its `8x11`,
+`192x208`, nine-state, sixteen-direction or Codex-pet package contracts.
+
+### 4.3 Blender MCP is preserved optional tooling
+
+Blender MCP may be used for bounded optional 3D work:
 
 - Scene setup, naming and collection organization.
 - Reference-image plane placement.
-- Blockout assistance after a reference sheet is approved.
+- Reference renders or a deliberately approved prop blockout.
 - Procedural materials, geometry helpers and environment-kit generation.
-- Rig inspection, bone naming, weight diagnostics and animation cleanup.
-- LOD generation assistance and mesh validation.
+- Rig/LOD inspection only for optional 3D assets, never as a shipping-character requirement.
 - Batch pivot, scale, orientation and FBX export preparation.
 - Python execution inside Blender for project-specific tooling.
 
-It does not replace artistic approval. No hero character mesh begins before its reference sheet is approved, and generated geometry is treated as editable source rather than final art.
+It does not replace artistic approval and it is not an automatic dependency.
+Do not resume the unfinished Task 12 Humanoid rig/walk work after the 2.5D
+pivot. Any optional generated geometry remains editable source rather than
+final art.
 
 Current Blender MCP configuration:
 
@@ -161,18 +185,20 @@ DISABLE_TELEMETRY = "true"
 
 Poly Haven supplies licensed HDRIs, materials and generic environmental ingredients. It does not define the original planets, crew, ship, Ori or Signal visual identity.
 
-Blender's own background CLI complements MCP for deterministic export:
+Blender's background CLI remains available for the preserved Task 11 contract:
 
 ```bash
-blender -b captain_source.blend --python tools/blender/export_unity_fbx.py
+blender -b optional_prop_source.blend --python tools/blender/export_unity_fbx.py
 ```
 
-### 4.3 Media and animation tools
+### 4.4 Media and animation tools
 
 - Google Flow produces Signal visions, distant cosmic events, travel transitions, establishing shots without the customized Captain, and marketing shots.
-- Scenes visibly containing the customized Captain remain real-time Unity cinematics.
+- Scenes visibly containing the customized Captain use approved in-engine
+  sprite clips and layered Unity cinematics.
 - Lyria/Flowmusic produces musical material that is edited into offline loops, stems and intensity variants; music is not generated at runtime.
-- Mixamo may provide generic animation clips through a normal WebGL-capable browser. The project never depends on Mixamo because Blender Rigify and authored animation remain the fallback.
+- Character animation is authored as coherent frame strips. Mixamo and Blender
+  Rigify are not shipping dependencies.
 - Sound effects come from recording, synthesis and appropriately licensed libraries.
 - Generated video is delivered as 1080p, 30 FPS, H.264 MP4 without baked subtitles, with a still-image fallback and separate audio when possible.
 
@@ -181,12 +207,14 @@ blender -b captain_source.blend --python tools/blender/export_unity_fbx.py
 ### 5.1 Runtime foundation
 
 - Unity 6 LTS with its exact editor revision committed to project metadata.
-- Universal Render Pipeline.
+- Universal Render Pipeline with the 2D Renderer for gameplay scenes.
 - Unity Input System.
 - Addressables for destination and optional-content delivery.
 - TextMeshPro and uGUI for runtime interfaces.
 - UI Toolkit for custom editor windows and validators.
 - Assembly definitions isolate gameplay, content, editor, tests and platform SDKs.
+- SpriteRenderer/SpriteAtlas animation, `Rigidbody2D` physics and layered-scene
+  manifests are the gameplay presentation foundation.
 
 ### 5.2 Scene topology
 
@@ -218,10 +246,11 @@ Pause, Photo Mode, accessibility and parental/account screens are overlays. Each
 ### 5.4 Major modules
 
 - Player motor and Captain customization
+- Layered-scene rendering, parallax and frame-atlas animation
 - Crew Director and individual crew brains
 - Ori controller
 - Flight and landing
-- Camera and cinematic camera
+- Composition camera and layered cinematic camera
 - Discovery Lens and scientific instruments
 - Interaction anchors
 - Mission graph and typed gameplay events
@@ -239,25 +268,31 @@ Gameplay code never calls Firebase, RevenueCat, Samsung, Google, OneSignal, Tenj
 
 ### 6.1 Surface movement
 
-The Captain uses a custom kinematic capsule motor rather than an uncontrolled rigid body. It supports:
+The Captain uses a fixed-step `Rigidbody2D`/`Collider2D` surface motor. It supports:
 
 - Ground movement, slopes and step handling.
 - Jump, suit jet and low-gravity tuning.
 - Wind, ice, moving platforms and environmental forces.
 - Authored recovery volumes and safe respawn anchors.
-- Separate collider, camera, IK and stride calibration for short/compact, medium/average and tall/broad body families.
+- Separate collider, camera framing and sprite-contact calibration for
+  short/compact, medium/average and tall/broad body families.
 
 All three body families share gameplay speed and reach fairness. Body choice changes presentation, not power.
 
 ### 6.2 Camera
 
-The third-person camera provides orbit, collision avoidance, horizon management, manual recentering, contextual FOV and reduced-motion behavior. Camera profiles cover exploration, aiming, Discovery Lens, flight, dialogue, cinematics and Photo Mode.
+The side-view composition camera provides a dead zone, look-ahead, authored
+bounds, contextual zoom, foreground handling and reduced-motion behavior. It
+does not provide free orbit. Camera profiles cover exploration, Discovery Lens,
+flight, dialogue, cinematics and Photo Mode.
 
 ### 6.3 Flight
 
-Flight is arcade-accessible and scientifically inspired rather than a full n-body simulation. Handcrafted regions support:
+Flight is arcade-accessible cinematic 2.5D and scientifically inspired rather
+than a full n-body simulation. Handcrafted route envelopes support:
 
-- Boost, brake, drift, momentum and controlled turning.
+- Boost, brake, drift, momentum and bounded horizontal/vertical steering.
+- Authored visual depth-lane transitions with deterministic collision/state.
 - Gravity-assist routes and simplified orbital planning.
 - Approach, orbit, landing and departure.
 - Guided, Balanced and Ace assistance.
@@ -275,7 +310,10 @@ The Lens is one coherent instrument interface with modes for:
 - Motion
 - Signal analysis
 
-Players make or select predictions and test them in the world. Incorrect predictions teach, update evidence and continue play rather than creating punitive quiz failure.
+Players make or select predictions and test them in the layered world. Lens
+targets declare a scene-depth band and focus behavior. Incorrect predictions
+teach, update evidence and continue play rather than creating punitive quiz
+failure.
 
 ### 6.5 Destination mechanics
 
@@ -327,7 +365,11 @@ Mandatory story actions outrank safety/recovery, which outrank personality oppor
 - Wait naturally
 - Recover after navigation failure
 
-Tagged perception, camera visibility, reservations and authored recovery anchors keep behavior reliable. Decisions run only a few times per second; movement and animation continue each frame. Dialogue and story memory are authored and deterministic—there is no live generative dialogue.
+Tagged perception, camera visibility, `TraversalGraph2D` waypoints,
+reservations and authored recovery anchors keep behavior reliable. Decisions
+run only a few times per second; movement and sprite animation continue each
+frame. Dialogue and story memory are authored and deterministic—there is no
+live generative dialogue.
 
 ## 8. Character and art pipeline
 
@@ -340,9 +382,9 @@ Character generation follows this order:
    proportion, hair, homemade-suit, Signal, rendering, detail-density and
    mobile-silhouette rules; it is not an individual turnaround.
 2. A full height/silhouette lineup containing the Captain, Mira, Juno, Kai,
-   Bea and Ori together on one floor line with exact Blender-unit heights.
+   Bea and Ori together on one floor line with exact metre heights.
 3. A Captain-only sheet with neutral front, side and back views for all three
-   equal-capability body families and their shared rig/clothing landmarks.
+   equal-capability body families and their shared pivot/contact/clothing landmarks.
 4. A Captain-only customization sheet covering face, skin, eyes, hair,
    clothing, colors and accessories across all three body families.
 5. Separate Mira, Juno, Kai and Bea sheets, each with one named character's
@@ -360,11 +402,13 @@ Character generation follows this order:
    plastic, metal, glass, patches, Ori's shell, screens, lights, Signal energy
    and character palettes, including surface-response labels.
 
-Sheets use neutral orthographic front, side and back views at consistent scale in an animation-ready pose. A character cannot enter Blender production until the corresponding sheet is approved.
+Sheets use neutral orthographic front, side and back views at consistent scale
+in an animation-ready pose. A character cannot enter sprite production until
+the corresponding sheet is approved.
 
 Written labels, role descriptions, numerical dimensions, landmark diagrams and
 control notes are the production authority if an approved generated image has
-an incidental visual mismatch. Downstream modelers, riggers and animators must
+an incidental visual mismatch. Downstream sprite artists, animators and atlas tooling must
 correct that mismatch in the real asset; they must not blindly trace it. This
 especially applies to matching facial expressions to their named semantics.
 
@@ -382,22 +426,25 @@ slightly enlarged expressive eyes and modestly enlarged hands and boots for
 readability. Materials remain physically believable while silhouettes,
 features and homemade repaired exploration gear stay warmly stylized. The
 palette and lighting follow the warm-sunset/cool-starlight duality of
-`outputs/just-some-stars-mirra-gameplay-target-v1.png`, with restrained
+`outputs/just-some-stars-2.5d-gameplay-target-v1.png`, with restrained
 cyan/violet Signal accents. The approved direction excludes anime, chibi,
 photoreal-adult, toy-plastic, tactical-military, superhero, generic mascot and
 recognizable franchise design language. The binding decision and per-sheet
 status live in `docs/art/character-reference-approval.md`.
 
-### 8.2 Blender production sequence
+### 8.2 Frame-atlas production sequence
 
 ```text
-Reference sheet -> blockout -> sculpt -> retopology -> UV
--> normal/AO bake -> texture -> facial blendshapes
--> shared humanoid rig -> skin weights -> LODs -> FBX
--> Unity Humanoid prefab -> Android device test
+Reference authority -> canonical side-view master -> coherent clip strip
+-> deterministic frame extraction -> shared scale/baseline registration
+-> alpha/direction/contact/cadence validation -> atlas + manifest
+-> contact sheet + motion preview -> Unity CharacterSpriteSet
+-> in-scene visual review -> Android device test
 ```
 
-The `.blend` source remains authoritative. Unity receives clean FBX files with controlled transforms, materials, skeletons and clips.
+Approved source strips and their schema-versioned manifests remain
+authoritative. Unity receives validated atlases, pivots, contacts, frame events
+and clip timing. A failed pipeline run cannot leave stale success outputs.
 
 ### 8.3 Captain modularity
 
@@ -411,24 +458,36 @@ The Captain supports:
 - Gloves, boots, patches, backpacks and accessories.
 - Pronouns and callsign.
 
-Cosmetics are ScriptableObject definitions that reference compatible meshes, materials, icons, body-family fits, rarity presentation and entitlement requirements. Runtime assembly aims for approximately three character render groups rather than one renderer per tiny part.
+Cosmetics are ScriptableObject definitions that reference compatible sprite
+layers, palette masks, icons, body-family fits, rarity presentation and
+entitlement requirements. Runtime assembly is capped at five synchronized
+layers: body/base, head/hair, silhouette costume, backpack/equipment and
+foreground hand/tool.
 
 ### 8.4 Crew and Ori
 
-Crew members share humanoid rig conventions and shader foundations but are bespoke characters, not randomized Captain presets. Each has unique face, proportions, hair, colors, equipment, silhouette, idles and expressions. Compact blendshapes cover blinks, brows, smiles, frowns, surprise, fear, mouth emotion and a small viseme set. Ori uses a dedicated non-humanoid rig.
+Crew members share clip ids, pivots, contacts and material-mask conventions but
+are bespoke characters, not randomized Captain presets. Each has unique face,
+proportions, hair, colors, equipment, silhouette, idles and expressions.
+Flattened full-body atlases are preferred. Separate coherent face/speech rows
+cover blinks, brows, smiles, frowns, surprise, fear, mouth emotion and a small
+viseme set. Ori uses a dedicated mechanical frame-atlas contract.
 
 ### 8.5 Initial asset budgets
 
-- Captain/crew LOD0: approximately 50,000–80,000 triangles.
-- LOD1: approximately 25,000–40,000 triangles.
-- LOD2: approximately 8,000–15,000 triangles.
-- Ori LOD0: approximately 25,000–45,000 triangles.
-- Shared character texture sets: primarily 2K.
-- Accessories and hair: primarily 1K, packed where practical.
-- Hero environment atlases and trims: 2K–4K.
-- Android texture target: ASTC on supported devices with fallback compression profiles.
+- Runtime character cells target measured mobile screen coverage; source art
+  remains higher resolution than runtime imports.
+- Character atlases are grouped by animation family and loaded through
+  Addressables; inactive destination/character atlases do not stay resident.
+- Environment sources may be 2K–4K, but runtime layers use verified max sizes,
+  ASTC and mipmap policy based on camera scale and motion.
+- Normal, emission and palette masks are packed where practical.
+- The replacement Task 12 Mirra benchmark locks enforceable
+  texture-residency, transparent-overdraw, 2D-light, particle, frame-time,
+  memory and thermal budgets before full content production.
 
-Budgets are measured on the Realme Narzo and may move between assets without exceeding the scene frame, memory and thermal budgets.
+Budgets may move between assets only while the measured scene and destination
+ceilings continue to pass.
 
 ## 9. Data-driven missions, dialogue and saves
 
@@ -500,7 +559,9 @@ For child players, cloud linking is optional and placed behind grown-up confirma
 
 ### 11.2 Catalogue target
 
-The launch catalogue targets more than 100 polished entries created from excellent modular geometry, materials, effects and coordinated combinations—not a wall of low-effort recolors.
+The launch catalogue targets more than 100 polished entries created from
+excellent bounded sprite layers, palette masks, effects and coordinated
+combinations—not a wall of low-effort recolors or duplicated full atlases.
 
 Categories include:
 
@@ -570,13 +631,17 @@ Google or Samsung processes Android payments and pays the publisher. RevenueCat 
 
 ### 13.1 Rendering
 
-AAA-inspired mobile quality comes primarily from coherent art direction, strong lighting, materials, animation and composition—not unrestricted GPU cost.
+AAA-inspired mobile quality comes primarily from coherent art direction,
+layering, strong lighting, material response, frame animation and
+composition—not unrestricted GPU cost.
 
 - Mirra uses hot orange and frozen blue lighting across the twilight divide.
 - Koro/Vesper uses ice cyan under an immense violet-blue sky.
 - Aster Veil uses near-black space, bright debris reflections and Signal-purple accents.
-- Shared Shader Graph foundations keep materials coherent and batchable.
-- One major realtime shadow-casting light is the normal scene target.
+- Shared sprite Shader Graph foundations keep normal, emission, palette and
+  material-mask response coherent and batchable.
+- A bounded set of 2D lights, fog cards and projected/contact effects replaces
+  unrestricted realtime 3D shadow lighting.
 
 ### 13.2 Quality profiles
 
@@ -585,7 +650,11 @@ AAA-inspired mobile quality comes primarily from coherent art direction, strong 
 - Cinematic: maximum approved 30 FPS presentation on capable devices.
 - High Frame Rate: 60 FPS with dynamic resolution and scaled effects.
 
-Optimization uses GPU instancing, batching, frustum/occlusion/distance culling, LODs, pooled VFX, additive loading, Addressables, streamed music, preloaded video and dynamic resolution. Device testing includes full-session thermal soak, low-battery behavior, suspend/resume and interruptions such as calls.
+Optimization uses SpriteAtlas batching, destination-scoped Addressables,
+texture-residency limits, transparent-overdraw limits, pooled VFX, additive
+loading, streamed music, preloaded video and dynamic resolution. Device testing
+includes full-session thermal soak, low-battery behavior, suspend/resume and
+interruptions such as calls.
 
 ### 13.3 Runtime UI
 
@@ -598,7 +667,7 @@ Runtime UI uses uGUI and TextMeshPro. It combines large mobile touch targets wit
 - Captions with speaker names.
 - Colorblind-safe symbols and contrast modes.
 - Reduced shake, flashing, motion blur and particle density.
-- Left-handed controls, sensitivity and camera recentering.
+- Left-handed controls, sensitivity and composition-camera look-ahead tuning.
 - Navigation line, contextual hints and recovery assistance.
 - Separate music, dialogue, effects and haptic controls.
 - Accessibility available before the opening cinematic.
@@ -647,11 +716,11 @@ ShipKit perks unlock progressively after registration, project setup, store conn
 | Firebase Authentication | Optional Google-backed Captain account |
 | Cloud Firestore | Offline-capable cloud save and private profile |
 | Firebase Cloud Functions | Secure birthday grants and account maintenance |
-| Blender MCP | Assisted Blender scene, asset, rig and export operations |
+| Blender MCP | Optional preserved Task 11 scene, reference, prop and export operations; not the shipping character path |
 | Poly Haven | Licensed HDRIs, materials and environment ingredients |
 | Google Flow | Selected non-custom-Captain cinematics and marketing visuals |
 | Lyria/Flowmusic | Music generation followed by human editing and offline integration |
-| Mixamo | Optional generic animation source; never a required dependency |
+| Mixamo | Historical optional 3D reference source; never a shipping animation dependency |
 | GitHub | Source, issues and public project history |
 
 ### 15.3 Milestone-triggered perk loop
@@ -713,16 +782,22 @@ Keystores, passwords, RevenueCat keys, Firebase service credentials and store cr
 ### August 25–31: characters and core gameplay
 
 - Complete mandatory character sheets.
-- Produce Captain body bases, shared skeleton and first animation set.
-- Establish modular cosmetic sockets.
-- Produce first-pass Mira, Juno and Ori.
-- Implement surface motor, camera, interactions, Lens and Crew Director.
+- Lock the layered-2.5D gameplay target and preserve the superseded 3D work.
+- Prove one temporary-art layered Mirra route with 2D motor, composition camera
+  and parallax.
+- Build the deterministic coherent-strip/frame-atlas pipeline.
+- Produce Captain sprite families, bounded customization layers and first
+  approved motion sets.
+- Produce first-pass Mira, Juno and Ori atlases.
+- Implement 2D interactions, Lens and Crew Director traversal.
 - Establish Firebase accounts/cloud schema.
 - Complete RevenueCat purchase and restore through the service abstraction.
 
 ### September 1–7: Mirra final-quality benchmark
 
-- Complete Mirra's flight, landing, exploration, science and Signal path.
+- Complete Mirra's 2.5D flight, landing, exploration, science and Signal path.
+- Reconstruct the approved target from separately owned scene layers rather
+  than one flattened background.
 - Add final-direction lighting, VFX, sound and music.
 - Reach the approved visual target on the declared quality profile.
 - Prove companion intelligence, real-time cinematics and store abstraction.
@@ -775,6 +850,14 @@ If a new Google personal developer account is subject to the 12-tester/14-day ga
 
 The technical release is complete when:
 
+- The approved Mirra benchmark is reconstructed as owned 2.5D layers—not one
+  flattened screenshot—and device captures meet the locked composition and
+  readability bar.
+- Surface and flight use deterministic 2D gameplay with authored depth
+  presentation; no shipping path requires a free third-person camera.
+- Captain, crew and Ori ship through validated frame atlases with stable
+  pivots, contacts, cadence and events; no runtime character skeleton is a
+  release dependency.
 - A family can finish the full story and reach dinner in approximately one hour.
 - The first public store version is live before the Shipaton deadline.
 - RevenueCat records a real purchase that grants and restores the correct entitlement.

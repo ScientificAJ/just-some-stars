@@ -4,7 +4,8 @@
   "references": [
     "JustSomeStars.Runtime",
     "JustSomeStars.Editor",
-    "Unity.Addressables.Editor"
+    "Unity.Addressables.Editor",
+    "Unity.InputSystem"
   ],
   "includePlatforms": [
     "Editor"

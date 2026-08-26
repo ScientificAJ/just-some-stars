@@ -149,6 +149,17 @@ namespace JustSomeStars.Runtime.Core
             }
         }
 
+        public GameModeRuntimePolicy CurrentPolicy
+        {
+            get
+            {
+                lock (m_Gate)
+                {
+                    return CreatePolicy(m_CurrentMode, m_ActiveOverlay);
+                }
+            }
+        }
+
         internal IGameModeRuntimeHooks RuntimeHooks => m_RuntimeHooks;
 
         internal static GameModeController CreateForTests(

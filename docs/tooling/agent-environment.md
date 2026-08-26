@@ -1,6 +1,6 @@
 # Agent environment and ShipKit services
 
-Last verified: 2026-08-21 (Task 0)
+Last verified: 2026-08-25 (2.5D production pivot; Task 0 tool inventory retained)
 
 This file is the source of truth for tools already available to agents working on *Just Some Stars*. Check it before installing duplicates or claiming that a service is unavailable. Keep credentials out of this repository.
 
@@ -24,12 +24,20 @@ This file is the source of truth for tools already available to agents working o
 | Unity Android support | Ready | `/mnt/unity-data/Unity/Hub/Editor/6000.3.22f1/Editor/Data/PlaybackEngines/AndroidPlayer` | Bundled OpenJDK 17.0.18, SDK tools 16.0, ADB 36.0.0 and NDK r27c are installed and verified. |
 | Host Android SDK | Ready | `/home/john/Android/Sdk` | Host ADB and diagnostics; Unity builds should prefer Unity's bundled toolchain. |
 | ADB | Ready | 37.0.1, available as `adb` | Used for Limrun's session-bound Android tunnel when low-level logs, files or shell access are needed. The physical Realme Narzo is intentionally not part of the primary workflow. |
-| Blender | Ready | 5.2.0 LTS at `/home/john/.local/bin/blender` | Character, environment and prop authoring. |
-| Blender MCP | Ready | `blender-mcp`, Python 3.11, `localhost:9876` | Poly Haven enabled; Rodin, Sketchfab and Hunyuan remain disabled unless deliberately approved later. |
+| Blender | Ready, optional after 2.5D pivot | 5.2.0 LTS at `/home/john/.local/bin/blender` | Preserved Task 11 tooling, limited prop/reference work and future experiments; not the shipping character-animation pipeline. |
+| Blender MCP | Ready, optional after 2.5D pivot | `blender-mcp`, Python 3.11, `localhost:9876` | Poly Haven enabled; Rodin, Sketchfab and Hunyuan remain disabled. Do not start it for sprite production. |
 | Node.js | Ready | 24.19.0 | Required by Limrun and Argent. |
 | pnpm | Ready | 11.19.0 | User-level package runner for mobile-agent tools. |
 
 Blender MCP is configured in `/home/john/.codex/config.toml` with telemetry disabled. In Blender, keep the addon port at `9876` and click **Connect to MCP server** before an agent expects live scene control.
+
+On 2026-08-25 the user approved a true layered 2.5D production pivot. The
+shipping character pipeline now targets deterministic frame atlases and the
+gameplay renderer targets URP 2D. Blender remains installed and Task 11 remains
+valid historical tooling, but agents must not resume the unfinished Task 12
+Humanoid rig/weight/LOD work unless the user explicitly reverses the pivot.
+The active design and restart stage are documented in
+`docs/superpowers/specs/2026-08-25-2.5d-gameplay-pivot-design.md`.
 
 ## Limrun
 

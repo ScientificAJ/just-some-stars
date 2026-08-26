@@ -1,7 +1,7 @@
 # Astronomy Adventure Game — Complete Design Blueprint
 
-**Status:** Approved and design-locked  
-**Approved:** 2026-08-21  
+**Status:** Approved and design-locked; 2.5D architecture amended 2026-08-25  
+**Approved:** 2026-08-21; 2.5D pivot approved 2026-08-25  
 **Title:** *Just Some Stars*  
 **Initial platform:** Android mobile  
 **Later platform option:** Steam
@@ -12,7 +12,15 @@ A group of kids begins a pretend space mission in their homemade clubhouse ship,
 
 ## 2. Product promise
 
-This is a family-friendly, full-3D astronomy adventure built around wonder, play, discovery, speed, and genuine learning. It should feel like a premium game first and an educational experience because understanding the universe is how the player succeeds.
+This is a family-friendly, cinematic layered-2.5D astronomy adventure built
+around wonder, play, discovery, speed and genuine learning. It should feel like
+a premium game first and an educational experience because understanding the
+universe is how the player succeeds.
+
+The binding gameplay composition is
+`outputs/just-some-stars-2.5d-gameplay-target-v1.png`. The earlier dimensional
+Mirra concept remains palette, world and cast lineage, not a full-3D runtime
+requirement.
 
 The game is designed for whole-family appeal:
 
@@ -147,7 +155,7 @@ Primary learning: orbital paths, momentum, relative motion, gravity assists, and
 ## 8. Core gameplay loop
 
 1. Choose a destination or lead from the ship hub.
-2. Fly a handcrafted 3D route with traversal and piloting challenges.
+2. Fly a handcrafted 2.5D route with traversal, depth-lane and piloting challenges.
 3. Enter orbit or land and explore a compact environment.
 4. Observe a phenomenon and form or select a prediction.
 5. Use the correct instrument or action to test it.
@@ -167,21 +175,27 @@ The game should not feel like a collection of unrelated minigames. Every interac
 ### Shared control language
 
 - Left thumb: move or steer.
-- Right thumb: camera and aiming.
+- Right thumb: contextual aiming, Lens focus and secondary action; gameplay has no free camera orbit.
 - Primary contextual action: boost, scan, interact, grab, or test when its meaning is visually obvious.
 - Secondary action: brake/drift during flight or jump/jet during exploration.
 
 ### Flight
 
-Third-person ship flight provides freedom inside deliberately composed routes. It is neither a strict rail sequence nor unrestricted travel through empty space.
+Cinematic 2.5D ship flight provides bounded horizontal/vertical freedom and
+authored visual depth lanes inside deliberately composed routes. It is neither
+a passive rail sequence nor unrestricted travel through empty space.
 
 ### Surface exploration
 
-Third-person character movement uses compact spaces, traversal, changing gravity, environmental clues, crew banter, and optional secrets.
+Side-view character movement uses compact layered spaces, traversal, changing
+gravity, environmental clues, crew banter and optional secrets.
 
 ### Discovery Lens
 
-An optional first-person instrument view supports close observation. The player aims instruments, compares evidence, aligns data, and tests predictions inside the world. It never becomes a detached quiz screen.
+An optional in-world instrument overlay supports close observation. The player
+aims instruments across declared scene depths, compares evidence, aligns data
+and tests predictions inside the composed world. It never becomes a detached
+quiz screen.
 
 ### Transitions
 
@@ -209,7 +223,7 @@ Progression follows three paths:
 
 The Cosmic Atlas is a living scrapbook. Each discovery can add:
 
-- An interactive 3D object or phenomenon
+- An interactive layered model or phenomenon
 - The crew’s notes
 - Real astronomy explanations at the selected depth
 - Player photographs
@@ -241,7 +255,11 @@ Recommended first offering: one transparent, non-consumable **Founding Crew Cosm
 
 ### Visual language
 
-- Stylized cinematic full 3D overall
+- Stylized cinematic layered 2.5D overall
+- Painterly side-view worlds reconstructed from separately owned parallax,
+  gameplay, atmosphere, foreground and lighting layers
+- Coherent frame-atlas character animation with deliberately illustrated
+  silhouettes rather than runtime skeletal deformation
 - Scientifically grounded environments, lighting, scale cues, and phenomena
 - Slight science-fantasy realism for grandeur
 - Warm, rounded, storybook character and safe-space design
@@ -263,7 +281,9 @@ Crew members receive expressive vocal reactions and a limited number of importan
 
 UI feels built by the children: taped labels, sketched constellations, scratched screens, physical toggles, and improvised panels combined with clean holographic information. Touch targets remain large and readable despite the decorative layer.
 
-Photo Mode is a first-class feature with pause, camera orbit, simple exposure controls, crew poses where possible, and cosmetic frames.
+Photo Mode is a first-class feature with pause, bounded pan/zoom and approved
+composition points, simple exposure controls, crew poses where possible and
+cosmetic frames. It does not expose a free 3D orbit camera.
 
 ## 14. Accessibility
 
@@ -286,10 +306,12 @@ Accessibility settings must be available before the opening cinematic and change
 ### Recommended engine and project shape
 
 - Unity 6 LTS
-- Universal Render Pipeline
+- Universal Render Pipeline with the 2D Renderer for gameplay scenes
 - C#
 - Unity Input System
 - Addressables and data-driven content assets
+- SpriteRenderer/SpriteAtlas frame animation with deterministic manifests and
+  previews
 - Codemagic for reproducible Android builds
 - RevenueCat behind a purchase-service interface
 
@@ -356,13 +378,13 @@ Primary target: stable play on a representative mid-range Android device, with s
 
 Use:
 
-- Baked lighting for static environments
-- Level-of-detail meshes and occlusion culling
-- Pooled particles and reusable effects
-- Texture atlases and platform-appropriate compression
-- Scalable shadows, particles, post-processing, and render scale
+- Separately owned parallax layers with simple 2D collision
+- Sprite normal/emission masks and a bounded number of 2D lights
+- Deterministic character and environment atlases with platform-appropriate compression
+- Pooled particles, fog cards and reusable effects
+- Transparent-overdraw, texture-residency and atlas budgets per destination
+- Scalable lighting, fog, particles, post-processing and render scale
 - Additive or asynchronous destination loading
-- Memory budgets per destination
 - Thermal and battery testing for full 12-minute sessions and complete Chapter One runs
 
 Foldable support begins with safe resizing and UI continuity. Bespoke dual-pane gameplay is a later enhancement unless the core chapter is already polished.
@@ -433,13 +455,17 @@ New features enter only after the complete opening-to-dinner journey feels excel
 
 This is sequencing guidance, not yet the detailed implementation plan:
 
-1. Prove mobile movement, camera, and performance in one tiny 3D test space.
-2. Build a vertical slice containing a short flight, landing mask, surface discovery, Atlas entry, and ship return.
-3. Prove save recovery and accessibility early.
-4. Integrate the Chapter One narrative wrapper and crew presentation.
-5. Produce Mirra to final quality, then reuse proven systems for Koro and the Aster Veil.
-6. Add RevenueCat only through the isolated purchase interface.
-7. Complete device, store, offline, purchase, and family playtesting.
+1. Prove layered 2.5D movement, parallax, composition camera and performance in
+   one 20–30 second Mirra test route.
+2. Build the deterministic coherent-strip/frame-atlas pipeline and prove one
+   painterly character round trip.
+3. Produce the three Captain families, bespoke crew and Ori sprite sets.
+4. Build a vertical slice containing a short 2.5D flight, landing mask, surface discovery, Atlas entry, and ship return.
+5. Prove save recovery and accessibility early.
+6. Integrate the Chapter One narrative wrapper and crew presentation.
+7. Produce Mirra to final quality, then reuse proven systems for Koro and the Aster Veil.
+8. Add RevenueCat only through the isolated purchase interface.
+9. Complete device, store, offline, purchase and family playtesting.
 
 ## 21. Success criteria
 

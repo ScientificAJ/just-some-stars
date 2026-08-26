@@ -4,29 +4,45 @@
 
 **Goal:** Build, verify and publicly release the complete Android Chapter One of *Just Some Stars* with its approved visual quality, family experience, optional cloud account, birthday gifts and RevenueCat-powered cosmetics.
 
-**Architecture:** A Unity 6 URP project uses isolated feature assemblies, data-driven content and explicit runtime modes. All external capabilities sit behind C# service interfaces; Google Play and Galaxy Store receive separate builds while sharing gameplay, content and cloud identity. Blender source assets, Unity CLI automation and CI produce deterministic Android artifacts from the same repository.
+**Architecture:** A Unity 6 URP project uses isolated feature assemblies,
+data-driven content and explicit runtime modes. Gameplay scenes use the URP 2D
+Renderer, 2D physics, authored layered routes and deterministic frame-atlas
+characters. All external capabilities sit behind C# service interfaces; Google
+Play and Galaxy Store receive separate builds while sharing gameplay, content
+and cloud identity. Unity CLI automation and CI produce deterministic Android
+artifacts from the same repository.
 
-**Tech Stack:** Unity 6 LTS, C#, URP, Input System, Cinemachine, Addressables, AI Navigation, uGUI, TextMeshPro, UI Toolkit, Shader Graph/HLSL, Blender/Python/Blender MCP, Firebase Authentication/Firestore/Cloud Functions, RevenueCat, Kotlin/Java, Gradle, Codemagic and Android SDK tools.
+**Tech Stack:** Unity 6 LTS, C#, URP 2D Renderer, Input System, Addressables,
+SpriteRenderer/SpriteAtlas, 2D Physics, uGUI, TextMeshPro, UI Toolkit, Shader
+Graph/HLSL, Python sprite tooling, optional preserved Blender/Python/Blender
+MCP tooling, Firebase Authentication/Firestore/Cloud Functions, RevenueCat,
+Kotlin/Java, Gradle, Codemagic and Android SDK tools.
 
 **Spec:** `outputs/just-some-stars-technical-build-plan.md`
 
 ## Global Constraints
 
 - Use `/mnt/unity-data/JustSomeStars` as the canonical Git worktree and project root. Keep every game file there, including the Unity project, `Library`, imported/generated assets, build outputs and caches; do not create a second active worktree on the system partition.
-- The image at `outputs/just-some-stars-mirra-gameplay-target-v1.png` is the binding visual quality floor. Hackathon speed, mobile constraints and temporary prototypes never justify silently lowering that final bar.
+- The image at `outputs/just-some-stars-2.5d-gameplay-target-v1.png` is the
+  binding gameplay visual quality floor. The earlier Mirra image remains
+  historical palette/world/cast lineage only. Hackathon speed, mobile
+  constraints and temporary prototypes never justify lowering the final bar.
 - Code must remain production-grade and modular: small focused assemblies and components, explicit interfaces, data-driven content, dependency injection at composition roots, automated tests where practical, and no giant manager classes or hidden cross-system coupling.
 - Execute strictly one numbered task at a time. Finish its checklist, run fresh verification, report the evidence and pause for approval before beginning the next task.
 - Chapter One is a complete, free 45–60 minute story ending before dinner.
 - Primary runtime is Android; Google Play and Galaxy Store builds are separate and Steam remains future work.
 - Package IDs are `com.scientificaj.justsomestars` and `com.scientificaj.justsomestars.galaxy`.
 - The Realme Narzo Performance profile must sustain a stable 30 FPS in representative play and thermal testing.
-- Three Captain body families share gameplay capability and receive fitted clothing, collider, camera, IK and stride calibration.
+- Three Captain body families share gameplay capability and receive fitted
+  sprite layers, collider, camera-framing and contact/cadence calibration.
 - Only two crew companions plus Ori run full destination intelligence.
 - Gameplay, learning, accessibility and story completion never require a purchase, login or network connection.
 - No advertisements, subscriptions, premium currency, randomized loot, energy, public chat or paid power ship in Chapter One.
 - Exact birthday is private, supports annual gifts and is excluded from advertising analytics.
-- No hero character enters Blender production before its approved reference sheet.
-- Unity CLI and Blender MCP are required production interfaces, not optional documentation examples.
+- No hero character enters frame-atlas production before its approved reference sheet.
+- Unity CLI and the deterministic sprite pipeline are required production
+  interfaces. Blender MCP is preserved optional Task 11 tooling, not a
+  shipping-character dependency.
 - External SDK failures must degrade to local/offline play without blocking Chapter One.
 - Every implementation task follows red-green-refactor where automated tests are practical and ends at a reviewer/commit gate.
 - Never commit signing keys, passwords, store credentials, Firebase admin credentials or private API keys.
@@ -39,8 +55,8 @@
 |---|---:|---|
 | Release runway | 1–5 | Installable skeleton and release tooling are validated locally; cloud Unity execution and store submission are explicitly deferred until a playable release candidate exists |
 | Runtime foundation | 6–9 | Modes, input, saves, services and scene streaming work offline |
-| Art pipeline and Captain | 10–12 | Approved references produce validated modular characters in Unity |
-| Core play | 13–18 | Surface, crew, Lens, flight and missions form one playable loop |
+| Art pipeline and Captain | 10–12 | Approved references produce a validated layered-2.5D proof and modular frame-atlas characters in Unity |
+| Core play | 13–18 | 2D surface movement, crew, Lens, 2.5D flight and missions form one playable loop |
 | Mirra benchmark | 19–20 | Mirra reaches mechanics-complete and visual-quality acceptance |
 | Accounts and commerce | 21–24 | Google cloud, birthdays, RevenueCat and Galaxy adapters are verified |
 | Full Chapter One | 25–26 | Koro/Vesper, Aster Veil, opening and ending complete the story |
@@ -52,9 +68,8 @@
 ```mermaid
 flowchart TD
     A["1–5 Release runway"] --> B["6–9 Runtime foundation"]
-    B --> C["10–12 Art pipeline and Captain"]
-    B --> D["13–18 Core play"]
-    C --> E["19–20 Mirra benchmark"]
+    B --> C["10–12 2.5D art pipeline and Captain"]
+    C --> D["13–18 Core play"]
     D --> E
     B --> F["21–24 Accounts and commerce"]
     E --> G["25–26 Full Chapter One"]
@@ -69,7 +84,7 @@ flowchart TD
 just-some-stars/
 ├── Assets/
 │   ├── _JustSomeStars/
-│   │   ├── Art/{Characters,Ori,Ship,Environments,Materials,VFX,UI}/
+│   │   ├── Art/{2D,Characters,Ori,Ship,Environments,Materials,VFX,UI}/
 │   │   ├── Audio/{Music,SFX,Voice}/
 │   │   ├── Content/{Missions,Dialogue,Atlas,Cosmetics,Phenomena}/
 │   │   ├── Prefabs/{Characters,Crew,Ship,Gameplay,UI}/
@@ -79,6 +94,8 @@ just-some-stars/
 │   │   │   ├── Input/
 │   │   │   ├── Saving/
 │   │   │   ├── Player/
+│   │   │   ├── Animation2D/
+│   │   │   ├── Rendering2D/
 │   │   │   ├── Crew/
 │   │   │   ├── Flight/
 │   │   │   ├── Interaction/
@@ -98,7 +115,7 @@ just-some-stars/
 ├── Packages/
 ├── ProjectSettings/
 ├── firebase/functions/
-├── tools/blender/
+├── tools/{sprites,blender}/
 ├── docs/
 ├── outputs/
 └── codemagic.yaml
@@ -177,6 +194,10 @@ Task 0 creates tooling/configuration only. It does not create the Unity project 
 ---
 
 ### Task 1: Clone the greenfield repository and preserve the approved documents
+
+**Historical note:** this section records the original repository bootstrap.
+The Mirra image copied here remains preserved palette/world/cast lineage; the
+2026-08-25 Task 12 Stage 0 section owns the current 2.5D gameplay target.
 
 **Files:**
 - Create in repository: `outputs/astronomy-adventure-game-blueprint.md`
@@ -1201,7 +1222,9 @@ git commit -m "test: harden runtime foundation QA orchestration"
 - Create: `docs/art/character-reference-approval.md`
 
 **Interfaces:**
-- Produces: approved orthographic, scale-consistent inputs for Blender production.
+- Produces: approved orthographic, scale-consistent identity, silhouette,
+  equipment, expression, pivot/contact and material authority for 2.5D sprite
+  production. These sheets may also support optional Blender reference work.
 
 **Locked sheet ownership:**
 
@@ -1212,7 +1235,7 @@ git commit -m "test: harden runtime foundation QA orchestration"
   mobile-silhouette rules. It establishes the common style but does not replace
   any character's final turnaround.
 - `crew-height-lineup.png` shows the Captain, Mira, Juno, Kai, Bea and Ori on
-  one floor line in neutral front poses, with numerical Blender-unit heights,
+  one floor line in neutral front poses, with numerical metre heights,
   head-height guides and body-width/silhouette comparison.
 - `captain-body-families.png` covers only the Captain's three equal-capability
   body families. Each family requires neutral front, side and back views,
@@ -1230,7 +1253,8 @@ git commit -m "test: harden runtime foundation QA orchestration"
 - `ori.png` covers only Ori. It requires front, side and back views plus a top
   view when needed, exact size beside a child silhouette, eye/display,
   antenna, movement joints, scanner, opening panels, Signal-reactive parts,
-  lights and material separation for its dedicated non-humanoid rig.
+  lights, material separation and mechanical articulation for its dedicated
+  frame-atlas contract.
 - `expressions.png` is a cast-wide grid with separate rows for the Captain,
   Mira, Juno, Kai, Bea and Ori. Human rows cover neutral, happy, curious,
   worried, afraid, surprised, determined, sad, blink and compact speaking-mouth
@@ -1258,7 +1282,7 @@ heads tall, with soft believable
 facial anatomy, slightly enlarged expressive eyes, modestly enlarged hands and
 boots, premium believable materials, practical repaired homemade exploration
 gear, restrained cyan/violet Signal accents and the warm-sunset/cool-starlight
-duality of `outputs/just-some-stars-mirra-gameplay-target-v1.png`. Avoid anime,
+duality of `outputs/just-some-stars-2.5d-gameplay-target-v1.png`. Avoid anime,
 chibi, photoreal-adult, toy-plastic, tactical-military, superhero, generic
 mobile-mascot and recognizable franchise design language. The final master
 sheet shows the representative Captain, Mira, Juno, Kai, Bea and Ori together;
@@ -1266,7 +1290,7 @@ the user's approval is recorded in the Task 10 ledger.
 
 - [x] **Step 2: Create the crew lineup and lock heights/body silhouettes**
 
-Show all five kids and Ori on one ground plane with numerical Blender-unit height callouts.
+Show all five kids and Ori on one ground plane with numerical metre-height callouts.
 
 - [x] **Step 3: Create Captain and individual-character orthographic sheets**
 
@@ -1279,14 +1303,14 @@ Each sheet contains neutral front, side and back views with matching clothing la
 The approval file contains one row for all 12 images, recording filename,
 characters covered, required views, scale consistency, visual-style
 consistency, mobile readability, equipment consistency, approval status,
-review notes and approval date. No downstream Blender task starts for an
-unapproved row, and approval of the master sheet never substitutes for approval
-of an individual character sheet.
+review notes and approval date. No downstream character-production task starts
+for an unapproved row, and approval of the master sheet never substitutes for
+approval of an individual character sheet.
 
 Written labels, role descriptions, numerical dimensions, landmark diagrams and
-control notes override incidental generated-image mistakes. Task 12 modelers
-and riggers and Task 29 animators must correct those mismatches in the actual
-assets instead of tracing them; expression labels describe the required final
+control notes override incidental generated-image mistakes. Task 12 sprite
+artists and Task 29 animators must correct those mismatches in the actual
+atlases instead of tracing them; expression labels describe the required final
 emotion even when a thumbnail is imperfect.
 
 - [x] **Step 6: Commit source and approved exports**
@@ -1297,6 +1321,10 @@ git commit -m "art: lock character reference sheets"
 ```
 
 ### Task 11: Build the Blender MCP source and export pipeline
+
+**2026-08-25 status:** completed and preserved as optional tooling. The 2.5D
+pivot does not invalidate this verified pipeline, but Task 11 is no longer a
+dependency for shipping characters or replacement Task 12.
 
 **Files:**
 - Create: `tools/blender/jss_scene_setup.py`
@@ -1365,113 +1393,101 @@ git lfs ls-files --name-only | grep -Fx \
 git commit -m "build: add Blender MCP asset validation pipeline"
 ```
 
-### Task 12: Produce the modular Captain, bespoke crew, Ori and cosmetic attachment system
+### Task 12: Replace the unfinished 3D character path with the approved 2.5D production foundation
 
-**Files:**
-- Create: `Assets/_JustSomeStars/Art/Characters/Source/captain.blend`
-- Create: `Assets/_JustSomeStars/Art/Characters/Source/{mira,juno,kai,bea,ori}.blend`
-- Create: `Assets/_JustSomeStars/Runtime/Player/BodyFamily.cs`
-- Create: `Assets/_JustSomeStars/Runtime/Cosmetics/CosmeticDefinition.cs`
-- Create: `Assets/_JustSomeStars/Runtime/Cosmetics/CaptainLoadout.cs`
-- Create: `Assets/_JustSomeStars/Runtime/Cosmetics/CaptainAssembler.cs`
-- Create: `Assets/_JustSomeStars/Editor/Validation/CosmeticFitValidator.cs`
-- Create: `Assets/_JustSomeStars/Tests/EditMode/CaptainAssemblerTests.cs`
-- Create: `Assets/_JustSomeStars/Tests/PlayMode/CaptainBodyFamilyTests.cs`
-- Create: `Assets/_JustSomeStars/Tests/EditMode/CrewPrefabValidationTests.cs`
+**Status:** the prior 3D Stages 1–3 are historical; prior Stage 4 rig/walk
+work is stopped. No unfinished file is deleted without separate user approval.
+
+**Authority:**
+- Design: `docs/superpowers/specs/2026-08-25-2.5d-gameplay-pivot-design.md`
+- Execution: `docs/superpowers/plans/2026-08-25-2.5d-gameplay-pivot.md`
+- Visual target: `outputs/just-some-stars-2.5d-gameplay-target-v1.png`
 
 **Interfaces:**
-- Produces: short/compact, medium/average and tall/broad body families.
-- Produces: data-driven slots for body, face, hair, suit, gloves, boots, backpack, patch and accessory.
+- Produces: a layered 2.5D Mirra runtime proof, deterministic coherent-strip
+  sprite pipeline, three equal-capability Captain sprite families, bespoke
+  crew/Ori atlases and one final-art Android acceptance route.
+- Produces: `SurfaceMotor2D`, `CompositionCamera2D`,
+  `SpriteAnimationClipDefinition`, `CharacterSpriteSet`,
+  `SpriteAtlasAnimator` and the bounded `LayeredCharacterRenderer` contract.
 
-- [ ] **Step 1: Model, retopologize, UV, bake and texture the three body bases**
+- [x] **Stage 0: Lock the pivot, target and historical boundary**
 
-Keep the shared animation contract while fitting actual proportions; do not scale one body crudely into the others.
+- [x] **Stage 1: Prove layered 2.5D rendering, movement and composition camera with temporary art**
 
-- [ ] **Step 2: Rig, weight and produce LOD0/1/2 through the validated pipeline**
+- [ ] **Stage 2: Build and validate the deterministic coherent-strip/atlas pipeline**
 
-- [ ] **Step 3: Produce Mira, Juno, Kai and Bea as bespoke characters on the shared humanoid contract**
+- [ ] **Stage 3: Produce the three modular Captain sprite families**
 
-Each character receives unique proportions, face, hair, equipment, silhouette, idles, expressions and compact visemes while retaining the shared animation naming and retargeting rules.
+- [ ] **Stage 4: Produce bespoke Mira, Juno, Kai, Bea and Ori sprite sets**
 
-- [ ] **Step 4: Produce Ori with its dedicated non-humanoid rig, expressions, scan parts and LODs**
+- [ ] **Stage 5: Integrate the final-art Mirra excerpt and pass one package-boundary Android gate**
 
-- [ ] **Step 5: Write failing loadout and prefab compatibility tests**
+Task 13 begins only after replacement Stage 5 passes. The exact files, tests,
+commands, visual checks and commit boundaries live in the execution plan above.
 
-```csharp
-[TestCase(BodyFamily.Compact)]
-[TestCase(BodyFamily.Average)]
-[TestCase(BodyFamily.TallBroad)]
-public void RequiredLaunchSuit_HasFitForEveryBody(BodyFamily family)
-{
-    Assert.That(requiredLaunchSuit.Supports(family), Is.True);
-}
-```
-
-- [ ] **Step 6: Implement ScriptableObject definitions and runtime assembly**
-
-Aim for body, hair/head and outfit render groups. Apply colors through material properties rather than duplicating materials per color.
-
-- [ ] **Step 7: Build automated T-pose, crouch, run and seated clipping captures for all families**
-
-- [ ] **Step 8: Validate Captain, all four crew prefabs and Ori on Android, then commit**
-
-```bash
-git add Assets/_JustSomeStars/Art/Characters Assets/_JustSomeStars/Runtime/Cosmetics Assets/_JustSomeStars/Runtime/Player Assets/_JustSomeStars/Tests
-git commit -m "feat: add modular three-family Captain"
-```
-
-### Task 13: Implement the surface motor and third-person camera
+### Task 13: Implement the production surface motor and composition camera
 
 **Files:**
-- Create: `Assets/_JustSomeStars/Runtime/Player/SurfaceMotor.cs`
-- Create: `Assets/_JustSomeStars/Runtime/Player/SurfaceMotorConfig.cs`
-- Create: `Assets/_JustSomeStars/Runtime/Player/BodyCalibration.cs`
-- Create: `Assets/_JustSomeStars/Runtime/Player/PlayerCameraController.cs`
-- Create: `Assets/_JustSomeStars/Prefabs/Characters/Captain.prefab`
-- Create: `Assets/_JustSomeStars/Tests/PlayMode/SurfaceMotorTests.cs`
-- Create: `Assets/_JustSomeStars/Tests/PlayMode/PlayerCameraTests.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Player/SurfaceMotor2D.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Player/SurfaceMotor2DConfig.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Player/BodySpriteCalibration.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Player/CompositionCamera2D.cs`
+- Create: `Assets/_JustSomeStars/Prefabs/Characters/Captain2D.prefab`
+- Create: `Assets/_JustSomeStars/Tests/PlayMode/SurfaceMotor2DProductionTests.cs`
+- Create: `Assets/_JustSomeStars/Tests/PlayMode/CompositionCamera2DProductionTests.cs`
 
 **Interfaces:**
-- Consumes: `InputRouter`, active `BodyCalibration` and `GameSettings`.
-- Produces: deterministic move/jump/jet state and camera profiles.
+- Consumes: `InputRouter`, active `BodySpriteCalibration`, `GameSettings` and
+  the Task 12 layered-scene contract.
+- Produces: deterministic 2D move/jump/jet state and authored camera profiles.
 
-- [ ] **Step 1: Write PlayMode tests for slopes, steps, wind, low gravity and recovery volume**
+- [ ] **Step 1: Write PlayMode tests for slopes, steps, wind, low gravity, moving platforms and recovery volumes**
 
-- [ ] **Step 2: Implement the kinematic capsule motor with a fixed simulation step**
+- [ ] **Step 2: Harden the fixed-step `Rigidbody2D` motor**
 
-Expose external acceleration for wind and moving surfaces. Keep gameplay speed equal across body families.
+Expose external acceleration for wind and moving surfaces. Keep speed, jump and
+jet capability equal across body families; calibration changes only sprite
+pivot, contacts and collider fit.
 
-- [ ] **Step 3: Implement camera orbit, collision, recenter, contextual FOV and reduced motion**
+- [ ] **Step 3: Harden camera dead zone, look-ahead, bounds, zoom, composition targets and reduced motion**
+
+There is no free orbit. Camera behavior must preserve the approved side-view
+route and never reveal unowned layer edges.
 
 - [ ] **Step 4: Run the same traversal fixture with every body calibration**
 
-Expected: all families complete the route within the same tolerance without camera clipping.
+Expected: all families complete the route within the same tolerance without
+camera clipping, visible baseline drift or collision mismatch.
 
 - [ ] **Step 5: Perform a five-minute touch-control device test and commit**
 
 ```bash
-git add Assets/_JustSomeStars/Runtime/Player Assets/_JustSomeStars/Prefabs/Characters Assets/_JustSomeStars/Tests
-git commit -m "feat: add mobile surface movement and camera"
+git add -A -- Assets/_JustSomeStars/Runtime/Player \
+  Assets/_JustSomeStars/Prefabs/Characters Assets/_JustSomeStars/Tests
+git diff --cached --check
+git commit -m "feat: productionize 2.5d surface movement and camera"
 ```
 
 ### Task 14: Implement contextual interactions and anchor reservations
 
 **Files:**
 - Create: `Assets/_JustSomeStars/Runtime/Interaction/InteractionDefinition.cs`
-- Create: `Assets/_JustSomeStars/Runtime/Interaction/InteractionAnchor.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Interaction/InteractionAnchor2D.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Interaction/InteractionReservationService.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Interaction/InteractionRunner.cs`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/InteractionReservationTests.cs`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/InteractionRunnerTests.cs`
 
 **Interfaces:**
-- Produces: one interaction definition with player/crew/Ori anchors, tool, animation, typed events and recovery.
+- Produces: one interaction definition with player/crew/Ori 2D anchors, tool,
+  frame-atlas clip, typed events and recovery.
 
 - [ ] **Step 1: Write tests proving two actors cannot reserve one exclusive anchor**
 
 - [ ] **Step 2: Implement reservation leases with cancellation and timeout recovery**
 
-- [ ] **Step 3: Implement contextual selection based on distance, facing, mode and required tool**
+- [ ] **Step 3: Implement contextual selection based on 2D distance, facing, layer/depth band, mode and required tool**
 
 - [ ] **Step 4: Build a probe-repair fixture involving Captain, Juno and Ori**
 
@@ -1493,6 +1509,7 @@ git commit -m "feat: add contextual interaction anchors"
 - Create: `Assets/_JustSomeStars/Runtime/Crew/CrewActionState.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Crew/CrewPerception.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Crew/CrewRecovery.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Crew/TraversalGraph2D.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Crew/DialogueToken.cs`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/CrewUtilityTests.cs`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/CrewRecoveryTests.cs`
@@ -1515,6 +1532,9 @@ public void MandatoryStoryAction_OutranksPersonalityObservation()
 - [ ] **Step 2: Implement Director companion selection, formation and dialogue arbitration**
 
 - [ ] **Step 3: Implement states: join, follow, position, traverse, investigate, interact, react, speak, conversation, cinematic, wait and recover**
+
+Traverse authored `TraversalGraph2D` nodes and declared depth-band transitions;
+do not introduce a 3D NavMesh dependency.
 
 - [ ] **Step 4: Create Mira, Juno, Kai, Bea and Ori personality assets with their approved attention weights**
 
@@ -1549,7 +1569,10 @@ git commit -m "feat: add authored crew intelligence"
 
 - [ ] **Step 2: Implement instrument/phenomenon compatibility and evidence records**
 
-- [ ] **Step 3: Implement Lens camera, aiming, reticle, scan progress and mode switching**
+- [ ] **Step 3: Implement layered Lens focus, aiming, reticle, scan progress and mode switching**
+
+Lens focus resolves declared phenomena and depth bands inside the composition;
+it does not switch into a free first-person or orbiting 3D camera.
 
 - [ ] **Step 4: Create three fixtures: Mirra temperature, Koro spectrum and Aster motion**
 
@@ -1562,27 +1585,29 @@ git add Assets/_JustSomeStars/Runtime/Discovery Assets/_JustSomeStars/Content/Ph
 git commit -m "feat: add evidence-driven Discovery Lens"
 ```
 
-### Task 17: Implement flight, assists, landing and recovery
+### Task 17: Implement 2.5D flight, assists, landing and recovery
 
 **Files:**
-- Create: `Assets/_JustSomeStars/Runtime/Flight/FlightController.cs`
-- Create: `Assets/_JustSomeStars/Runtime/Flight/FlightModel.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Flight/FlightMotor2D.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Flight/FlightModel2D.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Flight/FlightAssist.cs`
-- Create: `Assets/_JustSomeStars/Runtime/Flight/GravityAssistVolume.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Flight/GravityAssistVolume2D.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Flight/FlightDepthLane.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Flight/FlightCheckpoint.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Flight/LandingSequence.cs`
-- Create: `Assets/_JustSomeStars/Art/Ship/Source/player-ship.blend`
-- Create: `Assets/_JustSomeStars/Prefabs/Ship/PlayerShip.prefab`
-- Create: `Assets/_JustSomeStars/Tests/EditMode/FlightModelTests.cs`
-- Create: `Assets/_JustSomeStars/Tests/PlayMode/FlightRecoveryTests.cs`
+- Create: `Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/`
+- Create: `Assets/_JustSomeStars/Prefabs/Ship/PlayerShip2D.prefab`
+- Create: `Assets/_JustSomeStars/Tests/EditMode/FlightModel2DTests.cs`
+- Create: `Assets/_JustSomeStars/Tests/PlayMode/FlightRecovery2DTests.cs`
 
 **Interfaces:**
 - Consumes: semantic flight input and `PilotingAssist`.
-- Produces: boost, brake, drift, momentum, gravity assist, prediction arc, checkpoint and landing state.
+- Produces: bounded-plane boost, brake, drift, momentum, gravity assist,
+  authored depth-lane, prediction arc, checkpoint and landing state.
 
 - [ ] **Step 1: Write deterministic model tests for acceleration, braking and assist correction**
 
-- [ ] **Step 2: Implement the simulation separately from ship presentation**
+- [ ] **Step 2: Implement the deterministic 2D simulation separately from ship presentation**
 
 - [ ] **Step 3: Implement Guided, Balanced and Ace correction profiles**
 
@@ -1590,9 +1615,13 @@ Guided widens viable routes and corrects steering; Ace reduces correction but ne
 
 - [ ] **Step 4: Implement checkpoint recovery and landing transition hooks**
 
-- [ ] **Step 5: Model, texture, rig and LOD the original homemade player ship and cockpit**
+- [ ] **Step 5: Produce the original homemade ship as layered sprites and coherent frame atlases**
 
-Preserve the approved contrast between patched child-built construction and precise Signal technology. Validate landing gear, engine, door, cockpit-seat and cosmetic attachment pivots through Blender MCP and the batch exporter.
+Preserve the approved contrast between patched child-built construction and
+precise Signal technology. Validate engine, landing, door, cockpit-seat,
+damage-state and cosmetic attachment pivots through the sprite pipeline. A
+bounded optional 3D reference render is permitted, but no shipping feature may
+depend on a ship rig, mesh LOD or free 3D flight space.
 
 - [ ] **Step 6: Build a 90-second graybox route and validate touch controls on device**
 
@@ -1600,7 +1629,7 @@ Preserve the approved contrast between patched child-built construction and prec
 
 ```bash
 git add Assets/_JustSomeStars/Runtime/Flight Assets/_JustSomeStars/Prefabs/Ship Assets/_JustSomeStars/Tests
-git commit -m "feat: add assisted spaceflight and landing"
+git commit -m "feat: add assisted 2.5d flight and landing"
 ```
 
 ### Task 18: Implement mission graph, dialogue, hints and Atlas
@@ -1645,14 +1674,14 @@ git commit -m "feat: add missions dialogue hints and Cosmic Atlas"
 - Create: `Assets/_JustSomeStars/Scenes/Destinations/Mirra.unity`
 - Create: `Assets/_JustSomeStars/Content/Missions/mirra-chapter.asset`
 - Create: `Assets/_JustSomeStars/Runtime/Discovery/MirraClimateField.cs`
-- Create: `Assets/_JustSomeStars/Art/Environments/Mirra/`
+- Create: `Assets/_JustSomeStars/Art/2D/Environments/Mirra/`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/MirraMissionTests.cs`
 
 **Interfaces:**
 - Consumes: flight, landing, surface, crew, interactions, Lens, missions and Atlas.
-- Produces: one final-format destination loop and the first Signal fragment.
+- Produces: one final-format layered 2.5D destination loop and the first Signal fragment.
 
-- [ ] **Step 1: Graybox the approach, landing, twilight traversal, probe repair, evidence test and departure**
+- [ ] **Step 1: Graybox the 2.5D approach, landing, twilight route, probe repair, evidence test and departure**
 
 - [ ] **Step 2: Write a PlayMode mission test that reaches the first Signal fragment through typed events**
 
@@ -1667,16 +1696,16 @@ git commit -m "feat: add missions dialogue hints and Cosmic Atlas"
 - [ ] **Step 7: Commit mechanics-complete Mirra**
 
 ```bash
-git add Assets/_JustSomeStars/Scenes/Destinations/Mirra.unity Assets/_JustSomeStars/Content Assets/_JustSomeStars/Runtime/Discovery Assets/_JustSomeStars/Art/Environments/Mirra Assets/_JustSomeStars/Tests
+git add Assets/_JustSomeStars/Scenes/Destinations/Mirra.unity Assets/_JustSomeStars/Content Assets/_JustSomeStars/Runtime/Discovery Assets/_JustSomeStars/Art/2D/Environments/Mirra Assets/_JustSomeStars/Tests
 git commit -m "feat: complete Mirra gameplay slice"
 ```
 
 ### Task 20: Raise Mirra to the approved visual quality bar
 
 **Files:**
-- Create: `Assets/_JustSomeStars/Art/Materials/Shared/`
-- Create: `Assets/_JustSomeStars/Art/Materials/Mirra/`
-- Create: `Assets/_JustSomeStars/Art/VFX/Mirra/`
+- Create: `Assets/_JustSomeStars/Art/2D/Materials/Shared/`
+- Create: `Assets/_JustSomeStars/Art/2D/Materials/Mirra/`
+- Create: `Assets/_JustSomeStars/Art/2D/VFX/Mirra/`
 - Create: `Assets/_JustSomeStars/Content/QualityProfiles/`
 - Create: `docs/art/mirra-quality-review.md`
 - Create: `outputs/quality-reviews/mirra-device-capture.png`
@@ -1685,11 +1714,11 @@ git commit -m "feat: complete Mirra gameplay slice"
 - Produces: Performance, Balanced, Cinematic and High Frame Rate profiles.
 - Produces: direct screenshot comparison against the canonical quality image.
 
-- [ ] **Step 1: Build shared Shader Graph foundations for skin, fabric, metal, rock, ice, visor, hologram and atmosphere**
+- [ ] **Step 1: Build shared 2D-lit Shader Graph foundations for sprite normals, emission, palette masks, fabric, metal, rock, ice, visor, hologram and atmosphere**
 
-- [ ] **Step 2: Establish Mirra's orange/blue lighting divide with one normal major shadow-casting light**
+- [ ] **Step 2: Establish Mirra's orange/blue divide with bounded 2D lights, baked gradients and layer-specific grading**
 
-- [ ] **Step 3: Add terrain detail, atmosphere, contact treatment, restrained bloom and Signal focal effects**
+- [ ] **Step 3: Add layered terrain, parallax atmosphere, sprite contact treatment, restrained bloom and Signal focal effects**
 
 - [ ] **Step 4: Stage the Captain, two companions, Ori and ship for silhouette/readability checks**
 
@@ -1702,7 +1731,7 @@ Record pass/fail evidence in `mirra-quality-review.md`; mechanics completion alo
 - [ ] **Step 7: Commit the approved benchmark**
 
 ```bash
-git add Assets/_JustSomeStars/Art Assets/_JustSomeStars/Content/QualityProfiles docs/art outputs/quality-reviews
+git add Assets/_JustSomeStars/Art/2D Assets/_JustSomeStars/Content/QualityProfiles docs/art outputs/quality-reviews
 git commit -m "art: reach approved Mirra mobile quality bar"
 ```
 
@@ -1878,7 +1907,7 @@ git commit -m "feat: add isolated Galaxy commerce adapter"
 **Files:**
 - Create: `Assets/_JustSomeStars/Scenes/Destinations/KoroVesper.unity`
 - Create: `Assets/_JustSomeStars/Content/Missions/koro-vesper-chapter.asset`
-- Create: `Assets/_JustSomeStars/Art/Environments/KoroVesper/`
+- Create: `Assets/_JustSomeStars/Art/2D/Environments/KoroVesper/`
 - Create: `Assets/_JustSomeStars/Runtime/Discovery/GeyserController.cs`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/KoroVesperMissionTests.cs`
 
@@ -1889,7 +1918,7 @@ git commit -m "feat: add isolated Galaxy commerce adapter"
 
 - [ ] **Step 2: Write an end-to-end mission test from Vesper arrival through second-fragment recovery**
 
-- [ ] **Step 3: Build low-gravity traversal, geyser timing and spectrum evidence**
+- [ ] **Step 3: Build layered 2.5D low-gravity traversal, geyser timing and spectrum evidence**
 
 - [ ] **Step 4: Author companions, dialogue, optional observations and Atlas records**
 
@@ -1898,7 +1927,7 @@ git commit -m "feat: add isolated Galaxy commerce adapter"
 - [ ] **Step 6: Complete device runs across assistance/science-depth combinations and commit**
 
 ```bash
-git add Assets/_JustSomeStars/Scenes/Destinations/KoroVesper.unity Assets/_JustSomeStars/Content Assets/_JustSomeStars/Art/Environments/KoroVesper Assets/_JustSomeStars/Runtime/Discovery Assets/_JustSomeStars/Tests
+git add Assets/_JustSomeStars/Scenes/Destinations/KoroVesper.unity Assets/_JustSomeStars/Content Assets/_JustSomeStars/Art/2D/Environments/KoroVesper Assets/_JustSomeStars/Runtime/Discovery Assets/_JustSomeStars/Tests
 git commit -m "feat: complete Koro and Vesper chapter"
 ```
 
@@ -1908,7 +1937,7 @@ git commit -m "feat: complete Koro and Vesper chapter"
 - Create: `Assets/_JustSomeStars/Scenes/Destinations/AsterVeil.unity`
 - Create: `Assets/_JustSomeStars/Content/Missions/aster-veil-chapter.asset`
 - Create: `Assets/_JustSomeStars/Runtime/Flight/DebrisFieldController.cs`
-- Create: `Assets/_JustSomeStars/Art/Environments/AsterVeil/`
+- Create: `Assets/_JustSomeStars/Art/2D/Environments/AsterVeil/`
 - Create: `Assets/_JustSomeStars/Scenes/Cinematics/SignalReassembly.unity`
 - Create: `Assets/_JustSomeStars/Scenes/Core/Clubhouse.unity`
 - Create: `Assets/_JustSomeStars/Scenes/Cinematics/Opening.unity`
@@ -1918,7 +1947,7 @@ git commit -m "feat: complete Koro and Vesper chapter"
 **Interfaces:**
 - Produces: third fragment, star-map reveal, return, dinner line, Ori pulse and Chapter Two hook.
 
-- [ ] **Step 1: Graybox the momentum/gravity-assist route and shifting debris**
+- [ ] **Step 1: Graybox the 2.5D momentum/gravity-assist route and authored shifting-debris lanes**
 
 - [ ] **Step 2: Write an end-to-end Chapter One test from clean save to credits flag**
 
@@ -1937,7 +1966,7 @@ The opening introduces all five kids and Ori, records the Captain customization,
 - [ ] **Step 8: Complete full Guided/Balanced/Ace device runs and commit**
 
 ```bash
-git add Assets/_JustSomeStars/Scenes Assets/_JustSomeStars/Content Assets/_JustSomeStars/Runtime/Flight Assets/_JustSomeStars/Art/Environments/AsterVeil Assets/_JustSomeStars/Tests
+git add Assets/_JustSomeStars/Scenes Assets/_JustSomeStars/Content Assets/_JustSomeStars/Runtime/Flight Assets/_JustSomeStars/Art/2D/Environments/AsterVeil Assets/_JustSomeStars/Tests
 git commit -m "feat: complete Aster Veil and dinner finale"
 ```
 
@@ -1967,7 +1996,12 @@ Each row includes stable ID, category, free/earned/paid source, pack, body fits,
 
 - [ ] **Step 2: Write validation tests for unique IDs, 100-plus count, pack membership, ownership and all required body fits**
 
-- [ ] **Step 3: Produce modular geometry, materials, icons and effects through the approved art pipeline**
+- [ ] **Step 3: Produce bounded sprite layers, palette masks, icons and effects through the approved art pipeline**
+
+Every silhouette-changing Captain item supplies compatible atlas rows for all
+three body families. Color-only variants use palette masks; they do not clone
+complete atlases. Crew, Ori, ship and environment cosmetics declare their own
+sprite attachment and frame-event compatibility.
 
 - [ ] **Step 4: Implement ownership resolution with precedence: earned, birthday, edition, individual purchase**
 
@@ -2030,7 +2064,10 @@ scroll access.
 
 - [ ] **Step 5: Implement base Photo Mode and Explorer Edition extensions**
 
-Base Photo Mode provides pause, orbit, exposure, clean HUD and earned frames. Explorer Edition adds cinematic lenses, expanded poses, advanced framing and saved presets without reducing base-game screenshot quality.
+Base Photo Mode provides pause, bounded pan/zoom, depth-layer focus, exposure,
+clean HUD and earned frames. Explorer Edition adds cinematic lenses, expanded
+poses, advanced framing and saved presets without introducing a free 3D orbit
+or reducing base-game screenshot quality.
 
 - [ ] **Step 6: Write automated navigation tests with maximum text size and combined accessibility options**
 
@@ -2043,10 +2080,10 @@ git add Assets/_JustSomeStars/Runtime/UI Assets/_JustSomeStars/Runtime/Accessibi
 git commit -m "feat: complete accessible localized mobile UI"
 ```
 
-### Task 29: Complete animation, audio and cinematic media
+### Task 29: Complete frame-atlas animation, audio and cinematic media
 
 **Files:**
-- Create: `Assets/_JustSomeStars/Art/Characters/Animations/`
+- Create: `Assets/_JustSomeStars/Art/2D/Characters/Animations/`
 - Create: `Assets/_JustSomeStars/Audio/Music/`
 - Create: `Assets/_JustSomeStars/Audio/SFX/`
 - Create: `Assets/_JustSomeStars/Runtime/Core/CinematicDirector.cs`
@@ -2055,11 +2092,16 @@ git commit -m "feat: complete accessible localized mobile UI"
 - Create: `docs/media/media-rights-ledger.csv`
 
 **Interfaces:**
-- Produces: real-time customized-Captain cinematics, optional pre-rendered establishing shots, layered music and caption-safe dialogue timing.
+- Produces: real-time customized-Captain sprite cinematics, optional
+  pre-rendered establishing shots, layered music and caption-safe dialogue timing.
 
-- [ ] **Step 1: Import/author locomotion, interaction, reaction, conversation and cinematic clips**
+- [ ] **Step 1: Import/author coherent frame-atlas locomotion, interaction, reaction, conversation and cinematic clips**
 
-- [ ] **Step 2: Implement animation events and facial-expression/viseme control**
+- [ ] **Step 2: Implement deterministic frame events and facial-expression/viseme atlas control**
+
+The same event contract drives foot contacts, tools, audio, VFX, captions and
+interaction release. Missing frames, mismatched pivots or unsynchronized
+Captain layers fail closed rather than silently substituting skeletal motion.
 
 - [ ] **Step 3: Generate approved Flow shots only where the customized Captain is absent**
 
@@ -2072,7 +2114,7 @@ git commit -m "feat: complete accessible localized mobile UI"
 - [ ] **Step 7: Test missing-video fallback, subtitle timing and independent audio volumes, then commit**
 
 ```bash
-git add Assets/_JustSomeStars/Art/Characters/Animations Assets/_JustSomeStars/Audio Assets/_JustSomeStars/Runtime/Core Assets/_JustSomeStars/Content/Cinematics docs/media
+git add Assets/_JustSomeStars/Art/2D/Characters/Animations Assets/_JustSomeStars/Audio Assets/_JustSomeStars/Runtime/Core Assets/_JustSomeStars/Content/Cinematics docs/media
 git commit -m "feat: complete animation audio and cinematics"
 ```
 
@@ -2088,7 +2130,7 @@ git commit -m "feat: complete animation audio and cinematics"
 **Interfaces:**
 - Produces: selectable Performance, Balanced, Cinematic and High Frame Rate runtime profiles with dynamic resolution.
 
-- [ ] **Step 1: Encode triangle, texture, active-character, shadow-light, VFX and memory budgets into validator rules**
+- [ ] **Step 1: Encode texture residency, atlas count, transparent overdraw, active-character, 2D-light, VFX and memory budgets into validator rules**
 
 - [ ] **Step 2: Add CPU/GPU frame markers around player, crew, flight, Lens, UI and streaming systems**
 
@@ -2098,7 +2140,7 @@ git commit -m "feat: complete animation audio and cinematics"
 
 Record median, 1% low, memory peak, thermal behavior and battery change in `performance-results.md`.
 
-- [ ] **Step 5: Fix measured bottlenecks using LODs, batching, pooling, culling, Addressables, streaming and profile scaling**
+- [ ] **Step 5: Fix measured bottlenecks using atlas partitioning, import max-size/ASTC settings, batching, pooling, culling, Addressables, streaming and profile scaling**
 
 - [ ] **Step 6: Repeat until Performance sustains 30 FPS and no destination exceeds its memory budget**
 
@@ -2225,7 +2267,8 @@ Verify clean install, upgrade, airplane-mode completion, every checkpoint resume
 
 - [ ] **Step 3: Capture the release-candidate quality comparison on device**
 
-Compare against `outputs/just-some-stars-mirra-gameplay-target-v1.png`; record the capture and sign-off in the release checklist.
+Compare against `outputs/just-some-stars-2.5d-gameplay-target-v1.png`; record
+the capture and sign-off in the release checklist.
 
 - [ ] **Step 4: Submit Galaxy and Google candidates with truthful data-safety, purchase and optional-login review notes**
 

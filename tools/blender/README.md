@@ -1,6 +1,13 @@
 # Just Some Stars character pipeline
 
-This directory is the Blender-to-Unity character contract. It handles pipeline
+> **Status after the 2026-08-25 2.5D pivot:** this is a preserved, tested Task
+> 11 pipeline for optional 3D props, reference renders and future experiments.
+> It is not the active shipping-character pipeline. Do not resume the
+> unfinished Task 12 Captain rig, weighting, walk or LOD work. Shipping
+> characters use the frame-atlas architecture in
+> `docs/superpowers/specs/2026-08-25-2.5d-gameplay-pivot-design.md`.
+
+This directory is the preserved Blender-to-Unity asset contract. It handles pipeline
 mechanics only; the Task 10 written character labels and dimensions remain the
 visual authority, and generated reference-sheet drift is never accepted as a
 modeling instruction.

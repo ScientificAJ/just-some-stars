@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: JSS Mirra Stage 1
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: JSS Mirra Stage 1
+  m_GUID: fc35979a7b8439186ad50ffef3f1c341
+  m_SerializeEntries:
+  - m_GUID: 18ea57eadd050ba88b2dc07061a97852
+    m_Address: jss.mirra.stage1.foreground
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 256c9fe07e179ea60b23af3d31b36e85
+    m_Address: jss.mirra.stage1.atmosphere
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a3fd1ed23049811a5a2a6ad643da1329
+    m_Address: jss.mirra.stage1.sky
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b0dade898b19aa9bf8955cbb703d292d
+    m_Address: jss.mirra.stage1.farworld
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba9b2e72ebbc82ac598f2bb5f821cff1
+    m_Address: jss.mirra.stage1.midground
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bf9300ba3765bd0228665825d7ae812b
+    m_Address: jss.mirra.stage1.hud
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c1510ab27204f68e4900d42fa7bb581e
+    m_Address: jss.mirra.stage1.gameplay
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f0a7fcf052bf7bf5089e97b0b1cbf24a
+    m_Address: jss.mirra.stage1.actorsandprops
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 24916abbd8621a2469b664daeb114b68, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b8b0fb5d2c8ee092aad06a0d62388544, type: 2}
+    - {fileID: 11400000, guid: 3614806267f60bf95bf0c862aa80bea6, type: 2}

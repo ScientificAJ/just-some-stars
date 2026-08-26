@@ -198,6 +198,24 @@ namespace JustSomeStars.Runtime.Input
             return ReadVector2("Look");
         }
 
+        public bool IsCommandPressed(SemanticGameplayCommand command)
+        {
+            if (!Enum.IsDefined(typeof(SemanticGameplayCommand), command))
+            {
+                throw new ArgumentOutOfRangeException(nameof(command));
+            }
+
+            if (!m_IsInitialized ||
+                m_ActiveGameplayMode == GameplayInputMode.None)
+            {
+                return false;
+            }
+
+            return GetGameplayMap(m_ActiveGameplayMode)
+                .FindAction(command.ToString(), throwIfNotFound: true)
+                .IsPressed();
+        }
+
         private bool TryResolveCanonicalAsset(out string failure)
         {
             var ui = m_Actions.FindActionMap("UI", throwIfNotFound: false);

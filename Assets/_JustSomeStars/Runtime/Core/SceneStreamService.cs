@@ -628,6 +628,8 @@ namespace JustSomeStars.Runtime.Core
                 progress.Publish(SceneStreamStage.Activating, 0.8f);
                 await handle.ActivateAsync();
                 cancellationToken.ThrowIfCancellationRequested();
+                (m_FallbackTransition as ISceneBindingLifecycle)?
+                    .BindActiveScene();
                 progress.Publish(SceneStreamStage.CommittingMode, 0.95f);
                 await m_ModeController.EnterAsync(
                     entry.TargetMode,
@@ -778,6 +780,15 @@ namespace JustSomeStars.Runtime.Core
         {
             progress.Publish(SceneStreamStage.CleaningUp, 0.98f);
             List<Exception> failures = null;
+            try
+            {
+                (m_FallbackTransition as ISceneBindingLifecycle)?
+                    .ReleaseBindings();
+            }
+            catch (Exception exception)
+            {
+                failures = new List<Exception> { exception };
+            }
             if (handle != null)
             {
                 try
