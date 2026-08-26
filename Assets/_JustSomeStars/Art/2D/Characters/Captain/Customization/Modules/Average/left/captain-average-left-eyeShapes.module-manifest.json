@@ -1,0 +1,91 @@
+{
+  "atlasPath": "captain-average-left-eyeShapes.png",
+  "atlasSha256": "98e8dfaeed2bda031414529360f4f6283838bb7ca7a14539e6beb225fa380a20",
+  "atlasSize": [
+    2048,
+    1536
+  ],
+  "category": "eyeShapes",
+  "facing": "left",
+  "family": "Average",
+  "optionAtlasSize": [
+    512,
+    768
+  ],
+  "options": [
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "eye-shape-1",
+      "index": 0,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "eye-shape-2",
+      "index": 1,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "eye-shape-3",
+      "index": 2,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "eye-shape-4",
+      "index": 3,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "eye-shape-5",
+      "index": 4,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "eye-shape-6",
+      "index": 5,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.0
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "targetLayer": "head-hair"
+}

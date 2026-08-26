@@ -12,6 +12,8 @@ namespace JustSomeStars.Editor.Importers
     {
         internal const string AtlasRoot =
             "Assets/_JustSomeStars/Art/2D/Characters/Atlases/";
+        private const string CharacterRoot =
+            "Assets/_JustSomeStars/Art/2D/Characters/";
         internal const string ManifestSuffix = ".sprite-manifest.json";
         internal const string ManifestHashSuffix = ".sprite-manifest.sha256";
         private const int SupportedSchemaVersion = 1;
@@ -19,7 +21,17 @@ namespace JustSomeStars.Editor.Importers
         internal static bool IsCanonicalAtlasPath(string path)
         {
             return !string.IsNullOrEmpty(path) &&
-                   path.StartsWith(AtlasRoot, StringComparison.Ordinal) &&
+                   path.StartsWith(CharacterRoot, StringComparison.Ordinal) &&
+                   (path.StartsWith(AtlasRoot, StringComparison.Ordinal) ||
+                    path.Contains("/Atlases/", StringComparison.Ordinal)) &&
+                   path.EndsWith(".png", StringComparison.OrdinalIgnoreCase);
+        }
+
+        internal static bool IsCanonicalCustomizationTexturePath(string path)
+        {
+            return !string.IsNullOrEmpty(path) &&
+                   path.StartsWith(CharacterRoot, StringComparison.Ordinal) &&
+                   path.Contains("/Customization/", StringComparison.Ordinal) &&
                    path.EndsWith(".png", StringComparison.OrdinalIgnoreCase);
         }
 
@@ -97,6 +109,11 @@ namespace JustSomeStars.Editor.Importers
 
         private void OnPreprocessTexture()
         {
+            if (IsCanonicalCustomizationTexturePath(assetPath))
+            {
+                ApplyCustomizationTextureSettings((TextureImporter)assetImporter);
+                return;
+            }
             if (!IsCanonicalAtlasPath(assetPath))
             {
                 return;
@@ -105,6 +122,36 @@ namespace JustSomeStars.Editor.Importers
                 assetPath,
                 Path.GetDirectoryName(Application.dataPath));
             ApplyImporterSettings((TextureImporter)assetImporter, manifest);
+        }
+
+        internal static void ApplyCustomizationTextureSettings(
+            TextureImporter importer)
+        {
+            importer.textureType = TextureImporterType.Default;
+            importer.alphaSource = TextureImporterAlphaSource.FromInput;
+            importer.alphaIsTransparency = false;
+            importer.sRGBTexture = !importer.assetPath.Replace('\\', '/').Contains(
+                "/Customization/PaletteMasks/",
+                StringComparison.Ordinal);
+            importer.mipmapEnabled = false;
+            importer.isReadable = false;
+            importer.filterMode = FilterMode.Bilinear;
+            importer.wrapMode = TextureWrapMode.Clamp;
+            importer.npotScale = TextureImporterNPOTScale.None;
+            importer.textureCompression = TextureImporterCompression.Compressed;
+            importer.compressionQuality = 100;
+            importer.SetPlatformTextureSettings(new TextureImporterPlatformSettings
+            {
+                name = "Android",
+                overridden = true,
+                maxTextureSize = 2048,
+                resizeAlgorithm = TextureResizeAlgorithm.Mitchell,
+                format = TextureImporterFormat.ASTC_6x6,
+                textureCompression = TextureImporterCompression.Compressed,
+                compressionQuality = 100,
+                crunchedCompression = false,
+                allowsAlphaSplitting = false,
+            });
         }
 
         internal static void ApplyImporterSettings(
@@ -301,6 +348,7 @@ namespace JustSomeStars.Editor.Importers
         public float durationSeconds;
         public string[] contacts;
         public SpriteEventManifest[] events;
+        public SpriteAnchorManifest[] anchors;
         public int sourceBaselinePixels;
         public int registrationOffsetPixels;
         public int registeredBaselinePixels;
@@ -322,6 +370,14 @@ namespace JustSomeStars.Editor.Importers
     {
         public string id;
         public string kind;
+    }
+
+    [Serializable]
+    internal sealed class SpriteAnchorManifest
+    {
+        public string id;
+        public float[] sourcePixels;
+        public float[] runtimePixels;
     }
 
     [Serializable]

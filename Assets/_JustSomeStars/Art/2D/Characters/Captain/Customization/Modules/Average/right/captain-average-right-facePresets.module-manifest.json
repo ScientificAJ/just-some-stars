@@ -1,0 +1,91 @@
+{
+  "atlasPath": "captain-average-right-facePresets.png",
+  "atlasSha256": "75886a8135619289e433548a567c11c0eb33e40f7de8e9f1ca2c7bc94a3353ed",
+  "atlasSize": [
+    2048,
+    1536
+  ],
+  "category": "facePresets",
+  "facing": "right",
+  "family": "Average",
+  "optionAtlasSize": [
+    512,
+    768
+  ],
+  "options": [
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "face-1",
+      "index": 0,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "face-2",
+      "index": 1,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "face-3",
+      "index": 2,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "face-4",
+      "index": 3,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "face-5",
+      "index": 4,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "face-6",
+      "index": 5,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.0
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "targetLayer": "head-hair"
+}

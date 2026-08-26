@@ -1,0 +1,79 @@
+{
+  "atlasPath": "captain-average-left-accessories.png",
+  "atlasSha256": "ea0b88d9666dde9c9189892a94544bd171607b8bfc7fbb5e845563c3bda1510b",
+  "atlasSize": [
+    2048,
+    1536
+  ],
+  "category": "accessories",
+  "facing": "left",
+  "family": "Average",
+  "optionAtlasSize": [
+    512,
+    768
+  ],
+  "options": [
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "goggles",
+      "index": 0,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "hair-clips",
+      "index": 1,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "headband",
+      "index": 2,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "wrist-device",
+      "index": 3,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "utility-pouch",
+      "index": 4,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "targetLayer": "silhouette-costume"
+}

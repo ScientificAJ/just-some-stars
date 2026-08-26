@@ -1,0 +1,55 @@
+{
+  "atlasPath": "captain-average-left-gloves.png",
+  "atlasSha256": "8465ca89902489c45250907a6882377f8721b0f7b57b21b4e7ef994da266ac34",
+  "atlasSize": [
+    2048,
+    1536
+  ],
+  "category": "gloves",
+  "facing": "left",
+  "family": "Average",
+  "optionAtlasSize": [
+    512,
+    768
+  ],
+  "options": [
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "wrapped-work",
+      "index": 0,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "padded-utility",
+      "index": 1,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "tactile-grip",
+      "index": 2,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "targetLayer": "silhouette-costume"
+}

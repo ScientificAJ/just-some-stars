@@ -1,0 +1,55 @@
+{
+  "atlasPath": "captain-tallbroad-right-gloves.png",
+  "atlasSha256": "8f1489e1404da2958a3d10ce7ce5d839d2e8b495af86ec2652282895930fc56b",
+  "atlasSize": [
+    2048,
+    1536
+  ],
+  "category": "gloves",
+  "facing": "right",
+  "family": "TallBroad",
+  "optionAtlasSize": [
+    512,
+    768
+  ],
+  "options": [
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "wrapped-work",
+      "index": 0,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "padded-utility",
+      "index": 1,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "tactile-grip",
+      "index": 2,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "targetLayer": "silhouette-costume"
+}

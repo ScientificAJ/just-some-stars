@@ -1,0 +1,91 @@
+{
+  "atlasPath": "captain-compact-right-patches.png",
+  "atlasSha256": "b32cfa6a31c96d9e584946110fe1a932039a2c2cb242d0e84f8403869e21b1ba",
+  "atlasSize": [
+    2048,
+    1536
+  ],
+  "category": "patches",
+  "facing": "right",
+  "family": "Compact",
+  "optionAtlasSize": [
+    512,
+    768
+  ],
+  "options": [
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "patch-1",
+      "index": 0,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "patch-2",
+      "index": 1,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "patch-3",
+      "index": 2,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "patch-4",
+      "index": 3,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "patch-5",
+      "index": 4,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "patch-6",
+      "index": 5,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.0
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "targetLayer": "silhouette-costume"
+}

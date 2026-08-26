@@ -1,0 +1,55 @@
+{
+  "atlasPath": "captain-tallbroad-left-helmets.png",
+  "atlasSha256": "25bb85cde160e672c84d90b2806b196eff77054faaa7ef574cd9841935f30aea",
+  "atlasSize": [
+    2048,
+    1536
+  ],
+  "category": "helmets",
+  "facing": "left",
+  "family": "TallBroad",
+  "optionAtlasSize": [
+    512,
+    768
+  ],
+  "options": [
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "explorer-lite",
+      "index": 0,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "surveyor",
+      "index": 1,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "field-ready",
+      "index": 2,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "targetLayer": "head-hair"
+}

@@ -1,0 +1,328 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Characters-Captain
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Characters-Captain
+  m_GUID: 4801a0c71bea797fbb3a2799a9ad8928
+  m_SerializeEntries:
+  - m_GUID: 0304779bfff9aef89b174156b4d29294
+    m_Address: characters/captain/captain-average-right-silhouette-costume/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 080f9eac0ebb875e3a8d969878bcf147
+    m_Address: characters/captain/captain-average-right-silhouette-costume/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 11b1fffcae2007e30a214b6f55113b3f
+    m_Address: characters/captain/captain-tallbroad-left-foreground-hand-tool/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 177e010652c747341b22594e24ab87d3
+    m_Address: characters/captain/captain-average-left-head-hair/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29e5c604a53e99fae837a60270bbf2d6
+    m_Address: characters/captain/captain-tallbroad-right-foreground-hand-tool/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2b817441739d067f39408fee2d2aec7e
+    m_Address: characters/captain/captain-tallbroad-right-body-base/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2cb2fe02beb52de008ab38eff7ce0d15
+    m_Address: characters/captain/captain-tallbroad-left-head-hair/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 302f653f25aafd55c852bddd36c7d026
+    m_Address: characters/captain/captain-compact-left-foreground-hand-tool/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 341d6fbdc74165adbb17cda82f0b3c17
+    m_Address: characters/captain/captain-compact-right-head-hair/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37d52fdc5bb8ea3cb97519cf38373930
+    m_Address: characters/captain/captain-tallbroad-right-silhouette-costume/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3a76e7d9a07079ead9cdd5b70e5e5e11
+    m_Address: characters/captain/captain-average-right-backpack-equipment/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f7bb1c9f1e7faeab9347965781e83c6
+    m_Address: characters/captain/captain-average-left-foreground-hand-tool/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41142f1f2b95692bf9e753cf053efc71
+    m_Address: characters/captain/captain-average-right-backpack-equipment/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 46b0a12cfa2688166a65b414b82ff51e
+    m_Address: characters/captain/captain-tallbroad-right-backpack-equipment/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a7508889a2db5f258730010f326d02c
+    m_Address: characters/captain/captain-average-right-head-hair/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4cef0669a0a3132f4bc570ea9b7e200f
+    m_Address: characters/captain/captain-compact-right-head-hair/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5393466cb01ccb308b2d295e383b2f6b
+    m_Address: characters/captain/captain-compact-left-body-base/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 557de46a69fc6898bad3b2036d3abc40
+    m_Address: characters/captain/captain-tallbroad-left-backpack-equipment/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5b6f06bd86a186cd88d93d0ab47d1e91
+    m_Address: characters/captain/captain-average-left-backpack-equipment/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 681487b885742e451adc46a2ee400cab
+    m_Address: characters/captain/captain-compact-right-backpack-equipment/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ba2fcbb1237758fcb3bc73fd6ec08b8
+    m_Address: characters/captain/captain-average-left-silhouette-costume/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ccdf33f0b3cf29abbf09ec8854fd2d4
+    m_Address: characters/captain/captain-average-right-head-hair/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71446939019bec4b5b21759c5393c511
+    m_Address: characters/captain/captain-compact-right-foreground-hand-tool/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d72787a9c581a813826916ee5641f03
+    m_Address: characters/captain/captain-tallbroad-right-head-hair/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7fa1952af6cf6d43b9db54aad39d49de
+    m_Address: characters/captain/captain-average-right-body-base/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8522f360c9a7a6e24ad6cb9eac5f309f
+    m_Address: characters/captain/captain-compact-left-foreground-hand-tool/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 898b2234569cca3f9aec7d4ce5c4e691
+    m_Address: characters/captain/captain-tallbroad-left-silhouette-costume/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ac5c166bc15f47ca86cf0604447f437
+    m_Address: characters/captain/captain-compact-left-backpack-equipment/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8b641cbe28aeba8f19ee0f5f8dc4d967
+    m_Address: characters/captain/captain-average-right-body-base/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8dc1f0b65d777cc52afb0b49e290282c
+    m_Address: characters/captain/captain-compact-left-silhouette-costume/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97f1853dfe9809d08ab3fc8fe23b236a
+    m_Address: characters/captain/captain-compact-left-head-hair/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9aee5f9cba7c435f38acc8a2e94f83dd
+    m_Address: characters/captain/captain-compact-right-silhouette-costume/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9fde95511f167fa6591f239c23aaf4a1
+    m_Address: characters/captain/captain-tallbroad-right-body-base/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2042289d941be805a4a49368e422b3b
+    m_Address: characters/captain/captain-average-left-foreground-hand-tool/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a4639a25ee8f4a6a29ebb5ede8b70270
+    m_Address: characters/captain/captain-average-left-body-base/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a46a58c7016caaa5eb885112b98ebcc8
+    m_Address: characters/captain/captain-compact-right-silhouette-costume/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5d3c394623a1c8be9d12d5d984cc5c2
+    m_Address: characters/captain/captain-tallbroad-left-foreground-hand-tool/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a89d9d278b079c8af97754d74cc1e72a
+    m_Address: characters/captain/captain-tallbroad-left-body-base/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ae0435fb3e3720bcfb91ae10cc2d8593
+    m_Address: characters/captain/captain-compact-left-head-hair/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b72c895dc39de7280bfa9a76743a452f
+    m_Address: characters/captain/captain-average-right-foreground-hand-tool/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba2eb36e4fb2dfc4bb9f634a5fb0449d
+    m_Address: characters/captain/captain-compact-right-foreground-hand-tool/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bfeefd0b6c8e5e3ab8b0e15a69f6acab
+    m_Address: characters/captain/captain-average-left-head-hair/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c11b5d6033acf7964985c5cccf18ae13
+    m_Address: characters/captain/captain-average-left-body-base/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c1b2d0a74f1fc026f9958169798445c7
+    m_Address: characters/captain/captain-tallbroad-right-head-hair/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c30bd5a4c0649ef81b901c381054bbdd
+    m_Address: characters/captain/captain-tallbroad-left-head-hair/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c3e8d7ea191836d859cfb97896fd94b3
+    m_Address: characters/captain/captain-compact-left-body-base/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c6e4e1d100d3a6ec1b878c6b2050952a
+    m_Address: characters/captain/captain-compact-right-body-base/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c823d24bc29bd6e83b0e78b9994d6999
+    m_Address: characters/captain/captain-tallbroad-right-backpack-equipment/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca3469d4a21ab22a2afc6f8f7f96304a
+    m_Address: characters/captain/captain-tallbroad-left-body-base/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cdb0ba6b68224d49a81e3eea4c1e7360
+    m_Address: characters/captain/captain-average-left-backpack-equipment/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d255b75dd1168a067a9359f1a183e21e
+    m_Address: characters/captain/captain-average-left-silhouette-costume/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d67078969364bdc52a9f386a9c07b4ca
+    m_Address: characters/captain/sprite-set
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d770f0e286ae319e4be4ea305eff2ecc
+    m_Address: characters/captain/captain-compact-right-body-base/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: df98b92fb3ee743bcad886b3785186be
+    m_Address: characters/captain/captain-tallbroad-left-silhouette-costume/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dfed4b71f87ee4ee18477e9778e88635
+    m_Address: characters/captain/captain-tallbroad-right-silhouette-costume/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e41cc0984cdbf329eb702e1aaadf1c81
+    m_Address: characters/captain/captain-compact-left-silhouette-costume/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e67d7daf703d0459bb9cd34647fc4874
+    m_Address: characters/captain/captain-tallbroad-left-backpack-equipment/spriteatlas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e78d5396423424976b589d12eb1892ac
+    m_Address: characters/captain/captain-compact-right-backpack-equipment/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb56e5d6653a75475accc1554bedcc58
+    m_Address: characters/captain/captain-compact-left-backpack-equipment/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f6dbe8e2da06cc4caa16b3a16305d2e9
+    m_Address: characters/captain/captain-tallbroad-right-foreground-hand-tool/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f9c0949aea7e501cbadd42b574bfe13a
+    m_Address: characters/captain/captain-average-right-foreground-hand-tool/texture
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 24916abbd8621a2469b664daeb114b68, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: f53f635f898d37f2a99046116b8e2ee4, type: 2}
+    - {fileID: 11400000, guid: 17bdda8c7bf8e4d3188064f427f8b4bf, type: 2}

@@ -1,6 +1,6 @@
 # Just Some Stars production execution ledger
 
-Last updated: 2026-08-26
+Last updated: 2026-08-27
 
 This tracked ledger preserves the active production state, decisions, evidence,
 next action and user-help queue across context compaction. It complements the
@@ -46,9 +46,9 @@ implementation plans and issue register; it does not replace either authority.
 - Canonical repository: `/mnt/unity-data/JustSomeStars`.
 - Branch: `codex/task-12-modular-characters`.
 - Pre-Stage-2 HEAD: `f99336333e6946ccd50c1ec43ffdb8b2aa3ac617`.
-- Replacement Task 12 Stages 1 and 2 are complete and accepted. Stage 1 is
-  committed and pushed; the scoped Stage 2 checkpoint is ready to commit and
-  push before Stage 3 begins automatically.
+- Replacement Task 12 Stages 1 through 3 are complete and accepted. Stages 1
+  and 2 are committed and pushed; the scoped Stage 3 checkpoint is ready to
+  commit and push before Stage 4 begins automatically.
 - The local Unity Editor demo was closed cleanly before final verification.
 - No APK or Limrun session is part of this Stage 1 checkpoint.
 
@@ -156,13 +156,51 @@ implementation plans and issue register; it does not replace either authority.
   collision and visual-pixel corrections.
 - No APK, full regression or Limrun session was used for this focused stage.
 
-## Immediate next task: replacement Task 12 Stage 3
+## Replacement Task 12 Stage 3 checkpoint
 
-Produce the final Captain identity and body-family sprite package from the
-approved Task 10 references using the deterministic Stage 2 atlas contract.
-Continue autonomously through the remaining replacement Task 12 stages; the
-user-facing graphical approval remains at the Task 12 boundary, not between
-these internal stages.
+### Delivered scope
+
+- Compact, Average and TallBroad Captain sprite sets with equal capability and
+  visibly distinct approved silhouettes at 1.46 m, 1.56 m and 1.66 m.
+- Eight coherent motions in both facings: idle, run, turn, jump, land, climb,
+  scan and interact.
+- Exactly five synchronized runtime layers: body/base, head/hair, silhouette
+  costume, backpack/equipment and foreground hand/tool.
+- Palette masks, bounded modules, stable attachment anchors and one
+  manifest-driven Unity `CharacterSpriteSet` contract per family.
+- Stage 1 demo integration with live family, tone, iris, hair, Signal and
+  equipment customization.
+- Corrected jump/land publication: all five modular layers remain present and
+  articulated without global identity-layer scaling.
+
+### Locked evidence identities
+
+- Captain package manifest SHA-256:
+  `146161089615df11a74f1ccc7a81e68a94afc05eb69dca7d34459d7763dbf14c`.
+- Family lineup SHA-256:
+  `9b59da0cae3cb5f9fac15a641417a1e4850189bc5bb7f6b881fc8757d389249e`.
+- Runtime three-capture composite SHA-256:
+  `11f01204ac039f5daa950ee9a5a59eecdfc9987767c5aaa0682bdb1a3f6ca571`.
+- Tracked runtime-evidence manifest SHA-256:
+  `f49613639ed893940385f6ce27904e55ad505dbfc4fa00ce69ccf73b15f2a076`.
+
+### Final gate
+
+- Python Captain package suite: `6/6` passed.
+- Unity focused EditMode: `4/4` passed.
+- Unity focused PlayMode: `3/3` passed with llvmpipe graphics.
+- Three fresh real Unity runtime captures and 24 sequence frames are bound by
+  a 46-artifact evidence manifest.
+- The same independent Stage 3 extreme critic that found flattened/scaled
+  jump/land publications returned final `PASS` after the bounded correction.
+- No APK, full regression or Limrun session was used for this focused stage.
+
+## Immediate next task: replacement Task 12 Stage 4
+
+Produce bespoke Mira, Juno, Kai, Bea and Ori sprite sets from their approved
+Task 10 sheets using the Stage 2 atlas contract and the accepted Stage 3
+runtime integration. Continue autonomously; the user-facing graphical approval
+remains at the Task 12 boundary, not between these internal stages.
 
 ## User-help queue
 
@@ -198,3 +236,8 @@ No user decision or external action is currently blocking progress.
   alpha/marker artifacts. Each was reproduced with focused RED tests, corrected
   without broad regression work, and re-reviewed to `PASS`; final focused gates
   are Python `13/13`, EditMode `6/6` and PlayMode `4/4`.
+- 2026-08-27: Stage 3 completed the modular Captain package. The same extreme
+  critic held on flattened/scaled jump and land publications; focused tests
+  reproduced both defects. The corrected clips keep all five layers present
+  and independently articulated. Final focused gates are Python `6/6`,
+  EditMode `4/4` and PlayMode `3/3`, with final critic `PASS`.

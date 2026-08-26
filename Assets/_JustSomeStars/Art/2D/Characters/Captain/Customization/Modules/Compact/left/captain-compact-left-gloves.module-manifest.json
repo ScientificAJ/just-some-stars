@@ -1,0 +1,55 @@
+{
+  "atlasPath": "captain-compact-left-gloves.png",
+  "atlasSha256": "98614bb96dee2c9b1eab6ef69a267d97c3d7e9b624ae7f65face9b972c54a951",
+  "atlasSize": [
+    2048,
+    1536
+  ],
+  "category": "gloves",
+  "facing": "left",
+  "family": "Compact",
+  "optionAtlasSize": [
+    512,
+    768
+  ],
+  "options": [
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "wrapped-work",
+      "index": 0,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "padded-utility",
+      "index": 1,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "tactile-grip",
+      "index": 2,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "targetLayer": "silhouette-costume"
+}

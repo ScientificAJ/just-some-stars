@@ -1,0 +1,55 @@
+{
+  "atlasPath": "captain-average-right-helmets.png",
+  "atlasSha256": "e5dedba40149f5ba226852e0f7712e915254fb08ef439eafac376e9443c30e2b",
+  "atlasSize": [
+    2048,
+    1536
+  ],
+  "category": "helmets",
+  "facing": "right",
+  "family": "Average",
+  "optionAtlasSize": [
+    512,
+    768
+  ],
+  "options": [
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "explorer-lite",
+      "index": 0,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "surveyor",
+      "index": 1,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "field-ready",
+      "index": 2,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "targetLayer": "head-hair"
+}

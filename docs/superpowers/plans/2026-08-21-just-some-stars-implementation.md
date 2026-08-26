@@ -1415,9 +1415,9 @@ work is stopped. No unfinished file is deleted without separate user approval.
 
 - [x] **Stage 1: Prove layered 2.5D rendering, movement and composition camera with temporary art**
 
-- [ ] **Stage 2: Build and validate the deterministic coherent-strip/atlas pipeline**
+- [x] **Stage 2: Build and validate the deterministic coherent-strip/atlas pipeline**
 
-- [ ] **Stage 3: Produce the three modular Captain sprite families**
+- [x] **Stage 3: Produce the three modular Captain sprite families**
 
 - [ ] **Stage 4: Produce bespoke Mira, Juno, Kai, Bea and Ori sprite sets**
 

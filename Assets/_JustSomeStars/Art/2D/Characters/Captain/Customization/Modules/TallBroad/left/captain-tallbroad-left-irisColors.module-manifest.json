@@ -1,0 +1,91 @@
+{
+  "atlasPath": "captain-tallbroad-left-irisColors.png",
+  "atlasSha256": "f4e20d89b19e42a48ca396e37b381ca3565967785e7a00ba4e6c2f807fb9b4e5",
+  "atlasSize": [
+    2048,
+    1536
+  ],
+  "category": "irisColors",
+  "facing": "left",
+  "family": "TallBroad",
+  "optionAtlasSize": [
+    512,
+    768
+  ],
+  "options": [
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "warm-brown",
+      "index": 0,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "amber",
+      "index": 1,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "hazel",
+      "index": 2,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "river-blue",
+      "index": 3,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "deep-blue",
+      "index": 4,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "slate",
+      "index": 5,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.0
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "targetLayer": "head-hair"
+}

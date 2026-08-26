@@ -1,0 +1,55 @@
+{
+  "atlasPath": "captain-tallbroad-left-backpacks.png",
+  "atlasSha256": "f0e6cf15090af4286f74b86e0b40b2b81af0bf75e6bf3abff78deb0e72b820b1",
+  "atlasSize": [
+    2048,
+    1536
+  ],
+  "category": "backpacks",
+  "facing": "left",
+  "family": "TallBroad",
+  "optionAtlasSize": [
+    512,
+    768
+  ],
+  "options": [
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "daypack",
+      "index": 0,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "expedition-pack",
+      "index": 1,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "field-pack",
+      "index": 2,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "targetLayer": "backpack-equipment"
+}

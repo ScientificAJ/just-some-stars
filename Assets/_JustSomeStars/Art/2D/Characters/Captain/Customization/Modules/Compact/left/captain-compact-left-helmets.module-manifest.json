@@ -1,0 +1,55 @@
+{
+  "atlasPath": "captain-compact-left-helmets.png",
+  "atlasSha256": "99e3c811fb54c94b22235ecd0ad8a517d30924ddc4301164f15b84495033b98d",
+  "atlasSize": [
+    2048,
+    1536
+  ],
+  "category": "helmets",
+  "facing": "left",
+  "family": "Compact",
+  "optionAtlasSize": [
+    512,
+    768
+  ],
+  "options": [
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "explorer-lite",
+      "index": 0,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "surveyor",
+      "index": 1,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "field-ready",
+      "index": 2,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "targetLayer": "head-hair"
+}

@@ -3,6 +3,8 @@
   "rootNamespace": "JustSomeStars.Tests.PlayMode",
   "references": [
     "JustSomeStars.Runtime",
+    "Unity.Addressables",
+    "Unity.ResourceManager",
     "Unity.InputSystem",
     "Unity.TextMeshPro",
     "UnityEngine.UI"

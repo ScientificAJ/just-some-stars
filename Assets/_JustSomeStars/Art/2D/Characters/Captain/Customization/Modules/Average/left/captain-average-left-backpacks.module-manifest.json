@@ -1,0 +1,55 @@
+{
+  "atlasPath": "captain-average-left-backpacks.png",
+  "atlasSha256": "1758b2eb15eb2d37037c736439455799fa193733f2e06dd0cfc952189e9999a1",
+  "atlasSize": [
+    2048,
+    1536
+  ],
+  "category": "backpacks",
+  "facing": "left",
+  "family": "Average",
+  "optionAtlasSize": [
+    512,
+    768
+  ],
+  "options": [
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "daypack",
+      "index": 0,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "expedition-pack",
+      "index": 1,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.25,
+        0.5
+      ]
+    },
+    {
+      "clipCount": 8,
+      "frameCount": 48,
+      "id": "field-pack",
+      "index": 2,
+      "uvScaleOffset": [
+        0.25,
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "schemaVersion": 1,
+  "targetLayer": "backpack-equipment"
+}

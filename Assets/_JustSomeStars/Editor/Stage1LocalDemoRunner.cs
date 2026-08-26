@@ -4,7 +4,9 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using JustSomeStars.Runtime.Accessibility;
+using JustSomeStars.Runtime.Animation2D;
 using JustSomeStars.Runtime.Core;
+using JustSomeStars.Runtime.Cosmetics;
 using JustSomeStars.Runtime.Input;
 using JustSomeStars.Runtime.Player;
 using JustSomeStars.Runtime.Rendering2D;
@@ -22,6 +24,16 @@ namespace JustSomeStars.Editor
             "JSS_STAGE1_RUNTIME_EXIT_AFTER_CAPTURE";
         private const string CaptureCameraXEnvironmentVariable =
             "JSS_STAGE1_RUNTIME_CAPTURE_CAMERA_X";
+        private const string CaptureCaptainFamilyEnvironmentVariable =
+            "JSS_STAGE3_CAPTURE_CAPTAIN_FAMILY";
+        private const string CaptureCaptainMotionEnvironmentVariable =
+            "JSS_STAGE3_CAPTURE_CAPTAIN_MOTION";
+        private const string CaptureCaptainXEnvironmentVariable =
+            "JSS_STAGE3_CAPTURE_CAPTAIN_X";
+        private const string CaptureCaptainLoadoutEnvironmentVariable =
+            "JSS_STAGE3_CAPTURE_CAPTAIN_LOADOUT";
+        private const string CaptureSequenceDirectoryEnvironmentVariable =
+            "JSS_STAGE3_CAPTURE_SEQUENCE_DIR";
 
         private SettingsService m_Settings;
         private InputRouter m_Input;
@@ -114,11 +126,18 @@ namespace JustSomeStars.Editor
                     m_Modes);
                 m_Lifecycle.Configure(m_Dependencies);
                 IsReady = true;
+                var captureRenderer = ApplyRequestedCaptainVisual();
                 Debug.Log(
                     "[JSS Stage 1 Demo] Ready. Move: A/D or touch stick. " +
                     "Jump/jet: Space, Left Shift, or JUMP. " +
                     "Interact: E or INTERACT.");
                 await CaptureRequestedRuntimeFrameAsync();
+                await CaptureRequestedRuntimeSequenceAsync(captureRenderer);
+                if (ShouldExitAfterCapture)
+                {
+                    EditorApplication.delayCall +=
+                        EditorApplication.ExitPlaymode;
+                }
             }
             catch
             {
@@ -190,10 +209,58 @@ namespace JustSomeStars.Editor
             Debug.Log(
                 "[JSS Stage 1 Demo] Runtime capture saved: " +
                 absolutePath);
-            if (ShouldExitAfterCapture)
+        }
+
+        private static async Task CaptureRequestedRuntimeSequenceAsync(
+            LayeredCharacterRenderer renderer)
+        {
+            var requestedDirectory = Environment.GetEnvironmentVariable(
+                CaptureSequenceDirectoryEnvironmentVariable);
+            if (string.IsNullOrWhiteSpace(requestedDirectory))
             {
-                EditorApplication.delayCall +=
-                    EditorApplication.ExitPlaymode;
+                return;
+            }
+            if (renderer == null)
+            {
+                throw new InvalidOperationException(
+                    "Stage 3 sequence capture requires a configured Captain.");
+            }
+            var directory = Path.GetFullPath(requestedDirectory);
+            Directory.CreateDirectory(directory);
+            foreach (var existing in Directory.GetFiles(
+                         directory,
+                         "captain-frame-*.png",
+                         SearchOption.TopDirectoryOnly))
+            {
+                File.Delete(existing);
+            }
+            var wasEnabled = renderer.enabled;
+            renderer.enabled = false;
+            try
+            {
+                for (var frameIndex = 0; frameIndex < 8; frameIndex++)
+                {
+                    var path = Path.Combine(
+                        directory,
+                        $"captain-frame-{frameIndex:00}.png");
+                    CaptureRuntimeFrame(path);
+                    ValidateCapturedDimensions(path);
+                    renderer.Advance(1f / 12f);
+                    await WaitForEditorFramesAsync(1);
+                }
+                File.WriteAllText(
+                    Path.Combine(directory, "sequence-contract.txt"),
+                    "schemaVersion=1\nframes=8\nfps=12\n" +
+                    "family=" + renderer.CurrentFamily + "\n" +
+                    "facing=" + renderer.CurrentFacing + "\n",
+                    System.Text.Encoding.UTF8);
+                Debug.Log(
+                    "[JSS Stage 3 Capture] Deterministic eight-frame sequence " +
+                    "saved: " + directory);
+            }
+            finally
+            {
+                renderer.enabled = wasEnabled;
             }
         }
 
@@ -358,6 +425,139 @@ namespace JustSomeStars.Editor
             Debug.Log(
                 "[JSS Stage 1 Demo] Capture camera x: " +
                 positionX.ToString("0.###", CultureInfo.InvariantCulture));
+        }
+
+        private static LayeredCharacterRenderer ApplyRequestedCaptainVisual()
+        {
+            var familyValue = Environment.GetEnvironmentVariable(
+                CaptureCaptainFamilyEnvironmentVariable);
+            var motion = Environment.GetEnvironmentVariable(
+                CaptureCaptainMotionEnvironmentVariable);
+            var positionValue = Environment.GetEnvironmentVariable(
+                CaptureCaptainXEnvironmentVariable);
+            if (string.IsNullOrWhiteSpace(familyValue) &&
+                string.IsNullOrWhiteSpace(motion) &&
+                string.IsNullOrWhiteSpace(positionValue) &&
+                string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(
+                    CaptureCaptainLoadoutEnvironmentVariable)))
+            {
+                return null;
+            }
+
+            var renderer = UnityEngine.Object.FindFirstObjectByType<
+                LayeredCharacterRenderer>(FindObjectsInactive.Exclude);
+            if (renderer == null || renderer.LayerRenderers.Count != 5)
+            {
+                throw new InvalidOperationException(
+                    "Stage 3 capture requires the integrated five-layer Captain.");
+            }
+            var family = CaptainBodyFamily.Average;
+            if (!string.IsNullOrWhiteSpace(familyValue) &&
+                !Enum.TryParse(familyValue, ignoreCase: true, out family))
+            {
+                throw new InvalidOperationException(
+                    CaptureCaptainFamilyEnvironmentVariable +
+                    " must be Compact, Average, or TallBroad.");
+            }
+            if (string.IsNullOrWhiteSpace(motion))
+            {
+                motion = "idle";
+            }
+            var loadout = CaptainSpriteLoadout.CreateLaunchLook(family);
+            var loadoutId = Environment.GetEnvironmentVariable(
+                CaptureCaptainLoadoutEnvironmentVariable);
+            if (string.Equals(
+                    loadoutId,
+                    "alternate",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                loadout = loadout
+                    .WithPaletteSelections(
+                        "skin-6",
+                        "blue-black",
+                        "deep-teal",
+                        "active-cyan")
+                    .WithOption(
+                        CaptainCustomizationCategory.FacePresets,
+                        "face-5")
+                    .WithOption(
+                        CaptainCustomizationCategory.EyeShapes,
+                        "eye-shape-4")
+                    .WithOption(
+                        CaptainCustomizationCategory.IrisColors,
+                        "deep-blue")
+                    .WithOption(
+                        CaptainCustomizationCategory.HairShapes,
+                        "hair-shape-8")
+                    .WithOption(
+                        CaptainCustomizationCategory.SuitComponents,
+                        "utility-belt")
+                    .WithOption(
+                        CaptainCustomizationCategory.Patches,
+                        "patch-6")
+                    .WithOption(
+                        CaptainCustomizationCategory.Accessories,
+                        "goggles")
+                    .WithOption(
+                        CaptainCustomizationCategory.Gloves,
+                        "tactile-grip")
+                    .WithOption(
+                        CaptainCustomizationCategory.Boots,
+                        "strap-utility")
+                    .WithOption(
+                        CaptainCustomizationCategory.Helmets,
+                        "surveyor")
+                    .WithOption(
+                        CaptainCustomizationCategory.Backpacks,
+                        "expedition-pack");
+            }
+            else if (!string.IsNullOrWhiteSpace(loadoutId) &&
+                     !string.Equals(
+                         loadoutId,
+                         "launch",
+                         StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidOperationException(
+                    CaptureCaptainLoadoutEnvironmentVariable +
+                    " must be launch or alternate.");
+            }
+            renderer.ApplyLoadout(
+                loadout,
+                SpriteFacing.Right,
+                motion);
+
+            if (!string.IsNullOrWhiteSpace(positionValue))
+            {
+                if (!float.TryParse(
+                        positionValue,
+                        NumberStyles.Float,
+                        CultureInfo.InvariantCulture,
+                        out var positionX) ||
+                    positionX < -4f || positionX > 4f)
+                {
+                    throw new InvalidOperationException(
+                        CaptureCaptainXEnvironmentVariable +
+                        " must be a number from -4 through 4.");
+                }
+                var body = renderer.GetComponent<Rigidbody2D>() ??
+                    throw new InvalidOperationException(
+                        "Stage 3 Captain capture requires its Rigidbody2D.");
+                body.position = new Vector2(positionX, body.position.y);
+                renderer.transform.position = new Vector3(
+                    positionX,
+                    renderer.transform.position.y,
+                    renderer.transform.position.z);
+                Physics2D.SyncTransforms();
+            }
+            Debug.Log(
+                "[JSS Stage 3 Capture] Captain family=" + family +
+                " motion=" + motion + " loadout=" +
+                (string.IsNullOrWhiteSpace(loadoutId) ? "launch" : loadoutId) +
+                " x=" +
+                renderer.transform.position.x.ToString(
+                    "0.###",
+                    CultureInfo.InvariantCulture));
+            return renderer;
         }
 
         private static Task WaitForEditorFramesAsync(int frameCount)
