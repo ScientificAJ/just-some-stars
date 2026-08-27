@@ -63,6 +63,7 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: fc4ef11dc0885d0aeb14a25d6197706a, type: 2}
   - {fileID: 11400000, guid: b32958f50dc1f0cb98c0845727dabc1f, type: 2}
+  - {fileID: 11400000, guid: cc059a724cc472e44acc2d1a0627c13c, type: 2}
   - {fileID: 11400000, guid: a1fb3b449f49ac781ac47ca8241519af, type: 2}
   m_BuildSettings:
     m_LogResourceManagerExceptions: 1
@@ -103,6 +104,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Characters-Crew
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 660d4c852267c974798113ea9bcb1da3, type: 2}

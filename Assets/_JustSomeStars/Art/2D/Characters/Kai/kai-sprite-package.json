@@ -1,0 +1,127 @@
+{
+  "anchors": [
+    "Root",
+    "LeftFoot",
+    "RightFoot",
+    "LeftHand",
+    "RightHand",
+    "HelmetRing",
+    "BackpackSocket",
+    "Belt",
+    "LeftWrist",
+    "RightWrist",
+    "LeftBootTop",
+    "RightBootTop",
+    "ActiveTool",
+    "StowedTool"
+  ],
+  "approvedHeightMeters": 1.62,
+  "authority": {
+    "climbActorOnlySha256": {
+      "left": "93f85da6dfdc865ee176777019e3ce40a0940d23544141d3b83951954551ade3",
+      "right": "c81ca26b237e47a7b8a04c1bc67339d2388c4c51dcba1c2b4927bdff703a0c32"
+    },
+    "equipmentSha256": "61a21a44b888d202ac51d28834334671f20b40a041d5fc6ca055ede3682442ef",
+    "expressionsSha256": "cda3afe4e215237313dc18ab190eef6080387eb22a4c1677bc13a307b3cea655",
+    "heightLineupSha256": "63d15525a438c0cb8e5bac9e56034c1138a37a048a8e6d49ea910f46a8049af0",
+    "interactionActorOnlySha256": {},
+    "leftMotionSheetSha256": "12f59aea4207cd80b81cc10961a6e6e1e32f86e57a7c75f0d8fbbe7c0bca7a35",
+    "masterStyleSha256": "bdcdf2e36e23d49b9c15f9734d037930151606e765da74d28a1381694060f7c5",
+    "productionMasterSha256": "a6060c127b727e95fd59c4fd07959202ffa2735b16c3e5722a8107985e63d3a4",
+    "referenceSha256": "d53aa52b5cdefaa63988394a94f92e4a3471fd0d48c66f69aa4eeb2227ee8396",
+    "rightMotionSheetSha256": "53185cfab70d31a1ab61d6f59e03ee61e1c50479384b2c113b3ed7b89d4cffc3",
+    "roleToolSha256": "dedae7337efee1fc59cde1b9255db727de5c623714eddc4e40e1989e1019bd4e",
+    "scanActorOnlySha256": {},
+    "sourceContractPath": "Source/kai-source-contract.json",
+    "sourceContractSha256": "60aff18aaec94eff6b78a40358814118f8cf53440db42104dbcb6aaadd503e67"
+  },
+  "characterId": "kai",
+  "displayName": "Kai",
+  "evidence": [
+    {
+      "path": "Evidence/ContactSheets/kai-right-contact-sheet.png",
+      "sha256": "124a40705c99a2eeb7f1bb80c92fe53f1eda99434def8460dfb40d62d36ee599"
+    },
+    {
+      "path": "Evidence/ContactSheets/kai-left-contact-sheet.png",
+      "sha256": "90e340461d5059612d7f004af5c8e72c3033778820ca674e2d13f5a35b1790a5"
+    },
+    {
+      "path": "Evidence/MotionPreviews/kai-idle-paired-facings.webp",
+      "sha256": "947e8155e95ac117de941109e92b85438a52ccd7a30e5b2415be996974360eb1"
+    },
+    {
+      "path": "Evidence/MotionPreviews/kai-run-paired-facings.webp",
+      "sha256": "b2e73e41259fdb076c11fc16f80893e6f606327b477c6b117dac895ace6b0d8b"
+    },
+    {
+      "path": "Evidence/MotionPreviews/kai-turn-paired-facings.webp",
+      "sha256": "8bfe6f580fd8086ff64a2426754abc1d35d0b46a350d21597a94c28cbbd98d62"
+    },
+    {
+      "path": "Evidence/MotionPreviews/kai-jump-paired-facings.webp",
+      "sha256": "98aa6fa3a27edd93f5169223cc3a13a5e521918bbf929b69338096f7b34dd3bd"
+    },
+    {
+      "path": "Evidence/MotionPreviews/kai-land-paired-facings.webp",
+      "sha256": "35232dd6aed140a8aeeee8dc8b91e02785e3d035963c21920f420c5ff282be03"
+    },
+    {
+      "path": "Evidence/MotionPreviews/kai-climb-paired-facings.webp",
+      "sha256": "dd288526cc4f7a281461ce98d316fbb9d72390bf4e613beef90825f584befc59"
+    },
+    {
+      "path": "Evidence/MotionPreviews/kai-scan-paired-facings.webp",
+      "sha256": "7153acaa61b563d6eb0dd340e150ea1b3f9f3af9e7b25dbe902b54c71af3181a"
+    },
+    {
+      "path": "Evidence/MotionPreviews/kai-interact-paired-facings.webp",
+      "sha256": "84108a53692fa59ad8ec3b0c8cb22297fb5f951380fb992da4a266b129cc6417"
+    },
+    {
+      "path": "Evidence/kai-expression-speech-contact-sheet.png",
+      "sha256": "dda7833b5ad9924663ccce7c92f507cae8b727d2e2e6c5910c27b6a9f6279848"
+    },
+    {
+      "path": "Evidence/kai-live-anchors-right.webp",
+      "sha256": "2543c7e2e4aac1ffbf5b4f99b677d883f6437bda0edd305dc073514b07ca8ebb"
+    },
+    {
+      "path": "Evidence/kai-live-anchors-left.webp",
+      "sha256": "667df751c12e1e32ce82db413fe491c895242d7e35c17bc2d298f3810ea86b87"
+    }
+  ],
+  "publicationCount": 3,
+  "publications": [
+    {
+      "atlasManifestPath": "Atlases/right/kai-right.sprite-manifest.json",
+      "atlasManifestSha256": "a8cad875b5b91622f0edd0ddb413a9931fba3932bd7e4de9fa11df3dd750854f",
+      "atlasPath": "Atlases/right/kai-right.png",
+      "facing": "right"
+    },
+    {
+      "atlasManifestPath": "Atlases/left/kai-left.sprite-manifest.json",
+      "atlasManifestSha256": "0fc0781f0aed9d0f98f1f1a362be17357357f0d023b3e16f4bbefe81c17a24d5",
+      "atlasPath": "Atlases/left/kai-left.png",
+      "facing": "left"
+    },
+    {
+      "atlasManifestPath": "Atlases/neutral/kai-face-speech.sprite-manifest.json",
+      "atlasManifestSha256": "17613ee501f3f7389bfecf50981c410d683383214f4030509ce357ed8a72cd86",
+      "atlasPath": "Atlases/neutral/kai-face-speech.png",
+      "facing": "neutral"
+    }
+  ],
+  "rigKind": "FlattenedHuman",
+  "roleEquipment": [
+    "route-controller",
+    "heading-display",
+    "pilot-pack"
+  ],
+  "roleMotionId": "long-momentum-navigator",
+  "schemaVersion": 1,
+  "validation": {
+    "isValid": true,
+    "issues": []
+  }
+}

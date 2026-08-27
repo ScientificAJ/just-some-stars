@@ -1,0 +1,627 @@
+{
+  "atlas": {
+    "format": "PNG",
+    "height": 512,
+    "path": "mira-face-speech.png",
+    "sha256": "73edf1284f4a86f85de45df5b27b6eea4af8329127d92065a35a63112979596d",
+    "width": 512
+  },
+  "characterId": "mira",
+  "clips": [
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 0,
+            "y": 384
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "mira__face_speech__000"
+        }
+      ],
+      "id": "mira.expression.neutral",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/mira-expressions-2x.png",
+      "sourceStripSha256": "ac016dba67ce00949810b3c4b69be9f2bd24349829914b297a6ceefec7f8716e"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 128,
+            "y": 384
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "mira__face_speech__001"
+        }
+      ],
+      "id": "mira.expression.happy",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/mira-expressions-2x.png",
+      "sourceStripSha256": "ac016dba67ce00949810b3c4b69be9f2bd24349829914b297a6ceefec7f8716e"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 256,
+            "y": 384
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "mira__face_speech__002"
+        }
+      ],
+      "id": "mira.expression.curious",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/mira-expressions-2x.png",
+      "sourceStripSha256": "ac016dba67ce00949810b3c4b69be9f2bd24349829914b297a6ceefec7f8716e"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 384,
+            "y": 384
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "mira__face_speech__003"
+        }
+      ],
+      "id": "mira.expression.worried",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/mira-expressions-2x.png",
+      "sourceStripSha256": "ac016dba67ce00949810b3c4b69be9f2bd24349829914b297a6ceefec7f8716e"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 0,
+            "y": 256
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "mira__face_speech__004"
+        }
+      ],
+      "id": "mira.expression.afraid",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/mira-expressions-2x.png",
+      "sourceStripSha256": "ac016dba67ce00949810b3c4b69be9f2bd24349829914b297a6ceefec7f8716e"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 128,
+            "y": 256
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "mira__face_speech__005"
+        }
+      ],
+      "id": "mira.expression.surprised",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/mira-expressions-2x.png",
+      "sourceStripSha256": "ac016dba67ce00949810b3c4b69be9f2bd24349829914b297a6ceefec7f8716e"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 256,
+            "y": 256
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "mira__face_speech__006"
+        }
+      ],
+      "id": "mira.expression.determined",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/mira-expressions-2x.png",
+      "sourceStripSha256": "ac016dba67ce00949810b3c4b69be9f2bd24349829914b297a6ceefec7f8716e"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 384,
+            "y": 256
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "mira__face_speech__007"
+        }
+      ],
+      "id": "mira.expression.sad",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/mira-expressions-2x.png",
+      "sourceStripSha256": "ac016dba67ce00949810b3c4b69be9f2bd24349829914b297a6ceefec7f8716e"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 0,
+            "y": 128
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "mira__face_speech__008"
+        }
+      ],
+      "id": "mira.expression.blink",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/mira-expressions-2x.png",
+      "sourceStripSha256": "ac016dba67ce00949810b3c4b69be9f2bd24349829914b297a6ceefec7f8716e"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 128,
+            "y": 128
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "mira__face_speech__009"
+        }
+      ],
+      "id": "mira.expression.speaking",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/mira-expressions-2x.png",
+      "sourceStripSha256": "ac016dba67ce00949810b3c4b69be9f2bd24349829914b297a6ceefec7f8716e"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            44,
+            80,
+            85,
+            99
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 256,
+            "y": 128
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "mira__face_speech__010"
+        }
+      ],
+      "id": "mira.speech.0",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/mira-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            44,
+            89,
+            85,
+            97
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 384,
+            "y": 128
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "mira__face_speech__011"
+        }
+      ],
+      "id": "mira.speech.1",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/mira-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            54,
+            78,
+            75,
+            102
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 0,
+            "y": 0
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "mira__face_speech__012"
+        }
+      ],
+      "id": "mira.speech.2",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/mira-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            46,
+            84,
+            83,
+            95
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 128,
+            "y": 0
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "mira__face_speech__013"
+        }
+      ],
+      "id": "mira.speech.3",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/mira-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            56,
+            75,
+            73,
+            104
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 256,
+            "y": 0
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "mira__face_speech__014"
+        }
+      ],
+      "id": "mira.speech.4",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/mira-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            43,
+            81,
+            87,
+            97
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 384,
+            "y": 0
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "mira__face_speech__015"
+        }
+      ],
+      "id": "mira.speech.5",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/mira-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    }
+  ],
+  "pixelsPerUnit": 100,
+  "schemaVersion": 1,
+  "sourceRequestSha256": "cda3afe4e215237313dc18ab190eef6080387eb22a4c1677bc13a307b3cea655",
+  "validation": {
+    "isValid": true,
+    "issues": []
+  }
+}

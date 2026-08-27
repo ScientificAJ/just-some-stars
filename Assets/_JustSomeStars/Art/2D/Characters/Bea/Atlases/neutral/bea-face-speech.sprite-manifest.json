@@ -1,0 +1,627 @@
+{
+  "atlas": {
+    "format": "PNG",
+    "height": 512,
+    "path": "bea-face-speech.png",
+    "sha256": "110aa1fa185a2461e342c6a850146fa95bed60ce2d96264efc29b75dc81c1b52",
+    "width": 512
+  },
+  "characterId": "bea",
+  "clips": [
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 0,
+            "y": 384
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "bea__face_speech__000"
+        }
+      ],
+      "id": "bea.expression.neutral",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/bea-expressions-2x.png",
+      "sourceStripSha256": "e27145b36fb5bc80fc446c89277cb8c2df2630d8beb2ff81dd0d2e4e49d8a57c"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 128,
+            "y": 384
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "bea__face_speech__001"
+        }
+      ],
+      "id": "bea.expression.happy",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/bea-expressions-2x.png",
+      "sourceStripSha256": "e27145b36fb5bc80fc446c89277cb8c2df2630d8beb2ff81dd0d2e4e49d8a57c"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 256,
+            "y": 384
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "bea__face_speech__002"
+        }
+      ],
+      "id": "bea.expression.curious",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/bea-expressions-2x.png",
+      "sourceStripSha256": "e27145b36fb5bc80fc446c89277cb8c2df2630d8beb2ff81dd0d2e4e49d8a57c"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 384,
+            "y": 384
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "bea__face_speech__003"
+        }
+      ],
+      "id": "bea.expression.worried",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/bea-expressions-2x.png",
+      "sourceStripSha256": "e27145b36fb5bc80fc446c89277cb8c2df2630d8beb2ff81dd0d2e4e49d8a57c"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 0,
+            "y": 256
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "bea__face_speech__004"
+        }
+      ],
+      "id": "bea.expression.afraid",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/bea-expressions-2x.png",
+      "sourceStripSha256": "e27145b36fb5bc80fc446c89277cb8c2df2630d8beb2ff81dd0d2e4e49d8a57c"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 128,
+            "y": 256
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "bea__face_speech__005"
+        }
+      ],
+      "id": "bea.expression.surprised",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/bea-expressions-2x.png",
+      "sourceStripSha256": "e27145b36fb5bc80fc446c89277cb8c2df2630d8beb2ff81dd0d2e4e49d8a57c"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 256,
+            "y": 256
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "bea__face_speech__006"
+        }
+      ],
+      "id": "bea.expression.determined",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/bea-expressions-2x.png",
+      "sourceStripSha256": "e27145b36fb5bc80fc446c89277cb8c2df2630d8beb2ff81dd0d2e4e49d8a57c"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 384,
+            "y": 256
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "bea__face_speech__007"
+        }
+      ],
+      "id": "bea.expression.sad",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/bea-expressions-2x.png",
+      "sourceStripSha256": "e27145b36fb5bc80fc446c89277cb8c2df2630d8beb2ff81dd0d2e4e49d8a57c"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 0,
+            "y": 128
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "bea__face_speech__008"
+        }
+      ],
+      "id": "bea.expression.blink",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/bea-expressions-2x.png",
+      "sourceStripSha256": "e27145b36fb5bc80fc446c89277cb8c2df2630d8beb2ff81dd0d2e4e49d8a57c"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 128,
+            "y": 128
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "bea__face_speech__009"
+        }
+      ],
+      "id": "bea.expression.speaking",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/bea-expressions-2x.png",
+      "sourceStripSha256": "e27145b36fb5bc80fc446c89277cb8c2df2630d8beb2ff81dd0d2e4e49d8a57c"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            44,
+            80,
+            85,
+            99
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 256,
+            "y": 128
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "bea__face_speech__010"
+        }
+      ],
+      "id": "bea.speech.0",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/bea-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            44,
+            89,
+            85,
+            97
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 384,
+            "y": 128
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "bea__face_speech__011"
+        }
+      ],
+      "id": "bea.speech.1",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/bea-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            54,
+            78,
+            75,
+            102
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 0,
+            "y": 0
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "bea__face_speech__012"
+        }
+      ],
+      "id": "bea.speech.2",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/bea-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            46,
+            84,
+            83,
+            95
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 128,
+            "y": 0
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "bea__face_speech__013"
+        }
+      ],
+      "id": "bea.speech.3",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/bea-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            56,
+            75,
+            73,
+            104
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 256,
+            "y": 0
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "bea__face_speech__014"
+        }
+      ],
+      "id": "bea.speech.4",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/bea-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            43,
+            81,
+            87,
+            97
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 384,
+            "y": 0
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "bea__face_speech__015"
+        }
+      ],
+      "id": "bea.speech.5",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/bea-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    }
+  ],
+  "pixelsPerUnit": 100,
+  "schemaVersion": 1,
+  "sourceRequestSha256": "cda3afe4e215237313dc18ab190eef6080387eb22a4c1677bc13a307b3cea655",
+  "validation": {
+    "isValid": true,
+    "issues": []
+  }
+}

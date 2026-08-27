@@ -1,0 +1,25 @@
+{
+  "approvedHeightMeters": 1.62,
+  "bakedFacings": [
+    "right",
+    "left"
+  ],
+  "characterId": "kai",
+  "climbActorOnlySha256": {
+    "left": "93f85da6dfdc865ee176777019e3ce40a0940d23544141d3b83951954551ade3",
+    "right": "c81ca26b237e47a7b8a04c1bc67339d2388c4c51dcba1c2b4927bdff703a0c32"
+  },
+  "flattenedPublication": true,
+  "interactionActorOnlySha256": {},
+  "leftMotionSheetSha256": "12f59aea4207cd80b81cc10961a6e6e1e32f86e57a7c75f0d8fbbe7c0bca7a35",
+  "productionMasterSha256": "a6060c127b727e95fd59c4fd07959202ffa2735b16c3e5722a8107985e63d3a4",
+  "referencePath": "Assets/_JustSomeStars/Art/Characters/References/kai.png",
+  "referenceSha256": "d53aa52b5cdefaa63988394a94f92e4a3471fd0d48c66f69aa4eeb2227ee8396",
+  "rigKind": "FlattenedHuman",
+  "rightMotionSheetSha256": "53185cfab70d31a1ab61d6f59e03ee61e1c50479384b2c113b3ed7b89d4cffc3",
+  "roleMotionId": "long-momentum-navigator",
+  "roleToolSha256": "dedae7337efee1fc59cde1b9255db727de5c623714eddc4e40e1989e1019bd4e",
+  "runtimeSkeleton": false,
+  "scanActorOnlySha256": {},
+  "schemaVersion": 1
+}

@@ -46,9 +46,9 @@ implementation plans and issue register; it does not replace either authority.
 - Canonical repository: `/mnt/unity-data/JustSomeStars`.
 - Branch: `codex/task-12-modular-characters`.
 - Pre-Stage-2 HEAD: `f99336333e6946ccd50c1ec43ffdb8b2aa3ac617`.
-- Replacement Task 12 Stages 1 through 3 are complete and accepted. Stages 1
-  and 2 are committed and pushed; the scoped Stage 3 checkpoint is ready to
-  commit and push before Stage 4 begins automatically.
+- Replacement Task 12 Stages 1 through 4 are complete and accepted. Stages 1
+  through 3 are committed and pushed; the scoped Stage 4 checkpoint is ready
+  to commit and push before Stage 5 begins automatically.
 - The local Unity Editor demo was closed cleanly before final verification.
 - No APK or Limrun session is part of this Stage 1 checkpoint.
 
@@ -195,12 +195,52 @@ implementation plans and issue register; it does not replace either authority.
   jump/land publications returned final `PASS` after the bounded correction.
 - No APK, full regression or Limrun session was used for this focused stage.
 
-## Immediate next task: replacement Task 12 Stage 4
+## Replacement Task 12 Stage 4 checkpoint
 
-Produce bespoke Mira, Juno, Kai, Bea and Ori sprite sets from their approved
-Task 10 sheets using the Stage 2 atlas contract and the accepted Stage 3
-runtime integration. Continue autonomously; the user-facing graphical approval
-remains at the Task 12 boundary, not between these internal stages.
+### Delivered scope
+
+- Bespoke, independently authored Mira, Juno, Kai and Bea frame sets plus a
+  dedicated mechanical Ori set; no child is a recolor of another.
+- Eight clips in right and left facings for every character: idle, run, turn,
+  jump, land, climb, scan and interact.
+- Character-specific silhouettes, tools and motion semantics with stable
+  baselines, live attachment/event anchors and deterministic atlas manifests.
+- Corrected actor-only climb and interaction sources, full-body Bea scan rows,
+  and a bounded Juno crouched-interaction scale in both facings.
+- Five typed Unity `CharacterSpriteSet` assets, scoped import policy and a
+  dedicated Addressables `Characters-Crew` group.
+
+### Locked evidence identities
+
+- Crew package index SHA-256:
+  `2a100b886020eda0bd2cf9d8a5e78a8cd5024e9a06da97e036a436fb6fa15a0e`.
+- Runtime capture manifest SHA-256:
+  `ed41e1efe0f0de91364efa3857c8712c18acf306c449cf4d0cf4ce3d1db64c10`.
+- 96-frame both-facing runtime reel SHA-256:
+  `2faf97dea16d969bd52fad7879fabf21c5ab4cc29dceaa513da3c69d08ed7e12`.
+- Right same-scale lineup SHA-256:
+  `400b3dd0dbdacaaa8f56cdebf12a0213e32f9a8f76d3df0c6b91fa23e089b474`.
+- Left same-scale lineup SHA-256:
+  `5dcb74ccebcfd4afc3c291c62d626641de28ea388df510ba418b98a4da203072`.
+
+### Final gate
+
+- Python crew package suite: `3/3` passed.
+- Unity focused EditMode: `3/3` passed.
+- Unity focused PlayMode: `1/1` passed.
+- Fresh Unity evidence contains 96 frames: all eight clips for all five actors
+  in both right and left facings, plus both same-scale lineups.
+- The same independent Stage 4 extreme critic that found the four bounded
+  publication/evidence/staging defects returned final `PASS` after correction.
+- No APK, full regression or Limrun session was used for this focused stage.
+
+## Immediate next task: replacement Task 12 Stage 5
+
+Integrate the accepted final crew/Captain/Ori sprites into the authored Mirra
+excerpt, replace the temporary Stage 1 presentation, add bounded fall recovery,
+then run the one declared package-boundary regression, Android build and device
+acceptance. Continue autonomously; user-facing graphical approval remains at
+the Task 12 boundary after Stage 5.
 
 ## User-help queue
 

@@ -1,0 +1,5029 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9090984858615102510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.idle.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.idle.right
+  facing: 2
+  loopMode: 0
+  frames:
+  - {fileID: 1711407679359917633, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -3295508715991564959, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -4375897909114267427, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 5267706914145873927, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents: []
+--- !u!114 &-8474887553572111636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.land.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.land.right
+  facing: 2
+  loopMode: 1
+  frames:
+  - {fileID: -392053306103052037, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -8711563588879665864, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 4606376800740446022, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -3425591511231496755, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 1
+    kind: 0
+    id: land-contact
+  - frameIndex: 1
+    kind: 4
+    id: land-audio
+  - frameIndex: 1
+    kind: 5
+    id: land-vfx
+--- !u!114 &-8042926513782995927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.climb.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.climb.left
+  facing: 1
+  loopMode: 1
+  frames:
+  - {fileID: -2168931675499260427, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 6351640291092203782, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 5153571908073351560, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -699358514355402106, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 96808250244530015, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -8010938431846704944, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -4747104788550920412, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -8785307078303048443, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftHand
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftHand
+  - frameIndex: 4
+    id: LeftHand
+  - frameIndex: 5
+    id: LeftHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 6
+    id: LeftHand
+  - frameIndex: 6
+    id: LeftFoot
+  - frameIndex: 6
+    id: RightFoot
+  - frameIndex: 7
+    id: LeftFoot
+  - frameIndex: 7
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 5
+    kind: 3
+    id: climb-commit
+--- !u!114 &-5894359564804704841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.run.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.run.left
+  facing: 1
+  loopMode: 0
+  frames:
+  - {fileID: -8154447926543105620, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -6221738491759498722, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -787056100137723371, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 3866539202459232686, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -1850168080089091157, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -7297889768706414254, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -3665533742676172210, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -5141731656986065384, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 6
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 0
+    id: step-left
+  - frameIndex: 2
+    kind: 0
+    id: step-right
+  - frameIndex: 4
+    kind: 0
+    id: step-left
+  - frameIndex: 6
+    kind: 0
+    id: step-right
+--- !u!114 &-5134222782547751206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.scan.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.scan.right
+  facing: 2
+  loopMode: 1
+  frames:
+  - {fileID: -7479457516168141744, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 6102452274535047926, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 2014153596661260071, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 2107769550419710146, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 2937448493080110820, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 2412308542795848385, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 2379664555266132204, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -8235661716821968839, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  - frameIndex: 6
+    id: LeftFoot
+  - frameIndex: 6
+    id: RightFoot
+  - frameIndex: 7
+    id: LeftFoot
+  - frameIndex: 7
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 4
+    kind: 3
+    id: scan-commit
+  - frameIndex: 4
+    kind: 4
+    id: scan-audio
+  - frameIndex: 4
+    kind: 5
+    id: scan-vfx
+--- !u!114 &-3960219790954374355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.jump.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.jump.left
+  facing: 1
+  loopMode: 2
+  frames:
+  - {fileID: -9167061883319422983, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -149465602736585197, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 8374564045723727124, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -1032153066355985356, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 2256204060708802699, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -6324784551894409605, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 1
+    kind: 4
+    id: jump-audio
+  - frameIndex: 1
+    kind: 5
+    id: jump-vfx
+--- !u!114 &-3294412775851801516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.run.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.run.right
+  facing: 2
+  loopMode: 0
+  frames:
+  - {fileID: -8151940581136039073, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 8957157876561633634, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 8537536745815265835, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -4188351894818462158, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 8530866243761125922, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 6642036204699557619, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -2345707421589614972, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -5426223814422427355, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 6
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 0
+    id: step-left
+  - frameIndex: 2
+    kind: 0
+    id: step-right
+  - frameIndex: 4
+    kind: 0
+    id: step-left
+  - frameIndex: 6
+    kind: 0
+    id: step-right
+--- !u!114 &-2659301987308337318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.turn.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.turn.right
+  facing: 2
+  loopMode: 1
+  frames:
+  - {fileID: -7695569246399700422, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -5630115954561132847, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -5026985260768340210, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -5207406620938413072, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents: []
+--- !u!114 &-1591408713006047361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.land.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.land.left
+  facing: 1
+  loopMode: 1
+  frames:
+  - {fileID: -2942198421685703540, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 6239898845870172320, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -5389778295948446871, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 7316579000987340395, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 1
+    kind: 0
+    id: land-contact
+  - frameIndex: 1
+    kind: 4
+    id: land-audio
+  - frameIndex: 1
+    kind: 5
+    id: land-vfx
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41759a4bdd9cbad87b0bb61030e13fb0, type: 3}
+  m_Name: MiraSpriteSet
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.CharacterSpriteSet
+  characterId: mira
+  clips:
+  - {fileID: -9090984858615102510}
+  - {fileID: -3294412775851801516}
+  - {fileID: -2659301987308337318}
+  - {fileID: 6337800590063989690}
+  - {fileID: -8474887553572111636}
+  - {fileID: 535576340382287662}
+  - {fileID: -5134222782547751206}
+  - {fileID: 5224176149116858065}
+  - {fileID: 3250505492128492498}
+  - {fileID: -5894359564804704841}
+  - {fileID: 4802136230962926325}
+  - {fileID: -3960219790954374355}
+  - {fileID: -1591408713006047361}
+  - {fileID: -8042926513782995927}
+  - {fileID: 9032374227160742229}
+  - {fileID: 4597797428496056269}
+  anchorTracks:
+  - clipId: mira.idle.right
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 56, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 72, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 51, y: 74.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 80, y: 73}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 136}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 46.5, y: 99}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 51, y: 74.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 80, y: 71}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 56, y: 34}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 72, y: 34}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 80, y: 73}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 51, y: 77}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 56.5, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 71.5, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 50, y: 74}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 80, y: 73.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 47, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 50, y: 74}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 81, y: 70.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 56.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 71.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 80, y: 73.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 50, y: 75.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 56.5, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 71.5, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 51, y: 74.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 80.5, y: 73.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 47.5, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 51, y: 74.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 80.5, y: 70.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 56.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 71.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 80.5, y: 73.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 51, y: 77}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 56, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 72, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 50.5, y: 74.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 80, y: 73.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 46.5, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 50.5, y: 74.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 80.5, y: 70.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 56, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 72, y: 33.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 80, y: 73.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 50.5, y: 75}
+        isAuthoredVisible: 1
+  - clipId: mira.run.right
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 50.5, y: 28.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 48.5, y: 28.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 84.5, y: 17}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 27.5, y: 46}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 88.5, y: 48}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 105}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 40, y: 73}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 61}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 27.5, y: 46}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 89, y: 47.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 48, y: 29}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 80, y: 29}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 88.5, y: 48}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 40.5, y: 71}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 79, y: 28}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 48, y: 33}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 86.5, y: 18.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 25, y: 49.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 92.5, y: 67.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 106}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 41.5, y: 64.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 61.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 25, y: 49.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 89.5, y: 67}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 48, y: 33}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 79.5, y: 28.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 92.5, y: 67.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 25, y: 49.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 67.5, y: 13.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 67.5, y: 13.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 75, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 40.5, y: 56.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 89, y: 62}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 103.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 48.5, y: 71.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 60}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 39, y: 55}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 84.5, y: 61}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 57.5, y: 32.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 75, y: 28}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 89, y: 62}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 41, y: 57}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 71.5, y: 15}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 67.5, y: 27.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 75.5, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 37.5, y: 53}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 89, y: 62}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 105}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 47.5, y: 77.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 61}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 37.5, y: 53}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 89, y: 62}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 57, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 75.5, y: 28.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 89, y: 62}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 37.5, y: 53}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 67.5, y: 16}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 49, y: 12.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 75, y: 14.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 42.5, y: 60.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 87.5, y: 64.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 105}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 42.5, y: 77.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 61}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 42.5, y: 60.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 86, y: 49.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 49.5, y: 28.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 74.5, y: 31}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 87.5, y: 64.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 42.5, y: 61}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 65, y: 15.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 48.5, y: 12.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 69.5, y: 20}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 43, y: 62.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 89.5, y: 64}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 104.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 43, y: 68}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 60.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 43, y: 62.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 87, y: 63}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 51, y: 29}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 73, y: 32.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 89.5, y: 64}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 43, y: 62.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 53.5, y: 12.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 65, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 41, y: 58.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 80.5, y: 64.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 105}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 41, y: 77.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 61}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 41, y: 58}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 79.5, y: 64}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 53.5, y: 28.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 69.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 80.5, y: 64.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 41, y: 61}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 54, y: 11.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 68, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 47.5, y: 54}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 86, y: 59.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 105}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 46.5, y: 74}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 60.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 39, y: 51.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 86, y: 59.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 54, y: 27.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 74, y: 32}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 86, y: 59.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 48, y: 55}
+        isAuthoredVisible: 1
+  - clipId: mira.turn.right
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 66, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 54.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 73.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 45, y: 63}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 79, y: 58.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 114}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 42.5, y: 83}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 65.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 45, y: 60}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 79, y: 58.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 53, y: 30.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 73.5, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 79, y: 58.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 45, y: 64.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 55.5, y: 12.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 72, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 45.5, y: 63}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 82, y: 63}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 114}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 45.5, y: 83}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 65.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 45.5, y: 60}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 82, y: 60}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 55.5, y: 29.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 72, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 82, y: 63}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 45.5, y: 65.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 55.5, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 72, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 45.5, y: 63}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 82, y: 63}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 114}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 45.5, y: 83}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 65.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 45.5, y: 60}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 82, y: 60}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 55.5, y: 29.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 72, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 82, y: 63}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 45.5, y: 65.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 55.5, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 72, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 45.5, y: 62.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 80, y: 62.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 113}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 45.5, y: 82.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 65}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 45.5, y: 60}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 81, y: 60}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 55, y: 29.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 72, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 80, y: 62.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 45.5, y: 65}
+        isAuthoredVisible: 1
+  - clipId: mira.jump.right
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 63.5, y: 14.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 54, y: 14}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 74, y: 15.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 41.5, y: 46.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 83, y: 43}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 79.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 44, y: 56}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 48.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 41.5, y: 45}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 83.5, y: 42}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 54, y: 25.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 73.5, y: 26}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 83, y: 43}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 41.5, y: 48.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 48.5, y: 35}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 40, y: 28}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 59, y: 39}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 35, y: 63}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 89, y: 68.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 67.5, y: 103.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 37, y: 72.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 62.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 35, y: 63}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 84.5, y: 65.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 49.5, y: 35.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 65, y: 45}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 89, y: 68.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 34.5, y: 63.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 69, y: 36}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 49, y: 37}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 73, y: 34.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 49, y: 66}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 83.5, y: 69}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 112}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 50.5, y: 81.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 73.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 49, y: 66}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 83.5, y: 69}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 55, y: 45}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 73, y: 45}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 83.5, y: 69}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 50.5, y: 73.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 69, y: 30}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 50, y: 26}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 70, y: 30}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 50, y: 60}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 81.5, y: 63.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 106.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 51.5, y: 77}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 66}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 50, y: 60}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 81.5, y: 61.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 56, y: 35.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 71.5, y: 35.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 81.5, y: 63.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 50.5, y: 63}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 55.5, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 72, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 45, y: 52}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 82.5, y: 50}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 91.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 46, y: 66}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 54}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 45, y: 50}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 82.5, y: 50}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 55.5, y: 26}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 72, y: 26}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 82.5, y: 50}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 45, y: 54}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 54.5, y: 11}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 73, y: 11}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 43.5, y: 52}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 83.5, y: 51.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 92.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 43.5, y: 67.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 54}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 43.5, y: 50}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 84, y: 50}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 54.5, y: 25.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 73, y: 25.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 83.5, y: 51.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 43.5, y: 54}
+        isAuthoredVisible: 1
+  - clipId: mira.land.right
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 69, y: 30}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 50, y: 26}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 70, y: 30}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 50, y: 60}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 81.5, y: 63.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 106.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 51.5, y: 77}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 66}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 50, y: 60}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 81.5, y: 61.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 56, y: 35.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 71.5, y: 35.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 81.5, y: 63.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 50.5, y: 63}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 55.5, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 72, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 45, y: 52}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 82.5, y: 50}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 91.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 46, y: 66}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 54}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 45, y: 50}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 82.5, y: 50}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 55.5, y: 26}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 72, y: 26}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 82.5, y: 50}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 45, y: 54}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 54.5, y: 11}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 73, y: 11}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 43.5, y: 52}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 83.5, y: 51.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 92.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 43.5, y: 67.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 54}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 43.5, y: 50}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 84, y: 50}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 54.5, y: 25.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 73, y: 25.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 83.5, y: 51.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 43.5, y: 54}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 56, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 72, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 51, y: 74.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 80, y: 73}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 136}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 46.5, y: 99}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 51, y: 74.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 80, y: 71}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 56, y: 34}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 72, y: 34}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 80, y: 73}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 51, y: 77}
+        isAuthoredVisible: 1
+  - clipId: mira.climb.right
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 68.5, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 54, y: 11.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 74, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 43.5, y: 68.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 82, y: 60.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 118}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 44, y: 88.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 67.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 46, y: 66}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 83, y: 59}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 53, y: 31.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 74, y: 30.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 82, y: 60.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 43, y: 69}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 14.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 52, y: 14}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 75.5, y: 14}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 48.5, y: 78.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 79.5, y: 67}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 139.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 42, y: 102}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 80}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 48.5, y: 78.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 80, y: 65.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 52, y: 37}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 75.5, y: 36}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 79.5, y: 67}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 48.5, y: 80}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 63, y: 17}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 51, y: 16}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 76.5, y: 16}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 44, y: 82.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 76, y: 62.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 135}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 39.5, y: 101.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 78.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 44.5, y: 79.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 76, y: 62.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 50.5, y: 37}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 72, y: 41.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 76, y: 62.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 44, y: 82.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 57, y: 18}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 53.5, y: 18}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 57, y: 18}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 46.5, y: 84}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 87.5, y: 74.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 66, y: 135}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 40, y: 102.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 63.5, y: 80}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 47, y: 80.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 90, y: 73.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 52, y: 38.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 58.5, y: 55.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 87.5, y: 74.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 45, y: 85.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 61, y: 20}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 55.5, y: 20}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 61, y: 20}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 47, y: 76}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 83.5, y: 73}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 66.5, y: 132}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 44.5, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 62, y: 79}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 47, y: 73}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 86.5, y: 71.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 55.5, y: 39.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 60, y: 25}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 83.5, y: 73}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 46, y: 81}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 51, y: 24.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 50.5, y: 21}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 51, y: 24.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 42.5, y: 62.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 95, y: 66}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 68, y: 111}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 37.5, y: 84}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 69.5, y: 68.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 41.5, y: 60}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 95, y: 65.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 48, y: 41}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56.5, y: 59}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 95, y: 66}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 42.5, y: 72}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 53.5, y: 21}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 53.5, y: 21}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 53.5, y: 21}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 46, y: 68.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 94.5, y: 79.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 68.5, y: 127}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 47, y: 95}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 67, y: 76.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 45.5, y: 67}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 87.5, y: 78}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 51, y: 42.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 58, y: 60}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 94.5, y: 79.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 47, y: 73.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 68, y: 20}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 61, y: 20}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 75, y: 20}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 58.5, y: 87}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 82.5, y: 82}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 69, y: 143.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 53, y: 106.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 68, y: 85}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 59.5, y: 82}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 80.5, y: 79.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 61, y: 41.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 75, y: 41.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 82.5, y: 82}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 58, y: 89}
+        isAuthoredVisible: 1
+  - clipId: mira.scan.right
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 13}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 53.5, y: 12.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 74, y: 13}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 41, y: 68}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 85.5, y: 65}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 117}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 41, y: 85.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 67.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 43, y: 61}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 86.5, y: 62}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 53.5, y: 31}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 72.5, y: 31}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 85.5, y: 65}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 41, y: 68}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 55.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 72, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 46, y: 69.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 79.5, y: 63}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 118}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 45.5, y: 86}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 67.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 49.5, y: 60.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 80.5, y: 61.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 55.5, y: 30.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 72, y: 30.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 79.5, y: 63}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 46, y: 69.5}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 13}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 52, y: 12.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 75.5, y: 13}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 39.5, y: 64.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 90, y: 65}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 118}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 37.5, y: 86.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 63.5, y: 68.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 39, y: 62}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 90, y: 62.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 51, y: 31.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 71, y: 27}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 90, y: 65}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 37.5, y: 68}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 63.5, y: 15}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 52.5, y: 15}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 75.5, y: 21.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 38.5, y: 67}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 90, y: 67}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 119}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 38, y: 88}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 69.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 38, y: 64.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 90, y: 64.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 52.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 74.5, y: 32.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 90, y: 67}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 39, y: 69}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 63, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 52.5, y: 12.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 74, y: 20.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 40.5, y: 64}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 76, y: 54}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 117}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 38, y: 85.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 67.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 40, y: 60.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 76.5, y: 50.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 52.5, y: 31}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 75.5, y: 31}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 76, y: 54}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 38, y: 68}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 59.5, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 50.5, y: 12.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 71, y: 20}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 37, y: 63.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 74, y: 49.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 117}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 34.5, y: 85.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 62.5, y: 66}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 36.5, y: 61}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 74.5, y: 43.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 50.5, y: 31}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 77.5, y: 31}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 74, y: 49.5}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 34.5, y: 68}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 54.5, y: 12.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 72.5, y: 13}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 43.5, y: 68}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 81, y: 69}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 118}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 43, y: 86.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 68}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 47, y: 60}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 79.5, y: 68}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 54.5, y: 31}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 73, y: 31}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 81, y: 69}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 43, y: 68.5}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 55.5, y: 12.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 71.5, y: 13}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 45, y: 68.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 76, y: 62.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 116.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 45, y: 85.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 67}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 49, y: 60.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 77, y: 56.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 55.5, y: 31}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 72, y: 31}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 76, y: 62.5}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 45, y: 68.5}
+        isAuthoredVisible: 0
+  - clipId: mira.interact.right
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 56.5, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 71, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 50.5, y: 79.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 79, y: 74}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 136}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 47.5, y: 99}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 54, y: 77}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 78.5, y: 71.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 56.5, y: 34}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 71, y: 34}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 79, y: 74}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 50.5, y: 79.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 63, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 52.5, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 73, y: 14.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 42.5, y: 76.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 68, y: 74}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 136}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 38.5, y: 99}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 42.5, y: 68}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 68, y: 72.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 52.5, y: 34}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 65.5, y: 23.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 68, y: 74}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 38.5, y: 80}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 13.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 51, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 69.5, y: 15}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 39, y: 73.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 64, y: 74.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 63.5, y: 135}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 35.5, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 39, y: 71.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 64, y: 74.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 51, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 66.5, y: 22.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 64, y: 74.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 35.5, y: 79.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 63, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 52.5, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 73, y: 14.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 42.5, y: 77}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 67.5, y: 73.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 38, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 42.5, y: 67}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 67.5, y: 73.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 52.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 66, y: 23}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 67.5, y: 73.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 38.5, y: 79.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 52.5, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 73, y: 14}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 43.5, y: 77}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 69, y: 73.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 135}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 38.5, y: 98}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 76.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 44, y: 72}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 69, y: 72.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 52.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 65.5, y: 24}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 69, y: 73.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 40, y: 79}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 56.5, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 71.5, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 51.5, y: 79}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 79.5, y: 73.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 47.5, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 54, y: 77}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 79, y: 71.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 56.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 71.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 79.5, y: 73.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 50.5, y: 79.5}
+        isAuthoredVisible: 1
+  - clipId: mira.idle.left
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 71, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 56.5, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67, y: 73.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 73.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 80.5, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67, y: 70.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 70.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 71, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 47, y: 73}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 75.5, y: 77}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 71, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 56.5, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67, y: 73.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 73.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 80.5, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67, y: 70.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 70.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 71, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 47, y: 73.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 74.5, y: 77}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 71, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 56.5, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67, y: 73.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 73.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 79.5, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67, y: 70.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 70.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 71, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 48, y: 73.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 74.5, y: 77}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 71, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 56.5, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67, y: 73.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 73.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 80.5, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67, y: 70.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 70.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 71, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 47, y: 73.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 74.5, y: 77}
+        isAuthoredVisible: 1
+  - clipId: mira.run.left
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 72.5, y: 13}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 53.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 68.5, y: 59.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 58.5, y: 59.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 109}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 79, y: 79}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 62}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 68.5, y: 57}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 58.5, y: 57}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 70, y: 24.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 54.5, y: 28.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 40.5, y: 62.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 87, y: 54.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 60.5, y: 17.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 78.5, y: 12.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 57, y: 18.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 69, y: 60}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 58, y: 60}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64, y: 109}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 84, y: 74.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 62.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 69, y: 58}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 58, y: 58}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 77, y: 30.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56, y: 34}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 43, y: 54}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 84.5, y: 66}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 53.5, y: 20.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 95, y: 28.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 50, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 70, y: 60.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 57, y: 60.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 109}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 81.5, y: 79.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 63}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 70, y: 58}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 57, y: 58}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 74.5, y: 33}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 50, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 39, y: 68.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 96.5, y: 49.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 50.5, y: 26.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 97, y: 32.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 47.5, y: 14.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 70.5, y: 61}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 57, y: 61}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64, y: 110}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 84.5, y: 72.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 63}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 70.5, y: 58.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 57, y: 58.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 78.5, y: 35.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 49.5, y: 30}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 38, y: 68}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 98, y: 51}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 65.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 72.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 65.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67.5, y: 59.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 59.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 108}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 82.5, y: 79}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 62}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67.5, y: 57}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 57}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 72.5, y: 28.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 59, y: 33}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 51, y: 65}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 79, y: 61.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 68.5, y: 12.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 55, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67.5, y: 59.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 59.5, y: 59.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 108}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 79, y: 79}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 62}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67.5, y: 57}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 59.5, y: 57}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 69, y: 34.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 55, y: 28.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 44.5, y: 59.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 77.5, y: 67.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 52, y: 26}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 94.5, y: 32}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 48, y: 16}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 69.5, y: 61}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 57.5, y: 61}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64, y: 108}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 80.5, y: 79}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 63}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 69.5, y: 58.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 57.5, y: 58.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 73.5, y: 39.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 51.5, y: 30}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 38, y: 64.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 91.5, y: 54.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 69, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 54.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 68, y: 59.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 59.5, y: 59.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64, y: 108}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 77.5, y: 79}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 62}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 68, y: 57}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 59.5, y: 57}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 67.5, y: 22}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 54.5, y: 28.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 42.5, y: 65.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 85.5, y: 53}
+        isAuthoredVisible: 1
+  - clipId: mira.turn.left
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 71.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 56, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67, y: 62.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 62.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 113}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 80.5, y: 82.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 65}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67, y: 60}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 60}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 71.5, y: 29.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 47, y: 62.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 80.5, y: 65}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 71.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 56, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67, y: 62.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 62.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 113}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 81, y: 82.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 65}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67, y: 60}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 60}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 71.5, y: 29.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 46.5, y: 62.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 81, y: 65}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 71, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 56.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67, y: 62.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 62.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 113}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 80.5, y: 82.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 65}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67, y: 60}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 60}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 71, y: 29.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56.5, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 47, y: 62.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 80.5, y: 65}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 71, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 57, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67, y: 62.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60.5, y: 62.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 113}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 79.5, y: 82.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 65}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67, y: 60}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60.5, y: 60}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 71, y: 29.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 57, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 48.5, y: 62.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 79.5, y: 65}
+        isAuthoredVisible: 1
+  - clipId: mira.jump.left
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 72.5, y: 11}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 55.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67.5, y: 52}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 52}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 93}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 82.5, y: 68}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 54}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67.5, y: 50}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 50}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 72.5, y: 25.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 55.5, y: 25.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 46, y: 51}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 82.5, y: 54}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 17.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 72, y: 17.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 56, y: 17.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67.5, y: 57.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 57.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 97}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 80.5, y: 71.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 59.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67.5, y: 55.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 55.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 72, y: 31.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56, y: 31.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 46, y: 57.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 82, y: 59.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 56, y: 34.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 77.5, y: 27}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 56, y: 34.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67.5, y: 67}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 67}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 108.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 78, y: 83.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 69}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67.5, y: 65}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 65}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 72, y: 40}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56, y: 40}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 46.5, y: 67}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 77, y: 72.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 78.5, y: 31}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 86, y: 25.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 70.5, y: 34}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 69.5, y: 62}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 58, y: 62}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64, y: 109.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 75.5, y: 66}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 64}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 69.5, y: 59.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 58, y: 59.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 76.5, y: 33}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 64, y: 43.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 44, y: 56}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 76.5, y: 64}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 78, y: 26.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 81, y: 14}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 70.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 69, y: 57}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 58.5, y: 57.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 61.5, y: 106}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 78.5, y: 65.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 59.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 69, y: 55}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 59, y: 55.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 75.5, y: 28.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 63, y: 38.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 48, y: 66.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 79.5, y: 59.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 74, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 54, y: 13}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 68.5, y: 48}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 59, y: 48}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 84}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 83.5, y: 59.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 50}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 68.5, y: 46}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 59.5, y: 45.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 74, y: 24.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56, y: 27}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 50, y: 56.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 86.5, y: 50}
+        isAuthoredVisible: 1
+  - clipId: mira.land.left
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 78.5, y: 31}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 86, y: 25.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 70.5, y: 34}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 69.5, y: 62}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 58, y: 62}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64, y: 109.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 75.5, y: 66}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 64}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 69.5, y: 59.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 58, y: 59.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 76.5, y: 33}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 64, y: 43.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 44, y: 56}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 76.5, y: 64}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 78, y: 26.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 81, y: 14}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 70.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 69, y: 57}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 58.5, y: 57.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 61.5, y: 106}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 78.5, y: 65.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 59.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 69, y: 55}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 59, y: 55.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 75.5, y: 28.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 63, y: 38.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 48, y: 66.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 79.5, y: 59.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 74, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 54, y: 13}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 68.5, y: 48}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 59, y: 48}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 84}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 83.5, y: 59.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 50}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 68.5, y: 46}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 59.5, y: 45.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 74, y: 24.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56, y: 27}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 50, y: 56.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 86.5, y: 50}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 71, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 56.5, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67, y: 73.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 73.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 80.5, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67, y: 70.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 70.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 71, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 47, y: 73}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 75.5, y: 77}
+        isAuthoredVisible: 1
+  - clipId: mira.climb.left
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 71, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 74.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 53, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 68.5, y: 66}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 58.5, y: 66}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 120.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 82, y: 91.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 69}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 68.5, y: 63.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 58.5, y: 63.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 75, y: 31}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 53, y: 31}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 44, y: 61.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 83, y: 71}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 15}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 75.5, y: 14.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 52, y: 14.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 69, y: 81}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 58, y: 81}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 148}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 84, y: 108}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 84.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 69, y: 78}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 58, y: 78}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 75.5, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 52, y: 37.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 46, y: 73.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 77.5, y: 85}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 63, y: 16}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 77, y: 16}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 50.5, y: 16}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 69, y: 75}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 57, y: 75}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 134}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 85.5, y: 104.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 63, y: 78}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 69, y: 72}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 57, y: 72}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 77, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 53, y: 36.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 48.5, y: 64}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 83, y: 86.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 77, y: 20.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 77.5, y: 18}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 77, y: 20.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 68.5, y: 78.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 56.5, y: 75}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64, y: 139}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 85, y: 108.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 63.5, y: 81.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 68.5, y: 75.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 56.5, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 78, y: 41.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 70, y: 58.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 40.5, y: 82.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 83, y: 89}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 71, y: 20}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 73.5, y: 20}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 71, y: 20}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 59.5, y: 77}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 57, y: 77.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 63.5, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 87, y: 101}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 59, y: 77.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 59.5, y: 75}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 57, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 75.5, y: 41.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 71, y: 23.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 39, y: 74.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 85, y: 80.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 82.5, y: 42}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 83, y: 23.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 47, y: 48}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 58.5, y: 66}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 54.5, y: 58.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 63, y: 95.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 86.5, y: 79}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 57.5, y: 59}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 58.5, y: 66}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 54.5, y: 56.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 83.5, y: 27.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 47, y: 48}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 33, y: 54}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 90, y: 56}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 77.5, y: 23.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 77.5, y: 23.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 76, y: 49.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 57.5, y: 68}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 53.5, y: 68}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 62, y: 115.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 89.5, y: 87.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 57.5, y: 69}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 57.5, y: 67.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 53.5, y: 66}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 79, y: 43}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 71, y: 61}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 32.5, y: 70}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 85, y: 75}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 60, y: 20}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 66.5, y: 20}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 53.5, y: 20}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 63, y: 81.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 56.5, y: 81.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 61, y: 143.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 75, y: 106.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 60, y: 85}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 63, y: 78.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 56.5, y: 78.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 66.5, y: 41.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 53.5, y: 41.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 46.5, y: 81.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 70, y: 90}
+        isAuthoredVisible: 1
+  - clipId: mira.scan.left
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 71, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 56.5, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67, y: 68}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 68}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 124}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 80, y: 90.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 71}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67, y: 65}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 65}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 71, y: 31.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56.5, y: 31.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 49, y: 67}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 74.5, y: 71}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 13}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 71.5, y: 13}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 56, y: 13}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67, y: 68}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 68}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 123}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 80.5, y: 90}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 70.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67, y: 65}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 65}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 71.5, y: 32}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56, y: 32}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 48.5, y: 68}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 79.5, y: 74.5}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 22}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 77.5, y: 14}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 50.5, y: 22}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 70, y: 68.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 65.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 123}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 93.5, y: 90.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64.5, y: 71}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 70, y: 66}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 59.5, y: 65}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 78.5, y: 34}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 50.5, y: 32.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 54, y: 54}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 92.5, y: 71.5}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 69, y: 13.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 77, y: 13.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 51, y: 19.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 70, y: 68}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 66.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 122.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 93, y: 90}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 71}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 70, y: 65.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 59, y: 65}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 77, y: 33}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 53, y: 32.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 53, y: 54.5}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 91.5, y: 71}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 63, y: 19}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 76.5, y: 15}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 51, y: 19}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 69.5, y: 69}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 59, y: 67.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 123}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 92, y: 91}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 72}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 69.5, y: 66.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 58, y: 66}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 76.5, y: 34}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 51.5, y: 34}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 33.5, y: 76}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 91.5, y: 72}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 15.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 77.5, y: 13.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 50, y: 15.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 70, y: 68.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 62, y: 66}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 123.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 94.5, y: 90.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 65.5, y: 71.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 70, y: 66}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 61.5, y: 62}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 78.5, y: 34}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 55, y: 27.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 33, y: 71}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 94.5, y: 71.5}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 15.5}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 75, y: 14}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 53, y: 15}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 69, y: 69}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 58.5, y: 69}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 124}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 89, y: 91}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 71.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 69, y: 66}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 58.5, y: 66}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 75, y: 33}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 54, y: 33}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 39, y: 69}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 88.5, y: 71}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 15}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 75.5, y: 13.5}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 52, y: 14}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 69, y: 68.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 59, y: 68.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 123.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 89.5, y: 90.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 71.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 69, y: 66}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 58.5, y: 66}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 75.5, y: 33}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 52.5, y: 33}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 38.5, y: 68.5}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 88, y: 71.5}
+        isAuthoredVisible: 0
+  - clipId: mira.interact.left
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 72, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 56, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67.5, y: 74}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 74}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 82, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67.5, y: 71}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 71}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 72, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56, y: 33.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 47.5, y: 74}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 77.5, y: 79.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64.5, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 76.5, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 55, y: 14.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 69.5, y: 74}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 61, y: 74}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 92, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 69.5, y: 71}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 61, y: 72.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 76.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 58, y: 22.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 61, y: 74}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 91.5, y: 79.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 13}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 77.5, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 58, y: 14}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 70, y: 73.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 64, y: 76.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 94.5, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 76.5}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 70, y: 70.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 64, y: 76.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 77.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 60.5, y: 22}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 59.5, y: 100.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 94, y: 79}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 76.5, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 54, y: 14.5}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 69.5, y: 73.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 61, y: 73.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 91.5, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 69.5, y: 70.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 61, y: 71}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 76.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 61.5, y: 22.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 61, y: 73.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 90.5, y: 79}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 76, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 54, y: 14}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 69.5, y: 73.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 73.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 65.5, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 91.5, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 69.5, y: 70.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 72}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 76, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 62, y: 23}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 57.5, y: 95.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 90, y: 79}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftFoot
+        runtimePixels: {x: 71.5, y: 12}
+        isAuthoredVisible: 1
+      - id: RightFoot
+        runtimePixels: {x: 56, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftHand
+        runtimePixels: {x: 67, y: 73.5}
+        isAuthoredVisible: 1
+      - id: RightHand
+        runtimePixels: {x: 60, y: 73.5}
+        isAuthoredVisible: 1
+      - id: HelmetRing
+        runtimePixels: {x: 64.5, y: 135.5}
+        isAuthoredVisible: 1
+      - id: BackpackSocket
+        runtimePixels: {x: 81, y: 98.5}
+        isAuthoredVisible: 1
+      - id: Belt
+        runtimePixels: {x: 64, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftWrist
+        runtimePixels: {x: 67, y: 70.5}
+        isAuthoredVisible: 1
+      - id: RightWrist
+        runtimePixels: {x: 60, y: 70.5}
+        isAuthoredVisible: 1
+      - id: LeftBootTop
+        runtimePixels: {x: 71.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightBootTop
+        runtimePixels: {x: 56, y: 33.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 47.5, y: 73.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 77.5, y: 80}
+        isAuthoredVisible: 1
+--- !u!114 &535576340382287662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.climb.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.climb.right
+  facing: 2
+  loopMode: 1
+  frames:
+  - {fileID: -4634159572976624415, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -3896731521930639691, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 7559789942494281195, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 8396440735718543690, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 5852784942520959408, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 5000487702989936381, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -2371037663071878584, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -3743652443295983832, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightHand
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightHand
+  - frameIndex: 4
+    id: RightHand
+  - frameIndex: 5
+    id: RightHand
+  - frameIndex: 5
+    id: RightFoot
+  - frameIndex: 6
+    id: RightHand
+  - frameIndex: 6
+    id: LeftFoot
+  - frameIndex: 6
+    id: RightFoot
+  - frameIndex: 7
+    id: LeftFoot
+  - frameIndex: 7
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 5
+    kind: 3
+    id: climb-commit
+--- !u!114 &3250505492128492498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.idle.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.idle.left
+  facing: 1
+  loopMode: 0
+  frames:
+  - {fileID: -4122419761144030446, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -6907099863250503319, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 3089305229535864200, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 1464984859879891897, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents: []
+--- !u!114 &4597797428496056269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.interact.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.interact.left
+  facing: 1
+  loopMode: 1
+  frames:
+  - {fileID: 602817355116252859, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -2345766889263262834, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 6617290679220630123, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -4006808495216848004, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 707697386758089561, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -765375516807963673, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftHand
+  - frameIndex: 2
+    id: LeftHand
+  - frameIndex: 3
+    id: LeftHand
+  - frameIndex: 4
+    id: LeftHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+--- !u!114 &4802136230962926325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.turn.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.turn.left
+  facing: 1
+  loopMode: 1
+  frames:
+  - {fileID: 2053230949613668638, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -976378997831585962, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -533678352452837506, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -2941422933489524221, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents: []
+--- !u!114 &5224176149116858065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.interact.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.interact.right
+  facing: 2
+  loopMode: 1
+  frames:
+  - {fileID: 6273830968544022540, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 3280852573962968700, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -8953163036091446154, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 2664450213149982632, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -8620733727782659371, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 1072953212442108611, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: RightHand
+  - frameIndex: 2
+    id: RightHand
+  - frameIndex: 3
+    id: RightHand
+  - frameIndex: 4
+    id: RightHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+--- !u!114 &6337800590063989690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.jump.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.jump.right
+  facing: 2
+  loopMode: 2
+  frames:
+  - {fileID: -5331306028108721164, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -9212370958529956185, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 5282478752231725764, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 458690860594588813, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 2908422712535289988, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -7214882070765715340, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 1
+    kind: 4
+    id: jump-audio
+  - frameIndex: 1
+    kind: 5
+    id: jump-vfx
+--- !u!114 &9032374227160742229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.scan.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.scan.left
+  facing: 1
+  loopMode: 1
+  frames:
+  - {fileID: -8557323973138123834, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -344540520999885761, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 2655224227537258395, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -5683437135148860377, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 8788765559552013602, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 8696351025471999720, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -2895717786372968292, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 1546047978270472155, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  - frameIndex: 6
+    id: LeftFoot
+  - frameIndex: 6
+    id: RightFoot
+  - frameIndex: 7
+    id: LeftFoot
+  - frameIndex: 7
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 4
+    kind: 3
+    id: scan-commit
+  - frameIndex: 4
+    kind: 4
+    id: scan-audio
+  - frameIndex: 4
+    kind: 5
+    id: scan-vfx

@@ -1,0 +1,28 @@
+{
+  "approvedHeightMeters": 1.54,
+  "bakedFacings": [
+    "right",
+    "left"
+  ],
+  "characterId": "mira",
+  "climbActorOnlySha256": {
+    "left": "42384b12e6aff59da84a32c28e3da78a60ddfda49fcb1e1d54fa72d22edb8628",
+    "right": "f19894b175a131a3f398f67c0e38f3b678745f6e3ab9af1211574fb631ce591a"
+  },
+  "flattenedPublication": true,
+  "interactionActorOnlySha256": {
+    "left": "6a8665f0ede300c1b5491658c9fec9373c285dc4d91405b6cd77ea5f230e297c",
+    "right": "6247f44570e5e634c7eed37b536a6ef39aa942ba4efc17527232d14d174aef80"
+  },
+  "leftMotionSheetSha256": "32adaa52f0d9d3b1b4c47e99bdfad5dc68029ef7d9d2e753ffbf49f1017f30db",
+  "productionMasterSha256": "04e8dfa3308b5faaf82c08283a22462600ee5c1e4be1e5883830f5ab7a096179",
+  "referencePath": "Assets/_JustSomeStars/Art/Characters/References/mira.png",
+  "referenceSha256": "7d7ebbbe494ba1899e5d0f4549e5f363ac58a00e75fadf8c25524989524787a5",
+  "rigKind": "FlattenedHuman",
+  "rightMotionSheetSha256": "aa62d8df4f936cb1bbed52009167b94cf39713302e8db0e0868d661c724bfc75",
+  "roleMotionId": "calm-deliberate-observer",
+  "roleToolSha256": "638aff579a41c8c515126ee2cf61edd2f99ce9c689950eb5d83d7f6ab210825a",
+  "runtimeSkeleton": false,
+  "scanActorOnlySha256": {},
+  "schemaVersion": 1
+}

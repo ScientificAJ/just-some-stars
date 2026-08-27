@@ -1419,7 +1419,7 @@ work is stopped. No unfinished file is deleted without separate user approval.
 
 - [x] **Stage 3: Produce the three modular Captain sprite families**
 
-- [ ] **Stage 4: Produce bespoke Mira, Juno, Kai, Bea and Ori sprite sets**
+- [x] **Stage 4: Produce bespoke Mira, Juno, Kai, Bea and Ori sprite sets**
 
 - [ ] **Stage 5: Integrate the final-art Mirra excerpt and pass one package-boundary Android gate**
 

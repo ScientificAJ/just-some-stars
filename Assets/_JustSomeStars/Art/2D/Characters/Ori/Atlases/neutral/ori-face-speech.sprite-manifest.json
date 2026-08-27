@@ -1,0 +1,627 @@
+{
+  "atlas": {
+    "format": "PNG",
+    "height": 512,
+    "path": "ori-face-speech.png",
+    "sha256": "dfa6d60a0c7f602f13a9c73df5808512d13e742ef8536c1a6f343ecd49143d6a",
+    "width": 512
+  },
+  "characterId": "ori",
+  "clips": [
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 0,
+            "y": 384
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "ori__face_speech__000"
+        }
+      ],
+      "id": "ori.expression.neutral",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/ori-expressions-2x.png",
+      "sourceStripSha256": "a5b3d2b943e6e12f3244268cdf490b29586f492310c01faed96308c5f2760a0a"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 128,
+            "y": 384
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "ori__face_speech__001"
+        }
+      ],
+      "id": "ori.expression.happy",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/ori-expressions-2x.png",
+      "sourceStripSha256": "a5b3d2b943e6e12f3244268cdf490b29586f492310c01faed96308c5f2760a0a"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 256,
+            "y": 384
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "ori__face_speech__002"
+        }
+      ],
+      "id": "ori.expression.curious",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/ori-expressions-2x.png",
+      "sourceStripSha256": "a5b3d2b943e6e12f3244268cdf490b29586f492310c01faed96308c5f2760a0a"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 384,
+            "y": 384
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "ori__face_speech__003"
+        }
+      ],
+      "id": "ori.expression.worried",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/ori-expressions-2x.png",
+      "sourceStripSha256": "a5b3d2b943e6e12f3244268cdf490b29586f492310c01faed96308c5f2760a0a"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 0,
+            "y": 256
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "ori__face_speech__004"
+        }
+      ],
+      "id": "ori.expression.afraid",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/ori-expressions-2x.png",
+      "sourceStripSha256": "a5b3d2b943e6e12f3244268cdf490b29586f492310c01faed96308c5f2760a0a"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 128,
+            "y": 256
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "ori__face_speech__005"
+        }
+      ],
+      "id": "ori.expression.surprised",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/ori-expressions-2x.png",
+      "sourceStripSha256": "a5b3d2b943e6e12f3244268cdf490b29586f492310c01faed96308c5f2760a0a"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 256,
+            "y": 256
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "ori__face_speech__006"
+        }
+      ],
+      "id": "ori.expression.determined",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/ori-expressions-2x.png",
+      "sourceStripSha256": "a5b3d2b943e6e12f3244268cdf490b29586f492310c01faed96308c5f2760a0a"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 384,
+            "y": 256
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "ori__face_speech__007"
+        }
+      ],
+      "id": "ori.expression.sad",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/ori-expressions-2x.png",
+      "sourceStripSha256": "a5b3d2b943e6e12f3244268cdf490b29586f492310c01faed96308c5f2760a0a"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 0,
+            "y": 128
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "ori__face_speech__008"
+        }
+      ],
+      "id": "ori.expression.blink",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/ori-expressions-2x.png",
+      "sourceStripSha256": "a5b3d2b943e6e12f3244268cdf490b29586f492310c01faed96308c5f2760a0a"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 128,
+            "y": 128
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "ori__face_speech__009"
+        }
+      ],
+      "id": "ori.expression.speaking",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/ori-expressions-2x.png",
+      "sourceStripSha256": "a5b3d2b943e6e12f3244268cdf490b29586f492310c01faed96308c5f2760a0a"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            46,
+            75,
+            94,
+            85
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 256,
+            "y": 128
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "ori__face_speech__010"
+        }
+      ],
+      "id": "ori.speech.0",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/ori-speech-2x.png",
+      "sourceStripSha256": "b087585118c491d0ab6572de3d3ca6698ca24ac5b8da5890a32adf240a25c432"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            45,
+            72,
+            95,
+            76
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 384,
+            "y": 128
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "ori__face_speech__011"
+        }
+      ],
+      "id": "ori.speech.1",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/ori-speech-2x.png",
+      "sourceStripSha256": "b087585118c491d0ab6572de3d3ca6698ca24ac5b8da5890a32adf240a25c432"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            57,
+            60,
+            83,
+            87
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 0,
+            "y": 0
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "ori__face_speech__012"
+        }
+      ],
+      "id": "ori.speech.2",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/ori-speech-2x.png",
+      "sourceStripSha256": "b087585118c491d0ab6572de3d3ca6698ca24ac5b8da5890a32adf240a25c432"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            49,
+            65,
+            91,
+            82
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 128,
+            "y": 0
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "ori__face_speech__013"
+        }
+      ],
+      "id": "ori.speech.3",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/ori-speech-2x.png",
+      "sourceStripSha256": "b087585118c491d0ab6572de3d3ca6698ca24ac5b8da5890a32adf240a25c432"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            49,
+            60,
+            91,
+            72
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 256,
+            "y": 0
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "ori__face_speech__014"
+        }
+      ],
+      "id": "ori.speech.4",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/ori-speech-2x.png",
+      "sourceStripSha256": "b087585118c491d0ab6572de3d3ca6698ca24ac5b8da5890a32adf240a25c432"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            46,
+            65,
+            94,
+            81
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 384,
+            "y": 0
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "ori__face_speech__015"
+        }
+      ],
+      "id": "ori.speech.5",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/ori-speech-2x.png",
+      "sourceStripSha256": "b087585118c491d0ab6572de3d3ca6698ca24ac5b8da5890a32adf240a25c432"
+    }
+  ],
+  "pixelsPerUnit": 100,
+  "schemaVersion": 1,
+  "sourceRequestSha256": "cda3afe4e215237313dc18ab190eef6080387eb22a4c1677bc13a307b3cea655",
+  "validation": {
+    "isValid": true,
+    "issues": []
+  }
+}

@@ -1,0 +1,5029 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8513370091586825401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.scan.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.scan.left
+  facing: 1
+  loopMode: 1
+  frames:
+  - {fileID: -7644557726295781940, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -615138796514619137, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 7766116787263289102, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -7543987328979274861, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 8934514316249340283, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -618006993991898773, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -13809698775852546, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -9055804919283920283, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: LeftWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: LeftWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightWheelContact
+  - frameIndex: 4
+    id: LeftWheelContact
+  - frameIndex: 4
+    id: RightWheelContact
+  - frameIndex: 5
+    id: LeftWheelContact
+  - frameIndex: 5
+    id: RightWheelContact
+  - frameIndex: 6
+    id: LeftWheelContact
+  - frameIndex: 6
+    id: RightWheelContact
+  - frameIndex: 7
+    id: LeftWheelContact
+  - frameIndex: 7
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 4
+    kind: 3
+    id: scan-commit
+  - frameIndex: 4
+    kind: 4
+    id: scan-audio
+  - frameIndex: 4
+    kind: 5
+    id: scan-vfx
+--- !u!114 &-7847584445849433671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.jump.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.jump.right
+  facing: 2
+  loopMode: 2
+  frames:
+  - {fileID: -3708156541202932395, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 6308708666540968394, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -7512354509686644906, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 3452921244610550029, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -1930101232311112401, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 3566998551810460502, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 1
+    kind: 4
+    id: jump-audio
+  - frameIndex: 1
+    kind: 5
+    id: jump-vfx
+--- !u!114 &-7785508073438498288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.turn.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.turn.left
+  facing: 1
+  loopMode: 1
+  frames:
+  - {fileID: -1118140750189567130, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -5151635269980805994, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -6852355861829884558, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 5606062238088649874, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightWheelContact
+  frameEvents: []
+--- !u!114 &-7749805976955552535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.land.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.land.right
+  facing: 2
+  loopMode: 1
+  frames:
+  - {fileID: -8931354550172058475, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -6145063101872519056, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -7783325500826037691, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 1538857757828346249, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 1
+    id: LeftWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: LeftWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 1
+    kind: 0
+    id: land-contact
+  - frameIndex: 1
+    kind: 4
+    id: land-audio
+  - frameIndex: 1
+    kind: 5
+    id: land-vfx
+--- !u!114 &-7629239495189171703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.run.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.run.left
+  facing: 1
+  loopMode: 0
+  frames:
+  - {fileID: 473213021565760148, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 5191114148456714529, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -6538675708835882830, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -9145304068916619879, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -3502459162324313356, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -6717556628427644461, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -143836476809249203, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -3949609581344050156, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 4
+    id: LeftWheelContact
+  - frameIndex: 6
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 0
+    kind: 0
+    id: wheel-contact-left
+  - frameIndex: 2
+    kind: 0
+    id: wheel-contact-right
+  - frameIndex: 4
+    kind: 0
+    id: wheel-contact-left
+  - frameIndex: 6
+    kind: 0
+    id: wheel-contact-right
+--- !u!114 &-5386921801259514499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.idle.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.idle.left
+  facing: 1
+  loopMode: 0
+  frames:
+  - {fileID: -7401029512033818061, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -57533720220062866, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -1021057813718938512, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -7959704433362286451, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: LeftWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: LeftWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightWheelContact
+  frameEvents: []
+--- !u!114 &-1345911711471310472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.turn.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.turn.right
+  facing: 2
+  loopMode: 1
+  frames:
+  - {fileID: -4044005806899202158, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 2440483102325707687, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 6766453374335543933, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -5944825740574242595, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightWheelContact
+  frameEvents: []
+--- !u!114 &-441534061070857477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.run.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.run.right
+  facing: 2
+  loopMode: 0
+  frames:
+  - {fileID: -642181944613601851, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 38176346327784814, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 7849451313287385737, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 950717330785028042, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -5087239728432289295, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -3854312192230835605, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 627888737162956532, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -2848168687174968523, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 4
+    id: LeftWheelContact
+  - frameIndex: 6
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 0
+    kind: 0
+    id: wheel-contact-left
+  - frameIndex: 2
+    kind: 0
+    id: wheel-contact-right
+  - frameIndex: 4
+    kind: 0
+    id: wheel-contact-left
+  - frameIndex: 6
+    kind: 0
+    id: wheel-contact-right
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41759a4bdd9cbad87b0bb61030e13fb0, type: 3}
+  m_Name: OriSpriteSet
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.CharacterSpriteSet
+  characterId: ori
+  clips:
+  - {fileID: 306518078314382308}
+  - {fileID: -441534061070857477}
+  - {fileID: -1345911711471310472}
+  - {fileID: -7847584445849433671}
+  - {fileID: -7749805976955552535}
+  - {fileID: 2333224381165069434}
+  - {fileID: 4791309358888282386}
+  - {fileID: 8363482604508427613}
+  - {fileID: -5386921801259514499}
+  - {fileID: -7629239495189171703}
+  - {fileID: -7785508073438498288}
+  - {fileID: 3399496772352690988}
+  - {fileID: 5718825975951607582}
+  - {fileID: 4038878082327666346}
+  - {fileID: -8513370091586825401}
+  - {fileID: 5478906913505965319}
+  anchorTracks:
+  - clipId: ori.idle.right
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 54, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 80.5, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 46, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 54, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73.5, y: 37}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 50, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 77.5, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 80.5, y: 39.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 80.5, y: 39.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 47, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 80, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 48, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 50.5, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 77.5, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 80, y: 39.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 79, y: 36}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 48, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 14.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 54.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 80, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 47.5, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 54.5, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 50, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 77.5, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 79, y: 39}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 79, y: 39}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 47.5, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 79.5, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 48.5, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 51, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 77, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 79.5, y: 39.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 78.5, y: 36}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 48.5, y: 29.5}
+        isAuthoredVisible: 1
+  - clipId: ori.run.right
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 67, y: 14}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 53, y: 12}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 74.5, y: 12}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 44}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 82.5, y: 53.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 44, y: 70.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53, y: 36.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 74.5, y: 36.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48, y: 30.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 79.5, y: 30.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 82.5, y: 37.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 34}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 82, y: 37}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 45, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 65, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 53.5, y: 12}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 74.5, y: 12}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 43.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 82, y: 53.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 46, y: 69.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53.5, y: 36.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 74.5, y: 36.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48.5, y: 30.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 79.5, y: 30.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 82, y: 37}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 34}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 82, y: 36.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 46, y: 29}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 16}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 50.5, y: 15}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 75.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 43.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 84, y: 53.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 47.5, y: 70}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 52, y: 36.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 75.5, y: 36.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 46.5, y: 30}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 81, y: 30}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 84, y: 37}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 34}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 84, y: 36.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 43.5, y: 29}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 66, y: 14}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 45, y: 17.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 77, y: 11.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 44}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 87, y: 54}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 53.5, y: 70.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 51, y: 36}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 77, y: 36.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 45, y: 30.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 83, y: 30.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 87, y: 37}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 34}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 87, y: 36.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 41, y: 29}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 65.5, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 47, y: 16.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 76, y: 11.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 42.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 85, y: 52}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 54.5, y: 57.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 51.5, y: 35}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 76, y: 35}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 46, y: 29}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 81.5, y: 29}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 85, y: 36}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 33}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 85, y: 35}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 42.5, y: 28}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 67, y: 13.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 49.5, y: 14.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 74.5, y: 11}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 42.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 82.5, y: 52}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 50, y: 68.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53, y: 35}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 74.5, y: 35}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48, y: 29}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 79.5, y: 29}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 82.5, y: 36}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 33}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 82.5, y: 35}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 45, y: 28}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 67, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 48.5, y: 14}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 75.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 36.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 83.5, y: 44.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 49, y: 58}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 52, y: 30.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 75.5, y: 30.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 47, y: 25.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 80.5, y: 25.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 82.5, y: 30}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 28.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 83, y: 29.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 44, y: 24.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 15}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 54.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 80.5, y: 56}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 47.5, y: 74}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 54.5, y: 37}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73.5, y: 37}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 50, y: 30.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 78, y: 30.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 80.5, y: 39}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 34.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 79.5, y: 35.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 47.5, y: 29}
+        isAuthoredVisible: 1
+  - clipId: ori.turn.right
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 54.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 46.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 80.5, y: 57.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 46.5, y: 76}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 54.5, y: 38}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73.5, y: 38}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 50, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 78, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 80, y: 37}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 80, y: 37}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 47.5, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 46.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 79.5, y: 57.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 48.5, y: 76}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55, y: 38}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73, y: 38}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 51, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 77, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 79, y: 37}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 79, y: 37}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 48.5, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 14}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 72.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 46.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 79, y: 57.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 52.5, y: 76}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55, y: 38}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 72.5, y: 38}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 51, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 76.5, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 79, y: 37.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 79, y: 37.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 48.5, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 46.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 80, y: 57.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 48, y: 76}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55, y: 38}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73, y: 38}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 50.5, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 77.5, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 79.5, y: 37}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 79.5, y: 37}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 48, y: 29.5}
+        isAuthoredVisible: 1
+  - clipId: ori.jump.right
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 53, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 74.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 41.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 82, y: 51}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 45.5, y: 66.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53, y: 34.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 74.5, y: 34.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48, y: 28.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 79.5, y: 28.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 82, y: 35}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 32}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 82, y: 34.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 45.5, y: 27}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 53, y: 10}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 74.5, y: 10}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 37}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 82, y: 44.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 49.5, y: 59.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53, y: 31}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 74.5, y: 31}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48, y: 25.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 79.5, y: 25.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 82.5, y: 31.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 29}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 82.5, y: 31}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 45, y: 24.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 14}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 57.5, y: 17.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 75, y: 14}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 47}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 82.5, y: 55.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 55.5, y: 63.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53, y: 39}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 75, y: 39}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48, y: 33}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 80, y: 33}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 83, y: 40}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 36.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 83, y: 39}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 45, y: 31.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 65.5, y: 25.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 49.5, y: 31.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 74, y: 24}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 57}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 78, y: 64}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 55, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53.5, y: 49}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 74, y: 49}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 49, y: 43}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 78.5, y: 43}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 81, y: 50}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 46.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 81, y: 49}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 46.5, y: 41.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64.5, y: 13}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 53, y: 15}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 74, y: 12}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 81, y: 55.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 48.5, y: 73}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53.5, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 74, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 49, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 78.5, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 81, y: 38}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 81, y: 37.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 46.5, y: 30}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 13.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 54, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 43}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 80.5, y: 53}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 47, y: 70}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 54, y: 35.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73.5, y: 35.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 49.5, y: 29}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 78, y: 29}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 80.5, y: 36}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 33}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 80.5, y: 35.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 47, y: 28}
+        isAuthoredVisible: 1
+  - clipId: ori.land.right
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 65.5, y: 25.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 49.5, y: 31.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 74, y: 24}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 57}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 78, y: 64}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 55, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53.5, y: 49}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 74, y: 49}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 49, y: 43}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 78.5, y: 43}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 81, y: 50}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 46.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 81, y: 49}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 46.5, y: 41.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64.5, y: 13}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 53, y: 15}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 74, y: 12}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 81, y: 55.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 48.5, y: 73}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53.5, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 74, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 49, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 78.5, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 81, y: 38}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 81, y: 37.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 46.5, y: 30}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 13.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 54, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 43}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 80.5, y: 53}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 47, y: 70}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 54, y: 35.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73.5, y: 35.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 49.5, y: 29}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 78, y: 29}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 80.5, y: 36}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 33}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 80.5, y: 35.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 47, y: 28}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 54, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 80.5, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 46, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 54, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73.5, y: 37}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 50, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 77.5, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 80.5, y: 39.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 80.5, y: 39.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 47, y: 29.5}
+        isAuthoredVisible: 1
+  - clipId: ori.climb.right
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 53.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 74, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 82, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 45.5, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53.5, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 74, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48.5, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 79, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 81, y: 39}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 81, y: 39}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 45.5, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 48, y: 12}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 75, y: 17}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 47.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 91.5, y: 57.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 32, y: 77}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 48, y: 39.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 76.5, y: 43}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 40.5, y: 33}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 77, y: 43.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 82, y: 50}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65.5, y: 37}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 81.5, y: 49.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 36.5, y: 31.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 14.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 47.5, y: 14}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 72, y: 19}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 49}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 93.5, y: 53.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 34, y: 77.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 47.5, y: 41}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 81, y: 41}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 40, y: 34.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 94, y: 41}
+        isAuthoredVisible: 1
+      - id: SecondaryScanner
+        runtimePixels: {x: 93.5, y: 41.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 66, y: 38.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 93.5, y: 41.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 35, y: 33}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 62, y: 19.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 48.5, y: 16.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 79, y: 29.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 65, y: 52}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 93.5, y: 63}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 31, y: 81.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 48.5, y: 44}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 81, y: 43.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 41, y: 37}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 84.5, y: 37}
+        isAuthoredVisible: 1
+      - id: SecondaryScanner
+        runtimePixels: {x: 93.5, y: 53}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 66.5, y: 41}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 93.5, y: 53}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 37.5, y: 35.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 65, y: 23.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 50.5, y: 19}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 74, y: 24.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 65, y: 55}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 79.5, y: 50.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 36.5, y: 85}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 50.5, y: 46.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 80, y: 46.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 44, y: 39.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 87, y: 40}
+        isAuthoredVisible: 1
+      - id: SecondaryScanner
+        runtimePixels: {x: 90.5, y: 47}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 66.5, y: 43.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 90.5, y: 46.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 40, y: 38}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 66, y: 20.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 49, y: 24}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 77.5, y: 24}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 66, y: 50.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 86.5, y: 62.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 46.5, y: 69}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 51, y: 43.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 78.5, y: 42}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 44.5, y: 37.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 85.5, y: 34.5}
+        isAuthoredVisible: 1
+      - id: SecondaryScanner
+        runtimePixels: {x: 84.5, y: 35.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 67.5, y: 41}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 84.5, y: 35.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 40, y: 36.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 67.5, y: 19}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55.5, y: 19}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 79.5, y: 19}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 67.5, y: 52}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 83.5, y: 61.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 44, y: 78.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55.5, y: 44}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 79.5, y: 44}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 50, y: 38}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 85, y: 38}
+        isAuthoredVisible: 1
+      - id: SecondaryScanner
+        runtimePixels: {x: 87, y: 43.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 68.5, y: 42}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 87.5, y: 43}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 46.5, y: 37}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 68, y: 18}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 57.5, y: 18.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 78, y: 18.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 68, y: 53.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 86, y: 64.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 49.5, y: 83}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 57.5, y: 45.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 78, y: 45.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 52.5, y: 39}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 83, y: 39}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 85, y: 47.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 68.5, y: 43}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 85, y: 44.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 49.5, y: 37.5}
+        isAuthoredVisible: 1
+  - clipId: ori.scan.right
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 51.5, y: 10}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 75.5, y: 10}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 38.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 78.5, y: 39}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 42, y: 62}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 51.5, y: 32}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 76.5, y: 32}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 46, y: 26.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 83.5, y: 28}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 85.5, y: 32.5}
+        isAuthoredVisible: 1
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 85.5, y: 32}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 42.5, y: 25.5}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 51, y: 10}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 76, y: 12}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 38.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 86.5, y: 42.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 41.5, y: 62}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 51, y: 32}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 77, y: 32}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 45, y: 26.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 80, y: 26.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 86.5, y: 32.5}
+        isAuthoredVisible: 1
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 86.5, y: 32}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 41.5, y: 25.5}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 47, y: 12.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73.5, y: 14.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 38.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 88.5, y: 43}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 38, y: 62}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 49.5, y: 32}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 78, y: 32}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 43, y: 26.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 81, y: 27}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 88.5, y: 32.5}
+        isAuthoredVisible: 1
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 88.5, y: 32}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 39, y: 25.5}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 50, y: 13.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73, y: 15}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 38.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 88.5, y: 44}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 39.5, y: 62}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 50, y: 32}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 78, y: 32}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 43.5, y: 26.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 80.5, y: 26.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 88.5, y: 33}
+        isAuthoredVisible: 1
+      - id: ServicePanel
+        runtimePixels: {x: 65.5, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 88.5, y: 33}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 39.5, y: 25.5}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 49, y: 13.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 71, y: 14.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 38.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 90, y: 44.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 37, y: 62}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 49, y: 32}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 79.5, y: 30.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 42.5, y: 26.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 84, y: 27.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 89, y: 34}
+        isAuthoredVisible: 1
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 89, y: 34}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 38.5, y: 25.5}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 48, y: 13.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 69.5, y: 17.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 38.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 90.5, y: 45}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 35.5, y: 62}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 48, y: 32}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 82, y: 35}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 41, y: 26.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 86.5, y: 27}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 89.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 89.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 37, y: 25.5}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 52, y: 10}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 71.5, y: 14.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 38.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 92, y: 42.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 37, y: 62}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 49, y: 32}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 79, y: 32.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 42.5, y: 26.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 84, y: 26.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 89, y: 32.5}
+        isAuthoredVisible: 1
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 89, y: 32}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 38.5, y: 25.5}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 47, y: 12.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 72.5, y: 14}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 38.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 82, y: 40.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 38.5, y: 62}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 50, y: 32}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 78, y: 32}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 43.5, y: 26.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 82.5, y: 29}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 88.5, y: 32.5}
+        isAuthoredVisible: 1
+      - id: ServicePanel
+        runtimePixels: {x: 65.5, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 88.5, y: 32}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 39.5, y: 25.5}
+        isAuthoredVisible: 0
+  - clipId: ori.interact.right
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 52.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 75, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 46}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 83, y: 57}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 44.5, y: 75.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 52.5, y: 38}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 75, y: 38}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 47.5, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 80, y: 31}
+        isAuthoredVisible: 1
+      - id: SecondaryScanner
+        runtimePixels: {x: 82.5, y: 39.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 82.5, y: 39.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 44.5, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64.5, y: 11}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 50.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 77, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 46}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 80, y: 57}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 39.5, y: 75.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 50.5, y: 38}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 77, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 44.5, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 83, y: 31}
+        isAuthoredVisible: 1
+      - id: SecondaryScanner
+        runtimePixels: {x: 86.5, y: 38.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 86.5, y: 38.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 41, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 47.5, y: 10}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 75, y: 15}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 92.5, y: 45}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 32.5, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 47.5, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 80, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 40, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 88, y: 32}
+        isAuthoredVisible: 1
+      - id: SecondaryScanner
+        runtimePixels: {x: 91, y: 39}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 91, y: 39}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 35.5, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 47.5, y: 10}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 75, y: 15}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 93, y: 44}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 32.5, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 47.5, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 80.5, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 40, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 88.5, y: 32}
+        isAuthoredVisible: 1
+      - id: SecondaryScanner
+        runtimePixels: {x: 92, y: 39}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65.5, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 91.5, y: 37}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 35.5, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 47, y: 10}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 75, y: 15.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 92.5, y: 44}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 32.5, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 47, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 80.5, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 39.5, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 88.5, y: 32}
+        isAuthoredVisible: 1
+      - id: SecondaryScanner
+        runtimePixels: {x: 91.5, y: 39}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65.5, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 91, y: 37.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 35, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 53, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 75, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 82.5, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 45.5, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 75, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48.5, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 79.5, y: 31}
+        isAuthoredVisible: 1
+      - id: SecondaryScanner
+        runtimePixels: {x: 82, y: 37}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 82, y: 37}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 45.5, y: 29.5}
+        isAuthoredVisible: 1
+  - clipId: ori.idle.left
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 72.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 49, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 79, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55.5, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 72.5, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 51.5, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 76.5, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 50.5, y: 39.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 50.5, y: 36}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 79, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 14.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 46}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 48, y: 57}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 80, y: 75.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73, y: 38}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 50.5, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 77.5, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 49, y: 40.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 49, y: 36}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 80, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 65.5, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 49, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 79, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 51, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 77, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 50.5, y: 39.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 50, y: 36}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 79, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 72.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 48.5, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 79, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 72.5, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 51, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 76.5, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 49, y: 40}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 50, y: 36}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 79, y: 29.5}
+        isAuthoredVisible: 1
+  - clipId: ori.run.left
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 72.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 44}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 48.5, y: 54}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 79, y: 71.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55, y: 36}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 72.5, y: 36}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 51, y: 29.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 76.5, y: 29.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 48.5, y: 38}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 49.5, y: 34.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 79, y: 28.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 59.5, y: 15}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 53, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 76, y: 14.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 40.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 45.5, y: 49.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 74, y: 65}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53, y: 33.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 75, y: 33.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48.5, y: 27.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 79.5, y: 27.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 45.5, y: 34}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 31}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 45.5, y: 33.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 82.5, y: 26.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 60, y: 15.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 52, y: 11}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 80.5, y: 15.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 42}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 43.5, y: 51.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 73, y: 67}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 52, y: 35}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 76, y: 34.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 46.5, y: 29}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 81.5, y: 29}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 43.5, y: 35.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 32.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 43.5, y: 35}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 84.5, y: 27.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 59.5, y: 14}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 51.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 74.5, y: 16}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 42}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 42.5, y: 51.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 70.5, y: 54}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 51.5, y: 34.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 76, y: 33.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 46, y: 28.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 82, y: 28.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 42.5, y: 35.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 32.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 42.5, y: 34.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 85.5, y: 27.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 62, y: 15.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 52, y: 11}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 75.5, y: 14.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 41}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 43.5, y: 50}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 75, y: 66}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 52, y: 34}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 75.5, y: 33}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 46.5, y: 28.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 81, y: 28.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 43.5, y: 34.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 32}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 43.5, y: 34}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 84, y: 27}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 15.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 52.5, y: 13}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 75, y: 11.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 42}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 49, y: 50.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 85, y: 67}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53, y: 35}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 75, y: 35.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 47.5, y: 29}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 80.5, y: 29}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 46.5, y: 33.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 32.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 46.5, y: 33.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 83.5, y: 27.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 65.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55, y: 11}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73, y: 11}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 41.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 48, y: 51}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 80, y: 67}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55, y: 34.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73, y: 35}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 50.5, y: 28.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 77.5, y: 28.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 48, y: 35}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 32}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 48, y: 34.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 80, y: 27.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 66.5, y: 14}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55, y: 11.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73, y: 11.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 48, y: 55}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 80, y: 72.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55, y: 37}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73, y: 37}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 50.5, y: 30.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 77.5, y: 30.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 48, y: 38}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 34.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 48, y: 38}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 80, y: 29.5}
+        isAuthoredVisible: 1
+  - clipId: ori.turn.left
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 66.5, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 46}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 49, y: 57}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 78.5, y: 75.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55, y: 38}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73, y: 38}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 51, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 77, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 50, y: 37}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 50, y: 37}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 79, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 15}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 56, y: 12}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 72, y: 11.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 47.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 50, y: 58.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 69.5, y: 65}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 56, y: 39.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 72, y: 38.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 52, y: 32}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 76, y: 32}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 50.5, y: 41.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 36.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 51, y: 38}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 78, y: 31}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 72.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 46}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 49, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 79, y: 74.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55.5, y: 38}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 72.5, y: 38}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 51.5, y: 31.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 76.5, y: 31.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 49.5, y: 38}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 49, y: 37.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 79, y: 30}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 65, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 72.5, y: 11.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 46}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 49.5, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 78.5, y: 74.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55.5, y: 38}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 72.5, y: 38}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 52, y: 31.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 76, y: 31.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 50, y: 37.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 50, y: 37.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 78.5, y: 30}
+        isAuthoredVisible: 1
+  - clipId: ori.jump.left
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55, y: 10}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 41.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 48.5, y: 51}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 76, y: 67}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55, y: 34}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73, y: 34}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 51, y: 28}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 77, y: 28}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 48.5, y: 35}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 32}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 48.5, y: 34}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 79.5, y: 27}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 54.5, y: 11}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 75, y: 13.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 43.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 47.5, y: 53.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 78, y: 70}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 54.5, y: 36}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73.5, y: 36.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 50, y: 30}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 78, y: 30}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 47.5, y: 36.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 33.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 47.5, y: 36}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 80.5, y: 28.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 63, y: 23}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 53, y: 22}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 77.5, y: 29}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 54}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 47, y: 62.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 69.5, y: 69.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53, y: 47}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 74.5, y: 47}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48, y: 40.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 79.5, y: 40.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 45.5, y: 47.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 44}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 45.5, y: 47}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 82, y: 39}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 15.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 54, y: 16}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 69, y: 19}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 47.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 46.5, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 73, y: 65.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53.5, y: 40.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 74.5, y: 40.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48.5, y: 34}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 79.5, y: 34}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 46, y: 41}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 38}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 46, y: 40.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 82, y: 33}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 53, y: 11}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 75, y: 11}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 37.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 46, y: 44.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 74, y: 51}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53, y: 31}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 75, y: 31}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48.5, y: 26}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 79.5, y: 26}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 45.5, y: 31.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 29}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 45.5, y: 31}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 82.5, y: 25}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55, y: 11.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73, y: 11.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 42}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 48, y: 51.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 80, y: 67}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55, y: 35}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73, y: 35}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 50.5, y: 29}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 77.5, y: 29}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 48, y: 35.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 32.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 48, y: 35}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 80, y: 28}
+        isAuthoredVisible: 1
+  - clipId: ori.land.left
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 15.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 54, y: 16}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 69, y: 19}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 47.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 46.5, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 73, y: 65.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53.5, y: 40.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 74.5, y: 40.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48.5, y: 34}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 79.5, y: 34}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 46, y: 41}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 38}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 46, y: 40.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 82, y: 33}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 53, y: 11}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 75, y: 11}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 37.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 46, y: 44.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 74, y: 51}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53, y: 31}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 75, y: 31}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48.5, y: 26}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 79.5, y: 26}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 45.5, y: 31.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 29}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 45.5, y: 31}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 82.5, y: 25}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55, y: 11.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 73, y: 11.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 42}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 48, y: 51.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 80, y: 67}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55, y: 35}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 73, y: 35}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 50.5, y: 29}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 77.5, y: 29}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 48, y: 35.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 32.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 48, y: 35}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 80, y: 28}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 72.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 49, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 79, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 55.5, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 72.5, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 51.5, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 76.5, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 50.5, y: 39.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 50.5, y: 36}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 79, y: 29.5}
+        isAuthoredVisible: 1
+  - clipId: ori.climb.left
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 54, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 74, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 47, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 82, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 54, y: 37.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 74, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 49.5, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 78.5, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 47, y: 39}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 47.5, y: 36.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 81, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 12.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 57, y: 18}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 81, y: 12.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 50}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 34, y: 62}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 97, y: 81.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 51.5, y: 47}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 81, y: 41.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 51.5, y: 47}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 89, y: 34}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 44.5, y: 53}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65.5, y: 38.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 45, y: 52.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 93.5, y: 33}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 63.5, y: 14.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 52.5, y: 17.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 78.5, y: 14.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 63.5, y: 52}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 54.5, y: 63.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 93.5, y: 83}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 49, y: 40.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 78.5, y: 43}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 41.5, y: 36}
+        isAuthoredVisible: 1
+      - id: RightGripper
+        runtimePixels: {x: 85.5, y: 36}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 37.5, y: 42.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 40.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 37.5, y: 42.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 89.5, y: 34.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 67, y: 20}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 52.5, y: 26}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 81, y: 16.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 63, y: 54}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 31, y: 65.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 99.5, y: 83}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 48.5, y: 41}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 81, y: 45.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 45.5, y: 36.5}
+        isAuthoredVisible: 1
+      - id: RightGripper
+        runtimePixels: {x: 89.5, y: 38}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 30, y: 54}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 42.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 30, y: 54}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 91.5, y: 38.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 62.5, y: 18}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 46, y: 18.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 79, y: 18.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 62.5, y: 52}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 32, y: 54}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 94.5, y: 79}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 46, y: 44}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 79, y: 44}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 34.5, y: 41.5}
+        isAuthoredVisible: 1
+      - id: RightGripper
+        runtimePixels: {x: 86.5, y: 37.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 34, y: 44.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64, y: 41.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 34, y: 44}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 88, y: 36.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 61, y: 20.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 50, y: 24.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 77, y: 20.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 61, y: 55.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 53.5, y: 66.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 91.5, y: 85}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 45.5, y: 45}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 77, y: 47.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 38.5, y: 41}
+        isAuthoredVisible: 1
+      - id: RightGripper
+        runtimePixels: {x: 84, y: 41}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 34.5, y: 47}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 62.5, y: 45}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 34.5, y: 47}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 88, y: 39.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 60, y: 19.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 48, y: 19.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 72.5, y: 19.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 60, y: 54.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 45, y: 65}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 83.5, y: 83.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 48.5, y: 45.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 72.5, y: 46.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 42.5, y: 39.5}
+        isAuthoredVisible: 1
+      - id: RightGripper
+        runtimePixels: {x: 78.5, y: 39.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 45, y: 52}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 61.5, y: 43.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 45, y: 52}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 81.5, y: 38}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 60, y: 18.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 50, y: 18.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 70, y: 18.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 60, y: 53.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 43, y: 64.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 78, y: 83}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 50, y: 45.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 70, y: 45.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 45.5, y: 39}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 74.5, y: 39}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 43, y: 47}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 61, y: 43}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 43.5, y: 44.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 77, y: 37.5}
+        isAuthoredVisible: 1
+  - clipId: ori.scan.left
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 54, y: 14}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 78, y: 10}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 39}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 36.5, y: 42.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 88.5, y: 63}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 50, y: 32.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 78, y: 32.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 45, y: 27}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 84.5, y: 27}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 39.5, y: 33}
+        isAuthoredVisible: 1
+      - id: ServicePanel
+        runtimePixels: {x: 65.5, y: 30}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 39.5, y: 32.5}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 88.5, y: 25.5}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55, y: 14}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 80, y: 12}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 39}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 39, y: 43}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 87.5, y: 62.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 49, y: 34}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 77.5, y: 32.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 44, y: 27}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 84, y: 27}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 40, y: 33}
+        isAuthoredVisible: 1
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 30}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 40, y: 33}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 87.5, y: 26}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55.5, y: 15}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 80, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 38}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 40, y: 42.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 87.5, y: 61}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 49, y: 32.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 77.5, y: 31.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 45, y: 26.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 84, y: 26}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 40, y: 32}
+        isAuthoredVisible: 1
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 40, y: 32}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 87.5, y: 25}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 56.5, y: 14.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 78, y: 10}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 37.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 38, y: 42}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 90, y: 60.5}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 48.5, y: 32.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 78, y: 31.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 44.5, y: 26.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 84.5, y: 26}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 39, y: 32}
+        isAuthoredVisible: 1
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 29}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 39, y: 32}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 88.5, y: 25}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 57, y: 13.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 79.5, y: 12.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 39}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 40.5, y: 45}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 86.5, y: 63}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 50.5, y: 32.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 77, y: 32.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 49.5, y: 28.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 83, y: 27}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 41, y: 34.5}
+        isAuthoredVisible: 1
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 30}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 41, y: 34.5}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 86.5, y: 25.5}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55.5, y: 16}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 79, y: 12.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 37}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 39, y: 44.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 90.5, y: 59}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 49.5, y: 31}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 78, y: 31}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48.5, y: 29}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 84.5, y: 26}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 39, y: 34.5}
+        isAuthoredVisible: 1
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 29}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 39, y: 34.5}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 88.5, y: 25}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 57, y: 14.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 80, y: 12.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 38.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 37, y: 44}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 87.5, y: 62}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 50, y: 32}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 77.5, y: 32}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 49, y: 31}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 84, y: 26.5}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 39.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 29.5}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 39.5, y: 33.5}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 87.5, y: 25.5}
+        isAuthoredVisible: 0
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55.5, y: 14}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 77, y: 10}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 39}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 41, y: 45}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 88, y: 63}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 51, y: 32.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 77, y: 32.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 50, y: 29.5}
+        isAuthoredVisible: 0
+      - id: RightGripper
+        runtimePixels: {x: 83, y: 27}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 41.5, y: 34.5}
+        isAuthoredVisible: 1
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 30}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 41.5, y: 34.5}
+        isAuthoredVisible: 1
+      - id: StowedTool
+        runtimePixels: {x: 86.5, y: 25.5}
+        isAuthoredVisible: 0
+  - clipId: ori.interact.left
+    frames:
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 67, y: 13.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 53.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 74, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 45.5, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 82, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53.5, y: 38}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 74, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48.5, y: 31}
+        isAuthoredVisible: 1
+      - id: RightGripper
+        runtimePixels: {x: 79, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 46, y: 38.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 46, y: 38.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 82, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 63.5, y: 11}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 51, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 77, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 49, y: 56}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 87, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 52, y: 38.5}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 77, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 45, y: 31}
+        isAuthoredVisible: 1
+      - id: RightGripper
+        runtimePixels: {x: 83, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 41, y: 38}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 41, y: 37.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 87, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 52, y: 13.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 79.5, y: 10}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 37, y: 41.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 90, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 48.5, y: 37}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 79, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 41.5, y: 31.5}
+        isAuthoredVisible: 1
+      - id: RightGripper
+        runtimePixels: {x: 86, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 37.5, y: 38}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 37.5, y: 37.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 90, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 10.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 55.5, y: 15.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 83, y: 12.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 32, y: 42.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 94, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 46, y: 36}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 81, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 39, y: 31.5}
+        isAuthoredVisible: 1
+      - id: RightGripper
+        runtimePixels: {x: 89, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 34.5, y: 38}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65.5, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 34.5, y: 37.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 93.5, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 64, y: 11}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 50.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 77.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 49.5, y: 56}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 87, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 51, y: 36}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 77.5, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 44.5, y: 31}
+        isAuthoredVisible: 1
+      - id: RightGripper
+        runtimePixels: {x: 83.5, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 41, y: 38}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 65, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 41, y: 37.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 87, y: 29.5}
+        isAuthoredVisible: 1
+    - anchors:
+      - id: Root
+        runtimePixels: {x: 67, y: 13.5}
+        isAuthoredVisible: 1
+      - id: LeftWheelContact
+        runtimePixels: {x: 53.5, y: 10.5}
+        isAuthoredVisible: 1
+      - id: RightWheelContact
+        runtimePixels: {x: 74, y: 10.5}
+        isAuthoredVisible: 1
+      - id: HeadRotationRing
+        runtimePixels: {x: 64, y: 45.5}
+        isAuthoredVisible: 1
+      - id: OpticalEye
+        runtimePixels: {x: 45.5, y: 56.5}
+        isAuthoredVisible: 1
+      - id: SignalAntenna
+        runtimePixels: {x: 82, y: 75}
+        isAuthoredVisible: 1
+      - id: LeftArmBay
+        runtimePixels: {x: 53.5, y: 38}
+        isAuthoredVisible: 1
+      - id: RightArmBay
+        runtimePixels: {x: 74, y: 37.5}
+        isAuthoredVisible: 1
+      - id: LeftGripper
+        runtimePixels: {x: 48.5, y: 31}
+        isAuthoredVisible: 1
+      - id: RightGripper
+        runtimePixels: {x: 79, y: 31}
+        isAuthoredVisible: 0
+      - id: SecondaryScanner
+        runtimePixels: {x: 46, y: 38.5}
+        isAuthoredVisible: 0
+      - id: ServicePanel
+        runtimePixels: {x: 64.5, y: 35}
+        isAuthoredVisible: 1
+      - id: ActiveTool
+        runtimePixels: {x: 46, y: 38.5}
+        isAuthoredVisible: 0
+      - id: StowedTool
+        runtimePixels: {x: 82, y: 29.5}
+        isAuthoredVisible: 1
+--- !u!114 &306518078314382308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.idle.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.idle.right
+  facing: 2
+  loopMode: 0
+  frames:
+  - {fileID: 501810861968918684, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -5188484648284484147, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 2688809976615039590, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -6264220924761171381, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: LeftWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: LeftWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightWheelContact
+  frameEvents: []
+--- !u!114 &2333224381165069434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.climb.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.climb.right
+  facing: 2
+  loopMode: 1
+  frames:
+  - {fileID: 5361281882572945590, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 2214701251032361905, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 8209927284875939184, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 2415780458140309000, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 8545796100947767616, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 3148679304007430113, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -8265537734591435875, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -1025759786598471175, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: LeftWheelContact
+  - frameIndex: 2
+    id: RightGripper
+  - frameIndex: 2
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightGripper
+  - frameIndex: 4
+    id: RightGripper
+  - frameIndex: 5
+    id: RightGripper
+  - frameIndex: 5
+    id: RightWheelContact
+  - frameIndex: 6
+    id: RightGripper
+  - frameIndex: 6
+    id: LeftWheelContact
+  - frameIndex: 6
+    id: RightWheelContact
+  - frameIndex: 7
+    id: LeftWheelContact
+  - frameIndex: 7
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 5
+    kind: 3
+    id: climb-commit
+--- !u!114 &3399496772352690988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.jump.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.jump.left
+  facing: 1
+  loopMode: 2
+  frames:
+  - {fileID: -8362683193124722802, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -1628460558127854547, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 68747328816907157, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 4118642727565424772, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -8223555029016431803, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -4833858754914133827, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 1
+    kind: 4
+    id: jump-audio
+  - frameIndex: 1
+    kind: 5
+    id: jump-vfx
+--- !u!114 &4038878082327666346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.climb.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.climb.left
+  facing: 1
+  loopMode: 1
+  frames:
+  - {fileID: 279051111084374742, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 5147195953942272655, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -8854246801136070421, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 7580102826387326632, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -1084129469385490325, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 2267498190394807808, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -4003674381877974054, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -8014631057801080784, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: LeftGripper
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftGripper
+  - frameIndex: 4
+    id: LeftGripper
+  - frameIndex: 5
+    id: LeftGripper
+  - frameIndex: 5
+    id: LeftWheelContact
+  - frameIndex: 6
+    id: LeftGripper
+  - frameIndex: 6
+    id: LeftWheelContact
+  - frameIndex: 6
+    id: RightWheelContact
+  - frameIndex: 7
+    id: LeftWheelContact
+  - frameIndex: 7
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 5
+    kind: 3
+    id: climb-commit
+--- !u!114 &4791309358888282386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.scan.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.scan.right
+  facing: 2
+  loopMode: 1
+  frames:
+  - {fileID: 4143855865159618672, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 3573886905603905074, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -4971384909587732293, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -9011643463017221881, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -5848876538330249609, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 660961668657361852, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -3909154696761940314, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -14972948131084687, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: LeftWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: LeftWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightWheelContact
+  - frameIndex: 4
+    id: LeftWheelContact
+  - frameIndex: 4
+    id: RightWheelContact
+  - frameIndex: 5
+    id: LeftWheelContact
+  - frameIndex: 5
+    id: RightWheelContact
+  - frameIndex: 6
+    id: LeftWheelContact
+  - frameIndex: 6
+    id: RightWheelContact
+  - frameIndex: 7
+    id: LeftWheelContact
+  - frameIndex: 7
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 4
+    kind: 3
+    id: scan-commit
+  - frameIndex: 4
+    kind: 4
+    id: scan-audio
+  - frameIndex: 4
+    kind: 5
+    id: scan-vfx
+--- !u!114 &5478906913505965319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.interact.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.interact.left
+  facing: 1
+  loopMode: 1
+  frames:
+  - {fileID: 6597932932597764713, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -4462567072057120586, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -1316547861553798143, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -6397590772423986931, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 6741620945068974580, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 8065227607484971265, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: LeftGripper
+  - frameIndex: 2
+    id: LeftGripper
+  - frameIndex: 3
+    id: LeftGripper
+  - frameIndex: 4
+    id: LeftGripper
+  - frameIndex: 5
+    id: LeftWheelContact
+  - frameIndex: 5
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+--- !u!114 &5718825975951607582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.land.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.land.left
+  facing: 1
+  loopMode: 1
+  frames:
+  - {fileID: -5989500475040401673, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 7794744951046219087, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -2392154174598810602, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -8273328961521663998, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 1
+    id: LeftWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: LeftWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 1
+    kind: 0
+    id: land-contact
+  - frameIndex: 1
+    kind: 4
+    id: land-audio
+  - frameIndex: 1
+    kind: 5
+    id: land-vfx
+--- !u!114 &8363482604508427613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.interact.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.interact.right
+  facing: 2
+  loopMode: 1
+  frames:
+  - {fileID: -5999787352190587997, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -8279524540202228765, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 2212736123300866997, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 5639306322210358080, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -5852919741622002609, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 680126164928015851, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: RightGripper
+  - frameIndex: 2
+    id: RightGripper
+  - frameIndex: 3
+    id: RightGripper
+  - frameIndex: 4
+    id: RightGripper
+  - frameIndex: 5
+    id: LeftWheelContact
+  - frameIndex: 5
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit

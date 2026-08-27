@@ -1,0 +1,130 @@
+{
+  "anchors": [
+    "Root",
+    "LeftFoot",
+    "RightFoot",
+    "LeftHand",
+    "RightHand",
+    "HelmetRing",
+    "BackpackSocket",
+    "Belt",
+    "LeftWrist",
+    "RightWrist",
+    "LeftBootTop",
+    "RightBootTop",
+    "ActiveTool",
+    "StowedTool"
+  ],
+  "approvedHeightMeters": 1.51,
+  "authority": {
+    "climbActorOnlySha256": {
+      "left": "2f22a5e7f5718113a26d4d0f908889999f814658ef73050986dd0bc359bb01f0",
+      "right": "d0bee46dfcf9986566db7d0c6f8ace6605ae5b9e4b853b8491f8283131931080"
+    },
+    "equipmentSha256": "61a21a44b888d202ac51d28834334671f20b40a041d5fc6ca055ede3682442ef",
+    "expressionsSha256": "cda3afe4e215237313dc18ab190eef6080387eb22a4c1677bc13a307b3cea655",
+    "heightLineupSha256": "63d15525a438c0cb8e5bac9e56034c1138a37a048a8e6d49ea910f46a8049af0",
+    "interactionActorOnlySha256": {},
+    "leftMotionSheetSha256": "f4a13cb69ab56da381cd351c1ecd41a01320e340d67c46e9565207bfb402547d",
+    "masterStyleSha256": "bdcdf2e36e23d49b9c15f9734d037930151606e765da74d28a1381694060f7c5",
+    "productionMasterSha256": "e1338ec4573a5567c5e8bd1af19f399186fb259cfae8ecc43a89f9b22addf205",
+    "referenceSha256": "28927ab81d62f07deb7fc7a327d19e4fe60f4fd054f98a1a6cccc481eb4ba0e0",
+    "rightMotionSheetSha256": "4b075f4e72c8ed93e7cb5de56a1f203f5790789cd2de9b661f6959b9aad4564b",
+    "roleToolSha256": "a12e984a5ee3934a78b8a25112d79b8b8cda59c3f33431a4b1c7b6db8661be0e",
+    "scanActorOnlySha256": {
+      "left": "c558d91521201a2a671426f6b0de7144c4d875971f01585842c914bf827729a0",
+      "right": "e681bb26519e9d34bdf2a074f5cf692fc8ef3d224dfef1b46d216819ede1e7fa"
+    },
+    "sourceContractPath": "Source/bea-source-contract.json",
+    "sourceContractSha256": "6d4714228d0317ab1e69e6fa851e31f640d22888061ce1711660775dcc4460af"
+  },
+  "characterId": "bea",
+  "displayName": "Bea",
+  "evidence": [
+    {
+      "path": "Evidence/ContactSheets/bea-right-contact-sheet.png",
+      "sha256": "ad7d9acb8efae54e880b9e6e855fd6eb2e2273c66494d4ad87b56688f21fd397"
+    },
+    {
+      "path": "Evidence/ContactSheets/bea-left-contact-sheet.png",
+      "sha256": "b6894ae724a9f9d580d2544e3fa13199a82b89903c00268952b0fb12fe64b9ec"
+    },
+    {
+      "path": "Evidence/MotionPreviews/bea-idle-paired-facings.webp",
+      "sha256": "a1a60d2b6f656339bd5383b4c6b73d270e366fc9ef0ca75eb51eb8d80bd796d3"
+    },
+    {
+      "path": "Evidence/MotionPreviews/bea-run-paired-facings.webp",
+      "sha256": "2de3f97d042e82c8be959d3380e1b38f68d4ea05fc72899de36d23811cfe43ce"
+    },
+    {
+      "path": "Evidence/MotionPreviews/bea-turn-paired-facings.webp",
+      "sha256": "4993e544a045ca5fa14ffac338d9754f03af16c380c8f1cf58b558c166390ec8"
+    },
+    {
+      "path": "Evidence/MotionPreviews/bea-jump-paired-facings.webp",
+      "sha256": "a0c77abea845d80e053b9831102f31d60ffba9a89eaebb9bd554e81710d6370f"
+    },
+    {
+      "path": "Evidence/MotionPreviews/bea-land-paired-facings.webp",
+      "sha256": "92bd8dce19fa6f62ea21b9464901f8be088b577296fb2d96a60a4383bf8a9a4c"
+    },
+    {
+      "path": "Evidence/MotionPreviews/bea-climb-paired-facings.webp",
+      "sha256": "e7ad0b2d61b511ae79030d2e09181565fa89f9fda605215d4c505729ca850bcb"
+    },
+    {
+      "path": "Evidence/MotionPreviews/bea-scan-paired-facings.webp",
+      "sha256": "60b44d05230dbc51ee85848849fe193bff844dbe3a79149a30b5ce3bb41c6f2f"
+    },
+    {
+      "path": "Evidence/MotionPreviews/bea-interact-paired-facings.webp",
+      "sha256": "9f7a2564952eb23187c376337f55853b62c80114125916470813379e08fe084f"
+    },
+    {
+      "path": "Evidence/bea-expression-speech-contact-sheet.png",
+      "sha256": "e1aa7586b53b89fc6cc5699b12ce42c4a4d75e511a14258647037240f1116a19"
+    },
+    {
+      "path": "Evidence/bea-live-anchors-right.webp",
+      "sha256": "e7366460521f5a5e5d1c298eb9259a67a15fca1d17d2e1175863ecb482bd470f"
+    },
+    {
+      "path": "Evidence/bea-live-anchors-left.webp",
+      "sha256": "94785070211534319ce394485a37d01e23c80931d5533c04ce572e13c8e7d0c9"
+    }
+  ],
+  "publicationCount": 3,
+  "publications": [
+    {
+      "atlasManifestPath": "Atlases/right/bea-right.sprite-manifest.json",
+      "atlasManifestSha256": "c030b47373216cfa7584b51eda38b1303d7bb52cbf717a9c6148044fbfe02e73",
+      "atlasPath": "Atlases/right/bea-right.png",
+      "facing": "right"
+    },
+    {
+      "atlasManifestPath": "Atlases/left/bea-left.sprite-manifest.json",
+      "atlasManifestSha256": "ab33f6cc327d38a8315bd22659efbd86b5b88fd99a3c77cb29e1669f54482486",
+      "atlasPath": "Atlases/left/bea-left.png",
+      "facing": "left"
+    },
+    {
+      "atlasManifestPath": "Atlases/neutral/bea-face-speech.sprite-manifest.json",
+      "atlasManifestSha256": "5ccec7a390abf2b7971fac38ce89287efdd12a92c985f700ae92f48f99ab3705",
+      "atlasPath": "Atlases/neutral/bea-face-speech.png",
+      "facing": "neutral"
+    }
+  ],
+  "rigKind": "FlattenedHuman",
+  "roleEquipment": [
+    "optical-camera",
+    "atlas-tablet",
+    "archive-pack"
+  ],
+  "roleMotionId": "careful-recording-chronicler",
+  "schemaVersion": 1,
+  "validation": {
+    "isValid": true,
+    "issues": []
+  }
+}

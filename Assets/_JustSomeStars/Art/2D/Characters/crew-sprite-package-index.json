@@ -1,0 +1,17 @@
+{
+  "characters": [
+    "mira",
+    "juno",
+    "kai",
+    "bea",
+    "ori"
+  ],
+  "packageHashes": {
+    "bea": "92914121763347792df5f0c2d111d27d653a05ea7c7b9dc8232221ea12205150",
+    "juno": "9c43358167ba6faaf893418c5db35b269c86f61ad034f09b8ea81facc18d8b14",
+    "kai": "d6e469cdc33ac07675bd5ee373b34f62ca301f106c49fc4ca1f71cf1949b4201",
+    "mira": "ea4007db5eebf89778c649dfac487c9fefbdf71a1588e951ea0e9ad35731b248",
+    "ori": "d14ed78593acfbec71db22e25726376cbb298672d613f8467477098aebca7604"
+  },
+  "schemaVersion": 1
+}

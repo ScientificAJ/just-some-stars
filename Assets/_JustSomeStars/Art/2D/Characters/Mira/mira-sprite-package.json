@@ -1,0 +1,130 @@
+{
+  "anchors": [
+    "Root",
+    "LeftFoot",
+    "RightFoot",
+    "LeftHand",
+    "RightHand",
+    "HelmetRing",
+    "BackpackSocket",
+    "Belt",
+    "LeftWrist",
+    "RightWrist",
+    "LeftBootTop",
+    "RightBootTop",
+    "ActiveTool",
+    "StowedTool"
+  ],
+  "approvedHeightMeters": 1.54,
+  "authority": {
+    "climbActorOnlySha256": {
+      "left": "42384b12e6aff59da84a32c28e3da78a60ddfda49fcb1e1d54fa72d22edb8628",
+      "right": "f19894b175a131a3f398f67c0e38f3b678745f6e3ab9af1211574fb631ce591a"
+    },
+    "equipmentSha256": "61a21a44b888d202ac51d28834334671f20b40a041d5fc6ca055ede3682442ef",
+    "expressionsSha256": "cda3afe4e215237313dc18ab190eef6080387eb22a4c1677bc13a307b3cea655",
+    "heightLineupSha256": "63d15525a438c0cb8e5bac9e56034c1138a37a048a8e6d49ea910f46a8049af0",
+    "interactionActorOnlySha256": {
+      "left": "6a8665f0ede300c1b5491658c9fec9373c285dc4d91405b6cd77ea5f230e297c",
+      "right": "6247f44570e5e634c7eed37b536a6ef39aa942ba4efc17527232d14d174aef80"
+    },
+    "leftMotionSheetSha256": "32adaa52f0d9d3b1b4c47e99bdfad5dc68029ef7d9d2e753ffbf49f1017f30db",
+    "masterStyleSha256": "bdcdf2e36e23d49b9c15f9734d037930151606e765da74d28a1381694060f7c5",
+    "productionMasterSha256": "04e8dfa3308b5faaf82c08283a22462600ee5c1e4be1e5883830f5ab7a096179",
+    "referenceSha256": "7d7ebbbe494ba1899e5d0f4549e5f363ac58a00e75fadf8c25524989524787a5",
+    "rightMotionSheetSha256": "aa62d8df4f936cb1bbed52009167b94cf39713302e8db0e0868d661c724bfc75",
+    "roleToolSha256": "638aff579a41c8c515126ee2cf61edd2f99ce9c689950eb5d83d7f6ab210825a",
+    "scanActorOnlySha256": {},
+    "sourceContractPath": "Source/mira-source-contract.json",
+    "sourceContractSha256": "cd47f744850f13d9f891c3d1a7ff56c90c395e403c7ca6cabac12a33eb38ebd6"
+  },
+  "characterId": "mira",
+  "displayName": "Mira",
+  "evidence": [
+    {
+      "path": "Evidence/ContactSheets/mira-right-contact-sheet.png",
+      "sha256": "5dc90ccfc55f9d4f4bbc5a2a90f25d7a4742ba007ab99129d5c827d163feff64"
+    },
+    {
+      "path": "Evidence/ContactSheets/mira-left-contact-sheet.png",
+      "sha256": "80861429c523a65c83292e05e6eb43e5cfbbfda77c5963100e229cf9afebd876"
+    },
+    {
+      "path": "Evidence/MotionPreviews/mira-idle-paired-facings.webp",
+      "sha256": "19693a90dc566c0d09569bca8bba17ad1d079efdbe9fa7463d361aff45f04f40"
+    },
+    {
+      "path": "Evidence/MotionPreviews/mira-run-paired-facings.webp",
+      "sha256": "0cc26093c6c5c9ea59094678d21d7ce2fe5427ac895e3d25ae3dc8ac2c51f22d"
+    },
+    {
+      "path": "Evidence/MotionPreviews/mira-turn-paired-facings.webp",
+      "sha256": "cb86090d5f69e70827a6a116e97e7ae6b369cf56ff8ada21d1daac764e794311"
+    },
+    {
+      "path": "Evidence/MotionPreviews/mira-jump-paired-facings.webp",
+      "sha256": "eee17a8be6e5fb1addf87d587f49737f0959ed016b61755073fd3895e6e39ff8"
+    },
+    {
+      "path": "Evidence/MotionPreviews/mira-land-paired-facings.webp",
+      "sha256": "42dc2c748c9f19a9de793c1d47aaab6fb03d04b7c9190123245b435451dcf6de"
+    },
+    {
+      "path": "Evidence/MotionPreviews/mira-climb-paired-facings.webp",
+      "sha256": "3fad9fb859ff63c60388def396ecde00703bac4b8c687b27e255288002d3fd27"
+    },
+    {
+      "path": "Evidence/MotionPreviews/mira-scan-paired-facings.webp",
+      "sha256": "8e08a7110b7ed850b9fab446d7dab9ac8c1fecafe229eb1abf0cf2b17c0267bf"
+    },
+    {
+      "path": "Evidence/MotionPreviews/mira-interact-paired-facings.webp",
+      "sha256": "1f003a6758aae684dbb62b65ea180ecf5543108731fc08d42d5beaed3e590c6f"
+    },
+    {
+      "path": "Evidence/mira-expression-speech-contact-sheet.png",
+      "sha256": "74820b5d616c0293177a7167cc171ae2d31275f2e008b546bbec3683c9a65825"
+    },
+    {
+      "path": "Evidence/mira-live-anchors-right.webp",
+      "sha256": "5fd2c6411cc6d9f73e9bd4d0e19544bb9c7b399589a0b66692aff6a9eb1e72f5"
+    },
+    {
+      "path": "Evidence/mira-live-anchors-left.webp",
+      "sha256": "7e578a3bedcc1bfa6c7ab88b575baf62d6560439f074a01d9659affa2ea609f1"
+    }
+  ],
+  "publicationCount": 3,
+  "publications": [
+    {
+      "atlasManifestPath": "Atlases/right/mira-right.sprite-manifest.json",
+      "atlasManifestSha256": "1716b74f8a26ee308752dac77c98917d66d5bd44381879fb1abbb3d389d32701",
+      "atlasPath": "Atlases/right/mira-right.png",
+      "facing": "right"
+    },
+    {
+      "atlasManifestPath": "Atlases/left/mira-left.sprite-manifest.json",
+      "atlasManifestSha256": "20068dd9284a3053f8d4ef649f97c04dd8fa85a6e0b107000c1d3d51f32d3096",
+      "atlasPath": "Atlases/left/mira-left.png",
+      "facing": "left"
+    },
+    {
+      "atlasManifestPath": "Atlases/neutral/mira-face-speech.sprite-manifest.json",
+      "atlasManifestSha256": "de8478af7295b259c295cd3f9f3a464f35c9f4322f6003b3e0d2cb982a90be68",
+      "atlasPath": "Atlases/neutral/mira-face-speech.png",
+      "facing": "neutral"
+    }
+  ],
+  "rigKind": "FlattenedHuman",
+  "roleEquipment": [
+    "spectrum-viewer",
+    "atmosphere-sampler",
+    "violet"
+  ],
+  "roleMotionId": "calm-deliberate-observer",
+  "schemaVersion": 1,
+  "validation": {
+    "isValid": true,
+    "issues": []
+  }
+}

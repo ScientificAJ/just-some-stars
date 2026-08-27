@@ -1,0 +1,130 @@
+{
+  "anchors": [
+    "Root",
+    "LeftWheelContact",
+    "RightWheelContact",
+    "HeadRotationRing",
+    "OpticalEye",
+    "SignalAntenna",
+    "LeftArmBay",
+    "RightArmBay",
+    "LeftGripper",
+    "RightGripper",
+    "SecondaryScanner",
+    "ServicePanel",
+    "ActiveTool",
+    "StowedTool"
+  ],
+  "approvedHeightMeters": 0.68,
+  "authority": {
+    "climbActorOnlySha256": {
+      "left": "0aa107b13b7cb99b618156749aa8d6d41cacc2ac454b37a66bebc669232dfc92",
+      "right": "c6c85abfb6df5a7c33c8bf70feadd0b72669528b0d7b2148a101c0be6a6e3d2b"
+    },
+    "equipmentSha256": "61a21a44b888d202ac51d28834334671f20b40a041d5fc6ca055ede3682442ef",
+    "expressionsSha256": "cda3afe4e215237313dc18ab190eef6080387eb22a4c1677bc13a307b3cea655",
+    "heightLineupSha256": "63d15525a438c0cb8e5bac9e56034c1138a37a048a8e6d49ea910f46a8049af0",
+    "interactionActorOnlySha256": {
+      "left": "54d7825da1ced04ba841209cec28916c6d27807174e3db5566dbc5bdfbafcb94",
+      "right": "e3968d34f8dab0023604d13e3c9e007bc8a30a4146708d3a35df335865321d9e"
+    },
+    "leftMotionSheetSha256": "bdb6664e9d5963efd588dce3e69c9fd2fc1bc6b16cda3fd604dc6931ec3332d2",
+    "masterStyleSha256": "bdcdf2e36e23d49b9c15f9734d037930151606e765da74d28a1381694060f7c5",
+    "productionMasterSha256": "1f45619fc5d356bdd32da69595802d4c5ea2de160bcd35dcc90d556be2a48c92",
+    "referenceSha256": "16e0b936ff7b93b3ef28a1f4bab862c7a78981e2a3c765cb6ea09e05527b22ce",
+    "rightMotionSheetSha256": "4daec52788ba7d79270da4738ace8521153c10728cf3fa83ae93dff227cb7fa9",
+    "roleToolSha256": "65a713b60b9a12a774e9ea87c42b1cfd35fa34f208acb5243b722538d4d06100",
+    "scanActorOnlySha256": {},
+    "sourceContractPath": "Source/ori-source-contract.json",
+    "sourceContractSha256": "b501a0cad3c722a4019371bff73f8b969665cf05522b70c60b3e18e6f3cbad0c"
+  },
+  "characterId": "ori",
+  "displayName": "Ori",
+  "evidence": [
+    {
+      "path": "Evidence/ContactSheets/ori-right-contact-sheet.png",
+      "sha256": "d899fbba6e3164cc965061039a1491f925ad2f3429512e253a6613c36c0971aa"
+    },
+    {
+      "path": "Evidence/ContactSheets/ori-left-contact-sheet.png",
+      "sha256": "810efd07215dcaa48dad1a6bcad29ef2ba1daa88141ba43ce7c48cd6d6e0b23d"
+    },
+    {
+      "path": "Evidence/MotionPreviews/ori-idle-paired-facings.webp",
+      "sha256": "58646b6073c7c083d02e419a832e0ce9d66b1031b62f00c9373417d7d4ad6ff0"
+    },
+    {
+      "path": "Evidence/MotionPreviews/ori-run-paired-facings.webp",
+      "sha256": "eb20d53a316d8d4ebfbebbd76414f6fe16256aa15b1671b23f506111b6f2358a"
+    },
+    {
+      "path": "Evidence/MotionPreviews/ori-turn-paired-facings.webp",
+      "sha256": "c959d5e16f2511b000f25559388b979de93de0fd29892911ad21297cdf78f69d"
+    },
+    {
+      "path": "Evidence/MotionPreviews/ori-jump-paired-facings.webp",
+      "sha256": "6419a223c2b0372dbf7489ffbc6513c658baf074ee62e76633365da82fbfd3eb"
+    },
+    {
+      "path": "Evidence/MotionPreviews/ori-land-paired-facings.webp",
+      "sha256": "0d45d7bb236452217088e762565bc60a8647bc14133ea86458feaf0095327f93"
+    },
+    {
+      "path": "Evidence/MotionPreviews/ori-climb-paired-facings.webp",
+      "sha256": "1b793b5bbe6189c9178e1dac384d294f9cc4f118fe3bed5373aabd5da79b3267"
+    },
+    {
+      "path": "Evidence/MotionPreviews/ori-scan-paired-facings.webp",
+      "sha256": "5c04765d29c01e1e8f5a8031afbb695c59431f1638db2dad26e76c1c7ac32689"
+    },
+    {
+      "path": "Evidence/MotionPreviews/ori-interact-paired-facings.webp",
+      "sha256": "da2fcc1b4d1545960517f606d6cdd88f4a2ade005e8f98c22896f509ca5f1b5c"
+    },
+    {
+      "path": "Evidence/ori-expression-speech-contact-sheet.png",
+      "sha256": "bdea2a5252d7ff9160286a15e765e260057ed33b8b8bf24f71e9632568050e7a"
+    },
+    {
+      "path": "Evidence/ori-live-anchors-right.webp",
+      "sha256": "1bc3ceeeb29fa424aa90844e62ceb7697c60e806bc5c88b076910381227bea64"
+    },
+    {
+      "path": "Evidence/ori-live-anchors-left.webp",
+      "sha256": "89a3da20a7f0998cfb44f0d525f1e30cce4d06df42f10b554a065a13aa7a2d1f"
+    }
+  ],
+  "publicationCount": 3,
+  "publications": [
+    {
+      "atlasManifestPath": "Atlases/right/ori-right.sprite-manifest.json",
+      "atlasManifestSha256": "593bdf1060bb9d6af1c713ce28924f978a42aec8a4c086587dd06455c7b71acb",
+      "atlasPath": "Atlases/right/ori-right.png",
+      "facing": "right"
+    },
+    {
+      "atlasManifestPath": "Atlases/left/ori-left.sprite-manifest.json",
+      "atlasManifestSha256": "adae5fac18be98bbae94e4c23f71c8f29cd97fef78a32c9f7970439443aaf7c2",
+      "atlasPath": "Atlases/left/ori-left.png",
+      "facing": "left"
+    },
+    {
+      "atlasManifestPath": "Atlases/neutral/ori-face-speech.sprite-manifest.json",
+      "atlasManifestSha256": "d739444c1bb37b8bc636f5555f095cc608d2241d4104fce52019c401dc78cd15",
+      "atlasPath": "Atlases/neutral/ori-face-speech.png",
+      "facing": "neutral"
+    }
+  ],
+  "rigKind": "Mechanical",
+  "roleEquipment": [
+    "secondary-scanner",
+    "arm-bay",
+    "four-wheel"
+  ],
+  "roleMotionId": "four-wheel-survey-companion",
+  "schemaVersion": 1,
+  "validation": {
+    "isValid": true,
+    "issues": []
+  }
+}

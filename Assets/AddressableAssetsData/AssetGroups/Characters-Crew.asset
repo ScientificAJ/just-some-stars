@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Characters-Crew
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Characters-Crew
+  m_GUID: eb4a0647cd4937bfc8a08e0266159108
+  m_SerializeEntries:
+  - m_GUID: 3ca1f0215d77c04cba8a7048a777997b
+    m_Address: Characters/Crew/juno
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Characters-Crew
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 53f0c43bf4d4f22e39433ffaf0498d4d
+    m_Address: Characters/Crew/mira
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Characters-Crew
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f35d4c0b566fbb3b9a62a87fff479df
+    m_Address: Characters/Crew/ori
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Characters-Crew
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2e0c06a40dd9012da805dd00a1b78b7
+    m_Address: Characters/Crew/kai
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Characters-Crew
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9b28efab3b17cbd0b79b1acb0ef358a
+    m_Address: Characters/Crew/bea
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Characters-Crew
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 24916abbd8621a2469b664daeb114b68, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c279c874b4727fc2b80d3a3695225e92, type: 2}
+    - {fileID: 11400000, guid: dcc5b846d90c2aec6bf1bbb7b03478a1, type: 2}

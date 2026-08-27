@@ -1,0 +1,130 @@
+{
+  "anchors": [
+    "Root",
+    "LeftFoot",
+    "RightFoot",
+    "LeftHand",
+    "RightHand",
+    "HelmetRing",
+    "BackpackSocket",
+    "Belt",
+    "LeftWrist",
+    "RightWrist",
+    "LeftBootTop",
+    "RightBootTop",
+    "ActiveTool",
+    "StowedTool"
+  ],
+  "approvedHeightMeters": 1.48,
+  "authority": {
+    "climbActorOnlySha256": {
+      "left": "e04c4e58963297a965133e930c095ae05f90bb25eb826610b4c18e5ffe5a54dd",
+      "right": "e9452488a2c28d8a3613d9ca076b284a9fdab6f87edcad798f2f43fc445e6367"
+    },
+    "equipmentSha256": "61a21a44b888d202ac51d28834334671f20b40a041d5fc6ca055ede3682442ef",
+    "expressionsSha256": "cda3afe4e215237313dc18ab190eef6080387eb22a4c1677bc13a307b3cea655",
+    "heightLineupSha256": "63d15525a438c0cb8e5bac9e56034c1138a37a048a8e6d49ea910f46a8049af0",
+    "interactionActorOnlySha256": {
+      "left": "8869b2c7deddad40c720566fe923ea5ca8e9620d400f3eae9aebb1104685864b",
+      "right": "a5d3e9a7eff3eab673ec88798e7bdebe252bb5e9589692fdb0059fa8607e05f1"
+    },
+    "leftMotionSheetSha256": "492331d4298f85aa63c5300f0596e9d307dd33fe9a40d22833cfe2fd35aafe46",
+    "masterStyleSha256": "bdcdf2e36e23d49b9c15f9734d037930151606e765da74d28a1381694060f7c5",
+    "productionMasterSha256": "12fd3a2cd50b565a8c597d41234b2626734b93ba150e792523f917de383bcfe6",
+    "referenceSha256": "b46e416d4ac0901efdf9dbcd5eff244e8f930f64e117fd5a8c753053930da722",
+    "rightMotionSheetSha256": "c3ced9865f18b5026c2a78fdff87fd6a2060c4ea9e0714ae9dbc09e261d9d9a5",
+    "roleToolSha256": "979f9b098d569cf88737f68bcffd41004ffd8fb83f31362a64c1005b611505b7",
+    "scanActorOnlySha256": {},
+    "sourceContractPath": "Source/juno-source-contract.json",
+    "sourceContractSha256": "2511a5eb163dfb26b8c8152369c359dd9625e14f88291ca36f6677c50365c542"
+  },
+  "characterId": "juno",
+  "displayName": "Juno",
+  "evidence": [
+    {
+      "path": "Evidence/ContactSheets/juno-right-contact-sheet.png",
+      "sha256": "964ef513d656fcc46a2b7c9c76b8bb53447437d6aeaebea894617aee53bab15d"
+    },
+    {
+      "path": "Evidence/ContactSheets/juno-left-contact-sheet.png",
+      "sha256": "8eb2860ace557832c37342db1ada4b53c76b1e5b6550612b8d4b84024cec4ac0"
+    },
+    {
+      "path": "Evidence/MotionPreviews/juno-idle-paired-facings.webp",
+      "sha256": "8025f543e79fd2d940962e63afaf348cd98612d9e5f39a64b74d811a52c7159d"
+    },
+    {
+      "path": "Evidence/MotionPreviews/juno-run-paired-facings.webp",
+      "sha256": "c05d80c1660da503ad8e85c4ba92c90c586c6d2a04a8d8e5c4b4afe19388591d"
+    },
+    {
+      "path": "Evidence/MotionPreviews/juno-turn-paired-facings.webp",
+      "sha256": "d63086f92cd54a7cadb085494f974841795f55d5744b33711ab18e47021e04d7"
+    },
+    {
+      "path": "Evidence/MotionPreviews/juno-jump-paired-facings.webp",
+      "sha256": "34b8a6b217f8c041b8c46f79557b373a9153b2c687ec1877fa5101f7632b429c"
+    },
+    {
+      "path": "Evidence/MotionPreviews/juno-land-paired-facings.webp",
+      "sha256": "dad55c0fa45d46262e9132ebccc7455234c04f34ea06ac011bf206ff61d906ba"
+    },
+    {
+      "path": "Evidence/MotionPreviews/juno-climb-paired-facings.webp",
+      "sha256": "afbc9381e51ffbede798d486073639901de2c9007633f2b375a6d25860780c01"
+    },
+    {
+      "path": "Evidence/MotionPreviews/juno-scan-paired-facings.webp",
+      "sha256": "505df595040b973c49f8dbd36fae8f90fde393f7cc022123940b3fb343065849"
+    },
+    {
+      "path": "Evidence/MotionPreviews/juno-interact-paired-facings.webp",
+      "sha256": "81932f7febd7b1d2c966de7682cad2f929770647ce723f0bb91bfc25b66ffa5c"
+    },
+    {
+      "path": "Evidence/juno-expression-speech-contact-sheet.png",
+      "sha256": "bf09e138ed8af1065ac85a7cd62f8cb819305dc00e8bfff47fd643f62ffe52fa"
+    },
+    {
+      "path": "Evidence/juno-live-anchors-right.webp",
+      "sha256": "27477d8c92f221896c06f4fefb990d661f70f7182700390086066aa0a45ca119"
+    },
+    {
+      "path": "Evidence/juno-live-anchors-left.webp",
+      "sha256": "b423750335b1ad4fe6bda7c2f2960a247eccbfa41a3a9c4c859c7534c7327016"
+    }
+  ],
+  "publicationCount": 3,
+  "publications": [
+    {
+      "atlasManifestPath": "Atlases/right/juno-right.sprite-manifest.json",
+      "atlasManifestSha256": "fa63e7faaebe0fb4cb6b249d4fb5b8b12bdf00652ab739d3cebbaa725d948901",
+      "atlasPath": "Atlases/right/juno-right.png",
+      "facing": "right"
+    },
+    {
+      "atlasManifestPath": "Atlases/left/juno-left.sprite-manifest.json",
+      "atlasManifestSha256": "3cac40567fcab57551712226bbcffda523e997742bf6617af5082aa4e09a1df6",
+      "atlasPath": "Atlases/left/juno-left.png",
+      "facing": "left"
+    },
+    {
+      "atlasManifestPath": "Atlases/neutral/juno-face-speech.sprite-manifest.json",
+      "atlasManifestSha256": "7b98fcc884d9bc619364002a3c081cc594ad00740a1b76f3b66cfad10ef06a56",
+      "atlasPath": "Atlases/neutral/juno-face-speech.png",
+      "facing": "neutral"
+    }
+  ],
+  "rigKind": "FlattenedHuman",
+  "roleEquipment": [
+    "wrench",
+    "diagnostic-driver",
+    "repair-pack"
+  ],
+  "roleMotionId": "compact-energetic-builder",
+  "schemaVersion": 1,
+  "validation": {
+    "isValid": true,
+    "issues": []
+  }
+}

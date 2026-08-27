@@ -332,6 +332,7 @@ namespace JustSomeStars.Editor.Importers
         public string id;
         public string facing;
         public string loopMode;
+        public string sceneGeometryPolicy;
         public int cadenceFps;
         public string sourceStrip;
         public string sourceStripSha256;
@@ -349,6 +350,8 @@ namespace JustSomeStars.Editor.Importers
         public string[] contacts;
         public SpriteEventManifest[] events;
         public SpriteAnchorManifest[] anchors;
+        public string authoredPoseRole;
+        public string contactAuthority;
         public int sourceBaselinePixels;
         public int registrationOffsetPixels;
         public int registeredBaselinePixels;
@@ -378,6 +381,9 @@ namespace JustSomeStars.Editor.Importers
         public string id;
         public float[] sourcePixels;
         public float[] runtimePixels;
+        public string semanticBasis;
+        public float[] semanticRegionNormalized;
+        public bool isAuthoredVisible;
     }
 
     [Serializable]

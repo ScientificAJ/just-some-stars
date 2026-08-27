@@ -1,0 +1,28 @@
+{
+  "approvedHeightMeters": 0.68,
+  "bakedFacings": [
+    "right",
+    "left"
+  ],
+  "characterId": "ori",
+  "climbActorOnlySha256": {
+    "left": "0aa107b13b7cb99b618156749aa8d6d41cacc2ac454b37a66bebc669232dfc92",
+    "right": "c6c85abfb6df5a7c33c8bf70feadd0b72669528b0d7b2148a101c0be6a6e3d2b"
+  },
+  "flattenedPublication": true,
+  "interactionActorOnlySha256": {
+    "left": "54d7825da1ced04ba841209cec28916c6d27807174e3db5566dbc5bdfbafcb94",
+    "right": "e3968d34f8dab0023604d13e3c9e007bc8a30a4146708d3a35df335865321d9e"
+  },
+  "leftMotionSheetSha256": "bdb6664e9d5963efd588dce3e69c9fd2fc1bc6b16cda3fd604dc6931ec3332d2",
+  "productionMasterSha256": "1f45619fc5d356bdd32da69595802d4c5ea2de160bcd35dcc90d556be2a48c92",
+  "referencePath": "Assets/_JustSomeStars/Art/Characters/References/ori.png",
+  "referenceSha256": "16e0b936ff7b93b3ef28a1f4bab862c7a78981e2a3c765cb6ea09e05527b22ce",
+  "rigKind": "Mechanical",
+  "rightMotionSheetSha256": "4daec52788ba7d79270da4738ace8521153c10728cf3fa83ae93dff227cb7fa9",
+  "roleMotionId": "four-wheel-survey-companion",
+  "roleToolSha256": "65a713b60b9a12a774e9ea87c42b1cfd35fa34f208acb5243b722538d4d06100",
+  "runtimeSkeleton": false,
+  "scanActorOnlySha256": {},
+  "schemaVersion": 1
+}

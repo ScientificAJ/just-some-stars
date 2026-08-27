@@ -1,0 +1,28 @@
+{
+  "approvedHeightMeters": 1.51,
+  "bakedFacings": [
+    "right",
+    "left"
+  ],
+  "characterId": "bea",
+  "climbActorOnlySha256": {
+    "left": "2f22a5e7f5718113a26d4d0f908889999f814658ef73050986dd0bc359bb01f0",
+    "right": "d0bee46dfcf9986566db7d0c6f8ace6605ae5b9e4b853b8491f8283131931080"
+  },
+  "flattenedPublication": true,
+  "interactionActorOnlySha256": {},
+  "leftMotionSheetSha256": "f4a13cb69ab56da381cd351c1ecd41a01320e340d67c46e9565207bfb402547d",
+  "productionMasterSha256": "e1338ec4573a5567c5e8bd1af19f399186fb259cfae8ecc43a89f9b22addf205",
+  "referencePath": "Assets/_JustSomeStars/Art/Characters/References/bea.png",
+  "referenceSha256": "28927ab81d62f07deb7fc7a327d19e4fe60f4fd054f98a1a6cccc481eb4ba0e0",
+  "rigKind": "FlattenedHuman",
+  "rightMotionSheetSha256": "4b075f4e72c8ed93e7cb5de56a1f203f5790789cd2de9b661f6959b9aad4564b",
+  "roleMotionId": "careful-recording-chronicler",
+  "roleToolSha256": "a12e984a5ee3934a78b8a25112d79b8b8cda59c3f33431a4b1c7b6db8661be0e",
+  "runtimeSkeleton": false,
+  "scanActorOnlySha256": {
+    "left": "c558d91521201a2a671426f6b0de7144c4d875971f01585842c914bf827729a0",
+    "right": "e681bb26519e9d34bdf2a074f5cf692fc8ef3d224dfef1b46d216819ede1e7fa"
+  },
+  "schemaVersion": 1
+}

@@ -1,0 +1,28 @@
+{
+  "approvedHeightMeters": 1.48,
+  "bakedFacings": [
+    "right",
+    "left"
+  ],
+  "characterId": "juno",
+  "climbActorOnlySha256": {
+    "left": "e04c4e58963297a965133e930c095ae05f90bb25eb826610b4c18e5ffe5a54dd",
+    "right": "e9452488a2c28d8a3613d9ca076b284a9fdab6f87edcad798f2f43fc445e6367"
+  },
+  "flattenedPublication": true,
+  "interactionActorOnlySha256": {
+    "left": "8869b2c7deddad40c720566fe923ea5ca8e9620d400f3eae9aebb1104685864b",
+    "right": "a5d3e9a7eff3eab673ec88798e7bdebe252bb5e9589692fdb0059fa8607e05f1"
+  },
+  "leftMotionSheetSha256": "492331d4298f85aa63c5300f0596e9d307dd33fe9a40d22833cfe2fd35aafe46",
+  "productionMasterSha256": "12fd3a2cd50b565a8c597d41234b2626734b93ba150e792523f917de383bcfe6",
+  "referencePath": "Assets/_JustSomeStars/Art/Characters/References/juno.png",
+  "referenceSha256": "b46e416d4ac0901efdf9dbcd5eff244e8f930f64e117fd5a8c753053930da722",
+  "rigKind": "FlattenedHuman",
+  "rightMotionSheetSha256": "c3ced9865f18b5026c2a78fdff87fd6a2060c4ea9e0714ae9dbc09e261d9d9a5",
+  "roleMotionId": "compact-energetic-builder",
+  "roleToolSha256": "979f9b098d569cf88737f68bcffd41004ffd8fb83f31362a64c1005b611505b7",
+  "runtimeSkeleton": false,
+  "scanActorOnlySha256": {},
+  "schemaVersion": 1
+}
