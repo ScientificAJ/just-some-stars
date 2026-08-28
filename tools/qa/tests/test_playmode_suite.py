@@ -227,6 +227,109 @@ class PlayModeSuiteTests(unittest.TestCase):
             )
             self.assertTrue(all("-quit" not in args for args in invocations))
 
+    def test_runner_preserves_graphics_for_the_pixel_render_fixture(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            root = Path(temporary_directory)
+            source = root / "Assets" / "Tests" / "PlayMode"
+            source.mkdir(parents=True)
+            fixtures = (
+                "JustSomeStars.Tests.PlayMode.LayeredCharacterRendererTests",
+                "JustSomeStars.Tests.PlayMode.SurfaceMotor2DTests",
+            )
+            for fixture in fixtures:
+                class_name = fixture.rsplit(".", 1)[-1]
+                (source / f"{class_name}.cs").write_text(
+                    textwrap.dedent(
+                        f"""
+                        using NUnit.Framework;
+                        namespace JustSomeStars.Tests.PlayMode
+                        {{
+                            public sealed class {class_name}
+                            {{
+                                [Test]
+                                public void Passes() {{ }}
+                            }}
+                        }}
+                        """
+                    ),
+                    encoding="utf-8",
+                )
+            manifest = root / "fixtures.txt"
+            manifest.write_text("\n".join(fixtures) + "\n", encoding="utf-8")
+            invocation_log = root / "invocations.jsonl"
+            fake_unity = root / "fake-unity"
+            fake_unity.write_text(
+                textwrap.dedent(
+                    f"""\
+                    #!/usr/bin/env python3
+                    import json
+                    import sys
+                    from pathlib import Path
+                    args = sys.argv[1:]
+                    fixture = args[args.index('-testFilter') + 1]
+                    report = Path(args[args.index('-testResults') + 1])
+                    log = Path(args[args.index('-logFile') + 1])
+                    report.parent.mkdir(parents=True, exist_ok=True)
+                    log.parent.mkdir(parents=True, exist_ok=True)
+                    report.write_text(
+                        '<test-run result="Passed" testcasecount="1" total="1" '
+                        'passed="1" failed="0" skipped="0" inconclusive="0">'
+                        '<test-suite type="TestFixture" fullname="' + fixture + '" '
+                        'result="Passed" total="1" passed="1" failed="0" '
+                        'skipped="0" inconclusive="0">'
+                        '<test-case fullname="' + fixture + '.Passes" result="Passed" />'
+                        '</test-suite></test-run>',
+                        encoding='utf-8',
+                    )
+                    log.write_text('fake Unity completed\\n', encoding='utf-8')
+                    with Path({str(invocation_log)!r}).open('a', encoding='utf-8') as stream:
+                        stream.write(json.dumps(args) + '\\n')
+                    """
+                ),
+                encoding="utf-8",
+            )
+            fake_unity.chmod(fake_unity.stat().st_mode | stat.S_IXUSR)
+
+            exit_code = main(
+                [
+                    "--unity-editor",
+                    str(fake_unity),
+                    "--project-path",
+                    str(root),
+                    "--source-directory",
+                    str(source),
+                    "--manifest",
+                    str(manifest),
+                    "--output-directory",
+                    str(root / "results"),
+                    "--log-directory",
+                    str(root / "logs"),
+                ]
+            )
+
+            self.assertEqual(exit_code, 0)
+            invocations = {
+                args[args.index("-testFilter") + 1]: args
+                for args in (
+                    json.loads(line)
+                    for line in invocation_log.read_text(
+                        encoding="utf-8"
+                    ).splitlines()
+                )
+            }
+            self.assertNotIn(
+                "-nographics",
+                invocations[
+                    "JustSomeStars.Tests.PlayMode.LayeredCharacterRendererTests"
+                ],
+            )
+            self.assertIn(
+                "-nographics",
+                invocations[
+                    "JustSomeStars.Tests.PlayMode.SurfaceMotor2DTests"
+                ],
+            )
+
     def test_preflight_failure_replaces_a_stale_passing_summary(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             root = Path(temporary_directory)

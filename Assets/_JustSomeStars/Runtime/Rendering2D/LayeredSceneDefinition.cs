@@ -128,7 +128,8 @@ namespace JustSomeStars.Runtime.Rendering2D
                     errors.Add($"{binding.Band} is missing its address key.");
                 }
 
-                if (binding.LightingMask == 0u)
+                if (binding.Band != LayerBand.Hud &&
+                    binding.LightingMask == 0u)
                 {
                     errors.Add($"{binding.Band} is missing its lighting mask.");
                 }

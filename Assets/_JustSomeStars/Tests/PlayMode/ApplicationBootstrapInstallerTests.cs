@@ -214,6 +214,7 @@ namespace JustSomeStars.Tests.PlayMode
         [UnityTest]
         public IEnumerator Boot_InitializesPermanentServicesRoutesAndCleansExactlyOnce()
         {
+            AssertInitialExperiencePolicy();
             var source = new CountingCatalogSource(CreateCatalog());
             var transition = new RecordingTransition();
             var composition = CreateComposition(transition, source);
@@ -250,6 +251,36 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(source.ReleaseCount, Is.EqualTo(1));
             UnityEngine.Object.Destroy(bootstrap.gameObject);
             yield return null;
+        }
+
+        private static void AssertInitialExperiencePolicy()
+        {
+            var policyType = typeof(GameBootstrap).Assembly.GetType(
+                "JustSomeStars.Runtime.Core.InitialExperiencePolicy");
+            Assert.That(
+                policyType,
+                Is.Not.Null,
+                "The player needs an explicit release-versus-internal start policy.");
+            var resolveDestination = policyType.GetMethod(
+                "ResolveDestination",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            var resolveMode = policyType.GetMethod(
+                "ResolveMode",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            Assert.That(resolveDestination, Is.Not.Null);
+            Assert.That(resolveMode, Is.Not.Null);
+            Assert.That(
+                resolveDestination.Invoke(null, new object[] { false }),
+                Is.EqualTo("Frontend"));
+            Assert.That(
+                resolveMode.Invoke(null, new object[] { false }),
+                Is.EqualTo(GameMode.Frontend));
+            Assert.That(
+                resolveDestination.Invoke(null, new object[] { true }),
+                Is.EqualTo("Mirra2DProof"));
+            Assert.That(
+                resolveMode.Invoke(null, new object[] { true }),
+                Is.EqualTo(GameMode.Surface));
         }
 
         private GameBootstrapComposition CreateComposition(

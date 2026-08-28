@@ -1,6 +1,6 @@
 # Just Some Stars production execution ledger
 
-Last updated: 2026-08-27
+Last updated: 2026-08-28
 
 This tracked ledger preserves the active production state, decisions, evidence,
 next action and user-help queue across context compaction. It complements the
@@ -46,11 +46,17 @@ implementation plans and issue register; it does not replace either authority.
 - Canonical repository: `/mnt/unity-data/JustSomeStars`.
 - Branch: `codex/task-12-modular-characters`.
 - Pre-Stage-2 HEAD: `f99336333e6946ccd50c1ec43ffdb8b2aa3ac617`.
-- Replacement Task 12 Stages 1 through 4 are complete and accepted. Stages 1
-  through 3 are committed and pushed; the scoped Stage 4 checkpoint is ready
-  to commit and push before Stage 5 begins automatically.
-- The local Unity Editor demo was closed cleanly before final verification.
-- No APK or Limrun session is part of this Stage 1 checkpoint.
+- Replacement Task 12 Stages 0 through 5 are complete and accepted. Stages 1
+  through 4 are committed and pushed; Stage 5 passed its package boundary,
+  critic review and explicit user visual approval and is ready for its scoped
+  completion commit.
+- The final internal APK SHA-256 is
+  `6e9597e0f1ae498d0fdf0f6d46d6032279b150f29e4a6906ebb09da4ecbd9d8d`.
+- One bounded Limrun instance was used and timed out after final capture;
+  `lim android list --json` is empty, the Argent lease is closed and its local
+  server is stopped.
+- Superseded full-3D Captain work remains deliberately uncommitted and
+  preserved pending the user decision tracked as JSS-013.
 
 ## Replacement Task 12 Stage 1 checkpoint
 
@@ -234,13 +240,59 @@ implementation plans and issue register; it does not replace either authority.
   publication/evidence/staging defects returned final `PASS` after correction.
 - No APK, full regression or Limrun session was used for this focused stage.
 
-## Immediate next task: replacement Task 12 Stage 5
+## Replacement Task 12 Stage 5 checkpoint
 
-Integrate the accepted final crew/Captain/Ori sprites into the authored Mirra
-excerpt, replace the temporary Stage 1 presentation, add bounded fall recovery,
-then run the one declared package-boundary regression, Android build and device
-acceptance. Continue autonomously; user-facing graphical approval remains at
-the Task 12 boundary after Stage 5.
+### Delivered scope
+
+- Six final Mirra environment publications plus normal/emission masks, five
+  restrained HUD assets, actor shadow and Signal mote assets.
+- Eight independently declared and rendered bands with matching runtime
+  parallax factors; no flattened whole-scene underlay or 3D-character path.
+- Accepted modular Captain, bespoke Mira and mechanical Ori presentations,
+  each grounded by owned contact-shadow treatment.
+- One authored traversal route, bounded fall recovery, interaction probe,
+  Signal Lens target and composition-camera limits.
+- Three bounded 2D lights, one particle system, normal/emission support and one
+  final color-grading volume.
+- A development-only Boot-to-Mirra route for the package-boundary proof; release
+  routing remains truthful and unchanged.
+- Lens moved from the URP-debug-conflicting gamepad shoulder binding to
+  `buttonNorth`, with an authentic targeted RED/GREEN and exact-device proof
+  that the debug overlay no longer opens.
+
+### Locked evidence identities
+
+- Final Candidate 9 SHA-256:
+  `adc10f11de965625bff8fa81b902323bd293f173089adaf0908c0ffdd6367032`.
+- User-approved final Android screenshot SHA-256:
+  `3e402d344bfbbb9c02aa12a5a91dc6dcac455de27ea13eaa70027f2671c48848`.
+- Final internal APK SHA-256:
+  `6e9597e0f1ae498d0fdf0f6d46d6032279b150f29e4a6906ebb09da4ecbd9d8d`.
+- Unity build-report SHA-256:
+  `3a62ff34fa80d8d66fb58cb349eb488d474c7054da6662ec3decc5161da0ce33`.
+
+### Final gate
+
+- Full EditMode `293/293` passed.
+- Source-validated isolated PlayMode runner passed 19/19 fixtures and 114/114
+  tests; all Unity exits were zero.
+- Lens conflict correction passed its focused `1/1` test after authentic RED.
+- Android build succeeded with warnings 2, errors 0; ZIP, package, ARM64 ABI,
+  v2 debug signature, manifest, Mirra scene and exact OFL/Apache payload gates
+  passed; EmojiOne and EmojiCompat startup are absent.
+- The independent Stage 5 extreme critic returned `PASS` for Candidate 9.
+- The user explicitly approved the final graphical result on 2026-08-28.
+- The user also correctly rejected the claim that the final video visibly
+  proves inputs. It is stability evidence only; JSS-016 preserves the exact
+  performance/lifecycle and visible-motion follow-up without reopening Task 12.
+- Authored ceilings and honest device limitations are recorded in
+  `docs/qa/task12-mirra-benchmark.md`.
+
+## Immediate next task: Task 13
+
+Implement and visually accept the production `SurfaceMotor2D`, body
+calibration and `CompositionCamera2D` behavior against the final Task 12 Mirra
+contract. Begin only after the scoped Task 12 completion commit is pushed.
 
 ## User-help queue
 
@@ -281,3 +333,12 @@ No user decision or external action is currently blocking progress.
   reproduced both defects. The corrected clips keep all five layers present
   and independently articulated. Final focused gates are Python `6/6`,
   EditMode `4/4` and PlayMode `3/3`, with final critic `PASS`.
+- 2026-08-27: Stage 4 completed the bespoke Mira/Juno/Kai/Bea and mechanical
+  Ori package. Its bounded critic held on climb semantics, live anchors, Juno
+  scale, Bea scan framing and both-facing evidence; the corrected package
+  passed Python `3/3`, EditMode `3/3`, PlayMode `1/1` and critic review.
+- 2026-08-28: Stage 5 completed the final Mirra scene, full package regression,
+  exact Android build and one paid-device session. Candidate 9 received critic
+  `PASS`; the exact-device image received user approval. The user's correction
+  that the final video does not visibly prove interaction was accepted and
+  recorded in the evidence, benchmark and JSS-016 rather than defended.

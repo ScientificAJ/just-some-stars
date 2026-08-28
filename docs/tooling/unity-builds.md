@@ -20,8 +20,11 @@ python3 tools/qa/playmode_suite.py \
 Do not retry the invalid unfiltered aggregate or patch Unity's package cache.
 The runner verifies the committed manifest against the PlayMode source tree,
 uses one Android-active Unity process per fixture, strictly parses every NUnit
-XML, and writes an atomic summary. Focused development runs may still call one
-exact fixture or method directly. Unity test invocations omit `-quit`.
+XML, and writes an atomic summary. It keeps the graphics device enabled only
+for `LayeredCharacterRendererTests`, whose real pixel-readback contract cannot
+run on Unity's null graphics device; all other fixtures remain `-nographics`.
+Focused development runs may still call one exact fixture or method directly.
+Unity test invocations omit `-quit`.
 
 The orchestration contract and device-inspector guard are documented in
 `tools/qa/README.md`; their dependency-free tests run with:

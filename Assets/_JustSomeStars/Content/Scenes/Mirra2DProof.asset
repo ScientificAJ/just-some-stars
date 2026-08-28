@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0af1796a96b85ef7a9467d52471de6c, type: 3}
+  m_Name: Mirra2DProof
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Rendering2D.Mirra2DProofDefinition
+  bands:
+  - band: 0
+    artwork: {fileID: 21300000, guid: 304f781c8f07627bfbfb05b03f0c4758, type: 3}
+    normalMap: {fileID: 0}
+    emissionMask: {fileID: 0}
+    addressKey: jss.mirra.final.sky
+  - band: 1
+    artwork: {fileID: 21300000, guid: 370a78681594273d597a1703e3b13665, type: 3}
+    normalMap: {fileID: 0}
+    emissionMask: {fileID: 0}
+    addressKey: jss.mirra.final.farworld
+  - band: 2
+    artwork: {fileID: 21300000, guid: f9c9ffc92e4cc43ee9730aa3170aa9b7, type: 3}
+    normalMap: {fileID: 0}
+    emissionMask: {fileID: 0}
+    addressKey: jss.mirra.final.atmosphere
+  - band: 3
+    artwork: {fileID: 21300000, guid: ee8023d498e1ddcb2a5359544a162253, type: 3}
+    normalMap: {fileID: 0}
+    emissionMask: {fileID: 0}
+    addressKey: jss.mirra.final.midground
+  - band: 4
+    artwork: {fileID: 21300000, guid: 74914d5e0e0200ddc81aebb3fa27bd8e, type: 3}
+    normalMap: {fileID: 2800000, guid: a11fbce2821b4e645bc058d574e20798, type: 3}
+    emissionMask: {fileID: 2800000, guid: 25d5248f38edc4b9bbf8fdee1b685d6e, type: 3}
+    addressKey: jss.mirra.final.gameplay
+  - band: 5
+    artwork: {fileID: 0}
+    normalMap: {fileID: 0}
+    emissionMask: {fileID: 0}
+    addressKey: jss.mirra.final.actorsandprops
+  - band: 6
+    artwork: {fileID: 21300000, guid: 164b172b77458b24a98ae8cbfa5db80b, type: 3}
+    normalMap: {fileID: 0}
+    emissionMask: {fileID: 0}
+    addressKey: jss.mirra.final.foreground
+  - band: 7
+    artwork: {fileID: 0}
+    normalMap: {fileID: 0}
+    emissionMask: {fileID: 0}
+    addressKey: jss.mirra.final.hud
+  captainSpriteSet: {fileID: 11400000, guid: d67078969364bdc52a9f386a9c07b4ca, type: 2}
+  companionSpriteSet: {fileID: 11400000, guid: 53f0c43bf4d4f22e39433ffaf0498d4d, type: 2}
+  oriSpriteSet: {fileID: 11400000, guid: 6f35d4c0b566fbb3b9a62a87fff479df, type: 2}
+  characterModelReferences: []
+  interactionId: mirra.signal-console
+  lensTargetId: mirra.signal-spire
+  cameraBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 6.3, y: 2.1, z: 0.5}
+  recoveryAnchor: {x: -0.6, y: -2.0724485}
+  recoveryThreshold: -7.5

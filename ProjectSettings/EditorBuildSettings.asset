@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_JustSomeStars/Scenes/Core/Frontend.unity
     guid: dd97f07d694c430268984de2714a90a2
+  - enabled: 1
+    path: Assets/_JustSomeStars/Scenes/Benchmarks/Mirra2DProof.unity
+    guid: b5710e29502f8cb109a866a2c7561803
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: cd66d02828868ea2f9ae34187f8dbb77, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: bf9300ba3765bd0228665825d7ae812b, type: 3}

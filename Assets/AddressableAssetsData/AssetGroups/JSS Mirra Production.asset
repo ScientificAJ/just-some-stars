@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: JSS Mirra Production
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: JSS Mirra Production
+  m_GUID: 5967ab575e976384b82b384fed737dad
+  m_SerializeEntries:
+  - m_GUID: 108fac37a17f56a719f6a778e9056ff5
+    m_Address: jss.mirra.final.interactbutton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 164b172b77458b24a98ae8cbfa5db80b
+    m_Address: jss.mirra.final.foreground
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 191a8db77d4505e2ba4b60a759969979
+    m_Address: jss.mirra.final.joystick
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 25d5248f38edc4b9bbf8fdee1b685d6e
+    m_Address: jss.mirra.final.signalemission
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 304f781c8f07627bfbfb05b03f0c4758
+    m_Address: jss.mirra.final.sky
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 370a78681594273d597a1703e3b13665
+    m_Address: jss.mirra.final.farworld
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4086eb329ea401aee8fb08e1a8855eef
+    m_Address: jss.mirra.final.lensbutton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4fff79c032082d1f5bf6663e6ad9cc9a
+    m_Address: jss.mirra.final.actorsandprops
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 74914d5e0e0200ddc81aebb3fa27bd8e
+    m_Address: jss.mirra.final.gameplay
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7bcbda3a5cf88ddc2b5ebc2ab13ac4db
+    m_Address: jss.mirra.final.hud
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a11fbce2821b4e645bc058d574e20798
+    m_Address: jss.mirra.final.gameplaynormal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed683f92bd999a589a4c74ac579cec69
+    m_Address: jss.mirra.final.jumpbutton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee8023d498e1ddcb2a5359544a162253
+    m_Address: jss.mirra.final.midground
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f85f2d9ed66cb5d338b07471afb24427
+    m_Address: jss.mirra.final.2dproof
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f9c9ffc92e4cc43ee9730aa3170aa9b7
+    m_Address: jss.mirra.final.atmosphere
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 24916abbd8621a2469b664daeb114b68, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: f8a601f07d9c697dda27a36809bd1c0e, type: 2}
+    - {fileID: 11400000, guid: fd6f12ac1b70529c9b04a7f2727ff120, type: 2}

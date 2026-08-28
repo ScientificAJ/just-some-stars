@@ -129,7 +129,7 @@ namespace JustSomeStars.Runtime.Player
             }
 
             label.text = IsActivated ? activatedText : availableText;
-            label.alpha = IsAvailable || IsActivated ? 1f : 0.58f;
+            label.alpha = IsAvailable || IsActivated ? 1f : 0f;
         }
 
         private void OnDestroy()

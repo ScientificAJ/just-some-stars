@@ -235,7 +235,23 @@ namespace JustSomeStars.Editor
                 File.Delete(existing);
             }
             var wasEnabled = renderer.enabled;
+            var motor = renderer.GetComponent<SurfaceMotor2D>() ??
+                throw new InvalidOperationException(
+                    "Stage 5 route capture requires the real SurfaceMotor2D.");
+            var recovery = renderer.GetComponent<SurfaceRecovery2D>() ??
+                throw new InvalidOperationException(
+                    "Stage 5 route capture requires bounded recovery.");
+            var motorWasEnabled = motor.enabled;
+            var recoveryWasEnabled = recovery.enabled;
+            var priorSimulationMode = Physics2D.simulationMode;
+            var startPosition = renderer.transform.position;
+            var recoveryCount = recovery.RecoveryCount;
+            var groundedSamples = 0;
             renderer.enabled = false;
+            motor.enabled = false;
+            recovery.enabled = false;
+            Physics2D.simulationMode = SimulationMode2D.Script;
+            Physics2D.SyncTransforms();
             try
             {
                 for (var frameIndex = 0; frameIndex < 8; frameIndex++)
@@ -245,14 +261,46 @@ namespace JustSomeStars.Editor
                         $"captain-frame-{frameIndex:00}.png");
                     CaptureRuntimeFrame(path);
                     ValidateCapturedDimensions(path);
+                    if (frameIndex == 7)
+                    {
+                        continue;
+                    }
+
                     renderer.Advance(1f / 12f);
+                    motor.SetMoveInput(Vector2.right);
+                    motor.Simulate(1f / 12f);
+                    if (!Physics2D.Simulate(1f / 12f))
+                    {
+                        throw new InvalidOperationException(
+                            "Stage 5 route capture could not simulate 2D physics.");
+                    }
+                    recovery.EvaluateNow();
+                    if (motor.IsGrounded)
+                    {
+                        groundedSamples++;
+                    }
                     await WaitForEditorFramesAsync(1);
+                }
+                var endPosition = renderer.transform.position;
+                if (recovery.RecoveryCount != recoveryCount ||
+                    endPosition.x < startPosition.x + 0.6f ||
+                    groundedSamples < 6)
+                {
+                    throw new InvalidOperationException(
+                        "Stage 5 route capture must traverse continuously on " +
+                        "the real ground without fall recovery.");
                 }
                 File.WriteAllText(
                     Path.Combine(directory, "sequence-contract.txt"),
                     "schemaVersion=1\nframes=8\nfps=12\n" +
                     "family=" + renderer.CurrentFamily + "\n" +
-                    "facing=" + renderer.CurrentFacing + "\n",
+                    "facing=" + renderer.CurrentFacing + "\n" +
+                    "groundedSamples=" + groundedSamples + "\n" +
+                    "recoveryCount=" + recovery.RecoveryCount + "\n" +
+                    "startX=" + startPosition.x.ToString(
+                        "0.###", CultureInfo.InvariantCulture) + "\n" +
+                    "endX=" + endPosition.x.ToString(
+                        "0.###", CultureInfo.InvariantCulture) + "\n",
                     System.Text.Encoding.UTF8);
                 Debug.Log(
                     "[JSS Stage 3 Capture] Deterministic eight-frame sequence " +
@@ -260,6 +308,10 @@ namespace JustSomeStars.Editor
             }
             finally
             {
+                motor.SetMoveInput(Vector2.zero);
+                Physics2D.simulationMode = priorSimulationMode;
+                motor.enabled = motorWasEnabled;
+                recovery.enabled = recoveryWasEnabled;
                 renderer.enabled = wasEnabled;
             }
         }
@@ -525,6 +577,11 @@ namespace JustSomeStars.Editor
                 loadout,
                 SpriteFacing.Right,
                 motion);
+            var motionPresenter = renderer.GetComponent<MirraCaptainMotionPresenter>();
+            if (motionPresenter != null)
+            {
+                motionPresenter.enabled = false;
+            }
 
             if (!string.IsNullOrWhiteSpace(positionValue))
             {

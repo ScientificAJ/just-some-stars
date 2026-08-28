@@ -1396,7 +1396,9 @@ git commit -m "build: add Blender MCP asset validation pipeline"
 ### Task 12: Replace the unfinished 3D character path with the approved 2.5D production foundation
 
 **Status:** the prior 3D Stages 1–3 are historical; prior Stage 4 rig/walk
-work is stopped. No unfinished file is deleted without separate user approval.
+work is stopped. Replacement Stages 0–5 passed and the user approved the final
+Mirra result on 2026-08-28. No unfinished 3D file is deleted without separate
+user approval.
 
 **Authority:**
 - Design: `docs/superpowers/specs/2026-08-25-2.5d-gameplay-pivot-design.md`
@@ -1421,7 +1423,7 @@ work is stopped. No unfinished file is deleted without separate user approval.
 
 - [x] **Stage 4: Produce bespoke Mira, Juno, Kai, Bea and Ori sprite sets**
 
-- [ ] **Stage 5: Integrate the final-art Mirra excerpt and pass one package-boundary Android gate**
+- [x] **Stage 5: Integrate the final-art Mirra excerpt and pass one package-boundary Android gate**
 
 Task 13 begins only after replacement Stage 5 passes. The exact files, tests,
 commands, visual checks and commit boundaries live in the execution plan above.

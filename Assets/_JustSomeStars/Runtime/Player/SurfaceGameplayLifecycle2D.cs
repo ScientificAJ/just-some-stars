@@ -14,6 +14,8 @@ namespace JustSomeStars.Runtime.Player
         [SerializeField] private Rigidbody2D targetBody;
         [SerializeField] private SurfaceInteractionProbe2D[] interactionProbes =
             Array.Empty<SurfaceInteractionProbe2D>();
+        [SerializeField] private DiscoveryLensTarget2D[] lensTargets =
+            Array.Empty<DiscoveryLensTarget2D>();
 
         public SurfaceGameplayDependencies Dependencies { get; private set; }
 
@@ -52,6 +54,11 @@ namespace JustSomeStars.Runtime.Player
                 {
                     interaction.BindInput(dependencies.Input);
                 }
+                foreach (var lensTarget in lensTargets.Where(
+                    candidate => candidate != null))
+                {
+                    lensTarget.BindInput(dependencies.Input);
+                }
                 compositionCamera.ApplySettings(dependencies.Settings.Current);
                 compositionCamera.SetPolicy(
                     dependencies.Modes.CurrentPolicy.CameraPolicy);
@@ -64,6 +71,11 @@ namespace JustSomeStars.Runtime.Player
             {
                 dependencies.Settings.SettingsChanged -= OnSettingsChanged;
                 dependencies.Modes.StateChanged -= OnModeStateChanged;
+                foreach (var lensTarget in lensTargets.Where(
+                    candidate => candidate != null))
+                {
+                    lensTarget.ReleaseInput(dependencies.Input);
+                }
                 foreach (var interaction in interactionProbes.Where(
                     candidate => candidate != null))
                 {
@@ -95,6 +107,11 @@ namespace JustSomeStars.Runtime.Player
             Dependencies = null;
             dependencies.Settings.SettingsChanged -= OnSettingsChanged;
             dependencies.Modes.StateChanged -= OnModeStateChanged;
+            foreach (var lensTarget in lensTargets.Where(
+                candidate => candidate != null))
+            {
+                lensTarget.ReleaseInput(dependencies.Input);
+            }
             foreach (var interaction in interactionProbes.Where(
                 candidate => candidate != null))
             {

@@ -31,6 +31,11 @@ DEFAULT_LOG_DIRECTORY = Path("Builds/Logs/playmode-suite")
 FIXTURE_NAME = re.compile(r"^[A-Za-z_]\w*(?:\.[A-Za-z_]\w*)+$")
 TEST_ATTRIBUTE = re.compile(r"\[(?:Test|TestCase|UnityTest)\b")
 NAMESPACE = re.compile(r"\bnamespace\s+([A-Za-z_]\w*(?:\.[A-Za-z_]\w*)*)")
+GRAPHICS_REQUIRED_FIXTURES = frozenset(
+    {
+        "JustSomeStars.Tests.PlayMode.LayeredCharacterRendererTests",
+    }
+)
 
 
 class FixtureManifestError(RuntimeError):
@@ -370,7 +375,6 @@ def run_from_args(arguments: argparse.Namespace) -> int:
         command = [
             str(unity_editor),
             "-batchmode",
-            "-nographics",
             "-buildTarget",
             "Android",
             "-projectPath",
@@ -387,6 +391,8 @@ def run_from_args(arguments: argparse.Namespace) -> int:
             "-logFile",
             str(log_path),
         ]
+        if fixture not in GRAPHICS_REQUIRED_FIXTURES:
+            command.insert(2, "-nographics")
         print(f"[JSS QA] PlayMode fixture: {fixture}", flush=True)
         try:
             process = subprocess.run(

@@ -6,10 +6,43 @@ using System.Threading.Tasks;
 
 namespace JustSomeStars.Runtime.Core
 {
-    internal sealed class ServiceStartupCoordinator
+    internal static class InitialExperiencePolicy
     {
         private const string FrontendDestination = "Frontend";
+        private const string InternalProofDestination = "Mirra2DProof";
 
+        internal static string CurrentDestination => ResolveDestination(
+            IsDevelopmentVariant);
+
+        internal static GameMode CurrentMode => ResolveMode(IsDevelopmentVariant);
+
+        internal static string ResolveDestination(bool isDevelopmentVariant)
+        {
+            return isDevelopmentVariant
+                ? InternalProofDestination
+                : FrontendDestination;
+        }
+
+        internal static GameMode ResolveMode(bool isDevelopmentVariant)
+        {
+            return isDevelopmentVariant ? GameMode.Surface : GameMode.Frontend;
+        }
+
+        private static bool IsDevelopmentVariant
+        {
+            get
+            {
+#if JSS_DEVELOPMENT
+                return true;
+#else
+                return false;
+#endif
+            }
+        }
+    }
+
+    internal sealed class ServiceStartupCoordinator
+    {
         private readonly object m_LifecycleGate = new object();
         private readonly List<IGameService> m_InitializedServices =
             new List<IGameService>();
@@ -259,10 +292,10 @@ namespace JustSomeStars.Runtime.Core
             try
             {
                 var routeOperation = composition.SceneTransition.RouteAsync(
-                    FrontendDestination,
+                    InitialExperiencePolicy.CurrentDestination,
                     CancellationToken.None);
                 await routeOperation;
-                report.MarkRouted(FrontendDestination);
+                report.MarkRouted(InitialExperiencePolicy.CurrentDestination);
             }
             catch (Exception exception)
             {

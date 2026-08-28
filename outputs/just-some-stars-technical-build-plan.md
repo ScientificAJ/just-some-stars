@@ -482,9 +482,12 @@ viseme set. Ori uses a dedicated mechanical frame-atlas contract.
 - Environment sources may be 2K–4K, but runtime layers use verified max sizes,
   ASTC and mipmap policy based on camera scale and motion.
 - Normal, emission and palette masks are packed where practical.
-- The replacement Task 12 Mirra benchmark locks enforceable
-  texture-residency, transparent-overdraw, 2D-light, particle, frame-time,
-  memory and thermal budgets before full content production.
+- The replacement Task 12 Mirra benchmark in
+  `docs/qa/task12-mirra-benchmark.md` locks the measured authored texture,
+  transparent-layer proxy, 2D-light and particle ceilings. Frame cadence and
+  development-player memory are recorded as device observations; Vulkan
+  overdraw and release memory/thermal limits remain explicit Task 30
+  measurement work rather than invented Task 12 numbers.
 
 Budgets may move between assets only while the measured scene and destination
 ceilings continue to pass.

@@ -156,7 +156,7 @@ namespace JustSomeStars.Tests.EditMode
             try
             {
                 EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
-                var captain = GameObject.Find("CaptainProxy");
+                var captain = GameObject.Find("Captain");
                 Assert.That(captain, Is.Not.Null);
                 var renderer = captain.GetComponent<LayeredCharacterRenderer>();
                 Assert.That(renderer, Is.Not.Null);
@@ -169,14 +169,24 @@ namespace JustSomeStars.Tests.EditMode
                     Is.EqualTo(5));
                 Assert.That(
                     captain.transform.localScale.x,
-                    Is.EqualTo(1.215f).Within(0.0001f));
+                    Is.EqualTo(1.55f).Within(0.0001f));
                 Assert.That(
                     captain.transform.localScale.y,
-                    Is.EqualTo(1.215f).Within(0.0001f));
+                    Is.EqualTo(1.55f).Within(0.0001f));
+                var visualRoot = captain.transform.Find("CaptainVisualRoot");
+                Assert.That(visualRoot, Is.Not.Null);
+                Assert.That(captain.GetComponent<SpriteRenderer>(), Is.Null);
+                Assert.That(
+                    renderer.LayerRenderers.Select(item => item.transform.parent),
+                    Has.All.EqualTo(visualRoot));
                 var collider = captain.GetComponent<CapsuleCollider2D>();
                 Assert.That(collider, Is.Not.Null);
-                Assert.That(collider.bounds.size.x, Is.EqualTo(0.63f).Within(0.01f));
-                Assert.That(collider.bounds.size.y, Is.EqualTo(1.395f).Within(0.01f));
+                Assert.That(
+                    collider.bounds.size.x,
+                    Is.EqualTo(0.8037f).Within(0.01f));
+                Assert.That(
+                    collider.bounds.size.y,
+                    Is.EqualTo(1.7796f).Within(0.01f));
             }
             finally
             {

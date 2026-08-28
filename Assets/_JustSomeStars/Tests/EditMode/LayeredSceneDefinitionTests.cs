@@ -164,7 +164,7 @@ namespace JustSomeStars.Tests.EditMode
         }
 
         [Test]
-        public void MirraProofScene_OwnsTheCompleteTemporaryArtRoute()
+        public void MirraProofScene_OwnsTheCompleteFinalProductionRoute()
         {
             Assert.That(AssetDatabase.LoadAssetAtPath<SceneAsset>(ScenePath),
                 Is.Not.Null,
@@ -211,7 +211,16 @@ namespace JustSomeStars.Tests.EditMode
                         "addressablesGroup");
                     var addressKey = binding.FindPropertyRelative("addressKey");
                     Assert.That(lightingMask, Is.Not.Null);
-                    Assert.That(lightingMask.uintValue, Is.Not.Zero);
+                    var bandName = binding.FindPropertyRelative("band")
+                        .enumNames[binding.FindPropertyRelative("band").enumValueIndex];
+                    if (bandName == "Hud")
+                    {
+                        Assert.That(lightingMask.uintValue, Is.Zero);
+                    }
+                    else
+                    {
+                        Assert.That(lightingMask.uintValue, Is.Not.Zero);
+                    }
                     Assert.That(addressGroup, Is.Not.Null);
                     Assert.That(addressGroup.stringValue, Is.Not.Empty);
                     Assert.That(addressKey, Is.Not.Null);
@@ -344,7 +353,7 @@ namespace JustSomeStars.Tests.EditMode
                 Assert.That(
                     gameplay.GetComponentsInChildren<SpriteRenderer>(true)
                         .Single().sprite.name,
-                    Is.EqualTo("MirraStage1Gameplay"));
+                    Is.EqualTo("MirraGameplayFinal"));
 
                 var rig = root.GetComponent(rigType);
                 Assert.That(rig, Is.Not.Null);
@@ -370,24 +379,21 @@ namespace JustSomeStars.Tests.EditMode
                     "Rendered walkable terrain and collision must remain in the " +
                     "factor-zero Gameplay band during camera travel.");
 
-                AssertProofActor(
+                AssertFinalActor(
                     root.transform,
-                    "CaptainProxy",
-                    "Assets/_JustSomeStars/Art/Characters2D/Stage1/" +
-                    "CaptainStage1.png");
-                AssertProofActor(
+                    "Captain",
+                    "JustSomeStars.Runtime.Animation2D.LayeredCharacterRenderer");
+                AssertFinalActor(
                     root.transform,
-                    "CompanionProxy",
-                    "Assets/_JustSomeStars/Art/Characters2D/Stage1/" +
-                    "CompanionStage1.png");
-                AssertProofActor(
+                    "Mira",
+                    "JustSomeStars.Runtime.Animation2D.MirraProofActorPresenter");
+                AssertFinalActor(
                     root.transform,
-                    "OriProxy",
-                    "Assets/_JustSomeStars/Art/Characters2D/Stage1/" +
-                    "OriStage1.png");
+                    "Ori",
+                    "JustSomeStars.Runtime.Animation2D.MirraProofActorPresenter");
                 Assert.That(FindDescendant(root.transform, "ClimbObstacle"),
                     Is.Not.Null);
-                Assert.That(FindDescendant(root.transform, "InteractionTarget"),
+                Assert.That(FindDescendant(root.transform, "SignalConsole"),
                     Is.Not.Null);
                 Assert.That(FindDescendant(root.transform, "TouchMove"),
                     Is.Not.Null);
@@ -399,7 +405,7 @@ namespace JustSomeStars.Tests.EditMode
 
                 var interaction = FindDescendant(
                     root.transform,
-                    "InteractionTarget");
+                    "SignalConsole");
                 var interactionType = RequireRuntimeType(
                     "JustSomeStars.Runtime.Player.SurfaceInteractionProbe2D");
                 Assert.That(interaction.GetComponent(interactionType), Is.Not.Null,
@@ -422,9 +428,8 @@ namespace JustSomeStars.Tests.EditMode
                     Is.Not.Empty);
                 Assert.That(
                     root.GetComponentsInChildren<ParticleSystem>(true),
-                    Is.Empty,
-                    "The URP 2D proof uses authored cyan/violet accents, not " +
-                    "unsupported fallback particle squares.");
+                    Has.Length.EqualTo(1),
+                    "The final proof owns one bounded signal-mote system.");
 
                 var lifecycleType = RequireRuntimeType(
                     "JustSomeStars.Runtime.Player.SurfaceGameplayLifecycle2D");
@@ -434,7 +439,7 @@ namespace JustSomeStars.Tests.EditMode
                 var serializedLifecycle = new SerializedObject(lifecycle);
                 Assert.That(
                     serializedLifecycle.FindProperty("motor")?.objectReferenceValue,
-                    Is.SameAs(FindDescendant(root.transform, "CaptainProxy")
+                    Is.SameAs(FindDescendant(root.transform, "Captain")
                         .GetComponent(RequireRuntimeType(
                             "JustSomeStars.Runtime.Player.SurfaceMotor2D"))));
                 Assert.That(
@@ -444,7 +449,7 @@ namespace JustSomeStars.Tests.EditMode
                 Assert.That(
                     serializedLifecycle.FindProperty("targetBody")
                         ?.objectReferenceValue,
-                    Is.SameAs(FindDescendant(root.transform, "CaptainProxy")
+                    Is.SameAs(FindDescendant(root.transform, "Captain")
                         .GetComponent<Rigidbody2D>()));
             }
             finally
@@ -465,12 +470,13 @@ namespace JustSomeStars.Tests.EditMode
         }
 
         [Test]
-        public async Task LocalDemoLauncher_BindsRealSurfaceServicesWithoutShippingTheProofScene()
+        public async Task LocalDemoLauncher_BindsRealSurfaceServicesAndFinalProofShips()
         {
             Assert.That(
-                EditorBuildSettings.scenes.Select(scene => scene.path),
-                Has.None.EqualTo(ScenePath),
-                "The local Stage 1 demo must remain outside every player build.");
+                EditorBuildSettings.scenes.Count(scene =>
+                    scene.enabled && scene.path == ScenePath),
+                Is.EqualTo(1),
+                "The accepted Stage 5 proof must ship exactly once for device QA.");
 
             var launcherType = Type.GetType(
                 "JustSomeStars.Editor.Stage1LocalDemoLauncher, " +
@@ -1047,6 +1053,26 @@ namespace JustSomeStars.Tests.EditMode
                 objectName + " material must pin its own canonical texture.");
         }
 
+        private static void AssertFinalActor(
+            Transform root,
+            string objectName,
+            string requiredComponentName)
+        {
+            var actor = FindDescendant(root, objectName);
+            Assert.That(actor, Is.Not.Null, objectName);
+            Assert.That(
+                actor.GetComponents<Component>().Any(component =>
+                    component != null &&
+                    component.GetType().FullName == requiredComponentName),
+                Is.True,
+                objectName + " is missing " + requiredComponentName + ".");
+            Assert.That(
+                actor.GetComponentsInChildren<SpriteRenderer>(true)
+                    .Any(renderer => renderer.sprite != null),
+                Is.True,
+                objectName + " must resolve real sprite art.");
+        }
+
         private static void AssertInputSemantics(Transform root)
         {
             var actions = InputSystem.actions;
@@ -1071,6 +1097,16 @@ namespace JustSomeStars.Tests.EditMode
                     "<Gamepad>/buttonWest",
                 }),
                 "Secondary owns jump and held jet assistance.");
+            Assert.That(
+                surface.FindAction("Lens", throwIfNotFound: true).bindings
+                    .Select(binding => binding.path),
+                Is.EquivalentTo(new[]
+                {
+                    "<Keyboard>/l",
+                    "<Gamepad>/buttonNorth",
+                }),
+                "Lens must not share URP's development-player left-shoulder " +
+                "debug-menu control.");
 
             Assert.That(
                 ReadControlPath(FindDescendant(root, "TouchJump")),
@@ -1078,6 +1114,9 @@ namespace JustSomeStars.Tests.EditMode
             Assert.That(
                 ReadControlPath(FindDescendant(root, "TouchInteract")),
                 Is.EqualTo("<Gamepad>/buttonSouth"));
+            Assert.That(
+                ReadControlPath(FindDescendant(root, "TouchLens")),
+                Is.EqualTo("<Gamepad>/buttonNorth"));
         }
 
         private static string ReadControlPath(Transform control)

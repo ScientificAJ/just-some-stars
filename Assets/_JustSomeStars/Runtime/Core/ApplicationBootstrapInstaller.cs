@@ -59,7 +59,7 @@ namespace JustSomeStars.Runtime.Core
             var actions = RequireProjectActions();
             var input = new InputRouter(actions, settings);
             var modeController = new GameModeController(
-                GameMode.Frontend,
+                InitialExperiencePolicy.CurrentMode,
                 new InputRouterGameModeRuntimeHooks(input));
             var sceneTransition = new UnitySceneTransition(
                 new FrontendDependencies(settings, input),
