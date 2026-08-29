@@ -123,7 +123,8 @@ namespace JustSomeStars.Editor
                 m_Dependencies = new SurfaceGameplayDependencies(
                     m_Settings,
                     m_Input,
-                    m_Modes);
+                    m_Modes,
+                    new GameEventBus());
                 m_Lifecycle.Configure(m_Dependencies);
                 IsReady = true;
                 var captureRenderer = ApplyRequestedCaptainVisual();

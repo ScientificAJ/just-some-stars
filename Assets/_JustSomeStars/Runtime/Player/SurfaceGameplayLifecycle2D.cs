@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using JustSomeStars.Runtime.Accessibility;
 using JustSomeStars.Runtime.Core;
+using JustSomeStars.Runtime.Discovery;
+using JustSomeStars.Runtime.Input;
 using UnityEngine;
 
 namespace JustSomeStars.Runtime.Player
@@ -16,10 +18,22 @@ namespace JustSomeStars.Runtime.Player
             Array.Empty<SurfaceInteractionProbe2D>();
         [SerializeField] private DiscoveryLensTarget2D[] lensTargets =
             Array.Empty<DiscoveryLensTarget2D>();
+        [SerializeField] private InstrumentDefinition[] lensInstruments =
+            Array.Empty<InstrumentDefinition>();
+        [SerializeField] private Prediction[] lensPredictions =
+            Array.Empty<Prediction>();
+        [SerializeField] private DiscoveryLensPresenter2D lensPresenter;
+        [SerializeField] private GameObject lensAimControl;
+        [SerializeField] private GameObject[] surfaceOnlyControls =
+            Array.Empty<GameObject>();
+
+        private DiscoveryLensController lensController;
 
         public SurfaceGameplayDependencies Dependencies { get; private set; }
 
         public bool IsConfigured => Dependencies != null;
+
+        public DiscoveryLensController LensController => lensController;
 
         public void Configure(SurfaceGameplayDependencies dependencies)
         {
@@ -54,11 +68,19 @@ namespace JustSomeStars.Runtime.Player
                 {
                     interaction.BindInput(dependencies.Input);
                 }
-                foreach (var lensTarget in lensTargets.Where(
-                    candidate => candidate != null))
-                {
-                    lensTarget.BindInput(dependencies.Input);
-                }
+                lensController = new DiscoveryLensController(
+                    dependencies.Input,
+                    dependencies.Modes,
+                    dependencies.Settings,
+                    new EvidenceRecorder(dependencies.Events),
+                    compositionCamera.ControlledCamera,
+                    () => targetBody.position,
+                    lensTargets.Where(candidate => candidate != null),
+                    lensInstruments.Where(candidate => candidate != null),
+                    lensPredictions.Where(candidate => candidate != null));
+                lensController.Bind();
+                lensPresenter?.Bind(lensController);
+                ApplyLensTouchControls(dependencies.Modes.CurrentPolicy);
                 compositionCamera.ApplySettings(dependencies.Settings.Current);
                 compositionCamera.SetPolicy(
                     dependencies.Modes.CurrentPolicy.CameraPolicy);
@@ -71,11 +93,9 @@ namespace JustSomeStars.Runtime.Player
             {
                 dependencies.Settings.SettingsChanged -= OnSettingsChanged;
                 dependencies.Modes.StateChanged -= OnModeStateChanged;
-                foreach (var lensTarget in lensTargets.Where(
-                    candidate => candidate != null))
-                {
-                    lensTarget.ReleaseInput(dependencies.Input);
-                }
+                lensController?.Dispose();
+                lensController = null;
+                lensPresenter?.Release();
                 foreach (var interaction in interactionProbes.Where(
                     candidate => candidate != null))
                 {
@@ -107,11 +127,14 @@ namespace JustSomeStars.Runtime.Player
             Dependencies = null;
             dependencies.Settings.SettingsChanged -= OnSettingsChanged;
             dependencies.Modes.StateChanged -= OnModeStateChanged;
-            foreach (var lensTarget in lensTargets.Where(
-                candidate => candidate != null))
-            {
-                lensTarget.ReleaseInput(dependencies.Input);
-            }
+            lensPresenter?.Release();
+            lensController?.Dispose();
+            lensController = null;
+            ApplyLensTouchControls(new GameModeRuntimePolicy(
+                GameMode.Surface,
+                GameOverlay.None,
+                GameplayInputMode.Surface,
+                GameCameraPolicy.Surface));
             foreach (var interaction in interactionProbes.Where(
                 candidate => candidate != null))
             {
@@ -126,6 +149,7 @@ namespace JustSomeStars.Runtime.Player
             if (Dependencies != null)
             {
                 compositionCamera.SetTargetVelocity(targetBody.linearVelocity);
+                lensController?.Tick(Time.unscaledDeltaTime);
             }
         }
 
@@ -137,6 +161,22 @@ namespace JustSomeStars.Runtime.Player
         private void OnModeStateChanged(GameModeRuntimePolicy policy)
         {
             compositionCamera.SetPolicy(policy.CameraPolicy);
+            ApplyLensTouchControls(policy);
+        }
+
+        private void ApplyLensTouchControls(GameModeRuntimePolicy policy)
+        {
+            var lensIsActive = policy.Mode == GameMode.Lens &&
+                policy.Overlay == GameOverlay.None;
+            if (lensAimControl != null)
+            {
+                lensAimControl.SetActive(lensIsActive);
+            }
+            foreach (var control in surfaceOnlyControls.Where(
+                candidate => candidate != null))
+            {
+                control.SetActive(!lensIsActive);
+            }
         }
 
         private void OnDestroy()

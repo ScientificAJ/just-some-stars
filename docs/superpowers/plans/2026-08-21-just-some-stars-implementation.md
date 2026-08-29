@@ -1589,20 +1589,20 @@ git commit -m "feat: add authored crew intelligence"
 - Produces: imaging, spectrum, temperature, atmosphere, motion and Signal modes.
 - Publishes: `PhenomenonObserved`, `PredictionRecorded` and `InstrumentUsed` events.
 
-- [ ] **Step 1: Write tests proving incorrect predictions still record evidence and never block mission continuation**
+- [x] **Step 1: Write tests proving incorrect predictions still record evidence and never block mission continuation**
 
-- [ ] **Step 2: Implement instrument/phenomenon compatibility and evidence records**
+- [x] **Step 2: Implement instrument/phenomenon compatibility and evidence records**
 
-- [ ] **Step 3: Implement layered Lens focus, aiming, reticle, scan progress and mode switching**
+- [x] **Step 3: Implement layered Lens focus, aiming, reticle, scan progress and mode switching**
 
 Lens focus resolves declared phenomena and depth bands inside the composition;
 it does not switch into a free first-person or orbiting 3D camera.
 
-- [ ] **Step 4: Create three fixtures: Mirra temperature, Koro spectrum and Aster motion**
+- [x] **Step 4: Create three fixtures: Mirra temperature, Koro spectrum and Aster motion**
 
-- [ ] **Step 5: Verify Guided hints and Deep science detail do not alter scientific outcomes**
+- [x] **Step 5: Verify Guided hints and Deep science detail do not alter scientific outcomes**
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add Assets/_JustSomeStars/Runtime/Discovery Assets/_JustSomeStars/Content/Phenomena Assets/_JustSomeStars/Tests

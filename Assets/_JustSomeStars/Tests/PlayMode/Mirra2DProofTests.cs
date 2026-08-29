@@ -1,15 +1,12 @@
 using System;
-using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
-using JustSomeStars.Runtime.Accessibility;
 using JustSomeStars.Runtime.Animation2D;
-using JustSomeStars.Runtime.Input;
+using JustSomeStars.Runtime.Discovery;
+using JustSomeStars.Runtime.Player;
+using JustSomeStars.Runtime.Rendering2D;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace JustSomeStars.Tests.PlayMode
@@ -65,71 +62,38 @@ namespace JustSomeStars.Tests.PlayMode
         }
 
         [Test]
-        public async Task LensTarget_TogglesFromTheRealSurfaceLensCommand()
+        public void LensTarget_IsPassiveAndOnlyControllerFocusMutatesIt()
         {
-            var testRoot = Path.Combine(
-                Path.GetTempPath(),
-                "JssTask12Stage5Lens",
-                Guid.NewGuid().ToString("N"));
-            var settings = new SettingsService(Path.Combine(testRoot, "settings.json"));
-            var actions = UnityEngine.Object.Instantiate(InputSystem.actions);
-            var input = new InputRouter(actions, settings);
             var target = new GameObject("MirraLensTargetTest");
-            Keyboard keyboard = null;
-            var priorBackgroundBehavior = InputSystem.settings.backgroundBehavior;
-            var priorEditorBehavior =
-                InputSystem.settings.editorInputBehaviorInPlayMode;
+            var phenomenon = ScriptableObject.CreateInstance<PhenomenonDefinition>();
             try
             {
-                InputSystem.settings.backgroundBehavior =
-                    InputSettings.BackgroundBehavior.IgnoreFocus;
-                InputSystem.settings.editorInputBehaviorInPlayMode =
-                    InputSettings.EditorInputBehaviorInPlayMode
-                        .AllDeviceInputAlwaysGoesToGameView;
-                Assert.That(
-                    (await settings.InitializeAsync(CancellationToken.None)).IsAvailable,
-                    Is.True);
-                Assert.That(
-                    (await input.InitializeAsync(CancellationToken.None)).IsAvailable,
-                    Is.True);
-                input.SetGameplayMode(GameplayInputMode.Surface);
-                var lens = Stage1RuntimeReflection.AddComponent(
-                    target,
-                    "JustSomeStars.Runtime.Player.DiscoveryLensTarget2D");
-                Stage1RuntimeReflection.Invoke(lens, "Configure", "mirra.signal-spire");
-                Stage1RuntimeReflection.Invoke(lens, "BindInput", input);
+                phenomenon.Configure(
+                    "phenomenon.mirra.temperature-gradient",
+                    "science-source.mirra.tidal-climate",
+                    LayerBand.Midground,
+                    LensFocusBehavior.Region,
+                    new[] { LensMode.Temperature },
+                    "hypothesis.mirra.day-night-circulation",
+                    "discovery.hint.mirra",
+                    "discovery.detail.mirra",
+                    0.75f);
+                var lens = target.AddComponent<DiscoveryLensTarget2D>();
+                lens.Configure(phenomenon);
 
-                keyboard = InputSystem.AddDevice<Keyboard>();
-                InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.L));
-                InputSystem.Update();
-                Assert.That(
-                    Stage1RuntimeReflection.Read<bool>(lens, "IsFocused"),
-                    Is.True);
-                InputSystem.QueueStateEvent(keyboard, new KeyboardState());
-                InputSystem.Update();
-                InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.L));
-                InputSystem.Update();
-                Assert.That(
-                    Stage1RuntimeReflection.Read<bool>(lens, "IsFocused"),
-                    Is.False);
+                Assert.That(lens.IsConfigured, Is.True);
+                Assert.That(lens.TargetId, Is.EqualTo(
+                    "phenomenon.mirra.temperature-gradient"));
+                Assert.That(lens.IsFocused, Is.False);
+                lens.SetFocused(true);
+                Assert.That(lens.IsFocused, Is.True);
+                lens.SetFocused(false);
+                Assert.That(lens.IsFocused, Is.False);
             }
             finally
             {
-                InputSystem.settings.editorInputBehaviorInPlayMode =
-                    priorEditorBehavior;
-                InputSystem.settings.backgroundBehavior = priorBackgroundBehavior;
-                if (keyboard != null && keyboard.added)
-                {
-                    InputSystem.RemoveDevice(keyboard);
-                }
                 UnityEngine.Object.DestroyImmediate(target);
-                await input.ShutdownAsync();
-                await settings.ShutdownAsync();
-                UnityEngine.Object.DestroyImmediate(actions);
-                if (Directory.Exists(testRoot))
-                {
-                    Directory.Delete(testRoot, true);
-                }
+                UnityEngine.Object.DestroyImmediate(phenomenon);
             }
         }
 

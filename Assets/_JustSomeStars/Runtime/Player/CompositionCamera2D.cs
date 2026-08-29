@@ -91,6 +91,9 @@ namespace JustSomeStars.Runtime.Player
         public CompositionCameraProfile[] Profiles =>
             (CompositionCameraProfile[])profiles.Clone();
         public CompositionCameraProfile ActiveProfile => activeProfile;
+        public Camera ControlledCamera => controlledCamera != null
+            ? controlledCamera
+            : GetComponent<Camera>();
 
         private void OnEnable()
         {

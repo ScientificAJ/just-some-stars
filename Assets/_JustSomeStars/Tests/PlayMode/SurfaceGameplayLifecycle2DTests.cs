@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using JustSomeStars.Runtime.Accessibility;
 using JustSomeStars.Runtime.Core;
+using JustSomeStars.Runtime.Discovery;
 using JustSomeStars.Runtime.Input;
 using JustSomeStars.Runtime.Player;
 using JustSomeStars.Runtime.UI;
@@ -113,7 +114,8 @@ namespace JustSomeStars.Tests.PlayMode
                 new SurfaceGameplayDependencies(
                     m_OnScreenSettings,
                     m_OnScreenInput,
-                    m_OnScreenModes));
+                    m_OnScreenModes,
+                    new GameEventBus()));
             m_PreviousBackgroundBehavior =
                 InputSystem.settings.backgroundBehavior;
             m_PreviousEditorBehavior =
@@ -158,6 +160,23 @@ namespace JustSomeStars.Tests.PlayMode
                 FindObjectsInactive.Include);
             Assert.That(lifecycle, Is.Not.Null);
             Assert.That(lifecycle.IsConfigured, Is.True);
+            var instruments = ReadField<InstrumentDefinition[]>(
+                lifecycle,
+                "lensInstruments");
+            Assert.That(instruments, Has.Length.EqualTo(1));
+            Assert.That(instruments[0], Is.Not.Null,
+                "The production Mirra scene must bind its thermal instrument.");
+            Assert.That(instruments[0].StableId.Value,
+                Is.EqualTo("instrument.mirra.thermal-imager"));
+            var predictions = ReadField<Prediction[]>(lifecycle, "lensPredictions");
+            Assert.That(predictions, Has.Length.EqualTo(1));
+            Assert.That(predictions[0], Is.Not.Null);
+            Assert.That(predictions[0].StableId.Value,
+                Is.EqualTo("prediction.mirra.day-night-circulation"));
+            Assert.That(predictions[0].PhenomenonId.Value,
+                Is.EqualTo("phenomenon.mirra.temperature-gradient"));
+            Assert.That(predictions[0].HypothesisId.Value,
+                Is.EqualTo("hypothesis.mirra.day-night-circulation"));
 
             var motor = ReadField<Component>(lifecycle, "motor");
             var body = ReadField<Rigidbody2D>(lifecycle, "targetBody");
@@ -285,10 +304,137 @@ namespace JustSomeStars.Tests.PlayMode
                 DiscoveryLensTarget2D>(FindObjectsInactive.Exclude);
             Assert.That(lensTarget, Is.Not.Null);
             Assert.That(lensTarget.IsFocused, Is.False);
+            body.position = lensTarget.transform.position;
+            body.linearVelocity = Vector2.zero;
+            Physics2D.SyncTransforms();
             var lensCenter = CenterOf(lensButton.transform);
             Press(inputModule, m_OnScreenTouchscreen, lensCenter);
-            Assert.That(lensTarget.IsFocused, Is.True);
+            yield return WaitForTask(lifecycle.LensController.ActiveTransition);
+            Assert.That(m_OnScreenModes.CurrentMode, Is.EqualTo(GameMode.Lens));
+            Assert.That(m_OnScreenInput.ActiveGameplayMode,
+                Is.EqualTo(GameplayInputMode.Lens));
+            Assert.That(lifecycle.LensController.SelectedBand,
+                Is.EqualTo(JustSomeStars.Runtime.Rendering2D.LayerBand.Midground),
+                "The production Lens must start on the authored target band.");
+            lifecycle.LensController.Advance(0f, Vector2.zero, scanHeld: false);
+            Assert.That(lensTarget.IsFocused, Is.True,
+                "The production Mirra target must be focusable from the real body origin.");
             Release(inputModule, m_OnScreenTouchscreen, lensCenter);
+
+            var lensAim = UnityEngine.Object.FindObjectsByType<OnScreenStick>(
+                    FindObjectsInactive.Include,
+                    FindObjectsSortMode.None)
+                .Single(candidate =>
+                    candidate.controlPath == "<Gamepad>/rightStick");
+            Assert.That(lensAim.gameObject.activeInHierarchy, Is.True);
+            Assert.That(stick.gameObject.activeInHierarchy, Is.False);
+            Assert.That(jumpButton.gameObject.activeInHierarchy, Is.False);
+            Assert.That(interactButton.gameObject.activeInHierarchy, Is.False);
+            Assert.That(lensButton.gameObject.activeInHierarchy, Is.True);
+
+            var allButtons = UnityEngine.Object.FindObjectsByType<OnScreenButton>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None);
+            var lensModeButton = allButtons.Single(candidate =>
+                candidate.name == "TouchLensMode");
+            var lensScanButton = allButtons.Single(candidate =>
+                candidate.name == "TouchLensScan");
+            Assert.That(lensModeButton.controlPath,
+                Is.EqualTo("<Gamepad>/buttonWest"));
+            Assert.That(lensScanButton.controlPath,
+                Is.EqualTo("<Gamepad>/buttonSouth"));
+            Assert.That(lensModeButton.gameObject.activeInHierarchy, Is.True);
+            Assert.That(lensScanButton.gameObject.activeInHierarchy, Is.True);
+            var reticle = UnityEngine.Object.FindObjectsByType<Transform>(
+                    FindObjectsInactive.Include,
+                    FindObjectsSortMode.None)
+                .Single(candidate => candidate.name == "TouchLensReticle");
+            var progress = UnityEngine.Object.FindObjectsByType<Transform>(
+                    FindObjectsInactive.Include,
+                    FindObjectsSortMode.None)
+                .Single(candidate => candidate.name == "TouchLensProgress")
+                .GetComponent<UnityEngine.UI.Image>();
+            var status = UnityEngine.Object.FindObjectsByType<Transform>(
+                    FindObjectsInactive.Include,
+                    FindObjectsSortMode.None)
+                .Single(candidate => candidate.name == "TouchLensStatus")
+                .GetComponent<TMPro.TMP_Text>();
+            InvokeAny(ReadField<Component>(lifecycle, "lensPresenter"), "LateUpdate");
+            Assert.That(reticle.gameObject.activeInHierarchy, Is.True);
+            Assert.That(progress, Is.Not.Null);
+            Assert.That(status, Is.Not.Null);
+            Assert.That(status.text, Is.EqualTo("INCOMPATIBLE"));
+            var lensModeLabel = lensModeButton.GetComponentInChildren<
+                TMPro.TMP_Text>(true);
+            var lensScanLabel = lensScanButton.GetComponentInChildren<
+                TMPro.TMP_Text>(true);
+            Assert.That(lensModeLabel, Is.Not.Null);
+            Assert.That(lensScanLabel, Is.Not.Null);
+            Assert.That(lensModeLabel.text, Is.EqualTo("MODE"));
+            Assert.That(lensScanLabel.text, Is.EqualTo("SCAN"));
+
+            var lensModeCenter = CenterOf(lensModeButton.transform);
+            Press(inputModule, m_OnScreenTouchscreen, lensModeCenter);
+            Assert.That(lifecycle.LensController.SelectedMode,
+                Is.EqualTo(LensMode.Spectrum));
+            Release(inputModule, m_OnScreenTouchscreen, lensModeCenter);
+            Press(inputModule, m_OnScreenTouchscreen, lensModeCenter);
+            Assert.That(lifecycle.LensController.SelectedMode,
+                Is.EqualTo(LensMode.Temperature));
+            Release(inputModule, m_OnScreenTouchscreen, lensModeCenter);
+            lifecycle.LensController.Advance(0f, Vector2.zero, scanHeld: false);
+            Assert.That(lifecycle.LensController.ReticleState,
+                Is.EqualTo(LensReticleState.Focused));
+            InvokeAny(ReadField<Component>(lifecycle, "lensPresenter"), "LateUpdate");
+            Assert.That(status.text, Is.EqualTo("FOCUS"));
+
+            var aimCenter = CenterOf(lensAim.transform);
+            Press(inputModule, m_OnScreenTouchscreen, aimCenter);
+            var aimDraggedPosition = aimCenter +
+                Vector2.right * lensAim.movementRange;
+            QueueTouch(
+                inputModule,
+                m_OnScreenTouchscreen,
+                UnityEngine.InputSystem.TouchPhase.Moved,
+                aimDraggedPosition,
+                aimDraggedPosition - aimCenter);
+            Assert.That(m_OnScreenInput.ReadLook().x, Is.GreaterThan(0.9f),
+                "The production Lens stick must feed semantic Look.");
+            Release(inputModule, m_OnScreenTouchscreen, aimDraggedPosition);
+
+            lifecycle.LensController.Advance(0f, Vector2.left, scanHeld: false);
+            var scanCenter = CenterOf(lensScanButton.transform);
+            Press(inputModule, m_OnScreenTouchscreen, scanCenter);
+            Assert.That(m_OnScreenInput.IsCommandPressed(
+                SemanticGameplayCommand.Primary), Is.True);
+            lifecycle.LensController.Advance(
+                instruments[0].ScanDurationSeconds,
+                Vector2.zero,
+                m_OnScreenInput.IsCommandPressed(SemanticGameplayCommand.Primary));
+            InvokeAny(ReadField<Component>(lifecycle, "lensPresenter"), "LateUpdate");
+            Assert.That(lifecycle.LensController.LastEvidence, Is.Not.Null,
+                "The real Mirra SCAN control must publish evidence.");
+            Assert.That(lifecycle.LensController.LastEvidence.PredictionWasCorrect,
+                Is.True);
+            Assert.That(lifecycle.LensController.ReticleState,
+                Is.EqualTo(LensReticleState.Complete));
+            Assert.That(progress.fillAmount, Is.EqualTo(1f).Within(0.001f));
+            Assert.That(status.text, Is.EqualTo("RECORDED"));
+            Release(inputModule, m_OnScreenTouchscreen, scanCenter);
+
+            Press(inputModule, m_OnScreenTouchscreen, lensCenter);
+            yield return WaitForTask(lifecycle.LensController.ActiveTransition);
+            Assert.That(m_OnScreenModes.CurrentMode, Is.EqualTo(GameMode.Surface));
+            Assert.That(m_OnScreenInput.ActiveGameplayMode,
+                Is.EqualTo(GameplayInputMode.Surface));
+            Release(inputModule, m_OnScreenTouchscreen, lensCenter);
+            Assert.That(lensAim.gameObject.activeInHierarchy, Is.False);
+            Assert.That(lensModeButton.gameObject.activeInHierarchy, Is.False);
+            Assert.That(lensScanButton.gameObject.activeInHierarchy, Is.False);
+            Assert.That(reticle.gameObject.activeInHierarchy, Is.False);
+            Assert.That(stick.gameObject.activeInHierarchy, Is.True);
+            Assert.That(jumpButton.gameObject.activeInHierarchy, Is.True);
+            Assert.That(interactButton.gameObject.activeInHierarchy, Is.True);
         }
 
         [Test]
@@ -392,7 +538,8 @@ namespace JustSomeStars.Tests.PlayMode
                     dependenciesType,
                     settings,
                     input,
-                    modes);
+                    modes,
+                    new GameEventBus());
                 var constructor = typeof(UnitySceneTransition).GetConstructors()
                     .SingleOrDefault(candidate =>
                     {

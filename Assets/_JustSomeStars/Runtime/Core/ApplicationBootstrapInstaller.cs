@@ -61,12 +61,14 @@ namespace JustSomeStars.Runtime.Core
             var modeController = new GameModeController(
                 InitialExperiencePolicy.CurrentMode,
                 new InputRouterGameModeRuntimeHooks(input));
+            var gameEvents = new GameEventBus();
             var sceneTransition = new UnitySceneTransition(
                 new FrontendDependencies(settings, input),
                 new SurfaceGameplayDependencies(
                     settings,
                     input,
-                    modeController));
+                    modeController,
+                    gameEvents));
             return CreateCompositionWithModeController(
                 settings,
                 localSave,

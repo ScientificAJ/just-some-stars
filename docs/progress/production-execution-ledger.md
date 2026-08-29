@@ -319,16 +319,46 @@ implementation plans and issue register; it does not replace either authority.
 - The same bounded harsh critic returned `PROCEED` after the final total-order
   correction.
 
-## Immediate next task: Task 16
+## Task 16 checkpoint
 
-Task 15 is complete. Next, implement Discovery Lens modes, authored
-instrument/phenomenon compatibility, prediction and evidence recording, and
-typed discovery events without reopening the accepted crew, interaction,
-motor, camera or Captain-presentation contracts.
+### Delivered scope
+
+- Imaging, Spectrum, Temperature, Atmosphere, Motion and Signal are the exact
+  six Lens modes, backed by authored instrument/phenomenon compatibility.
+- Point, Track and Region focus use distinct deterministic 2D behavior inside
+  declared composition depth bands; the orthographic composition camera never
+  becomes a free 3D camera.
+- Mirra, Koro and Aster fixtures bind stable content IDs, science-source IDs,
+  observable modes and Guided/Deep presentation keys.
+- Predictions and evidence are serializable, incorrect predictions remain
+  recoverable, and successful scans publish the exact typed discovery events.
+- The real Mirra mobile route owns Lens entry, aiming, mode switching, SCAN,
+  reticle, progress and status presentation through composition-injected input.
+- Controller disposal cancels or quiesces an in-flight Lens transition and
+  recovers Surface input without leaving a second mode authority.
+
+### Final gate
+
+- Authentic critic-correction REDs failed exactly on Track/Region behavior,
+  transition-racy teardown and the missing production prediction seam.
+- Fresh `EvidenceRecorderTests`: `8/8` passed, exit code 0.
+- Fresh `DiscoveryLensTests`: `6/6` passed, exit code 0.
+- Fresh `Mirra2DProofTests`: `3/3` passed, exit code 0.
+- Fresh `SurfaceGameplayLifecycle2DTests`: `2/2` passed, exit code 0; the real
+  touch route records Mirra evidence and visibly reaches `RECORDED` at full
+  progress.
+- Every final log is free of C# compiler, unhandled-exception and WeakPtr
+  diagnostics, and the same bounded harsh critic returned `PROCEED`.
+
+## Immediate next task: Task 17
+
+Task 16 is complete. Next, implement the declared 2.5D flight model, assists,
+depth lanes, landing and checkpoint recovery without reopening the accepted
+surface, crew or Discovery Lens contracts.
 
 ## User-help queue
 
-No user decision or external action is currently blocking Task 16. JSS-019
+No user decision or external action is currently blocking Task 17. JSS-019
 records the remote-push safety block without stopping continued local work.
 
 ## Chronological checkpoint log
@@ -441,3 +471,12 @@ records the remote-push safety block without stopping continued local work.
   form a true order-independent total order. Fresh focused EditMode is `11/11`,
   PlayMode is `8/8`, both exit 0, and the same critic returned `PROCEED`.
   Task 16 is next; JSS-019 still prevents remote delivery but not local work.
+- 2026-08-30: Task 16 completed the evidence-driven Discovery Lens. The six
+  exact modes use authored instrument/phenomenon compatibility, deterministic
+  Point/Track/Region focus, serializable predictions and recoverable evidence.
+  The real Mirra touch route now selects the authored Midground target, switches
+  to Temperature, completes SCAN and presents `RECORDED` with full progress.
+  The critic's four blockers were reproduced by focused REDs and corrected;
+  final focused gates are EditMode `8/8` plus PlayMode `6/6`, `3/3` and `2/2`,
+  all exit 0, and the same critic returned `PROCEED`. Task 17 is next; JSS-019
+  still prevents remote delivery but not local work.
