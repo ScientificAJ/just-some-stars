@@ -238,14 +238,18 @@ class CaptainSpritePackageTests(unittest.TestCase):
                         anchor["id"]: anchor["runtimePixels"]
                         for anchor in frame["anchors"]
                     }
-                    foot_separation = abs(
-                        anchors["LeftFoot"][0] - anchors["RightFoot"][0]
-                    )
+                    foot_distance = (
+                        (anchors["LeftFoot"][0] -
+                         anchors["RightFoot"][0]) ** 2 +
+                        (anchors["LeftFoot"][1] -
+                         anchors["RightFoot"][1]) ** 2
+                    ) ** 0.5
                     self.assertGreaterEqual(
-                        foot_separation,
-                        30.0,
+                        foot_distance,
+                        18.0,
                         f"{publication['id']} run frame {frame_index} must "
-                        "keep both legs visibly separated at runtime scale.",
+                        "keep both feet visibly separated at runtime scale "
+                        "through horizontal stride or passing-pose lift.",
                     )
                     body_frame = atlas.crop((
                         frame_index * 128,
@@ -253,6 +257,16 @@ class CaptainSpritePackageTests(unittest.TestCase):
                         (frame_index + 1) * 128,
                         384,
                     ))
+                    body_components = self._significant_alpha_components(
+                        body_frame
+                    )
+                    self.assertEqual(
+                        len(body_components),
+                        1,
+                        f"{publication['id']} run frame {frame_index} must "
+                        "keep both animated legs connected to the pelvis; "
+                        f"observed component sizes {body_components}.",
+                    )
                     default_boot_frame = boots_page.crop((
                         frame_index * 64,
                         96,
@@ -743,6 +757,40 @@ class CaptainSpritePackageTests(unittest.TestCase):
                 image.seek(frame_index)
                 frames.append(image.convert("RGBA"))
         return frames
+
+    @staticmethod
+    def _significant_alpha_components(image, threshold=32, minimum_pixels=8):
+        alpha = image.getchannel("A")
+        pixels = alpha.load()
+        width, height = alpha.size
+        visited = set()
+        components = []
+        for y in range(height):
+            for x in range(width):
+                if (x, y) in visited or pixels[x, y] < threshold:
+                    continue
+                pending = [(x, y)]
+                visited.add((x, y))
+                count = 0
+                while pending:
+                    current_x, current_y = pending.pop()
+                    count += 1
+                    for offset_y in (-1, 0, 1):
+                        for offset_x in (-1, 0, 1):
+                            neighbour = (
+                                current_x + offset_x,
+                                current_y + offset_y,
+                            )
+                            if (
+                                    0 <= neighbour[0] < width and
+                                    0 <= neighbour[1] < height and
+                                    neighbour not in visited and
+                                    pixels[neighbour[0], neighbour[1]] >= threshold):
+                                visited.add(neighbour)
+                                pending.append(neighbour)
+                if count >= minimum_pixels:
+                    components.append(count)
+        return sorted(components, reverse=True)
 
 
 if __name__ == "__main__":

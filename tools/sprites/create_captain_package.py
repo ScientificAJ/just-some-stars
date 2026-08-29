@@ -446,6 +446,8 @@ def _motion_state(clip_id, frame_index, frame_count):
         "rearLegDy": 0,
         "frontLegDx": 0,
         "frontLegDy": 0,
+        "rearLegScaleY": 1.0,
+        "frontLegScaleY": 1.0,
         "rearArmAngle": 0.0,
         "armAngle": 0.0,
         "dx": 0,
@@ -461,24 +463,22 @@ def _motion_state(clip_id, frame_index, frame_count):
                      headAngle=0.7 * math.sin(cycle),
                      armAngle=-1.5 * math.sin(cycle))
     elif clip_id == "run":
-        # Contact frames need the widest stride. The previous sine started both
-        # contact frames at the neutral pose, collapsing the two legs into one
-        # mobile-scale silhouette. A cosine starts on contact, while the small
-        # passing-pose lift keeps the swing boot readable at quarter-cycle.
+        # Keep each whole leg hinged to its authored hip. Translating a leg to
+        # fake knee lift tears it away from the pelvis at the passing pose, so
+        # the eight poses retain a small signed angle instead of reaching a
+        # fully-overlapped zero-angle silhouette.
+        rear_leg_angles = [-28, -18, -4, 16, 28, 18, 4, -16]
+        front_leg_angles = [28, 18, 4, -16, -28, -18, -4, 16]
+        rear_leg_scale = [1.0, 0.94, 0.74, 0.76, 1.0, 1.0, 1.0, 1.0]
+        front_leg_scale = [1.0, 1.0, 1.0, 1.0, 1.0, 0.94, 0.74, 0.76]
         swing = math.cos(cycle)
-        rear_lift = [0, -4, -16, -8, 0, 0, 0, 0][frame_index]
-        front_lift = [0, 0, 0, 0, 0, -4, -16, -8][frame_index]
-        rear_passing_offset = [0, 0, -28, 10, 0, 0, 0, 0][frame_index]
-        front_passing_offset = [0, 0, 0, 0, 0, -8, 28, 10][frame_index]
         state.update(
             bodyAngle=-3.5,
             dy=round(-4.0 * abs(math.sin(cycle))),
-            rearLegAngle=-30.0 * swing,
-            frontLegAngle=30.0 * swing,
-            rearLegDx=rear_passing_offset,
-            rearLegDy=rear_lift,
-            frontLegDx=front_passing_offset,
-            frontLegDy=front_lift,
+            rearLegAngle=rear_leg_angles[frame_index],
+            frontLegAngle=front_leg_angles[frame_index],
+            rearLegScaleY=rear_leg_scale[frame_index],
+            frontLegScaleY=front_leg_scale[frame_index],
             rearArmAngle=24.0 * swing,
             armAngle=-24.0 * swing,
             headAngle=1.2 * math.sin(cycle + math.pi / 2),
@@ -742,6 +742,7 @@ def _render_frame(puppet, clip_id, frame_index, frame_count):
                 puppet["rearLeg"],
                 angle=state["rearLegAngle"],
                 pivot=(left + 0.42 * width, hips[1]),
+                scale=(1.0, state["rearLegScaleY"]),
             ),
             state["rearLegDx"],
             state["rearLegDy"],
@@ -754,6 +755,7 @@ def _render_frame(puppet, clip_id, frame_index, frame_count):
                 puppet["frontLeg"],
                 angle=state["frontLegAngle"],
                 pivot=(left + 0.61 * width, hips[1]),
+                scale=(1.0, state["frontLegScaleY"]),
             ),
             state["frontLegDx"],
             state["frontLegDy"],
@@ -810,6 +812,13 @@ def _rotate_point(point, angle_degrees, pivot):
     )
 
 
+def _scale_leg_point(point, pivot, scale_y):
+    return (
+        point[0],
+        pivot[1] + (point[1] - pivot[1]) * scale_y,
+    )
+
+
 def _apply_global_point(point, state, root):
     scaled = (
         root[0] + (point[0] - root[0]) * state["scaleX"],
@@ -828,25 +837,43 @@ def _frame_anchors(bounds, clip_id, frame_index, frame_count, facing):
     hips = (left + 0.52 * width, top + 0.54 * height)
     neck = (left + 0.58 * width, top + 0.28 * height)
     shoulder = (left + 0.59 * width, top + 0.34 * height)
+    rear_pivot = (left + 0.42 * width, hips[1])
+    front_pivot = (left + 0.61 * width, hips[1])
     rear_foot = _rotate_point(
-        (left + 0.31 * width, bottom - 0.01 * height),
+        _scale_leg_point(
+            (left + 0.31 * width, bottom - 0.01 * height),
+            rear_pivot,
+            state["rearLegScaleY"],
+        ),
         state["rearLegAngle"],
-        (left + 0.42 * width, hips[1]),
+        rear_pivot,
     )
     rear_boot_top = _rotate_point(
-        (left + 0.31 * width, bottom - 0.16 * height),
+        _scale_leg_point(
+            (left + 0.31 * width, bottom - 0.16 * height),
+            rear_pivot,
+            state["rearLegScaleY"],
+        ),
         state["rearLegAngle"],
-        (left + 0.42 * width, hips[1]),
+        rear_pivot,
     )
     front_foot = _rotate_point(
-        (left + 0.74 * width, bottom - 0.01 * height),
+        _scale_leg_point(
+            (left + 0.74 * width, bottom - 0.01 * height),
+            front_pivot,
+            state["frontLegScaleY"],
+        ),
         state["frontLegAngle"],
-        (left + 0.61 * width, hips[1]),
+        front_pivot,
     )
     front_boot_top = _rotate_point(
-        (left + 0.74 * width, bottom - 0.16 * height),
+        _scale_leg_point(
+            (left + 0.74 * width, bottom - 0.16 * height),
+            front_pivot,
+            state["frontLegScaleY"],
+        ),
         state["frontLegAngle"],
-        (left + 0.61 * width, hips[1]),
+        front_pivot,
     )
     rear_foot = (
         rear_foot[0] + state["rearLegDx"],

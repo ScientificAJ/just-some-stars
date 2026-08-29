@@ -365,14 +365,25 @@ No user decision or external action is currently blocking Task 14.
   console radius. The hard timeout arrived before that correction could run.
   No final video is claimed; the lease, tunnel and Argent server are closed,
   `lim android list --json` is empty, and Task 13 remains active.
-- 2026-08-29: Task 13 completed. The accepted full action clip visibly proves
-  run, Jump, `SIGNAL LINKED` interaction and Lens response. After the user
-  identified the moving lower-leg/boot disappearance, an authentic pixel RED
-  showed the module drifting off the transformed leg; the generator now derives
-  boot-top anchors from each real hip rotation and translation. Final focused
-  gates are Captain package Python `6/6`, importer `6/6` and actual layered
-  renderer `3/3`. The rebuilt Android APK SHA-256 is
-  `ba80a0b8fc2389145dd25202da56c090954960dc8c54c6550ddb64bcbdea73b3`;
-  its `1616x720` 60-fps full-stride spot-check keeps both lower legs visible
-  and received bounded extreme-critic `PASS`. The final process log is clean,
-  all paid instances are deleted, and Task 14 is next.
+- 2026-08-29: Task 13 completed after a second, stricter lower-leg correction.
+  The user correctly rejected `final-lower-leg-run-v2.mp4`: the first fix kept
+  the boot aligned with a translated leg but the full leg still tore away from
+  the pelvis and glitched during motion. An authentic pixel-connectivity RED
+  found two significant alpha components in Average/right run frame 2. The
+  production generator no longer translates whole run legs. Each leg remains
+  hinged to its authored hip, swing clearance comes from a bounded scale around
+  that hip, and the lower-leg/boot anchors use the identical scale and rotation.
+  All six family/facing run sets now remain one connected body component, with
+  minimum runtime foot distance above the `18 px` floor. Final focused gates are
+  Captain package Python `6/6`, importer `6/6` and actual layered renderer
+  `3/3`. The rebuilt Android APK SHA-256 is
+  `9c8652adcdd8dbc315e9c3a58cedcb3ba4191449a2acbc02f481617b59e14d12`.
+  Its accepted `1616x720` runtime excerpt
+  `final-connected-stride-runtime.mp4` has SHA-256
+  `cb23adc61887171edc0e7443a80e22d696205d9a1c6a0ab442a6bbf80326d008`;
+  both legs and boots remain connected and readable through the stride, and a
+  fresh harsh critic returned `PASS` after reviewing every frame in seconds
+  28–32 for detachment, popping, visibility and mobile readability. Two
+  earlier bounded diagnostic instances expired, the final instance was deleted,
+  `lim android list --json` returned `[]`, Argent and all tunnels were stopped,
+  and Task 14 is next.

@@ -449,37 +449,37 @@
       "facing": "right",
       "family": "Compact",
       "path": "Evidence/ContactSheets/captain-compact-right-contact-sheet.png",
-      "sha256": "45d212e427b161da7f412c3e70978fe0a6b1ea587062a5fa7c2554e7ff417af1"
+      "sha256": "945cc26c630d236bbd58a6c80283f070c1ad90e3810283d4e5e5435b67843136"
     },
     {
       "facing": "left",
       "family": "Compact",
       "path": "Evidence/ContactSheets/captain-compact-left-contact-sheet.png",
-      "sha256": "46c465adc5008b09ea15e4613de06af7fe5c133b4f52a802c66c94fc156f19a2"
+      "sha256": "8904abffa55c3d70c9057565ba073531083ca9b0d6e5c05d7bf2c0fcddc9e8cb"
     },
     {
       "facing": "right",
       "family": "Average",
       "path": "Evidence/ContactSheets/captain-average-right-contact-sheet.png",
-      "sha256": "3c33165dbef36cbbba69e72e4b1fe4098868db69c7aa3d9a20ebaae240207bbf"
+      "sha256": "cd9ce818d1217e3a8f50b335880012887b177eca314dc3152f9e509de796db09"
     },
     {
       "facing": "left",
       "family": "Average",
       "path": "Evidence/ContactSheets/captain-average-left-contact-sheet.png",
-      "sha256": "20c3bfa09c1ae039eeaa50c7d585f465954cffbbf85f024137d3c1766e969213"
+      "sha256": "0f6b3caa3355fe3a103f37088475318bb95fe55293a52d8f9734904dec2f87f4"
     },
     {
       "facing": "right",
       "family": "TallBroad",
       "path": "Evidence/ContactSheets/captain-tallbroad-right-contact-sheet.png",
-      "sha256": "3e11b770695a6770b3de937b5fe339b52af5cbc817850a6f21b8c0c10157a690"
+      "sha256": "8100b4afe162295709e9ddbda66347222d4ceb4c71db40b75e205dd699465ee6"
     },
     {
       "facing": "left",
       "family": "TallBroad",
       "path": "Evidence/ContactSheets/captain-tallbroad-left-contact-sheet.png",
-      "sha256": "c11089a385ca32e061131e1fa3bd3e8b84016dbbafe0fb9f78c849469e7b8db8"
+      "sha256": "e3bfef1a09347faaee019b41f03a599a49eab21c2183826b6ef694b9c73ad1b9"
     }
   ],
   "customizationMatrix": {
@@ -1189,7 +1189,7 @@
         }
       ],
       "path": "Customization/Modules/Compact/right/captain-compact-right-boots.png",
-      "sha256": "6362243b376c0942218771fabd6c3858d1e17ba08faac0537cad891c82976e36",
+      "sha256": "b845470880e095d75de3cce76f294ded9ad8caea46abee36d8125e213a5174bb",
       "targetLayer": "silhouette-costume"
     },
     {
@@ -1946,7 +1946,7 @@
         }
       ],
       "path": "Customization/Modules/Compact/left/captain-compact-left-boots.png",
-      "sha256": "54bf7db5dc3dd190a08e12b7c92c28ff7adce11d007b5529c7fc3d62f6af85ff",
+      "sha256": "5bfb4d06eb5a423bd10d21f26047ec88d4b01f7257728923cae9bb0a013c5a51",
       "targetLayer": "silhouette-costume"
     },
     {
@@ -2703,7 +2703,7 @@
         }
       ],
       "path": "Customization/Modules/Average/right/captain-average-right-boots.png",
-      "sha256": "82707d21da960f88bd5b904b5f1ef15988b4ec9e00f60015ed9b6244fbe92fb9",
+      "sha256": "08505d0446c50cefcf0a10a8ab3c0fd7ac993a47650a663a40f076c327562402",
       "targetLayer": "silhouette-costume"
     },
     {
@@ -3460,7 +3460,7 @@
         }
       ],
       "path": "Customization/Modules/Average/left/captain-average-left-boots.png",
-      "sha256": "da17d024357ea0ec52dd7f0ac3269a94c0f5755f8b5eb51992e50f85ee76c4f5",
+      "sha256": "7921d699a3ab490c961b6795cee7c4ace58f3e57aed6c0d5650a2b0bf327f40f",
       "targetLayer": "silhouette-costume"
     },
     {
@@ -4217,7 +4217,7 @@
         }
       ],
       "path": "Customization/Modules/TallBroad/right/captain-tallbroad-right-boots.png",
-      "sha256": "3a62329654245f72287243996dda2baf08cbf6347137346b06235bc6a4cbc299",
+      "sha256": "6b9facdaa9b9174dd79f5776379d4c03afd8e0972146b5e9058cdca83f975629",
       "targetLayer": "silhouette-costume"
     },
     {
@@ -4974,7 +4974,7 @@
         }
       ],
       "path": "Customization/Modules/TallBroad/left/captain-tallbroad-left-boots.png",
-      "sha256": "9373f6b906201a896a4b4f8d72c6b923fb03638cccdad3697b7af5ee59755b8c",
+      "sha256": "3317949c54e6c636cc00e0f9c514f4d27aeaeb5758001eb7fbc8c3e4e38034fd",
       "targetLayer": "silhouette-costume"
     },
     {
@@ -5085,7 +5085,7 @@
       "facing": "right",
       "family": "Compact",
       "path": "Evidence/MotionPreviews/captain-compact-right-run.webp",
-      "sha256": "4a682b7664cd9a2fb6e003e6f52f618436e9e6526f82bf587e06fca73251c293"
+      "sha256": "8ecdbcd00ca299d816ec5271fe1f4a604d9af34e35471a5da1970618b362d99b"
     },
     {
       "clipId": "turn",
@@ -5141,7 +5141,7 @@
       "facing": "left",
       "family": "Compact",
       "path": "Evidence/MotionPreviews/captain-compact-left-run.webp",
-      "sha256": "6e7bbdffaee640b79fc8b2a9db115ef57769297a05fea2c7d11d5e3dc8ba82f4"
+      "sha256": "bf20876a89c77c18f06d6b591e2b78d56d79bf493f7d2c5bf02bc1be963c93e4"
     },
     {
       "clipId": "turn",
@@ -5197,7 +5197,7 @@
       "facing": "right",
       "family": "Average",
       "path": "Evidence/MotionPreviews/captain-average-right-run.webp",
-      "sha256": "ba066e493c98ae3492f188c41ca7b7982069912d3a3f24befe184797f1a8ff32"
+      "sha256": "cb303da30fbd6aa30c1576d9a332997029cc7a6b27f74500976c687947e7bd82"
     },
     {
       "clipId": "turn",
@@ -5253,7 +5253,7 @@
       "facing": "left",
       "family": "Average",
       "path": "Evidence/MotionPreviews/captain-average-left-run.webp",
-      "sha256": "c1771b37ce7d8f5a96ff9c5d2176af0d5a2a842025efb3af56de70c62a9416e4"
+      "sha256": "529019dee8af2089472922cecf2bba59c8f8948ecc0c3ff920bf8200a5cfd631"
     },
     {
       "clipId": "turn",
@@ -5309,7 +5309,7 @@
       "facing": "right",
       "family": "TallBroad",
       "path": "Evidence/MotionPreviews/captain-tallbroad-right-run.webp",
-      "sha256": "57d21036a4404d84f48e900a47728d77cbc25079ad3181bac73e8ac135c0dc07"
+      "sha256": "6141a6aa17941845c7c3a5858e0e3247bd1390e24cb13bce4f2ea59aeacc0092"
     },
     {
       "clipId": "turn",
@@ -5365,7 +5365,7 @@
       "facing": "left",
       "family": "TallBroad",
       "path": "Evidence/MotionPreviews/captain-tallbroad-left-run.webp",
-      "sha256": "c80897338b2ae870950cc289125f0af9322ddceab8a6f8511441cfe3d2d6626a"
+      "sha256": "220c0e8463aa51bfad955cffc1ce8cbcbfe59c58245563f67dc8baa7d80a31e0"
     },
     {
       "clipId": "turn",
@@ -5423,7 +5423,7 @@
       "family": "Compact",
       "layerId": "body-base",
       "path": "Customization/PaletteMasks/Compact/right/captain-compact-right-body-base-palette-mask.png",
-      "sha256": "314e2294ae4236b402dd4c5679eca14f72dadfc8ae8a29cd1ef3b5e8a4357315"
+      "sha256": "e48906b3d875fec19f042c3192622c0a6fb8af5bd74545287fb72240d7fb8aff"
     },
     {
       "facing": "right",
@@ -5458,7 +5458,7 @@
       "family": "Compact",
       "layerId": "body-base",
       "path": "Customization/PaletteMasks/Compact/left/captain-compact-left-body-base-palette-mask.png",
-      "sha256": "8ba1872c2ce4206e375832cbbfa1b77eab5f638bc83da40d6a80a64d976042e9"
+      "sha256": "25bafb2af55d370e0f408345a0a9585a5817a3e388fc987bd15b57fbb9167559"
     },
     {
       "facing": "left",
@@ -5493,7 +5493,7 @@
       "family": "Average",
       "layerId": "body-base",
       "path": "Customization/PaletteMasks/Average/right/captain-average-right-body-base-palette-mask.png",
-      "sha256": "de6092e5621df7c035f034189f41be19492c183692d3f212e6056aca0091076e"
+      "sha256": "47c1c2a5aad05575b816c6ba702e7379146ac39b91f365389d66d9c9d9572d5a"
     },
     {
       "facing": "right",
@@ -5528,7 +5528,7 @@
       "family": "Average",
       "layerId": "body-base",
       "path": "Customization/PaletteMasks/Average/left/captain-average-left-body-base-palette-mask.png",
-      "sha256": "1089a1f785badf10fae9c6256bf7110eb8c07d05bc06b2051985408cccdfc3aa"
+      "sha256": "0abca891c5720674e25244d83b4a0b8ba2bc6ced241a1da5799d0a53172e66fe"
     },
     {
       "facing": "left",
@@ -5563,7 +5563,7 @@
       "family": "TallBroad",
       "layerId": "body-base",
       "path": "Customization/PaletteMasks/TallBroad/right/captain-tallbroad-right-body-base-palette-mask.png",
-      "sha256": "cab0aa2677ecf61aa4611cccf230979e8f70f3807d0bfb457c1da2c0a4ac2927"
+      "sha256": "8b82c030925846a0d5803eb17e515b1889c9fda92ec781d30c04eed59523730c"
     },
     {
       "facing": "right",
@@ -5598,7 +5598,7 @@
       "family": "TallBroad",
       "layerId": "body-base",
       "path": "Customization/PaletteMasks/TallBroad/left/captain-tallbroad-left-body-base-palette-mask.png",
-      "sha256": "1efa4bb38421ee2053373fb46bec12c5947d7982bd20adfd9f07fbcb26be407c"
+      "sha256": "dcbb09bf0cb76d036821a1f31d587262b2131fd30c1698d9c92fabbaaa171c3f"
     },
     {
       "facing": "left",
@@ -5637,7 +5637,7 @@
       "atlasManifestHashPath": "Atlases/Compact/right/captain-compact-right-body-base.sprite-manifest.sha256",
       "atlasManifestPath": "Atlases/Compact/right/captain-compact-right-body-base.sprite-manifest.json",
       "atlasPath": "Atlases/Compact/right/captain-compact-right-body-base.png",
-      "atlasSha256": "8a2f54d79110e84abcff1289cbac46f8ff057a27e7a6867748a4ad30427a8c71",
+      "atlasSha256": "17aceb8416808b6894620de89fd9848ba0c0722e1fca1a9120fed4d0fbed7b02",
       "facing": "right",
       "family": "Compact",
       "id": "captain-compact-right-body-base",
@@ -5653,9 +5653,9 @@
         {
           "clipId": "run",
           "paletteMaskPath": "Source/Masks/Compact/right/captain-compact-right-body-base-run-palette-mask-2x.png",
-          "paletteMaskSha256": "fabb45652bbe2abb59b9eabb5517e55c4001aca764ddb9fccf733746d0ccf2e6",
+          "paletteMaskSha256": "73a5eaae805afe520f06fd22f2d0f80d3c41ec26eb15fdfe6be0d4b7c8429702",
           "path": "Source/Rows/Compact/right/captain-compact-right-body-base-run-2x.png",
-          "sha256": "8737c58173766b038d217c4eefa3d890ba2f7e71dab2f56cf94353ecc6dfea82"
+          "sha256": "abf2bc7a3f224c88483b4a66f59dede108ea0d5e35f8ee9654632ef4f978f4ca"
         },
         {
           "clipId": "turn",
@@ -5977,7 +5977,7 @@
       "atlasManifestHashPath": "Atlases/Compact/left/captain-compact-left-body-base.sprite-manifest.sha256",
       "atlasManifestPath": "Atlases/Compact/left/captain-compact-left-body-base.sprite-manifest.json",
       "atlasPath": "Atlases/Compact/left/captain-compact-left-body-base.png",
-      "atlasSha256": "1d189124f7a92fb08dbe44b51d9e4362ef44084db0020f4856383b27fbca8f6c",
+      "atlasSha256": "fb4fcac8cf756ccaa18981ae8959b3e652095d87228db15d4bf54d489dc458ec",
       "facing": "left",
       "family": "Compact",
       "id": "captain-compact-left-body-base",
@@ -5993,9 +5993,9 @@
         {
           "clipId": "run",
           "paletteMaskPath": "Source/Masks/Compact/left/captain-compact-left-body-base-run-palette-mask-2x.png",
-          "paletteMaskSha256": "56b4b92c85b8c66b9ebaafa897a1dac356f88a031a9a77990dd7855b158bef13",
+          "paletteMaskSha256": "047380065aacadfe52da997ed6575f9782b15f7374ac4670f82057d88d9f0a33",
           "path": "Source/Rows/Compact/left/captain-compact-left-body-base-run-2x.png",
-          "sha256": "a6a926684254b8cae98afaf5edfc69f3bb13be27f72b82a2a46543e1f30f5f12"
+          "sha256": "7065751f82f7e60aba356c44a157215f8aee78ae0fc11e6747a89ecd03b7f705"
         },
         {
           "clipId": "turn",
@@ -6317,7 +6317,7 @@
       "atlasManifestHashPath": "Atlases/Average/right/captain-average-right-body-base.sprite-manifest.sha256",
       "atlasManifestPath": "Atlases/Average/right/captain-average-right-body-base.sprite-manifest.json",
       "atlasPath": "Atlases/Average/right/captain-average-right-body-base.png",
-      "atlasSha256": "2b79daadc2db92ed932e94fbb73be45d942da8c3b186399fcc1c81e01bfde627",
+      "atlasSha256": "6eaae11f386a1dd21b173d918e90d4f3f74ab79636f600ea71c7305a60fc43a8",
       "facing": "right",
       "family": "Average",
       "id": "captain-average-right-body-base",
@@ -6333,9 +6333,9 @@
         {
           "clipId": "run",
           "paletteMaskPath": "Source/Masks/Average/right/captain-average-right-body-base-run-palette-mask-2x.png",
-          "paletteMaskSha256": "cc1fe7a4457bbaf364b812b4475500fd397b56ed420cfe9aae97ef787aed9856",
+          "paletteMaskSha256": "d9407589bc3f8c4b438af68e64881664e75bd765b996de0e3532f77bda69f48d",
           "path": "Source/Rows/Average/right/captain-average-right-body-base-run-2x.png",
-          "sha256": "7e7ab55fb94f3b119c2a4155747900f352e156c2c61780a4a045aaaea0b571c6"
+          "sha256": "161099fc8cf2823bb80f063f4ab756130efa4f7fcacc6c711d9c18e2b789b41b"
         },
         {
           "clipId": "turn",
@@ -6657,7 +6657,7 @@
       "atlasManifestHashPath": "Atlases/Average/left/captain-average-left-body-base.sprite-manifest.sha256",
       "atlasManifestPath": "Atlases/Average/left/captain-average-left-body-base.sprite-manifest.json",
       "atlasPath": "Atlases/Average/left/captain-average-left-body-base.png",
-      "atlasSha256": "0ad57ef900de63948b464a1ea1f6a404341b73e81e7fcb096796c6ac2bc25067",
+      "atlasSha256": "27a534edc99525a088b8efee3e548ae55c52f9ae403b3f17b51111a8d6e51be6",
       "facing": "left",
       "family": "Average",
       "id": "captain-average-left-body-base",
@@ -6673,9 +6673,9 @@
         {
           "clipId": "run",
           "paletteMaskPath": "Source/Masks/Average/left/captain-average-left-body-base-run-palette-mask-2x.png",
-          "paletteMaskSha256": "7e810cbe71b101b0aa89816a7646f43ef2635a263c9dec8385aacb387b3e13b9",
+          "paletteMaskSha256": "0162fe437f5b1677f4c653c094cf55dfffdeccf13132ec1e424fd54cc2f6752a",
           "path": "Source/Rows/Average/left/captain-average-left-body-base-run-2x.png",
-          "sha256": "a10db6ea91c1038b2553b7bb849c54ded7b9cf29493bcc29dde6c6b8aad33f1f"
+          "sha256": "1ebdca666d3f51851957f98cc45d8e76b383e78e681da12f27ad444f86b998d0"
         },
         {
           "clipId": "turn",
@@ -6997,7 +6997,7 @@
       "atlasManifestHashPath": "Atlases/TallBroad/right/captain-tallbroad-right-body-base.sprite-manifest.sha256",
       "atlasManifestPath": "Atlases/TallBroad/right/captain-tallbroad-right-body-base.sprite-manifest.json",
       "atlasPath": "Atlases/TallBroad/right/captain-tallbroad-right-body-base.png",
-      "atlasSha256": "77ed9059552ecb01901dd47f0f8e0da93f3172e1cc5d32fd20b29ad1a70d503b",
+      "atlasSha256": "863fa54c49a4908f7b2fa44822c87cb8f624ddc72914f53fab9d955aaea6fa67",
       "facing": "right",
       "family": "TallBroad",
       "id": "captain-tallbroad-right-body-base",
@@ -7013,9 +7013,9 @@
         {
           "clipId": "run",
           "paletteMaskPath": "Source/Masks/TallBroad/right/captain-tallbroad-right-body-base-run-palette-mask-2x.png",
-          "paletteMaskSha256": "90ca6c7689926a1746a8b9475054e2560f38d40ec0813ad5cd87b1befd61633f",
+          "paletteMaskSha256": "fe45335f5c534e8edad1b41947368a2b7228dfb042caeb9054949d2a9ed2aa6e",
           "path": "Source/Rows/TallBroad/right/captain-tallbroad-right-body-base-run-2x.png",
-          "sha256": "7b2d179ef3c19daad56dcbf69f8a2c75a114ce9214219c83b003be7b4325ff19"
+          "sha256": "264f005ef4477fd4b269a15cc6977cfe9f4023c58674a4dde0b969fdd3a8b69f"
         },
         {
           "clipId": "turn",
@@ -7337,7 +7337,7 @@
       "atlasManifestHashPath": "Atlases/TallBroad/left/captain-tallbroad-left-body-base.sprite-manifest.sha256",
       "atlasManifestPath": "Atlases/TallBroad/left/captain-tallbroad-left-body-base.sprite-manifest.json",
       "atlasPath": "Atlases/TallBroad/left/captain-tallbroad-left-body-base.png",
-      "atlasSha256": "aaeac495c3f8428e698124e240b929d768dd8da04f3d9addf19b13c2018ac2ac",
+      "atlasSha256": "0501b2455b79c77c0b17cf796bde01689f6f7abb45b120b369ced17239e2b79a",
       "facing": "left",
       "family": "TallBroad",
       "id": "captain-tallbroad-left-body-base",
@@ -7353,9 +7353,9 @@
         {
           "clipId": "run",
           "paletteMaskPath": "Source/Masks/TallBroad/left/captain-tallbroad-left-body-base-run-palette-mask-2x.png",
-          "paletteMaskSha256": "4115e8f8099104b21d1310cf23fb9e19de55259ff0e7d459da25558cdb1c63a1",
+          "paletteMaskSha256": "af67e438750a2fadbe1f65452e70e15f267ffe4afb006dbc515c5ef056e1e730",
           "path": "Source/Rows/TallBroad/left/captain-tallbroad-left-body-base-run-2x.png",
-          "sha256": "21c9cb34f71dc0fe3d0913722cb566fc7aad43ce6f45dafbb956f85dc345a5ea"
+          "sha256": "04bc77bce2362614eebf8f3c34a552de7c1ed383862add35122791d2101deba1"
         },
         {
           "clipId": "turn",
@@ -7678,7 +7678,7 @@
     {
       "path": "Evidence/LayerContactSheets/captain-compact-right-body-base-raw.png",
       "publicationId": "captain-compact-right-body-base",
-      "sha256": "48efd2ec43243f882187fdee686769ddc2ad14c185e63dc1d622e929bf0ddc41"
+      "sha256": "2c95b3e1cb1e3c582b24d2ca5382824920d6bc14410d6f066f9b51f78707b834"
     },
     {
       "path": "Evidence/LayerContactSheets/captain-compact-right-head-hair-raw.png",
@@ -7703,7 +7703,7 @@
     {
       "path": "Evidence/LayerContactSheets/captain-compact-left-body-base-raw.png",
       "publicationId": "captain-compact-left-body-base",
-      "sha256": "a942788d25f9b38f535a629dae69079450e1e0ce4e6a36fe27fd56d8f55e7877"
+      "sha256": "438addbdc8da1065480483aa24bf6d051e0c7d5144f33d68d8b61d4dca8622ee"
     },
     {
       "path": "Evidence/LayerContactSheets/captain-compact-left-head-hair-raw.png",
@@ -7728,7 +7728,7 @@
     {
       "path": "Evidence/LayerContactSheets/captain-average-right-body-base-raw.png",
       "publicationId": "captain-average-right-body-base",
-      "sha256": "45bcee977080b12825c954ffa9dfe7a284887ee3d0e3005d06db4cc3e3e1fb83"
+      "sha256": "8d4515c86ab55c21e0b22667943718641a7d2b81d5a729f78b46ecbfb6e2e087"
     },
     {
       "path": "Evidence/LayerContactSheets/captain-average-right-head-hair-raw.png",
@@ -7753,7 +7753,7 @@
     {
       "path": "Evidence/LayerContactSheets/captain-average-left-body-base-raw.png",
       "publicationId": "captain-average-left-body-base",
-      "sha256": "7b8d43a0fb85eee1b6b779d2cd4134e28d264bd4fe5ac4773b882a1cebab1d05"
+      "sha256": "43432443f387cd63cb2ae8623040fbe33877084df4fd84c0c9d045c3863bf5e2"
     },
     {
       "path": "Evidence/LayerContactSheets/captain-average-left-head-hair-raw.png",
@@ -7778,7 +7778,7 @@
     {
       "path": "Evidence/LayerContactSheets/captain-tallbroad-right-body-base-raw.png",
       "publicationId": "captain-tallbroad-right-body-base",
-      "sha256": "d342772d29326e16a070a9333a559789385edd984b523432a81a62c191e68c83"
+      "sha256": "38db4214e596f46cb36ace5474f5939349a508c13f15e4f444ec4d59a6060a2a"
     },
     {
       "path": "Evidence/LayerContactSheets/captain-tallbroad-right-head-hair-raw.png",
@@ -7803,7 +7803,7 @@
     {
       "path": "Evidence/LayerContactSheets/captain-tallbroad-left-body-base-raw.png",
       "publicationId": "captain-tallbroad-left-body-base",
-      "sha256": "66a090fc5c540231c3dbf857110ed067af22ab1177f50b3a1f777aa7f7ddd4e0"
+      "sha256": "abf996b4b63586d5219f34230cc872d95761e95171c24cf9010f781c3b33767d"
     },
     {
       "path": "Evidence/LayerContactSheets/captain-tallbroad-left-head-hair-raw.png",
