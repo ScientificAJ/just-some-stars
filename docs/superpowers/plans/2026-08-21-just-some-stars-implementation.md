@@ -1436,6 +1436,8 @@ commands, visual checks and commit boundaries live in the execution plan above.
 - Create: `Assets/_JustSomeStars/Runtime/Player/BodySpriteCalibration.cs`
 - Modify: `Assets/_JustSomeStars/Runtime/Player/CompositionCamera2D.cs`
 - Create: `Assets/_JustSomeStars/Prefabs/Characters/Captain2D.prefab`
+- Modify: `Assets/_JustSomeStars/Scenes/Benchmarks/Mirra2DProof.unity`
+- Create: `Assets/_JustSomeStars/Tests/EditMode/Captain2DPrefabProductionTests.cs`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/SurfaceMotor2DProductionTests.cs`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/CompositionCamera2DProductionTests.cs`
 
@@ -1444,25 +1446,45 @@ commands, visual checks and commit boundaries live in the execution plan above.
   the Task 12 layered-scene contract.
 - Produces: deterministic 2D move/jump/jet state and authored camera profiles.
 
-- [ ] **Step 1: Write PlayMode tests for slopes, steps, wind, low gravity, moving platforms and recovery volumes**
+- [x] **Step 1: Write focused tests for slopes, steps, wind, low gravity, moving platforms, the bounded recovery boundary, the production prefab and authored camera profiles**
 
-- [ ] **Step 2: Harden the fixed-step `Rigidbody2D` motor**
+The EditMode asset contract must load the real prefab and benchmark scene. The
+benchmark scene must use an instance of the exact production prefab rather than
+an inline lookalike. PlayMode tests exercise the real runtime components and
+fixtures; missing or malformed assets fail closed.
 
-Expose external acceleration for wind and moving surfaces. Keep speed, jump and
-jet capability equal across body families; calibration changes only sprite
-pivot, contacts and collider fit.
+- [x] **Step 2: Harden the fixed-step `Rigidbody2D` motor**
 
-- [ ] **Step 3: Harden camera dead zone, look-ahead, bounds, zoom, composition targets and reduced motion**
+Expose persistent external acceleration for wind and derive moving-surface
+velocity from the contacted `Rigidbody2D`. Keep speed, jump, jet and animation
+cadence equal across body families. Calibration changes only visual scale and
+pivot, collider/contact/shadow fit and a presentation-only camera framing
+anchor. Family switching is atomic and the character root remains scale one.
+
+- [x] **Step 3: Harden camera dead zone, look-ahead, bounds, zoom, composition targets and reduced motion**
 
 There is no free orbit. Camera behavior must preserve the approved side-view
-route and never reveal unowned layer edges.
+route and never reveal unowned layer edges. The production component owns a
+validated serialized profile for every `GameCameraPolicy`. Each profile defines
+dead zone, look-ahead, smoothing, zoom, primary/optional composition targets,
+center-movement rails and separate content-safe bounds that account for the
+orthographic viewport and zoom. Reduced motion removes velocity-driven motion
+without disabling deterministic tracking.
 
-- [ ] **Step 4: Run the same traversal fixture with every body calibration**
+- [x] **Step 4: Run the same traversal fixture with every body calibration**
 
 Expected: all families complete the route within the same tolerance without
 camera clipping, visible baseline drift or collision mismatch.
 
-- [ ] **Step 5: Perform a five-minute touch-control device test and commit**
+- [x] **Step 5: Perform the user-approved touch-control device test with visible input proof and commit**
+
+The continuous capture must visibly demonstrate the same installed build
+responding to run, jump, contextual Interact and Discovery Lens input; it must
+also show slopes/steps, a moving platform or wind segment, the bounded fall
+recovery, camera limits and reduced-motion behavior. A static stability video,
+an input-injection log or isolated screenshots cannot substitute for this
+interaction proof. Preserve the exact APK hash, device metrics and filtered
+runtime log beside the recording.
 
 ```bash
 git add -A -- Assets/_JustSomeStars/Runtime/Player \

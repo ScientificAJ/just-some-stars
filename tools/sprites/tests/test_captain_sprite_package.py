@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageFilter
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
@@ -38,6 +38,14 @@ class CaptainSpritePackageTests(unittest.TestCase):
                 encoding="utf-8"
             )
         )
+        modules = {
+            (
+                publication["family"],
+                publication["facing"],
+                publication["category"],
+            ): publication
+            for publication in manifest["modulePublications"]
+        }
 
         channel_bounds = [False, False, False, False]
         for publication in manifest["palettePublications"]:
@@ -211,6 +219,111 @@ class CaptainSpritePackageTests(unittest.TestCase):
                 4,
                 f"{publication['id']} climb layer must visibly animate.",
             )
+
+            if publication["layerId"] == "body-base":
+                run_clip = next(
+                    clip for clip in atlas_manifest["clips"]
+                    if ".run." in clip["id"]
+                )
+                boots_publication = modules[(
+                    publication["family"],
+                    publication["facing"],
+                    "boots",
+                )]
+                with Image.open(
+                        PACKAGE_ROOT / boots_publication["path"]) as opened:
+                    boots_page = opened.convert("RGBA")
+                for frame_index, frame in enumerate(run_clip["frames"]):
+                    anchors = {
+                        anchor["id"]: anchor["runtimePixels"]
+                        for anchor in frame["anchors"]
+                    }
+                    foot_separation = abs(
+                        anchors["LeftFoot"][0] - anchors["RightFoot"][0]
+                    )
+                    self.assertGreaterEqual(
+                        foot_separation,
+                        30.0,
+                        f"{publication['id']} run frame {frame_index} must "
+                        "keep both legs visibly separated at runtime scale.",
+                    )
+                    body_frame = atlas.crop((
+                        frame_index * 128,
+                        192,
+                        (frame_index + 1) * 128,
+                        384,
+                    ))
+                    default_boot_frame = boots_page.crop((
+                        frame_index * 64,
+                        96,
+                        (frame_index + 1) * 64,
+                        192,
+                    )).resize((128, 192), Image.Resampling.NEAREST)
+                    body_support = body_frame.getchannel("A").point(
+                        lambda alpha: 255 if alpha >= 32 else 0
+                    ).filter(ImageFilter.MaxFilter(9))
+                    boot_alpha = default_boot_frame.getchannel("A").point(
+                        lambda alpha: 255 if alpha >= 32 else 0
+                    )
+                    boot_pixels = sum(
+                        1
+                        for y in range(192)
+                        for x in range(128)
+                        if boot_alpha.getpixel((x, y))
+                    )
+                    supported_boot_pixels = sum(
+                        1
+                        for y in range(192)
+                        for x in range(128)
+                        if boot_alpha.getpixel((x, y)) and
+                        body_support.getpixel((x, y))
+                    )
+                    self.assertGreater(boot_pixels, 0, publication["id"])
+                    self.assertGreaterEqual(
+                        supported_boot_pixels / boot_pixels,
+                        0.94,
+                        f"{publication['id']} run frame {frame_index} must "
+                        "keep the published boot overlay registered to both "
+                        "visible lower legs instead of drawing across empty "
+                        "pixels and making a shin disappear.",
+                    )
+                run_row = next(
+                    row for row in publication["sourceRows"]
+                    if row["clipId"] == "run"
+                )
+                with Image.open(PACKAGE_ROOT / run_row["path"]) as opened:
+                    run_strip = opened.convert("RGBA")
+                for frame_index in (0, 4):
+                    frame = run_strip.crop((
+                        frame_index * 256,
+                        0,
+                        (frame_index + 1) * 256,
+                        384,
+                    ))
+                    alpha = frame.getchannel("A")
+                    bounds = alpha.getbbox()
+                    self.assertIsNotNone(bounds, publication["id"])
+                    lower_top = round(
+                        bounds[1] + (bounds[3] - bounds[1]) * 0.55
+                    )
+                    visible_columns = []
+                    for x in range(256):
+                        visible = sum(
+                            1
+                            for y in range(lower_top, bounds[3])
+                            if alpha.getpixel((x, y)) >= 32
+                        )
+                        if visible >= 3:
+                            visible_columns.append(x)
+                    lower_span = max(visible_columns) - min(visible_columns) + 1
+                    frame_span = bounds[2] - bounds[0]
+                    self.assertGreaterEqual(
+                        lower_span / frame_span,
+                        0.95,
+                        f"{publication['id']} run contact frame {frame_index} "
+                        "must preserve a broad two-leg stride silhouette at "
+                        "mobile scale instead of collapsing into one limb.",
+                    )
             for clip in atlas_manifest["clips"]:
                 for frame in clip["frames"]:
                     for anchor in frame["anchors"]:

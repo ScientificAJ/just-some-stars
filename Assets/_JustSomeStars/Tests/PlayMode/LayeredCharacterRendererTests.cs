@@ -7,6 +7,7 @@ using JustSomeStars.Runtime.Player;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Rendering;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.TestTools;
 
@@ -137,15 +138,26 @@ namespace JustSomeStars.Tests.PlayMode
                     }
 
                     renderer.Play("idle");
-                    var sourcePixels = CaptureSourcePixels(renderers);
-                    var launchPixels = CapturePixels(renderers);
-                    AssertPreservesSourceFidelity(
-                        sourcePixels,
-                        launchPixels,
-                        family + " launch");
+                    var supportsPixelEvidence =
+                        SystemInfo.graphicsDeviceType != GraphicsDeviceType.Null;
+                    Color32[] sourcePixels = null;
+                    Color32[] launchPixels = null;
+                    if (supportsPixelEvidence)
+                    {
+                        sourcePixels = CaptureSourcePixels(renderers);
+                        launchPixels = CapturePixels(renderers);
+                        AssertPreservesSourceFidelity(
+                            sourcePixels,
+                            launchPixels,
+                            family + " launch");
+                    }
                     var launchBlock = new MaterialPropertyBlock();
                     renderers[(int)CaptainSpriteLayer.HeadHair]
                         .GetPropertyBlock(launchBlock);
+                    var launchSkinColor = launchBlock.GetColor("_SkinColor");
+                    var launchHairColor = launchBlock.GetColor("_HairColor");
+                    var launchSuitColor = launchBlock.GetColor("_SuitColor");
+                    var launchSignalColor = launchBlock.GetColor("_SignalColor");
                     var launchHairUv = launchBlock.GetVector("_HairShapesUv");
                     var launchHairPage = launchBlock.GetTexture(
                         "_HairShapesModule");
@@ -192,73 +204,93 @@ namespace JustSomeStars.Tests.PlayMode
                         customized,
                         SpriteFacing.Right,
                         "idle");
-                    var customizedPixels = CapturePixels(renderers);
-                    AssertPreservesSourceFidelity(
-                        sourcePixels,
-                        customizedPixels,
-                        family + " alternate");
-                    var changedPixels = 0;
-                    var launchVisible = 0;
-                    var customizedVisible = 0;
-                    var launchColored = 0;
-                    var customizedColored = 0;
-                    var launchNonBackground = 0;
-                    var customizedNonBackground = 0;
-                    var launchBackground = launchPixels[0];
-                    var customizedBackground = customizedPixels[0];
-                    for (var pixel = 0; pixel < launchPixels.Length; pixel++)
+                    if (supportsPixelEvidence)
                     {
-                        if (launchPixels[pixel].a > 16)
+                        var customizedPixels = CapturePixels(renderers);
+                        AssertPreservesSourceFidelity(
+                            sourcePixels,
+                            customizedPixels,
+                            family + " alternate");
+                        var changedPixels = 0;
+                        var launchVisible = 0;
+                        var customizedVisible = 0;
+                        var launchColored = 0;
+                        var customizedColored = 0;
+                        var launchNonBackground = 0;
+                        var customizedNonBackground = 0;
+                        var launchBackground = launchPixels[0];
+                        var customizedBackground = customizedPixels[0];
+                        for (var pixel = 0; pixel < launchPixels.Length; pixel++)
                         {
-                            launchVisible++;
+                            if (launchPixels[pixel].a > 16)
+                            {
+                                launchVisible++;
+                            }
+                            if (customizedPixels[pixel].a > 16)
+                            {
+                                customizedVisible++;
+                            }
+                            if (launchPixels[pixel].r + launchPixels[pixel].g +
+                                launchPixels[pixel].b > 24)
+                            {
+                                launchColored++;
+                            }
+                            if (customizedPixels[pixel].r +
+                                customizedPixels[pixel].g +
+                                customizedPixels[pixel].b > 24)
+                            {
+                                customizedColored++;
+                            }
+                            if (ColorDistance(
+                                    launchPixels[pixel], launchBackground) > 8)
+                            {
+                                launchNonBackground++;
+                            }
+                            if (ColorDistance(
+                                    customizedPixels[pixel],
+                                    customizedBackground) > 8)
+                            {
+                                customizedNonBackground++;
+                            }
+                            if (ColorDistance(
+                                    launchPixels[pixel],
+                                    customizedPixels[pixel]) > 24)
+                            {
+                                changedPixels++;
+                            }
                         }
-                        if (customizedPixels[pixel].a > 16)
-                        {
-                            customizedVisible++;
-                        }
-                        if (launchPixels[pixel].r + launchPixels[pixel].g +
-                            launchPixels[pixel].b > 24)
-                        {
-                            launchColored++;
-                        }
-                        if (customizedPixels[pixel].r + customizedPixels[pixel].g +
-                            customizedPixels[pixel].b > 24)
-                        {
-                            customizedColored++;
-                        }
-                        if (ColorDistance(
-                                launchPixels[pixel], launchBackground) > 8)
-                        {
-                            launchNonBackground++;
-                        }
-                        if (ColorDistance(
-                                customizedPixels[pixel],
-                                customizedBackground) > 8)
-                        {
-                            customizedNonBackground++;
-                        }
-                        if (ColorDistance(
-                                launchPixels[pixel],
-                                customizedPixels[pixel]) > 24)
-                        {
-                            changedPixels++;
-                        }
+                        Assert.That(
+                            changedPixels,
+                            Is.GreaterThan(300),
+                            $"{family}: launchVisible={launchVisible}, " +
+                            $"customizedVisible={customizedVisible}, " +
+                            $"launchColored={launchColored}, " +
+                            $"customizedColored={customizedColored}, " +
+                            $"launchNonBackground={launchNonBackground}, " +
+                            $"customizedNonBackground={customizedNonBackground}, " +
+                            $"background={launchBackground}");
+                        Assert.That(
+                            customizedVisible,
+                            Is.GreaterThan(launchVisible * 0.85f));
+                        Assert.That(
+                            customizedVisible,
+                            Is.LessThan(launchVisible * 1.35f));
                     }
-                    Assert.That(
-                        changedPixels,
-                        Is.GreaterThan(300),
-                        $"{family}: launchVisible={launchVisible}, " +
-                        $"customizedVisible={customizedVisible}, " +
-                        $"launchColored={launchColored}, " +
-                        $"customizedColored={customizedColored}, " +
-                        $"launchNonBackground={launchNonBackground}, " +
-                        $"customizedNonBackground={customizedNonBackground}, " +
-                        $"background={launchBackground}");
-                    Assert.That(customizedVisible, Is.GreaterThan(launchVisible * 0.85f));
-                    Assert.That(customizedVisible, Is.LessThan(launchVisible * 1.35f));
                     var customizedBlock = new MaterialPropertyBlock();
                     renderers[(int)CaptainSpriteLayer.HeadHair]
                         .GetPropertyBlock(customizedBlock);
+                    Assert.That(
+                        customizedBlock.GetColor("_SkinColor"),
+                        Is.Not.EqualTo(launchSkinColor));
+                    Assert.That(
+                        customizedBlock.GetColor("_HairColor"),
+                        Is.Not.EqualTo(launchHairColor));
+                    Assert.That(
+                        customizedBlock.GetColor("_SuitColor"),
+                        Is.Not.EqualTo(launchSuitColor));
+                    Assert.That(
+                        customizedBlock.GetColor("_SignalColor"),
+                        Is.EqualTo(launchSignalColor));
                     Assert.That(
                         customizedBlock.GetTexture("_HairShapesModule"),
                         Is.SameAs(launchHairPage));
@@ -350,6 +382,7 @@ namespace JustSomeStars.Tests.PlayMode
                 RenderTexture.active = target;
                 GL.Clear(true, true, Color.clear);
                 camera.Render();
+                RenderTexture.active = target;
                 readback.ReadPixels(new Rect(0f, 0f, 256f, 384f), 0, 0);
                 readback.Apply(false, false);
                 return readback.GetPixels32();

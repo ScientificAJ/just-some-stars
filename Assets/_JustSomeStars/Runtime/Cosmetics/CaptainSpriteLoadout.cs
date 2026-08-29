@@ -43,20 +43,20 @@ namespace JustSomeStars.Runtime.Cosmetics
         [SerializeField] private CaptainBodyFamily family;
         [SerializeField] private int activeLayerCount = MaximumLayerCount;
         [SerializeField] private string facePreset = "face-1";
-        [SerializeField] private string skinSwatch = "skin-1";
+        [SerializeField] private string skinSwatch = "skin-5";
         [SerializeField] private string eyeShape = "eye-shape-1";
         [SerializeField] private string irisColor = "warm-brown";
         [SerializeField] private string hairShape = "hair-shape-1";
         [SerializeField] private string hairColor = "deep-brown";
         [SerializeField] private string suitComponent = "canvas-oversuit";
-        [SerializeField] private string suitColorway = "amber-clay";
+        [SerializeField] private string suitColorway = "sandstone";
         [SerializeField] private string patch = "patch-1";
         [SerializeField] private string accessory = "wrist-device";
         [SerializeField] private string gloves = "wrapped-work";
         [SerializeField] private string boots = "laceup-work";
         [SerializeField] private string helmet = "explorer-lite";
         [SerializeField] private string backpack = "field-pack";
-        [SerializeField] private string signalState = "dormant";
+        [SerializeField] private string signalState = "active-cyan";
 
         private static readonly IReadOnlyDictionary<string, string[]> Catalog =
             new Dictionary<string, string[]>(StringComparer.Ordinal)

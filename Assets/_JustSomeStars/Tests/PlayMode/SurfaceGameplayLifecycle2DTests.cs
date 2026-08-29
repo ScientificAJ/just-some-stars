@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -7,16 +9,288 @@ using System.Threading.Tasks;
 using JustSomeStars.Runtime.Accessibility;
 using JustSomeStars.Runtime.Core;
 using JustSomeStars.Runtime.Input;
+using JustSomeStars.Runtime.Player;
 using JustSomeStars.Runtime.UI;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.InputSystem.OnScreen;
+using UnityEngine.InputSystem.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.TestTools;
 
 namespace JustSomeStars.Tests.PlayMode
 {
     public sealed class SurfaceGameplayLifecycle2DTests
     {
+        private string m_OnScreenTestRoot;
+        private SettingsService m_OnScreenSettings;
+        private InputActionAsset m_OnScreenActions;
+        private InputRouter m_OnScreenInput;
+        private GameModeController m_OnScreenModes;
+        private UnitySceneTransition m_OnScreenTransition;
+        private Touchscreen m_OnScreenTouchscreen;
+        private InputSettings.BackgroundBehavior m_PreviousBackgroundBehavior;
+        private InputSettings.EditorInputBehaviorInPlayMode
+            m_PreviousEditorBehavior;
+
+        [UnityTearDown]
+        public IEnumerator TearDownOnScreenRoute()
+        {
+            if (m_OnScreenSettings == null)
+            {
+                yield break;
+            }
+
+            m_OnScreenTransition?.ReleaseBindings();
+            if (m_OnScreenTouchscreen != null && m_OnScreenTouchscreen.added)
+            {
+                InputSystem.RemoveDevice(m_OnScreenTouchscreen);
+            }
+            InputSystem.settings.editorInputBehaviorInPlayMode =
+                m_PreviousEditorBehavior;
+            InputSystem.settings.backgroundBehavior =
+                m_PreviousBackgroundBehavior;
+
+            var recovery = SceneManager.CreateScene(
+                "Task13OnScreenInputRecovery_" + Guid.NewGuid().ToString("N"));
+            SceneManager.SetActiveScene(recovery);
+            foreach (var scene in Enumerable.Range(0, SceneManager.sceneCount)
+                .Select(SceneManager.GetSceneAt)
+                .Where(scene => scene.IsValid() && scene.isLoaded && scene != recovery)
+                .ToArray())
+            {
+                var unload = SceneManager.UnloadSceneAsync(scene);
+                if (unload != null)
+                {
+                    yield return unload;
+                }
+            }
+
+            var modeShutdown = m_OnScreenModes.ShutdownAsync().AsTask();
+            yield return WaitForTask(modeShutdown);
+            var inputShutdown = m_OnScreenInput.ShutdownAsync().AsTask();
+            yield return WaitForTask(inputShutdown);
+            var settingsShutdown = m_OnScreenSettings.ShutdownAsync().AsTask();
+            yield return WaitForTask(settingsShutdown);
+            UnityEngine.Object.DestroyImmediate(m_OnScreenActions);
+            if (Directory.Exists(m_OnScreenTestRoot))
+            {
+                Directory.Delete(m_OnScreenTestRoot, recursive: true);
+            }
+
+            m_OnScreenTransition = null;
+            m_OnScreenTouchscreen = null;
+            m_OnScreenModes = null;
+            m_OnScreenInput = null;
+            m_OnScreenActions = null;
+            m_OnScreenSettings = null;
+            m_OnScreenTestRoot = null;
+        }
+
+        [UnityTest]
+        public IEnumerator ProductionMirraScene_OnScreenStickDrivesTheBoundMotor()
+        {
+            m_OnScreenTestRoot = Path.Combine(
+                Path.GetTempPath(),
+                "JssTask13OnScreenInput",
+                Guid.NewGuid().ToString("N"));
+            m_OnScreenSettings = new SettingsService(Path.Combine(
+                m_OnScreenTestRoot,
+                "settings.json"));
+            m_OnScreenActions = UnityEngine.Object.Instantiate(InputSystem.actions);
+            m_OnScreenInput = new InputRouter(
+                m_OnScreenActions,
+                m_OnScreenSettings);
+            var hooks = new InputRouterGameModeRuntimeHooks(m_OnScreenInput);
+            m_OnScreenModes = GameModeController.CreateForTests(
+                GameMode.Surface,
+                hooks);
+            m_OnScreenTransition = new UnitySceneTransition(
+                new FrontendDependencies(m_OnScreenSettings, m_OnScreenInput),
+                new SurfaceGameplayDependencies(
+                    m_OnScreenSettings,
+                    m_OnScreenInput,
+                    m_OnScreenModes));
+            m_PreviousBackgroundBehavior =
+                InputSystem.settings.backgroundBehavior;
+            m_PreviousEditorBehavior =
+                InputSystem.settings.editorInputBehaviorInPlayMode;
+            InputSystem.settings.backgroundBehavior =
+                InputSettings.BackgroundBehavior.IgnoreFocus;
+            InputSystem.settings.editorInputBehaviorInPlayMode =
+                InputSettings.EditorInputBehaviorInPlayMode
+                    .AllDeviceInputAlwaysGoesToGameView;
+
+            var settingsTask = m_OnScreenSettings
+                .InitializeAsync(CancellationToken.None)
+                .AsTask();
+            yield return WaitForTask(settingsTask);
+            Assert.That(settingsTask.Result.IsAvailable, Is.True);
+
+            var inputTask = m_OnScreenInput
+                .InitializeAsync(CancellationToken.None)
+                .AsTask();
+            yield return WaitForTask(inputTask);
+            Assert.That(inputTask.Result.IsAvailable, Is.True);
+
+            var modeTask = m_OnScreenModes
+                .InitializeAsync(CancellationToken.None)
+                .AsTask();
+            yield return WaitForTask(modeTask);
+            Assert.That(modeTask.Result.IsAvailable, Is.True);
+            Assert.That(
+                m_OnScreenInput.ActiveGameplayMode,
+                Is.EqualTo(GameplayInputMode.Surface));
+
+            var sceneLoad = SceneManager.LoadSceneAsync(
+                "Mirra2DProof",
+                LoadSceneMode.Single);
+            Assert.That(sceneLoad, Is.Not.Null);
+            yield return sceneLoad;
+            yield return null;
+
+            m_OnScreenTransition.BindActiveScene();
+            var lifecycle = UnityEngine.Object.FindFirstObjectByType<
+                JustSomeStars.Runtime.Player.SurfaceGameplayLifecycle2D>(
+                FindObjectsInactive.Include);
+            Assert.That(lifecycle, Is.Not.Null);
+            Assert.That(lifecycle.IsConfigured, Is.True);
+
+            var motor = ReadField<Component>(lifecycle, "motor");
+            var body = ReadField<Rigidbody2D>(lifecycle, "targetBody");
+            var stick = UnityEngine.Object.FindFirstObjectByType<OnScreenStick>(
+                FindObjectsInactive.Exclude);
+            Assert.That(stick, Is.Not.Null);
+            Assert.That(stick.control, Is.Not.Null);
+            Assert.That(stick.control.path, Does.EndWith("/leftStick"));
+            var inputModule = EventSystem.current.currentInputModule as
+                InputSystemUIInputModule;
+            Assert.That(
+                inputModule,
+                Is.Not.Null,
+                "The production EventSystem must route actual touch events through " +
+                "InputSystemUIInputModule.");
+            m_OnScreenTouchscreen = InputSystem.AddDevice<Touchscreen>();
+
+            var rect = (RectTransform)stick.transform;
+            Canvas.ForceUpdateCanvases();
+            var canvas = rect.GetComponentInParent<Canvas>();
+            var center = RectTransformUtility.WorldToScreenPoint(
+                canvas.worldCamera,
+                rect.TransformPoint(rect.rect.center));
+            var raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(
+                new PointerEventData(EventSystem.current) { position = center },
+                raycastResults);
+            Assert.That(
+                raycastResults.Any(result => result.gameObject == stick.gameObject),
+                Is.True,
+                $"TouchMove must be raycastable at {center}; hits were: " +
+                string.Join(", ", raycastResults.Select(result =>
+                    result.gameObject.name)));
+            var pointerDownReceived = false;
+            var dragReceived = false;
+            var eventTrigger = stick.gameObject.AddComponent<EventTrigger>();
+            eventTrigger.triggers = new List<EventTrigger.Entry>
+            {
+                CreateTrigger(EventTriggerType.PointerDown, _ =>
+                    pointerDownReceived = true),
+                CreateTrigger(EventTriggerType.Drag, _ => dragReceived = true),
+            };
+            QueueTouch(
+                inputModule,
+                m_OnScreenTouchscreen,
+                UnityEngine.InputSystem.TouchPhase.Began,
+                center);
+            Assert.That(
+                m_OnScreenTouchscreen.primaryTouch.press.isPressed,
+                Is.True,
+                "The queued real touchscreen press must reach InputSystem.");
+            Assert.That(
+                pointerDownReceived,
+                Is.True,
+                "The production UI module must dispatch PointerDown to TouchMove.");
+            var draggedPosition = center + Vector2.right * stick.movementRange;
+            QueueTouch(
+                inputModule,
+                m_OnScreenTouchscreen,
+                UnityEngine.InputSystem.TouchPhase.Moved,
+                draggedPosition,
+                draggedPosition - center);
+            Assert.That(
+                dragReceived,
+                Is.True,
+                "The production UI module must dispatch Drag to TouchMove.");
+
+            Assert.That(
+                m_OnScreenInput.ReadMove().x,
+                Is.GreaterThan(0.9f),
+                "The production on-screen Gamepad must feed the composition-owned " +
+                "Surface action map.");
+            body.linearVelocity = Vector2.zero;
+            InvokeAny(motor, "FixedUpdate");
+            Assert.That(
+                body.linearVelocity.x,
+                Is.GreaterThan(0f),
+                "The bound production motor must consume the on-screen stick value.");
+
+            QueueTouch(
+                inputModule,
+                m_OnScreenTouchscreen,
+                UnityEngine.InputSystem.TouchPhase.Ended,
+                draggedPosition);
+
+            var buttons = UnityEngine.Object.FindObjectsByType<OnScreenButton>(
+                FindObjectsInactive.Exclude,
+                FindObjectsSortMode.None);
+            Assert.That(buttons, Has.Length.EqualTo(3));
+            var jumpButton = buttons.Single(candidate =>
+                candidate.controlPath == "<Gamepad>/buttonWest");
+            var interactButton = buttons.Single(candidate =>
+                candidate.controlPath == "<Gamepad>/buttonSouth");
+            var lensButton = buttons.Single(candidate =>
+                candidate.controlPath == "<Gamepad>/buttonNorth");
+
+            var jumpCenter = CenterOf(jumpButton.transform);
+            Press(inputModule, m_OnScreenTouchscreen, jumpCenter);
+            Assert.That(
+                ReadField<bool>(motor, "jumpRequested"),
+                Is.True,
+                "The production Jump control must reach the bound motor.");
+            Release(inputModule, m_OnScreenTouchscreen, jumpCenter);
+
+            var interaction = UnityEngine.Object.FindFirstObjectByType<
+                SurfaceInteractionProbe2D>(FindObjectsInactive.Exclude);
+            Assert.That(interaction, Is.Not.Null);
+            var interactionCollider = interaction.GetComponent<Collider2D>();
+            body.position = interactionCollider.bounds.center;
+            body.linearVelocity = Vector2.zero;
+            Physics2D.SyncTransforms();
+            yield return new WaitForFixedUpdate();
+            Assert.That(
+                interaction.IsAvailable,
+                Is.True,
+                "The real Captain must activate the production interaction trigger.");
+            var interactCenter = CenterOf(interactButton.transform);
+            Press(inputModule, m_OnScreenTouchscreen, interactCenter);
+            Assert.That(interaction.IsActivated, Is.True);
+            var interactionLabel = ReadField<TMPro.TMP_Text>(interaction, "label");
+            Assert.That(interactionLabel.text, Is.EqualTo("SIGNAL LINKED"));
+            Release(inputModule, m_OnScreenTouchscreen, interactCenter);
+
+            var lensTarget = UnityEngine.Object.FindFirstObjectByType<
+                DiscoveryLensTarget2D>(FindObjectsInactive.Exclude);
+            Assert.That(lensTarget, Is.Not.Null);
+            Assert.That(lensTarget.IsFocused, Is.False);
+            var lensCenter = CenterOf(lensButton.transform);
+            Press(inputModule, m_OnScreenTouchscreen, lensCenter);
+            Assert.That(lensTarget.IsFocused, Is.True);
+            Release(inputModule, m_OnScreenTouchscreen, lensCenter);
+        }
+
         [Test]
         public async Task ProductionSceneBinding_DrivesInputSettingsModeAndLookAhead()
         {
@@ -237,6 +511,86 @@ namespace JustSomeStars.Tests.PlayMode
                 BindingFlags.NonPublic);
             Assert.That(method, Is.Not.Null, methodName);
             method.Invoke(target, Array.Empty<object>());
+        }
+
+        private static IEnumerator WaitForTask(Task task)
+        {
+            while (!task.IsCompleted)
+            {
+                yield return null;
+            }
+
+            if (task.IsFaulted)
+            {
+                throw task.Exception;
+            }
+        }
+
+        private static Vector2 CenterOf(Transform transform)
+        {
+            var rect = (RectTransform)transform;
+            var canvas = rect.GetComponentInParent<Canvas>();
+            return RectTransformUtility.WorldToScreenPoint(
+                canvas.worldCamera,
+                rect.TransformPoint(rect.rect.center));
+        }
+
+        private static EventTrigger.Entry CreateTrigger(
+            EventTriggerType eventId,
+            UnityEngine.Events.UnityAction<BaseEventData> callback)
+        {
+            var entry = new EventTrigger.Entry { eventID = eventId };
+            entry.callback.AddListener(callback);
+            return entry;
+        }
+
+        private static void Press(
+            InputSystemUIInputModule inputModule,
+            Touchscreen touchscreen,
+            Vector2 position)
+        {
+            QueueTouch(
+                inputModule,
+                touchscreen,
+                UnityEngine.InputSystem.TouchPhase.Began,
+                position);
+        }
+
+        private static void Release(
+            InputSystemUIInputModule inputModule,
+            Touchscreen touchscreen,
+            Vector2 position)
+        {
+            QueueTouch(
+                inputModule,
+                touchscreen,
+                UnityEngine.InputSystem.TouchPhase.Ended,
+                position);
+        }
+
+        private static void QueueTouch(
+            InputSystemUIInputModule inputModule,
+            Touchscreen touchscreen,
+            UnityEngine.InputSystem.TouchPhase phase,
+            Vector2 position,
+            Vector2 delta = default)
+        {
+            InputSystem.QueueStateEvent(touchscreen, new TouchState
+            {
+                touchId = 1,
+                phase = phase,
+                position = position,
+                delta = delta,
+                pressure = phase == UnityEngine.InputSystem.TouchPhase.Ended
+                    ? 0f
+                    : 1f,
+            });
+            InputSystem.Update();
+            inputModule.Process();
+            // OnScreenControl queues its virtual-Gamepad event while the UI module
+            // dispatches the pointer event. Process that queued event before the
+            // production router is sampled, matching the following player frame.
+            InputSystem.Update();
         }
 
         private static void SetField(object target, string fieldName, object value)

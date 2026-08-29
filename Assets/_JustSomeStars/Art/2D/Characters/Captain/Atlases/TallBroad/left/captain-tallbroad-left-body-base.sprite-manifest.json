@@ -3,7 +3,7 @@
     "format": "PNG",
     "height": 1536,
     "path": "captain-tallbroad-left-body-base.png",
-    "sha256": "9f32c8d23800570d7b38ab7724c6cff68fae7f6c4ee603177feda76d158fe34b",
+    "sha256": "aaeac495c3f8428e698124e240b929d768dd8da04f3d9addf19b13c2018ac2ac",
     "width": 1024
   },
   "characterId": "captain-tallbroad-left-body-base",
@@ -760,7 +760,7 @@
       "id": "captain.tallbroad.body-base.idle.left",
       "loopMode": "Loop",
       "sourceStrip": "Source/Rows/TallBroad/left/captain-tallbroad-left-body-base-idle-2x.png",
-      "sourceStripSha256": "4cb7c3a6cd08fec8a9f5ea4a66f8de83c01947f56bd2febcaa269a6b686439c0"
+      "sourceStripSha256": "15e1cbc9d07f9ebc772e0695696c5a6f83db33a78d2fbd541d9f6689096a9062"
     },
     {
       "cadenceFps": 12,
@@ -768,10 +768,10 @@
       "frames": [
         {
           "alphaBoundsPixels": [
-            31,
+            1,
             65,
-            82,
-            186
+            116,
+            181
           ],
           "anchors": [
             {
@@ -788,45 +788,45 @@
             {
               "id": "LeftFoot",
               "runtimePixels": [
-                74.1375,
-                11.3492
+                109.8312,
+                26.5345
               ],
               "sourcePixels": [
-                148.275,
-                22.6984
+                219.6625,
+                53.0689
               ]
             },
             {
               "id": "RightFoot",
               "runtimePixels": [
-                50.9608,
-                9.9316
+                13.794,
+                21.2016
               ],
               "sourcePixels": [
-                101.9216,
-                19.8633
+                27.588,
+                42.4032
               ]
             },
             {
               "id": "LeftHand",
               "runtimePixels": [
-                64.8643,
-                65.6644
+                42.4542,
+                65.154
               ],
               "sourcePixels": [
-                129.7287,
-                131.3288
+                84.9084,
+                130.3079
               ]
             },
             {
               "id": "RightHand",
               "runtimePixels": [
-                39.7667,
-                69.1187
+                60.7966,
+                68.1932
               ],
               "sourcePixels": [
-                79.5333,
-                138.2373
+                121.5931,
+                136.3864
               ]
             },
             {
@@ -865,56 +865,56 @@
             {
               "id": "LeftWrist",
               "runtimePixels": [
-                64.8643,
-                65.6644
+                42.4542,
+                65.154
               ],
               "sourcePixels": [
-                129.7287,
-                131.3288
+                84.9084,
+                130.3079
               ]
             },
             {
               "id": "RightWrist",
               "runtimePixels": [
-                39.7667,
-                69.1187
+                60.7966,
+                68.1932
               ],
               "sourcePixels": [
-                79.5333,
-                138.2373
+                121.5931,
+                136.3864
               ]
             },
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                72.6174,
-                36.2028
+                96.088,
+                47.2982
               ],
               "sourcePixels": [
-                145.2348,
-                72.4055
+                192.176,
+                94.5965
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                49.4407,
-                34.7852
+                24.9043,
+                43.4855
               ],
               "sourcePixels": [
-                98.8814,
-                69.5704
+                49.8086,
+                86.9709
               ]
             },
             {
               "id": "ActiveTool",
               "runtimePixels": [
-                38.1497,
-                69.0198
+                59.1796,
+                68.0943
               ],
               "sourcePixels": [
-                76.2994,
-                138.0395
+                118.3592,
+                136.1886
               ]
             },
             {
@@ -958,10 +958,10 @@
         },
         {
           "alphaBoundsPixels": [
-            15,
+            9,
             63,
-            101,
-            184
+            107,
+            183
           ],
           "anchors": [
             {
@@ -978,23 +978,23 @@
             {
               "id": "LeftFoot",
               "runtimePixels": [
-                94.4973,
-                18.7559
+                100.1524,
+                23.6685
               ],
               "sourcePixels": [
-                188.9945,
-                37.5117
+                200.3049,
+                47.337
               ]
             },
             {
               "id": "RightFoot",
               "runtimePixels": [
-                30.0577,
-                15.1176
+                23.9925,
+                17.3982
               ],
               "sourcePixels": [
-                60.1153,
-                30.2352
+                47.9851,
+                34.7963
               ]
             },
             {
@@ -1077,23 +1077,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                92.9772,
-                43.6094
+                89.7423,
+                46.288
               ],
               "sourcePixels": [
-                185.9543,
-                87.2188
+                179.4847,
+                92.5759
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                28.5375,
-                39.9711
+                31.5684,
+                41.1177
               ],
               "sourcePixels": [
-                57.0751,
-                79.9423
+                63.1369,
+                82.2354
               ]
             },
             {
@@ -1141,10 +1141,10 @@
         },
         {
           "alphaBoundsPixels": [
-            8,
+            31,
             63,
-            109,
-            182
+            95,
+            184
           ],
           "anchors": [
             {
@@ -1161,45 +1161,45 @@
             {
               "id": "LeftFoot",
               "runtimePixels": [
-                102.2951,
-                23.3461
+                87.623,
+                22.189
               ],
               "sourcePixels": [
-                204.5903,
-                46.6921
+                175.246,
+                44.3779
               ]
             },
             {
               "id": "RightFoot",
               "runtimePixels": [
-                21.8547,
-                18.8489
+                50.9608,
+                11.9316
               ],
               "sourcePixels": [
-                43.7094,
-                37.6978
+                101.9216,
+                23.8633
               ]
             },
             {
               "id": "LeftHand",
               "runtimePixels": [
-                42.4542,
-                67.154
+                64.8643,
+                67.6644
               ],
               "sourcePixels": [
-                84.9084,
-                134.3079
+                129.7287,
+                135.3288
               ]
             },
             {
               "id": "RightHand",
               "runtimePixels": [
-                60.7966,
-                70.1932
+                39.7667,
+                71.1187
               ],
               "sourcePixels": [
-                121.5931,
-                140.3864
+                79.5333,
+                142.2373
               ]
             },
             {
@@ -1238,56 +1238,56 @@
             {
               "id": "LeftWrist",
               "runtimePixels": [
-                42.4542,
-                67.154
+                64.8643,
+                67.6644
               ],
               "sourcePixels": [
-                84.9084,
-                134.3079
+                129.7287,
+                135.3288
               ]
             },
             {
               "id": "RightWrist",
               "runtimePixels": [
-                60.7966,
-                70.1932
+                39.7667,
+                71.1187
               ],
               "sourcePixels": [
-                121.5931,
-                140.3864
+                79.5333,
+                142.2373
               ]
             },
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                100.775,
-                48.1996
+                86.1029,
+                47.0425
               ],
               "sourcePixels": [
-                201.5501,
-                96.3992
+                172.2058,
+                94.085
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                20.3346,
-                43.7024
+                49.4407,
+                36.7852
               ],
               "sourcePixels": [
-                40.6691,
-                87.4049
+                98.8814,
+                73.5704
               ]
             },
             {
               "id": "ActiveTool",
               "runtimePixels": [
-                59.1796,
-                70.0943
+                38.1497,
+                71.0198
               ],
               "sourcePixels": [
-                118.3592,
-                140.1886
+                76.2994,
+                142.0395
               ]
             },
             {
@@ -1331,10 +1331,10 @@
         },
         {
           "alphaBoundsPixels": [
-            15,
-            63,
-            101,
-            184
+            23,
+            62,
+            94,
+            181
           ],
           "anchors": [
             {
@@ -1351,45 +1351,45 @@
             {
               "id": "LeftFoot",
               "runtimePixels": [
-                94.4973,
-                18.7559
+                41.3441,
+                17.7687
               ],
               "sourcePixels": [
-                188.9945,
-                37.5117
+                82.6882,
+                35.5374
               ]
             },
             {
               "id": "RightFoot",
               "runtimePixels": [
-                30.0577,
-                15.1176
+                78.2607,
+                15.6276
               ],
               "sourcePixels": [
-                60.1153,
-                30.2352
+                156.5213,
+                31.2552
               ]
             },
             {
               "id": "LeftHand",
               "runtimePixels": [
-                49.0119,
-                65.8278
+                79.6363,
+                73.0698
               ],
               "sourcePixels": [
-                98.0239,
-                131.6556
+                159.2726,
+                146.1396
               ]
             },
             {
               "id": "RightHand",
               "runtimePixels": [
-                54.6233,
-                69.0481
+                26.0154,
+                76.4572
               ],
               "sourcePixels": [
-                109.2466,
-                138.0962
+                52.0307,
+                152.9143
               ]
             },
             {
@@ -1428,56 +1428,56 @@
             {
               "id": "LeftWrist",
               "runtimePixels": [
-                49.0119,
-                65.8278
+                79.6363,
+                73.0698
               ],
               "sourcePixels": [
-                98.0239,
-                131.6556
+                159.2726,
+                146.1396
               ]
             },
             {
               "id": "RightWrist",
               "runtimePixels": [
-                54.6233,
-                69.0481
+                26.0154,
+                76.4572
               ],
               "sourcePixels": [
-                109.2466,
-                138.0962
+                52.0307,
+                152.9143
               ]
             },
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                92.9772,
-                43.6094
+                48.92,
+                41.4882
               ],
               "sourcePixels": [
-                185.9543,
-                87.2188
+                97.84,
+                82.9764
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                28.5375,
-                39.9711
+                67.8506,
+                38.2471
               ],
               "sourcePixels": [
-                57.0751,
-                79.9423
+                135.7011,
+                76.4941
               ]
             },
             {
               "id": "ActiveTool",
               "runtimePixels": [
-                53.0063,
-                68.9492
+                24.3984,
+                76.3583
               ],
               "sourcePixels": [
-                106.0126,
-                137.8984
+                48.7968,
+                152.7165
               ]
             },
             {
@@ -1514,10 +1514,10 @@
         },
         {
           "alphaBoundsPixels": [
-            31,
-            65,
-            82,
-            186
+            18,
+            63,
+            104,
+            180
           ],
           "anchors": [
             {
@@ -1534,45 +1534,45 @@
             {
               "id": "LeftFoot",
               "runtimePixels": [
-                74.1375,
-                11.3492
+                35.6332,
+                16.0452
               ],
               "sourcePixels": [
-                148.275,
-                22.6984
+                71.2664,
+                32.0904
               ]
             },
             {
               "id": "RightFoot",
               "runtimePixels": [
-                50.9608,
-                9.9316
+                88.7832,
+                18.755
               ],
               "sourcePixels": [
-                101.9216,
-                19.8633
+                177.5664,
+                37.51
               ]
             },
             {
               "id": "LeftHand",
               "runtimePixels": [
-                64.8643,
-                65.6644
+                85.1294,
+                75.2457
               ],
               "sourcePixels": [
-                129.7287,
-                131.3288
+                170.2588,
+                150.4914
               ]
             },
             {
               "id": "RightHand",
               "runtimePixels": [
-                39.7667,
-                69.1187
+                20.9313,
+                78.5177
               ],
               "sourcePixels": [
-                79.5333,
-                138.2373
+                41.8626,
+                157.0355
               ]
             },
             {
@@ -1611,56 +1611,56 @@
             {
               "id": "LeftWrist",
               "runtimePixels": [
-                64.8643,
-                65.6644
+                85.1294,
+                75.2457
               ],
               "sourcePixels": [
-                129.7287,
-                131.3288
+                170.2588,
+                150.4914
               ]
             },
             {
               "id": "RightWrist",
               "runtimePixels": [
-                39.7667,
-                69.1187
+                20.9313,
+                78.5177
               ],
               "sourcePixels": [
-                79.5333,
-                138.2373
+                41.8626,
+                157.0355
               ]
             },
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                72.6174,
-                36.2028
+                46.7435,
+                38.3291
               ],
               "sourcePixels": [
-                145.2348,
-                72.4055
+                93.487,
+                76.6582
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                49.4407,
-                34.7852
+                75.04,
+                39.5188
               ],
               "sourcePixels": [
-                98.8814,
-                69.5704
+                150.08,
+                79.0375
               ]
             },
             {
               "id": "ActiveTool",
               "runtimePixels": [
-                38.1497,
-                69.0198
+                19.3143,
+                78.4188
               ],
               "sourcePixels": [
-                76.2994,
-                138.0395
+                38.6286,
+                156.8377
               ]
             },
             {
@@ -1704,9 +1704,9 @@
         },
         {
           "alphaBoundsPixels": [
-            31,
+            28,
             62,
-            90,
+            98,
             182
           ],
           "anchors": [
@@ -1724,23 +1724,23 @@
             {
               "id": "LeftFoot",
               "runtimePixels": [
-                52.9383,
-                12.8807
+                46.579,
+                14.0814
               ],
               "sourcePixels": [
-                105.8766,
-                25.7615
+                93.158,
+                28.1628
               ]
             },
             {
               "id": "RightFoot",
               "runtimePixels": [
-                72.0598,
-                13.7472
+                82.1311,
+                17.8681
               ],
               "sourcePixels": [
-                144.1196,
-                27.4945
+                164.2622,
+                35.7362
               ]
             },
             {
@@ -1823,23 +1823,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                51.4182,
-                37.7343
+                54.1549,
+                37.8009
               ],
               "sourcePixels": [
-                102.8363,
-                75.4686
+                108.3098,
+                75.6018
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                70.5397,
-                38.6008
+                71.721,
+                40.4875
               ],
               "sourcePixels": [
-                141.0794,
-                77.2016
+                143.442,
+                80.9751
               ]
             },
             {
@@ -1887,10 +1887,10 @@
         },
         {
           "alphaBoundsPixels": [
-            26,
-            61,
-            96,
-            181
+            20,
+            63,
+            82,
+            184
           ],
           "anchors": [
             {
@@ -1907,45 +1907,45 @@
             {
               "id": "LeftFoot",
               "runtimePixels": [
-                44.3122,
-                15.1491
+                74.1375,
+                13.3492
               ],
               "sourcePixels": [
-                88.6244,
-                30.2982
+                148.275,
+                26.6984
               ]
             },
             {
               "id": "RightFoot",
               "runtimePixels": [
-                80.4559,
-                16.937
+                36.4985,
+                19.062
               ],
               "sourcePixels": [
-                160.9119,
-                33.8739
+                72.9971,
+                38.1241
               ]
             },
             {
               "id": "LeftHand",
               "runtimePixels": [
-                85.1294,
-                77.2457
+                64.8643,
+                67.6644
               ],
               "sourcePixels": [
-                170.2588,
-                154.4914
+                129.7287,
+                135.3288
               ]
             },
             {
               "id": "RightHand",
               "runtimePixels": [
-                20.9313,
-                80.5177
+                39.7667,
+                71.1187
               ],
               "sourcePixels": [
-                41.8626,
-                161.0355
+                79.5333,
+                142.2373
               ]
             },
             {
@@ -1984,56 +1984,56 @@
             {
               "id": "LeftWrist",
               "runtimePixels": [
-                85.1294,
-                77.2457
+                64.8643,
+                67.6644
               ],
               "sourcePixels": [
-                170.2588,
-                154.4914
+                129.7287,
+                135.3288
               ]
             },
             {
               "id": "RightWrist",
               "runtimePixels": [
-                20.9313,
-                80.5177
+                39.7667,
+                71.1187
               ],
               "sourcePixels": [
-                41.8626,
-                161.0355
+                79.5333,
+                142.2373
               ]
             },
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                42.7921,
-                40.0027
+                72.6174,
+                38.2028
               ],
               "sourcePixels": [
-                85.5841,
-                80.0053
+                145.2348,
+                76.4055
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                78.9358,
-                41.7905
+                34.9784,
+                43.9156
               ],
               "sourcePixels": [
-                157.8717,
-                83.5811
+                69.9569,
+                87.8312
               ]
             },
             {
               "id": "ActiveTool",
               "runtimePixels": [
-                19.3143,
-                80.4188
+                38.1497,
+                71.0198
               ],
               "sourcePixels": [
-                38.6286,
-                160.8377
+                76.2994,
+                142.0395
               ]
             },
             {
@@ -2077,10 +2077,10 @@
         },
         {
           "alphaBoundsPixels": [
-            31,
-            62,
-            90,
-            182
+            4,
+            63,
+            107,
+            181
           ],
           "anchors": [
             {
@@ -2097,45 +2097,45 @@
             {
               "id": "LeftFoot",
               "runtimePixels": [
-                52.9383,
-                12.8807
+                100.2745,
+                21.6722
               ],
               "sourcePixels": [
-                105.8766,
-                25.7615
+                200.5491,
+                43.3445
               ]
             },
             {
               "id": "RightFoot",
               "runtimePixels": [
-                72.0598,
-                13.7472
+                18.7577,
+                21.0854
               ],
               "sourcePixels": [
-                144.1196,
-                27.4945
+                37.5153,
+                42.1709
               ]
             },
             {
               "id": "LeftHand",
               "runtimePixels": [
-                79.6363,
-                73.0698
+                49.0119,
+                65.8278
               ],
               "sourcePixels": [
-                159.2726,
-                146.1396
+                98.0239,
+                131.6556
               ]
             },
             {
               "id": "RightHand",
               "runtimePixels": [
-                26.0154,
-                76.4572
+                54.6233,
+                69.0481
               ],
               "sourcePixels": [
-                52.0307,
-                152.9143
+                109.2466,
+                138.0962
               ]
             },
             {
@@ -2174,56 +2174,56 @@
             {
               "id": "LeftWrist",
               "runtimePixels": [
-                79.6363,
-                73.0698
+                49.0119,
+                65.8278
               ],
               "sourcePixels": [
-                159.2726,
-                146.1396
+                98.0239,
+                131.6556
               ]
             },
             {
               "id": "RightWrist",
               "runtimePixels": [
-                26.0154,
-                76.4572
+                54.6233,
+                69.0481
               ],
               "sourcePixels": [
-                52.0307,
-                152.9143
+                109.2466,
+                138.0962
               ]
             },
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                51.4182,
-                37.7343
+                89.8644,
+                44.2917
               ],
               "sourcePixels": [
-                102.8363,
-                75.4686
+                179.7289,
+                88.5834
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                70.5397,
-                38.6008
+                26.3336,
+                44.805
               ],
               "sourcePixels": [
-                141.0794,
-                77.2016
+                52.6671,
+                89.61
               ]
             },
             {
               "id": "ActiveTool",
               "runtimePixels": [
-                24.3984,
-                76.3583
+                53.0063,
+                68.9492
               ],
               "sourcePixels": [
-                48.7968,
-                152.7165
+                106.0126,
+                137.8984
               ]
             },
             {
@@ -2262,7 +2262,7 @@
       "id": "captain.tallbroad.body-base.run.left",
       "loopMode": "Loop",
       "sourceStrip": "Source/Rows/TallBroad/left/captain-tallbroad-left-body-base-run-2x.png",
-      "sourceStripSha256": "740a2085fe7364a95f060212214a15848a56324fa72f65e653be94f869f48de6"
+      "sourceStripSha256": "21c9cb34f71dc0fe3d0913722cb566fc7aad43ce6f45dafbb956f85dc345a5ea"
     },
     {
       "cadenceFps": 12,
@@ -3014,7 +3014,7 @@
       "id": "captain.tallbroad.body-base.turn.left",
       "loopMode": "Once",
       "sourceStrip": "Source/Rows/TallBroad/left/captain-tallbroad-left-body-base-turn-2x.png",
-      "sourceStripSha256": "a8a6f47b2b4956a85cf1fae1f28a9074c2316cf56a133951074354941808d2dc"
+      "sourceStripSha256": "bda9f11f7848ef68d38f7dd92c3f942dba2c0780e417ac296aa3c9e29e856bf1"
     },
     {
       "cadenceFps": 12,
@@ -3141,23 +3141,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                58.8923,
-                38.756
+                67.3184,
+                36.8107
               ],
               "sourcePixels": [
-                117.7846,
-                77.5119
+                134.6367,
+                73.6213
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                87.4931,
-                36.8872
+                78.9099,
+                35.8333
               ],
               "sourcePixels": [
-                174.9862,
-                73.7743
+                157.8198,
+                71.6666
               ]
             },
             {
@@ -3327,23 +3327,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                66.661,
-                36.7902
+                71.8539,
+                36.427
               ],
               "sourcePixels": [
-                133.3221,
-                73.5803
+                143.7077,
+                72.8541
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                74.7891,
-                36.8493
+                69.6343,
+                36.1249
               ],
               "sourcePixels": [
-                149.5783,
-                73.6986
+                139.2685,
+                72.2497
               ]
             },
             {
@@ -3522,22 +3522,22 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                91.0657,
-                45.8961
+                87.6346,
+                45.3526
               ],
               "sourcePixels": [
-                182.1313,
-                91.7922
+                175.2691,
+                90.7053
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                44.7493,
+                49.0896,
                 42.6472
               ],
               "sourcePixels": [
-                89.4986,
+                98.1793,
                 85.2944
               ]
             },
@@ -3705,23 +3705,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                101.8923,
-                53.9725
+                94.4037,
+                51.8251
               ],
               "sourcePixels": [
-                203.7846,
-                107.945
+                188.8073,
+                103.6503
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                33.6113,
-                45.9249
+                41.397,
+                45.653
               ],
               "sourcePixels": [
-                67.2226,
-                91.8497
+                82.7939,
+                91.306
               ]
             },
             {
@@ -3888,23 +3888,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                91.0657,
-                51.3961
+                87.6346,
+                50.8526
               ],
               "sourcePixels": [
-                182.1313,
-                102.7922
+                175.2691,
+                101.7053
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                47.3332,
-                47.7209
+                50.8066,
+                47.7815
               ],
               "sourcePixels": [
-                94.6665,
-                95.4417
+                101.6131,
+                95.563
               ]
             },
             {
@@ -4137,7 +4137,7 @@
       "id": "captain.tallbroad.body-base.jump.left",
       "loopMode": "HoldLast",
       "sourceStrip": "Source/Rows/TallBroad/left/captain-tallbroad-left-body-base-jump-2x.png",
-      "sourceStripSha256": "598b94e6aa1afede104b469a9edc441a2534dc181b8bbd46a3644a8a9707629b"
+      "sourceStripSha256": "f47dadbe75c7413937eab41ec06adbc02f346815df8827f2e9a82e9fc52d7573"
     },
     {
       "cadenceFps": 12,
@@ -4264,23 +4264,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                94.5433,
-                55.7211
+                89.4169,
+                54.8171
               ],
               "sourcePixels": [
-                189.0866,
-                111.4421
+                178.8338,
+                109.6343
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                40.6604,
-                52.1783
+                45.8627,
+                51.9966
               ],
               "sourcePixels": [
-                81.3208,
-                104.3566
+                91.7255,
+                103.9932
               ]
             },
             {
@@ -4447,23 +4447,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                86.9278,
-                40.8636
+                85.19,
+                40.8333
               ],
               "sourcePixels": [
-                173.8555,
-                81.7272
+                170.3801,
+                81.6665
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                53.3242,
-                41.5255
+                55.0598,
+                41.4345
               ],
               "sourcePixels": [
-                106.6483,
-                83.051
+                110.1195,
+                82.8691
               ]
             },
             {
@@ -4630,23 +4630,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                56.6002,
-                40.6333
+                65.6374,
+                37.6969
               ],
               "sourcePixels": [
-                113.2004,
-                81.2665
+                131.2748,
+                75.3938
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                89.9897,
-                36.1259
+                80.5106,
+                35.4631
               ],
               "sourcePixels": [
-                179.9794,
-                72.2519
+                161.0211,
+                70.9262
               ]
             },
             {
@@ -4898,7 +4898,7 @@
       "id": "captain.tallbroad.body-base.land.left",
       "loopMode": "Once",
       "sourceStrip": "Source/Rows/TallBroad/left/captain-tallbroad-left-body-base-land-2x.png",
-      "sourceStripSha256": "995e00037d03401cad26c6566666c9e562af01203f309dd6d29b49ee142361f1"
+      "sourceStripSha256": "a700d45f769735709ab6f68db1677c616e6693895a19e4b06228a3d5db543c1c"
     },
     {
       "cadenceFps": 12,
@@ -5025,23 +5025,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                65.4252,
-                35.3636
+                71.9252,
+                35.3069
               ],
               "sourcePixels": [
-                130.8504,
-                70.7272
+                143.8504,
+                70.6138
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                99.1049,
-                45.0301
+                87.1542,
+                40.2017
               ],
               "sourcePixels": [
-                198.2098,
-                90.0602
+                174.3085,
+                80.4035
               ]
             },
             {
@@ -5216,23 +5216,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                78.5493,
-                37.7544
+                80.7076,
+                38.0003
               ],
               "sourcePixels": [
-                157.0986,
-                75.5088
+                161.4152,
+                76.0006
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                84.9375,
-                40.5078
+                77.5284,
+                38.1005
               ],
               "sourcePixels": [
-                169.875,
-                81.0157
+                155.0567,
+                76.2009
               ]
             },
             {
@@ -5402,23 +5402,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                94.8358,
-                44.7336
+                91.4803,
+                43.8345
               ],
               "sourcePixels": [
-                189.6716,
-                89.4671
+                182.9606,
+                87.6689
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                64.7917,
-                37.1076
+                63.9416,
+                36.9269
               ],
               "sourcePixels": [
-                129.5835,
-                74.2153
+                127.8832,
+                73.8539
               ]
             },
             {
@@ -5588,23 +5588,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                106.6186,
-                48.4966
+                99.2095,
+                46.0892
               ],
               "sourcePixels": [
-                213.2373,
-                96.9932
+                198.419,
+                92.1784
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                39.9314,
-                37.757
+                47.292,
+                37.8213
               ],
               "sourcePixels": [
-                79.8627,
-                75.514
+                94.584,
+                75.6425
               ]
             },
             {
@@ -5774,23 +5774,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                97.4599,
-                40.464
+                93.2144,
+                39.5616
               ],
               "sourcePixels": [
-                194.9198,
-                80.9281
+                186.4287,
+                79.1233
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                22.9594,
-                43.5264
+                36.1217,
+                41.5593
               ],
               "sourcePixels": [
-                45.9188,
-                87.0528
+                72.2434,
+                83.1185
               ]
             },
             {
@@ -5965,23 +5965,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                82.4123,
-                38.4388
+                83.273,
+                38.5597
               ],
               "sourcePixels": [
-                164.8247,
-                76.8775
+                166.546,
+                77.1195
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                43.7755,
-                36.4491
+                49.8409,
+                36.6609
               ],
               "sourcePixels": [
-                87.5509,
-                72.8983
+                99.6817,
+                73.3219
               ]
             },
             {
@@ -6151,23 +6151,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                69.5349,
-                38.6376
+                74.7206,
+                39.0913
               ],
               "sourcePixels": [
-                139.0697,
-                77.2753
+                149.4412,
+                78.1827
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                73.7802,
-                38.8762
+                70.0151,
+                37.832
               ],
               "sourcePixels": [
-                147.5605,
-                77.7524
+                140.0302,
+                75.6641
               ]
             },
             {
@@ -6337,23 +6337,23 @@
             {
               "id": "LeftBootTop",
               "runtimePixels": [
-                61.5942,
+                69.3846,
                 37.6485
               ],
               "sourcePixels": [
-                123.1884,
+                138.7692,
                 75.2971
               ]
             },
             {
               "id": "RightBootTop",
               "runtimePixels": [
-                96.6284,
-                46.8702
+                85.5385,
+                42.1628
               ],
               "sourcePixels": [
-                193.2569,
-                93.7405
+                171.0769,
+                84.3256
               ]
             },
             {
@@ -6406,7 +6406,7 @@
       "id": "captain.tallbroad.body-base.climb.left",
       "loopMode": "Loop",
       "sourceStrip": "Source/Rows/TallBroad/left/captain-tallbroad-left-body-base-climb-2x.png",
-      "sourceStripSha256": "e1f9fe80a286a696ce168fa89cba8e3c8daf599bcf61a36a8bbe620b5d327fec"
+      "sourceStripSha256": "fc6ce21c8b0de1e1081e296d015e2e1622d6838a9f24638ea3fdfeaecab5df56"
     },
     {
       "cadenceFps": 12,
@@ -7927,7 +7927,7 @@
       "id": "captain.tallbroad.body-base.scan.left",
       "loopMode": "Once",
       "sourceStrip": "Source/Rows/TallBroad/left/captain-tallbroad-left-body-base-scan-2x.png",
-      "sourceStripSha256": "b6f3adb94036fad4d321764dee4337eeac81833199d75881146cb7cbc97a5a73"
+      "sourceStripSha256": "4357fafbdb9c2dc7df75f4aa8a53f6a654262fc089620b81044eb5bcf8e27030"
     },
     {
       "cadenceFps": 12,
@@ -9058,7 +9058,7 @@
       "id": "captain.tallbroad.body-base.interact.left",
       "loopMode": "Once",
       "sourceStrip": "Source/Rows/TallBroad/left/captain-tallbroad-left-body-base-interact-2x.png",
-      "sourceStripSha256": "b5044e56ffe4b942999dda3c7c82ad58c0fd544757a4cb7ef40d53dc60845def"
+      "sourceStripSha256": "35f149640321fa6d6ab83a025c9b25924e107905892c5af54775565875b62c16"
     }
   ],
   "pixelsPerUnit": 100,

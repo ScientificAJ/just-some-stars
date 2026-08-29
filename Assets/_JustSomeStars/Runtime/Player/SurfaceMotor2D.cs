@@ -5,6 +5,35 @@ using UnityEngine;
 
 namespace JustSomeStars.Runtime.Player
 {
+    public readonly struct SurfaceMotorState
+    {
+        public SurfaceMotorState(
+            bool isGrounded,
+            bool isJetActive,
+            float remainingJetSeconds,
+            Vector2 groundNormal,
+            Vector2 relativeVelocity,
+            Vector2 activeSurfaceVelocity,
+            Vector2 externalAcceleration)
+        {
+            IsGrounded = isGrounded;
+            IsJetActive = isJetActive;
+            RemainingJetSeconds = remainingJetSeconds;
+            GroundNormal = groundNormal;
+            RelativeVelocity = relativeVelocity;
+            ActiveSurfaceVelocity = activeSurfaceVelocity;
+            ExternalAcceleration = externalAcceleration;
+        }
+
+        public bool IsGrounded { get; }
+        public bool IsJetActive { get; }
+        public float RemainingJetSeconds { get; }
+        public Vector2 GroundNormal { get; }
+        public Vector2 RelativeVelocity { get; }
+        public Vector2 ActiveSurfaceVelocity { get; }
+        public Vector2 ExternalAcceleration { get; }
+    }
+
     [DisallowMultipleComponent]
     public sealed class SurfaceMotor2D : MonoBehaviour
     {
@@ -14,9 +43,11 @@ namespace JustSomeStars.Runtime.Player
         [SerializeField] private LayerMask groundMask = ~0;
 
         private Vector2 moveInput;
-        private Vector2 movingSurfaceVelocity;
+        private Vector2 manualSurfaceVelocity;
+        private Vector2 detectedSurfaceVelocity;
         private Vector2 appliedSurfaceVelocity;
         private Vector2 pendingExternalVelocity;
+        private Vector2 externalAcceleration;
         private Vector2 groundNormal = Vector2.up;
         private Vector2 recoveryAnchor;
         private float remainingJetSeconds;
@@ -27,6 +58,14 @@ namespace JustSomeStars.Runtime.Player
 
         public bool IsGrounded { get; private set; }
         public float RemainingJetSeconds => remainingJetSeconds;
+        public SurfaceMotorState State => new SurfaceMotorState(
+            IsGrounded,
+            jetHeld && !IsGrounded && remainingJetSeconds > 0f,
+            remainingJetSeconds,
+            groundNormal,
+            body != null ? body.linearVelocity - appliedSurfaceVelocity : Vector2.zero,
+            detectedSurfaceVelocity + manualSurfaceVelocity,
+            externalAcceleration);
 
         public void Configure(
             Rigidbody2D targetBody,
@@ -101,7 +140,12 @@ namespace JustSomeStars.Runtime.Player
 
         public void SetMovingSurfaceVelocity(Vector2 velocity)
         {
-            movingSurfaceVelocity = velocity;
+            manualSurfaceVelocity = velocity;
+        }
+
+        public void SetExternalAcceleration(Vector2 acceleration)
+        {
+            externalAcceleration = acceleration;
         }
 
         public void AddExternalVelocity(Vector2 velocity)
@@ -120,9 +164,14 @@ namespace JustSomeStars.Runtime.Player
             body.position = recoveryAnchor;
             body.linearVelocity = Vector2.zero;
             appliedSurfaceVelocity = Vector2.zero;
+            manualSurfaceVelocity = Vector2.zero;
+            detectedSurfaceVelocity = Vector2.zero;
             pendingExternalVelocity = Vector2.zero;
+            externalAcceleration = Vector2.zero;
             jumpRequested = false;
             jetHeld = false;
+            IsGrounded = false;
+            groundNormal = Vector2.up;
             remainingJetSeconds = config.JetDuration;
         }
 
@@ -135,6 +184,7 @@ namespace JustSomeStars.Runtime.Player
             }
 
             SampleGround();
+            TryResolveStep();
             var velocity = body.linearVelocity - appliedSurfaceVelocity;
             var targetDirection = IsGrounded
                 ? ProjectInputAlongGround(moveInput, groundNormal)
@@ -142,18 +192,24 @@ namespace JustSomeStars.Runtime.Player
             var targetX = targetDirection.x * config.MoveSpeed;
             var acceleration = Mathf.Abs(moveInput.x) > 0.001f
                 ? (IsGrounded ? config.GroundAcceleration : config.AirAcceleration)
-                : config.GroundDeceleration;
-            velocity.x = Mathf.MoveTowards(
-                velocity.x,
-                targetX,
-                acceleration * deltaTime);
+                : IsGrounded
+                    ? config.GroundDeceleration
+                    : 0f;
+            if (acceleration > 0f)
+            {
+                velocity.x = Mathf.MoveTowards(
+                    velocity.x,
+                    targetX,
+                    acceleration * deltaTime);
+            }
 
             if (IsGrounded && Mathf.Abs(moveInput.x) > 0.001f)
             {
                 velocity.y = targetDirection.y * config.MoveSpeed;
             }
 
-            if (jumpRequested && IsGrounded)
+            var jumpedThisStep = jumpRequested && IsGrounded;
+            if (jumpedThisStep)
             {
                 velocity.y = config.JumpVelocity;
                 remainingJetSeconds = config.JetDuration;
@@ -166,12 +222,31 @@ namespace JustSomeStars.Runtime.Player
                 remainingJetSeconds -= used;
             }
 
-            velocity.y = Mathf.Max(velocity.y, -config.MaxFallSpeed);
+            velocity += externalAcceleration * deltaTime;
             velocity += pendingExternalVelocity;
             pendingExternalVelocity = Vector2.zero;
-            appliedSurfaceVelocity = movingSurfaceVelocity;
-            body.linearVelocity = velocity + appliedSurfaceVelocity;
+            velocity.y = Mathf.Max(velocity.y, -config.MaxFallSpeed);
+            var currentSurfaceVelocity = detectedSurfaceVelocity +
+                manualSurfaceVelocity;
+            body.linearVelocity = velocity + currentSurfaceVelocity;
+            appliedSurfaceVelocity = jumpedThisStep
+                ? Vector2.zero
+                : currentSurfaceVelocity;
             jumpRequested = false;
+        }
+
+        public bool IsSurfaceWalkable(Vector2 surfaceNormal)
+        {
+            RequireConfiguration();
+            return surfaceNormal.sqrMagnitude > 0.0001f &&
+                Vector2.Angle(surfaceNormal, Vector2.up) <=
+                config.MaximumSlopeAngle + 0.0001f;
+        }
+
+        public bool CanTraverseStep(float height)
+        {
+            RequireConfiguration();
+            return height >= 0f && height <= config.MaximumStepHeight + 0.0001f;
         }
 
         public static Vector2 ProjectInputAlongGround(
@@ -220,17 +295,99 @@ namespace JustSomeStars.Runtime.Player
                 groundMask);
             IsGrounded = false;
             groundNormal = Vector2.up;
+            detectedSurfaceVelocity = Vector2.zero;
             foreach (var hit in hits)
             {
-                if (hit.collider == null || hit.collider == bodyCollider)
+                if (!IsValidGroundHit(hit) || !IsSurfaceWalkable(hit.normal))
                 {
                     continue;
                 }
 
                 IsGrounded = true;
                 groundNormal = hit.normal;
+                if (hit.rigidbody != null)
+                {
+                    detectedSurfaceVelocity = hit.rigidbody.linearVelocity;
+                }
                 break;
             }
+        }
+
+        private void TryResolveStep()
+        {
+            if (!IsGrounded || Mathf.Abs(moveInput.x) < 0.001f ||
+                config.MaximumStepHeight <= 0f || config.StepProbeDistance <= 0f)
+            {
+                return;
+            }
+
+            var bounds = bodyCollider.bounds;
+            var direction = Mathf.Sign(moveInput.x);
+            var horizontal = Vector2.right * direction;
+            var forwardDistance = bounds.extents.x + config.StepProbeDistance;
+            var lowerOrigin = new Vector2(
+                bounds.center.x,
+                bounds.min.y + Mathf.Max(0.02f, config.GroundProbeDistance * 0.25f));
+            var lowerHits = Physics2D.RaycastAll(
+                lowerOrigin,
+                horizontal,
+                forwardDistance,
+                groundMask);
+            var obstacle = Array.Find(lowerHits, IsValidGroundHit);
+            if (obstacle.collider == null ||
+                obstacle.collider is EdgeCollider2D)
+            {
+                return;
+            }
+
+            var upperOrigin = lowerOrigin + Vector2.up *
+                (config.MaximumStepHeight + config.GroundProbeDistance);
+            var upperHits = Physics2D.RaycastAll(
+                upperOrigin,
+                horizontal,
+                forwardDistance,
+                groundMask);
+            if (Array.Exists(upperHits, IsValidGroundHit))
+            {
+                return;
+            }
+
+            var landingOrigin = new Vector2(
+                bounds.center.x + direction * forwardDistance,
+                bounds.min.y + config.MaximumStepHeight +
+                config.GroundProbeDistance);
+            var landingHits = Physics2D.RaycastAll(
+                landingOrigin,
+                Vector2.down,
+                config.MaximumStepHeight + config.GroundProbeDistance * 2f,
+                groundMask);
+            foreach (var hit in landingHits)
+            {
+                if (!IsValidGroundHit(hit) || !IsSurfaceWalkable(hit.normal))
+                {
+                    continue;
+                }
+
+                var rise = hit.point.y - bounds.min.y;
+                if (rise > 0.001f && CanTraverseStep(rise))
+                {
+                    body.position += Vector2.up * rise;
+                    Physics2D.SyncTransforms();
+                }
+                return;
+            }
+        }
+
+        private bool IsValidGroundHit(RaycastHit2D hit)
+        {
+            if (hit.collider == null || hit.collider == bodyCollider ||
+                hit.collider.isTrigger)
+            {
+                return false;
+            }
+
+            var otherMotor = hit.collider.GetComponentInParent<SurfaceMotor2D>();
+            return otherMotor == null || ReferenceEquals(otherMotor, this);
         }
 
         private void OnGameplayCommand(

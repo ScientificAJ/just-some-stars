@@ -288,15 +288,15 @@ implementation plans and issue register; it does not replace either authority.
 - Authored ceilings and honest device limitations are recorded in
   `docs/qa/task12-mirra-benchmark.md`.
 
-## Immediate next task: Task 13
+## Immediate next task: Task 14
 
-Implement and visually accept the production `SurfaceMotor2D`, body
-calibration and `CompositionCamera2D` behavior against the final Task 12 Mirra
-contract. Begin only after the scoped Task 12 completion commit is pushed.
+Task 13 is complete. Next, implement contextual interactions and anchor
+reservations without reopening the accepted production motor, camera or
+Captain-presentation contract.
 
 ## User-help queue
 
-No user decision or external action is currently blocking progress.
+No user decision or external action is currently blocking Task 14.
 
 ## Chronological checkpoint log
 
@@ -342,3 +342,37 @@ No user decision or external action is currently blocking progress.
   `PASS`; the exact-device image received user approval. The user's correction
   that the final video does not visibly prove interaction was accepted and
   recorded in the evidence, benchmark and JSS-016 rather than defended.
+- 2026-08-28: Task 13 implemented the production motor, body calibration and
+  composition camera and produced a fresh exact Android build. Focused prefab,
+  motor, camera, lifecycle, affected-Mirra and real touchscreen-to-virtual-
+  gamepad route tests are green. The first replacement Limrun session proved
+  real movement and airborne Jump, but expired before one continuous Interact
+  and Lens recording; its incomplete footage is retained as diagnostic evidence
+  only and Task 13 remains active.
+- 2026-08-28: A second explicitly approved Limrun session proved the exact APK,
+  full landscape bounds, real movement, Jump and Lens response. It also proved
+  Argent two-pointer injection unsuitable for this Unity target and corrected
+  the ADB coordinate contract to logical `1616x720`. The route overshot the
+  world-X `5.25` interaction probe and fall recovery reset the Captain before
+  `SIGNAL LINKED`; both recordings remain diagnostic, all paid resources were
+  cleaned up, and Task 13 remains active pending one measured final capture.
+- 2026-08-29: A third explicitly approved ten-minute Limrun session installed
+  the same APK SHA-256 `800fd80a...dbf7`, preserved clean `1616x720` launch and
+  calibration frames, and isolated the remaining control detail. A stationary
+  `(205,575)` hold is ignored; a center-to-right drag moves but ramps the
+  joystick; the next route is a genuine `(204,575)` to `(205,575)` one-pixel
+  full-right drag for `1,150 ms`, calculated to end inside the world-X `5.25`
+  console radius. The hard timeout arrived before that correction could run.
+  No final video is claimed; the lease, tunnel and Argent server are closed,
+  `lim android list --json` is empty, and Task 13 remains active.
+- 2026-08-29: Task 13 completed. The accepted full action clip visibly proves
+  run, Jump, `SIGNAL LINKED` interaction and Lens response. After the user
+  identified the moving lower-leg/boot disappearance, an authentic pixel RED
+  showed the module drifting off the transformed leg; the generator now derives
+  boot-top anchors from each real hip rotation and translation. Final focused
+  gates are Captain package Python `6/6`, importer `6/6` and actual layered
+  renderer `3/3`. The rebuilt Android APK SHA-256 is
+  `ba80a0b8fc2389145dd25202da56c090954960dc8c54c6550ddb64bcbdea73b3`;
+  its `1616x720` 60-fps full-stride spot-check keeps both lower legs visible
+  and received bounded extreme-critic `PASS`. The final process log is clean,
+  all paid instances are deleted, and Task 14 is next.

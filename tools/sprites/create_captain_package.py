@@ -442,6 +442,10 @@ def _motion_state(clip_id, frame_index, frame_count):
         "headAngle": 0.0,
         "rearLegAngle": 0.0,
         "frontLegAngle": 0.0,
+        "rearLegDx": 0,
+        "rearLegDy": 0,
+        "frontLegDx": 0,
+        "frontLegDy": 0,
         "rearArmAngle": 0.0,
         "armAngle": 0.0,
         "dx": 0,
@@ -457,12 +461,24 @@ def _motion_state(clip_id, frame_index, frame_count):
                      headAngle=0.7 * math.sin(cycle),
                      armAngle=-1.5 * math.sin(cycle))
     elif clip_id == "run":
-        swing = math.sin(cycle)
+        # Contact frames need the widest stride. The previous sine started both
+        # contact frames at the neutral pose, collapsing the two legs into one
+        # mobile-scale silhouette. A cosine starts on contact, while the small
+        # passing-pose lift keeps the swing boot readable at quarter-cycle.
+        swing = math.cos(cycle)
+        rear_lift = [0, -4, -16, -8, 0, 0, 0, 0][frame_index]
+        front_lift = [0, 0, 0, 0, 0, -4, -16, -8][frame_index]
+        rear_passing_offset = [0, 0, -28, 10, 0, 0, 0, 0][frame_index]
+        front_passing_offset = [0, 0, 0, 0, 0, -8, 28, 10][frame_index]
         state.update(
             bodyAngle=-3.5,
             dy=round(-4.0 * abs(math.sin(cycle))),
-            rearLegAngle=-23.0 * swing,
-            frontLegAngle=23.0 * swing,
+            rearLegAngle=-30.0 * swing,
+            frontLegAngle=30.0 * swing,
+            rearLegDx=rear_passing_offset,
+            rearLegDy=rear_lift,
+            frontLegDx=front_passing_offset,
+            frontLegDy=front_lift,
             rearArmAngle=24.0 * swing,
             armAngle=-24.0 * swing,
             headAngle=1.2 * math.sin(cycle + math.pi / 2),
@@ -721,18 +737,26 @@ def _render_frame(puppet, clip_id, frame_index, frame_count):
     )
     body = Image.alpha_composite(
         body,
-        _transform(
-            puppet["rearLeg"],
-            angle=state["rearLegAngle"],
-            pivot=(left + 0.42 * width, hips[1]),
+        _translate(
+            _transform(
+                puppet["rearLeg"],
+                angle=state["rearLegAngle"],
+                pivot=(left + 0.42 * width, hips[1]),
+            ),
+            state["rearLegDx"],
+            state["rearLegDy"],
         ),
     )
     body = Image.alpha_composite(
         body,
-        _transform(
-            puppet["frontLeg"],
-            angle=state["frontLegAngle"],
-            pivot=(left + 0.61 * width, hips[1]),
+        _translate(
+            _transform(
+                puppet["frontLeg"],
+                angle=state["frontLegAngle"],
+                pivot=(left + 0.61 * width, hips[1]),
+            ),
+            state["frontLegDx"],
+            state["frontLegDy"],
         ),
     )
     layers["body-base"] = body
@@ -809,10 +833,36 @@ def _frame_anchors(bounds, clip_id, frame_index, frame_count, facing):
         state["rearLegAngle"],
         (left + 0.42 * width, hips[1]),
     )
+    rear_boot_top = _rotate_point(
+        (left + 0.31 * width, bottom - 0.16 * height),
+        state["rearLegAngle"],
+        (left + 0.42 * width, hips[1]),
+    )
     front_foot = _rotate_point(
         (left + 0.74 * width, bottom - 0.01 * height),
         state["frontLegAngle"],
         (left + 0.61 * width, hips[1]),
+    )
+    front_boot_top = _rotate_point(
+        (left + 0.74 * width, bottom - 0.16 * height),
+        state["frontLegAngle"],
+        (left + 0.61 * width, hips[1]),
+    )
+    rear_foot = (
+        rear_foot[0] + state["rearLegDx"],
+        rear_foot[1] + state["rearLegDy"],
+    )
+    rear_boot_top = (
+        rear_boot_top[0] + state["rearLegDx"],
+        rear_boot_top[1] + state["rearLegDy"],
+    )
+    front_foot = (
+        front_foot[0] + state["frontLegDx"],
+        front_foot[1] + state["frontLegDy"],
+    )
+    front_boot_top = (
+        front_boot_top[0] + state["frontLegDx"],
+        front_boot_top[1] + state["frontLegDy"],
     )
     rear_hand = _rotate_point(
         (left + 0.42 * width, top + 0.66 * height),
@@ -840,8 +890,8 @@ def _frame_anchors(bounds, clip_id, frame_index, frame_count, facing):
         "Belt": (left + 0.55 * width, top + 0.43 * height + upper_dy),
         "LeftWrist": rear_hand,
         "RightWrist": front_hand,
-        "LeftBootTop": (rear_foot[0], rear_foot[1] - 0.15 * height),
-        "RightBootTop": (front_foot[0], front_foot[1] - 0.15 * height),
+        "LeftBootTop": rear_boot_top,
+        "RightBootTop": front_boot_top,
         "ActiveTool": (front_hand[0] + 0.03 * width, front_hand[1]),
         "StowedTool": (
             left + 0.22 * width, top + 0.52 * height + upper_dy

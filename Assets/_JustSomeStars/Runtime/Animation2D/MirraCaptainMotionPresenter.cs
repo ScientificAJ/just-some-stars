@@ -13,7 +13,7 @@ namespace JustSomeStars.Runtime.Animation2D
         private string currentMotion = "idle";
         private SpriteFacing currentFacing = SpriteFacing.Right;
 
-        private void Awake()
+        private void Start()
         {
             if (characterRenderer == null || motionSource == null)
             {

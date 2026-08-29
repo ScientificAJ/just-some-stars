@@ -40,6 +40,9 @@ namespace JustSomeStars.Tests.EditMode
                          typeof(CaptainBodyFamily)))
             {
                 var loadout = CaptainSpriteLoadout.CreateLaunchLook(family);
+                Assert.That(loadout.SkinSwatch, Is.EqualTo("skin-5"));
+                Assert.That(loadout.SuitColorway, Is.EqualTo("sandstone"));
+                Assert.That(loadout.SignalState, Is.EqualTo("active-cyan"));
                 Assert.That(
                     CaptainSpriteCompatibilityValidator.Validate(spriteSet, loadout),
                     Is.Empty,
@@ -169,12 +172,18 @@ namespace JustSomeStars.Tests.EditMode
                     Is.EqualTo(5));
                 Assert.That(
                     captain.transform.localScale.x,
-                    Is.EqualTo(1.55f).Within(0.0001f));
+                    Is.EqualTo(1f).Within(0.0001f));
                 Assert.That(
                     captain.transform.localScale.y,
-                    Is.EqualTo(1.55f).Within(0.0001f));
+                    Is.EqualTo(1f).Within(0.0001f));
                 var visualRoot = captain.transform.Find("CaptainVisualRoot");
                 Assert.That(visualRoot, Is.Not.Null);
+                Assert.That(
+                    visualRoot.localScale.x,
+                    Is.EqualTo(1.90f).Within(0.0001f));
+                Assert.That(
+                    visualRoot.localScale.y,
+                    Is.EqualTo(1.90f).Within(0.0001f));
                 Assert.That(captain.GetComponent<SpriteRenderer>(), Is.Null);
                 Assert.That(
                     renderer.LayerRenderers.Select(item => item.transform.parent),

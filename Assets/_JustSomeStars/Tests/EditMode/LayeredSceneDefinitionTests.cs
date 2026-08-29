@@ -406,11 +406,23 @@ namespace JustSomeStars.Tests.EditMode
                 var interaction = FindDescendant(
                     root.transform,
                     "SignalConsole");
+                var obstacle = FindDescendant(
+                    root.transform,
+                    "ClimbObstacle");
                 var interactionType = RequireRuntimeType(
                     "JustSomeStars.Runtime.Player.SurfaceInteractionProbe2D");
                 Assert.That(interaction.GetComponent(interactionType), Is.Not.Null,
                     "The visible interaction target must have an observable " +
                     "Primary-action response in the Stage 1 demo.");
+                var interactionTrigger = interaction.GetComponent<CircleCollider2D>();
+                var obstacleCollider = obstacle.GetComponent<BoxCollider2D>();
+                Assert.That(interactionTrigger, Is.Not.Null);
+                Assert.That(obstacleCollider, Is.Not.Null);
+                Assert.That(
+                    interactionTrigger.bounds.max.x,
+                    Is.LessThan(obstacleCollider.bounds.min.x),
+                    "The contextual interaction must be reachable from spawn " +
+                    "before the solid climb obstacle blocks the approach route.");
 
                 Assert.That(
                     root.GetComponentsInChildren<Rigidbody>(true),
