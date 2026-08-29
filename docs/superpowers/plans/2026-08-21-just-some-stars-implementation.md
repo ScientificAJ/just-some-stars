@@ -1542,7 +1542,7 @@ git commit -m "feat: add contextual interaction anchors"
 - Consumes: tagged perceptions, interaction reservations, story priority and camera visibility.
 - Produces: selected action state and one dialogue-token owner.
 
-- [ ] **Step 1: Write utility-order tests**
+- [x] **Step 1: Write utility-order tests**
 
 ```csharp
 [Test]
@@ -1553,20 +1553,20 @@ public void MandatoryStoryAction_OutranksPersonalityObservation()
 }
 ```
 
-- [ ] **Step 2: Implement Director companion selection, formation and dialogue arbitration**
+- [x] **Step 2: Implement Director companion selection, formation and dialogue arbitration**
 
-- [ ] **Step 3: Implement states: join, follow, position, traverse, investigate, interact, react, speak, conversation, cinematic, wait and recover**
+- [x] **Step 3: Implement states: join, follow, position, traverse, investigate, interact, react, speak, conversation, cinematic, wait and recover**
 
 Traverse authored `TraversalGraph2D` nodes and declared depth-band transitions;
 do not introduce a 3D NavMesh dependency.
 
-- [ ] **Step 4: Create Mira, Juno, Kai, Bea and Ori personality assets with their approved attention weights**
+- [x] **Step 4: Create Mira, Juno, Kai, Bea and Ori personality assets with their approved attention weights**
 
-- [ ] **Step 5: Test off-camera warp recovery, blocked navigation and dialogue contention**
+- [x] **Step 5: Test off-camera warp recovery, blocked navigation and dialogue contention**
 
 Expected: no visible teleport, no permanent stuck state and no overlapping authored lines.
 
-- [ ] **Step 6: Profile decision ticks with two companions plus Ori and commit**
+- [x] **Step 6: Profile decision ticks with two companions plus Ori and commit**
 
 ```bash
 git add Assets/_JustSomeStars/Runtime/Crew Assets/_JustSomeStars/Content Assets/_JustSomeStars/Tests

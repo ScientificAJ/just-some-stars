@@ -288,15 +288,47 @@ implementation plans and issue register; it does not replace either authority.
 - Authored ceilings and honest device limitations are recorded in
   `docs/qa/task12-mirra-benchmark.md`.
 
-## Immediate next task: Task 15
+## Task 15 checkpoint
 
-Task 14 is complete. Next, implement the Crew Director and personality brains
-using the finished interaction-reservation contract without reopening the
-accepted motor, camera, Captain-presentation or anchor-selection contracts.
+### Delivered scope
+
+- Exactly two human companions plus Ori are selected deterministically for an
+  expedition, with authored formation positions and a bounded five-Hz decision
+  cadence.
+- Mira, Juno, Kai, Bea and Ori have validated personality assets with distinct
+  approved attention domains.
+- Mandatory story actions outrank safety/recovery, which outrank personality
+  and ambient actions; quantized utility and ordinal IDs form a deterministic
+  total order even for three or more near-equal candidates.
+- The real Director tick owns dialogue tokens and interaction reservations,
+  suppresses autonomous actions during cinematics and releases all leases.
+- All 12 crew states execute through a typed 2D runtime route. Traversal uses
+  only declared `TraversalGraph2D` nodes/depth transitions; no NavMesh exists.
+- Recovery requires both the stranded actor and destination to be off camera,
+  and handles blocked or excessively long authored routes without visible warp.
+
+### Final gate
+
+- Authentic focused REDs reproduced every bounded critic finding, including
+  disconnected arbitration, unused traversal, arbitrary team/cadence input,
+  visible recovery and non-transitive three-candidate near ties.
+- Fresh `CrewUtilityTests`: `11/11` passed, exit code 0.
+- Fresh `CrewRecoveryTests`: `8/8` passed, exit code 0.
+- Both final logs are free of C# compiler, unhandled-exception and WeakPtr
+  diagnostics.
+- The same bounded harsh critic returned `PROCEED` after the final total-order
+  correction.
+
+## Immediate next task: Task 16
+
+Task 15 is complete. Next, implement Discovery Lens modes, authored
+instrument/phenomenon compatibility, prediction and evidence recording, and
+typed discovery events without reopening the accepted crew, interaction,
+motor, camera or Captain-presentation contracts.
 
 ## User-help queue
 
-No user decision or external action is currently blocking Task 15. JSS-019
+No user decision or external action is currently blocking Task 16. JSS-019
 records the remote-push safety block without stopping continued local work.
 
 ## Chronological checkpoint log
@@ -399,3 +431,13 @@ records the remote-push safety block without stopping continued local work.
   harsh critic returned `PROCEED`. JSS-019 records that the platform rejected
   the authorized remote push on destination-trust grounds; local commits remain
   intact and Task 15 is next.
+- 2026-08-30: Task 15 completed the Crew Director and personality brains.
+  Exactly two humans plus Ori now use authored personalities, deterministic
+  formation, strict story/safety/personality priority, real dialogue and
+  interaction leases, all 12 crew states, declared 2D traversal and invisible
+  recovery. The critic's six initial integration findings were reproduced and
+  corrected. Its final three-candidate near-tie example then exposed the last
+  pairwise-epsilon defect as an authentic `0/1` RED; global score buckets now
+  form a true order-independent total order. Fresh focused EditMode is `11/11`,
+  PlayMode is `8/8`, both exit 0, and the same critic returned `PROCEED`.
+  Task 16 is next; JSS-019 still prevents remote delivery but not local work.
