@@ -1507,17 +1507,17 @@ git commit -m "feat: productionize 2.5d surface movement and camera"
 - Produces: one interaction definition with player/crew/Ori 2D anchors, tool,
   frame-atlas clip, typed events and recovery.
 
-- [ ] **Step 1: Write tests proving two actors cannot reserve one exclusive anchor**
+- [x] **Step 1: Write tests proving two actors cannot reserve one exclusive anchor**
 
-- [ ] **Step 2: Implement reservation leases with cancellation and timeout recovery**
+- [x] **Step 2: Implement reservation leases with cancellation and timeout recovery**
 
-- [ ] **Step 3: Implement contextual selection based on 2D distance, facing, layer/depth band, mode and required tool**
+- [x] **Step 3: Implement contextual selection based on 2D distance, facing, layer/depth band, mode and required tool**
 
-- [ ] **Step 4: Build a probe-repair fixture involving Captain, Juno and Ori**
+- [x] **Step 4: Build a probe-repair fixture involving Captain, Juno and Ori**
 
 Expected: all three reach distinct anchors, play their authored actions and release reservations even after cancellation.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add Assets/_JustSomeStars/Runtime/Interaction Assets/_JustSomeStars/Tests

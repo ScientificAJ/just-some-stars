@@ -1,6 +1,6 @@
 # Just Some Stars production execution ledger
 
-Last updated: 2026-08-28
+Last updated: 2026-08-30
 
 This tracked ledger preserves the active production state, decisions, evidence,
 next action and user-help queue across context compaction. It complements the
@@ -288,15 +288,16 @@ implementation plans and issue register; it does not replace either authority.
 - Authored ceilings and honest device limitations are recorded in
   `docs/qa/task12-mirra-benchmark.md`.
 
-## Immediate next task: Task 14
+## Immediate next task: Task 15
 
-Task 13 is complete. Next, implement contextual interactions and anchor
-reservations without reopening the accepted production motor, camera or
-Captain-presentation contract.
+Task 14 is complete. Next, implement the Crew Director and personality brains
+using the finished interaction-reservation contract without reopening the
+accepted motor, camera, Captain-presentation or anchor-selection contracts.
 
 ## User-help queue
 
-No user decision or external action is currently blocking Task 14.
+No user decision or external action is currently blocking Task 15. JSS-019
+records the remote-push safety block without stopping continued local work.
 
 ## Chronological checkpoint log
 
@@ -387,3 +388,14 @@ No user decision or external action is currently blocking Task 14.
   earlier bounded diagnostic instances expired, the final instance was deleted,
   `lim android list --json` returned `[]`, Argent and all tunnels were stopped,
   and Task 14 is next.
+- 2026-08-30: Task 14 completed contextual interactions and reservations.
+  Captain, Juno and Ori select distinct anchors through exact 2D distance,
+  facing, physics-layer, depth-band, game-mode and required-tool filters. The
+  first critic pass found duplicate clip identity, peer-cancellation and active
+  timeout gaps; authentic focused REDs reproduced all three. The corrected
+  runner cancels blocked peers on first fault or deadline, recovers all reserved
+  actors, releases all leases and publishes no events on failure. Fresh focused
+  EditMode and PlayMode fixtures each pass `5/5` with exit code 0, and the same
+  harsh critic returned `PROCEED`. JSS-019 records that the platform rejected
+  the authorized remote push on destination-trust grounds; local commits remain
+  intact and Task 15 is next.
