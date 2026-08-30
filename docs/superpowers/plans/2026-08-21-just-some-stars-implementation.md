@@ -1629,17 +1629,17 @@ git commit -m "feat: add evidence-driven Discovery Lens"
 - Produces: bounded-plane boost, brake, drift, momentum, gravity assist,
   authored depth-lane, prediction arc, checkpoint and landing state.
 
-- [ ] **Step 1: Write deterministic model tests for acceleration, braking and assist correction**
+- [x] **Step 1: Write deterministic model tests for acceleration, braking and assist correction**
 
-- [ ] **Step 2: Implement the deterministic 2D simulation separately from ship presentation**
+- [x] **Step 2: Implement the deterministic 2D simulation separately from ship presentation**
 
-- [ ] **Step 3: Implement Guided, Balanced and Ace correction profiles**
+- [x] **Step 3: Implement Guided, Balanced and Ace correction profiles**
 
 Guided widens viable routes and corrects steering; Ace reduces correction but never changes story access.
 
-- [ ] **Step 4: Implement checkpoint recovery and landing transition hooks**
+- [x] **Step 4: Implement checkpoint recovery and landing transition hooks**
 
-- [ ] **Step 5: Produce the original homemade ship as layered sprites and coherent frame atlases**
+- [x] **Step 5: Produce the original homemade ship as layered sprites and coherent frame atlases**
 
 Preserve the approved contrast between patched child-built construction and
 precise Signal technology. Validate engine, landing, door, cockpit-seat,
@@ -1647,7 +1647,7 @@ damage-state and cosmetic attachment pivots through the sprite pipeline. A
 bounded optional 3D reference render is permitted, but no shipping feature may
 depend on a ship rig, mesh LOD or free 3D flight space.
 
-- [ ] **Step 6: Build a 90-second graybox route and validate touch controls on device**
+- [x] **Step 6: Build a 90-second graybox route and validate touch controls on device**
 
 - [ ] **Step 7: Commit**
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.ExceptionServices;
 using UnityEngine;
 
@@ -47,10 +48,18 @@ namespace JustSomeStars.Editor.Build
 
         public void Run(BuildTargetKind kind)
         {
+            Run(kind, BuildInvocationOverride.None);
+        }
+
+        internal void Run(
+            BuildTargetKind kind,
+            BuildInvocationOverride invocationOverride)
+        {
+            invocationOverride ??= BuildInvocationOverride.None;
             var definition = BuildTargetDefinition.Resolve(kind);
             var artifactTransaction = BuildArtifactTransaction.Begin(
                 m_ProjectRoot,
-                definition.OutputPath);
+                invocationOverride.ResolveOutputPath(definition.OutputPath));
             IAndroidBuildState state = null;
             BuildInputs inputs = null;
             IBuildSceneLease sceneLease = null;
@@ -79,15 +88,20 @@ namespace JustSomeStars.Editor.Build
                     artifactTransaction.StagingPath,
                     sceneLease.ScenePaths,
                     state.PersistentDefineSymbols);
+                playerOptions.extraScriptingDefines = invocationOverride
+                    .ResolveDefineSymbols(playerOptions.extraScriptingDefines);
+                BuildConfiguration.ValidateDefineSymbols(
+                    playerOptions.extraScriptingDefines);
                 Debug.Log(
                     "[JSS Build] Configured " + configuration.Kind +
                     ": package=" + configuration.PackageId +
                     ", versionCode=" + configuration.VersionCode +
-                    ", canonicalOutput=" + configuration.OutputPath +
+                    ", canonicalOutput=" + invocationOverride.ResolveOutputPath(
+                        configuration.OutputPath) +
                     ", appBundle=" + configuration.BuildAppBundle +
                     ", development=" + configuration.IsDevelopmentBuild +
                     ", invocationDefines=" +
-                    string.Join(";", configuration.DefineSymbols) + ".");
+                    string.Join(";", playerOptions.extraScriptingDefines) + ".");
 
                 m_AddressablesBuilder.Build(configuration, playerOptions);
 
@@ -169,6 +183,39 @@ namespace JustSomeStars.Editor.Build
             }
 
             ThrowIfFailed(primaryFailure, cleanupFailures);
+        }
+
+        internal sealed class BuildInvocationOverride
+        {
+            public static readonly BuildInvocationOverride None =
+                new BuildInvocationOverride(null, Array.Empty<string>());
+
+            private readonly string m_OutputPath;
+            private readonly IReadOnlyList<string> m_AdditionalDefineSymbols;
+
+            public BuildInvocationOverride(
+                string outputPath,
+                IReadOnlyList<string> additionalDefineSymbols)
+            {
+                m_OutputPath = outputPath;
+                m_AdditionalDefineSymbols = additionalDefineSymbols ??
+                    throw new ArgumentNullException(nameof(additionalDefineSymbols));
+            }
+
+            public string ResolveOutputPath(string defaultOutputPath)
+            {
+                return string.IsNullOrWhiteSpace(m_OutputPath)
+                    ? defaultOutputPath
+                    : m_OutputPath;
+            }
+
+            public string[] ResolveDefineSymbols(
+                IEnumerable<string> defaultDefineSymbols)
+            {
+                return (defaultDefineSymbols ?? Array.Empty<string>())
+                    .Concat(m_AdditionalDefineSymbols)
+                    .ToArray();
+            }
         }
 
         private static void TryCleanup(

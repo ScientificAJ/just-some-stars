@@ -10,11 +10,15 @@ namespace JustSomeStars.Runtime.Core
     {
         private const string FrontendDestination = "Frontend";
         private const string InternalProofDestination = "Mirra2DProof";
+        private const string FlightEvidenceDestination = "Task17FlightGraybox";
 
-        internal static string CurrentDestination => ResolveDestination(
-            IsDevelopmentVariant);
+        internal static string CurrentDestination => ResolveDestinationForInvocation(
+            IsDevelopmentVariant,
+            IsFlightEvidenceInvocation);
 
-        internal static GameMode CurrentMode => ResolveMode(IsDevelopmentVariant);
+        internal static GameMode CurrentMode => ResolveModeForInvocation(
+            IsDevelopmentVariant,
+            IsFlightEvidenceInvocation);
 
         internal static string ResolveDestination(bool isDevelopmentVariant)
         {
@@ -28,11 +32,41 @@ namespace JustSomeStars.Runtime.Core
             return isDevelopmentVariant ? GameMode.Surface : GameMode.Frontend;
         }
 
+        internal static string ResolveDestinationForInvocation(
+            bool isDevelopmentVariant,
+            bool isFlightEvidenceInvocation)
+        {
+            return isFlightEvidenceInvocation
+                ? FlightEvidenceDestination
+                : ResolveDestination(isDevelopmentVariant);
+        }
+
+        internal static GameMode ResolveModeForInvocation(
+            bool isDevelopmentVariant,
+            bool isFlightEvidenceInvocation)
+        {
+            return isFlightEvidenceInvocation
+                ? GameMode.Flight
+                : ResolveMode(isDevelopmentVariant);
+        }
+
         private static bool IsDevelopmentVariant
         {
             get
             {
 #if JSS_DEVELOPMENT
+                return true;
+#else
+                return false;
+#endif
+            }
+        }
+
+        private static bool IsFlightEvidenceInvocation
+        {
+            get
+            {
+#if JSS_TASK17_FLIGHT_EVIDENCE
                 return true;
 #else
                 return false;

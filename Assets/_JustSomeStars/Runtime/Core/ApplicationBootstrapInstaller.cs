@@ -1,6 +1,7 @@
 using System;
 using JustSomeStars.Runtime.Accessibility;
 using JustSomeStars.Runtime.Input;
+using JustSomeStars.Runtime.Flight;
 using JustSomeStars.Runtime.Player;
 using JustSomeStars.Runtime.Saving;
 using JustSomeStars.Runtime.UI;
@@ -69,6 +70,13 @@ namespace JustSomeStars.Runtime.Core
                     input,
                     modeController,
                     gameEvents));
+            sceneTransition.ConfigureFlightDependencies(
+                new FlightGameplayDependencies(
+                    settings,
+                    input,
+                    modeController,
+                    gameEvents,
+                    sceneTransition));
             return CreateCompositionWithModeController(
                 settings,
                 localSave,

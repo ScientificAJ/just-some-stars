@@ -21,6 +21,15 @@ namespace JustSomeStars.Editor.Build
             CreateOrchestrator().Run(BuildTargetKind.Galaxy);
         }
 
+        public static void BuildTask17FlightEvidence()
+        {
+            CreateOrchestrator().Run(
+                BuildTargetKind.AndroidInternal,
+                new BuildOrchestrator.BuildInvocationOverride(
+                    "Builds/Task17Flight/JustSomeStars-task17-flight.apk",
+                    new[] { "JSS_TASK17_FLIGHT_EVIDENCE" }));
+        }
+
         private static BuildOrchestrator CreateOrchestrator()
         {
             var projectRoot = Directory.GetParent(Application.dataPath)?.FullName;

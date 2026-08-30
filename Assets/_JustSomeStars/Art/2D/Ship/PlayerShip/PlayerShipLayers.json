@@ -1,0 +1,123 @@
+{
+  "canvas": [
+    768,
+    512
+  ],
+  "layers": {
+    "cockpitSeat": {
+      "file": "PlayerShipCockpitSeat.png",
+      "pivot": [
+        0.27,
+        0.515
+      ]
+    },
+    "cosmetic": {
+      "file": "PlayerShipCosmeticFlag.png",
+      "pivot": [
+        0.397,
+        0.775
+      ]
+    },
+    "damage": {
+      "file": "PlayerShipDamageOverlay.png",
+      "pivot": [
+        0.68,
+        0.49
+      ]
+    },
+    "door": {
+      "file": "PlayerShipDoorAtlas.png",
+      "frames": 3,
+      "pivot": [
+        0.566,
+        0.444
+      ]
+    },
+    "engine": {
+      "file": "PlayerShipEngineAtlas.png",
+      "frames": 4,
+      "pivot": [
+        0.105,
+        0.385
+      ]
+    },
+    "hull": {
+      "file": "PlayerShipHull.png",
+      "pivot": [
+        0.5,
+        0.34
+      ]
+    },
+    "landing": {
+      "file": "PlayerShipLandingAtlas.png",
+      "frames": 3,
+      "pivot": [
+        0.5,
+        0.145
+      ]
+    }
+  },
+  "outputs": {
+    "FlightHudControl.png": {
+      "bytes": 1211,
+      "sha256": "444c6401efe33e4bf014b56ea577778b248fd6f8702900417504b3391e632c48"
+    },
+    "FlightPredictionPoint.png": {
+      "bytes": 235,
+      "sha256": "31d0465f27aa5ff38a72644feefef4e36d92f398533d969fa35d7383bec793f5"
+    },
+    "PlayerShipCockpitSeat.png": {
+      "bytes": 55506,
+      "sha256": "43d697a384ec2c4fc15b1e2a6cc5667dde60a5d24932b74453bbf7695e166661"
+    },
+    "PlayerShipCosmeticFlag.png": {
+      "bytes": 16094,
+      "sha256": "a739d5966ad11b2fb6e9fbb295ba469dd8b9cbc0ac0ebc01f44c75848725b471"
+    },
+    "PlayerShipDamageOverlay.png": {
+      "bytes": 10910,
+      "sha256": "cb7473ef55b014e130051b25b75f19b2cf49e7558936c3ff9cc5342b7fe66669"
+    },
+    "PlayerShipDoorAtlas.png": {
+      "bytes": 146075,
+      "sha256": "76a2ad198325361ae1c249d5c56d565d6ce95ce26e11d234817299d23235b0be"
+    },
+    "PlayerShipDoorClosed.png": {
+      "bytes": 47031,
+      "sha256": "a4b485749b4e4ac8cf63c5af7099c8da273085a96b0645471a1bff8deb689555"
+    },
+    "PlayerShipDoorOpen.png": {
+      "bytes": 50120,
+      "sha256": "7fae318dcfbe7d97c40b7d293ce74617c67182217bd8987c2567ab07edc09430"
+    },
+    "PlayerShipEngine.png": {
+      "bytes": 24024,
+      "sha256": "d1404e8969087710741ecdb365648472c5db4afb6d549c63ad94beb7d699d3c3"
+    },
+    "PlayerShipEngineAtlas.png": {
+      "bytes": 91004,
+      "sha256": "e590829ebb527c5e947a5aebfe86495921e0661b4c03520087106ee27d884fab"
+    },
+    "PlayerShipHull.png": {
+      "bytes": 183100,
+      "sha256": "6b144e28559b87b2c327afa6b10dcab3b1a05dd84abb8ef3c69903ba0cfaae93"
+    },
+    "PlayerShipLandingAtlas.png": {
+      "bytes": 234658,
+      "sha256": "30233ebe39c520e68e9184c925ecc9518ff975b55f5816742f5b01b4fea2cff9"
+    },
+    "PlayerShipLandingGear.png": {
+      "bytes": 78920,
+      "sha256": "464197cd0dff0aa94ea5623b678ef966786841bd2e10b52385a325ccf9a05f07"
+    }
+  },
+  "pixelsPerUnit": 256,
+  "schemaVersion": 1,
+  "source": "PlayerShipMaster.png",
+  "sourceSha256": "ea8f0f6b851472e405006b9b00d913b5555413228d7f36fd7e657b94bba5ce9d",
+  "visualContract": {
+    "construction": "patched-child-built-observatory-ship",
+    "shipping3DDependency": false,
+    "signalTechnology": "precise-cyan-emission-nodes"
+  }
+}

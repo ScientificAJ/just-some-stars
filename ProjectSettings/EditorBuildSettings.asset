@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_JustSomeStars/Scenes/Benchmarks/Mirra2DProof.unity
     guid: b5710e29502f8cb109a866a2c7561803
+  - enabled: 1
+    path: Assets/_JustSomeStars/Scenes/Benchmarks/Task17FlightGraybox.unity
+    guid: cc32fa590a4e852448d9a239a785bc5f
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: cd66d02828868ea2f9ae34187f8dbb77, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: bf9300ba3765bd0228665825d7ae812b, type: 3}

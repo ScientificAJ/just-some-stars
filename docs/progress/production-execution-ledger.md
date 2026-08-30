@@ -350,11 +350,40 @@ implementation plans and issue register; it does not replace either authority.
 - Every final log is free of C# compiler, unhandled-exception and WeakPtr
   diagnostics, and the same bounded harsh critic returned `PROCEED`.
 
-## Immediate next task: Task 17
+## Task 17 completion checkpoint
 
-Task 16 is complete. Next, implement the declared 2.5D flight model, assists,
-depth lanes, landing and checkpoint recovery without reopening the accepted
-surface, crew or Discovery Lens contracts.
+Task 17 is complete. The production flight route now owns a deterministic 2D
+simulation, Guided/Balanced/Ace assistance, boost/brake/drift, three declared
+depth lanes, gravity opportunities, prediction, recoverable checkpoints and a
+transactional landing handoff. The homemade ship is published as independent
+layered sprites with engine, landing-gear and door atlases; no shipping feature
+depends on a 3D ship.
+
+### Final gate
+
+- Fresh focused EditMode flight-model evidence passes `10/10`.
+- Fresh focused PlayMode route/recovery evidence passes `9/9`.
+- The post-await production rollback and real Boot-to-Frontend idempotence
+  corrections each pass `1/1`; the bounded harsh critic returned `PROCEED` on
+  the final routing source.
+- The Android Task 17 build succeeded with warnings `2`, errors `0`; exact APK
+  SHA-256 is
+  `3193394f66aaae95b2c181ad4d1b98cae3367e38e56bada37eb35aa5b48fc69b`.
+- One clean replacement Limrun/Argent session exercised steering, boost and a
+  depth-lane change, traversed the authored route, and visibly completed the
+  real landing transition into `Mirra2DProof`. Both short paid instances ended
+  at their declared hard timeouts; the final Limrun instance list is empty and
+  the local inspection/tunnel processes are stopped.
+- The 125-second native recording is preserved honestly: its first 60 seconds
+  show Android's one-time immersive-mode help, followed by live flight. The
+  separate final screenshot is the authoritative proof of the completed
+  Flight-to-Surface handoff.
+
+## Immediate next task: Task 18
+
+Implement the mission graph, dialogue, contextual hints and Atlas on top of the
+accepted mode, event, discovery, surface and flight contracts. Do not reopen
+Task 17 unless Task 18 exposes a direct integration regression.
 
 ## User-help queue
 
@@ -480,3 +509,14 @@ records the remote-push safety block without stopping continued local work.
   final focused gates are EditMode `8/8` plus PlayMode `6/6`, `3/3` and `2/2`,
   all exit 0, and the same critic returned `PROCEED`. Task 17 is next; JSS-019
   still prevents remote delivery but not local work.
+- 2026-08-30: Task 17 completed the assisted 2.5D flight and landing route.
+  Deterministic model, recovery and production integration gates pass `10/10`
+  EditMode, `9/9` PlayMode, `1/1` post-await rollback and `1/1` real-Boot
+  idempotence. The same bounded critic returned `PROCEED`. Exact Android APK
+  SHA-256 is
+  `3193394f66aaae95b2c181ad4d1b98cae3367e38e56bada37eb35aa5b48fc69b`;
+  the exact-device route exercised steering, boost and a depth-lane change and
+  visibly transitioned into the real Mirra surface. Both short paid instances
+  ended at their declared hard timeouts, no instance/tunnel/inspector process
+  remains, and Task 18 is next. JSS-019 still prevents remote delivery but not
+  local work.

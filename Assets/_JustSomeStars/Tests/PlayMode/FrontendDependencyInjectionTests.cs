@@ -242,8 +242,14 @@ namespace JustSomeStars.Tests.PlayMode
         }
 
         [UnityTest]
-        public IEnumerator CompositionTransition_ReleasesBeforeShutdownAndRebindsOnceAfterReload()
+        public IEnumerator CompositionTransition_SameDestinationIsIdempotentAndShutdownReleasesOnce()
         {
+            var bootLoad = SceneManager.LoadSceneAsync(
+                "Boot",
+                LoadSceneMode.Single);
+            Assert.That(bootLoad, Is.Not.Null);
+            yield return bootLoad;
+
             var settings = new SettingsService(Path.Combine(
                 m_TestRoot,
                 "jss-settings-v1.json"));
@@ -290,19 +296,19 @@ namespace JustSomeStars.Tests.PlayMode
                 "Only InputRouter and the current Frontend settings panel may " +
                 "observe settings.");
 
-            var reload = transition.RouteAsync(
+            var repeatedRoute = transition.RouteAsync(
                 "Frontend",
                 CancellationToken.None).AsTask();
-            yield return WaitForTask(reload, "Frontend reload");
+            yield return WaitForTask(repeatedRoute, "repeated Frontend route");
 
             var currentController = FindOnly<FrontendController>();
             var currentLifecycle = FindOnly<UnityFrontendLifecycle>();
             var currentSettingsPanel = FindOnly<FrontendSettingsPanel>();
-            Assert.That(ReferenceEquals(currentController, firstController), Is.False);
-            Assert.That(ReferenceEquals(currentLifecycle, firstLifecycle), Is.False);
+            Assert.That(currentController, Is.SameAs(firstController));
+            Assert.That(currentLifecycle, Is.SameAs(firstLifecycle));
             Assert.That(
-                ReferenceEquals(currentSettingsPanel, firstSettingsPanel),
-                Is.False);
+                currentSettingsPanel,
+                Is.SameAs(firstSettingsPanel));
             Assert.That(currentController.Dependencies, Is.SameAs(dependencies));
             Assert.That(currentLifecycle.Dependencies, Is.SameAs(dependencies));
             Assert.That(currentSettingsPanel.Dependencies, Is.SameAs(dependencies));
