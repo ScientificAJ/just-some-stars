@@ -1649,7 +1649,7 @@ depend on a ship rig, mesh LOD or free 3D flight space.
 
 - [x] **Step 6: Build a 90-second graybox route and validate touch controls on device**
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add Assets/_JustSomeStars/Runtime/Flight Assets/_JustSomeStars/Prefabs/Ship Assets/_JustSomeStars/Tests
