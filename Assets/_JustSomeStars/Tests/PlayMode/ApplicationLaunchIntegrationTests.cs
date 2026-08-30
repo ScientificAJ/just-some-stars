@@ -89,7 +89,7 @@ namespace JustSomeStars.Tests.PlayMode
                 Is.EqualTo("Frontend"));
             Assert.That(
                 bootstrap.LastStartupReport.Services.Count,
-                Is.EqualTo(5));
+                Is.EqualTo(6));
 
             var inputModule = UnityEngine.Object.FindFirstObjectByType<
                 InputSystemUIInputModule>(FindObjectsInactive.Include);

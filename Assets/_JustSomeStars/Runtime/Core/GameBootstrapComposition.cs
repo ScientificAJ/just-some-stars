@@ -24,7 +24,8 @@ namespace JustSomeStars.Runtime.Core
 
         public IGameService Service { get; }
 
-        public ServiceRequirement Requirement => Role <= GameServiceRole.ModeController
+        public ServiceRequirement Requirement =>
+            Role <= GameServiceRole.ModeController || Role == GameServiceRole.Progression
             ? ServiceRequirement.Required
             : ServiceRequirement.Optional;
     }
@@ -42,7 +43,9 @@ namespace JustSomeStars.Runtime.Core
 
         public GameBootstrapComposition(
             IEnumerable<GameServiceRegistration> services,
-            ISceneTransition sceneTransition)
+            ISceneTransition sceneTransition,
+            Func<string> initialDestinationResolver = null,
+            Func<GameMode> initialModeResolver = null)
         {
             if (services == null)
             {
@@ -86,11 +89,46 @@ namespace JustSomeStars.Runtime.Core
             Services = new ReadOnlyCollection<GameServiceRegistration>(serviceArray);
             SceneTransition = sceneTransition ??
                 throw new ArgumentNullException(nameof(sceneTransition));
+            HasCustomInitialModeResolver = initialModeResolver != null;
+            InitialDestinationResolver = initialDestinationResolver ??
+                (() => InitialExperiencePolicy.CurrentDestination);
+            InitialModeResolver = initialModeResolver ??
+                (() => InitialExperiencePolicy.CurrentMode);
         }
 
         public IReadOnlyList<GameServiceRegistration> Services { get; }
 
         public ISceneTransition SceneTransition { get; }
+
+        internal Func<string> InitialDestinationResolver { get; }
+
+        internal Func<GameMode> InitialModeResolver { get; }
+
+        internal bool HasCustomInitialModeResolver { get; }
+
+        internal string ResolveInitialDestination()
+        {
+            var destination = InitialDestinationResolver();
+            if (string.IsNullOrWhiteSpace(destination))
+            {
+                throw new InvalidOperationException(
+                    "The initial destination resolver returned no scene.");
+            }
+
+            return destination;
+        }
+
+        internal GameMode ResolveInitialMode()
+        {
+            var mode = InitialModeResolver();
+            if (!Enum.IsDefined(typeof(GameMode), mode))
+            {
+                throw new InvalidOperationException(
+                    "The initial mode resolver returned an invalid mode.");
+            }
+
+            return mode;
+        }
 
         internal IReadOnlyList<GameServiceRole> FindMissingRequiredRoles()
         {

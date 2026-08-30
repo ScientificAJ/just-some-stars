@@ -115,6 +115,18 @@ namespace JustSomeStars.Runtime.Discovery
             m_Events.Publish(new PredictionRecorded(record.PredictionId));
             m_Events.Publish(new InstrumentUsed(record.InstrumentId));
             m_Events.Publish(new PhenomenonObserved(record.PhenomenonId));
+            if (record.PredictionWasCorrect)
+            {
+                var predictionValue = record.PredictionId.Value;
+                var suffix = predictionValue.StartsWith(
+                    "prediction.",
+                    StringComparison.Ordinal)
+                    ? predictionValue.Substring("prediction.".Length)
+                    : predictionValue;
+                m_Events.Publish(new EvidenceAccepted(
+                    new ContentId("evidence." + suffix),
+                    record.PredictionId));
+            }
             return record;
         }
     }

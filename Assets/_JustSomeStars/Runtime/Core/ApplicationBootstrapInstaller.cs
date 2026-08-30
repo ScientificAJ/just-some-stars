@@ -4,6 +4,7 @@ using JustSomeStars.Runtime.Input;
 using JustSomeStars.Runtime.Flight;
 using JustSomeStars.Runtime.Player;
 using JustSomeStars.Runtime.Saving;
+using JustSomeStars.Runtime.Missions;
 using JustSomeStars.Runtime.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -63,20 +64,29 @@ namespace JustSomeStars.Runtime.Core
                 InitialExperiencePolicy.CurrentMode,
                 new InputRouterGameModeRuntimeHooks(input));
             var gameEvents = new GameEventBus();
+            var progression = new MirraProgressionService(
+                gameEvents,
+                localSave,
+                settings);
+            var surfaceDependencies = new SurfaceGameplayDependencies(
+                settings,
+                input,
+                modeController,
+                gameEvents,
+                localSave,
+                progression);
             var sceneTransition = new UnitySceneTransition(
                 new FrontendDependencies(settings, input),
-                new SurfaceGameplayDependencies(
-                    settings,
-                    input,
-                    modeController,
-                    gameEvents));
+                surfaceDependencies);
+            surfaceDependencies.ConfigureSceneTransition(sceneTransition);
             sceneTransition.ConfigureFlightDependencies(
                 new FlightGameplayDependencies(
                     settings,
                     input,
                     modeController,
                     gameEvents,
-                    sceneTransition));
+                    sceneTransition,
+                    progression));
             return CreateCompositionWithModeController(
                 settings,
                 localSave,
@@ -84,7 +94,8 @@ namespace JustSomeStars.Runtime.Core
                 modeController,
                 sceneTransition,
                 new AddressablesSceneCatalogSource(SceneCatalog.AddressablesKey),
-                new AddressablesSceneStreamBackend());
+                new AddressablesSceneStreamBackend(),
+                progression);
         }
 
         private static GameBootstrapComposition CreateComposition(
@@ -132,15 +143,16 @@ namespace JustSomeStars.Runtime.Core
             GameModeController modeController,
             ISceneTransition sceneTransition,
             ISceneCatalogSource catalogSource,
-            ISceneStreamBackend sceneBackend)
+            ISceneStreamBackend sceneBackend,
+            MirraProgressionService progression = null)
         {
             var sceneStream = new SceneStreamService(
                 catalogSource,
                 sceneBackend,
                 sceneTransition,
                 modeController);
-            return new GameBootstrapComposition(
-                new[]
+            var registrations = new System.Collections.Generic.List<
+                GameServiceRegistration>
                 {
                     new GameServiceRegistration(GameServiceRole.Settings, settings),
                     new GameServiceRegistration(GameServiceRole.LocalSave, localSave),
@@ -151,8 +163,28 @@ namespace JustSomeStars.Runtime.Core
                     new GameServiceRegistration(
                         GameServiceRole.ModeController,
                         modeController),
-                },
-                sceneTransition);
+                };
+            if (progression != null)
+            {
+                registrations.Add(new GameServiceRegistration(
+                    GameServiceRole.Progression,
+                    progression));
+            }
+
+            if (progression == null)
+            {
+                return new GameBootstrapComposition(registrations, sceneTransition);
+            }
+
+            return new GameBootstrapComposition(
+                registrations,
+                sceneTransition,
+                () => InitialExperiencePolicy.CurrentMode == GameMode.Flight
+                    ? progression.ResumeSceneName
+                    : InitialExperiencePolicy.CurrentDestination,
+                () => InitialExperiencePolicy.CurrentMode == GameMode.Flight
+                    ? progression.ResumeMode
+                    : InitialExperiencePolicy.CurrentMode);
         }
 
         private static InputActionAsset RequireProjectActions()

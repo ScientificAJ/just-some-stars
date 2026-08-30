@@ -53,7 +53,11 @@ namespace JustSomeStars.Runtime.Flight
             try
             {
                 motor.BindInput(dependencies.Input, dependencies.Settings);
-                landing.Configure(dependencies.Scenes, dependencies.Events);
+                landing.Configure(
+                    dependencies.Scenes,
+                    dependencies.Events,
+                    dependencies.Modes,
+                    dependencies.Progression);
                 compositionCamera.ApplySettings(dependencies.Settings.Current);
                 touchHud.Apply(dependencies.Settings.Current);
                 compositionCamera.SetPolicy(GameCameraPolicy.Flight);
@@ -62,6 +66,10 @@ namespace JustSomeStars.Runtime.Flight
                 dependencies.Modes.StateChanged += OnModeStateChanged;
                 ApplyPolicy(dependencies.Modes.CurrentPolicy);
                 Dependencies = dependencies;
+                if (dependencies.Progression?.HasPendingDeparture == true)
+                {
+                    _ = ConfirmPendingDepartureAsync(dependencies.Progression);
+                }
             }
             catch
             {
@@ -70,6 +78,23 @@ namespace JustSomeStars.Runtime.Flight
                 landing.Release();
                 motor.ReleaseInput(dependencies.Input);
                 throw;
+            }
+        }
+
+        private async System.Threading.Tasks.Task ConfirmPendingDepartureAsync(
+            JustSomeStars.Runtime.Missions.MirraProgressionService progression)
+        {
+            try
+            {
+                await progression.ConfirmDepartureAsync(destroyCancellationToken);
+            }
+            catch (OperationCanceledException) when (destroyCancellationToken.IsCancellationRequested)
+            {
+                // Scene teardown owns this cancellation.
+            }
+            catch (Exception exception)
+            {
+                Debug.LogException(exception, this);
             }
         }
 

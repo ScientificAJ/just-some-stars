@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0713d8ce08b3eae8046373db4e6d8b, type: 3}
+  m_Name: mirra-chapter
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Missions.MissionDefinition
+  stableId: mission.mirra.chapter-one
+  entryNodeId: mission.mirra.entry
+  nodes:
+  - stableId: mission.mirra.entry
+    kind: 0
+    requirements: []
+    nextNodeIds:
+    - mission.mirra.prelanding
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 0
+  - stableId: mission.mirra.prelanding
+    kind: 3
+    requirements:
+    - eventKind: 6
+      payloadId: approach.mirra.safe
+    nextNodeIds:
+    - mission.mirra.landed
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 1
+  - stableId: mission.mirra.landed
+    kind: 3
+    requirements:
+    - eventKind: 0
+      payloadId: destination.mirra.surface
+    nextNodeIds:
+    - mission.mirra.traversal
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 2
+  - stableId: mission.mirra.traversal
+    kind: 1
+    requirements:
+    - eventKind: 7
+      payloadId: route.mirra.twilight
+    nextNodeIds:
+    - mission.mirra.evidence
+    dialogueIds:
+    - dialogue.mirra.arrival
+    recoveryNodeId: 
+    checkpointOrdinal: 0
+  - stableId: mission.mirra.evidence
+    kind: 3
+    requirements:
+    - eventKind: 8
+      payloadId: climate.mirra.hot-side
+    - eventKind: 8
+      payloadId: climate.mirra.cold-side
+    - eventKind: 9
+      payloadId: evidence.mirra.day-night-circulation
+    nextNodeIds:
+    - mission.mirra.repaired
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 3
+  - stableId: mission.mirra.repaired
+    kind: 3
+    requirements:
+    - eventKind: 10
+      payloadId: interaction.mirra.probe-repair
+    nextNodeIds:
+    - mission.mirra.fragment
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 4
+  - stableId: mission.mirra.fragment
+    kind: 3
+    requirements:
+    - eventKind: 4
+      payloadId: fragment.signal.mirra.001
+    nextNodeIds:
+    - mission.mirra.departure-requested
+    dialogueIds:
+    - dialogue.mirra.juno-repair
+    recoveryNodeId: 
+    checkpointOrdinal: 5
+  - stableId: mission.mirra.departure-requested
+    kind: 3
+    requirements:
+    - eventKind: 11
+      payloadId: departure.mirra.return-to-flight
+    nextNodeIds:
+    - mission.mirra.departed
+    dialogueIds:
+    - dialogue.mirra.ori-fragment
+    recoveryNodeId: 
+    checkpointOrdinal: 6
+  - stableId: mission.mirra.departed
+    kind: 3
+    requirements:
+    - eventKind: 12
+      payloadId: departure.mirra.return-to-flight
+    nextNodeIds:
+    - mission.mirra.complete
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 7
+  - stableId: mission.mirra.complete
+    kind: 5
+    requirements: []
+    nextNodeIds: []
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 0

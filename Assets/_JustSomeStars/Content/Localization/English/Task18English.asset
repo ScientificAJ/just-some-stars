@@ -18,6 +18,10 @@ MonoBehaviour:
       way around.
   - key: dialogue.mirra.hint.text
     value: No rush. Try the thermal imager where orange light meets blue shadow.
+  - key: dialogue.mirra.juno-repair.text
+    value: "The probe is listening again. Nice work\u2014clean signal, no shortcuts."
+  - key: dialogue.mirra.ori-fragment.text
+    value: Signal fragment secured. Route home is ready when you are.
   - key: atlas.mirra.temperature.short
     value: Mirra has a permanent hot day side and a cold night side.
   - key: atlas.mirra.temperature.balanced
@@ -27,3 +31,21 @@ MonoBehaviour:
     value: On a tidally locked world, atmospheric circulation can reduce the temperature
       contrast between the permanent day and night hemispheres. Mirra's thermal gradient
       is evidence of that continuing heat transport.
+  - key: objective.mirra.prelanding
+    value: Hold the safe approach corridor.
+  - key: objective.mirra.landed
+    value: Land on Mirra's twilight shelf.
+  - key: objective.mirra.traversal
+    value: Cross the line between day and night.
+  - key: objective.mirra.evidence
+    value: Compare hot-side and cold-side readings with the thermal imager.
+  - key: objective.mirra.repair
+    value: Repair the silent climate probe with Juno and Ori.
+  - key: objective.mirra.fragment
+    value: Recover the Signal fragment at the violet spire.
+  - key: objective.mirra.departure-request
+    value: Return to the lander and depart Mirra.
+  - key: objective.mirra.departure-confirm
+    value: Flight route is loading.
+  - key: objective.mirra.complete
+    value: Mirra field mission complete.

@@ -23,6 +23,13 @@ namespace JustSomeStars.Runtime.Missions
         InstrumentUsed = 3,
         SignalFragmentRecovered = 4,
         ConversationCompleted = 5,
+        ApproachCompleted = 6,
+        TraversalMilestoneReached = 7,
+        ClimateSampleObserved = 8,
+        EvidenceAccepted = 9,
+        InteractionCompleted = 10,
+        DepartureRequested = 11,
+        DepartureCompleted = 12,
     }
 
     [Serializable]

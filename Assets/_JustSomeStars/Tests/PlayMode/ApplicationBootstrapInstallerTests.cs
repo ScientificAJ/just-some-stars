@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using JustSomeStars.Runtime.Accessibility;
 using JustSomeStars.Runtime.Core;
 using JustSomeStars.Runtime.Input;
+using JustSomeStars.Runtime.Missions;
 using JustSomeStars.Runtime.Saving;
 using NUnit.Framework;
 using UnityEngine;
@@ -37,6 +38,13 @@ namespace JustSomeStars.Tests.PlayMode
             typeof(SceneStreamService),
             typeof(GameModeController),
         };
+
+        private static readonly GameServiceRole[] s_ProductionRoles =
+            s_RequiredRoles.Concat(new[] { GameServiceRole.Progression }).ToArray();
+
+        private static readonly Type[] s_ProductionServiceTypes =
+            s_ApplicationServiceTypes.Concat(new[] { typeof(MirraProgressionService) })
+                .ToArray();
 
         private readonly List<UnityEngine.Object> m_OwnedObjects =
             new List<UnityEngine.Object>();
@@ -277,10 +285,10 @@ namespace JustSomeStars.Tests.PlayMode
                 Is.EqualTo(GameMode.Frontend));
             Assert.That(
                 resolveDestination.Invoke(null, new object[] { true }),
-                Is.EqualTo("Mirra2DProof"));
+                Is.EqualTo("Task17FlightGraybox"));
             Assert.That(
                 resolveMode.Invoke(null, new object[] { true }),
-                Is.EqualTo(GameMode.Surface));
+                Is.EqualTo(GameMode.Flight));
         }
 
         private GameBootstrapComposition CreateComposition(
@@ -312,25 +320,33 @@ namespace JustSomeStars.Tests.PlayMode
             ISceneTransition expectedTransition)
         {
             Assert.That(composition, Is.Not.Null);
+            var production = expectedTransition == null;
+            var expectedRoles = production ? s_ProductionRoles : s_RequiredRoles;
+            var expectedTypes = production
+                ? s_ProductionServiceTypes
+                : s_ApplicationServiceTypes;
             Assert.That(
                 composition.Services.Select(registration => registration.Role),
-                Is.EqualTo(s_RequiredRoles));
+                Is.EqualTo(expectedRoles));
             Assert.That(
                 composition.Services.Select(registration =>
                     registration.Service.GetType()),
-                Is.EqualTo(s_ApplicationServiceTypes));
+                Is.EqualTo(expectedTypes));
             Assert.That(
                 composition.Services.Select(registration => registration.Service)
                     .Distinct(ReferenceIdentityComparer.Instance)
                     .Count(),
-                Is.EqualTo(5));
+                Is.EqualTo(expectedRoles.Length));
             Assert.That(
                 composition.Services.Select(registration => registration.Requirement),
                 Is.All.EqualTo(ServiceRequirement.Required));
-            Assert.That(
-                composition.Services.Any(registration =>
-                    registration.Role > GameServiceRole.ModeController),
-                Is.False);
+            Assert.That(composition.Services
+                    .Where(registration =>
+                        registration.Role > GameServiceRole.ModeController)
+                    .Select(registration => registration.Role),
+                production
+                    ? Is.EqualTo(new[] { GameServiceRole.Progression })
+                    : Is.Empty);
 
             if (expectedTransition == null)
             {
@@ -352,6 +368,9 @@ namespace JustSomeStars.Tests.PlayMode
                 Assert.That(
                     ReadProperty(surfaceDependencies, "Modes"),
                     Is.SameAs(composition.Services[4].Service));
+                Assert.That(
+                    ReadProperty(surfaceDependencies, "Progression"),
+                    Is.SameAs(composition.Services[5].Service));
             }
             else
             {

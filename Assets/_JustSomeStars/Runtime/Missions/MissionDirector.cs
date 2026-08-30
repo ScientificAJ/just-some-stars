@@ -149,6 +149,22 @@ namespace JustSomeStars.Runtime.Missions
                 Satisfy(MissionEventKind.SignalFragmentRecovered, item.FragmentId)));
             m_Subscriptions.Add(m_Events.Subscribe<ConversationCompleted>(item =>
                 Satisfy(MissionEventKind.ConversationCompleted, item.ConversationId)));
+            m_Subscriptions.Add(m_Events.Subscribe<ApproachCompleted>(item =>
+                Satisfy(MissionEventKind.ApproachCompleted, item.ApproachId)));
+            m_Subscriptions.Add(m_Events.Subscribe<TraversalMilestoneReached>(item =>
+                Satisfy(
+                    MissionEventKind.TraversalMilestoneReached,
+                    item.MilestoneId)));
+            m_Subscriptions.Add(m_Events.Subscribe<ClimateSampleObserved>(item =>
+                Satisfy(MissionEventKind.ClimateSampleObserved, item.ZoneId)));
+            m_Subscriptions.Add(m_Events.Subscribe<EvidenceAccepted>(item =>
+                Satisfy(MissionEventKind.EvidenceAccepted, item.EvidenceId)));
+            m_Subscriptions.Add(m_Events.Subscribe<InteractionCompleted>(item =>
+                Satisfy(MissionEventKind.InteractionCompleted, item.InteractionId)));
+            m_Subscriptions.Add(m_Events.Subscribe<DepartureRequested>(item =>
+                Satisfy(MissionEventKind.DepartureRequested, item.DepartureId)));
+            m_Subscriptions.Add(m_Events.Subscribe<DepartureCompleted>(item =>
+                Satisfy(MissionEventKind.DepartureCompleted, item.DepartureId)));
             m_Started = true;
             ProcessAutomaticNodes();
             RequestDialogueForActiveNodes();

@@ -9,7 +9,7 @@ namespace JustSomeStars.Runtime.Core
     internal static class InitialExperiencePolicy
     {
         private const string FrontendDestination = "Frontend";
-        private const string InternalProofDestination = "Mirra2DProof";
+        private const string InternalProofDestination = "Task17FlightGraybox";
         private const string FlightEvidenceDestination = "Task17FlightGraybox";
 
         internal static string CurrentDestination => ResolveDestinationForInvocation(
@@ -29,7 +29,7 @@ namespace JustSomeStars.Runtime.Core
 
         internal static GameMode ResolveMode(bool isDevelopmentVariant)
         {
-            return isDevelopmentVariant ? GameMode.Surface : GameMode.Frontend;
+            return isDevelopmentVariant ? GameMode.Flight : GameMode.Frontend;
         }
 
         internal static string ResolveDestinationForInvocation(
@@ -325,11 +325,33 @@ namespace JustSomeStars.Runtime.Core
 
             try
             {
+                if (composition.HasCustomInitialModeResolver)
+                {
+                    var requestedMode = composition.ResolveInitialMode();
+                    var modeController = composition.Services
+                        .Single(registration =>
+                            registration.Role == GameServiceRole.ModeController)
+                        .Service as GameModeController;
+                    if (modeController == null)
+                    {
+                        throw new InvalidOperationException(
+                            "A custom initial mode requires a GameModeController.");
+                    }
+
+                    if (modeController.CurrentMode != requestedMode)
+                    {
+                        await modeController.EnterAsync(
+                            requestedMode,
+                            CancellationToken.None);
+                    }
+                }
+
+                var destination = composition.ResolveInitialDestination();
                 var routeOperation = composition.SceneTransition.RouteAsync(
-                    InitialExperiencePolicy.CurrentDestination,
+                    destination,
                     CancellationToken.None);
                 await routeOperation;
-                report.MarkRouted(InitialExperiencePolicy.CurrentDestination);
+                report.MarkRouted(destination);
             }
             catch (Exception exception)
             {

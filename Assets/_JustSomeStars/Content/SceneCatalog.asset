@@ -15,4 +15,10 @@ MonoBehaviour:
   m_SchemaVersion: 1
   m_FallbackSceneName: Frontend
   m_FallbackMode: 0
-  m_Entries: []
+  m_Entries:
+  - m_DestinationId: destination.mirra.approach
+    m_Address: Task17FlightGraybox
+    m_TargetMode: 3
+  - m_DestinationId: destination.mirra.surface
+    m_Address: Mirra
+    m_TargetMode: 4

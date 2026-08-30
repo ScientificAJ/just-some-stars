@@ -41,6 +41,107 @@ namespace JustSomeStars.Runtime.Core
         public ContentId DestinationId { get; }
     }
 
+    public readonly struct ApproachCompleted
+    {
+        public ApproachCompleted(ContentId approachId)
+        {
+            ApproachId = GameEventContentId.Require(approachId, nameof(approachId));
+        }
+
+        public ContentId ApproachId { get; }
+    }
+
+    public readonly struct TraversalMilestoneReached
+    {
+        public TraversalMilestoneReached(ContentId milestoneId)
+        {
+            MilestoneId = GameEventContentId.Require(
+                milestoneId,
+                nameof(milestoneId));
+        }
+
+        public ContentId MilestoneId { get; }
+    }
+
+    public readonly struct ClimateSampleObserved
+    {
+        public ClimateSampleObserved(
+            ContentId zoneId,
+            float temperatureCelsius,
+            UnityEngine.Vector2 windAcceleration)
+        {
+            ZoneId = GameEventContentId.Require(zoneId, nameof(zoneId));
+            if (!IsFinite(temperatureCelsius) ||
+                !IsFinite(windAcceleration.x) ||
+                !IsFinite(windAcceleration.y))
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(temperatureCelsius),
+                    "Climate observations must contain finite measurements.");
+            }
+
+            TemperatureCelsius = temperatureCelsius;
+            WindAcceleration = windAcceleration;
+        }
+
+        public ContentId ZoneId { get; }
+        public float TemperatureCelsius { get; }
+        public UnityEngine.Vector2 WindAcceleration { get; }
+
+        private static bool IsFinite(float value) =>
+            !float.IsNaN(value) && !float.IsInfinity(value);
+    }
+
+    public readonly struct EvidenceAccepted
+    {
+        public EvidenceAccepted(ContentId evidenceId, ContentId predictionId)
+        {
+            EvidenceId = GameEventContentId.Require(evidenceId, nameof(evidenceId));
+            PredictionId = GameEventContentId.Require(
+                predictionId,
+                nameof(predictionId));
+        }
+
+        public ContentId EvidenceId { get; }
+        public ContentId PredictionId { get; }
+    }
+
+    public readonly struct InteractionCompleted
+    {
+        public InteractionCompleted(ContentId interactionId)
+        {
+            InteractionId = GameEventContentId.Require(
+                interactionId,
+                nameof(interactionId));
+        }
+
+        public ContentId InteractionId { get; }
+    }
+
+    public readonly struct DepartureRequested
+    {
+        public DepartureRequested(ContentId departureId)
+        {
+            DepartureId = GameEventContentId.Require(
+                departureId,
+                nameof(departureId));
+        }
+
+        public ContentId DepartureId { get; }
+    }
+
+    public readonly struct DepartureCompleted
+    {
+        public DepartureCompleted(ContentId departureId)
+        {
+            DepartureId = GameEventContentId.Require(
+                departureId,
+                nameof(departureId));
+        }
+
+        public ContentId DepartureId { get; }
+    }
+
     public readonly struct PhenomenonObserved
     {
         public PhenomenonObserved(ContentId phenomenonId)

@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using JustSomeStars.Runtime.Core;
+using JustSomeStars.Runtime.Missions;
 using UnityEngine;
 
 namespace JustSomeStars.Runtime.Flight
@@ -25,14 +26,26 @@ namespace JustSomeStars.Runtime.Flight
 
         private ISceneTransition scenes;
         private GameEventBus events;
+        private GameModeController modes;
+        private MirraProgressionService progression;
         private CancellationTokenSource transitionCancellation;
         private bool attemptInProgress;
         private bool releaseRequested;
         private bool publicationCompleted;
+        private bool approachPublished;
 
         public LandingSequenceState State { get; private set; }
 
         public void Configure(ISceneTransition scenes, GameEventBus events)
+        {
+            Configure(scenes, events, null, null);
+        }
+
+        public void Configure(
+            ISceneTransition scenes,
+            GameEventBus events,
+            GameModeController modes,
+            MirraProgressionService progression)
         {
             if (scenes == null)
             {
@@ -66,6 +79,8 @@ namespace JustSomeStars.Runtime.Flight
 
             this.scenes = scenes;
             this.events = events;
+            this.modes = modes;
+            this.progression = progression;
             State = LandingSequenceState.Flight;
         }
 
@@ -108,7 +123,19 @@ namespace JustSomeStars.Runtime.Flight
             State = LandingSequenceState.Transitioning;
             try
             {
+                if (progression != null && !approachPublished)
+                {
+                    ownedEvents.Publish(new ApproachCompleted(
+                        progression.Content.ApproachId));
+                    await progression.FlushPendingAsync(attemptCancellation.Token);
+                    approachPublished = true;
+                }
+
                 await PlayLandingVisualsAsync(attemptCancellation.Token);
+                if (modes != null && modes.CurrentMode != GameMode.Surface)
+                {
+                    await modes.EnterAsync(GameMode.Surface, attemptCancellation.Token);
+                }
                 await ownedScenes.RouteAsync(
                     destinationScene,
                     attemptCancellation.Token);
@@ -121,6 +148,15 @@ namespace JustSomeStars.Runtime.Flight
                 {
                     ownedEvents.Publish(
                         new LandingCompleted(new ContentId(destinationId)));
+                    if (progression != null)
+                    {
+                        // RouteAsync has already activated the destination and
+                        // released the source scene. Source teardown therefore
+                        // cannot cancel the durable landing commit: at this
+                        // point cancellation cannot roll the route back.
+                        await progression.FlushPendingAsync(
+                            CancellationToken.None);
+                    }
                     publicationCompleted = true;
                 }
 
@@ -133,6 +169,11 @@ namespace JustSomeStars.Runtime.Flight
                 if (rollbackState.HasValue && motor != null)
                 {
                     motor.RestoreAfterLandingFailure(rollbackState.Value);
+                }
+
+                if (modes != null && modes.CurrentMode == GameMode.Surface)
+                {
+                    await modes.EnterAsync(GameMode.Flight, CancellationToken.None);
                 }
 
                 State = LandingSequenceState.Flight;
@@ -181,7 +222,10 @@ namespace JustSomeStars.Runtime.Flight
         {
             scenes = null;
             events = null;
+            modes = null;
+            progression = null;
             publicationCompleted = false;
+            approachPublished = false;
             releaseRequested = false;
             State = LandingSequenceState.Flight;
         }

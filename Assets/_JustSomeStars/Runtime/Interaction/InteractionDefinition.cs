@@ -37,6 +37,7 @@ namespace JustSomeStars.Runtime.Interaction
         InstrumentUsed = 3,
         SignalFragmentRecovered = 4,
         ConversationCompleted = 5,
+        InteractionCompleted = 6,
     }
 
     [Serializable]
@@ -257,6 +258,9 @@ namespace JustSomeStars.Runtime.Interaction
                         break;
                     case InteractionEventKind.ConversationCompleted:
                         eventBus.Publish(new ConversationCompleted(contentId));
+                        break;
+                    case InteractionEventKind.InteractionCompleted:
+                        eventBus.Publish(new InteractionCompleted(contentId));
                         break;
                     default:
                         throw new InvalidOperationException(

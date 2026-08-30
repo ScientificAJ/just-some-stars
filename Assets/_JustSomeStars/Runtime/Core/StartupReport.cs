@@ -85,6 +85,7 @@ namespace JustSomeStars.Runtime.Core
         Notifications = 7,
         Attribution = 8,
         Growth = 9,
+        Progression = 10,
     }
 
     public enum ServiceRequirement

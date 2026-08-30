@@ -16,6 +16,8 @@ MonoBehaviour:
   dialogue:
   - {fileID: 11400000, guid: 1dc7e955a71765e8d8d3208a5beca356, type: 2}
   - {fileID: 11400000, guid: 970f8a2b4e11ae71a8c97cabe2e913fe, type: 2}
+  - {fileID: 11400000, guid: 1b490b5ff36b341e28c3b268ae6ec8fc, type: 2}
+  - {fileID: 11400000, guid: 7c62adef81a5fba6ab9c1333ccdd9fea, type: 2}
   atlasEntries:
   - {fileID: 11400000, guid: dea7d4ecac87ed77fbcfedd225ebb8a0, type: 2}
   scienceSources:

@@ -408,16 +408,32 @@ claim-specific NASA science provenance are all authored content.
   project content valid. Temporary Unity patchers and their metas are absent.
 - The same bounded extreme critic returned final `PROCEED`.
 
-## Immediate next task: Task 19
+## Task 19 completion checkpoint
 
-Build the mechanics-complete Mirra vertical slice on top of the accepted flight,
-landing, surface, crew, interactions, Lens, mission, dialogue, hint and Atlas
-contracts. Do not reopen Task 18 unless Task 19 exposes a direct integration
-regression.
+The mechanics-complete Mirra chapter now executes the real Flight-to-surface
+route, climate/Lens evidence loop, reserved probe repair, Signal-fragment
+reveal and transactional departure in Guided, Balanced and Ace. Checkpoint
+presentation waits for the durable write, a failed Flight route leaves
+departure retryable, and the scene runs the Task 15 Mira/Juno/Ori crew runtime
+while the repair itself truthfully uses Captain/Juno/Ori.
+
+Fresh final focused evidence passes `11/11`. The final Android APK SHA-256 is
+`c4e3b2e2ac527f587086d81ae1bd13df5ee9e8a784790b281532495f83955d0c`.
+One bounded exact-APK Limrun/Argent spot-check verified the corrected Mirra HUD,
+crew presence and same-PID resume; it used an explicitly labeled checkpoint-4
+fixture and does not pretend to be direct touch traversal. The instance,
+tunnel and scoped server were removed, and the bounded extreme critic returned
+`PROCEED` against the four original blockers.
+
+## Immediate next task: Task 20
+
+Raise the mechanics-complete Mirra slice to the approved visual-quality bar
+using the locked Task 12 benchmark. Do not reopen Task 19 unless Task 20 exposes
+a direct mechanics integration regression.
 
 ## User-help queue
 
-No user decision or external action is currently blocking Task 19. JSS-019
+No user decision or external action is currently blocking Task 20. JSS-019
 records the remote-push safety block without stopping continued local work.
 
 ## Chronological checkpoint log
@@ -557,3 +573,9 @@ records the remote-push safety block without stopping continued local work.
   `7/7`, dialogue `7/7`, Atlas/content validation `4/4`, real flight-to-Atlas
   PlayMode `1/1`, and a green Android-target project validator. The same extreme
   critic returned `PROCEED`; Task 19 is next and JSS-019 remains delivery-only.
+- 2026-08-31: Task 19 completed the mechanics route and its four bounded critic
+  corrections: durable presentation ordering, real Task 15 crew integration,
+  retryable departure and non-overlapping HUD regions. Fresh focused PlayMode
+  evidence passes `11/11`; the final exact-APK spot-check verified corrected
+  Mirra presentation and same-PID resume; the critic returned `PROCEED` and
+  Task 20 is next.

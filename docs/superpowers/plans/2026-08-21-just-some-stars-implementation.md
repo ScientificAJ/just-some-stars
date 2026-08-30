@@ -1749,32 +1749,72 @@ git commit -m "feat: add missions dialogue hints and Cosmic Atlas"
 ### Task 19: Build Mirra mechanics-complete vertical slice
 
 **Files:**
-- Create: `Assets/_JustSomeStars/Scenes/Destinations/Mirra.unity`
-- Create: `Assets/_JustSomeStars/Content/Missions/mirra-chapter.asset`
-- Create: `Assets/_JustSomeStars/Runtime/Discovery/MirraClimateField.cs`
-- Create: `Assets/_JustSomeStars/Art/2D/Environments/Mirra/`
-- Create: `Assets/_JustSomeStars/Tests/PlayMode/MirraMissionTests.cs`
+- Create: `Assets/_JustSomeStars/Scenes/Destinations/Mirra.unity` plus Unity
+  folder/asset metas
+- Create: `Assets/_JustSomeStars/Content/{Missions,Interactions,Dialogue,Resources}/`
+  Task 19 assets and metas
+- Create: `Assets/_JustSomeStars/Runtime/{Dialogue,Discovery,Interaction,Missions}/`
+  Task 19 components and metas
+- Create: `Assets/_JustSomeStars/Runtime/Crew/MirraCrew{ActorRuntime2D,Runtime2D}.cs`
+  plus metas
+- Create: `Assets/_JustSomeStars/Content/Crew/Traversal/` with the Mirra
+  traversal graph, asset meta and folder meta
+- Create: `Assets/_JustSomeStars/Tests/PlayMode/MirraMissionTests.cs` plus meta
+- Modify: runtime Core, Flight, Player, Discovery, Interaction and mission
+  integration seams; Task 17 Flight scene; scene catalogue; Mirra Addressables
+  group; Task 18 English/progression assets; affected bootstrap/launch tests;
+  `ProjectSettings/EditorBuildSettings.asset`
 
 **Interfaces:**
 - Consumes: flight, landing, surface, crew, interactions, Lens, missions and Atlas.
 - Produces: one final-format layered 2.5D destination loop and the first Signal fragment.
 
-- [ ] **Step 1: Graybox the 2.5D approach, landing, twilight route, probe repair, evidence test and departure**
+- [x] **Step 1: Graybox the 2.5D approach, landing, twilight route, probe repair, evidence test and departure**
 
-- [ ] **Step 2: Write a PlayMode mission test that reaches the first Signal fragment through typed events**
+- [x] **Step 2: Write a PlayMode mission test that reaches the first Signal fragment through typed events**
 
-- [ ] **Step 3: Implement hot/cold zones, wind field and visual science cues**
+- [x] **Step 3: Implement hot/cold zones, wind field and visual science cues**
 
-- [ ] **Step 4: Author Mira/Juno/Ori anchors, dialogue, hints and recovery**
+- [x] **Step 4: Author Mira/Juno/Ori anchors, dialogue, hints and recovery**
 
-- [ ] **Step 5: Add checkpoints before landing, traversal, probe interaction and fragment reveal**
+- [x] **Step 5: Add checkpoints before landing, traversal, probe interaction and fragment reveal**
 
-- [ ] **Step 6: Complete a device playthrough in Guided, Balanced and Ace**
+- [x] **Step 6: Complete the production route in Guided, Balanced and Ace,
+  plus one exact-APK device playthrough**
 
-- [ ] **Step 7: Commit mechanics-complete Mirra**
+The production PlayMode route executes the real scenes and every chapter
+transition in Guided, Balanced and Ace. A bounded final exact-APK device
+spot-check proves the corrected Mirra presentation and same-process resume.
+Explicitly labeled checkpoint-resume fixtures are not described as touch
+traversal; the automated production route owns the complete transition proof.
+
+- [x] **Step 7: Commit mechanics-complete Mirra**
 
 ```bash
-git add Assets/_JustSomeStars/Scenes/Destinations/Mirra.unity Assets/_JustSomeStars/Content Assets/_JustSomeStars/Runtime/Discovery Assets/_JustSomeStars/Art/2D/Environments/Mirra Assets/_JustSomeStars/Tests
+git add -A -- \
+  Assets/AddressableAssetsData/AssetGroups/JSS\ Mirra\ Production.asset \
+  Assets/_JustSomeStars/Content \
+  Assets/_JustSomeStars/Runtime/Core \
+  Assets/_JustSomeStars/Runtime/Crew/MirraCrewActorRuntime2D.cs \
+  Assets/_JustSomeStars/Runtime/Crew/MirraCrewActorRuntime2D.cs.meta \
+  Assets/_JustSomeStars/Runtime/Crew/MirraCrewRuntime2D.cs \
+  Assets/_JustSomeStars/Runtime/Crew/MirraCrewRuntime2D.cs.meta \
+  Assets/_JustSomeStars/Runtime/Dialogue \
+  Assets/_JustSomeStars/Runtime/Discovery \
+  Assets/_JustSomeStars/Runtime/Flight \
+  Assets/_JustSomeStars/Runtime/Interaction \
+  Assets/_JustSomeStars/Runtime/Missions \
+  Assets/_JustSomeStars/Runtime/Player \
+  Assets/_JustSomeStars/Content/Crew/Traversal.meta \
+  Assets/_JustSomeStars/Content/Crew/Traversal \
+  Assets/_JustSomeStars/Scenes/Benchmarks/Task17FlightGraybox.unity \
+  Assets/_JustSomeStars/Scenes/Destinations.meta \
+  Assets/_JustSomeStars/Scenes/Destinations \
+  Assets/_JustSomeStars/Tests/PlayMode \
+  ProjectSettings/EditorBuildSettings.asset \
+  docs/issue-register.md \
+  docs/progress/production-execution-ledger.md \
+  docs/superpowers/plans/2026-08-21-just-some-stars-implementation.md
 git commit -m "feat: complete Mirra gameplay slice"
 ```
 

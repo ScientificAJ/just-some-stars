@@ -2955,6 +2955,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerShip2D
       objectReference: {fileID: 0}
+    - target: {fileID: 7567109035551279585, guid: f443f757119fcb496aba51341d817607, type: 3}
+      propertyPath: destinationScene
+      value: Mirra
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

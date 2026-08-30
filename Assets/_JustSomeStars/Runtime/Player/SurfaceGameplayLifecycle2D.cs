@@ -8,6 +8,13 @@ using UnityEngine;
 
 namespace JustSomeStars.Runtime.Player
 {
+    public interface ISurfaceGameplayExtension
+    {
+        void Configure(SurfaceGameplayDependencies dependencies);
+
+        void Release(SurfaceGameplayDependencies dependencies);
+    }
+
     [DisallowMultipleComponent]
     public sealed class SurfaceGameplayLifecycle2D : MonoBehaviour
     {
@@ -26,6 +33,8 @@ namespace JustSomeStars.Runtime.Player
         [SerializeField] private GameObject lensAimControl;
         [SerializeField] private GameObject[] surfaceOnlyControls =
             Array.Empty<GameObject>();
+        [SerializeField] private MonoBehaviour[] gameplayExtensions =
+            Array.Empty<MonoBehaviour>();
 
         private DiscoveryLensController lensController;
 
@@ -87,6 +96,10 @@ namespace JustSomeStars.Runtime.Player
                 compositionCamera.SetTargetVelocity(targetBody.linearVelocity);
                 dependencies.Settings.SettingsChanged += OnSettingsChanged;
                 dependencies.Modes.StateChanged += OnModeStateChanged;
+                foreach (var extension in RequireExtensions())
+                {
+                    extension.Configure(dependencies);
+                }
                 Dependencies = dependencies;
             }
             catch
@@ -102,6 +115,7 @@ namespace JustSomeStars.Runtime.Player
                     interaction.ReleaseInput(dependencies.Input);
                 }
                 motor.ReleaseInput(dependencies.Input);
+                ReleaseExtensions(dependencies);
                 throw;
             }
         }
@@ -142,6 +156,33 @@ namespace JustSomeStars.Runtime.Player
             }
             motor.ReleaseInput(dependencies.Input);
             compositionCamera.SetTargetVelocity(Vector2.zero);
+            ReleaseExtensions(dependencies);
+        }
+
+        private ISurfaceGameplayExtension[] RequireExtensions()
+        {
+            gameplayExtensions ??= Array.Empty<MonoBehaviour>();
+            if (gameplayExtensions.Any(extension =>
+                    extension == null || extension is not ISurfaceGameplayExtension) ||
+                gameplayExtensions.Distinct().Count() != gameplayExtensions.Length)
+            {
+                throw new InvalidOperationException(
+                    "Surface gameplay extensions must be unique typed components.");
+            }
+
+            return gameplayExtensions.Cast<ISurfaceGameplayExtension>().ToArray();
+        }
+
+        private void ReleaseExtensions(SurfaceGameplayDependencies dependencies)
+        {
+            var extensions = gameplayExtensions ?? Array.Empty<MonoBehaviour>();
+            for (var index = extensions.Length - 1; index >= 0; index--)
+            {
+                if (extensions[index] is ISurfaceGameplayExtension extension)
+                {
+                    extension.Release(dependencies);
+                }
+            }
         }
 
         private void Update()
