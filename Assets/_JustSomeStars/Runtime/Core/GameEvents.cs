@@ -2,6 +2,33 @@ using System;
 
 namespace JustSomeStars.Runtime.Core
 {
+    public enum PlayerBehaviorOutcome
+    {
+        IncorrectPrediction = 0,
+        IncompatibleInstrument = 1,
+        RecoveryRequested = 2,
+    }
+
+    public readonly struct PlayerBehaviorObserved
+    {
+        public PlayerBehaviorObserved(
+            ContentId subjectId,
+            PlayerBehaviorOutcome outcome)
+        {
+            SubjectId = GameEventContentId.Require(subjectId, nameof(subjectId));
+            if (!Enum.IsDefined(typeof(PlayerBehaviorOutcome), outcome))
+            {
+                throw new ArgumentOutOfRangeException(nameof(outcome));
+            }
+
+            Outcome = outcome;
+        }
+
+        public ContentId SubjectId { get; }
+        public ContentId ObjectiveId => SubjectId;
+        public PlayerBehaviorOutcome Outcome { get; }
+    }
+
     public readonly struct LandingCompleted
     {
         public LandingCompleted(ContentId destinationId)

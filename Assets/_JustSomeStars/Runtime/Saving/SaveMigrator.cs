@@ -80,7 +80,7 @@ namespace JustSomeStars.Runtime.Saving
         {
             return new SaveMigrator(
                 GameSave.CurrentSchemaVersion,
-                Array.Empty<ISaveMigration>());
+                new ISaveMigration[] { new SaveMigrationV1ToV2() });
         }
 
         internal bool TryMigrate(string document, out string migratedDocument)
@@ -156,6 +156,50 @@ namespace JustSomeStars.Runtime.Saving
         private sealed class SchemaEnvelope
         {
             public int schemaVersion;
+        }
+
+        private sealed class SaveMigrationV1ToV2 : ISaveMigration
+        {
+            public int FromVersion => 1;
+            public int ToVersion => 2;
+
+            public string Migrate(string document)
+            {
+                var legacy = JsonUtility.FromJson<LegacySaveV1>(document);
+                if (legacy == null || legacy.story == null || legacy.captain == null ||
+                    legacy.birthday == null || legacy.metadata == null)
+                {
+                    throw new FormatException("Schema v1 save is incomplete.");
+                }
+
+                var migrated = GameSave.CreateNew(
+                    legacy.metadata.SaveId,
+                    legacy.metadata.CreatedUtcTicks);
+                migrated.Story = legacy.story;
+                migrated.Mission = MissionProgress.Empty();
+                migrated.Captain = legacy.captain;
+                migrated.DiscoveryIds = legacy.discoveryIds;
+                migrated.EarnedCosmeticIds = legacy.earnedCosmeticIds;
+                migrated.AtlasEntryIds = legacy.atlasEntryIds;
+                migrated.Photographs = legacy.photographs;
+                migrated.Birthday = legacy.birthday;
+                migrated.Metadata = legacy.metadata;
+                migrated.ThrowIfInvalid(nameof(document));
+                return JsonUtility.ToJson(migrated, prettyPrint: true);
+            }
+
+            [Serializable]
+            private sealed class LegacySaveV1
+            {
+                public StoryProgress story;
+                public CaptainState captain;
+                public string[] discoveryIds;
+                public string[] earnedCosmeticIds;
+                public string[] atlasEntryIds;
+                public PhotoMetadata[] photographs;
+                public BirthdayState birthday;
+                public SaveMetadata metadata;
+            }
         }
     }
 }

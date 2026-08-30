@@ -44,6 +44,7 @@ namespace JustSomeStars.Runtime.Saving
 
             var merged = local.Copy();
             merged.Story = MergeStory(local.Story, cloud.Story);
+            merged.Mission = MergeMission(local.Mission, cloud.Mission);
             merged.Captain = MergeCaptain(local.Captain, cloud.Captain);
             merged.DiscoveryIds = Union(local.DiscoveryIds, cloud.DiscoveryIds);
             merged.EarnedCosmeticIds = Union(
@@ -117,6 +118,30 @@ namespace JustSomeStars.Runtime.Saving
                 throw new SaveMergeConflictException(
                     SaveMergeConflictKind.CaptainCustomization,
                     "equal edit timestamps describe different appearances.");
+            }
+
+            return local.Copy();
+        }
+
+        private static MissionProgress MergeMission(
+            MissionProgress local,
+            MissionProgress cloud)
+        {
+            if (local.CheckpointOrdinal > cloud.CheckpointOrdinal)
+            {
+                return local.Copy();
+            }
+
+            if (cloud.CheckpointOrdinal > local.CheckpointOrdinal)
+            {
+                return cloud.Copy();
+            }
+
+            if (!local.Equals(cloud))
+            {
+                throw new SaveMergeConflictException(
+                    SaveMergeConflictKind.StoryCheckpoint,
+                    "equal mission checkpoint ordinals have different graph state.");
             }
 
             return local.Copy();

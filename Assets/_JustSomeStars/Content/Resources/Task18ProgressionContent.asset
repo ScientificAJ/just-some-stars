@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718e66652c9cf0a48acfcb5e24bb986a, type: 3}
+  m_Name: Task18ProgressionContent
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Missions.Task18ProgressionContent
+  mission: {fileID: 11400000, guid: 5f4b9f0f944e0b569b936b9eb773b688, type: 2}
+  dialogue:
+  - {fileID: 11400000, guid: 1dc7e955a71765e8d8d3208a5beca356, type: 2}
+  - {fileID: 11400000, guid: 970f8a2b4e11ae71a8c97cabe2e913fe, type: 2}
+  atlasEntries:
+  - {fileID: 11400000, guid: dea7d4ecac87ed77fbcfedd225ebb8a0, type: 2}
+  scienceSources:
+  - {fileID: 11400000, guid: c5288ffd6d9c7a7769347470e4190272, type: 2}
+  - {fileID: 11400000, guid: 74d3fb72fcfa4fff9b7c4f8ad8f69e74, type: 2}
+  - {fileID: 11400000, guid: 45739a2388556cf40817a4026dc20ec5, type: 2}
+  english: {fileID: 11400000, guid: 249cdc5eaa6f07939bba9e17f6880a4d, type: 2}
+  mirraPhenomenon: {fileID: 11400000, guid: db34fa2d6642b62e5961452c857b927b, type: 2}
+  mirraInstrument: {fileID: 11400000, guid: 4816f43b2dda82fd5bfcd08e485c2e9f, type: 2}
+  predictionIds:
+  - prediction.mirra.day-night-circulation

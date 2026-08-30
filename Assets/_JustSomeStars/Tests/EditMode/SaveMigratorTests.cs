@@ -1,30 +1,40 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using JustSomeStars.Runtime.Saving;
 using NUnit.Framework;
+using UnityEngine;
 
 namespace JustSomeStars.Tests.EditMode
 {
     public sealed class SaveMigratorTests
     {
         [Test]
-        public void CurrentV1Document_IsAnExactIdentityWithoutInventedLegacyFormat()
+        public void ProductionRegistry_MigratesRealV1SaveToExplicitEmptyMissionState()
         {
-            const string current = "{\"schemaVersion\":1,\"fixture\":\"unchanged\"}";
+            var current = GameSave.CreateNew("save.legacy", 10);
+            current.DiscoveryIds = new[] { "phenomenon.legacy" };
+            var v2 = JsonUtility.ToJson(current);
+            var v1 = Regex.Replace(
+                v2.Replace("\"schemaVersion\":2", "\"schemaVersion\":1"),
+                ",\"mission\":\\{[^}]*\\}",
+                string.Empty);
             var migrator = SaveMigrator.CreateCurrent();
 
-            var migrated = migrator.TryMigrate(current, out var result);
+            var migrated = migrator.TryMigrate(v1, out var result);
 
             Assert.That(migrated, Is.True);
-            Assert.That(result, Is.EqualTo(current));
-            Assert.That(migrator.TargetVersion, Is.EqualTo(1));
-            Assert.That(migrator.RegisteredStepCount, Is.EqualTo(0));
+            Assert.That(result, Does.Contain("\"schemaVersion\": 2"));
+            Assert.That(result, Does.Contain("\"mission\""));
+            Assert.That(result, Does.Contain("phenomenon.legacy"));
+            Assert.That(migrator.TargetVersion, Is.EqualTo(2));
+            Assert.That(migrator.RegisteredStepCount, Is.EqualTo(1));
         }
 
         [TestCase("not-json")]
         [TestCase("{}")]
         [TestCase("{\"schemaVersion\":0}")]
-        [TestCase("{\"schemaVersion\":2}")]
+        [TestCase("{\"schemaVersion\":3}")]
         public void ProductionRegistry_RejectsMalformedUnsupportedAndFutureDocuments(
             string document)
         {

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2547e55ec9dfbbef9928c19f015c725e, type: 3}
+  m_Name: Task18English
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Atlas.LocalizedEnglishCatalog
+  entries:
+  - key: dialogue.mirra.arrival.text
+    value: Look at that line between day and night. Mirra wears its sunrise all the
+      way around.
+  - key: dialogue.mirra.hint.text
+    value: No rush. Try the thermal imager where orange light meets blue shadow.
+  - key: atlas.mirra.temperature.short
+    value: Mirra has a permanent hot day side and a cold night side.
+  - key: atlas.mirra.temperature.balanced
+    value: Mirra keeps one face toward its star, while its atmosphere moves heat
+      from permanent day toward permanent night.
+  - key: atlas.mirra.temperature.deep
+    value: On a tidally locked world, atmospheric circulation can reduce the temperature
+      contrast between the permanent day and night hemispheres. Mirra's thermal gradient
+      is evidence of that continuing heat transport.

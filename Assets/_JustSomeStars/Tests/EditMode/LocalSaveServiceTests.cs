@@ -35,11 +35,19 @@ namespace JustSomeStars.Tests.EditMode
         }
 
         [Test]
-        public void SchemaV1_RoundTripsEveryOwnedDomainWithoutDeviceSettings()
+        public void SchemaV2_RoundTripsEveryOwnedDomainWithoutDeviceSettings()
         {
             var serializer = new JsonSaveSerializer(SaveMigrator.CreateCurrent());
             var original = CreateSave(checkpointOrdinal: 4, revision: 7, updatedUtcTicks: 800);
             original.Story.CheckpointId = "mirra.signal-array";
+            original.Mission = new MissionProgress
+            {
+                MissionId = "mission.mirra",
+                CheckpointNodeId = "mission.mirra.signal-array",
+                CheckpointOrdinal = 4,
+                CompletedNodeIds = new[] { "mission.mirra.arrival" },
+                ActiveNodeIds = new[] { "mission.mirra.signal-array" },
+            };
             original.Captain.BodyFamilyId = "captain.family.c";
             original.Captain.AppearancePresetId = "captain.face.03";
             original.Captain.SuitCosmeticId = "suit.founder";
@@ -69,8 +77,9 @@ namespace JustSomeStars.Tests.EditMode
 
             Assert.That(parsed, Is.True);
             Assert.That(reopened, Is.EqualTo(original));
-            Assert.That(document, Does.Contain("\"schemaVersion\": 1"));
+            Assert.That(document, Does.Contain("\"schemaVersion\": 2"));
             Assert.That(document, Does.Contain("\"story\""));
+            Assert.That(document, Does.Contain("\"mission\""));
             Assert.That(document, Does.Contain("\"captain\""));
             Assert.That(document, Does.Contain("\"discoveryIds\""));
             Assert.That(document, Does.Contain("\"earnedCosmeticIds\""));

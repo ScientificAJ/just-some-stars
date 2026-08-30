@@ -15,6 +15,7 @@ namespace JustSomeStars.Editor.Validation
         Cosmetic = 5,
         StoreProduct = 6,
         Entitlement = 7,
+        AtlasEntry = 8,
     }
 
     public enum ContentReferenceKind
@@ -43,6 +44,7 @@ namespace JustSomeStars.Editor.Validation
         MissingCosmeticFit = 8,
         MissingStoreEntitlement = 9,
         DuplicateStoreProductMapping = 10,
+        MissingLocalization = 11,
     }
 
     public sealed class ValidationIssue

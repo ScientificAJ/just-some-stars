@@ -334,14 +334,179 @@ namespace JustSomeStars.Runtime.Saving
     }
 
     [Serializable]
+    public sealed class MissionProgress : IEquatable<MissionProgress>
+    {
+        [SerializeField] private string missionId = string.Empty;
+        [SerializeField] private string checkpointNodeId = string.Empty;
+        [SerializeField] private int checkpointOrdinal;
+        [SerializeField] private string[] completedNodeIds = Array.Empty<string>();
+        [SerializeField] private string[] activeNodeIds = Array.Empty<string>();
+
+        public string MissionId
+        {
+            get => missionId;
+            set => missionId = value;
+        }
+
+        public string CheckpointNodeId
+        {
+            get => checkpointNodeId;
+            set => checkpointNodeId = value;
+        }
+
+        public int CheckpointOrdinal
+        {
+            get => checkpointOrdinal;
+            set => checkpointOrdinal = value;
+        }
+
+        public string[] CompletedNodeIds
+        {
+            get => completedNodeIds;
+            set => completedNodeIds = value;
+        }
+
+        public string[] ActiveNodeIds
+        {
+            get => activeNodeIds;
+            set => activeNodeIds = value;
+        }
+
+        public bool HasMission => !string.IsNullOrEmpty(missionId);
+
+        public static MissionProgress Empty()
+        {
+            return new MissionProgress
+            {
+                missionId = string.Empty,
+                checkpointNodeId = string.Empty,
+                checkpointOrdinal = 0,
+                completedNodeIds = Array.Empty<string>(),
+                activeNodeIds = Array.Empty<string>(),
+            };
+        }
+
+        public MissionProgress Copy()
+        {
+            return new MissionProgress
+            {
+                missionId = missionId,
+                checkpointNodeId = checkpointNodeId,
+                checkpointOrdinal = checkpointOrdinal,
+                completedNodeIds = completedNodeIds?.ToArray(),
+                activeNodeIds = activeNodeIds?.ToArray(),
+            };
+        }
+
+        public bool Equals(MissionProgress other)
+        {
+            return other != null &&
+                string.Equals(missionId, other.missionId, StringComparison.Ordinal) &&
+                string.Equals(
+                    checkpointNodeId,
+                    other.checkpointNodeId,
+                    StringComparison.Ordinal) &&
+                checkpointOrdinal == other.checkpointOrdinal &&
+                SequenceEqual(completedNodeIds, other.completedNodeIds) &&
+                SequenceEqual(activeNodeIds, other.activeNodeIds);
+        }
+
+        public override bool Equals(object obj) => Equals(obj as MissionProgress);
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hash = missionId != null ? missionId.GetHashCode() : 0;
+                hash = (hash * 397) ^
+                    (checkpointNodeId != null ? checkpointNodeId.GetHashCode() : 0);
+                return (hash * 397) ^ checkpointOrdinal;
+            }
+        }
+
+        internal void ThrowIfInvalid(string parameterName)
+        {
+            if (completedNodeIds == null || activeNodeIds == null)
+            {
+                throw new ArgumentException(
+                    "Mission progress arrays cannot be missing.",
+                    parameterName);
+            }
+
+            if (!HasMission)
+            {
+                if (!string.IsNullOrEmpty(checkpointNodeId) ||
+                    checkpointOrdinal != 0 ||
+                    completedNodeIds.Length != 0 ||
+                    activeNodeIds.Length != 0)
+                {
+                    throw new ArgumentException(
+                        "Empty mission progress cannot carry graph state.",
+                        parameterName);
+                }
+
+                return;
+            }
+
+            RequireCanonicalId(missionId, parameterName);
+            RequireCanonicalId(checkpointNodeId, parameterName);
+            if (checkpointOrdinal < 0)
+            {
+                throw new ArgumentOutOfRangeException(
+                    parameterName,
+                    "Mission checkpoint ordinal cannot be negative.");
+            }
+
+            RequireUniqueIds(completedNodeIds, parameterName);
+            RequireUniqueIds(activeNodeIds, parameterName);
+            if (completedNodeIds.Intersect(activeNodeIds, StringComparer.Ordinal).Any())
+            {
+                throw new ArgumentException(
+                    "Mission nodes cannot be completed and active together.",
+                    parameterName);
+            }
+        }
+
+        private static void RequireUniqueIds(string[] values, string parameterName)
+        {
+            var unique = new HashSet<string>(StringComparer.Ordinal);
+            foreach (var value in values)
+            {
+                RequireCanonicalId(value, parameterName);
+                if (!unique.Add(value))
+                {
+                    throw new ArgumentException(
+                        "Mission progress identifiers must be unique.",
+                        parameterName);
+                }
+            }
+        }
+
+        private static void RequireCanonicalId(string value, string parameterName)
+        {
+            if (string.IsNullOrWhiteSpace(value) ||
+                !string.Equals(value, value.Trim(), StringComparison.Ordinal))
+            {
+                throw new ArgumentException(
+                    "Mission progress requires canonical identifiers.",
+                    parameterName);
+            }
+        }
+
+        private static bool SequenceEqual(string[] first, string[] second) =>
+            first != null && second != null && first.SequenceEqual(second);
+    }
+
+    [Serializable]
     public sealed class GameSave : IEquatable<GameSave>
     {
-        public const int CurrentSchemaVersion = 1;
+        public const int CurrentSchemaVersion = 2;
 
         internal static readonly string[] RequiredJsonFields =
         {
             "schemaVersion",
             "story",
+            "mission",
             "captain",
             "discoveryIds",
             "earnedCosmeticIds",
@@ -353,6 +518,7 @@ namespace JustSomeStars.Runtime.Saving
 
         [SerializeField] private int schemaVersion = CurrentSchemaVersion;
         [SerializeField] private StoryProgress story = new StoryProgress();
+        [SerializeField] private MissionProgress mission = MissionProgress.Empty();
         [SerializeField] private CaptainState captain = new CaptainState();
         [SerializeField] private string[] discoveryIds = Array.Empty<string>();
         [SerializeField] private string[] earnedCosmeticIds = Array.Empty<string>();
@@ -367,6 +533,12 @@ namespace JustSomeStars.Runtime.Saving
         {
             get => story;
             set => story = value;
+        }
+
+        public MissionProgress Mission
+        {
+            get => mission;
+            set => mission = value;
         }
 
         public CaptainState Captain
@@ -427,6 +599,7 @@ namespace JustSomeStars.Runtime.Saving
             {
                 schemaVersion = CurrentSchemaVersion,
                 story = new StoryProgress(),
+                mission = MissionProgress.Empty(),
                 captain = new CaptainState
                 {
                     LastCustomizedUtcTicks = createdUtcTicks,
@@ -452,6 +625,7 @@ namespace JustSomeStars.Runtime.Saving
             {
                 schemaVersion = schemaVersion,
                 story = story?.Copy(),
+                mission = mission?.Copy(),
                 captain = captain?.Copy(),
                 discoveryIds = discoveryIds?.ToArray(),
                 earnedCosmeticIds = earnedCosmeticIds?.ToArray(),
@@ -467,6 +641,7 @@ namespace JustSomeStars.Runtime.Saving
             return other != null &&
                 schemaVersion == other.schemaVersion &&
                 Equals(story, other.story) &&
+                Equals(mission, other.mission) &&
                 Equals(captain, other.captain) &&
                 SequenceEqual(discoveryIds, other.discoveryIds) &&
                 SequenceEqual(earnedCosmeticIds, other.earnedCosmeticIds) &&
@@ -484,6 +659,7 @@ namespace JustSomeStars.Runtime.Saving
             {
                 var hash = schemaVersion;
                 hash = (hash * 397) ^ (story?.GetHashCode() ?? 0);
+                hash = (hash * 397) ^ (mission?.GetHashCode() ?? 0);
                 hash = (hash * 397) ^ (captain?.GetHashCode() ?? 0);
                 hash = (hash * 397) ^ (birthday?.GetHashCode() ?? 0);
                 return (hash * 397) ^ (metadata?.GetHashCode() ?? 0);
@@ -499,7 +675,8 @@ namespace JustSomeStars.Runtime.Saving
                     parameterName);
             }
 
-            if (story == null || captain == null || birthday == null || metadata == null)
+            if (story == null || mission == null || captain == null ||
+                birthday == null || metadata == null)
             {
                 throw new ArgumentException("Save domains cannot be missing.", parameterName);
             }
@@ -511,6 +688,8 @@ namespace JustSomeStars.Runtime.Saving
                     parameterName,
                     "Story checkpoint ordinal cannot be negative.");
             }
+
+            mission.ThrowIfInvalid(parameterName);
 
             RequireId(captain.BodyFamilyId, nameof(CaptainState.BodyFamilyId), parameterName);
             RequireId(

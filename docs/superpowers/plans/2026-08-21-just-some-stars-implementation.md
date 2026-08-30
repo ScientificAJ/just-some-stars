@@ -1659,36 +1659,90 @@ git commit -m "feat: add assisted 2.5d flight and landing"
 ### Task 18: Implement mission graph, dialogue, hints and Atlas
 
 **Files:**
+- Create: `Assets/_JustSomeStars/Runtime/Missions.meta`
 - Create: `Assets/_JustSomeStars/Runtime/Missions/MissionDefinition.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Missions/MissionNode.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Missions/MissionDirector.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Missions/Task18ProgressionContent.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Dialogue.meta`
 - Create: `Assets/_JustSomeStars/Runtime/Dialogue/DialogueEntry.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Dialogue/DialogueDirector.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Dialogue/HintDirector.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Atlas.meta`
 - Create: `Assets/_JustSomeStars/Runtime/Atlas/AtlasEntry.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Atlas/AtlasService.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Atlas/LocalizedEnglishCatalog.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Atlas/ScienceSourceDefinition.cs`
+- Create: `Assets/_JustSomeStars/Content/{Missions,Dialogue,Atlas,ScienceSources,Localization,Resources}/` plus Unity folder metas and authored Task 18 assets
+- Create: `Assets/_JustSomeStars/Editor/Validation/Task18ContentValidationContributor.cs`
+- Create: `Assets/_JustSomeStars/Editor/Validation/Task18ContentValidationContributor.cs.meta`
+- Modify: `Assets/_JustSomeStars/Editor/Validation/ValidationReport.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Core/GameEvents.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Crew/DialogueToken.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Discovery/EvidenceRecorder.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Saving/{GameSave,SaveMerge,SaveMigrator}.cs`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/MissionGraphTests.cs`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/DialoguePriorityTests.cs`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/AtlasTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/EditMode/{LocalSaveServiceTests,SaveMigratorTests}.cs`
+- Create: `Assets/_JustSomeStars/Tests/PlayMode/FlightDiscoveryAtlasMissionTests.cs`
 
 **Interfaces:**
 - Consumes: typed game events and save checkpoints.
 - Produces: deterministic mission advancement, authored dialogue/hints and discovery-driven Atlas entries.
 
-- [ ] **Step 1: Write graph tests for completion, optional branches, restart and recovery nodes**
+- [x] **Step 1: Write graph tests for completion, optional branches, restart and recovery nodes**
 
-- [ ] **Step 2: Implement mission definitions and Director event subscriptions**
+- [x] **Step 2: Implement mission definitions and Director event subscriptions**
 
-- [ ] **Step 3: Implement dialogue priority, interruption, cooldown and crew token integration**
+- [x] **Step 3: Implement dialogue priority, interruption, cooldown and crew token integration**
 
-- [ ] **Step 4: Implement behavior-based hints without timers that pressure the player**
+- [x] **Step 4: Implement behavior-based hints without timers that pressure the player**
 
-- [ ] **Step 5: Implement Atlas unlocks with short, balanced and deep localized text plus science-source IDs**
+- [x] **Step 5: Implement Atlas unlocks with short, balanced and deep localized text plus science-source IDs**
 
 - [ ] **Step 6: Validate a tiny flight-to-discovery-to-Atlas mission end to end and commit**
 
 ```bash
-git add Assets/_JustSomeStars/Runtime/Missions Assets/_JustSomeStars/Runtime/Dialogue Assets/_JustSomeStars/Runtime/Atlas Assets/_JustSomeStars/Tests
+git add -A -- \
+  Assets/_JustSomeStars/Runtime/Missions.meta \
+  Assets/_JustSomeStars/Runtime/Missions \
+  Assets/_JustSomeStars/Runtime/Dialogue.meta \
+  Assets/_JustSomeStars/Runtime/Dialogue \
+  Assets/_JustSomeStars/Runtime/Atlas.meta \
+  Assets/_JustSomeStars/Runtime/Atlas \
+  Assets/_JustSomeStars/Runtime/Core/GameEvents.cs \
+  Assets/_JustSomeStars/Runtime/Crew/DialogueToken.cs \
+  Assets/_JustSomeStars/Runtime/Discovery/EvidenceRecorder.cs \
+  Assets/_JustSomeStars/Runtime/Saving/GameSave.cs \
+  Assets/_JustSomeStars/Runtime/Saving/SaveMerge.cs \
+  Assets/_JustSomeStars/Runtime/Saving/SaveMigrator.cs \
+  Assets/_JustSomeStars/Editor/Validation/ValidationReport.cs \
+  Assets/_JustSomeStars/Editor/Validation/Task18ContentValidationContributor.cs \
+  Assets/_JustSomeStars/Editor/Validation/Task18ContentValidationContributor.cs.meta \
+  Assets/_JustSomeStars/Content/Missions.meta \
+  Assets/_JustSomeStars/Content/Missions \
+  Assets/_JustSomeStars/Content/Dialogue.meta \
+  Assets/_JustSomeStars/Content/Dialogue \
+  Assets/_JustSomeStars/Content/Atlas.meta \
+  Assets/_JustSomeStars/Content/Atlas \
+  Assets/_JustSomeStars/Content/ScienceSources.meta \
+  Assets/_JustSomeStars/Content/ScienceSources \
+  Assets/_JustSomeStars/Content/Localization.meta \
+  Assets/_JustSomeStars/Content/Localization \
+  Assets/_JustSomeStars/Content/Resources.meta \
+  Assets/_JustSomeStars/Content/Resources \
+  Assets/_JustSomeStars/Tests/EditMode/MissionGraphTests.cs \
+  Assets/_JustSomeStars/Tests/EditMode/MissionGraphTests.cs.meta \
+  Assets/_JustSomeStars/Tests/EditMode/DialoguePriorityTests.cs \
+  Assets/_JustSomeStars/Tests/EditMode/DialoguePriorityTests.cs.meta \
+  Assets/_JustSomeStars/Tests/EditMode/AtlasTests.cs \
+  Assets/_JustSomeStars/Tests/EditMode/AtlasTests.cs.meta \
+  Assets/_JustSomeStars/Tests/EditMode/LocalSaveServiceTests.cs \
+  Assets/_JustSomeStars/Tests/EditMode/SaveMigratorTests.cs \
+  Assets/_JustSomeStars/Tests/PlayMode/FlightDiscoveryAtlasMissionTests.cs \
+  Assets/_JustSomeStars/Tests/PlayMode/FlightDiscoveryAtlasMissionTests.cs.meta \
+  docs/superpowers/plans/2026-08-21-just-some-stars-implementation.md
 git commit -m "feat: add missions dialogue hints and Cosmic Atlas"
 ```
 

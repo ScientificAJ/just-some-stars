@@ -92,6 +92,9 @@ namespace JustSomeStars.Runtime.Discovery
 
             if (!instrument.IsCompatibleWith(phenomenon, mode))
             {
+                m_Events.Publish(new PlayerBehaviorObserved(
+                    phenomenon.StableId,
+                    PlayerBehaviorOutcome.IncompatibleInstrument));
                 throw new InvalidOperationException(
                     "The selected instrument and Lens mode cannot observe this phenomenon.");
             }
@@ -103,6 +106,12 @@ namespace JustSomeStars.Runtime.Discovery
                 instrument,
                 mode);
             m_Records.Add(record);
+            if (!record.PredictionWasCorrect)
+            {
+                m_Events.Publish(new PlayerBehaviorObserved(
+                    phenomenon.StableId,
+                    PlayerBehaviorOutcome.IncorrectPrediction));
+            }
             m_Events.Publish(new PredictionRecorded(record.PredictionId));
             m_Events.Publish(new InstrumentUsed(record.InstrumentId));
             m_Events.Publish(new PhenomenonObserved(record.PhenomenonId));

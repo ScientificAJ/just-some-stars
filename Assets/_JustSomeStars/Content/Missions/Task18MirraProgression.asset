@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0713d8ce08b3eae8046373db4e6d8b, type: 3}
+  m_Name: Task18MirraProgression
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Missions.MissionDefinition
+  stableId: mission.mirra.task18
+  entryNodeId: mission.mirra.entry
+  nodes:
+  - stableId: mission.mirra.entry
+    kind: 0
+    requirements: []
+    nextNodeIds:
+    - mission.mirra.land
+    dialogueIds: []
+    recoveryNodeId:
+    checkpointOrdinal: 0
+  - stableId: mission.mirra.land
+    kind: 3
+    requirements:
+    - eventKind: 0
+      payloadId: destination.mirra.surface
+    nextNodeIds:
+    - mission.mirra.arrival-conversation
+    dialogueIds: []
+    recoveryNodeId:
+    checkpointOrdinal: 1
+  - stableId: mission.mirra.arrival-conversation
+    kind: 1
+    requirements:
+    - eventKind: 5
+      payloadId: dialogue.mirra.arrival
+    nextNodeIds:
+    - mission.mirra.optional-prediction
+    - mission.mirra.instrument
+    dialogueIds:
+    - dialogue.mirra.arrival
+    recoveryNodeId:
+    checkpointOrdinal: 0
+  - stableId: mission.mirra.optional-prediction
+    kind: 2
+    requirements:
+    - eventKind: 2
+      payloadId: prediction.mirra.day-night-circulation
+    nextNodeIds: []
+    dialogueIds: []
+    recoveryNodeId:
+    checkpointOrdinal: 2
+  - stableId: mission.mirra.instrument
+    kind: 1
+    requirements:
+    - eventKind: 3
+      payloadId: instrument.mirra.thermal-imager
+    nextNodeIds:
+    - mission.mirra.observe
+    dialogueIds: []
+    recoveryNodeId:
+    checkpointOrdinal: 0
+  - stableId: mission.mirra.observe
+    kind: 3
+    requirements:
+    - eventKind: 1
+      payloadId: phenomenon.mirra.temperature-gradient
+    nextNodeIds:
+    - mission.mirra.terminal
+    dialogueIds: []
+    recoveryNodeId: mission.mirra.land
+    checkpointOrdinal: 3
+  - stableId: mission.mirra.terminal
+    kind: 5
+    requirements: []
+    nextNodeIds: []
+    dialogueIds: []
+    recoveryNodeId:
+    checkpointOrdinal: 0

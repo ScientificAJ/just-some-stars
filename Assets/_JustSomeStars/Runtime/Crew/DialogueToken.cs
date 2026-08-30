@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using JustSomeStars.Runtime.Core;
 
 namespace JustSomeStars.Runtime.Crew
@@ -84,6 +85,9 @@ namespace JustSomeStars.Runtime.Crew
     public sealed class DialogueToken : IDisposable
     {
         private DialogueTokenArbiter m_Owner;
+        private readonly CancellationTokenSource m_Revocation =
+            new CancellationTokenSource();
+        private int m_Disposed;
 
         internal DialogueToken(
             DialogueTokenArbiter owner,
@@ -105,19 +109,35 @@ namespace JustSomeStars.Runtime.Crew
         public int Priority { get; }
         public bool Interruptible { get; }
         public bool IsActive { get; private set; }
+        public CancellationToken CancellationToken => m_Revocation.Token;
 
         public void Dispose()
         {
+            if (Interlocked.Exchange(ref m_Disposed, 1) != 0)
+            {
+                return;
+            }
+
             var owner = m_Owner;
             m_Owner = null;
             owner?.Release(Id);
             IsActive = false;
+            if (!m_Revocation.IsCancellationRequested)
+            {
+                m_Revocation.Cancel();
+            }
+
+            m_Revocation.Dispose();
         }
 
         internal void Revoke()
         {
             IsActive = false;
             m_Owner = null;
+            if (!m_Revocation.IsCancellationRequested)
+            {
+                m_Revocation.Cancel();
+            }
         }
     }
 }

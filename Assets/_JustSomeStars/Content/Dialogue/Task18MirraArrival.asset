@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1988b77715515fddbb27d64a6e89e1b, type: 3}
+  m_Name: Task18MirraArrival
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Dialogue.DialogueEntry
+  stableId: dialogue.mirra.arrival
+  localizationKey: dialogue.mirra.arrival.text
+  speakerId: crew.mira
+  voiceReference: voice.mira.mirra-arrival
+  emotion: wonder
+  expression: bright-focus
+  gesture: gesture.horizon
+  conditions: []
+  priority: 500
+  interruptible: 0
+  cooldownSeconds: 0
+  followupIds: []
