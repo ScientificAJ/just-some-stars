@@ -379,15 +379,45 @@ depends on a 3D ship.
   separate final screenshot is the authoritative proof of the completed
   Flight-to-Surface handoff.
 
-## Immediate next task: Task 18
+## Task 18 completion checkpoint
 
-Implement the mission graph, dialogue, contextual hints and Atlas on top of the
-accepted mode, event, discovery, surface and flight contracts. Do not reopen
-Task 17 unless Task 18 exposes a direct integration regression.
+Task 18 is complete in local commit `c23f1ff`. The game now owns an authored,
+validated mission graph with deterministic typed-event advancement, optional
+branches, graph-authentic restart checkpoints and bounded recovery. Story
+dialogue enters through the mission graph, behavior hints remain strictly
+outcome-driven, and a whole follow-up chain retains one crew dialogue token and
+publishes completion only after its terminal line. Discovery and Cosmic Atlas
+progress share one copy-on-write save authority, including safe backfill of
+partial migrated pairs. Player-facing Atlas depth text, English localization and
+claim-specific NASA science provenance are all authored content.
+
+### Final gate
+
+- Authentic critic REDs reproduced the real Mirra prediction-ID mismatch,
+  inert mission dialogue, premature follow-up completion, partial Atlas-pair
+  crash, fabricated checkpoint acceptance and generic science-source record.
+- A second authentic `0/1` route RED caught the correction regression where a
+  behavior hint played immediately on objective activation. The corrected route
+  proves arrival dialogue first and the hint only after a matching behavior
+  outcome.
+- Fresh corrected `MissionGraphTests` pass `7/7`, `DialoguePriorityTests` pass
+  `7/7`, and `AtlasTests` pass `4/4`; each focused run exits 0.
+- Fresh real landing-to-dialogue-to-Mirra-evidence-to-Atlas-to-save/reload
+  PlayMode evidence passes `1/1`, with duplicate replay producing no write.
+- The final Android-target project content validator exits 0 and reports the
+  project content valid. Temporary Unity patchers and their metas are absent.
+- The same bounded extreme critic returned final `PROCEED`.
+
+## Immediate next task: Task 19
+
+Build the mechanics-complete Mirra vertical slice on top of the accepted flight,
+landing, surface, crew, interactions, Lens, mission, dialogue, hint and Atlas
+contracts. Do not reopen Task 18 unless Task 19 exposes a direct integration
+regression.
 
 ## User-help queue
 
-No user decision or external action is currently blocking Task 17. JSS-019
+No user decision or external action is currently blocking Task 19. JSS-019
 records the remote-push safety block without stopping continued local work.
 
 ## Chronological checkpoint log
@@ -520,3 +550,10 @@ records the remote-push safety block without stopping continued local work.
   ended at their declared hard timeouts, no instance/tunnel/inspector process
   remains, and Task 18 is next. JSS-019 still prevents remote delivery but not
   local work.
+- 2026-08-30: Task 18 completed the authored mission, dialogue, behavior-hint
+  and Cosmic Atlas foundation in local commit `c23f1ff`. The critic's six
+  original integration blockers and one correction regression each received
+  focused RED evidence before correction. Final source-fresh gates are mission
+  `7/7`, dialogue `7/7`, Atlas/content validation `4/4`, real flight-to-Atlas
+  PlayMode `1/1`, and a green Android-target project validator. The same extreme
+  critic returned `PROCEED`; Task 19 is next and JSS-019 remains delivery-only.

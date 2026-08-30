@@ -1701,7 +1701,7 @@ git commit -m "feat: add assisted 2.5d flight and landing"
 
 - [x] **Step 5: Implement Atlas unlocks with short, balanced and deep localized text plus science-source IDs**
 
-- [ ] **Step 6: Validate a tiny flight-to-discovery-to-Atlas mission end to end and commit**
+- [x] **Step 6: Validate a tiny flight-to-discovery-to-Atlas mission end to end and commit**
 
 ```bash
 git add -A -- \
