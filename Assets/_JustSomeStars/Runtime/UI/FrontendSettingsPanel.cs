@@ -1,5 +1,9 @@
 using System;
 using System.IO;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using JustSomeStars.Runtime.Accounts;
 using JustSomeStars.Runtime.Accessibility;
 using TMPro;
 using UnityEngine;
@@ -32,19 +36,66 @@ namespace JustSomeStars.Runtime.UI
         [SerializeField]
         private FrontendMotionDirector m_MotionDirector;
 
+        [Header("Cloud backup")]
+        [SerializeField]
+        private TMP_Text m_CloudStatusLabel;
+
+        [SerializeField]
+        private Button m_CloudLinkButton;
+
+        [SerializeField]
+        private Button m_CloudSyncButton;
+
+        [SerializeField]
+        private Button m_CloudExportButton;
+
+        [SerializeField]
+        private Button m_CloudSignOutButton;
+
+        [SerializeField]
+        private Button m_CloudUnlinkButton;
+
+        [SerializeField]
+        private Button m_CloudDeleteButton;
+
+        [SerializeField]
+        private Button m_CloudUseDeviceButton;
+
+        [SerializeField]
+        private Button m_CloudUseBackupButton;
+
+        [SerializeField]
+        private TMP_Text m_CloudLinkLabel;
+
+        [SerializeField]
+        private TMP_Text m_CloudDeleteLabel;
+
         private readonly UnityEngine.Events.UnityAction[] m_DecreaseCallbacks =
             new UnityEngine.Events.UnityAction[ControlCount];
         private readonly UnityEngine.Events.UnityAction[] m_IncreaseCallbacks =
             new UnityEngine.Events.UnityAction[ControlCount];
 
         private bool m_IsListening;
+        private bool m_DeleteArmed;
+        private CancellationTokenSource m_AccountLifetime;
 
         public bool IsReady =>
             m_Root != null &&
             m_ScrollRect != null &&
             HasCompleteArray(m_DecreaseButtons) &&
             HasCompleteArray(m_IncreaseButtons) &&
-            HasCompleteArray(m_ValueLabels);
+            HasCompleteArray(m_ValueLabels) &&
+            m_CloudStatusLabel != null &&
+            m_CloudLinkButton != null &&
+            m_CloudSyncButton != null &&
+            m_CloudExportButton != null &&
+            m_CloudSignOutButton != null &&
+            m_CloudUnlinkButton != null &&
+            m_CloudDeleteButton != null &&
+            m_CloudUseDeviceButton != null &&
+            m_CloudUseBackupButton != null &&
+            m_CloudLinkLabel != null &&
+            m_CloudDeleteLabel != null;
 
         public bool IsConfigured => Dependencies != null;
 
@@ -74,9 +125,14 @@ namespace JustSomeStars.Runtime.UI
         private void OnDestroy()
         {
             UnbindControls();
+            CancelAccountLifetime();
             if (Dependencies != null)
             {
                 Dependencies.Settings.SettingsChanged -= OnSettingsChanged;
+                if (Dependencies.Account != null)
+                {
+                    Dependencies.Account.StateChanged -= OnAccountStateChanged;
+                }
                 Dependencies = null;
             }
         }
@@ -107,7 +163,13 @@ namespace JustSomeStars.Runtime.UI
 
             Dependencies = dependencies;
             Dependencies.Settings.SettingsChanged += OnSettingsChanged;
+            if (Dependencies.Account != null)
+            {
+                Dependencies.Account.StateChanged += OnAccountStateChanged;
+            }
+            m_AccountLifetime = new CancellationTokenSource();
             Render(dependencies.Settings.Current);
+            RenderAccount(dependencies.Account?.Current);
             BindControls();
         }
 
@@ -132,6 +194,11 @@ namespace JustSomeStars.Runtime.UI
 
             UnbindControls();
             Dependencies.Settings.SettingsChanged -= OnSettingsChanged;
+            if (Dependencies.Account != null)
+            {
+                Dependencies.Account.StateChanged -= OnAccountStateChanged;
+            }
+            CancelAccountLifetime();
             Dependencies = null;
             Hide();
         }
@@ -146,6 +213,7 @@ namespace JustSomeStars.Runtime.UI
 
             m_Root.SetActive(true);
             Render(Dependencies.Settings.Current);
+            RenderAccount(Dependencies.Account?.Current);
             Canvas.ForceUpdateCanvases();
             m_ScrollRect.StopMovement();
             m_ScrollRect.verticalNormalizedPosition = 1f;
@@ -153,6 +221,12 @@ namespace JustSomeStars.Runtime.UI
 
         public void Hide()
         {
+            m_DeleteArmed = false;
+            if (m_CloudDeleteLabel != null)
+            {
+                m_CloudDeleteLabel.text = "Delete cloud account";
+            }
+
             if (m_Root != null)
             {
                 m_Root.SetActive(false);
@@ -177,6 +251,15 @@ namespace JustSomeStars.Runtime.UI
                     m_IncreaseCallbacks[index]);
             }
 
+            m_CloudLinkButton.onClick.AddListener(HandleCloudLink);
+            m_CloudSyncButton.onClick.AddListener(HandleCloudSync);
+            m_CloudExportButton.onClick.AddListener(HandleCloudExport);
+            m_CloudSignOutButton.onClick.AddListener(HandleCloudSignOut);
+            m_CloudUnlinkButton.onClick.AddListener(HandleCloudUnlink);
+            m_CloudDeleteButton.onClick.AddListener(HandleCloudDelete);
+            m_CloudUseDeviceButton.onClick.AddListener(HandleUseDevice);
+            m_CloudUseBackupButton.onClick.AddListener(HandleUseBackup);
+
             m_IsListening = true;
         }
 
@@ -196,6 +279,15 @@ namespace JustSomeStars.Runtime.UI
                 m_DecreaseCallbacks[index] = null;
                 m_IncreaseCallbacks[index] = null;
             }
+
+            m_CloudLinkButton.onClick.RemoveListener(HandleCloudLink);
+            m_CloudSyncButton.onClick.RemoveListener(HandleCloudSync);
+            m_CloudExportButton.onClick.RemoveListener(HandleCloudExport);
+            m_CloudSignOutButton.onClick.RemoveListener(HandleCloudSignOut);
+            m_CloudUnlinkButton.onClick.RemoveListener(HandleCloudUnlink);
+            m_CloudDeleteButton.onClick.RemoveListener(HandleCloudDelete);
+            m_CloudUseDeviceButton.onClick.RemoveListener(HandleUseDevice);
+            m_CloudUseBackupButton.onClick.RemoveListener(HandleUseBackup);
 
             m_IsListening = false;
         }
@@ -343,6 +435,178 @@ namespace JustSomeStars.Runtime.UI
         private void OnSettingsChanged(GameSettings settings)
         {
             Render(settings);
+        }
+
+        private void OnAccountStateChanged(AccountState state)
+        {
+            RenderAccount(state);
+        }
+
+        private void RenderAccount(AccountState state)
+        {
+            if (!IsReady)
+            {
+                return;
+            }
+
+            var hasAccount = state != null;
+            m_CloudStatusLabel.text = hasAccount
+                ? state.StatusMessage
+                : "Google backup isn’t available in this build. " +
+                  "Offline progress still works.";
+            var busy = hasAccount && state.Operation != AccountOperation.None;
+            var available = hasAccount &&
+                state.Connection == AccountConnection.CloudAvailable;
+            var linked = hasAccount && state.Connection == AccountConnection.Linked;
+            var pending = hasAccount && state.Connection == AccountConnection.Pending;
+            var conflict = hasAccount &&
+                state.Connection == AccountConnection.Conflict;
+            var authenticated = hasAccount &&
+                !string.IsNullOrWhiteSpace(state.FirebaseUserId) &&
+                (linked || pending || conflict);
+
+            m_CloudLinkButton.gameObject.SetActive(!authenticated);
+            m_CloudLinkButton.interactable = available && !busy;
+            m_CloudLinkLabel.text = available ? "Back up with Google" : "Not available";
+            m_CloudSyncButton.gameObject.SetActive(linked || pending);
+            m_CloudSyncButton.interactable = (linked || pending) && !busy;
+            m_CloudExportButton.gameObject.SetActive(linked);
+            m_CloudExportButton.interactable = linked && !busy &&
+                state.Sync == AccountSyncState.Synced;
+            m_CloudSignOutButton.gameObject.SetActive(authenticated);
+            m_CloudSignOutButton.interactable = authenticated && !busy;
+            m_CloudUnlinkButton.gameObject.SetActive(authenticated);
+            m_CloudUnlinkButton.interactable = authenticated && !busy;
+            m_CloudDeleteButton.gameObject.SetActive(authenticated);
+            m_CloudDeleteButton.interactable = authenticated && !busy;
+            m_CloudUseDeviceButton.gameObject.SetActive(conflict);
+            m_CloudUseDeviceButton.interactable = conflict && !busy;
+            m_CloudUseBackupButton.gameObject.SetActive(conflict);
+            m_CloudUseBackupButton.interactable = conflict && !busy;
+            if (!authenticated)
+            {
+                m_DeleteArmed = false;
+            }
+
+            m_CloudDeleteLabel.text = m_DeleteArmed
+                ? "Confirm delete"
+                : "Delete cloud account";
+        }
+
+        private void HandleCloudLink() => RunAccountOperation(
+            token => Dependencies.Account.LinkGoogleAsync(token).AsTask());
+
+        private void HandleCloudSync() => RunAccountOperation(
+            token => Dependencies.Account.SyncAsync(token).AsTask());
+
+        private void HandleCloudExport() => RunAccountOperation(
+            async token =>
+            {
+                var result = await Dependencies.Account.ExportDataAsync(token);
+                if (result.Succeeded)
+                {
+                    WriteCloudExport(result.Document);
+                }
+            });
+
+        private void HandleCloudSignOut() => RunAccountOperation(
+            token => Dependencies.Account.SignOutAsync(token).AsTask());
+
+        private void HandleCloudUnlink() => RunAccountOperation(
+            token => Dependencies.Account.UnlinkGoogleAsync(token).AsTask());
+
+        private void HandleCloudDelete()
+        {
+            if (!m_DeleteArmed)
+            {
+                m_DeleteArmed = true;
+                RenderAccount(Dependencies.Account.Current);
+                return;
+            }
+
+            m_DeleteArmed = false;
+            RunAccountOperation(
+                token => Dependencies.Account.DeleteAccountAsync(token).AsTask());
+        }
+
+        private void HandleUseDevice() => RunAccountOperation(
+            token => Dependencies.Account.ResolveConflictAsync(
+                AccountConflictChoice.UseThisDevice,
+                token).AsTask());
+
+        private void HandleUseBackup() => RunAccountOperation(
+            token => Dependencies.Account.ResolveConflictAsync(
+                AccountConflictChoice.UseCloudBackup,
+                token).AsTask());
+
+        private async void RunAccountOperation(
+            Func<CancellationToken, Task> operation)
+        {
+            if (Dependencies?.Account == null || operation == null ||
+                m_AccountLifetime == null)
+            {
+                return;
+            }
+
+            try
+            {
+                await operation(m_AccountLifetime.Token);
+            }
+            catch (OperationCanceledException)
+            {
+                // Scene teardown owns cancellation; no UI survives it.
+            }
+            catch (Exception exception) when (
+                exception is IOException ||
+                exception is UnauthorizedAccessException ||
+                exception is InvalidOperationException)
+            {
+                Debug.LogWarning(
+                    "[JSS Frontend] Cloud backup operation did not complete: " +
+                    exception.GetType().Name,
+                    this);
+            }
+            finally
+            {
+                if (Dependencies?.Account != null)
+                {
+                    RenderAccount(Dependencies.Account.Current);
+                }
+            }
+        }
+
+        private static void WriteCloudExport(string document)
+        {
+            var directory = Path.Combine(
+                Application.persistentDataPath,
+                "JustSomeStars");
+            Directory.CreateDirectory(directory);
+            var path = Path.Combine(directory, "cloud-save-export.json");
+            var temporary = path + ".tmp";
+            File.WriteAllText(
+                temporary,
+                document ?? string.Empty,
+                new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
+            if (File.Exists(path))
+            {
+                File.Replace(temporary, path, null);
+            }
+            else
+            {
+                File.Move(temporary, path);
+            }
+        }
+
+        private void CancelAccountLifetime()
+        {
+            if (m_AccountLifetime == null)
+            {
+                return;
+            }
+
+            m_AccountLifetime.Cancel();
+            m_AccountLifetime.Dispose();
+            m_AccountLifetime = null;
         }
 
         private void Render(GameSettings settings)

@@ -89,7 +89,7 @@ namespace JustSomeStars.Tests.PlayMode
                 Is.EqualTo("Frontend"));
             Assert.That(
                 bootstrap.LastStartupReport.Services.Count,
-                Is.EqualTo(6));
+                Is.EqualTo(7));
 
             var inputModule = UnityEngine.Object.FindFirstObjectByType<
                 InputSystemUIInputModule>(FindObjectsInactive.Include);
@@ -248,9 +248,11 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(
                 NormalizeVisibleText(panelBody.text),
                 Is.EqualTo(
-                    "This Development Flight does not ask for an account, " +
-                    "collect gameplay progress, open web links, or offer " +
-                    "purchases."));
+                    "An account is optional. Progress stays on this device unless a " +
+                    "grown-up chooses private Google cloud backup. Photos and device " +
+                    "settings always stay local. Cloud data can be exported, signed " +
+                    "out, or deleted from Settings. Google sign-in data is not used " +
+                    "for advertising. This flight has no purchases."));
             Assert.That(
                 panelBody.text,
                 Does.Not.Contain("SIL OPEN FONT LICENSE"),

@@ -187,10 +187,7 @@ namespace JustSomeStars.Runtime.UI
 
             if (title == "Privacy")
             {
-                return "This Development Flight does\n" +
-                       "not ask for an account, collect\n" +
-                       "gameplay progress, open web\n" +
-                       "links, or offer purchases.";
+                return body;
             }
 
             if (title != "Credits & Licenses")

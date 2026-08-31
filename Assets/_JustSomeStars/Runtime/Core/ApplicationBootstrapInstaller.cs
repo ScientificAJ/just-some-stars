@@ -1,4 +1,5 @@
 using System;
+using JustSomeStars.Runtime.Accounts;
 using JustSomeStars.Runtime.Accessibility;
 using JustSomeStars.Runtime.Input;
 using JustSomeStars.Runtime.Flight;
@@ -58,6 +59,8 @@ namespace JustSomeStars.Runtime.Core
         {
             var settings = new SettingsService();
             var localSave = new LocalSaveService();
+            var account = CreateAccountService(localSave);
+            var saves = new CloudCheckpointSaveService(localSave, account);
             var actions = RequireProjectActions();
             var input = new InputRouter(actions, settings);
             var modeController = new GameModeController(
@@ -66,17 +69,17 @@ namespace JustSomeStars.Runtime.Core
             var gameEvents = new GameEventBus();
             var progression = new MirraProgressionService(
                 gameEvents,
-                localSave,
+                saves,
                 settings);
             var surfaceDependencies = new SurfaceGameplayDependencies(
                 settings,
                 input,
                 modeController,
                 gameEvents,
-                localSave,
+                saves,
                 progression);
             var sceneTransition = new UnitySceneTransition(
-                new FrontendDependencies(settings, input),
+                new FrontendDependencies(settings, input, account),
                 surfaceDependencies);
             surfaceDependencies.ConfigureSceneTransition(sceneTransition);
             sceneTransition.ConfigureFlightDependencies(
@@ -89,9 +92,10 @@ namespace JustSomeStars.Runtime.Core
                     progression));
             return CreateCompositionWithModeController(
                 settings,
-                localSave,
+                saves,
                 input,
                 modeController,
+                account,
                 sceneTransition,
                 new AddressablesSceneCatalogSource(SceneCatalog.AddressablesKey),
                 new AddressablesSceneStreamBackend(),
@@ -106,9 +110,11 @@ namespace JustSomeStars.Runtime.Core
             ISceneStreamBackend sceneBackend)
         {
             var input = new InputRouter(RequireProjectActions(), settings);
+            var account = CreateAccountService(localSave);
             return CreateComposition(
                 settings,
-                localSave,
+                new CloudCheckpointSaveService(localSave, account),
+                account,
                 input,
                 sceneTransition,
                 catalogSource,
@@ -117,7 +123,8 @@ namespace JustSomeStars.Runtime.Core
 
         private static GameBootstrapComposition CreateComposition(
             SettingsService settings,
-            LocalSaveService localSave,
+            ISaveService saves,
+            IAccountService account,
             InputRouter input,
             ISceneTransition sceneTransition,
             ISceneCatalogSource catalogSource,
@@ -128,9 +135,10 @@ namespace JustSomeStars.Runtime.Core
                 new InputRouterGameModeRuntimeHooks(input));
             return CreateCompositionWithModeController(
                 settings,
-                localSave,
+                saves,
                 input,
                 modeController,
+                account,
                 sceneTransition,
                 catalogSource,
                 sceneBackend);
@@ -138,9 +146,10 @@ namespace JustSomeStars.Runtime.Core
 
         private static GameBootstrapComposition CreateCompositionWithModeController(
             SettingsService settings,
-            LocalSaveService localSave,
+            ISaveService saves,
             InputRouter input,
             GameModeController modeController,
+            IAccountService account,
             ISceneTransition sceneTransition,
             ISceneCatalogSource catalogSource,
             ISceneStreamBackend sceneBackend,
@@ -155,7 +164,7 @@ namespace JustSomeStars.Runtime.Core
                 GameServiceRegistration>
                 {
                     new GameServiceRegistration(GameServiceRole.Settings, settings),
-                    new GameServiceRegistration(GameServiceRole.LocalSave, localSave),
+                    new GameServiceRegistration(GameServiceRole.LocalSave, saves),
                     new GameServiceRegistration(GameServiceRole.Input, input),
                     new GameServiceRegistration(
                         GameServiceRole.ContentCatalogue,
@@ -163,6 +172,9 @@ namespace JustSomeStars.Runtime.Core
                     new GameServiceRegistration(
                         GameServiceRole.ModeController,
                         modeController),
+                    new GameServiceRegistration(
+                        GameServiceRole.Cloud,
+                        account),
                 };
             if (progression != null)
             {
@@ -185,6 +197,17 @@ namespace JustSomeStars.Runtime.Core
                 () => InitialExperiencePolicy.CurrentMode == GameMode.Flight
                     ? progression.ResumeMode
                     : InitialExperiencePolicy.CurrentMode);
+        }
+
+        private static FirebaseAccountService CreateAccountService(
+            ISaveService localSave)
+        {
+            return new FirebaseAccountService(
+                new GuestAccountService(),
+                localSave,
+                new FirestoreCloudSaveService(
+                    new UnavailableFirestoreDocumentGateway()),
+                new UnavailableFirebaseAuthGateway());
         }
 
         private static InputActionAsset RequireProjectActions()

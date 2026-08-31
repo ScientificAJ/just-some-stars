@@ -72,6 +72,83 @@ namespace JustSomeStars.Runtime.Saving
             return merged;
         }
 
+        public static GameSave ResolveConflict(
+            GameSave local,
+            GameSave cloud,
+            bool preferLocal)
+        {
+            if (local == null)
+            {
+                throw new ArgumentNullException(nameof(local));
+            }
+
+            if (cloud == null)
+            {
+                throw new ArgumentNullException(nameof(cloud));
+            }
+
+            local.ThrowIfInvalid(nameof(local));
+            cloud.ThrowIfInvalid(nameof(cloud));
+
+            var preferred = preferLocal ? local : cloud;
+            var merged = preferred.Copy();
+            try
+            {
+                merged.Story = MergeStory(local.Story, cloud.Story);
+                merged.Mission = MergeMission(local.Mission, cloud.Mission);
+            }
+            catch (SaveMergeConflictException conflict) when (
+                conflict.Kind == SaveMergeConflictKind.StoryCheckpoint)
+            {
+                merged.Story = preferred.Story.Copy();
+                merged.Mission = preferred.Mission.Copy();
+            }
+
+            try
+            {
+                merged.Captain = MergeCaptain(local.Captain, cloud.Captain);
+            }
+            catch (SaveMergeConflictException conflict) when (
+                conflict.Kind == SaveMergeConflictKind.CaptainCustomization)
+            {
+                merged.Captain = preferred.Captain.Copy();
+            }
+
+            merged.DiscoveryIds = Union(local.DiscoveryIds, cloud.DiscoveryIds);
+            merged.EarnedCosmeticIds = Union(
+                local.EarnedCosmeticIds,
+                cloud.EarnedCosmeticIds);
+            merged.AtlasEntryIds = Union(local.AtlasEntryIds, cloud.AtlasEntryIds);
+            merged.Photographs = local.Photographs
+                .Select(photo => photo.Copy())
+                .ToArray();
+            try
+            {
+                merged.Birthday = MergeBirthday(local.Birthday, cloud.Birthday);
+            }
+            catch (SaveMergeConflictException conflict) when (
+                conflict.Kind == SaveMergeConflictKind.Birthday)
+            {
+                merged.Birthday = preferred.Birthday.Copy();
+            }
+
+            merged.Metadata = new SaveMetadata
+            {
+                SaveId = local.Metadata.SaveId,
+                Revision = Increment(Math.Max(
+                    local.Metadata.Revision,
+                    cloud.Metadata.Revision)),
+                CreatedUtcTicks = Math.Min(
+                    local.Metadata.CreatedUtcTicks,
+                    cloud.Metadata.CreatedUtcTicks),
+                UpdatedUtcTicks = Increment(Math.Max(
+                    local.Metadata.UpdatedUtcTicks,
+                    cloud.Metadata.UpdatedUtcTicks)),
+            };
+            merged.ThrowIfInvalid(nameof(merged));
+            return merged;
+        }
+
         private static StoryProgress MergeStory(
             StoryProgress local,
             StoryProgress cloud)

@@ -127,6 +127,17 @@ signing.properties
 google-services.json
 service-account*.json
 credentials*.json
+**/node_modules/
+**/.firebase/
+firebase-debug.log
+/Assets/GeneratedLocalRepo/
+/Assets/GeneratedLocalRepo.meta
+/Assets/Plugins/Android/gradleTemplate.properties
+/Assets/Plugins/Android/gradleTemplate.properties.meta
+/Assets/Plugins/Android/mainTemplate.gradle
+/Assets/Plugins/Android/mainTemplate.gradle.meta
+/Assets/Plugins/Android/settingsTemplate.gradle
+/Assets/Plugins/Android/settingsTemplate.gradle.meta
 /.lim/
 /.limrun/
 /.argent/

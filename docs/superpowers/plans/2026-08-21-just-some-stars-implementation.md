@@ -1870,32 +1870,73 @@ git commit -m "art: reach approved Mirra mobile quality bar"
 ### Task 21: Implement optional Google accounts and cloud save
 
 **Files:**
+- Modify: `.gitattributes`
+- Modify: `.gitignore`
+- Modify: `Packages/manifest.json`
+- Modify: `Packages/packages-lock.json`
+- Modify: `Assets/Plugins/Android/AndroidManifest.xml`
+- Modify: `Assets/_JustSomeStars/Runtime/Core/ApplicationBootstrapInstaller.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Saving/SaveMerge.cs`
 - Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendController.cs`
-- Modify: `Assets/_JustSomeStars/Scenes/Core/Frontend.unity`
+- Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendDependencies.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendSettingsPanel.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendView.cs`
+- Modify: `Assets/_JustSomeStars/Prefabs/UI/FrontendVisualRoot.prefab`
 - Modify: `Assets/_JustSomeStars/Tests/EditMode/FrontendSceneAssetTests.cs`
 - Modify: `Assets/_JustSomeStars/Tests/PlayMode/FrontendControllerTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/FrontendDependencyInjectionTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/ApplicationBootstrapInstallerTests.cs`
 - Modify: `Assets/_JustSomeStars/Tests/PlayMode/ApplicationLaunchIntegrationTests.cs`
+- Create: `Packages/FirebasePackages/*.tgz`
+- Create: `Packages/FirebasePackages/UPSTREAM_PROVENANCE.md`
+- Create: `ProjectSettings/AndroidResolverDependencies.xml`
+- Create: `ProjectSettings/GvhProjectSettings.xml`
+- Create: `Assets/Plugins/Android/JustSomeStarsPrivacy.androidlib/AndroidManifest.xml`
+- Create: `Assets/Plugins/Android/JustSomeStarsPrivacy.androidlib/res/xml/jss_data_extraction_rules.xml`
+- Create: `Assets/Plugins/Android/JustSomeStarsPrivacy.androidlib/res/xml/jss_full_backup_content.xml`
+- Create: `Assets/_JustSomeStars/Editor/Build/FirebasePrivacyBuildProcessor.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Accounts/IAccountService.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Accounts/GuestAccountService.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Accounts/FirebaseAccountService.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Saving/ICloudSaveService.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Saving/FirestoreCloudSaveService.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Saving/CloudCheckpointSaveService.cs`
 - Create: `firebase/firestore.rules`
 - Create: `firebase/firestore.indexes.json`
+- Create: `firebase/firebase.json`
+- Create: `firebase/package.json`
+- Create: `firebase/pnpm-lock.yaml`
+- Create: `firebase/pnpm-workspace.yaml`
+- Create: `firebase/test/firestore.rules.test.mjs`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/CloudSaveMergeTests.cs`
+- Create: `Assets/_JustSomeStars/Tests/EditMode/FirebasePrivacyBuildProcessorTests.cs`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/AccountLinkTests.cs`
+- Create: `docs/qa/task21-optional-cloud-review.md`
 
 **Interfaces:**
-- Produces: guest identity, `LinkGoogleAsync`, `SignOutAsync`, `DeleteAccountAsync` and authenticated Firebase UID.
-- Produces: upload/download/merge of versioned `GameSave`.
+- Produces locally executable guest identity and account-orchestration contracts
+  for `LinkGoogleAsync`, `SyncAsync`, conflict resolution, export,
+  `UnlinkGoogleAsync`, `SignOutAsync` and `DeleteAccountAsync`. The checked-in
+  unavailable gateway cannot produce a Firebase UID; JSS-021's concrete
+  authentication gateway owns that external result.
+- Produces local-first checkpoint, deterministic cloud projection/merge and
+  upload/download/CAS contracts for versioned `GameSave`, including explicit
+  revision-zero presence and conditional-write tokens. Credentialed remote I/O
+  remains JSS-021.
 
-- [ ] **Step 1: Add Firebase Auth and Firestore Unity packages through their official distribution**
+- [x] **Step 1: Add Firebase Auth and Firestore Unity packages through their official distribution**
 
-Register both Android package IDs in one Firebase project. Store `google-services.json` according to the repository's secret/config policy; never commit admin credentials.
+The exact official local packages are hash-pinned and Android dependency
+resolution/build provenance is tested. The checked-in provenance receipt pins
+each official Google download URL, exact byte count and SHA-256, and all four
+archives were independently re-downloaded and byte-compared. Registering both
+Android package IDs, storing ignored `google-services.json`, and any admin or
+client credentials are deliberately not performed by this checked-in step;
+they remain the explicit JSS-021 external activation gate.
 
-- [ ] **Step 2: Write tests for guest preservation, Google link and union merge**
+- [x] **Step 2: Write tests for guest preservation, Google link and union merge**
 
-- [ ] **Step 3: Implement local guest flow and optional Google linking**
+- [x] **Step 3: Implement local guest flow and optional Google linking orchestration**
 
 The first run never blocks on Firebase. Linking migrates the active local save under the authenticated UID.
 Because this is the first task that introduces a real online service, replace
@@ -1903,19 +1944,87 @@ Task 5's `NO ONLINE SERVICES` footer with state-derived truthful copy. The
 offline guest state and the available/linked/unavailable cloud states must each
 describe only the service state actually in effect; controller, scene and real
 launch tests must reject the stale Task 5 literal after Firebase lands.
+The checked-in no-config composition intentionally injects unavailable
+gateways, so offline play remains truthful and nonblocking. A maintained Google
+ID-token provider plus concrete Firebase SDK wiring is owned by JSS-021; adding
+`google-services.json` alone must not be described as activation.
+The composition wraps the local save service with a checkpoint authority that
+always commits locally first and only then attempts a noninteractive sync for
+an authenticated linked/pending session. Persisted Firebase UID state is
+reconciled during initialization instead of silently appearing signed out.
 
-- [ ] **Step 4: Implement Firestore documents and UID-scoped rules**
+- [x] **Step 4: Implement Firestore documents and UID-scoped rules**
 
 Rules allow a signed-in user to access only `/users/{uid}` where `request.auth.uid == uid`.
+The local service serializes the exact rule-compatible cloud projection, omits
+photos, and passes a typed write policy requiring server `updatedAt`, create-
+only server `createdAt`, and preserved `createdAt` on updates. JSS-021's
+concrete gateway must implement and integration-test that transformation.
+The local Emulator Suite proves the reviewed rules. Deployment to a real
+Firebase project remains JSS-021.
 
-- [ ] **Step 5: Implement export, unlink and complete cloud deletion**
+- [x] **Step 5: Implement export, unlink and complete cloud deletion**
 
-- [ ] **Step 6: Test offline edits, second-device merge and sign-out on physical Android**
+Unlink calls the authentication gateway and preserves the local save. Delete
+is available for every authenticated linked/pending/conflict state, requires a
+fresh two-step confirmation, and is disarmed whenever Settings closes. Every
+recoverable or cancelled account operation restores an honest idle state.
 
-- [ ] **Step 7: Commit code/rules and exclude local secrets**
+- [x] **Step 6: Verify every locally executable path and record the credentialed device hold**
+
+Focused Unity tests cover offline edits, revision-zero CAS, real competing-write
+rejection, both conflict choices, checkpoint-driven sync, sign-out, export,
+unlink and deletion. Android backup is disabled with both modern and legacy
+full-backup exclusions. A privacy-hardened no-config APK passed a force-stopped
+cold start, same-PID resume and clean exit on Android; the device-computed
+installed APK hash and size exactly matched the local artifact. Credentialed
+second-device merge is not fabricated; it remains JSS-021.
+
+- [x] **Step 7: Commit code/rules and exclude local secrets**
 
 ```bash
-git add Assets/_JustSomeStars/Runtime/Accounts Assets/_JustSomeStars/Runtime/Saving firebase Assets/_JustSomeStars/Tests .gitignore
+git add -A -- \
+  .gitattributes .gitignore \
+  Assets/Plugins/Android/AndroidManifest.xml \
+  Assets/Plugins/Android/JustSomeStarsPrivacy.androidlib.meta \
+  Assets/Plugins/Android/JustSomeStarsPrivacy.androidlib \
+  Assets/_JustSomeStars/Editor/Build/FirebasePrivacyBuildProcessor.cs \
+  Assets/_JustSomeStars/Editor/Build/FirebasePrivacyBuildProcessor.cs.meta \
+  Assets/_JustSomeStars/Prefabs/UI/FrontendVisualRoot.prefab \
+  Assets/_JustSomeStars/Runtime/Accounts.meta \
+  Assets/_JustSomeStars/Runtime/Accounts \
+  Assets/_JustSomeStars/Runtime/Core/ApplicationBootstrapInstaller.cs \
+  Assets/_JustSomeStars/Runtime/Saving/ICloudSaveService.cs \
+  Assets/_JustSomeStars/Runtime/Saving/ICloudSaveService.cs.meta \
+  Assets/_JustSomeStars/Runtime/Saving/FirestoreCloudSaveService.cs \
+  Assets/_JustSomeStars/Runtime/Saving/FirestoreCloudSaveService.cs.meta \
+  Assets/_JustSomeStars/Runtime/Saving/CloudCheckpointSaveService.cs \
+  Assets/_JustSomeStars/Runtime/Saving/CloudCheckpointSaveService.cs.meta \
+  Assets/_JustSomeStars/Runtime/Saving/SaveMerge.cs \
+  Assets/_JustSomeStars/Runtime/UI/FrontendController.cs \
+  Assets/_JustSomeStars/Runtime/UI/FrontendDependencies.cs \
+  Assets/_JustSomeStars/Runtime/UI/FrontendSettingsPanel.cs \
+  Assets/_JustSomeStars/Runtime/UI/FrontendView.cs \
+  Assets/_JustSomeStars/Tests/EditMode/CloudSaveMergeTests.cs \
+  Assets/_JustSomeStars/Tests/EditMode/CloudSaveMergeTests.cs.meta \
+  Assets/_JustSomeStars/Tests/EditMode/FirebasePrivacyBuildProcessorTests.cs \
+  Assets/_JustSomeStars/Tests/EditMode/FirebasePrivacyBuildProcessorTests.cs.meta \
+  Assets/_JustSomeStars/Tests/EditMode/FrontendSceneAssetTests.cs \
+  Assets/_JustSomeStars/Tests/PlayMode/AccountLinkTests.cs \
+  Assets/_JustSomeStars/Tests/PlayMode/AccountLinkTests.cs.meta \
+  Assets/_JustSomeStars/Tests/PlayMode/ApplicationBootstrapInstallerTests.cs \
+  Assets/_JustSomeStars/Tests/PlayMode/ApplicationLaunchIntegrationTests.cs \
+  Assets/_JustSomeStars/Tests/PlayMode/FrontendControllerTests.cs \
+  Assets/_JustSomeStars/Tests/PlayMode/FrontendDependencyInjectionTests.cs \
+  Packages/FirebasePackages Packages/manifest.json Packages/packages-lock.json \
+  ProjectSettings/AndroidResolverDependencies.xml \
+  ProjectSettings/GvhProjectSettings.xml \
+  firebase docs/issue-register.md \
+  docs/progress/production-execution-ledger.md \
+  docs/qa/task21-optional-cloud-review.md \
+  docs/superpowers/plans/2026-08-21-just-some-stars-implementation.md
+git diff --cached --name-status
+git lfs status
 git commit -m "feat: add optional Google cloud saves"
 ```
 

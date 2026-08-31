@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
   <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove" />
+  <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" tools:node="remove" />
+  <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" tools:node="remove" />
   <uses-feature android:glEsVersion="0x00030000" />
   <uses-feature android:name="android.hardware.vulkan.version" android:required="false" />
   <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
   <uses-feature android:name="android.hardware.touchscreen.multitouch" android:required="false" />
   <uses-feature android:name="android.hardware.touchscreen.multitouch.distinct" android:required="false" />
-  <application android:appCategory="game" android:enableOnBackInvokedCallback="true" android:extractNativeLibs="true">
+  <application android:allowBackup="false" android:appCategory="game" android:dataExtractionRules="@xml/jss_data_extraction_rules" android:enableOnBackInvokedCallback="true" android:extractNativeLibs="true" android:fullBackupContent="@xml/jss_full_backup_content">
     <meta-data android:name="unity.splash-mode" android:value="0" />
     <meta-data android:name="unity.splash-enable" android:value="True" />
     <meta-data android:name="unity.launch-fullscreen" android:value="True" />
@@ -32,5 +35,11 @@
       <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" tools:node="remove" />
       <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup" tools:node="merge" />
     </provider>
+    <service android:name="com.google.firebase.components.ComponentDiscoveryService" tools:node="merge">
+      <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" tools:node="remove" />
+    </service>
+    <receiver android:name="com.google.android.gms.measurement.AppMeasurementReceiver" tools:node="remove" />
+    <service android:name="com.google.android.gms.measurement.AppMeasurementService" tools:node="remove" />
+    <service android:name="com.google.android.gms.measurement.AppMeasurementJobService" tools:node="remove" />
   </application>
 </manifest>

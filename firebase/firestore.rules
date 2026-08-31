@@ -1,0 +1,128 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isOwner(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+
+    function boundedString(value, maximum) {
+      return value is string && value.size() <= maximum;
+    }
+
+    function canonicalId(value) {
+      return value is string &&
+        value.matches('^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$');
+    }
+
+    function canonicalIdList(value, maximumItems) {
+      return value is list && value.size() <= maximumItems &&
+        value.toSet().size() == value.size() &&
+        (value.size() == 0 || value.join('/').matches(
+          '^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}' +
+          '(/[A-Za-z0-9][A-Za-z0-9._:-]{0,127})*$'));
+    }
+
+    function validStory(story) {
+      return story is map &&
+        story.keys().hasOnly(['checkpointId', 'checkpointOrdinal']) &&
+        canonicalId(story.checkpointId) &&
+        story.checkpointOrdinal is int && story.checkpointOrdinal >= 0;
+    }
+
+    function validMission(mission) {
+      return mission is map && mission.keys().hasOnly([
+          'missionId', 'checkpointNodeId', 'checkpointOrdinal',
+          'completedNodeIds', 'activeNodeIds'
+        ]) && mission.checkpointOrdinal is int &&
+        mission.checkpointOrdinal >= 0 &&
+        canonicalIdList(mission.completedNodeIds, 4096) &&
+        canonicalIdList(mission.activeNodeIds, 4096) &&
+        !mission.completedNodeIds.hasAny(mission.activeNodeIds) &&
+        ((mission.missionId == '' && mission.checkpointNodeId == '' &&
+            mission.checkpointOrdinal == 0 &&
+            mission.completedNodeIds.size() == 0 &&
+            mission.activeNodeIds.size() == 0) ||
+          (canonicalId(mission.missionId) &&
+            canonicalId(mission.checkpointNodeId)));
+    }
+
+    function validCaptain(captain) {
+      return captain is map && captain.keys().hasOnly([
+          'bodyFamilyId', 'appearancePresetId', 'suitCosmeticId',
+          'lastCustomizedUtcTicks'
+        ]) &&
+        canonicalId(captain.bodyFamilyId) &&
+        canonicalId(captain.appearancePresetId) &&
+        canonicalId(captain.suitCosmeticId) &&
+        captain.lastCustomizedUtcTicks is int &&
+        captain.lastCustomizedUtcTicks >= 0;
+    }
+
+    function validBirthday(birthday) {
+      return birthday is map && birthday.keys().hasOnly([
+          'hasValue', 'day', 'month', 'year', 'lastBirthdayGiftYear'
+        ]) && birthday.hasValue is bool &&
+        birthday.day is int && birthday.day >= 0 && birthday.day <= 31 &&
+        birthday.month is int && birthday.month >= 0 && birthday.month <= 12 &&
+        birthday.year is int && birthday.year >= 0 && birthday.year <= 9999 &&
+        birthday.lastBirthdayGiftYear is int &&
+        birthday.lastBirthdayGiftYear >= 0 &&
+        ((birthday.hasValue == false && birthday.day == 0 &&
+            birthday.month == 0 && birthday.year == 0 &&
+            birthday.lastBirthdayGiftYear == 0) ||
+          (birthday.hasValue == true && birthday.day >= 1 &&
+            birthday.month >= 1 && birthday.year >= 1));
+    }
+
+    function validMetadata(metadata) {
+      return metadata is map && metadata.keys().hasOnly([
+          'saveId', 'revision', 'createdUtcTicks', 'updatedUtcTicks'
+        ]) && canonicalId(metadata.saveId) &&
+        metadata.revision is int && metadata.revision >= 0 &&
+        metadata.createdUtcTicks is int && metadata.createdUtcTicks >= 0 &&
+        metadata.updatedUtcTicks is int &&
+        metadata.updatedUtcTicks >= metadata.createdUtcTicks;
+    }
+
+    function validSave(save) {
+      return save is map && save.keys().hasOnly([
+          'schemaVersion', 'story', 'mission', 'captain', 'discoveryIds',
+          'earnedCosmeticIds', 'atlasEntryIds', 'birthday', 'metadata'
+        ]) && save.schemaVersion == 2 &&
+        validStory(save.story) && validMission(save.mission) &&
+        validCaptain(save.captain) && validBirthday(save.birthday) &&
+        validMetadata(save.metadata) &&
+        canonicalIdList(save.discoveryIds, 2048) &&
+        canonicalIdList(save.earnedCosmeticIds, 1024) &&
+        canonicalIdList(save.atlasEntryIds, 4096);
+    }
+
+    function validDocument(data) {
+      return data.keys().hasOnly([
+          'documentSchemaVersion', 'revision', 'clientWriteId',
+          'createdAt', 'updatedAt', 'save'
+        ]) && data.documentSchemaVersion == 1 &&
+        data.revision is int && data.revision >= 0 &&
+        boundedString(data.clientWriteId, 64) &&
+        data.createdAt is timestamp && data.updatedAt is timestamp &&
+        validSave(data.save) && data.save.metadata.revision == data.revision;
+    }
+
+    match /users/{uid} {
+      allow get: if isOwner(uid);
+      allow list: if false;
+      allow create: if isOwner(uid) && validDocument(request.resource.data) &&
+        request.resource.data.createdAt == request.time &&
+        request.resource.data.updatedAt == request.time;
+      allow update: if isOwner(uid) && validDocument(request.resource.data) &&
+        request.resource.data.createdAt == resource.data.createdAt &&
+        request.resource.data.updatedAt == request.time &&
+        request.resource.data.revision > resource.data.revision;
+      allow delete: if isOwner(uid);
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

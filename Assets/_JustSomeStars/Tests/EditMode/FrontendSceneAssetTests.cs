@@ -64,6 +64,10 @@ namespace JustSomeStars.Tests.EditMode
             "Assets/_JustSomeStars/Art/UI/Generated/FrontendUIActions.asset";
         private const string LegacyFrontendInputFolderPath =
             "Assets/_JustSomeStars/Art/UI/Generated";
+        private const string PackageManifestPath = "Packages/manifest.json";
+        private const string FirebasePackageRoot = "Packages/FirebasePackages/";
+        private const string GvhSettingsPath =
+            "ProjectSettings/GvhProjectSettings.xml";
         private const string RequiredLaunchCopy =
             "Just Some Stars Development Flight Version 1.0 Continue " +
             "Gameplay is not in this flight yet. Settings Credits Privacy Close";
@@ -149,6 +153,60 @@ namespace JustSomeStars.Tests.EditMode
                 "Task 5's custom main manifest is the Unity GameActivity " +
                 "template, not the legacy Activity entry point.");
             AssertCustomAndroidMainManifest();
+            AssertPinnedFirebasePackages();
+        }
+
+        private static void AssertPinnedFirebasePackages()
+        {
+            var packages = File.ReadAllText(
+                AssetFileSystemPath(PackageManifestPath));
+            var expectedPackages = new Dictionary<string, string>
+            {
+                {
+                    "com.google.external-dependency-manager-1.2.186.tgz",
+                    "46684b475c2a39844c44c07945b5aee02895c41a9bff97d5cd4b5d9e85e021d8"
+                },
+                {
+                    "com.google.firebase.app-13.16.0.tgz",
+                    "691f7ef26d080de43a011ce7846567fa72ceede5bdf4917edc0dc7a715c38dd4"
+                },
+                {
+                    "com.google.firebase.auth-13.16.0.tgz",
+                    "5718553c264ab8a971f7ee12628b19f4e767c7156fe7a80d0107c2e0859229e4"
+                },
+                {
+                    "com.google.firebase.firestore-13.16.0.tgz",
+                    "d5613461ac91b1cd01a18de31e5647cca1c647e57e8de8eefd2a05d6fbf49db1"
+                },
+            };
+
+            foreach (var pair in expectedPackages)
+            {
+                var repositoryPath = FirebasePackageRoot + pair.Key;
+                Assert.That(
+                    packages,
+                    Does.Contain("file:FirebasePackages/" + pair.Key),
+                    repositoryPath);
+                AssertFileSha256(repositoryPath, pair.Value);
+            }
+
+            var dependencySettings = new XmlDocument();
+            dependencySettings.Load(AssetFileSystemPath(GvhSettingsPath));
+            Assert.That(
+                dependencySettings.SelectSingleNode(
+                    "//projectSetting[@name='GooglePlayServices." +
+                    "AutoResolverEnabled']/@value")?.Value,
+                Is.EqualTo("True"));
+            Assert.That(
+                dependencySettings.SelectSingleNode(
+                    "//projectSetting[@name='GooglePlayServices." +
+                    "AutoResolveOnBuild']/@value")?.Value,
+                Is.EqualTo("True"));
+            Assert.That(
+                dependencySettings.SelectSingleNode(
+                    "//projectSetting[@name='GooglePlayServices." +
+                    "PatchAndroidManifest']/@value")?.Value,
+                Is.EqualTo("False"));
         }
 
         [Test]
@@ -589,6 +647,25 @@ namespace JustSomeStars.Tests.EditMode
                 AssertSettingsControlArray(
                     serializedPanel,
                     "m_ValueLabels");
+                foreach (var propertyName in new[]
+                         {
+                             "m_CloudStatusLabel",
+                             "m_CloudLinkButton",
+                             "m_CloudSyncButton",
+                             "m_CloudExportButton",
+                             "m_CloudSignOutButton",
+                             "m_CloudUnlinkButton",
+                             "m_CloudDeleteButton",
+                             "m_CloudUseDeviceButton",
+                             "m_CloudUseBackupButton",
+                             "m_CloudLinkLabel",
+                             "m_CloudDeleteLabel",
+                         })
+                {
+                    var property = serializedPanel.FindProperty(propertyName);
+                    Assert.That(property, Is.Not.Null, propertyName);
+                    Assert.That(property.objectReferenceValue, Is.Not.Null, propertyName);
+                }
 
                 var settingsControls = FindDescendant(
                     root.transform,
@@ -621,6 +698,29 @@ namespace JustSomeStars.Tests.EditMode
                 Assert.That(
                     (bool)Property(settingsScroll, "vertical"),
                     Is.True);
+                Assert.That(
+                    settingsContent.GetComponent<RectTransform>().sizeDelta.y,
+                    Is.GreaterThanOrEqualTo(2600f),
+                    "The Cloud backup controls must remain reachable in the " +
+                    "same vertical settings viewport.");
+                foreach (var objectName in new[]
+                         {
+                             "CloudBackupStatus",
+                             "CloudBackupLinkButton",
+                             "CloudBackupSyncButton",
+                             "CloudBackupExportButton",
+                             "CloudBackupSignOutButton",
+                             "CloudBackupUnlinkButton",
+                             "CloudBackupDeleteButton",
+                             "CloudBackupUseDeviceButton",
+                             "CloudBackupUseBackupButton",
+                         })
+                {
+                    Assert.That(
+                        FindDescendant(root.transform, objectName),
+                        Is.Not.Null,
+                        objectName);
+                }
             });
 
             var prefabRoot = PrefabUtility.LoadPrefabContents(
@@ -751,7 +851,7 @@ namespace JustSomeStars.Tests.EditMode
                         settingsControls.transform))
                     .ToArray();
                 Assert.That(shellButtons, Has.Length.EqualTo(5));
-                Assert.That(settingsButtons, Has.Length.EqualTo(40));
+                Assert.That(settingsButtons, Has.Length.EqualTo(48));
 
                 foreach (var profile in RequiredMobileProfiles)
                 {
@@ -1410,19 +1510,94 @@ namespace JustSomeStars.Tests.EditMode
                     "http://schemas.android.com/tools"),
                 Is.EqualTo("merge"));
 
+            AssertManifestRemoval(
+                manifest,
+                "uses-permission[@android:name='com.google.android.gms." +
+                "permission.AD_ID']",
+                namespaces,
+                "Google advertising identifier permission");
+            AssertManifestRemoval(
+                manifest,
+                "uses-permission[@android:name='android.permission." +
+                "ACCESS_ADSERVICES_ATTRIBUTION']",
+                namespaces,
+                "AdServices attribution permission");
+            AssertManifestRemoval(
+                manifest,
+                "uses-permission[@android:name='android.permission." +
+                "ACCESS_ADSERVICES_AD_ID']",
+                namespaces,
+                "AdServices advertising identifier permission");
+
+            var discoveryService = RequireXmlElement(
+                application,
+                "service[@android:name='com.google.firebase.components." +
+                "ComponentDiscoveryService']",
+                namespaces,
+                "Firebase component discovery service");
+            Assert.That(
+                discoveryService.GetAttribute(
+                    "node",
+                    "http://schemas.android.com/tools"),
+                Is.EqualTo("merge"));
+            AssertManifestRemoval(
+                discoveryService,
+                "meta-data[@android:name='com.google.firebase.components:" +
+                "com.google.firebase.analytics.connector.internal." +
+                "AnalyticsConnectorRegistrar']",
+                namespaces,
+                "Firebase Analytics connector registrar");
+            AssertManifestRemoval(
+                application,
+                "receiver[@android:name='com.google.android.gms.measurement." +
+                "AppMeasurementReceiver']",
+                namespaces,
+                "AppMeasurement receiver");
+            AssertManifestRemoval(
+                application,
+                "service[@android:name='com.google.android.gms.measurement." +
+                "AppMeasurementService']",
+                namespaces,
+                "AppMeasurement service");
+            AssertManifestRemoval(
+                application,
+                "service[@android:name='com.google.android.gms.measurement." +
+                "AppMeasurementJobService']",
+                namespaces,
+                "AppMeasurement job service");
+
             var removalNodes = document.SelectNodes(
                 "//*[@tools:node='remove']",
                 namespaces);
             Assert.That(
                 removalNodes?.Count,
-                Is.EqualTo(1),
-                "The custom main manifest may remove only " +
-                "EmojiCompatInitializer.");
+                Is.EqualTo(8),
+                "The custom main manifest must contain only the narrow " +
+                "EmojiCompat and Firebase Analytics/privacy removals.");
             Assert.That(
                 provider.SelectNodes("meta-data", namespaces)?.Count,
                 Is.EqualTo(2),
                 "InitializationProvider must contain only the narrow Emoji " +
                 "removal and preserved process-lifecycle metadata.");
+        }
+
+        private static void AssertManifestRemoval(
+            XmlNode owner,
+            string xpath,
+            XmlNamespaceManager namespaces,
+            string label)
+        {
+            var element = RequireXmlElement(
+                owner,
+                xpath,
+                namespaces,
+                label + " removal marker");
+            Assert.That(
+                element.GetAttribute(
+                    "node",
+                    "http://schemas.android.com/tools"),
+                Is.EqualTo("remove"),
+                label);
         }
 
         private static XmlElement RequireXmlElement(

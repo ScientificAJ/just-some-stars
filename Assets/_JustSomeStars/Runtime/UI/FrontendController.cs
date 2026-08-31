@@ -9,7 +9,7 @@ namespace JustSomeStars.Runtime.UI
             "Gameplay is not in this flight yet.";
         private const string SettingsTitle = "Settings";
         private const string SettingsBody =
-            "Saved locally on this device. Nothing leaves this screen.";
+            "Device settings are saved locally and are not included in cloud backup.";
         private const string CreditsTitle = "Credits & Licenses";
         private const string CreditsBodyPrefix =
             "Just Some Stars is being built by ScientificAJ. This Development " +
@@ -23,8 +23,11 @@ namespace JustSomeStars.Runtime.UI
             "Apache License 2.0\n\n";
         private const string PrivacyTitle = "Privacy";
         private const string PrivacyBody =
-            "This Development Flight does not ask for an account, collect " +
-            "gameplay progress, open web links, or offer purchases.";
+            "An account is optional. Progress stays on this device unless a " +
+            "grown-up chooses private Google cloud backup. Photos and device " +
+            "settings always stay local. Cloud data can be exported, signed " +
+            "out, or deleted from Settings. Google sign-in data is not used " +
+            "for advertising. This flight has no purchases.";
         private const string MissingBindingsError =
             "[JSS Frontend] FrontendController requires view, lifecycle, and " +
             "settings panel sources.";

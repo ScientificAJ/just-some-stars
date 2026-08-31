@@ -443,19 +443,46 @@ the installed hash matched, the 25-second Performance sample had zero intervals
 over 40 ms, the crash-signature scan was clean, cleanup was complete, and the
 same bounded extreme critic returned final `PROCEED`.
 
-## Immediate next task: Task 21
+## Task 21 completion checkpoint
 
-Implement optional Google account linking and cloud save while preserving a
-fully playable offline guest path. The first online-service integration must
-also replace the stale `NO ONLINE SERVICES` footer with state-derived truthful
-copy. Do not reopen Task 20 unless Task 21 exposes a direct quality integration
-regression.
+Task 21 now has a durable guest identity, local-first account orchestration,
+checkpoint-triggered optional sync, conflict-aware save merging, explicit
+revision-zero conditional-write semantics, bounded UID-scoped cloud projection,
+export, real unlink and deletion semantics, strict Firestore rules and truthful
+Frontend account states. Official Firebase App/Auth/Firestore packages are
+pinned locally with exact official-source download receipts, the Android build
+excludes Analytics and advertising identifiers, OS backup is disabled with
+modern and legacy exclusions, and the stale `NO ONLINE SERVICES` claim is gone.
+
+Fresh focused gates pass merge/CAS `7/7`, package/privacy `5/5`, Frontend
+bindings `1/1`, Frontend targets `1/1`, account `13/13`, controller `11/11`,
+Frontend dependency injection `5/5`, installer `10/10`, real launch `1/1` and
+Firestore Emulator rules `4/4`. Authentic final-critic REDs reproduced an
+unsafe story/mission branch merge and incomplete error recovery before the
+corrected account suite returned `13/13` and the critic returned `PROCEED`.
+The final internal APK is `284132467` bytes, SHA-256
+`3fe9fdebfb4d4b14f9fe243d57fde495fdfbc8a62776b5635cf3f14732515ef9`.
+One exact-APK no-configuration Limrun/Argent session proved an absent-PID cold
+start, same-PID `17054` resume and clean root-Back process exit; the installed
+base APK matched the local bytes exactly and the Task 21 upload, inspector,
+tunnel, paid instance and local Argent server were removed.
+
+Credentialed Firebase activation is not claimed. The checked-in build
+deliberately uses unavailable gateways until JSS-021 supplies the real
+Firebase/OAuth project, maintained Google identity-token bridge, concrete SDK
+wiring, deployed rules/indexes and two-device proof.
+
+## Immediate next task: Task 22
+
+Implement private birthdays and annual gifts on top of the guest-first account
+contract. Guest-local behavior and server-side function logic can proceed;
+credentialed deployment remains part of JSS-021 rather than being fabricated.
 
 ## User-help queue
 
-No user decision is currently blocking Task 21's local architecture and guest
-path. Firebase project registration, Android configuration and any credentialed
-remote validation remain explicit external seams and must not be fabricated.
+No user decision blocks Task 22's local implementation. Firebase project
+activation and any credentialed remote validation remain the explicit JSS-021
+external seam and must not be fabricated.
 
 ## Chronological checkpoint log
 
@@ -610,3 +637,13 @@ remote validation remain explicit external seams and must not be fabricated.
   hosted Performance evidence reports the camera path active, zero frame
   intervals above 40 ms and no crash signatures; the paid instance and tunnel
   were removed; the same critic returned `PROCEED`; Task 21 is next.
+- 2026-08-31: Task 21 completed its local guest/account/cloud foundation.
+  Focused gates pass merge `7/7`, package/privacy `5/5`, Frontend `1/1` +
+  `1/1`, account `13/13`, controller `11/11`, dependencies `5/5`, installer
+  `10/10`, launch `1/1` and rules `4/4`; the privacy-hardened APK SHA-256 is
+  `3fe9fdebfb4d4b14f9fe243d57fde495fdfbc8a62776b5635cf3f14732515ef9`;
+  device-computed installed bytes matched, no-config Android cold
+  startup/resume/exit passed, cleanup is complete, and the bounded critic
+  returned final `PROCEED` after authentic merge/error-recovery REDs.
+  JSS-004 is resolved. Credentialed activation remains JSS-021; Task 22 is
+  next.

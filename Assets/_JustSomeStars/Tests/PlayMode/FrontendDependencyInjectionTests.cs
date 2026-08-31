@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using JustSomeStars.Runtime.Accounts;
 using JustSomeStars.Runtime.Accessibility;
 using JustSomeStars.Runtime.Core;
 using JustSomeStars.Runtime.Input;
@@ -124,7 +125,8 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(
                 view.PanelBody,
                 Is.EqualTo(
-                    "Saved locally on this device. Nothing leaves this screen."));
+                    "Device settings are saved locally and are not included " +
+                    "in cloud backup."));
             Assert.That(settingsPanel.ShowCount, Is.EqualTo(1));
 
             view.RaiseCredits();
@@ -184,6 +186,17 @@ namespace JustSomeStars.Tests.PlayMode
             SetField(panel, "m_DecreaseButtons", decrease);
             SetField(panel, "m_IncreaseButtons", increase);
             SetField(panel, "m_ValueLabels", values);
+            SetField(panel, "m_CloudStatusLabel", CreateText("CloudStatus"));
+            SetField(panel, "m_CloudLinkButton", CreateButton("CloudLink"));
+            SetField(panel, "m_CloudSyncButton", CreateButton("CloudSync"));
+            SetField(panel, "m_CloudExportButton", CreateButton("CloudExport"));
+            SetField(panel, "m_CloudSignOutButton", CreateButton("CloudSignOut"));
+            SetField(panel, "m_CloudUnlinkButton", CreateButton("CloudUnlink"));
+            SetField(panel, "m_CloudDeleteButton", CreateButton("CloudDelete"));
+            SetField(panel, "m_CloudUseDeviceButton", CreateButton("UseDevice"));
+            SetField(panel, "m_CloudUseBackupButton", CreateButton("UseBackup"));
+            SetField(panel, "m_CloudLinkLabel", CreateText("CloudLinkLabel"));
+            SetField(panel, "m_CloudDeleteLabel", CreateText("CloudDeleteLabel"));
 
             Assert.That(panel.IsReady, Is.True);
             panel.Configure(dependencies);
@@ -211,6 +224,92 @@ namespace JustSomeStars.Tests.PlayMode
                 settings.Current.PilotingAssist,
                 Is.EqualTo(AssistLevel.Balanced),
                 "Re-enabling the panel must not duplicate button callbacks.");
+
+            panel.Release(dependencies);
+            await input.ShutdownAsync();
+            await settings.ShutdownAsync();
+        }
+
+        [Test]
+        public async Task SettingsPanel_HideDisarmsDestructiveCloudDeleteConfirmation()
+        {
+            var settings = await CreateSettings();
+            var actions = Own(ScriptableObject.CreateInstance<InputActionAsset>());
+            var input = new InputRouter(actions, settings);
+            var account = new LinkedAccountService();
+            var dependencies = new FrontendDependencies(settings, input, account);
+
+            m_Root = new GameObject("Task21DeleteDisarmFixture");
+            m_Root.SetActive(false);
+            var panel = m_Root.AddComponent<FrontendSettingsPanel>();
+            var scrollObject = new GameObject(
+                "SettingsScroll",
+                typeof(RectTransform),
+                typeof(ScrollRect));
+            scrollObject.transform.SetParent(m_Root.transform, false);
+            var scroll = scrollObject.GetComponent<ScrollRect>();
+            var viewport = new GameObject(
+                "Viewport",
+                typeof(RectTransform)).GetComponent<RectTransform>();
+            viewport.SetParent(scrollObject.transform, false);
+            var content = new GameObject(
+                "Content",
+                typeof(RectTransform)).GetComponent<RectTransform>();
+            content.SetParent(viewport, false);
+            scroll.viewport = viewport;
+            scroll.content = content;
+
+            var decrease = new Button[FrontendSettingsPanel.ControlCount];
+            var increase = new Button[FrontendSettingsPanel.ControlCount];
+            var values = new TMP_Text[FrontendSettingsPanel.ControlCount];
+            for (var index = 0; index < FrontendSettingsPanel.ControlCount; index++)
+            {
+                decrease[index] = CreateButton($"Decrease{index}");
+                increase[index] = CreateButton($"Increase{index}");
+                values[index] = CreateText($"Value{index}");
+            }
+
+            var deleteButton = CreateButton("CloudDelete");
+            var unlinkButton = CreateButton("CloudUnlink");
+            var deleteLabel = CreateText("CloudDeleteLabel");
+            SetField(panel, "m_Root", m_Root);
+            SetField(panel, "m_ScrollRect", scroll);
+            SetField(panel, "m_DecreaseButtons", decrease);
+            SetField(panel, "m_IncreaseButtons", increase);
+            SetField(panel, "m_ValueLabels", values);
+            SetField(panel, "m_CloudStatusLabel", CreateText("CloudStatus"));
+            SetField(panel, "m_CloudLinkButton", CreateButton("CloudLink"));
+            SetField(panel, "m_CloudSyncButton", CreateButton("CloudSync"));
+            SetField(panel, "m_CloudExportButton", CreateButton("CloudExport"));
+            SetField(panel, "m_CloudSignOutButton", CreateButton("CloudSignOut"));
+            SetField(panel, "m_CloudUnlinkButton", unlinkButton);
+            SetField(panel, "m_CloudDeleteButton", deleteButton);
+            SetField(panel, "m_CloudUseDeviceButton", CreateButton("UseDevice"));
+            SetField(panel, "m_CloudUseBackupButton", CreateButton("UseBackup"));
+            SetField(panel, "m_CloudLinkLabel", CreateText("CloudLinkLabel"));
+            SetField(panel, "m_CloudDeleteLabel", deleteLabel);
+
+            Assert.That(panel.IsReady, Is.True);
+            panel.Configure(dependencies);
+            panel.Show();
+
+            deleteButton.onClick.Invoke();
+            Assert.That(deleteLabel.text, Is.EqualTo("Confirm delete"));
+            Assert.That(account.DeleteCount, Is.EqualTo(0));
+
+            panel.Hide();
+            panel.Show();
+
+            Assert.That(deleteLabel.text, Is.EqualTo("Delete cloud account"));
+            deleteButton.onClick.Invoke();
+            Assert.That(
+                account.DeleteCount,
+                Is.EqualTo(0),
+                "A reopened Settings panel must require a fresh two-tap confirmation.");
+            Assert.That(deleteLabel.text, Is.EqualTo("Confirm delete"));
+
+            unlinkButton.onClick.Invoke();
+            Assert.That(account.UnlinkCount, Is.EqualTo(1));
 
             panel.Release(dependencies);
             await input.ShutdownAsync();
@@ -547,6 +646,80 @@ namespace JustSomeStars.Tests.PlayMode
 
             public ValueTask ShutdownAsync()
             {
+                return default;
+            }
+        }
+
+        private sealed class LinkedAccountService : IAccountService
+        {
+            public LinkedAccountService()
+            {
+                Current = new AccountState(
+                    AccountConnection.Linked,
+                    AccountCapability.Available,
+                    AccountSyncState.Synced,
+                    AccountOperation.None,
+                    "guest-task21",
+                    "firebase-task21",
+                    "Backup ready");
+            }
+
+            public AccountState Current { get; }
+
+            public int DeleteCount { get; private set; }
+
+            public int UnlinkCount { get; private set; }
+
+            public event Action<AccountState> StateChanged;
+
+            public ValueTask<StartupResult> InitializeAsync(
+                CancellationToken cancellationToken)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                return new ValueTask<StartupResult>(StartupResult.Available());
+            }
+
+            public ValueTask<AccountLinkResult> LinkGoogleAsync(
+                CancellationToken cancellationToken) =>
+                throw new NotSupportedException();
+
+            public ValueTask<AccountLinkResult> ResolveConflictAsync(
+                AccountConflictChoice choice,
+                CancellationToken cancellationToken) =>
+                throw new NotSupportedException();
+
+            public ValueTask<CloudSyncResult> SyncAsync(
+                CancellationToken cancellationToken) =>
+                throw new NotSupportedException();
+
+            public ValueTask<AccountExportResult> ExportDataAsync(
+                CancellationToken cancellationToken) =>
+                throw new NotSupportedException();
+
+            public ValueTask<AccountUnlinkResult> UnlinkGoogleAsync(
+                CancellationToken cancellationToken)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                UnlinkCount++;
+                return new ValueTask<AccountUnlinkResult>(new AccountUnlinkResult(
+                    AccountUnlinkStatus.Unlinked,
+                    "Disconnected"));
+            }
+
+            public ValueTask SignOutAsync(CancellationToken cancellationToken) =>
+                throw new NotSupportedException();
+
+            public ValueTask DeleteAccountAsync(
+                CancellationToken cancellationToken)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                DeleteCount++;
+                return default;
+            }
+
+            public ValueTask ShutdownAsync()
+            {
+                StateChanged = null;
                 return default;
             }
         }
