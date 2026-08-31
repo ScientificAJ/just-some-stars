@@ -1860,7 +1860,7 @@ Physical Realme coverage is deferred to the later broad device/performance campa
 
 Record pass/fail evidence in `mirra-quality-review.md`; mechanics completion alone cannot pass this gate.
 
-- [ ] **Step 7: Commit the approved benchmark**
+- [x] **Step 7: Commit the approved benchmark**
 
 ```bash
 git add -A -- Assets/_JustSomeStars/Art/2D/Materials.meta Assets/_JustSomeStars/Art/2D/Materials Assets/_JustSomeStars/Art/2D/VFX.meta Assets/_JustSomeStars/Art/2D/VFX Assets/_JustSomeStars/Content/QualityProfiles.meta Assets/_JustSomeStars/Content/QualityProfiles Assets/_JustSomeStars/Runtime/Accessibility/GameSettings.cs Assets/_JustSomeStars/Runtime/Rendering2D/MirraQualityProfile.cs Assets/_JustSomeStars/Runtime/Rendering2D/MirraQualityProfile.cs.meta Assets/_JustSomeStars/Runtime/Rendering2D/MirraQualityController2D.cs Assets/_JustSomeStars/Runtime/Rendering2D/MirraQualityController2D.cs.meta Assets/_JustSomeStars/Scenes/Destinations/Mirra.unity Assets/_JustSomeStars/Scenes/Benchmarks/Mirra2DProof.unity Assets/_JustSomeStars/Tests/EditMode/Mirra2DAssetValidationTests.cs Assets/_JustSomeStars/Tests/EditMode/MirraQualityAssetTests.cs Assets/_JustSomeStars/Tests/EditMode/MirraQualityAssetTests.cs.meta Assets/_JustSomeStars/Tests/PlayMode/MirraQualityControllerTests.cs Assets/_JustSomeStars/Tests/PlayMode/MirraQualityControllerTests.cs.meta docs/art/mirra-quality-review.md outputs/quality-reviews/mirra-device-capture.png docs/issue-register.md docs/superpowers/plans/2026-08-21-just-some-stars-implementation.md

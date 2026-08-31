@@ -1,6 +1,6 @@
 # Just Some Stars production execution ledger
 
-Last updated: 2026-08-30
+Last updated: 2026-08-31
 
 This tracked ledger preserves the active production state, decisions, evidence,
 next action and user-help queue across context compaction. It complements the
@@ -46,15 +46,13 @@ implementation plans and issue register; it does not replace either authority.
 - Canonical repository: `/mnt/unity-data/JustSomeStars`.
 - Branch: `codex/task-12-modular-characters`.
 - Pre-Stage-2 HEAD: `f99336333e6946ccd50c1ec43ffdb8b2aa3ac617`.
-- Replacement Task 12 Stages 0 through 5 are complete and accepted. Stages 1
-  through 4 are committed and pushed; Stage 5 passed its package boundary,
-  critic review and explicit user visual approval and is ready for its scoped
-  completion commit.
-- The final internal APK SHA-256 is
-  `6e9597e0f1ae498d0fdf0f6d46d6032279b150f29e4a6906ebb09da4ecbd9d8d`.
-- One bounded Limrun instance was used and timed out after final capture;
-  `lim android list --json` is empty, the Argent lease is closed and its local
-  server is stopped.
+- Replacement Task 12 and Tasks 13 through 20 are complete, critic-approved,
+  committed and checkpointed on the active branch. Task 20 implementation is
+  commit `819837302a6a842f864d59e152509ab27854241b`.
+- The current internal APK SHA-256 is
+  `ebce83c1a4fe13ab4efc5b8edc586d40d69e1e01ebd0d3b3f351fdd71afadb5c`.
+- The bounded Task 20 Limrun instance was restored to Balanced and deleted;
+  `lim android list --json` is empty and its ADB tunnel is stopped.
 - Superseded full-3D Captain work remains deliberately uncommitted and
   preserved pending the user decision tracked as JSS-013.
 
@@ -425,17 +423,39 @@ fixture and does not pretend to be direct touch traversal. The instance,
 tunnel and scoped server were removed, and the bounded extreme critic returned
 `PROCEED` against the four original blockers.
 
-## Immediate next task: Task 20
+## Task 20 completion checkpoint
 
-Raise the mechanics-complete Mirra slice to the approved visual-quality bar
-using the locked Task 12 benchmark. Do not reopen Task 19 unless Task 20 exposes
-a direct mechanics integration regression.
+Mirra now has four device-local quality profiles, bounded lights, particles,
+volume and parallax scaling, and shared alpha-preserving 2D Shader Graph paths
+for fabric, metal, rock, ice, visor, Signal and atmosphere. Five surface
+families bind distinct normal, surface and palette masks; palette response is
+live in the graph instead of asserted from graph text alone.
+
+Authentic correction REDs reproduced the two final critic blockers: the
+Performance camera path was disabled despite a 0.8 requested render scale, and
+the material foundation accepted built-ins and null maps. Fresh corrected
+focused gates pass material assets `3/3`, quality controller `2/2` and affected
+Mirra assets `5/5`. Exact Android evidence proves
+`cameraAllowDynamicResolution=True` for Performance at 0.8 and false for
+Balanced at 1.0. The corrected APK SHA-256 is
+`ebce83c1a4fe13ab4efc5b8edc586d40d69e1e01ebd0d3b3f351fdd71afadb5c`;
+the installed hash matched, the 25-second Performance sample had zero intervals
+over 40 ms, the crash-signature scan was clean, cleanup was complete, and the
+same bounded extreme critic returned final `PROCEED`.
+
+## Immediate next task: Task 21
+
+Implement optional Google account linking and cloud save while preserving a
+fully playable offline guest path. The first online-service integration must
+also replace the stale `NO ONLINE SERVICES` footer with state-derived truthful
+copy. Do not reopen Task 20 unless Task 21 exposes a direct quality integration
+regression.
 
 ## User-help queue
 
-No user decision or external action is currently blocking Task 20. The Task 19
-delivery checkpoint resolved JSS-019: the authorized branch push succeeded and
-the local and remote refs matched exactly.
+No user decision is currently blocking Task 21's local architecture and guest
+path. Firebase project registration, Android configuration and any credentialed
+remote validation remain explicit external seams and must not be fabricated.
 
 ## Chronological checkpoint log
 
@@ -581,3 +601,12 @@ the local and remote refs matched exactly.
   Mirra presentation and same-PID resume; the critic returned `PROCEED` and
   Task 20 is next. Commit `9ae01d9b206074ab86a7203afaee7372ad563250`
   was pushed successfully, resolving JSS-019.
+- 2026-08-31: Task 20 completed the Mirra mobile-quality benchmark and its two
+  bounded critic corrections: a real sub-1.0 scalable-buffer camera path and a
+  fully bound Shader Graph material foundation with live normal, surface and
+  palette maps. Focused gates pass `3/3`, `2/2` and `5/5`; the corrected exact
+  APK and installed player share SHA-256
+  `ebce83c1a4fe13ab4efc5b8edc586d40d69e1e01ebd0d3b3f351fdd71afadb5c`;
+  hosted Performance evidence reports the camera path active, zero frame
+  intervals above 40 ms and no crash signatures; the paid instance and tunnel
+  were removed; the same critic returned `PROCEED`; Task 21 is next.
