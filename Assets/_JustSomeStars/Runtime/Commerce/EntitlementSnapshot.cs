@@ -27,6 +27,7 @@ namespace JustSomeStars.Runtime.Commerce
         None = 0,
         CustomerInfo = 1,
         OfflineVerifiedCache = 2,
+        SamsungVerifiedAuthority = 3,
     }
 
     public sealed class EntitlementSnapshot

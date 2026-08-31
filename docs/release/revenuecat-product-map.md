@@ -68,7 +68,7 @@ entitlements never enter the cloud-unioned `GameSave.EarnedCosmeticIds` field.
 |---|---|---|
 | Android Internal | RevenueCat Test Store only when explicitly enabled; otherwise optional store unavailable | optional `JSS_REVENUECAT_TEST_STORE_API_KEY` with `test_` prefix |
 | Google Play | RevenueCat Google Play adapter and Google Play Billing | required `JSS_REVENUECAT_GOOGLE_API_KEY` with `goog_` prefix plus release signing inputs |
-| Galaxy | Google RevenueCat bridge excluded; Task 24 supplies the isolated Galaxy adapter | both RevenueCat Test Store and Google keys forbidden |
+| Galaxy | Samsung IAP 6.5.2 through the isolated Task 24 adapter; no RevenueCat or Google BillingClient | both RevenueCat Test Store and Google keys forbidden |
 
 The key-specific JSON exists only in ignored
 `Assets/_JustSomeStars/GeneratedCommerce/` during the player build. The build

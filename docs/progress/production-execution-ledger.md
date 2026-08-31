@@ -472,19 +472,17 @@ deliberately uses unavailable gateways until JSS-021 supplies the real
 Firebase/OAuth project, maintained Google identity-token bridge, concrete SDK
 wiring, deployed rules/indexes and two-device proof.
 
-## Immediate next task: Task 24
+## Immediate next task: Task 25
 
-Implement and isolate the Galaxy Store commerce adapter behind the shared
-store boundary. The Galaxy variant must compile without Google RevenueCat or
-Google Billing libraries, while the Google variant must compile without the
-Galaxy adapter. Licensed physical-Samsung purchase proof remains an external
-release seam and must not be fabricated.
+Build Koro/Vesper and the second Signal fragment: complete the low-gravity route,
+mission/checkpoint graph, layered 2.5D presentation, geyser timing, spectrum
+comparison and second-fragment recovery without expanding into Task 26.
 
 ## User-help queue
 
-No user decision blocks Task 24's local implementation. Galaxy Seller,
-RevenueCat and licensed physical-Samsung credentials remain the explicit
-external seam and must not be fabricated.
+No user decision blocks Task 25 local implementation. Task 24's Samsung
+Seller/legal/verifier/signed-artifact/physical-device activation remains JSS-024
+and must not be fabricated.
 
 ## Chronological checkpoint log
 
@@ -666,3 +664,13 @@ external seam and must not be fabricated.
   `PROCEED`. The source-fresh no-key internal APK is 351,906,210 bytes, SHA-256
   `c3fc001c7c906019be818611b3d92bdc65a98208048d34171396e842af591c15`.
   Credentialed purchases remain JSS-023; Task 24 is next.
+- 2026-08-31: Task 24 completed the local isolated Samsung Galaxy commerce
+  checkpoint. Samsung IAP 6.5.2 is staged only for Galaxy, while the generated
+  Galaxy graph rejects RevenueCat, BillingClient and Play billing permission.
+  The production-only Java/C# provider grants only after an external verifier
+  returns an exact identity/package/item/mode-bound signed authority; its
+  atomic ledger recovers cached authorities, interrupted Items and failed
+  acknowledgements. Authentic correction RED was `6/10`; source-final
+  isolation/runtime is `10/10`, affected build configuration is `4/4`, and the
+  same extreme critic returned `PROCEED`. Seller/legal/verifier/signed-artifact
+  and physical-device activation remain JSS-024; Task 25 is next.

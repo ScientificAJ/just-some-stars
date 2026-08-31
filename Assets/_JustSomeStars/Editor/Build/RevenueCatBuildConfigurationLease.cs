@@ -70,6 +70,16 @@ namespace JustSomeStars.Editor.Build
             try
             {
                 lease.CleanupAndVerify();
+                if (configuration.Kind == BuildTargetKind.Galaxy)
+                {
+                    var samsungMode = SamsungIapBuildModePolicy.Resolve(configuration.DefineSymbols);
+                    if (samsungMode != SamsungIapBuildMode.Production)
+                    {
+                        throw new InvalidOperationException(
+                            "Galaxy release builds must use Samsung IAP production mode.");
+                    }
+                }
+
                 var testKey = NormalizeKey(
                     m_ReadVariable(
                         RevenueCatBuildEnvironment.TestStoreApiKeyVariable));

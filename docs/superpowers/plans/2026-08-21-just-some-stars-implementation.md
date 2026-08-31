@@ -2219,29 +2219,58 @@ git commit -m "feat: add RevenueCat Google commerce"
 ### Task 24: Implement and isolate Galaxy Store commerce
 
 **Files:**
+- Modify: `Assets/_JustSomeStars/Editor/Build/RevenueCatAndroidBuildProcessor.cs`
+- Modify: `Assets/_JustSomeStars/Editor/Build/RevenueCatBuildConfigurationLease.cs`
+- Create: `Assets/_JustSomeStars/Editor/Build/SamsungIapBuildModePolicy.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Commerce/GalaxyStoreService.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Commerce/Galaxy/`
+- Modify: `Assets/_JustSomeStars/Runtime/Commerce/EntitlementSnapshot.cs`
 - Create: `Assets/Plugins/Android/jss-galaxy-billing/`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/StoreVariantIsolationTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/EditMode/CommerceBuildConfigurationTests.cs`
 - Create: `docs/release/galaxy-product-map.md`
+- Create: `docs/qa/task24-galaxy-commerce-review.md`
+- Modify: `docs/release/galaxy-seller-setup.md`
+- Modify: `docs/release/revenuecat-product-map.md`
+- Modify: `outputs/just-some-stars-technical-build-plan.md`
+- Modify: `docs/issue-register.md`
+- Modify: `docs/progress/production-execution-ledger.md`
+- Modify: this plan
 
 **Interfaces:**
-- Implements the same `IStoreService` contract through the native RevenueCat Galaxy module.
-- Falls back to the separately tested Samsung Unity IAP adapter only if the native bridge cannot meet release verification.
+- Implements the shared `IStoreService` through Samsung IAP 6.5.2, isolated
+  from the RevenueCat/Google Billing dependency graph.
+- Treats Samsung callbacks and owned-list rows as untrusted. Only a separately
+  deployed verifier may issue a signed, identity-bound authority; the checked-in
+  default verifier grants nothing.
+- Persists pending purchases, signed authorities and acknowledgement retries
+  atomically so interruption recovery does not guess ownership.
 
-- [ ] **Step 1: Add the Galaxy native Android module in the Galaxy-only Gradle dependency path**
+- [x] **Step 1: Add Samsung IAP 6.5.2 to the Galaxy-only Gradle dependency path**
 
-- [ ] **Step 2: Implement the Kotlin bridge for configure, offerings/products, purchase, restore and error callbacks**
+The repository stores only public Maven acquisition metadata and its own Java
+facade. Samsung license acceptance and dependency resolution in a signed Galaxy
+artifact remain external JSS-024 work.
 
-- [ ] **Step 3: Implement the C# adapter and map Galaxy products to the shared entitlements**
+- [x] **Step 2: Implement the Java bridge for configure, products, purchase, owned-list recovery and acknowledgement callbacks**
 
-- [ ] **Step 4: Write assembly/build tests proving Google billing is absent from Galaxy and Galaxy billing is absent from Google**
+- [x] **Step 3: Implement the C# adapter, fail-closed provider, durable ledger and shared-entitlement mapping**
 
-- [ ] **Step 5: Test Galaxy success and forced-failure modes with a licensed tester on a physical Samsung device**
+- [x] **Step 4: Prove local store isolation, verifier ordering, restart recovery and production-mode selection**
 
-- [ ] **Step 6: Record the production-mode checklist and commit**
+Authentic focused RED was `6/10`, with exactly the four critic-identified
+runtime/recovery/mode/Gradle failures. Source-final `StoreVariantIsolationTests`
+pass `10/10`; affected commerce build configuration passes `4/4`.
+
+- [ ] **Step 5: Resolve JSS-024 and test success/failure/restore on a licensed physical Samsung device**
+
+This is intentionally not claimed locally. It requires Samsung legal/Seller
+state, the trusted verifier, a signed Galaxy artifact and physical beta install.
+
+- [x] **Step 6: Record the production-mode checklist and commit the local checkpoint**
 
 ```bash
-git add Assets/Plugins/Android Assets/_JustSomeStars/Runtime/Commerce Assets/_JustSomeStars/Tests docs/release
+git add Assets/Plugins/Android/jss-galaxy-billing.meta Assets/Plugins/Android/jss-galaxy-billing Assets/_JustSomeStars/Editor/Build/RevenueCatAndroidBuildProcessor.cs Assets/_JustSomeStars/Editor/Build/RevenueCatBuildConfigurationLease.cs Assets/_JustSomeStars/Editor/Build/SamsungIapBuildModePolicy.cs Assets/_JustSomeStars/Editor/Build/SamsungIapBuildModePolicy.cs.meta Assets/_JustSomeStars/Runtime/Commerce/EntitlementSnapshot.cs Assets/_JustSomeStars/Runtime/Commerce/GalaxyStoreService.cs Assets/_JustSomeStars/Runtime/Commerce/GalaxyStoreService.cs.meta Assets/_JustSomeStars/Runtime/Commerce/Galaxy.meta Assets/_JustSomeStars/Runtime/Commerce/Galaxy Assets/_JustSomeStars/Tests/EditMode/CommerceBuildConfigurationTests.cs Assets/_JustSomeStars/Tests/EditMode/StoreVariantIsolationTests.cs Assets/_JustSomeStars/Tests/EditMode/StoreVariantIsolationTests.cs.meta docs/release/galaxy-product-map.md docs/release/galaxy-seller-setup.md docs/release/revenuecat-product-map.md docs/qa/task24-galaxy-commerce-review.md docs/issue-register.md docs/progress/production-execution-ledger.md outputs/just-some-stars-technical-build-plan.md docs/superpowers/plans/2026-08-21-just-some-stars-implementation.md
 git commit -m "feat: add isolated Galaxy commerce adapter"
 ```
 

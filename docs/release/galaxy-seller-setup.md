@@ -19,9 +19,11 @@ file was written.
 | Version-code input | `JSS_BUILD_NUMBER`, required and monotonically increasing |
 | Build variant | `JSS_GALAXY`, invocation-local |
 
-Task 5 creates only the truthful Development Flight and this setup ledger. It
-does not implement Galaxy billing. The native RevenueCat Galaxy bridge and its
-physical licensed-Samsung-device verification belong to Task 24.
+Task 24 now supplies the local Samsung IAP 6.5.2 Java/C# adapter, build isolation,
+durable pending/authority/acknowledgement ledger and fail-closed verifier seam.
+It does not claim Samsung legal acceptance, a resolved SDK artifact inside a
+signed Galaxy build, Seller products, deployed verification or a licensed
+physical-device transaction; those remain JSS-024.
 
 The Task 5 `codemagic.yaml` workflow creates only the internal debug APK; its
 remote Unity run is deliberately deferred because the account has Unity
@@ -85,15 +87,16 @@ material in this repository. Once custody is approved and the next unique
 
 ## Missing commercial and IAP prerequisites
 
-The following remain intentionally unresolved in Task 5:
+The following remain intentionally unresolved after the Task 24 local checkpoint:
 
 - verified commercial-seller enrollment, tax, payout, and required business
   details;
 - a Seller Portal application record bound to the exact `.galaxy` package;
 - approved signing/upload-key custody and recovery procedure;
-- Galaxy product IDs and their shared entitlement mappings;
-- the native RevenueCat Galaxy module or separately approved Samsung Unity IAP
-  fallback;
+- Seller creation/pricing/activation of the six mapped permanent Item IDs;
+- Samsung IAP license acceptance and a resolved 6.5.2 dependency in the signed
+  Galaxy artifact;
+- deployment and configuration of the trusted receipt verifier;
 - licensed-tester accounts and a physical Samsung test device;
 - success, cancellation, interruption, restore, offline-cache, and forced-store-
   unavailable evidence;
@@ -119,7 +122,7 @@ gate. A `Pending` row is not a current Release Runway failure.
 | Galaxy AAB built and inspected | Pending | Commit, version, size, SHA-256, package, non-debug state |
 | AAB uploaded | Pending | Redacted submission ID and UTC timestamp |
 | Store review/submission started | Pending | Redacted status only |
-| Galaxy IAP prerequisites complete | Pending for Task 24 | Task 24 evidence reference |
+| Galaxy IAP external activation complete | Pending as JSS-024 | Signed artifact, verifier revision and physical transaction evidence |
 
 Creating or changing any row's external state requires explicit authorization.
 A locally written timestamp, planned identifier, or successful non-Galaxy APK

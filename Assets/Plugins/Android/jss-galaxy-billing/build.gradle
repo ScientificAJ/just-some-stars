@@ -1,0 +1,16 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    namespace 'com.scientificaj.justsomestars.galaxy'
+    compileSdk 36
+
+    defaultConfig {
+        minSdk 25
+    }
+}
+
+dependencies {
+    api 'com.samsung.developer:iap:6.5.2'
+}

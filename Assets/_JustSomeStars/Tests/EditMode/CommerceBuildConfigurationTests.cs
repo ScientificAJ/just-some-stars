@@ -107,6 +107,12 @@ namespace JustSomeStars.Tests.EditMode
                     [RevenueCatBuildEnvironment.TestStoreApiKeyVariable] =
                         "test_forbidden_on_galaxy",
                 }, () => { }).Acquire(galaxy));
+            Assert.Throws<InvalidOperationException>(() =>
+                Factory(new Dictionary<string, string>
+                {
+                    [RevenueCatBuildEnvironment.GoogleApiKeyVariable] =
+                        "goog_cross_store",
+                }, () => { }).Acquire(galaxy));
 
             using var valid = Factory(new Dictionary<string, string>
             {
@@ -117,6 +123,14 @@ namespace JustSomeStars.Tests.EditMode
                 "\"environment\":\"GooglePlay\"",
                 File.ReadAllText(ConfigurationPath()));
             valid.CleanupAndVerify();
+
+            using var validGalaxy = Factory(
+                new Dictionary<string, string>(),
+                () => { }).Acquire(galaxy);
+            Assert.That(File.Exists(ConfigurationPath()), Is.False,
+                "The Samsung fallback must not materialize RevenueCat " +
+                "configuration or invent a Galaxy RevenueCat key.");
+            validGalaxy.CleanupAndVerify();
         }
 
         [Test]
@@ -172,7 +186,12 @@ namespace JustSomeStars.Tests.EditMode
                 gradlePath,
                 "dependencies {\n" +
                 "    implementation 'com.revenuecat.purchases:" +
-                "purchases-hybrid-common:[18.33.1]'\n}\n");
+                "purchases-hybrid-common:[18.33.1]'\n" +
+                "    implementation 'com.android.billingclient:billing:8.0.0'\n" +
+                "}\n");
+            File.WriteAllText(
+                Path.Combine(m_ProjectRoot, "settings.gradle"),
+                "include ':launcher', ':unityLibrary'\n");
 
             patch.Invoke(null, new object[] { unityLibrary, true });
             patch.Invoke(null, new object[] { unityLibrary, true });
@@ -181,18 +200,23 @@ namespace JustSomeStars.Tests.EditMode
             StringAssert.Contains("android:launchMode=\"singleTop\"", manifest);
             StringAssert.DoesNotContain("singleTask", manifest);
             var gradle = File.ReadAllText(gradlePath);
-            StringAssert.Contains("JSS_TASK23_GALAXY_REVENUECAT_EXCLUSION", gradle);
             StringAssert.Contains(
-                "exclude group: 'com.revenuecat.purchases', " +
-                "module: 'purchases-hybrid-common'",
+                "JSS_TASK24_GALAXY_SAMSUNG_IAP_ISOLATION",
                 gradle);
             StringAssert.Contains(
-                "exclude group: 'com.android.billingclient'",
+                "implementation project(':jssGalaxyBilling')",
                 gradle);
+            StringAssert.DoesNotContain("purchases-hybrid-common", gradle);
+            StringAssert.DoesNotContain("com.android.billingclient", gradle);
+            Assert.That(
+                Directory.Exists(Path.Combine(
+                    m_ProjectRoot,
+                    "jssGalaxyBilling")),
+                Is.True);
             Assert.That(
                 gradle.Split(new[]
                 {
-                    "JSS_TASK23_GALAXY_REVENUECAT_EXCLUSION",
+                    "JSS_TASK24_GALAXY_SAMSUNG_IAP_ISOLATION",
                 }, StringSplitOptions.None),
                 Has.Length.EqualTo(2),
                 "The generated-project policy must be idempotent.");

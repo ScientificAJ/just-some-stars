@@ -626,7 +626,10 @@ Separate assembly definitions and scripting symbols prevent the wrong billing li
 
 `IStoreService` exposes initialization, offerings, purchase, restore, entitlement refresh and error state. Gameplay sees only owned cosmetic/edition entitlements.
 
-The Google path uses the official RevenueCat Unity SDK. RevenueCat's documented Galaxy support is currently native Android, so the Galaxy build uses a small Kotlin/Java Unity bridge to RevenueCat's Galaxy Android module; Samsung's Unity IAP plugin remains the tested fallback. Galaxy commerce must never delay or block the free story.
+The Google path uses the official RevenueCat Unity SDK. The Galaxy path uses a
+small Java facade over Samsung IAP 6.5.2 and a separate C# provider. It does not
+ship RevenueCat or Google BillingClient. Galaxy commerce must never delay or
+block the free story.
 
 Purchased entitlements are cached after verification. Previously verified content remains usable offline; buying and restoring require connectivity. Interrupted purchases are rechecked on resume and never guessed.
 
@@ -646,7 +649,19 @@ the Google RevenueCat hybrid dependency and every Google BillingClient module
 from the generated Gradle project before compilation; non-Galaxy builds reject
 stale Galaxy-isolation markers.
 
-Google or Samsung processes Android payments and pays the publisher. RevenueCat manages offerings, receipts, customer identity and entitlements. Stripe is not required for Android in-app checkout.
+Samsung callbacks and `GetOwnedList` rows are untrusted. The Galaxy adapter
+requires a trusted external verifier to return an exact `.galaxy` package,
+allowlisted Item, production mode, obfuscated identity and signed authority
+before an entitlement is persisted or granted. The checked-in verifier is
+deliberately unavailable, so local/no-credential builds fail closed while the
+story remains playable. Pending purchases, signed authorities and failed
+acknowledgements persist atomically and are reconciled on launch/resume; the six
+permanent Items are acknowledged and never consumed.
+
+Google or Samsung processes Android payments and pays the publisher. RevenueCat
+manages Google offerings, receipts, customer identity and entitlements; the
+Galaxy verifier and identity-bound ledger are a separate authority. Stripe is
+not required for Android in-app checkout.
 
 ## 13. Graphics, performance, UI and accessibility
 
@@ -716,7 +731,8 @@ ShipKit perks unlock progressively after registration, project setup, store conn
 
 | Platform | Current status | Completed | Activation role and remaining work |
 |---|---|---|---|
-| RevenueCat | Ready | Account verified; **Just Some Stars** project created; Test Store active | Install Unity SDK; register both Android apps; create products, entitlements and Offerings; implement paywall; complete Test Store, Google and Galaxy purchases |
+| RevenueCat | Ready | Account verified; **Just Some Stars** project created; Test Store active; Unity SDK locally integrated | Register the Google Android app; create products, entitlements and Offering; complete Test Store and Google purchases. Galaxy uses the separate Samsung/JSS-024 authority. |
+| Samsung IAP | Local adapter complete | Galaxy-only 6.5.2 Maven module, Java/C# boundary, fail-closed verifier seam and durable recovery ledger | Resolve JSS-024: legal/Seller setup, six Items, verifier deployment, signed artifact inspection and licensed physical-device transactions |
 | Layers | Claimed | Two months of Pro active | Finish onboarding with the repository/site/store context; define one growth hypothesis; install and verify its SDK using the family-safe analytics configuration; run and document a focused growth loop |
 | Junie | Claimed | 30 AI credits, valid through September 30 | Configure in the JetBrains development environment for focused C#, editor-tool and test assistance; validate all changes through normal review and tests |
 | Codemagic | Connected; remote Unity deferred | Account, GitHub repository and `codemagic.yaml` workflow connected; 500 free macOS minutes available | Revisit Unity CLI execution only if a valid Plus/Pro CI license becomes available; never invent credentials or spend minutes on a guaranteed activation failure |
