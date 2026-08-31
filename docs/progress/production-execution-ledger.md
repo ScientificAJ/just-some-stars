@@ -472,18 +472,19 @@ deliberately uses unavailable gateways until JSS-021 supplies the real
 Firebase/OAuth project, maintained Google identity-token bridge, concrete SDK
 wiring, deployed rules/indexes and two-device proof.
 
-## Immediate next task: Task 23
+## Immediate next task: Task 24
 
-Integrate the RevenueCat Test Store and Google Play commerce boundary with
-receipt-led entitlement state, explicit restore behavior and strict
-child/grown-up purchase gating. Credentialed store activation remains an
-external seam and must not be fabricated.
+Implement and isolate the Galaxy Store commerce adapter behind the shared
+store boundary. The Galaxy variant must compile without Google RevenueCat or
+Google Billing libraries, while the Google variant must compile without the
+Galaxy adapter. Licensed physical-Samsung purchase proof remains an external
+release seam and must not be fabricated.
 
 ## User-help queue
 
-No user decision blocks Task 23's local implementation. RevenueCat/Google Play
-credentials, product identifiers and remote purchase validation remain the
-explicit external seam and must not be fabricated.
+No user decision blocks Task 24's local implementation. Galaxy Seller,
+RevenueCat and licensed physical-Samsung credentials remain the explicit
+external seam and must not be fabricated.
 
 ## Chronological checkpoint log
 
@@ -655,3 +656,13 @@ explicit external seam and must not be fabricated.
   `PROCEED`. Server-authoritative profile bootstrap, callable transport,
   App Check activation, deployment and two-device credentialed proof remain
   truthfully delegated to JSS-021; Task 23 is next.
+- 2026-08-31: Task 23 completed the local RevenueCat/Test Store/Google Play
+  commerce boundary in commit `bb79719`. Verified-entitlement/cache tests pass
+  `6/6`, shop and grown-up flows `13/13`, build-key/manifest/variant tests
+  `4/4`, affected build integration `35/35` and bootstrap `10/10`. Authentic
+  critic REDs covered identity leakage, post-native purchase cancellation,
+  stale CustomerInfo callbacks, unsafe Android launch mode, stale build keys
+  and disconnected Galaxy isolation. The same extreme critic returned final
+  `PROCEED`. The source-fresh no-key internal APK is 351,906,210 bytes, SHA-256
+  `c3fc001c7c906019be818611b3d92bdc65a98208048d34171396e842af591c15`.
+  Credentialed purchases remain JSS-023; Task 24 is next.
