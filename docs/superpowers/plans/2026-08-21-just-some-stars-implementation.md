@@ -1825,31 +1825,45 @@ git commit -m "feat: complete Mirra gameplay slice"
 - Create: `Assets/_JustSomeStars/Art/2D/Materials/Mirra/`
 - Create: `Assets/_JustSomeStars/Art/2D/VFX/Mirra/`
 - Create: `Assets/_JustSomeStars/Content/QualityProfiles/`
+- Create: `Assets/_JustSomeStars/Runtime/Rendering2D/MirraQualityProfile.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Rendering2D/MirraQualityController2D.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Accessibility/GameSettings.cs`
+- Modify: `Assets/_JustSomeStars/Scenes/Destinations/Mirra.unity`
+- Modify: `Assets/_JustSomeStars/Scenes/Benchmarks/Mirra2DProof.unity`
+- Modify: `Assets/_JustSomeStars/Tests/EditMode/Mirra2DAssetValidationTests.cs`
+- Create: `Assets/_JustSomeStars/Tests/EditMode/MirraQualityAssetTests.cs`
+- Create: `Assets/_JustSomeStars/Tests/PlayMode/MirraQualityControllerTests.cs`
 - Create: `docs/art/mirra-quality-review.md`
 - Create: `outputs/quality-reviews/mirra-device-capture.png`
+- Modify: `docs/issue-register.md`
 
 **Interfaces:**
 - Produces: Performance, Balanced, Cinematic and High Frame Rate profiles.
 - Produces: direct screenshot comparison against the canonical quality image.
 
-- [ ] **Step 1: Build shared 2D-lit Shader Graph foundations for sprite normals, emission, palette masks, fabric, metal, rock, ice, visor, hologram and atmosphere**
+- [x] **Step 1: Build shared 2D-lit Shader Graph foundations for sprite normals, emission, palette masks, fabric, metal, rock, ice, visor, hologram and atmosphere**
 
-- [ ] **Step 2: Establish Mirra's orange/blue divide with bounded 2D lights, baked gradients and layer-specific grading**
+- [x] **Step 2: Establish Mirra's orange/blue divide with bounded 2D lights, baked gradients and layer-specific grading**
 
-- [ ] **Step 3: Add layered terrain, parallax atmosphere, sprite contact treatment, restrained bloom and Signal focal effects**
+- [x] **Step 3: Add layered terrain, parallax atmosphere, sprite contact treatment, restrained bloom and Signal focal effects**
 
-- [ ] **Step 4: Stage the Captain, two companions, Ori and ship for silhouette/readability checks**
+- [x] **Step 4: Stage the Captain, two companions, Ori and ship for silhouette/readability checks**
 
-- [ ] **Step 5: Capture the same representative camera on Realme Narzo in Performance and Balanced**
+- [x] **Step 5: Capture the same representative camera on the supported 720×1616, 280-dpi Android validation target in Performance and Balanced**
 
-- [ ] **Step 6: Review side-by-side for material credibility, lighting, silhouettes, density, HUD clarity, focal point and emotional impact**
+Use the authenticated Limrun/Argent device route defined by the controlling agent
+environment. Preserve the exact device model, resolution, density, renderer and APK
+hash in evidence; never label hosted-device results as physical Realme Narzo evidence.
+Physical Realme coverage is deferred to the later broad device/performance campaign.
+
+- [x] **Step 6: Review side-by-side for material credibility, lighting, silhouettes, density, HUD clarity, focal point and emotional impact**
 
 Record pass/fail evidence in `mirra-quality-review.md`; mechanics completion alone cannot pass this gate.
 
 - [ ] **Step 7: Commit the approved benchmark**
 
 ```bash
-git add Assets/_JustSomeStars/Art/2D Assets/_JustSomeStars/Content/QualityProfiles docs/art outputs/quality-reviews
+git add -A -- Assets/_JustSomeStars/Art/2D/Materials.meta Assets/_JustSomeStars/Art/2D/Materials Assets/_JustSomeStars/Art/2D/VFX.meta Assets/_JustSomeStars/Art/2D/VFX Assets/_JustSomeStars/Content/QualityProfiles.meta Assets/_JustSomeStars/Content/QualityProfiles Assets/_JustSomeStars/Runtime/Accessibility/GameSettings.cs Assets/_JustSomeStars/Runtime/Rendering2D/MirraQualityProfile.cs Assets/_JustSomeStars/Runtime/Rendering2D/MirraQualityProfile.cs.meta Assets/_JustSomeStars/Runtime/Rendering2D/MirraQualityController2D.cs Assets/_JustSomeStars/Runtime/Rendering2D/MirraQualityController2D.cs.meta Assets/_JustSomeStars/Scenes/Destinations/Mirra.unity Assets/_JustSomeStars/Scenes/Benchmarks/Mirra2DProof.unity Assets/_JustSomeStars/Tests/EditMode/Mirra2DAssetValidationTests.cs Assets/_JustSomeStars/Tests/EditMode/MirraQualityAssetTests.cs Assets/_JustSomeStars/Tests/EditMode/MirraQualityAssetTests.cs.meta Assets/_JustSomeStars/Tests/PlayMode/MirraQualityControllerTests.cs Assets/_JustSomeStars/Tests/PlayMode/MirraQualityControllerTests.cs.meta docs/art/mirra-quality-review.md outputs/quality-reviews/mirra-device-capture.png docs/issue-register.md docs/superpowers/plans/2026-08-21-just-some-stars-implementation.md
 git commit -m "art: reach approved Mirra mobile quality bar"
 ```
 

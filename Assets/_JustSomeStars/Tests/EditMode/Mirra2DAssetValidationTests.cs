@@ -298,6 +298,7 @@ namespace JustSomeStars.Tests.EditMode
                 try
                 {
                     var renderedOffsets = new List<float>();
+                    var layerDiagnostics = new List<string>();
                     for (var frameIndex = 0; frameIndex < 8; frameIndex++)
                     {
                         for (var layerIndex = 0;
@@ -312,12 +313,26 @@ namespace JustSomeStars.Tests.EditMode
                                     "run").Frames[frameIndex];
                         }
                         Physics2D.SyncTransforms();
+                        var layerOffsets = captainRenderer.LayerRenderers
+                            .Where(renderer => renderer.sprite != null)
+                            .Select(renderer => new
+                            {
+                                Renderer = renderer,
+                                Offset = OpaqueWorldMinY(renderer, sourceTextures) -
+                                    routeY,
+                            })
+                            .ToArray();
+                        if (frameIndex == 0)
+                        {
+                            layerDiagnostics.AddRange(layerOffsets.Select(item =>
+                                $"{item.Renderer.name}={item.Offset:0.000}, " +
+                                $"parent={item.Renderer.transform.parent?.name}, " +
+                                $"worldY={item.Renderer.transform.position.y:0.000}"));
+                        }
                         renderedOffsets.Add(
-                            OpaqueWorldMinY(
-                                captainRenderer.LayerRenderers[
-                                    (int)CaptainSpriteLayer.BodyBase],
-                                sourceTextures) -
-                            routeY);
+                            layerOffsets.Select(item => item.Offset)
+                                .OrderBy(Mathf.Abs)
+                                .First());
                     }
                     Assert.That(
                         renderedOffsets,
@@ -325,7 +340,8 @@ namespace JustSomeStars.Tests.EditMode
                         "Every authored run frame needs one rendered boot sole " +
                         "on the collision/painted route. Offsets: " +
                         string.Join(", ", renderedOffsets.Select(offset =>
-                            offset.ToString("0.000"))));
+                            offset.ToString("0.000"))) + ". Layers: " +
+                        string.Join(" | ", layerDiagnostics));
                 }
                 finally
                 {

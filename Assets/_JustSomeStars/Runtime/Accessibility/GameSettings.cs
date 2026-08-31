@@ -29,7 +29,8 @@ namespace JustSomeStars.Runtime.Accessibility
     {
         Performance = 0,
         Balanced = 1,
-        Quality = 2,
+        Cinematic = 2,
+        HighFrameRate = 3,
     }
 
     [Serializable]

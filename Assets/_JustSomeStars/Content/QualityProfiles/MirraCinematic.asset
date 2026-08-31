@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 871b2d727c574fcfb8217c809baedf4b, type: 3}
+  m_Name: MirraCinematic
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Rendering2D.MirraQualityProfile
+  stableId: mirra.cinematic
+  quality: 2
+  targetFrameRate: 30
+  renderScale: 1
+  usesDynamicResolution: 0
+  activeLightCount: 3
+  lightIntensityMultiplier: 1.08
+  particleMultiplier: 1.2
+  volumeWeight: 1
+  parallaxMultiplier: 1

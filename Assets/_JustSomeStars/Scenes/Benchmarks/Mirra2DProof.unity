@@ -895,6 +895,7 @@ MonoBehaviour:
   - {fileID: 1007019753}
   - {fileID: 265127307}
   - {fileID: 783459951}
+  gameplayExtensions: []
 --- !u!1 &265127307
 GameObject:
   m_ObjectHideFlags: 0
@@ -8483,6 +8484,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1149232932}
     m_Modifications:
+    - target: {fileID: 1652016643685449794, guid: 2108d5bb93baf6d9584fdeb968769ef6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.960815
+      objectReference: {fileID: 0}
     - target: {fileID: 1869628844126984060, guid: 2108d5bb93baf6d9584fdeb968769ef6, type: 3}
       propertyPath: safeAnchor.x
       value: -0.6
