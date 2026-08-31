@@ -613,7 +613,9 @@ Individual products use stable `jss.cosmetic.<category>.<item>` identifiers. Rev
 
 ### 12.1 Build variants
 
-- Development: logs, cheats, debug panels and RevenueCat Test Store.
+- Development: logs, cheats and debug panels; RevenueCat Test Store only when
+  an explicit temporary Test Store key is supplied to the build, otherwise the
+  optional store is unavailable without blocking play.
 - Android Internal: signed physical-device testing.
 - Google Play Release: `com.scientificaj.justsomestars` with RevenueCat Unity and Google Play Billing.
 - Galaxy Release: `com.scientificaj.justsomestars.galaxy` with the isolated Galaxy adapter.
@@ -627,6 +629,22 @@ Separate assembly definitions and scripting symbols prevent the wrong billing li
 The Google path uses the official RevenueCat Unity SDK. RevenueCat's documented Galaxy support is currently native Android, so the Galaxy build uses a small Kotlin/Java Unity bridge to RevenueCat's Galaxy Android module; Samsung's Unity IAP plugin remains the tested fallback. Galaxy commerce must never delay or block the free story.
 
 Purchased entitlements are cached after verification. Previously verified content remains usable offline; buying and restoring require connectivity. Interrupted purchases are rechecked on resume and never guessed.
+
+Task 23 pins the official RevenueCat Unity SDK 9.9.1 as an exact locally
+verified archive and keeps its SDK assembly behind the Google bridge assembly.
+Build-time public SDK keys are injected through an ignored transactional
+resource and removed on every success/failure path before artifact publication.
+Test Store and Google keys are mutually exclusive, and both are forbidden from
+Galaxy builds. The local provider, cache, identity and family-safety boundary
+is complete; dashboard products, licensed transactions and signed store proof
+remain JSS-023 rather than fabricated local evidence.
+
+The Unity launcher uses Android `singleTop` so RevenueCat purchase results can
+return to the existing activity. A fail-closed generated-project processor
+rechecks that mode for every Android build. For Galaxy variants it also removes
+the Google RevenueCat hybrid dependency and every Google BillingClient module
+from the generated Gradle project before compilation; non-Galaxy builds reject
+stale Galaxy-isolation markers.
 
 Google or Samsung processes Android payments and pays the publisher. RevenueCat manages offerings, receipts, customer identity and entitlements. Stripe is not required for Android in-app checkout.
 

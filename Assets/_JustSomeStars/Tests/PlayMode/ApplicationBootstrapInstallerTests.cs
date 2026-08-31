@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using JustSomeStars.Runtime.Accounts;
 using JustSomeStars.Runtime.Accessibility;
+using JustSomeStars.Runtime.Commerce;
 using JustSomeStars.Runtime.Core;
 using JustSomeStars.Runtime.Input;
 using JustSomeStars.Runtime.Missions;
@@ -39,10 +40,15 @@ namespace JustSomeStars.Tests.PlayMode
             typeof(SceneStreamService),
             typeof(GameModeController),
             typeof(FirebaseAccountService),
+            typeof(UnavailableStoreService),
         };
 
         private static readonly GameServiceRole[] s_ApplicationRoles =
-            s_RequiredRoles.Concat(new[] { GameServiceRole.Cloud }).ToArray();
+            s_RequiredRoles.Concat(new[]
+            {
+                GameServiceRole.Cloud,
+                GameServiceRole.Commerce,
+            }).ToArray();
 
         private static readonly GameServiceRole[] s_ProductionRoles =
             s_ApplicationRoles.Concat(new[] { GameServiceRole.Progression }).ToArray();
@@ -249,7 +255,16 @@ namespace JustSomeStars.Tests.PlayMode
                 Is.EqualTo(s_ApplicationRoles));
             Assert.That(
                 report.Services.Select(service => service.State),
-                Is.All.EqualTo(ServiceStartupState.Available));
+                Is.EqualTo(new[]
+                {
+                    ServiceStartupState.Available,
+                    ServiceStartupState.Available,
+                    ServiceStartupState.Available,
+                    ServiceStartupState.Available,
+                    ServiceStartupState.Available,
+                    ServiceStartupState.Available,
+                    ServiceStartupState.Unavailable,
+                }));
             Assert.That(transition.Destinations, Is.EqualTo(new[] { "Frontend" }));
             Assert.That(source.LoadCount, Is.EqualTo(1));
             Assert.That(source.ReleaseCount, Is.EqualTo(0));
@@ -345,7 +360,7 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(
                 composition.Services.Select(registration => registration.Requirement),
                 Is.EqualTo(expectedRoles.Select(role =>
-                    role == GameServiceRole.Cloud
+                    role == GameServiceRole.Cloud || role == GameServiceRole.Commerce
                         ? ServiceRequirement.Optional
                         : ServiceRequirement.Required)));
             Assert.That(composition.Services
@@ -356,9 +371,14 @@ namespace JustSomeStars.Tests.PlayMode
                     ? Is.EqualTo(new[]
                     {
                         GameServiceRole.Cloud,
+                        GameServiceRole.Commerce,
                         GameServiceRole.Progression,
                     })
-                    : Is.EqualTo(new[] { GameServiceRole.Cloud }));
+                    : Is.EqualTo(new[]
+                    {
+                        GameServiceRole.Cloud,
+                        GameServiceRole.Commerce,
+                    }));
 
             if (expectedTransition == null)
             {
@@ -382,7 +402,7 @@ namespace JustSomeStars.Tests.PlayMode
                     Is.SameAs(composition.Services[4].Service));
                 Assert.That(
                     ReadProperty(surfaceDependencies, "Progression"),
-                    Is.SameAs(composition.Services[6].Service));
+                    Is.SameAs(composition.Services[7].Service));
 
                 var frontendDependencies = typeof(UnitySceneTransition).GetField(
                     "m_FrontendDependencies",

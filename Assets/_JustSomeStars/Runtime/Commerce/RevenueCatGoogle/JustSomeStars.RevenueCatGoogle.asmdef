@@ -1,0 +1,19 @@
+{
+  "name": "JustSomeStars.RevenueCatGoogle",
+  "rootNamespace": "JustSomeStars.Runtime.Commerce.RevenueCatGoogle",
+  "references": [
+    "JustSomeStars.Runtime",
+    "revenuecat.purchases-unity"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [
+    "!JSS_GALAXY"
+  ],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

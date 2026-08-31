@@ -30,6 +30,12 @@
         "com.google.firebase.app": "13.16.0"
       }
     },
+    "com.revenuecat.purchases-unity": {
+      "version": "file:RevenueCatPackages/com.revenuecat.purchases-unity-9.9.1.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {}
+    },
     "com.unity.addressables": {
       "version": "2.9.1",
       "depth": 0,

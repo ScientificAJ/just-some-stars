@@ -15,12 +15,14 @@ namespace JustSomeStars.Tests.EditMode
         [TestCase("input")]
         [TestCase("scrub.pre")]
         [TestCase("settings.apply")]
+        [TestCase("commerce.acquire")]
         [TestCase("scene.acquire")]
         [TestCase("addressables")]
         [TestCase("signing.apply")]
         [TestCase("player")]
         [TestCase("signing.restore")]
         [TestCase("scene.cleanup")]
+        [TestCase("commerce.cleanup")]
         [TestCase("settings.restore")]
         [TestCase("scrub.post")]
         public void Run_AnyFailureLeavesNoCanonicalOrStagingArtifact(string failurePoint)
@@ -39,18 +41,22 @@ namespace JustSomeStars.Tests.EditMode
             });
         }
 
-        [TestCase("settings.apply", 0, 0, 1)]
-        [TestCase("addressables", 0, 1, 1)]
-        [TestCase("signing.apply", 1, 1, 1)]
-        [TestCase("player", 1, 1, 1)]
-        [TestCase("signing.restore", 1, 1, 1)]
-        [TestCase("scene.cleanup", 1, 1, 1)]
-        [TestCase("settings.restore", 1, 1, 1)]
-        [TestCase("scrub.post", 1, 1, 1)]
+        [TestCase("settings.apply", 0, 0, 0, 1)]
+        [TestCase("commerce.acquire", 0, 0, 0, 1)]
+        [TestCase("scene.acquire", 0, 0, 1, 1)]
+        [TestCase("addressables", 0, 1, 1, 1)]
+        [TestCase("signing.apply", 1, 1, 1, 1)]
+        [TestCase("player", 1, 1, 1, 1)]
+        [TestCase("signing.restore", 1, 1, 1, 1)]
+        [TestCase("scene.cleanup", 1, 1, 1, 1)]
+        [TestCase("commerce.cleanup", 1, 1, 1, 1)]
+        [TestCase("settings.restore", 1, 1, 1, 1)]
+        [TestCase("scrub.post", 1, 1, 1, 1)]
         public void Run_FailureBoundary_RestoresEachMutatedScopeOnceAndContinuesCleanup(
             string failurePoint,
             int expectedSigningRestores,
             int expectedSceneCleanups,
+            int expectedCommerceCleanups,
             int expectedSettingsRestores)
         {
             WithTemporaryProject(projectRoot =>
@@ -65,6 +71,8 @@ namespace JustSomeStars.Tests.EditMode
                     Is.EqualTo(expectedSigningRestores));
                 Assert.That(dependencies.SceneCleanupCount,
                     Is.EqualTo(expectedSceneCleanups));
+                Assert.That(dependencies.CommerceCleanupCount,
+                    Is.EqualTo(expectedCommerceCleanups));
                 Assert.That(dependencies.SettingsRestoreCount,
                     Is.EqualTo(expectedSettingsRestores));
                 Assert.That(dependencies.ScrubCount, Is.EqualTo(2));
@@ -109,12 +117,14 @@ namespace JustSomeStars.Tests.EditMode
                     "input",
                     "scrub.pre",
                     "settings.apply",
+                    "commerce.acquire",
                     "scene.acquire",
                     "addressables",
                     "signing.apply",
                     "player",
                     "signing.restore",
                     "scene.cleanup",
+                    "commerce.cleanup",
                     "settings.restore",
                     "scrub.post",
                 }));
@@ -200,6 +210,7 @@ namespace JustSomeStars.Tests.EditMode
                 dependencies,
                 dependencies,
                 dependencies,
+                dependencies,
                 dependencies);
         }
 
@@ -227,6 +238,8 @@ namespace JustSomeStars.Tests.EditMode
             IBuildInputReader,
             IAndroidBuildStateFactory,
             IAndroidBuildState,
+            ICommerceBuildConfigurationLeaseFactory,
+            ICommerceBuildConfigurationLease,
             IAddressablesBuilder,
             IBuildSceneLeaseFactory,
             IBuildSceneLease,
@@ -266,6 +279,8 @@ namespace JustSomeStars.Tests.EditMode
             public int SigningRestoreCount { get; private set; }
 
             public int SceneCleanupCount { get; private set; }
+
+            public int CommerceCleanupCount { get; private set; }
 
             public int SettingsRestoreCount { get; private set; }
 
@@ -384,10 +399,30 @@ namespace JustSomeStars.Tests.EditMode
                 return this;
             }
 
+            public ICommerceBuildConfigurationLease Acquire(
+                BuildConfiguration configuration)
+            {
+                _ = configuration ?? throw new ArgumentNullException(
+                    nameof(configuration));
+                Record("commerce.acquire");
+                return this;
+            }
+
             public void CleanupAndVerify()
             {
                 SceneCleanupCount++;
                 Record("scene.cleanup");
+            }
+
+            void ICommerceBuildConfigurationLease.CleanupAndVerify()
+            {
+                CommerceCleanupCount++;
+                Record("commerce.cleanup");
+            }
+
+            void IDisposable.Dispose()
+            {
+                ((ICommerceBuildConfigurationLease)this).CleanupAndVerify();
             }
 
             void IPlayerBuilder.Build(

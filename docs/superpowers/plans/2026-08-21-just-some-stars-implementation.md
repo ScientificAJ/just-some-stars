@@ -2153,34 +2153,66 @@ git commit -m "feat: add private birthday celebrations"
 - Create: `Assets/_JustSomeStars/Runtime/Commerce/RevenueCatStoreService.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Commerce/OfflineEntitlementCache.cs`
 - Create: `Assets/_JustSomeStars/Runtime/UI/Shop/ShopController.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Commerce/RevenueCatGoogle/`
+- Create: `Assets/_JustSomeStars/Editor/Build/RevenueCatBuildConfigurationLease.cs`
+- Create: `Assets/_JustSomeStars/Editor/Build/RevenueCatAndroidBuildProcessor.cs`
+- Modify: `Assets/Plugins/Android/AndroidManifest.xml`
+- Modify: `Assets/_JustSomeStars/Editor/Build/BuildCli.cs`
+- Modify: `Assets/_JustSomeStars/Editor/Build/BuildOrchestrator.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Core/ApplicationBootstrapInstaller.cs`
+- Modify: `Assets/_JustSomeStars/Tests/EditMode/BuildOrchestratorTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/ApplicationBootstrapInstallerTests.cs`
+- Create: `Assets/_JustSomeStars/Tests/EditMode/CommerceBuildConfigurationTests.cs`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/EntitlementCacheTests.cs`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/ShopFlowTests.cs`
+- Create: `Packages/RevenueCatPackages/`
+- Modify: `Packages/manifest.json`
+- Modify: `Packages/packages-lock.json`
+- Modify: `ProjectSettings/AndroidResolverDependencies.xml`
+- Modify: `.gitignore`
 - Create: `docs/release/revenuecat-product-map.md`
+- Modify: `docs/issue-register.md`
+- Modify: `docs/progress/production-execution-ledger.md`
+- Modify: `outputs/just-some-stars-technical-build-plan.md`
 
 **Interfaces:**
 - Produces: initialize, get offerings, purchase, restore, refresh and cached entitlement checks.
 - Uses Firebase UID after login and RevenueCat anonymous identity for guests.
 
-- [ ] **Step 1: Install the official RevenueCat Unity SDK and add Development/Test Store configuration**
+- [x] **Step 1: Install the official RevenueCat Unity SDK and add Development/Test Store configuration**
 
-- [ ] **Step 2: Create stable entitlements and Test Store products from the technical spec**
+- [x] **Step 2: Create stable entitlements and Test Store products from the technical spec**
 
 Record each store product, RevenueCat product, package and entitlement mapping in `revenuecat-product-map.md`.
+The exact identifiers are reserved and fail-closed locally. Remote dashboard
+creation and transaction evidence remain JSS-023.
 
-- [ ] **Step 3: Write fake-store tests for success, cancel, interruption, restore, offline and unavailable states**
+- [x] **Step 3: Write fake-store tests for success, cancel, interruption, restore, offline and unavailable states**
 
-- [ ] **Step 4: Implement `RevenueCatStoreService` and durable verified cache**
+The local contract also proves that a purchase which has already entered the
+native SDK is reconciled on resume instead of being described as uncharged,
+that delayed callbacks cannot cross RevenueCat identities, and that failed
+login/logout responses cannot adopt another identity's cached entitlements.
+
+- [x] **Step 4: Implement `RevenueCatStoreService` and durable verified cache**
 
 Never grant from UI success alone; consume the refreshed entitlement snapshot.
 
-- [ ] **Step 5: Implement transparent shop UI, grown-up confirmation and Restore Purchases**
+- [x] **Step 5: Implement transparent shop controller, grown-up confirmation and Restore Purchases**
+
+Task 23 owns the provider-neutral controller, live store metadata, truthful
+free-story copy, disarming rules and explicit Restore behavior. Task 28 owns
+the final responsive/localized visual composition that consumes this contract.
 
 - [ ] **Step 6: Complete Test Store purchase, upload billing-enabled Google build, create real products and complete licensed Google test purchase**
 
-- [ ] **Step 7: Confirm customer, transaction and entitlement in RevenueCat, then commit**
+Credentialed dashboard/store work is explicitly delegated to JSS-023 and is
+not a prerequisite for continuing Tasks 24–30 local implementation.
+
+- [ ] **Step 7: Commit the locally verified boundary; confirm customer, transaction and entitlement through JSS-023**
 
 ```bash
-git add Assets/_JustSomeStars/Runtime/Commerce Assets/_JustSomeStars/Runtime/UI/Shop Assets/_JustSomeStars/Tests docs/release
+git add .gitignore Assets/Plugins/Android/AndroidManifest.xml Assets/_JustSomeStars/Editor/Build/BuildCli.cs Assets/_JustSomeStars/Editor/Build/BuildOrchestrator.cs Assets/_JustSomeStars/Editor/Build/RevenueCatAndroidBuildProcessor.cs Assets/_JustSomeStars/Editor/Build/RevenueCatAndroidBuildProcessor.cs.meta Assets/_JustSomeStars/Editor/Build/RevenueCatBuildConfigurationLease.cs Assets/_JustSomeStars/Editor/Build/RevenueCatBuildConfigurationLease.cs.meta Assets/_JustSomeStars/Runtime/Commerce.meta Assets/_JustSomeStars/Runtime/Commerce Assets/_JustSomeStars/Runtime/Core/ApplicationBootstrapInstaller.cs Assets/_JustSomeStars/Runtime/UI/Shop.meta Assets/_JustSomeStars/Runtime/UI/Shop Assets/_JustSomeStars/Tests/EditMode/BuildOrchestratorTests.cs Assets/_JustSomeStars/Tests/EditMode/CommerceBuildConfigurationTests.cs Assets/_JustSomeStars/Tests/EditMode/CommerceBuildConfigurationTests.cs.meta Assets/_JustSomeStars/Tests/EditMode/EntitlementCacheTests.cs Assets/_JustSomeStars/Tests/EditMode/EntitlementCacheTests.cs.meta Assets/_JustSomeStars/Tests/PlayMode/ApplicationBootstrapInstallerTests.cs Assets/_JustSomeStars/Tests/PlayMode/ShopFlowTests.cs Assets/_JustSomeStars/Tests/PlayMode/ShopFlowTests.cs.meta Packages/RevenueCatPackages Packages/manifest.json Packages/packages-lock.json ProjectSettings/AndroidResolverDependencies.xml docs/issue-register.md docs/progress/production-execution-ledger.md docs/release/revenuecat-product-map.md outputs/just-some-stars-technical-build-plan.md docs/superpowers/plans/2026-08-21-just-some-stars-implementation.md
 git commit -m "feat: add RevenueCat Google commerce"
 ```
 

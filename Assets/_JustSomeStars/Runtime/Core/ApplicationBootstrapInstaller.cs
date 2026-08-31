@@ -1,6 +1,7 @@
 using System;
 using JustSomeStars.Runtime.Accounts;
 using JustSomeStars.Runtime.Accessibility;
+using JustSomeStars.Runtime.Commerce;
 using JustSomeStars.Runtime.Input;
 using JustSomeStars.Runtime.Flight;
 using JustSomeStars.Runtime.Player;
@@ -60,6 +61,7 @@ namespace JustSomeStars.Runtime.Core
             var settings = new SettingsService();
             var localSave = new LocalSaveService();
             var account = CreateAccountService(localSave);
+            var commerce = StoreProviderRegistry.Create(account);
             var saves = new CloudCheckpointSaveService(localSave, account);
             var actions = RequireProjectActions();
             var input = new InputRouter(actions, settings);
@@ -96,6 +98,7 @@ namespace JustSomeStars.Runtime.Core
                 input,
                 modeController,
                 account,
+                commerce,
                 sceneTransition,
                 new AddressablesSceneCatalogSource(SceneCatalog.AddressablesKey),
                 new AddressablesSceneStreamBackend(),
@@ -115,6 +118,7 @@ namespace JustSomeStars.Runtime.Core
                 settings,
                 new CloudCheckpointSaveService(localSave, account),
                 account,
+                new UnavailableStoreService(),
                 input,
                 sceneTransition,
                 catalogSource,
@@ -125,6 +129,7 @@ namespace JustSomeStars.Runtime.Core
             SettingsService settings,
             ISaveService saves,
             IAccountService account,
+            IStoreService commerce,
             InputRouter input,
             ISceneTransition sceneTransition,
             ISceneCatalogSource catalogSource,
@@ -139,6 +144,7 @@ namespace JustSomeStars.Runtime.Core
                 input,
                 modeController,
                 account,
+                commerce,
                 sceneTransition,
                 catalogSource,
                 sceneBackend);
@@ -150,6 +156,7 @@ namespace JustSomeStars.Runtime.Core
             InputRouter input,
             GameModeController modeController,
             IAccountService account,
+            IStoreService commerce,
             ISceneTransition sceneTransition,
             ISceneCatalogSource catalogSource,
             ISceneStreamBackend sceneBackend,
@@ -175,6 +182,9 @@ namespace JustSomeStars.Runtime.Core
                     new GameServiceRegistration(
                         GameServiceRole.Cloud,
                         account),
+                    new GameServiceRegistration(
+                        GameServiceRole.Commerce,
+                        commerce),
                 };
             if (progression != null)
             {

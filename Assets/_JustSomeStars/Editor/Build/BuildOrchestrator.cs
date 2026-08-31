@@ -13,6 +13,8 @@ namespace JustSomeStars.Editor.Build
         private readonly IBuildTargetGuard m_TargetGuard;
         private readonly IBuildInputReader m_InputReader;
         private readonly IAndroidBuildStateFactory m_StateFactory;
+        private readonly ICommerceBuildConfigurationLeaseFactory
+            m_CommerceConfigurationFactory;
         private readonly IAddressablesBuilder m_AddressablesBuilder;
         private readonly IBuildSceneLeaseFactory m_SceneLeaseFactory;
         private readonly IPlayerBuilder m_PlayerBuilder;
@@ -23,6 +25,7 @@ namespace JustSomeStars.Editor.Build
             IBuildTargetGuard targetGuard,
             IBuildInputReader inputReader,
             IAndroidBuildStateFactory stateFactory,
+            ICommerceBuildConfigurationLeaseFactory commerceConfigurationFactory,
             IAddressablesBuilder addressablesBuilder,
             IBuildSceneLeaseFactory sceneLeaseFactory,
             IPlayerBuilder playerBuilder,
@@ -36,6 +39,8 @@ namespace JustSomeStars.Editor.Build
                 throw new ArgumentNullException(nameof(inputReader));
             m_StateFactory = stateFactory ??
                 throw new ArgumentNullException(nameof(stateFactory));
+            m_CommerceConfigurationFactory = commerceConfigurationFactory ??
+                throw new ArgumentNullException(nameof(commerceConfigurationFactory));
             m_AddressablesBuilder = addressablesBuilder ??
                 throw new ArgumentNullException(nameof(addressablesBuilder));
             m_SceneLeaseFactory = sceneLeaseFactory ??
@@ -61,6 +66,7 @@ namespace JustSomeStars.Editor.Build
                 m_ProjectRoot,
                 invocationOverride.ResolveOutputPath(definition.OutputPath));
             IAndroidBuildState state = null;
+            ICommerceBuildConfigurationLease commerceConfiguration = null;
             BuildInputs inputs = null;
             IBuildSceneLease sceneLease = null;
             var settingsMutationAttempted = false;
@@ -81,6 +87,9 @@ namespace JustSomeStars.Editor.Build
 
                 settingsMutationAttempted = true;
                 state.ApplySettings(configuration);
+
+                commerceConfiguration =
+                    m_CommerceConfigurationFactory.Acquire(configuration);
 
                 sceneLease = m_SceneLeaseFactory.Acquire();
                 var playerOptions = BuildPlayerOptionsFactory.Create(
@@ -145,6 +154,13 @@ namespace JustSomeStars.Editor.Build
                 if (sceneLease != null)
                 {
                     TryCleanup(sceneLease.CleanupAndVerify, cleanupFailures);
+                }
+
+                if (commerceConfiguration != null)
+                {
+                    TryCleanup(
+                        commerceConfiguration.CleanupAndVerify,
+                        cleanupFailures);
                 }
 
                 if (settingsMutationAttempted && state != null)

@@ -107,6 +107,8 @@ InitTestScene*.unity*
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 /Assets/_JustSomeStars/GeneratedBuild/
 /Assets/_JustSomeStars/GeneratedBuild.meta
+/Assets/_JustSomeStars/GeneratedCommerce/
+/Assets/_JustSomeStars/GeneratedCommerce.meta
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*

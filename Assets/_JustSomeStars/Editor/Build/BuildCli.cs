@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 namespace JustSomeStars.Editor.Build
@@ -44,6 +45,10 @@ namespace JustSomeStars.Editor.Build
                 new AndroidBuildTargetGuard(),
                 new SystemBuildInputReader(projectRoot),
                 new UnityAndroidBuildStateFactory(),
+                new RevenueCatBuildConfigurationLeaseFactory(
+                    projectRoot,
+                    Environment.GetEnvironmentVariable,
+                    AssetDatabase.Refresh),
                 new AddressablesBuilder(),
                 new BuildSceneLeaseFactory(projectRoot),
                 new UnityPlayerBuilder(),
