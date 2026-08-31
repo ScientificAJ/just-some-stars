@@ -35,7 +35,7 @@ namespace JustSomeStars.Tests.EditMode
         }
 
         [Test]
-        public void SchemaV2_RoundTripsEveryOwnedDomainWithoutDeviceSettings()
+        public void SchemaV3_RoundTripsEveryOwnedDomainWithoutDeviceSettings()
         {
             var serializer = new JsonSaveSerializer(SaveMigrator.CreateCurrent());
             var original = CreateSave(checkpointOrdinal: 4, revision: 7, updatedUtcTicks: 800);
@@ -77,7 +77,7 @@ namespace JustSomeStars.Tests.EditMode
 
             Assert.That(parsed, Is.True);
             Assert.That(reopened, Is.EqualTo(original));
-            Assert.That(document, Does.Contain("\"schemaVersion\": 2"));
+            Assert.That(document, Does.Contain("\"schemaVersion\": 3"));
             Assert.That(document, Does.Contain("\"story\""));
             Assert.That(document, Does.Contain("\"mission\""));
             Assert.That(document, Does.Contain("\"captain\""));

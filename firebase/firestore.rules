@@ -60,11 +60,13 @@ service cloud.firestore {
 
     function validBirthday(birthday) {
       return birthday is map && birthday.keys().hasOnly([
-          'hasValue', 'day', 'month', 'year', 'lastBirthdayGiftYear'
+          'hasValue', 'day', 'month', 'year', 'correctionCount',
+          'lastBirthdayGiftYear'
         ]) && birthday.hasValue is bool &&
         birthday.day is int && birthday.day >= 0 && birthday.day <= 31 &&
         birthday.month is int && birthday.month >= 0 && birthday.month <= 12 &&
         birthday.year is int && birthday.year >= 0 && birthday.year <= 9999 &&
+        birthday.correctionCount is int && birthday.correctionCount >= 0 &&
         birthday.lastBirthdayGiftYear is int &&
         birthday.lastBirthdayGiftYear >= 0 &&
         ((birthday.hasValue == false && birthday.day == 0 &&
@@ -88,7 +90,7 @@ service cloud.firestore {
       return save is map && save.keys().hasOnly([
           'schemaVersion', 'story', 'mission', 'captain', 'discoveryIds',
           'earnedCosmeticIds', 'atlasEntryIds', 'birthday', 'metadata'
-        ]) && save.schemaVersion == 2 &&
+        ]) && save.schemaVersion == 3 &&
         validStory(save.story) && validMission(save.mission) &&
         validCaptain(save.captain) && validBirthday(save.birthday) &&
         validMetadata(save.metadata) &&
@@ -100,25 +102,27 @@ service cloud.firestore {
     function validDocument(data) {
       return data.keys().hasOnly([
           'documentSchemaVersion', 'revision', 'clientWriteId',
-          'createdAt', 'updatedAt', 'save'
+          'createdAt', 'updatedAt', 'birthdayGiftYears', 'save'
         ]) && data.documentSchemaVersion == 1 &&
         data.revision is int && data.revision >= 0 &&
         boundedString(data.clientWriteId, 64) &&
         data.createdAt is timestamp && data.updatedAt is timestamp &&
+        data.get('birthdayGiftYears', []) is list &&
+        data.get('birthdayGiftYears', []).size() <= 128 &&
         validSave(data.save) && data.save.metadata.revision == data.revision;
     }
 
     match /users/{uid} {
       allow get: if isOwner(uid);
       allow list: if false;
-      allow create: if isOwner(uid) && validDocument(request.resource.data) &&
-        request.resource.data.createdAt == request.time &&
-        request.resource.data.updatedAt == request.time;
+      allow create: if false;
       allow update: if isOwner(uid) && validDocument(request.resource.data) &&
+        request.resource.data.get('birthdayGiftYears', []) ==
+          resource.data.get('birthdayGiftYears', []) &&
         request.resource.data.createdAt == resource.data.createdAt &&
         request.resource.data.updatedAt == request.time &&
         request.resource.data.revision > resource.data.revision;
-      allow delete: if isOwner(uid);
+      allow delete: if false;
     }
 
     match /{document=**} {

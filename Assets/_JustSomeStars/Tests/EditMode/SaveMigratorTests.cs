@@ -14,7 +14,8 @@ namespace JustSomeStars.Tests.EditMode
         {
             var current = GameSave.CreateNew("save.legacy", 10);
             current.DiscoveryIds = new[] { "phenomenon.legacy" };
-            var v2 = JsonUtility.ToJson(current);
+            var v3 = JsonUtility.ToJson(current);
+            var v2 = v3.Replace("\"schemaVersion\":3", "\"schemaVersion\":2");
             var v1 = Regex.Replace(
                 v2.Replace("\"schemaVersion\":2", "\"schemaVersion\":1"),
                 ",\"mission\":\\{[^}]*\\}",
@@ -24,17 +25,17 @@ namespace JustSomeStars.Tests.EditMode
             var migrated = migrator.TryMigrate(v1, out var result);
 
             Assert.That(migrated, Is.True);
-            Assert.That(result, Does.Contain("\"schemaVersion\": 2"));
+            Assert.That(result, Does.Contain("\"schemaVersion\": 3"));
             Assert.That(result, Does.Contain("\"mission\""));
             Assert.That(result, Does.Contain("phenomenon.legacy"));
-            Assert.That(migrator.TargetVersion, Is.EqualTo(2));
-            Assert.That(migrator.RegisteredStepCount, Is.EqualTo(1));
+            Assert.That(migrator.TargetVersion, Is.EqualTo(3));
+            Assert.That(migrator.RegisteredStepCount, Is.EqualTo(2));
         }
 
         [TestCase("not-json")]
         [TestCase("{}")]
         [TestCase("{\"schemaVersion\":0}")]
-        [TestCase("{\"schemaVersion\":3}")]
+        [TestCase("{\"schemaVersion\":4}")]
         public void ProductionRegistry_RejectsMalformedUnsupportedAndFutureDocuments(
             string document)
         {

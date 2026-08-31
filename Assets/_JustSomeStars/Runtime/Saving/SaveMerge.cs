@@ -132,6 +132,13 @@ namespace JustSomeStars.Runtime.Saving
                 merged.Birthday = preferred.Birthday.Copy();
             }
 
+            merged.Birthday.CorrectionCount = Math.Max(
+                local.Birthday.CorrectionCount,
+                cloud.Birthday.CorrectionCount);
+            merged.Birthday.LastBirthdayGiftYear = Math.Max(
+                local.Birthday.LastBirthdayGiftYear,
+                cloud.Birthday.LastBirthdayGiftYear);
+
             merged.Metadata = new SaveMetadata
             {
                 SaveId = local.Metadata.SaveId,
@@ -246,6 +253,9 @@ namespace JustSomeStars.Runtime.Saving
             }
 
             var merged = local.Copy();
+            merged.CorrectionCount = Math.Max(
+                local.CorrectionCount,
+                cloud.CorrectionCount);
             merged.LastBirthdayGiftYear = Math.Max(
                 local.LastBirthdayGiftYear,
                 cloud.LastBirthdayGiftYear);

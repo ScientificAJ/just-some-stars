@@ -87,6 +87,90 @@ namespace JustSomeStars.Tests.EditMode
         }
 
         [Test]
+        public async Task FirestoreService_MigratesSchemaV2CloudProjectionBeforeValidation()
+        {
+            var gateway = new MemoryFirestoreGateway();
+            var service = new FirestoreCloudSaveService(gateway);
+            var original = CreateSave("save.cloud-v2", checkpoint: 2, customizedAt: 200);
+            original.Birthday = new BirthdayState
+            {
+                HasValue = true,
+                Day = 4,
+                Month = 7,
+                Year = 2013,
+                LastBirthdayGiftYear = 2025,
+            };
+            await service.UploadAsync("firebase-user-v2", original, CancellationToken.None);
+            gateway.Documents[gateway.LastPath] = gateway.Documents[gateway.LastPath]
+                .Replace("\"schemaVersion\": 3", "\"schemaVersion\": 2")
+                .Replace("    \"correctionCount\": 0,\n", string.Empty);
+
+            var downloaded = await service.DownloadAsync(
+                "firebase-user-v2",
+                CancellationToken.None);
+
+            Assert.That(downloaded.HasValue, Is.True);
+            Assert.That(downloaded.Value.Save.SchemaVersion,
+                Is.EqualTo(GameSave.CurrentSchemaVersion));
+            Assert.That(downloaded.Value.Save.Birthday.CorrectionCount, Is.Zero);
+            Assert.That(downloaded.Value.Save.Birthday.LastBirthdayGiftYear,
+                Is.EqualTo(2025));
+        }
+
+        [Test]
+        public void MergeBirthday_PreservesConsumedCorrectionAllowance()
+        {
+            var local = CreateSave("save.local-birthday", checkpoint: 1, customizedAt: 100);
+            local.Birthday = new BirthdayState
+            {
+                HasValue = true,
+                Day = 4,
+                Month = 7,
+                Year = 2013,
+                CorrectionCount = 0,
+                LastBirthdayGiftYear = 2025,
+            };
+            var cloud = local.Copy();
+            cloud.Metadata.SaveId = "save.cloud-birthday";
+            cloud.Birthday.CorrectionCount = 1;
+            cloud.Birthday.LastBirthdayGiftYear = 2026;
+
+            var merged = SaveMerge.Combine(local, cloud);
+
+            Assert.That(merged.Birthday.CorrectionCount, Is.EqualTo(1));
+            Assert.That(merged.Birthday.LastBirthdayGiftYear, Is.EqualTo(2026));
+        }
+
+        [Test]
+        public void ResolveBirthdayConflict_PreservesMonotonicCorrectionAndGiftHistory()
+        {
+            var local = CreateSave("save.local-conflict", checkpoint: 1, customizedAt: 100);
+            local.Birthday = new BirthdayState
+            {
+                HasValue = true,
+                Day = 4,
+                Month = 7,
+                Year = 2013,
+                CorrectionCount = 0,
+                LastBirthdayGiftYear = 2025,
+            };
+            var cloud = local.Copy();
+            cloud.Metadata.SaveId = "save.cloud-conflict";
+            cloud.Birthday.Day = 5;
+            cloud.Birthday.CorrectionCount = 2;
+            cloud.Birthday.LastBirthdayGiftYear = 2026;
+
+            var resolved = SaveMerge.ResolveConflict(
+                local,
+                cloud,
+                preferLocal: true);
+
+            Assert.That(resolved.Birthday.Day, Is.EqualTo(4));
+            Assert.That(resolved.Birthday.CorrectionCount, Is.EqualTo(2));
+            Assert.That(resolved.Birthday.LastBirthdayGiftYear, Is.EqualTo(2026));
+        }
+
+        [Test]
         public void CloudSnapshot_PreservesObservedRevisionZeroUpdateToken()
         {
             var save = CreateSave("save.revision-zero", checkpoint: 0, customizedAt: 100);
@@ -114,7 +198,13 @@ namespace JustSomeStars.Tests.EditMode
             var document = gateway.Documents[gateway.LastPath];
             Assert.That(document, Does.Not.Contain("photographs"));
             Assert.That(gateway.LastWrite.SetCreatedAtOnCreate, Is.True);
+            Assert.That(
+                gateway.LastWrite.RequiresServerAuthoritativeCreate,
+                Is.True);
             Assert.That(gateway.LastWrite.PreserveCreatedAtOnUpdate, Is.True);
+            Assert.That(
+                gateway.LastWrite.PreserveServerOwnedBirthdayGiftYearsOnUpdate,
+                Is.True);
             Assert.That(gateway.LastWrite.SetUpdatedAtToServerTime, Is.True);
             Assert.That(document, Does.Contain("schemaVersion"));
         }
@@ -143,7 +233,7 @@ namespace JustSomeStars.Tests.EditMode
         }
 
         [Test]
-        public async Task FirestoreService_ExportAndDeleteUseTheSameUidScopedDocument()
+        public async Task FirestoreService_ExportsButDirectClientDeleteFailsClosed()
         {
             var gateway = new MemoryFirestoreGateway();
             var service = new FirestoreCloudSaveService(gateway);
@@ -154,11 +244,13 @@ namespace JustSomeStars.Tests.EditMode
             var exported = await service.ExportAsync(
                 "uid-export",
                 CancellationToken.None);
-            await service.DeleteAsync("uid-export", CancellationToken.None);
+            Assert.ThrowsAsync<InvalidOperationException>(async () =>
+                await service.DeleteAsync("uid-export", CancellationToken.None));
 
             Assert.That(exported, Does.Contain("save.export"));
             Assert.That(gateway.LastPath, Is.EqualTo("users/uid-export"));
-            Assert.That(gateway.Documents, Does.Not.ContainKey("users/uid-export"));
+            Assert.That(gateway.Documents, Does.ContainKey("users/uid-export"));
+            Assert.That(gateway.DeleteCount, Is.Zero);
         }
 
         [Test]
@@ -204,6 +296,8 @@ namespace JustSomeStars.Tests.EditMode
             public string LastPath { get; private set; }
 
             public int ReadCount { get; private set; }
+
+            public int DeleteCount { get; private set; }
 
             public FirestoreDocumentWrite LastWrite { get; private set; }
 
@@ -262,6 +356,7 @@ namespace JustSomeStars.Tests.EditMode
             {
                 cancellationToken.ThrowIfCancellationRequested();
                 LastPath = documentPath;
+                DeleteCount++;
                 Documents.Remove(documentPath);
                 return default;
             }

@@ -18,8 +18,6 @@ namespace JustSomeStars.Runtime.Accounts
         ValueTask SignOutAsync(CancellationToken cancellationToken);
 
         ValueTask UnlinkGoogleAsync(CancellationToken cancellationToken);
-
-        ValueTask DeleteAccountAsync(CancellationToken cancellationToken);
     }
 
     public sealed class UnavailableFirebaseAuthGateway : IFirebaseAuthGateway
@@ -47,12 +45,39 @@ namespace JustSomeStars.Runtime.Accounts
         public ValueTask UnlinkGoogleAsync(CancellationToken cancellationToken) =>
             throw Unavailable();
 
-        public ValueTask DeleteAccountAsync(CancellationToken cancellationToken) =>
-            throw Unavailable();
-
         private static InvalidOperationException Unavailable() =>
             new InvalidOperationException(
                 "Google backup is not configured for this build.");
+    }
+
+    public interface IAccountDeletionGateway : IGameService
+    {
+        bool IsConfigured { get; }
+
+        ValueTask DeleteAccountAsync(
+            string userId,
+            CancellationToken cancellationToken);
+    }
+
+    public sealed class UnavailableAccountDeletionGateway :
+        IAccountDeletionGateway
+    {
+        public bool IsConfigured => false;
+
+        public ValueTask<StartupResult> InitializeAsync(
+            CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            return new ValueTask<StartupResult>(StartupResult.Unavailable(
+                "Server-authoritative account deletion is not configured."));
+        }
+
+        public ValueTask DeleteAccountAsync(
+            string userId,
+            CancellationToken cancellationToken) => throw new InvalidOperationException(
+                "Server-authoritative account deletion is not configured.");
+
+        public ValueTask ShutdownAsync() => default;
     }
 
     public sealed class FirebaseAccountService : IAccountService
@@ -61,6 +86,7 @@ namespace JustSomeStars.Runtime.Accounts
         private readonly ISaveService m_LocalSave;
         private readonly ICloudSaveService m_Cloud;
         private readonly IFirebaseAuthGateway m_Auth;
+        private readonly IAccountDeletionGateway m_Deletion;
         private readonly SemaphoreSlim m_Operation = new SemaphoreSlim(1, 1);
 
         private StartupResult m_CloudStartup;
@@ -73,12 +99,14 @@ namespace JustSomeStars.Runtime.Accounts
             GuestAccountService guest,
             ISaveService localSave,
             ICloudSaveService cloud,
-            IFirebaseAuthGateway auth)
+            IFirebaseAuthGateway auth,
+            IAccountDeletionGateway deletion)
         {
             m_Guest = guest ?? throw new ArgumentNullException(nameof(guest));
             m_LocalSave = localSave ?? throw new ArgumentNullException(nameof(localSave));
             m_Cloud = cloud ?? throw new ArgumentNullException(nameof(cloud));
             m_Auth = auth ?? throw new ArgumentNullException(nameof(auth));
+            m_Deletion = deletion ?? throw new ArgumentNullException(nameof(deletion));
             Current = GuestState(string.Empty);
         }
 
@@ -95,9 +123,11 @@ namespace JustSomeStars.Runtime.Accounts
 
             var authStartup = await m_Auth.InitializeAsync(cancellationToken);
             m_CloudStartup = await m_Cloud.InitializeAsync(cancellationToken);
+            var deletionStartup = await m_Deletion.InitializeAsync(cancellationToken);
             cancellationToken.ThrowIfCancellationRequested();
             if (!m_Auth.IsConfigured || !authStartup.IsAvailable ||
-                !m_CloudStartup.IsAvailable)
+                !m_CloudStartup.IsAvailable || !m_Deletion.IsConfigured ||
+                !deletionStartup.IsAvailable)
             {
                 SetState(new AccountState(
                     AccountConnection.CloudUnavailable,
@@ -141,6 +171,7 @@ namespace JustSomeStars.Runtime.Accounts
 
         public async ValueTask ShutdownAsync()
         {
+            await m_Deletion.ShutdownAsync();
             await m_Auth.ShutdownAsync();
             await m_Cloud.ShutdownAsync();
             await m_Guest.ShutdownAsync();
@@ -415,8 +446,8 @@ namespace JustSomeStars.Runtime.Accounts
 
                 SetOperation(AccountOperation.Deleting,
                     "Deleting cloud backup and Google account…");
-                await m_Cloud.DeleteAsync(userId, cancellationToken);
-                await m_Auth.DeleteAccountAsync(cancellationToken);
+                await m_Deletion.DeleteAccountAsync(userId, cancellationToken);
+                await m_Auth.SignOutAsync(CancellationToken.None);
                 ClearConflict();
                 SetCloudAvailable();
             }

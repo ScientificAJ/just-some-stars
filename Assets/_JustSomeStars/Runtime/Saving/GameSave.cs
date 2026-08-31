@@ -190,6 +190,7 @@ namespace JustSomeStars.Runtime.Saving
         [SerializeField] private int day;
         [SerializeField] private int month;
         [SerializeField] private int year;
+        [SerializeField] private int correctionCount;
         [SerializeField] private int lastBirthdayGiftYear;
 
         public bool HasValue
@@ -216,6 +217,12 @@ namespace JustSomeStars.Runtime.Saving
             set => year = value;
         }
 
+        public int CorrectionCount
+        {
+            get => correctionCount;
+            set => correctionCount = value;
+        }
+
         public int LastBirthdayGiftYear
         {
             get => lastBirthdayGiftYear;
@@ -230,6 +237,7 @@ namespace JustSomeStars.Runtime.Saving
                 day = day,
                 month = month,
                 year = year,
+                correctionCount = correctionCount,
                 lastBirthdayGiftYear = lastBirthdayGiftYear,
             };
         }
@@ -241,6 +249,7 @@ namespace JustSomeStars.Runtime.Saving
                 day == other.day &&
                 month == other.month &&
                 year == other.year &&
+                correctionCount == other.correctionCount &&
                 lastBirthdayGiftYear == other.lastBirthdayGiftYear;
         }
 
@@ -262,6 +271,7 @@ namespace JustSomeStars.Runtime.Saving
                 hash = (hash * 397) ^ day;
                 hash = (hash * 397) ^ month;
                 hash = (hash * 397) ^ year;
+                hash = (hash * 397) ^ correctionCount;
                 return (hash * 397) ^ lastBirthdayGiftYear;
             }
         }
@@ -500,7 +510,7 @@ namespace JustSomeStars.Runtime.Saving
     [Serializable]
     public sealed class GameSave : IEquatable<GameSave>
     {
-        public const int CurrentSchemaVersion = 2;
+        public const int CurrentSchemaVersion = 3;
 
         internal static readonly string[] RequiredJsonFields =
         {
@@ -528,6 +538,16 @@ namespace JustSomeStars.Runtime.Saving
         [SerializeField] private SaveMetadata metadata = new SaveMetadata();
 
         public int SchemaVersion => schemaVersion;
+
+        internal void SetSchemaVersionForMigration(int version)
+        {
+            if (version < 1 || version > CurrentSchemaVersion)
+            {
+                throw new ArgumentOutOfRangeException(nameof(version));
+            }
+
+            schemaVersion = version;
+        }
 
         public StoryProgress Story
         {
@@ -720,6 +740,7 @@ namespace JustSomeStars.Runtime.Saving
             if (!value.HasValue)
             {
                 if (value.Day != 0 || value.Month != 0 || value.Year != 0 ||
+                    value.CorrectionCount != 0 ||
                     value.LastBirthdayGiftYear != 0)
                 {
                     throw new ArgumentException(
@@ -739,11 +760,11 @@ namespace JustSomeStars.Runtime.Saving
                 throw new ArgumentException("Birthday must be a real calendar date.", parameterName, exception);
             }
 
-            if (value.LastBirthdayGiftYear < 0)
+            if (value.CorrectionCount < 0 || value.LastBirthdayGiftYear < 0)
             {
                 throw new ArgumentOutOfRangeException(
                     parameterName,
-                    "Birthday gift year cannot be negative.");
+                    "Birthday correction count and gift year cannot be negative.");
             }
         }
 

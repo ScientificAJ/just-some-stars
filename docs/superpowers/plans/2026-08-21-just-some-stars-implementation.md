@@ -2031,22 +2031,47 @@ git commit -m "feat: add optional Google cloud saves"
 ### Task 22: Implement private birthdays and annual gifts
 
 **Files:**
+- Modify: `.gitignore`
+- Modify: `Assets/_JustSomeStars/Runtime/Saving/GameSave.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Saving/FirestoreCloudSaveService.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Saving/SaveMerge.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Saving/SaveMigrator.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Accounts/FirebaseAccountService.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Core/ApplicationBootstrapInstaller.cs`
+- Modify: `Assets/_JustSomeStars/Tests/EditMode/CloudSaveMergeTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/EditMode/LocalSaveServiceTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/EditMode/SaveMigratorTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/AccountLinkTests.cs`
+- Modify: `firebase/firebase.json`
+- Modify: `firebase/firestore.rules`
+- Modify: `firebase/package.json`
+- Modify: `firebase/pnpm-lock.yaml`
+- Modify: `firebase/pnpm-workspace.yaml`
+- Modify: `firebase/test/firestore.rules.test.mjs`
 - Create: `Assets/_JustSomeStars/Runtime/Accounts/Birthday.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Accounts/BirthdayGiftService.cs`
 - Create: `Assets/_JustSomeStars/Runtime/UI/Account/BirthdaySetupController.cs`
 - Create: `Assets/_JustSomeStars/Runtime/UI/Account/GrownUpConfirmationController.cs`
+- Create: `Assets/_JustSomeStars/Runtime/UI/Account.meta`
 - Create: `firebase/functions/src/birthdayGift.ts`
 - Create: `firebase/functions/src/index.ts`
 - Create: `firebase/functions/package.json`
 - Create: `firebase/functions/tsconfig.json`
 - Create: `Assets/_JustSomeStars/Content/Cosmetics/birthday/`
+- Create: `Assets/_JustSomeStars/Content/Cosmetics.meta`
+- Create: `Assets/_JustSomeStars/Content/Cosmetics/birthday.meta`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/BirthdayTests.cs`
 - Create: `firebase/functions/test/birthdayGift.test.ts`
+- Create: `docs/qa/task22-private-birthday-review.md`
+- Modify: `docs/issue-register.md`
+- Modify: `docs/progress/production-execution-ledger.md`
+- Modify: `docs/superpowers/plans/2026-08-21-just-some-stars-implementation.md`
+- Modify: `outputs/just-some-stars-technical-build-plan.md`
 
 **Interfaces:**
 - Produces: private day/month/year, derived age band, 30-day claim window and one gift per account/year.
 
-- [ ] **Step 1: Write leap-day, timezone, claim-window and repeated-claim tests**
+- [x] **Step 1: Write leap-day, timezone, claim-window and repeated-claim tests**
 
 ```typescript
 it("grants one gift for the account in the active birthday window", async () => {
@@ -2057,20 +2082,65 @@ it("grants one gift for the account in the active birthday window", async () => 
 });
 ```
 
-- [ ] **Step 2: Implement the neutral day/month/year setup screen, local validation and one correction allowance**
+- [x] **Step 2: Implement the neutral day/month/year setup controller, local validation and one correction allowance**
 
 Derive child, teen or adult privacy state without suggesting which birth date unlocks a less restricted flow. Guest play continues immediately after setup; cloud link, purchases and external links use the grown-up confirmation rules defined by the resulting age state.
 
-- [ ] **Step 3: Implement the authenticated server-time grant function and transactional `lastBirthdayGiftYear` update**
+- [x] **Step 3: Implement the authenticated server-time grant function and transactional `lastBirthdayGiftYear` update**
 
-- [ ] **Step 4: Build the Clubhouse celebration, Ori delivery and no-purchase presentation**
+- [x] **Step 4: Publish the scene-independent Clubhouse celebration, Ori delivery and no-purchase presentation contract**
 
-- [ ] **Step 5: Verify guest-local and cloud-secure paths without sending DOB to analytics**
+Task 22 owns the annual content identity, Ori cue, homemade-decoration identity
+and strict no-purchase presentation rule. Task 26 owns the real Clubhouse scene
+and dialogue staging; Task 27 owns the finished cosmetic visuals/catalogue; Task
+28 binds the setup and grown-up controllers into the final UI. Do not fabricate
+those later owners inside Task 22.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 5: Verify guest-local and cloud-secure paths without sending DOB to analytics**
+
+Focused evidence: Unity birthday contracts `11/11`; affected save/migration/cloud
+contracts `32/32`; TypeScript function contracts `6/6`; Firestore Emulator rules
+`5/5`; affected account lifecycle contracts `13/13`. The callable accepts
+identity only from authenticated callable context,
+ignores caller-provided birthday/time data, uses trusted server time and keeps a
+server-owned annual-claim ledger inside the deletable UID document. Credentialed
+deployment remains JSS-021 and is not claimed here.
+
+- [x] **Step 6: Commit**
 
 ```bash
-git add Assets/_JustSomeStars/Runtime/Accounts Assets/_JustSomeStars/Content/Cosmetics/birthday Assets/_JustSomeStars/Tests firebase/functions
+git add -A -- \
+  .gitignore \
+  Assets/_JustSomeStars/Runtime/Accounts/Birthday.cs \
+  Assets/_JustSomeStars/Runtime/Accounts/Birthday.cs.meta \
+  Assets/_JustSomeStars/Runtime/Accounts/BirthdayGiftService.cs \
+  Assets/_JustSomeStars/Runtime/Accounts/BirthdayGiftService.cs.meta \
+  Assets/_JustSomeStars/Runtime/Accounts/FirebaseAccountService.cs \
+  Assets/_JustSomeStars/Runtime/Core/ApplicationBootstrapInstaller.cs \
+  Assets/_JustSomeStars/Runtime/Saving/FirestoreCloudSaveService.cs \
+  Assets/_JustSomeStars/Runtime/Saving/GameSave.cs \
+  Assets/_JustSomeStars/Runtime/Saving/SaveMerge.cs \
+  Assets/_JustSomeStars/Runtime/Saving/SaveMigrator.cs \
+  Assets/_JustSomeStars/Runtime/UI/Account.meta \
+  Assets/_JustSomeStars/Runtime/UI/Account \
+  Assets/_JustSomeStars/Content/Cosmetics.meta \
+  Assets/_JustSomeStars/Content/Cosmetics/birthday.meta \
+  Assets/_JustSomeStars/Content/Cosmetics/birthday \
+  Assets/_JustSomeStars/Tests/EditMode/BirthdayTests.cs \
+  Assets/_JustSomeStars/Tests/EditMode/BirthdayTests.cs.meta \
+  Assets/_JustSomeStars/Tests/EditMode/CloudSaveMergeTests.cs \
+  Assets/_JustSomeStars/Tests/EditMode/LocalSaveServiceTests.cs \
+  Assets/_JustSomeStars/Tests/EditMode/SaveMigratorTests.cs \
+  Assets/_JustSomeStars/Tests/PlayMode/AccountLinkTests.cs \
+  firebase/firebase.json firebase/firestore.rules firebase/package.json \
+  firebase/pnpm-lock.yaml firebase/pnpm-workspace.yaml \
+  firebase/test/firestore.rules.test.mjs firebase/functions \
+  docs/issue-register.md docs/progress/production-execution-ledger.md \
+  docs/qa/task22-private-birthday-review.md \
+  docs/superpowers/plans/2026-08-21-just-some-stars-implementation.md \
+  outputs/just-some-stars-technical-build-plan.md
+git diff --cached --check
+git diff --cached --name-status
 git commit -m "feat: add private birthday celebrations"
 ```
 

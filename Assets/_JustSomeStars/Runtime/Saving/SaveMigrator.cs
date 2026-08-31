@@ -80,7 +80,11 @@ namespace JustSomeStars.Runtime.Saving
         {
             return new SaveMigrator(
                 GameSave.CurrentSchemaVersion,
-                new ISaveMigration[] { new SaveMigrationV1ToV2() });
+                new ISaveMigration[]
+                {
+                    new SaveMigrationV1ToV2(),
+                    new SaveMigrationV2ToV3(),
+                });
         }
 
         internal bool TryMigrate(string document, out string migratedDocument)
@@ -185,6 +189,7 @@ namespace JustSomeStars.Runtime.Saving
                 migrated.Birthday = legacy.birthday;
                 migrated.Metadata = legacy.metadata;
                 migrated.ThrowIfInvalid(nameof(document));
+                migrated.SetSchemaVersionForMigration(ToVersion);
                 return JsonUtility.ToJson(migrated, prettyPrint: true);
             }
 
@@ -192,6 +197,61 @@ namespace JustSomeStars.Runtime.Saving
             private sealed class LegacySaveV1
             {
                 public StoryProgress story;
+                public CaptainState captain;
+                public string[] discoveryIds;
+                public string[] earnedCosmeticIds;
+                public string[] atlasEntryIds;
+                public PhotoMetadata[] photographs;
+                public BirthdayState birthday;
+                public SaveMetadata metadata;
+            }
+        }
+
+        private sealed class SaveMigrationV2ToV3 : ISaveMigration
+        {
+            public int FromVersion => 2;
+
+            public int ToVersion => 3;
+
+            public string Migrate(string document)
+            {
+                var legacy = JsonUtility.FromJson<LegacySaveV2>(document);
+                if (legacy == null || legacy.story == null || legacy.mission == null ||
+                    legacy.captain == null || legacy.birthday == null ||
+                    legacy.metadata == null)
+                {
+                    throw new FormatException("Schema v2 save is incomplete.");
+                }
+
+                var migrated = GameSave.CreateNew(
+                    legacy.metadata.SaveId,
+                    legacy.metadata.CreatedUtcTicks);
+                migrated.Story = legacy.story;
+                migrated.Mission = legacy.mission;
+                migrated.Captain = legacy.captain;
+                migrated.DiscoveryIds = legacy.discoveryIds;
+                migrated.EarnedCosmeticIds = legacy.earnedCosmeticIds;
+                migrated.AtlasEntryIds = legacy.atlasEntryIds;
+                migrated.Photographs = legacy.photographs;
+                migrated.Birthday = new BirthdayState
+                {
+                    HasValue = legacy.birthday.HasValue,
+                    Day = legacy.birthday.Day,
+                    Month = legacy.birthday.Month,
+                    Year = legacy.birthday.Year,
+                    CorrectionCount = 0,
+                    LastBirthdayGiftYear = legacy.birthday.LastBirthdayGiftYear,
+                };
+                migrated.Metadata = legacy.metadata;
+                migrated.ThrowIfInvalid(nameof(document));
+                return JsonUtility.ToJson(migrated, prettyPrint: true);
+            }
+
+            [Serializable]
+            private sealed class LegacySaveV2
+            {
+                public StoryProgress story;
+                public MissionProgress mission;
                 public CaptainState captain;
                 public string[] discoveryIds;
                 public string[] earnedCosmeticIds;

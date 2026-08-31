@@ -129,6 +129,7 @@ service-account*.json
 credentials*.json
 **/node_modules/
 **/.firebase/
+firebase/functions/lib/
 firebase-debug.log
 /Assets/GeneratedLocalRepo/
 /Assets/GeneratedLocalRepo.meta

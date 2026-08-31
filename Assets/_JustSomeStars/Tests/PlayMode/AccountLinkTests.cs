@@ -297,7 +297,8 @@ namespace JustSomeStars.Tests.PlayMode
                 IsConfigured = true,
                 LinkUserId = "firebase.uid.failures",
             };
-            var service = CreateFirebaseService(local, cloud, auth);
+            var deletion = new FakeAccountDeletionGateway();
+            var service = CreateFirebaseService(local, cloud, auth, deletion);
             await service.InitializeAsync(CancellationToken.None);
             await service.LinkGoogleAsync(CancellationToken.None);
 
@@ -317,7 +318,7 @@ namespace JustSomeStars.Tests.PlayMode
                 Is.EqualTo(AccountUnlinkStatus.Failed));
             AssertIdleAuthenticated(service, "unlink failure");
 
-            auth.ThrowOnDelete = true;
+            deletion.ThrowOnDelete = true;
             await service.DeleteAccountAsync(CancellationToken.None);
             AssertIdleAuthenticated(service, "partial delete failure");
             Assert.That(
@@ -350,7 +351,8 @@ namespace JustSomeStars.Tests.PlayMode
                 IsConfigured = true,
                 LinkUserId = "firebase.uid.erase",
             };
-            var service = CreateFirebaseService(local, cloud, auth);
+            var deletion = new FakeAccountDeletionGateway();
+            var service = CreateFirebaseService(local, cloud, auth, deletion);
             await service.InitializeAsync(CancellationToken.None);
             await service.LinkGoogleAsync(CancellationToken.None);
 
@@ -367,8 +369,10 @@ namespace JustSomeStars.Tests.PlayMode
 
             await service.DeleteAccountAsync(CancellationToken.None);
 
-            Assert.That(cloud.DeletedUserId, Is.EqualTo("firebase.uid.erase"));
-            Assert.That(auth.DeleteCount, Is.EqualTo(1));
+            Assert.That(deletion.DeletedUserId, Is.EqualTo("firebase.uid.erase"));
+            Assert.That(deletion.DeleteCount, Is.EqualTo(1));
+            Assert.That(cloud.DeleteCount, Is.Zero);
+            Assert.That(auth.SignOutCount, Is.EqualTo(1));
             Assert.That(service.Current.Connection,
                 Is.EqualTo(AccountConnection.CloudAvailable));
             Assert.That((await local.LoadAsync(CancellationToken.None)).HasSave, Is.True,
@@ -514,12 +518,18 @@ namespace JustSomeStars.Tests.PlayMode
         private FirebaseAccountService CreateFirebaseService(
             LocalSaveService local,
             FakeCloudSaveService cloud,
-            FakeFirebaseAuthGateway auth)
+            FakeFirebaseAuthGateway auth,
+            FakeAccountDeletionGateway deletion = null)
         {
             var guest = new GuestAccountService(Path.Combine(
                 m_Root,
                 "guest-account.json"));
-            return new FirebaseAccountService(guest, local, cloud, auth);
+            return new FirebaseAccountService(
+                guest,
+                local,
+                cloud,
+                auth,
+                deletion ?? new FakeAccountDeletionGateway());
         }
 
         private static void AssertIdleAuthenticated(
@@ -696,13 +706,9 @@ namespace JustSomeStars.Tests.PlayMode
 
             public int UnlinkCount { get; private set; }
 
-            public int DeleteCount { get; private set; }
-
             public bool ThrowOnSignOut { get; set; }
 
             public bool ThrowOnUnlink { get; set; }
-
-            public bool ThrowOnDelete { get; set; }
 
             public ValueTask<StartupResult> InitializeAsync(
                 CancellationToken cancellationToken)
@@ -752,25 +758,49 @@ namespace JustSomeStars.Tests.PlayMode
                 return default;
             }
 
-            public ValueTask DeleteAccountAsync(CancellationToken cancellationToken)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                if (ThrowOnDelete)
-                {
-                    ThrowOnDelete = false;
-                    throw new InvalidOperationException("delete failure");
-                }
-
-                DeleteCount++;
-                CurrentUserId = null;
-                return default;
-            }
-
             public ValueTask ShutdownAsync()
             {
                 CurrentUserId = null;
                 return default;
             }
+        }
+
+        private sealed class FakeAccountDeletionGateway : IAccountDeletionGateway
+        {
+            public bool IsConfigured { get; set; } = true;
+
+            public bool ThrowOnDelete { get; set; }
+
+            public int DeleteCount { get; private set; }
+
+            public string DeletedUserId { get; private set; }
+
+            public ValueTask<StartupResult> InitializeAsync(
+                CancellationToken cancellationToken)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                return new ValueTask<StartupResult>(IsConfigured
+                    ? StartupResult.Available()
+                    : StartupResult.Unavailable("Server deletion is unavailable."));
+            }
+
+            public ValueTask DeleteAccountAsync(
+                string userId,
+                CancellationToken cancellationToken)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                if (ThrowOnDelete)
+                {
+                    ThrowOnDelete = false;
+                    throw new InvalidOperationException("server deletion failure");
+                }
+
+                DeleteCount++;
+                DeletedUserId = userId;
+                return default;
+            }
+
+            public ValueTask ShutdownAsync() => default;
         }
 
         private sealed class ThrowingSyncAccountService : IAccountService

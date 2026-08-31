@@ -472,17 +472,18 @@ deliberately uses unavailable gateways until JSS-021 supplies the real
 Firebase/OAuth project, maintained Google identity-token bridge, concrete SDK
 wiring, deployed rules/indexes and two-device proof.
 
-## Immediate next task: Task 22
+## Immediate next task: Task 23
 
-Implement private birthdays and annual gifts on top of the guest-first account
-contract. Guest-local behavior and server-side function logic can proceed;
-credentialed deployment remains part of JSS-021 rather than being fabricated.
+Integrate the RevenueCat Test Store and Google Play commerce boundary with
+receipt-led entitlement state, explicit restore behavior and strict
+child/grown-up purchase gating. Credentialed store activation remains an
+external seam and must not be fabricated.
 
 ## User-help queue
 
-No user decision blocks Task 22's local implementation. Firebase project
-activation and any credentialed remote validation remain the explicit JSS-021
-external seam and must not be fabricated.
+No user decision blocks Task 23's local implementation. RevenueCat/Google Play
+credentials, product identifiers and remote purchase validation remain the
+explicit external seam and must not be fabricated.
 
 ## Chronological checkpoint log
 
@@ -647,3 +648,10 @@ external seam and must not be fabricated.
   returned final `PROCEED` after authentic merge/error-recovery REDs.
   JSS-004 is resolved. Credentialed activation remains JSS-021; Task 22 is
   next.
+- 2026-08-31: Task 22 completed the private-birthday and annual-gift local
+  foundation. Fresh focused gates pass birthday `11/11`, affected
+  save/migration/cloud `32/32`, account lifecycle `13/13`, Functions `6/6` and
+  Firestore Emulator rules `5/5`. The final bounded extreme critic returned
+  `PROCEED`. Server-authoritative profile bootstrap, callable transport,
+  App Check activation, deployment and two-device credentialed proof remain
+  truthfully delegated to JSS-021; Task 23 is next.

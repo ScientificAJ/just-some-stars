@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "allowsPurchasePrompt": false,
+  "gifts": [
+    {
+      "giftYear": 2026,
+      "cosmeticId": "birthday.ori-starlight.2026",
+      "titleKey": "birthday.celebration.title.2026",
+      "oriDeliveryCue": "birthday.ori.delivery.2026",
+      "decorationSetId": "birthday.decorations.homemade.2026"
+    }
+  ]
+}

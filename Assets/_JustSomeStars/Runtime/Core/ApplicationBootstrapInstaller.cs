@@ -207,7 +207,8 @@ namespace JustSomeStars.Runtime.Core
                 localSave,
                 new FirestoreCloudSaveService(
                     new UnavailableFirestoreDocumentGateway()),
-                new UnavailableFirebaseAuthGateway());
+                new UnavailableFirebaseAuthGateway(),
+                new UnavailableAccountDeletionGateway());
         }
 
         private static InputActionAsset RequireProjectActions()

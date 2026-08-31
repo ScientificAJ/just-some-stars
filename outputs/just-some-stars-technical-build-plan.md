@@ -536,15 +536,15 @@ Google linking uses Firebase Authentication. Cloud data uses Cloud Firestore and
 - Photos remain local for Chapter One to control storage use.
 - Genuine incompatible states present a clear player choice rather than silently overwriting.
 
-Firestore rules restrict each profile to its Firebase UID. The game supports sign-out, Google unlinking, cloud-data export and complete account deletion.
+Firestore rules restrict each profile to its Firebase UID. Client SDKs cannot create or delete the profile root: an App-Check-protected server bootstrap creates it, and server-authoritative account deletion removes Firebase Auth before deleting the root, with an Auth deletion trigger for retryable cleanup. The game supports sign-out, Google unlinking, cloud-data export and complete account deletion.
 
 ### 10.3 Birthday data and gifts
 
 The account privately stores day, month and year of birth. The birthday is never public or sent to advertising attribution. Guests store it locally; account linking migrates it to the private cloud profile.
 
-The birthday may be corrected once. Further changes require the grown-up confirmation flow. A TypeScript Firebase Cloud Function uses server time and `lastBirthdayGiftYear` to grant one annual gift. The gift remains claimable for 30 days and never presents a purchase prompt.
+The birthday may be corrected once. Further changes require the grown-up confirmation flow. A TypeScript Firebase Cloud Function uses server time, `lastBirthdayGiftYear` and a server-owned annual-claim ledger in the deletable UID profile to grant one annual gift. Client rules preserve that ledger but cannot create or alter it. The gift remains claimable for 30 days and never presents a purchase prompt.
 
-The birthday event includes a Clubhouse celebration, crew dialogue, Ori delivery animation, homemade decorations and a yearly cosmetic set. Guest mode uses local eligibility; preventing abuse of a free offline gift is less important than preserving legitimate offline play.
+The birthday event includes a Clubhouse celebration, crew dialogue, Ori delivery animation, homemade decorations and a yearly cosmetic set. Task 22 publishes the private eligibility and scene-independent presentation identities; the real Clubhouse staging belongs to Task 26, final cosmetic ownership/art to Task 27 and UI binding to Task 28. Guest mode uses local eligibility; preventing abuse of a free offline gift is less important than preserving legitimate offline play.
 
 For child players, cloud linking is optional and placed behind grown-up confirmation. Authentication data is not reused for advertising.
 

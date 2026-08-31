@@ -26,7 +26,11 @@ namespace JustSomeStars.Runtime.Saving
 
         public bool SetCreatedAtOnCreate => true;
 
+        public bool RequiresServerAuthoritativeCreate => true;
+
         public bool PreserveCreatedAtOnUpdate => true;
+
+        public bool PreserveServerOwnedBirthdayGiftYearsOnUpdate => true;
 
         public bool SetUpdatedAtToServerTime => true;
     }
@@ -163,7 +167,11 @@ namespace JustSomeStars.Runtime.Saving
             string userId,
             CancellationToken cancellationToken)
         {
-            return m_Gateway.DeleteAsync(BuildPath(userId), cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
+            _ = BuildPath(userId);
+            throw new InvalidOperationException(
+                "Cloud profile deletion requires the server-authoritative " +
+                "account lifecycle gateway.");
         }
 
         public async ValueTask<string> ExportAsync(
@@ -350,25 +358,36 @@ namespace JustSomeStars.Runtime.Saving
 
             public GameSave ToGameSave()
             {
-                if (schemaVersion != GameSave.CurrentSchemaVersion || metadata == null)
+                if (metadata == null)
                 {
                     throw new InvalidDataException(
                         "Cloud backup save projection is invalid.");
                 }
 
-                var save = GameSave.CreateNew(
+                var projected = GameSave.CreateNew(
                     metadata.SaveId,
                     metadata.CreatedUtcTicks);
-                save.Story = story;
-                save.Mission = mission;
-                save.Captain = captain;
-                save.DiscoveryIds = discoveryIds;
-                save.EarnedCosmeticIds = earnedCosmeticIds;
-                save.AtlasEntryIds = atlasEntryIds;
-                save.Photographs = Array.Empty<PhotoMetadata>();
-                save.Birthday = birthday;
-                save.Metadata = metadata;
-                return save;
+                projected.Story = story;
+                projected.Mission = mission;
+                projected.Captain = captain;
+                projected.DiscoveryIds = discoveryIds;
+                projected.EarnedCosmeticIds = earnedCosmeticIds;
+                projected.AtlasEntryIds = atlasEntryIds;
+                projected.Photographs = Array.Empty<PhotoMetadata>();
+                projected.Birthday = birthday;
+                projected.Metadata = metadata;
+                projected.SetSchemaVersionForMigration(schemaVersion);
+
+                var serializer = new JsonSaveSerializer(SaveMigrator.CreateCurrent());
+                if (!serializer.TryDeserialize(
+                        JsonUtility.ToJson(projected, prettyPrint: true),
+                        out var migrated))
+                {
+                    throw new InvalidDataException(
+                        "Cloud backup save projection is invalid.");
+                }
+
+                return migrated;
             }
         }
     }
