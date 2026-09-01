@@ -22,3 +22,9 @@ MonoBehaviour:
   - m_DestinationId: destination.mirra.surface
     m_Address: Mirra
     m_TargetMode: 4
+  - m_DestinationId: destination.vesper.approach
+    m_Address: Task25VesperFlight
+    m_TargetMode: 3
+  - m_DestinationId: destination.koro.surface
+    m_Address: KoroVesper
+    m_TargetMode: 4

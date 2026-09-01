@@ -69,7 +69,7 @@ namespace JustSomeStars.Runtime.Core
                 InitialExperiencePolicy.CurrentMode,
                 new InputRouterGameModeRuntimeHooks(input));
             var gameEvents = new GameEventBus();
-            var progression = new MirraProgressionService(
+            var progression = new DestinationProgressionCoordinator(
                 gameEvents,
                 saves,
                 settings);
@@ -160,7 +160,7 @@ namespace JustSomeStars.Runtime.Core
             ISceneTransition sceneTransition,
             ISceneCatalogSource catalogSource,
             ISceneStreamBackend sceneBackend,
-            MirraProgressionService progression = null)
+            IChapterProgression progression = null)
         {
             var sceneStream = new SceneStreamService(
                 catalogSource,

@@ -28,7 +28,7 @@ namespace JustSomeStars.Runtime.Flight
             GameModeController modes,
             GameEventBus events,
             ISceneTransition scenes,
-            MirraProgressionService progression)
+            IChapterProgression progression)
             : this(settings, input, modes, events, scenes)
         {
             Progression = progression ?? throw new ArgumentNullException(
@@ -40,6 +40,6 @@ namespace JustSomeStars.Runtime.Flight
         public GameModeController Modes { get; }
         public GameEventBus Events { get; }
         public ISceneTransition Scenes { get; }
-        public MirraProgressionService Progression { get; }
+        public IChapterProgression Progression { get; }
     }
 }

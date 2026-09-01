@@ -2278,28 +2278,50 @@ git commit -m "feat: add isolated Galaxy commerce adapter"
 
 **Files:**
 - Create: `Assets/_JustSomeStars/Scenes/Destinations/KoroVesper.unity`
-- Create: `Assets/_JustSomeStars/Content/Missions/koro-vesper-chapter.asset`
+- Create: `Assets/_JustSomeStars/Scenes/Destinations/Task25VesperFlight.unity`
+- Create: `Assets/_JustSomeStars/Content/{Atlas,Dialogue,Missions,Phenomena,Traversal}/KoroVesper/`
+- Create: `Assets/_JustSomeStars/Content/Resources/Task25KoroVesperChapter.asset`
 - Create: `Assets/_JustSomeStars/Art/2D/Environments/KoroVesper/`
-- Create: `Assets/_JustSomeStars/Runtime/Discovery/GeyserController.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Discovery/{GeyserController,KoroSpectrumComparison}.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Crew/KoroCrew{Actor,}Runtime2D.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Missions/{IChapterProgression,DestinationProgressionCoordinator,KoroVesperChapterContent,KoroVesperMissionController2D,KoroVesperProgressionService}.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/{Core,Flight,Player,Missions}/` destination integration seams
+- Modify: `Assets/_JustSomeStars/Runtime/Saving/SaveMerge.cs`
+- Modify: `Assets/_JustSomeStars/Content/SceneCatalog.asset`
+- Modify: `Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset`
+- Modify: `ProjectSettings/EditorBuildSettings.asset`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/KoroVesperMissionTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/ApplicationBootstrapInstallerTests.cs`
+- Create: `outputs/task25-koro-vesper-gameplay-target-v1.png`
+- Create: `docs/qa/task25-koro-vesper-review.md`
 
 **Interfaces:**
 - Produces: Vesper gravity route, Koro landing, low-gravity traversal, spectra comparison and second fragment.
 
-- [ ] **Step 1: Graybox the complete route and checkpoint graph**
+- [x] **Step 1: Graybox the complete route and checkpoint graph**
 
-- [ ] **Step 2: Write an end-to-end mission test from Vesper arrival through second-fragment recovery**
+- [x] **Step 2: Write an end-to-end mission test from Vesper flight through landing and second-fragment recovery**
 
-- [ ] **Step 3: Build layered 2.5D low-gravity traversal, geyser timing and spectrum evidence**
+- [x] **Step 3: Build layered 2.5D low-gravity traversal, geyser timing and spectrum evidence**
 
-- [ ] **Step 4: Author companions, dialogue, optional observations and Atlas records**
+- [x] **Step 4: Author companions, dialogue, optional observations and Atlas records**
 
-- [ ] **Step 5: Produce ice-cyan/violet art, lighting and VFX at Mirra's measured quality**
+- [x] **Step 5: Produce ice-cyan/violet art, lighting and VFX at Mirra's measured quality**
 
-- [ ] **Step 6: Complete device runs across assistance/science-depth combinations and commit**
+- [x] **Step 6: Complete cross-profile acceptance, bounded device evidence and commit**
+
+The source-final production E2E drives the real Vesper flight model,
+`LandingSequence`, real Koro scene, Lens targets, comparison, geyser rhythm and
+fragment recovery and passes inside the final `10/10` fixture. The earlier
+paid-device run proved flight, landing, traversal and one spectrum but predates
+the final corrective APK. No final exact-APK completion is claimed because the
+replacement Limrun credit was unavailable and no local device was attached;
+JSS-025 carries that bounded spot-check to Task 30. The same extreme critic
+accepted the source-fresh E2E as the stated alternative and returned
+`PROCEED`.
 
 ```bash
-git add Assets/_JustSomeStars/Scenes/Destinations/KoroVesper.unity Assets/_JustSomeStars/Content Assets/_JustSomeStars/Art/2D/Environments/KoroVesper Assets/_JustSomeStars/Runtime/Discovery Assets/_JustSomeStars/Tests
+git add Assets/AddressableAssetsData/AssetGroups/Default\ Local\ Group.asset Assets/_JustSomeStars/Art/2D/Environments/KoroVesper.meta Assets/_JustSomeStars/Art/2D/Environments/KoroVesper Assets/_JustSomeStars/Content/Atlas/KoroVesper.meta Assets/_JustSomeStars/Content/Atlas/KoroVesper Assets/_JustSomeStars/Content/Dialogue/KoroVesper.meta Assets/_JustSomeStars/Content/Dialogue/KoroVesper Assets/_JustSomeStars/Content/Missions/KoroVesper.meta Assets/_JustSomeStars/Content/Missions/KoroVesper Assets/_JustSomeStars/Content/Phenomena/KoroVesper.meta Assets/_JustSomeStars/Content/Phenomena/KoroVesper Assets/_JustSomeStars/Content/Resources/Task25KoroVesperChapter.asset Assets/_JustSomeStars/Content/Resources/Task25KoroVesperChapter.asset.meta Assets/_JustSomeStars/Content/Traversal.meta Assets/_JustSomeStars/Content/Traversal Assets/_JustSomeStars/Content/SceneCatalog.asset Assets/_JustSomeStars/Runtime/Core/ApplicationBootstrapInstaller.cs Assets/_JustSomeStars/Runtime/Crew/KoroCrewActorRuntime2D.cs Assets/_JustSomeStars/Runtime/Crew/KoroCrewActorRuntime2D.cs.meta Assets/_JustSomeStars/Runtime/Crew/KoroCrewRuntime2D.cs Assets/_JustSomeStars/Runtime/Crew/KoroCrewRuntime2D.cs.meta Assets/_JustSomeStars/Runtime/Discovery/GeyserController.cs Assets/_JustSomeStars/Runtime/Discovery/GeyserController.cs.meta Assets/_JustSomeStars/Runtime/Discovery/KoroSpectrumComparison.cs Assets/_JustSomeStars/Runtime/Discovery/KoroSpectrumComparison.cs.meta Assets/_JustSomeStars/Runtime/Flight/FlightGameplayDependencies.cs Assets/_JustSomeStars/Runtime/Flight/FlightGameplayLifecycle2D.cs Assets/_JustSomeStars/Runtime/Flight/LandingSequence.cs Assets/_JustSomeStars/Runtime/Missions/DestinationProgressionCoordinator.cs Assets/_JustSomeStars/Runtime/Missions/DestinationProgressionCoordinator.cs.meta Assets/_JustSomeStars/Runtime/Missions/IChapterProgression.cs Assets/_JustSomeStars/Runtime/Missions/IChapterProgression.cs.meta Assets/_JustSomeStars/Runtime/Missions/KoroVesperChapterContent.cs Assets/_JustSomeStars/Runtime/Missions/KoroVesperChapterContent.cs.meta Assets/_JustSomeStars/Runtime/Missions/KoroVesperMissionController2D.cs Assets/_JustSomeStars/Runtime/Missions/KoroVesperMissionController2D.cs.meta Assets/_JustSomeStars/Runtime/Missions/KoroVesperProgressionService.cs Assets/_JustSomeStars/Runtime/Missions/KoroVesperProgressionService.cs.meta Assets/_JustSomeStars/Runtime/Missions/MirraProgressionService.cs Assets/_JustSomeStars/Runtime/Player/SurfaceGameplayDependencies.cs Assets/_JustSomeStars/Runtime/Saving/SaveMerge.cs Assets/_JustSomeStars/Scenes/Destinations/KoroVesper.unity Assets/_JustSomeStars/Scenes/Destinations/KoroVesper.unity.meta Assets/_JustSomeStars/Scenes/Destinations/Task25VesperFlight.unity Assets/_JustSomeStars/Scenes/Destinations/Task25VesperFlight.unity.meta Assets/_JustSomeStars/Tests/PlayMode/ApplicationBootstrapInstallerTests.cs Assets/_JustSomeStars/Tests/PlayMode/KoroVesperMissionTests.cs Assets/_JustSomeStars/Tests/PlayMode/KoroVesperMissionTests.cs.meta ProjectSettings/EditorBuildSettings.asset docs/issue-register.md docs/progress/production-execution-ledger.md docs/qa/task25-koro-vesper-review.md docs/superpowers/plans/2026-08-21-just-some-stars-implementation.md outputs/task25-koro-vesper-gameplay-target-v1.png
 git commit -m "feat: complete Koro and Vesper chapter"
 ```
 

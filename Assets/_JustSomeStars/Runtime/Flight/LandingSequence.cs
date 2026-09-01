@@ -27,7 +27,7 @@ namespace JustSomeStars.Runtime.Flight
         private ISceneTransition scenes;
         private GameEventBus events;
         private GameModeController modes;
-        private MirraProgressionService progression;
+        private IChapterProgression progression;
         private CancellationTokenSource transitionCancellation;
         private bool attemptInProgress;
         private bool releaseRequested;
@@ -45,7 +45,7 @@ namespace JustSomeStars.Runtime.Flight
             ISceneTransition scenes,
             GameEventBus events,
             GameModeController modes,
-            MirraProgressionService progression)
+            IChapterProgression progression)
         {
             if (scenes == null)
             {
@@ -126,7 +126,7 @@ namespace JustSomeStars.Runtime.Flight
                 if (progression != null && !approachPublished)
                 {
                     ownedEvents.Publish(new ApproachCompleted(
-                        progression.Content.ApproachId));
+                        progression.ApproachId));
                     await progression.FlushPendingAsync(attemptCancellation.Token);
                     approachPublished = true;
                 }

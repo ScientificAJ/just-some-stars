@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0713d8ce08b3eae8046373db4e6d8b, type: 3}
+  m_Name: koro-vesper-chapter
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Missions.MissionDefinition
+  stableId: mission.koro-vesper.chapter-one
+  entryNodeId: mission.koro-vesper.entry
+  nodes:
+  - stableId: mission.koro-vesper.entry
+    kind: 0
+    requirements: []
+    nextNodeIds:
+    - mission.koro-vesper.approach
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 0
+  - stableId: mission.koro-vesper.approach
+    kind: 3
+    requirements:
+    - eventKind: 6
+      payloadId: approach.vesper.gravity-route
+    nextNodeIds:
+    - mission.koro-vesper.landed
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 1
+  - stableId: mission.koro-vesper.landed
+    kind: 3
+    requirements:
+    - eventKind: 0
+      payloadId: destination.koro.surface
+    nextNodeIds:
+    - mission.koro-vesper.traversal
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 2
+  - stableId: mission.koro-vesper.traversal
+    kind: 3
+    requirements:
+    - eventKind: 7
+      payloadId: route.koro.low-gravity
+    nextNodeIds:
+    - mission.koro-vesper.spectra
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 3
+  - stableId: mission.koro-vesper.spectra
+    kind: 3
+    requirements:
+    - eventKind: 1
+      payloadId: phenomenon.koro.geyser-natural
+    - eventKind: 1
+      payloadId: phenomenon.koro.geyser-signal
+    - eventKind: 9
+      payloadId: evidence.koro.spectrum-comparison
+    nextNodeIds:
+    - mission.koro-vesper.rhythm
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 4
+  - stableId: mission.koro-vesper.rhythm
+    kind: 3
+    requirements:
+    - eventKind: 10
+      payloadId: interaction.koro.geyser-rhythm
+    nextNodeIds:
+    - mission.koro-vesper.fragment
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 5
+  - stableId: mission.koro-vesper.fragment
+    kind: 3
+    requirements:
+    - eventKind: 4
+      payloadId: fragment.signal.koro.002
+    nextNodeIds:
+    - mission.koro-vesper.complete
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 6
+  - stableId: mission.koro-vesper.complete
+    kind: 5
+    requirements: []
+    nextNodeIds: []
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 0

@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2547e55ec9dfbbef9928c19f015c725e, type: 3}
+  m_Name: English
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Atlas.LocalizedEnglishCatalog
+  entries:
+  - key: koro.atlas.guided
+    value: Both plumes may carry water-related ultraviolet signatures.
+  - key: koro.atlas.balanced
+    value: Both plumes may contain water-related material, but the violet plume repeats
+      one stronger line. That difference is evidence of the Signal pattern, not proof
+      of life or a direct ocean source.
+  - key: koro.atlas.deep
+    value: The spectrometer compares authored false-color ultraviolet samples at
+      121.6, 130.4 and 135.6 nm. Their shared pattern may be consistent with water-related
+      material; the enhanced 135.6 nm intensity in the violet plume marks a repeating
+      fictional Signal component. Tidal flexing can provide energy and Europa-like
+      worlds may hide oceans beneath ice, but these observations alone do not prove
+      life, habitability, or direct exchange with a global ocean.
+  - key: koro.dialogue.mira
+    value: 'Mira: Same ice, different rhythm. Save both spectra.'
+  - key: koro.dialogue.bea
+    value: 'Bea: Low gravity makes the gaps longer. Watch the warning glow.'
+  - key: koro.dialogue.ori
+    value: 'Ori: Natural plume, Signal plume, then natural again.'
+  - key: koro.geyser.natural.guided
+    value: 'Natural plume: record its UV pattern.'
+  - key: koro.geyser.natural.deep
+    value: Natural ballistic ice-vapor plume; its UV pattern may indicate water-related
+      material.
+  - key: koro.geyser.signal.guided
+    value: 'Signal plume: record its changed line strength.'
+  - key: koro.geyser.signal.deep
+    value: Fictional Signal modulation changes one false-color ultraviolet line without
+      proving a biological source.

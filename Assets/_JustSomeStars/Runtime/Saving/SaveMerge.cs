@@ -211,6 +211,35 @@ namespace JustSomeStars.Runtime.Saving
             MissionProgress local,
             MissionProgress cloud)
         {
+            if (!string.Equals(
+                    local.MissionId,
+                    cloud.MissionId,
+                    StringComparison.Ordinal))
+            {
+                if (!local.HasMission)
+                {
+                    return cloud.Copy();
+                }
+
+                if (!cloud.HasMission)
+                {
+                    return local.Copy();
+                }
+
+                var localChapter = ChapterOrder(local.MissionId);
+                var cloudChapter = ChapterOrder(cloud.MissionId);
+                if (localChapter != cloudChapter)
+                {
+                    return localChapter > cloudChapter
+                        ? local.Copy()
+                        : cloud.Copy();
+                }
+
+                throw new SaveMergeConflictException(
+                    SaveMergeConflictKind.StoryCheckpoint,
+                    "different unknown mission identities have no authored order.");
+            }
+
             if (local.CheckpointOrdinal > cloud.CheckpointOrdinal)
             {
                 return local.Copy();
@@ -229,6 +258,16 @@ namespace JustSomeStars.Runtime.Saving
             }
 
             return local.Copy();
+        }
+
+        private static int ChapterOrder(string missionId)
+        {
+            return missionId switch
+            {
+                "mission.mirra.chapter-one" => 1,
+                "mission.koro-vesper.chapter-one" => 2,
+                _ => 0,
+            };
         }
 
         private static BirthdayState MergeBirthday(

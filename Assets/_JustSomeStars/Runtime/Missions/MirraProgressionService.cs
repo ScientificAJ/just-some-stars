@@ -21,7 +21,7 @@ namespace JustSomeStars.Runtime.Missions
             CancellationToken cancellationToken);
     }
 
-    public sealed class MirraProgressionService : IGameService
+    public sealed class MirraProgressionService : IChapterProgression
     {
         public const string ResourceName = "Task19MirraChapter";
         public const string FlightSceneName = "Task17FlightGraybox";
@@ -56,6 +56,12 @@ namespace JustSomeStars.Runtime.Missions
         }
 
         public MirraChapterContent Content => m_Content;
+        public ContentId ChapterId => m_Content != null
+            ? m_Content.StableId
+            : new ContentId("mission.mirra.chapter-one");
+        public ContentId ApproachId => m_Content != null
+            ? m_Content.ApproachId
+            : new ContentId("approach.mirra.safe");
         public GameSave DurableSave => m_Mission?.DurableSave;
         public ContentId FragmentId => m_Content != null ? m_Content.FragmentId : default;
         public IReadOnlyList<string> EventHistory => m_EventHistory.ToArray();

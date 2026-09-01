@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c693d69329c94f6b8129d06f15d39973, type: 3}
+  m_Name: Task25KoroVesperChapter
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Missions.KoroVesperChapterContent
+  mission: {fileID: 11400000, guid: 1e58505e8549f1e889ed49a445b98e54, type: 2}
+  dialogue:
+  - {fileID: 11400000, guid: b521f655999d8a38c972e9458a25713a, type: 2}
+  - {fileID: 11400000, guid: ed8dddef729339c51b6458309d8c938f, type: 2}
+  - {fileID: 11400000, guid: f5047bffe3c70ac43ae58d8f02d2068b, type: 2}
+  geyserAtlas: {fileID: 11400000, guid: bffcef2e3d31d63ed9f43b2c0a06116f, type: 2}
+  scienceSources:
+  - {fileID: 11400000, guid: 41aef71310adeed92b73fac02406f503, type: 2}
+  - {fileID: 11400000, guid: 4f2dbebd65c9230ac88d575fe7c0eda2, type: 2}
+  - {fileID: 11400000, guid: 7615fdd259dac726db541ad868857802, type: 2}
+  english: {fileID: 11400000, guid: 85cbd1293a00a5dd7b8c536217bd9c05, type: 2}
+  naturalGeyser: {fileID: 11400000, guid: 3ff79676fc109334ca3e81eb19f7f447, type: 2}
+  signalGeyser: {fileID: 11400000, guid: 98c16eb3c93af47e0bf42c29724046fb, type: 2}
+  spectrometer: {fileID: 11400000, guid: 4ec17652b8abf4c508453bd3e6ecfc2d, type: 2}
+  predictionIds:
+  - prediction.koro.water-related-material
+  - prediction.koro.repeating-signal
+  checkpointNodeIds:
+  - mission.koro-vesper.approach
+  - mission.koro-vesper.landed
+  - mission.koro-vesper.traversal
+  - mission.koro-vesper.spectra
+  - mission.koro-vesper.rhythm
+  - mission.koro-vesper.fragment

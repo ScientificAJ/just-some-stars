@@ -82,7 +82,7 @@ namespace JustSomeStars.Runtime.Flight
         }
 
         private async System.Threading.Tasks.Task ConfirmPendingDepartureAsync(
-            JustSomeStars.Runtime.Missions.MirraProgressionService progression)
+            JustSomeStars.Runtime.Missions.IChapterProgression progression)
         {
             try
             {

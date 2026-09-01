@@ -28,11 +28,11 @@ namespace JustSomeStars.Runtime.Player
             GameModeController modes,
             GameEventBus gameEvents,
             ISaveService saves,
-            MirraProgressionService progression)
+            IChapterProgression progression)
             : this(settings, input, modes, gameEvents)
         {
             Saves = saves ?? throw new ArgumentNullException(nameof(saves));
-            Progression = progression ?? throw new ArgumentNullException(
+            ChapterProgression = progression ?? throw new ArgumentNullException(
                 nameof(progression));
         }
 
@@ -46,7 +46,25 @@ namespace JustSomeStars.Runtime.Player
 
         public ISaveService Saves { get; }
 
-        public MirraProgressionService Progression { get; }
+        public IChapterProgression ChapterProgression { get; }
+
+        public MirraProgressionService Progression =>
+            ResolveProgression<MirraProgressionService>();
+
+        public T ResolveProgression<T>() where T : class, IChapterProgression
+        {
+            if (ChapterProgression is T direct)
+            {
+                return direct;
+            }
+
+            if (ChapterProgression is IChapterProgressionCoordinator coordinator)
+            {
+                return coordinator.RequireActive<T>();
+            }
+
+            return null;
+        }
 
         public ISceneTransition Scenes { get; private set; }
 

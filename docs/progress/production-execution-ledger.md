@@ -472,17 +472,17 @@ deliberately uses unavailable gateways until JSS-021 supplies the real
 Firebase/OAuth project, maintained Google identity-token bridge, concrete SDK
 wiring, deployed rules/indexes and two-device proof.
 
-## Immediate next task: Task 25
+## Immediate next task: Task 26
 
-Build Koro/Vesper and the second Signal fragment: complete the low-gravity route,
-mission/checkpoint graph, layered 2.5D presentation, geyser timing, spectrum
-comparison and second-fragment recovery without expanding into Task 26.
+Build Aster Veil, the third Signal fragment, star-map reveal, return to the real
+Clubhouse, opening and dinner ending without expanding into Task 27 cosmetics.
 
 ## User-help queue
 
-No user decision blocks Task 25 local implementation. Task 24's Samsung
-Seller/legal/verifier/signed-artifact/physical-device activation remains JSS-024
-and must not be fabricated.
+No user decision blocks Task 26 local implementation. Task 24's Samsung
+activation remains JSS-024, and the corrected Task 25 exact-APK completion
+spot-check remains JSS-025 for the Task 30 device pass; neither may be
+fabricated.
 
 ## Chronological checkpoint log
 
@@ -674,3 +674,14 @@ and must not be fabricated.
   isolation/runtime is `10/10`, affected build configuration is `4/4`, and the
   same extreme critic returned `PROCEED`. Seller/legal/verifier/signed-artifact
   and physical-device activation remain JSS-024; Task 25 is next.
+- 2026-09-01: Task 25 completed the Koro/Vesper chapter locally. The final
+  production E2E starts in the real Vesper flight scene, advances the bound
+  flight model, lands only through `LandingSequence`, enters the real Koro
+  surface, completes real Lens spectra, geyser rhythm and second-fragment
+  recovery, and preserves both fragments at checkpoint 6. Fresh focused gates
+  pass `1/1` and `10/10`; the corrected Android APK is 352,290,974 bytes with
+  SHA-256
+  `c7f55a58f8ea14b38c935616905fd440b8869e695a0066b96b4b0396fde735ca`;
+  the same extreme critic returned `PROCEED`. The final exact-APK completion
+  spot-check is recorded honestly as JSS-025 because Limrun had no remaining
+  credit and no local Android device was attached. Task 26 is next.

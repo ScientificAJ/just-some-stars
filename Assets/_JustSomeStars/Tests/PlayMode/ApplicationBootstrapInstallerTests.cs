@@ -54,7 +54,8 @@ namespace JustSomeStars.Tests.PlayMode
             s_ApplicationRoles.Concat(new[] { GameServiceRole.Progression }).ToArray();
 
         private static readonly Type[] s_ProductionServiceTypes =
-            s_ApplicationServiceTypes.Concat(new[] { typeof(MirraProgressionService) })
+            s_ApplicationServiceTypes.Concat(new[]
+                { typeof(DestinationProgressionCoordinator) })
                 .ToArray();
 
         private readonly List<UnityEngine.Object> m_OwnedObjects =
@@ -401,7 +402,7 @@ namespace JustSomeStars.Tests.PlayMode
                     ReadProperty(surfaceDependencies, "Modes"),
                     Is.SameAs(composition.Services[4].Service));
                 Assert.That(
-                    ReadProperty(surfaceDependencies, "Progression"),
+                    ReadProperty(surfaceDependencies, "ChapterProgression"),
                     Is.SameAs(composition.Services[7].Service));
 
                 var frontendDependencies = typeof(UnitySceneTransition).GetField(
