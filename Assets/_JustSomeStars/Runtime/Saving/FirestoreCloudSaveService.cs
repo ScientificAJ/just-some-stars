@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using JustSomeStars.Runtime.Core;
+using JustSomeStars.Runtime.Cosmetics;
 using UnityEngine;
 
 namespace JustSomeStars.Runtime.Saving
@@ -277,6 +278,13 @@ namespace JustSomeStars.Runtime.Saving
             RequireCloudId(save.Captain.BodyFamilyId, parameterName);
             RequireCloudId(save.Captain.AppearancePresetId, parameterName);
             RequireCloudId(save.Captain.SuitCosmeticId, parameterName);
+            RequireCloudId(save.CosmeticLoadout.Captain, parameterName);
+            RequireCloudId(save.CosmeticLoadout.Ori, parameterName);
+            RequireCloudId(save.CosmeticLoadout.Ship, parameterName);
+            RequireCloudId(save.CosmeticLoadout.Lens, parameterName);
+            RequireCloudId(save.CosmeticLoadout.Clubhouse, parameterName);
+            RequireCloudId(save.CosmeticLoadout.Photo, parameterName);
+            RequireCloudId(save.CosmeticLoadout.Crew, parameterName);
             RequireCloudId(save.Metadata.SaveId, parameterName);
             RequireCloudIds(save.DiscoveryIds, 2048, parameterName);
             RequireCloudIds(save.EarnedCosmeticIds, 1024, parameterName);
@@ -335,6 +343,7 @@ namespace JustSomeStars.Runtime.Saving
             public ChapterOneProgress chapterOne;
             public MissionProgress mission;
             public CaptainState captain;
+            public CosmeticLoadoutState cosmeticLoadout;
             public string[] discoveryIds;
             public string[] earnedCosmeticIds;
             public string[] atlasEntryIds;
@@ -350,6 +359,7 @@ namespace JustSomeStars.Runtime.Saving
                     chapterOne = save.ChapterOne.Copy(),
                     mission = save.Mission.Copy(),
                     captain = save.Captain.Copy(),
+                    cosmeticLoadout = save.CosmeticLoadout.Copy(),
                     discoveryIds = (string[])save.DiscoveryIds.Clone(),
                     earnedCosmeticIds = (string[])save.EarnedCosmeticIds.Clone(),
                     atlasEntryIds = (string[])save.AtlasEntryIds.Clone(),
@@ -373,6 +383,7 @@ namespace JustSomeStars.Runtime.Saving
                 projected.ChapterOne = chapterOne;
                 projected.Mission = mission;
                 projected.Captain = captain;
+                projected.CosmeticLoadout = cosmeticLoadout;
                 projected.DiscoveryIds = discoveryIds;
                 projected.EarnedCosmeticIds = earnedCosmeticIds;
                 projected.AtlasEntryIds = atlasEntryIds;

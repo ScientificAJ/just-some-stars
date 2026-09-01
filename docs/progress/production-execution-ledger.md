@@ -478,15 +478,16 @@ deliberately uses unavailable gateways until JSS-021 supplies the real
 Firebase/OAuth project, maintained Google identity-token bridge, concrete SDK
 wiring, deployed rules/indexes and two-device proof.
 
-## Immediate next task: Task 27
+## Immediate next task: Task 28
 
-Build the 100-plus cosmetic catalogue and edition-feature boundary without
-expanding into Task 28 localization.
+Complete the player-facing UI, English localization and accessibility surfaces
+without expanding into Task 29 audio production.
 
 ## User-help queue
 
-No user decision blocks Task 27 local implementation. Task 26's source-fresh
-Unity tests are queued with Tasks 27–30 in the user-requested final matrix.
+No user decision blocks Task 28 local implementation. Tasks 26 and 27's
+source-fresh focused tests are queued with Tasks 28–30 in the user-requested
+final matrix.
 Task 24's Samsung activation remains JSS-024, and the corrected Task 25
 exact-APK completion spot-check remains JSS-025 for the Task 30 device pass;
 neither may be fabricated.
@@ -703,3 +704,14 @@ neither may be fabricated.
   extreme critic returned `PROCEED`. Per the user's efficiency rule, Task 26's
   source-fresh Unity test execution is deferred to the one Tasks 26–30 final
   matrix. Task 27 is next.
+- 2026-09-01: Task 27 completed the launch cosmetic catalogue and edition
+  implementation checkpoint. The catalogue contains 128 stable entries across
+  seven categories, with unique generated icon and transparent presentation
+  sprites, all 20 individual products mapped by both store adapters and concrete
+  SpriteRenderer presentation. Save schema 5 persists equipped loadouts through
+  local/cloud paths; Explorer replay, modifiers, development archive and
+  soundtrack playback are functional rather than catalogue-only declarations.
+  Runtime, Editor, EditMode-test and PlayMode-test assemblies compile and the
+  same bounded extreme critic returned `PROCEED`. Per the user's efficiency
+  rule, Task 27's authored focused execution is deferred to the one Tasks 26–30
+  final matrix. Task 28 is next.

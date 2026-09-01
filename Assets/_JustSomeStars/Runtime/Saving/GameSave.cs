@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using JustSomeStars.Runtime.Cosmetics;
 using UnityEngine;
 
 namespace JustSomeStars.Runtime.Saving
@@ -620,7 +621,7 @@ namespace JustSomeStars.Runtime.Saving
     [Serializable]
     public sealed class GameSave : IEquatable<GameSave>
     {
-        public const int CurrentSchemaVersion = 4;
+        public const int CurrentSchemaVersion = 5;
 
         internal static readonly string[] RequiredJsonFields =
         {
@@ -629,6 +630,7 @@ namespace JustSomeStars.Runtime.Saving
             "chapterOne",
             "mission",
             "captain",
+            "cosmeticLoadout",
             "discoveryIds",
             "earnedCosmeticIds",
             "atlasEntryIds",
@@ -643,6 +645,8 @@ namespace JustSomeStars.Runtime.Saving
             new ChapterOneProgress();
         [SerializeField] private MissionProgress mission = MissionProgress.Empty();
         [SerializeField] private CaptainState captain = new CaptainState();
+        [SerializeField] private CosmeticLoadoutState cosmeticLoadout =
+            new CosmeticLoadoutState();
         [SerializeField] private string[] discoveryIds = Array.Empty<string>();
         [SerializeField] private string[] earnedCosmeticIds = Array.Empty<string>();
         [SerializeField] private string[] atlasEntryIds = Array.Empty<string>();
@@ -684,6 +688,12 @@ namespace JustSomeStars.Runtime.Saving
         {
             get => captain;
             set => captain = value;
+        }
+
+        public CosmeticLoadoutState CosmeticLoadout
+        {
+            get => cosmeticLoadout;
+            set => cosmeticLoadout = value;
         }
 
         public string[] DiscoveryIds
@@ -744,6 +754,10 @@ namespace JustSomeStars.Runtime.Saving
                 {
                     LastCustomizedUtcTicks = createdUtcTicks,
                 },
+                cosmeticLoadout = new CosmeticLoadoutState
+                {
+                    LastEquippedUtcTicks = createdUtcTicks,
+                },
                 discoveryIds = Array.Empty<string>(),
                 earnedCosmeticIds = Array.Empty<string>(),
                 atlasEntryIds = Array.Empty<string>(),
@@ -768,6 +782,7 @@ namespace JustSomeStars.Runtime.Saving
                 chapterOne = chapterOne?.Copy(),
                 mission = mission?.Copy(),
                 captain = captain?.Copy(),
+                cosmeticLoadout = cosmeticLoadout?.Copy(),
                 discoveryIds = discoveryIds?.ToArray(),
                 earnedCosmeticIds = earnedCosmeticIds?.ToArray(),
                 atlasEntryIds = atlasEntryIds?.ToArray(),
@@ -785,6 +800,7 @@ namespace JustSomeStars.Runtime.Saving
                 Equals(chapterOne, other.chapterOne) &&
                 Equals(mission, other.mission) &&
                 Equals(captain, other.captain) &&
+                Equals(cosmeticLoadout, other.cosmeticLoadout) &&
                 SequenceEqual(discoveryIds, other.discoveryIds) &&
                 SequenceEqual(earnedCosmeticIds, other.earnedCosmeticIds) &&
                 SequenceEqual(atlasEntryIds, other.atlasEntryIds) &&
@@ -804,6 +820,7 @@ namespace JustSomeStars.Runtime.Saving
                 hash = (hash * 397) ^ (chapterOne?.GetHashCode() ?? 0);
                 hash = (hash * 397) ^ (mission?.GetHashCode() ?? 0);
                 hash = (hash * 397) ^ (captain?.GetHashCode() ?? 0);
+                hash = (hash * 397) ^ (cosmeticLoadout?.GetHashCode() ?? 0);
                 hash = (hash * 397) ^ (birthday?.GetHashCode() ?? 0);
                 return (hash * 397) ^ (metadata?.GetHashCode() ?? 0);
             }
@@ -819,7 +836,7 @@ namespace JustSomeStars.Runtime.Saving
             }
 
             if (story == null || chapterOne == null || mission == null || captain == null ||
-                birthday == null || metadata == null)
+                cosmeticLoadout == null || birthday == null || metadata == null)
             {
                 throw new ArgumentException("Save domains cannot be missing.", parameterName);
             }
@@ -850,6 +867,23 @@ namespace JustSomeStars.Runtime.Saving
                 throw new ArgumentOutOfRangeException(
                     parameterName,
                     "Captain customization timestamp cannot be negative.");
+            }
+
+            RequireId(cosmeticLoadout.Captain, nameof(CosmeticLoadoutState.Captain), parameterName);
+            RequireId(cosmeticLoadout.Ori, nameof(CosmeticLoadoutState.Ori), parameterName);
+            RequireId(cosmeticLoadout.Ship, nameof(CosmeticLoadoutState.Ship), parameterName);
+            RequireId(cosmeticLoadout.Lens, nameof(CosmeticLoadoutState.Lens), parameterName);
+            RequireId(
+                cosmeticLoadout.Clubhouse,
+                nameof(CosmeticLoadoutState.Clubhouse),
+                parameterName);
+            RequireId(cosmeticLoadout.Photo, nameof(CosmeticLoadoutState.Photo), parameterName);
+            RequireId(cosmeticLoadout.Crew, nameof(CosmeticLoadoutState.Crew), parameterName);
+            if (cosmeticLoadout.LastEquippedUtcTicks < 0)
+            {
+                throw new ArgumentOutOfRangeException(
+                    parameterName,
+                    "Cosmetic equip timestamp cannot be negative.");
             }
 
             RequireUniqueIds(discoveryIds, nameof(DiscoveryIds), parameterName);

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ba03d8823aba2759d523eac5859648, type: 3}
+  m_Name: ShipCollection
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Cosmetics.CosmeticCategoryCollection
+  category: 2
+  catalog: {fileID: 11400000, guid: ca7296fb4a613dccc9f7f76a707ec271, type: 2}
+  itemIds:
+  - cosmetic.ship.clubhouse-observatory
+  - cosmetic.ship.garden-habitat
+  - cosmetic.ship.surveyor-array
+  - cosmetic.ship.founder-constellation
+  - cosmetic.ship.signal-crystal
+  - cosmetic.ship.living-canopy
+  - cosmetic.ship.midnight-cockpit
+  - cosmetic.ship.warm-cabin
+  - cosmetic.ship.mirrorball-landing
+  - cosmetic.ship.birthday-flight
+  - cosmetic.ship.aster-patched
+  - cosmetic.ship.vesper-snowcap
+  - cosmetic.ship.orrery-hull
+  - cosmetic.ship.builder-rig
+  - cosmetic.ship.signal-tower
+  - cosmetic.ship.comet-launch

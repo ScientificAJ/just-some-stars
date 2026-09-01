@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ba03d8823aba2759d523eac5859648, type: 3}
+  m_Name: LensCollection
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Cosmetics.CosmeticCategoryCollection
+  category: 3
+  catalog: {fileID: 11400000, guid: ca7296fb4a613dccc9f7f76a707ec271, type: 2}
+  itemIds:
+  - cosmetic.lens.clubhouse-constellation
+  - cosmetic.lens.galaxy-field
+  - cosmetic.lens.planet-grid
+  - cosmetic.lens.comet-glass
+  - cosmetic.lens.home-memory
+  - cosmetic.lens.botany-display
+  - cosmetic.lens.orbit-display
+  - cosmetic.lens.signal-prism
+  - cosmetic.lens.aster-beacon
+  - cosmetic.lens.founder-map
+  - cosmetic.lens.explorer-archive
+  - cosmetic.lens.field-wristlens
+  - cosmetic.lens.birthday-cake
+  - cosmetic.lens.observatory-scope
+  - cosmetic.lens.rocket-window
+  - cosmetic.lens.starlight-compass

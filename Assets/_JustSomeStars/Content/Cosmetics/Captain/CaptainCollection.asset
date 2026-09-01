@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ba03d8823aba2759d523eac5859648, type: 3}
+  m_Name: CaptainCollection
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Cosmetics.CosmeticCategoryCollection
+  category: 0
+  catalog: {fileID: 11400000, guid: ca7296fb4a613dccc9f7f76a707ec271, type: 2}
+  itemIds:
+  - cosmetic.captain.clubhouse-canvas
+  - cosmetic.captain.surveyor-blue
+  - cosmetic.captain.mirra-sunrise
+  - cosmetic.captain.mirra-frostline
+  - cosmetic.captain.koro-glacier
+  - cosmetic.captain.vesper-violet
+  - cosmetic.captain.aster-drift
+  - cosmetic.captain.signal-resonance
+  - cosmetic.captain.founder-starcape
+  - cosmetic.captain.founder-nightwatch
+  - cosmetic.captain.explorer-fieldnotes
+  - cosmetic.captain.explorer-celestial
+  - cosmetic.captain.birthday-banner
+  - cosmetic.captain.launch-navigator
+  - cosmetic.captain.launch-planetary
+  - cosmetic.captain.launch-starlight
+  - cosmetic.captain.explorer-bubble-helmet
+  - cosmetic.captain.workshop-goggles
+  - cosmetic.captain.signal-visor
+  - cosmetic.captain.founder-field-cap
+  - cosmetic.captain.stitched-gloves
+  - cosmetic.captain.lens-gauntlets
+  - cosmetic.captain.laceup-boots
+  - cosmetic.captain.aurora-boots
+  - cosmetic.captain.observatory-pack
+  - cosmetic.captain.solar-field-pack
+  - cosmetic.captain.founder-patch
+  - cosmetic.captain.mirra-patch
+  - cosmetic.captain.constellation-watch
+  - cosmetic.captain.star-charm
+  - cosmetic.captain.birthday-charm
+  - cosmetic.captain.ori-wristlink

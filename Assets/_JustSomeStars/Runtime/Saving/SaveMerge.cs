@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JustSomeStars.Runtime.Cosmetics;
 
 namespace JustSomeStars.Runtime.Saving
 {
@@ -9,6 +10,7 @@ namespace JustSomeStars.Runtime.Saving
         StoryCheckpoint = 0,
         CaptainCustomization = 1,
         Birthday = 2,
+        CosmeticLoadout = 3,
     }
 
     public sealed class SaveMergeConflictException : InvalidOperationException
@@ -47,6 +49,9 @@ namespace JustSomeStars.Runtime.Saving
             merged.ChapterOne = MergeChapterOne(local.ChapterOne, cloud.ChapterOne);
             merged.Mission = MergeMission(local.Mission, cloud.Mission);
             merged.Captain = MergeCaptain(local.Captain, cloud.Captain);
+            merged.CosmeticLoadout = MergeCosmeticLoadout(
+                local.CosmeticLoadout,
+                cloud.CosmeticLoadout);
             merged.DiscoveryIds = Union(local.DiscoveryIds, cloud.DiscoveryIds);
             merged.EarnedCosmeticIds = Union(
                 local.EarnedCosmeticIds,
@@ -114,6 +119,18 @@ namespace JustSomeStars.Runtime.Saving
                 conflict.Kind == SaveMergeConflictKind.CaptainCustomization)
             {
                 merged.Captain = preferred.Captain.Copy();
+            }
+
+            try
+            {
+                merged.CosmeticLoadout = MergeCosmeticLoadout(
+                    local.CosmeticLoadout,
+                    cloud.CosmeticLoadout);
+            }
+            catch (SaveMergeConflictException conflict) when (
+                conflict.Kind == SaveMergeConflictKind.CosmeticLoadout)
+            {
+                merged.CosmeticLoadout = preferred.CosmeticLoadout.Copy();
             }
 
             merged.DiscoveryIds = Union(local.DiscoveryIds, cloud.DiscoveryIds);
@@ -204,6 +221,30 @@ namespace JustSomeStars.Runtime.Saving
                 throw new SaveMergeConflictException(
                     SaveMergeConflictKind.CaptainCustomization,
                     "equal edit timestamps describe different appearances.");
+            }
+
+            return local.Copy();
+        }
+
+        private static CosmeticLoadoutState MergeCosmeticLoadout(
+            CosmeticLoadoutState local,
+            CosmeticLoadoutState cloud)
+        {
+            if (local.LastEquippedUtcTicks > cloud.LastEquippedUtcTicks)
+            {
+                return local.Copy();
+            }
+
+            if (cloud.LastEquippedUtcTicks > local.LastEquippedUtcTicks)
+            {
+                return cloud.Copy();
+            }
+
+            if (!local.Equals(cloud))
+            {
+                throw new SaveMergeConflictException(
+                    SaveMergeConflictKind.CosmeticLoadout,
+                    "equal equip timestamps describe different loadouts.");
             }
 
             return local.Copy();

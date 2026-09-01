@@ -409,6 +409,57 @@ namespace JustSomeStars.Tests.PlayMode
         }
 
         [Test]
+        public async Task RevenueCatRestore_AdoptsEveryIndividualCosmeticEntitlement()
+        {
+            var individualEntitlements = new[]
+            {
+                "jss.cosmetic.captain.launch-navigator",
+                "jss.cosmetic.captain.launch-planetary",
+                "jss.cosmetic.captain.launch-starlight",
+                "jss.cosmetic.captain.star-charm",
+                "jss.cosmetic.captain.birthday-charm",
+                "jss.cosmetic.captain.ori-wristlink",
+                "jss.cosmetic.ori.festival-canopy",
+                "jss.cosmetic.ori.moon-chimes",
+                "jss.cosmetic.ori.comet-trail",
+                "jss.cosmetic.ship.builder-rig",
+                "jss.cosmetic.ship.signal-tower",
+                "jss.cosmetic.ship.comet-launch",
+                "jss.cosmetic.lens.rocket-window",
+                "jss.cosmetic.lens.starlight-compass",
+                "jss.cosmetic.clubhouse.moon-chair",
+                "jss.cosmetic.clubhouse.ori-radio",
+                "jss.cosmetic.photo.captain-pose",
+                "jss.cosmetic.photo.stargazer-pose",
+                "jss.cosmetic.crew.launch-homecoming",
+                "jss.cosmetic.crew.birthday-expedition",
+            };
+            var gateway = new FakeRevenueCatGateway
+            {
+                NextRestore = Success(Info(
+                    Anonymous,
+                    EntitlementVerification.Verified,
+                    individualEntitlements.Select(value => Entitlement(
+                        value,
+                        true,
+                        EntitlementVerification.Verified)).ToArray())),
+            };
+            var store = CreateStore(new FakeAccountService(), gateway);
+            await store.InitializeAsync(CancellationToken.None);
+
+            var restored = await store.RestoreAsync(CancellationToken.None);
+
+            Assert.That(gateway.RestoreCount, Is.EqualTo(1));
+            foreach (var entitlement in individualEntitlements)
+            {
+                Assert.That(restored.Owns(new ContentId(entitlement)),
+                    Is.True,
+                    entitlement);
+            }
+            await store.ShutdownAsync();
+        }
+
+        [Test]
         public async Task Shop_GrownUpPolicyFailsClosed()
         {
             var response = new GrownUpChallengeResponse();
@@ -673,6 +724,8 @@ namespace JustSomeStars.Tests.PlayMode
                     null,
                     string.Empty);
 
+            public RevenueCatGatewayResult NextRestore { get; set; }
+
             public Func<string, CancellationToken,
                 ValueTask<RevenueCatGatewayResult>> PurchaseHandler
             {
@@ -717,7 +770,7 @@ namespace JustSomeStars.Tests.PlayMode
                 CancellationToken cancellationToken)
             {
                 RestoreCount++;
-                return new ValueTask<RevenueCatGatewayResult>(
+                return new ValueTask<RevenueCatGatewayResult>(NextRestore ??
                     new RevenueCatGatewayResult(
                         RevenueCatGatewayResultStatus.Succeeded,
                         Info(

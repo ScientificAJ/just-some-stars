@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "grid": { "columns": 4, "rows": 4, "cellPixels": 312 },
+  "backgroundExtraction": "ImageGen solid-key edit -> deterministic RGBA chroma extraction",
+  "atlases": [
+    { "category": "Captain", "path": "Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png", "sha256": "328d7f6af7b333a1e8df85deec159d76c2f0cf0ac3e9300fe3e9c5e8a850cdb6", "sprites": 16 },
+    { "category": "Captain", "path": "Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png", "sha256": "1f8bdffa5c626f8020714f1cfd2f5987b6326f9d30a4adbbc88f308ba14e3e76", "sprites": 16 },
+    { "category": "Ori", "path": "Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png", "sha256": "52efdb44bc7768627831f7c5acad75c44b673b75e26c2a0760166554eeea2552", "sprites": 16 },
+    { "category": "Ship", "path": "Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png", "sha256": "4a4a361ca2d1617df90dc73d014b4b49825acc1bf04e5815abcb77b563519b43", "sprites": 16 },
+    { "category": "Lens", "path": "Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png", "sha256": "970348425a487656e492057c41ab567665517cdd8978004331449c49135dca02", "sprites": 16 },
+    { "category": "Clubhouse", "path": "Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png", "sha256": "a33b4539f244bb36b405607319de622b7ebbf1e49888264e9b78c25f0b9672c8", "sprites": 16 },
+    { "category": "Photo", "path": "Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png", "sha256": "e530208550fc3af9ae4a87e3188f482827ef6e16751133c6f2fe72be10b0dc4d", "sprites": 16 },
+    { "category": "Crew", "path": "Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png", "sha256": "0abc57b8ab092f6aa29de9db2d4ba8de3a0d4fae5306a4ebe8df4e37681e84c0", "sprites": 16 }
+  ]
+}

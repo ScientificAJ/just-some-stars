@@ -2383,9 +2383,14 @@ git commit -m "feat: complete Aster Veil and dinner finale"
 ### Task 27: Build the 100-plus cosmetic catalogue and editions
 
 **Files:**
+- Create: `Assets/_JustSomeStars/Art/2D/Cosmetics/{IconAtlases,PresentationAtlases}/`
+- Create: `Assets/_JustSomeStars/Art/2D/Cosmetics/cosmetic-presentation-manifest.json`
 - Create: `Assets/_JustSomeStars/Content/Cosmetics/CosmeticCatalog.asset`
 - Create: `Assets/_JustSomeStars/Content/Cosmetics/{Captain,Ori,Ship,Lens,Clubhouse,Photo,Crew}/`
 - Create: `Assets/_JustSomeStars/Runtime/Cosmetics/CosmeticCatalog.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Cosmetics/CosmeticCategoryCollection.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Cosmetics/CosmeticLoadoutState.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Cosmetics/CosmeticPresentationRuntime.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Cosmetics/OwnershipResolver.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Cosmetics/EditionFeatureService.cs`
 - Create: `Assets/_JustSomeStars/Runtime/Missions/ExpeditionReplayService.cs`
@@ -2394,35 +2399,50 @@ git commit -m "feat: complete Aster Veil and dinner finale"
 - Create: `Assets/_JustSomeStars/Runtime/UI/SoundtrackJukeboxController.cs`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/CosmeticCatalogTests.cs`
 - Create: `Assets/_JustSomeStars/Tests/EditMode/EditionFeatureTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/EditMode/StoreVariantIsolationTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/ShopFlowTests.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Commerce/{RevenueCatStoreService,GalaxyStoreService}.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Saving/{GameSave,SaveMigrator,SaveMerge,FirestoreCloudSaveService}.cs`
+- Create: `Assets/_JustSomeStars/Editor/Task27CosmeticCatalogBuilder.cs`
 - Create: `docs/product/cosmetic-catalog.csv`
+- Create: `docs/product/cosmetic-art-provenance.md`
 
 **Interfaces:**
 - Consumes: gameplay awards, birthday grants and RevenueCat entitlements.
 - Produces: visible inventory, ownership source and compatible equipped loadouts.
 
-- [ ] **Step 1: Define every launch item and pack in `cosmetic-catalog.csv`**
+- [x] **Step 1: Define every launch item and pack in `cosmetic-catalog.csv`**
 
 Each row includes stable ID, category, free/earned/paid source, pack, body fits, asset references and entitlement.
 
-- [ ] **Step 2: Write validation tests for unique IDs, 100-plus count, pack membership, ownership and all required body fits**
+- [x] **Step 2: Write validation tests for unique IDs, 100-plus count, pack membership, ownership and all required body fits**
 
-- [ ] **Step 3: Produce bounded sprite layers, palette masks, icons and effects through the approved art pipeline**
+- [x] **Step 3: Produce bounded sprite layers, palette masks, icons and effects through the approved art pipeline**
 
 Every silhouette-changing Captain item supplies compatible atlas rows for all
 three body families. Color-only variants use palette masks; they do not clone
 complete atlases. Crew, Ori, ship and environment cosmetics declare their own
 sprite attachment and frame-event compatibility.
 
-- [ ] **Step 4: Implement ownership resolution with precedence: earned, birthday, edition, individual purchase**
+- [x] **Step 4: Implement ownership resolution with precedence: earned, birthday, edition, individual purchase**
 
-- [ ] **Step 5: Implement Explorer Edition features and Founder's/Launch pack presentation**
+- [x] **Step 5: Implement Explorer Edition features and Founder's/Launch pack presentation**
 
 `EditionFeatureService` gates Expedition Replay, advanced cinematic modifiers, the development/science archive and soundtrack jukebox from the single `explorer_edition` entitlement. Tests must prove that losing network access does not remove a previously verified edition and that base story, Atlas science and standard Photo Mode remain available without it.
 
-- [ ] **Step 6: Test equip/save/cloud/restore across all categories and commit**
+- [x] **Step 6: Author equip/save/cloud/restore coverage across all categories, freeze the source and commit**
+
+Task 27 publishes 128 stable catalogue entries, unique icon and presentation
+sprites, 20 individual-product mappings in both store adapters, a concrete
+SpriteRenderer presentation route, save/cloud loadout persistence and functional
+Explorer replay, archive and soundtrack boundaries. Unity materialization
+compiled the Runtime, Editor, EditMode-test and PlayMode-test assemblies and the
+bounded extreme critic returned `PROCEED`. Per the user's efficiency rule, the
+authored Task 27 focused tests are queued for the single Tasks 26–30 final
+verification matrix rather than executed during this implementation checkpoint.
 
 ```bash
-git add Assets/_JustSomeStars/Content/Cosmetics Assets/_JustSomeStars/Runtime/Cosmetics Assets/_JustSomeStars/Art Assets/_JustSomeStars/Tests docs/product
+git add Assets/_JustSomeStars/Art/2D/Cosmetics Assets/_JustSomeStars/Content/Cosmetics Assets/_JustSomeStars/Editor/Task27CosmeticCatalogBuilder.cs Assets/_JustSomeStars/Runtime/{Atlas,Commerce,Cosmetics,Missions,Saving,UI} Assets/_JustSomeStars/Tests/EditMode/{CosmeticCatalogTests,EditionFeatureTests,StoreVariantIsolationTests}.cs Assets/_JustSomeStars/Tests/PlayMode/ShopFlowTests.cs docs/product
 git commit -m "feat: add launch cosmetic catalogue and editions"
 ```
 

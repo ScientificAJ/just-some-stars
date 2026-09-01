@@ -1,0 +1,4226 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5225a7f03b530d4fa813cceddf98dc47, type: 3}
+  m_Name: CosmeticCatalog
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Cosmetics.CosmeticCatalog
+  schemaVersion: 1
+  items:
+  - id: cosmetic.captain.clubhouse-canvas
+    displayName: Clubhouse Canvas
+    category: 0
+    ownershipSource: 0
+    rarity: 0
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 000000000100000002000000
+    icon: {fileID: -8124434182273976864, guid: 409b882be14dbac748e0a9aaa0aa0287, type: 3}
+    presentationSprite: {fileID: -8124434182273976864, guid: dd7c6f8ec665932a79ca06eaabaa2802, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png#cosmetic.captain.clubhouse-canvas
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-suitComponents.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.clubhouse-canvas
+    primaryColor: '#D68A3A'
+    accentColor: '#55D9FF'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.surveyor-blue
+    displayName: Surveyor Blue
+    category: 0
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 000000000100000002000000
+    icon: {fileID: -6875361176033257374, guid: 409b882be14dbac748e0a9aaa0aa0287, type: 3}
+    presentationSprite: {fileID: -6875361176033257374, guid: dd7c6f8ec665932a79ca06eaabaa2802, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png#cosmetic.captain.surveyor-blue
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-suitComponents.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.surveyor-blue
+    primaryColor: '#C7B18B'
+    accentColor: '#F0A33A'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.mirra-sunrise
+    displayName: Mirra Sunrise
+    category: 0
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 837495889440562518, guid: 409b882be14dbac748e0a9aaa0aa0287, type: 3}
+    presentationSprite: {fileID: 837495889440562518, guid: dd7c6f8ec665932a79ca06eaabaa2802, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png#cosmetic.captain.mirra-sunrise
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-suitComponents.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.mirra-sunrise
+    primaryColor: '#4E9CB5'
+    accentColor: '#A9ECFF'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.mirra-frostline
+    displayName: Mirra Frostline
+    category: 0
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 000000000100000002000000
+    icon: {fileID: -412412223674131540, guid: 409b882be14dbac748e0a9aaa0aa0287, type: 3}
+    presentationSprite: {fileID: -412412223674131540, guid: dd7c6f8ec665932a79ca06eaabaa2802, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png#cosmetic.captain.mirra-frostline
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-suitComponents.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.mirra-frostline
+    primaryColor: '#7EC7E8'
+    accentColor: '#835CFF'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.koro-glacier
+    displayName: Koro Glacier
+    category: 0
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 7319133739443013676, guid: 409b882be14dbac748e0a9aaa0aa0287, type: 3}
+    presentationSprite: {fileID: 7319133739443013676, guid: dd7c6f8ec665932a79ca06eaabaa2802, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png#cosmetic.captain.koro-glacier
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-suitComponents.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.koro-glacier
+    primaryColor: '#734C95'
+    accentColor: '#63DCFF'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.vesper-violet
+    displayName: Vesper Violet
+    category: 0
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 7233290549514790717, guid: 409b882be14dbac748e0a9aaa0aa0287, type: 3}
+    presentationSprite: {fileID: 7233290549514790717, guid: dd7c6f8ec665932a79ca06eaabaa2802, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png#cosmetic.captain.vesper-violet
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-suitComponents.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.vesper-violet
+    primaryColor: '#4A73A5'
+    accentColor: '#BA72FF'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.aster-drift
+    displayName: Aster Drift
+    category: 0
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 5588659310637022151, guid: 409b882be14dbac748e0a9aaa0aa0287, type: 3}
+    presentationSprite: {fileID: 5588659310637022151, guid: dd7c6f8ec665932a79ca06eaabaa2802, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png#cosmetic.captain.aster-drift
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-suitComponents.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.aster-drift
+    primaryColor: '#D5633D'
+    accentColor: '#FF9B54'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.signal-resonance
+    displayName: Signal Resonance
+    category: 0
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: -5266928684098421364, guid: 409b882be14dbac748e0a9aaa0aa0287, type: 3}
+    presentationSprite: {fileID: -5266928684098421364, guid: dd7c6f8ec665932a79ca06eaabaa2802, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png#cosmetic.captain.signal-resonance
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-suitComponents.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.signal-resonance
+    primaryColor: '#7953B8'
+    accentColor: '#E29BFF'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.founder-starcape
+    displayName: Founder Starcape
+    category: 0
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: -7543571661285168955, guid: 409b882be14dbac748e0a9aaa0aa0287, type: 3}
+    presentationSprite: {fileID: -7543571661285168955, guid: dd7c6f8ec665932a79ca06eaabaa2802, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png#cosmetic.captain.founder-starcape
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-suitComponents.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.founder-starcape
+    primaryColor: '#1E3156'
+    accentColor: '#BDE9FF'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.founder-nightwatch
+    displayName: Founder Nightwatch
+    category: 0
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: -5672255891886902436, guid: 409b882be14dbac748e0a9aaa0aa0287, type: 3}
+    presentationSprite: {fileID: -5672255891886902436, guid: dd7c6f8ec665932a79ca06eaabaa2802, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png#cosmetic.captain.founder-nightwatch
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-suitComponents.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.founder-nightwatch
+    primaryColor: '#2A8A83'
+    accentColor: '#7BFFE0'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.explorer-fieldnotes
+    displayName: Explorer Fieldnotes
+    category: 0
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: -3713186725719418705, guid: 409b882be14dbac748e0a9aaa0aa0287, type: 3}
+    presentationSprite: {fileID: -3713186725719418705, guid: dd7c6f8ec665932a79ca06eaabaa2802, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png#cosmetic.captain.explorer-fieldnotes
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-suitComponents.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.explorer-fieldnotes
+    primaryColor: '#E0AA45'
+    accentColor: '#FFD27B'
+    canBeEarned: 0
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.explorer-celestial
+    displayName: Explorer Celestial
+    category: 0
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 8513552488081032604, guid: 409b882be14dbac748e0a9aaa0aa0287, type: 3}
+    presentationSprite: {fileID: 8513552488081032604, guid: dd7c6f8ec665932a79ca06eaabaa2802, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png#cosmetic.captain.explorer-celestial
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-suitComponents.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.explorer-celestial
+    primaryColor: '#B899D7'
+    accentColor: '#A89CFF'
+    canBeEarned: 0
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.birthday-banner
+    displayName: Birthday Banner
+    category: 0
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 8855326728392846741, guid: 409b882be14dbac748e0a9aaa0aa0287, type: 3}
+    presentationSprite: {fileID: 8855326728392846741, guid: dd7c6f8ec665932a79ca06eaabaa2802, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png#cosmetic.captain.birthday-banner
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-suitComponents.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.birthday-banner
+    primaryColor: '#F2C569'
+    accentColor: '#FFF0A1'
+    canBeEarned: 0
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.launch-navigator
+    displayName: Launch Navigator
+    category: 0
+    ownershipSource: 4
+    rarity: 2
+    packId: mirra_collection
+    productId: jss.cosmetic.captain.launch-navigator
+    entitlementIds:
+    - mirra_collection
+    - jss.cosmetic.captain.launch-navigator
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: -1311793308193270121, guid: 409b882be14dbac748e0a9aaa0aa0287, type: 3}
+    presentationSprite: {fileID: -1311793308193270121, guid: dd7c6f8ec665932a79ca06eaabaa2802, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png#cosmetic.captain.launch-navigator
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-suitComponents.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.launch-navigator
+    primaryColor: '#4E718D'
+    accentColor: '#72CDEB'
+    canBeEarned: 0
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.launch-planetary
+    displayName: Launch Planetary
+    category: 0
+    ownershipSource: 4
+    rarity: 2
+    packId: mirra_collection
+    productId: jss.cosmetic.captain.launch-planetary
+    entitlementIds:
+    - mirra_collection
+    - jss.cosmetic.captain.launch-planetary
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: -4790892175166163870, guid: 409b882be14dbac748e0a9aaa0aa0287, type: 3}
+    presentationSprite: {fileID: -4790892175166163870, guid: dd7c6f8ec665932a79ca06eaabaa2802, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png#cosmetic.captain.launch-planetary
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-suitComponents.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.launch-planetary
+    primaryColor: '#9D5A38'
+    accentColor: '#FFB573'
+    canBeEarned: 0
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.launch-starlight
+    displayName: Launch Starlight
+    category: 0
+    ownershipSource: 4
+    rarity: 2
+    packId: mirra_collection
+    productId: jss.cosmetic.captain.launch-starlight
+    entitlementIds:
+    - mirra_collection
+    - jss.cosmetic.captain.launch-starlight
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 5825383208142003271, guid: 409b882be14dbac748e0a9aaa0aa0287, type: 3}
+    presentationSprite: {fileID: 5825383208142003271, guid: dd7c6f8ec665932a79ca06eaabaa2802, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainSuitsPresentation.png#cosmetic.captain.launch-starlight
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-suitComponents.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.launch-starlight
+    primaryColor: '#34396B'
+    accentColor: '#B573FF'
+    canBeEarned: 0
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.explorer-bubble-helmet
+    displayName: Explorer Bubble Helmet
+    category: 0
+    ownershipSource: 0
+    rarity: 0
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 8229586743605749879, guid: 15da31acdde7b151dbad03054c9f6a5e, type: 3}
+    presentationSprite: {fileID: 8229586743605749879, guid: cbd9fde26a9384b07838b405e5f861a3, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png#cosmetic.captain.explorer-bubble-helmet
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-helmets.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-head-hair-palette-mask.png
+    presentationLayerId: head-hair
+    presentationEffectId: cosmetic.effect.captain.explorer-bubble-helmet
+    primaryColor: '#D68A3A'
+    accentColor: '#55D9FF'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.workshop-goggles
+    displayName: Workshop Goggles
+    category: 0
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 6760818389405314653, guid: 15da31acdde7b151dbad03054c9f6a5e, type: 3}
+    presentationSprite: {fileID: 6760818389405314653, guid: cbd9fde26a9384b07838b405e5f861a3, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png#cosmetic.captain.workshop-goggles
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-helmets.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-head-hair-palette-mask.png
+    presentationLayerId: head-hair
+    presentationEffectId: cosmetic.effect.captain.workshop-goggles
+    primaryColor: '#C7B18B'
+    accentColor: '#F0A33A'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.signal-visor
+    displayName: Signal Visor
+    category: 0
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 000000000100000002000000
+    icon: {fileID: -4141383534459589780, guid: 15da31acdde7b151dbad03054c9f6a5e, type: 3}
+    presentationSprite: {fileID: -4141383534459589780, guid: cbd9fde26a9384b07838b405e5f861a3, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png#cosmetic.captain.signal-visor
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-helmets.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-head-hair-palette-mask.png
+    presentationLayerId: head-hair
+    presentationEffectId: cosmetic.effect.captain.signal-visor
+    primaryColor: '#4E9CB5'
+    accentColor: '#A9ECFF'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.founder-field-cap
+    displayName: Founder Field Cap
+    category: 0
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 756466031317457796, guid: 15da31acdde7b151dbad03054c9f6a5e, type: 3}
+    presentationSprite: {fileID: 756466031317457796, guid: cbd9fde26a9384b07838b405e5f861a3, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png#cosmetic.captain.founder-field-cap
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-helmets.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-head-hair-palette-mask.png
+    presentationLayerId: head-hair
+    presentationEffectId: cosmetic.effect.captain.founder-field-cap
+    primaryColor: '#7EC7E8'
+    accentColor: '#835CFF'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.stitched-gloves
+    displayName: Stitched Gloves
+    category: 0
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 8079619682300700041, guid: 15da31acdde7b151dbad03054c9f6a5e, type: 3}
+    presentationSprite: {fileID: 8079619682300700041, guid: cbd9fde26a9384b07838b405e5f861a3, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png#cosmetic.captain.stitched-gloves
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-gloves.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-foreground-hand-tool-palette-mask.png
+    presentationLayerId: foreground-hand-tool
+    presentationEffectId: cosmetic.effect.captain.stitched-gloves
+    primaryColor: '#734C95'
+    accentColor: '#63DCFF'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.lens-gauntlets
+    displayName: Lens Gauntlets
+    category: 0
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 7254495577692550329, guid: 15da31acdde7b151dbad03054c9f6a5e, type: 3}
+    presentationSprite: {fileID: 7254495577692550329, guid: cbd9fde26a9384b07838b405e5f861a3, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png#cosmetic.captain.lens-gauntlets
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-gloves.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-foreground-hand-tool-palette-mask.png
+    presentationLayerId: foreground-hand-tool
+    presentationEffectId: cosmetic.effect.captain.lens-gauntlets
+    primaryColor: '#4A73A5'
+    accentColor: '#BA72FF'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.laceup-boots
+    displayName: Laceup Boots
+    category: 0
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 5769802317073137131, guid: 15da31acdde7b151dbad03054c9f6a5e, type: 3}
+    presentationSprite: {fileID: 5769802317073137131, guid: cbd9fde26a9384b07838b405e5f861a3, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png#cosmetic.captain.laceup-boots
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-boots.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.laceup-boots
+    primaryColor: '#D5633D'
+    accentColor: '#FF9B54'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.aurora-boots
+    displayName: Aurora Boots
+    category: 0
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: -1771429585391333135, guid: 15da31acdde7b151dbad03054c9f6a5e, type: 3}
+    presentationSprite: {fileID: -1771429585391333135, guid: cbd9fde26a9384b07838b405e5f861a3, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png#cosmetic.captain.aurora-boots
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-boots.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.aurora-boots
+    primaryColor: '#7953B8'
+    accentColor: '#E29BFF'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.observatory-pack
+    displayName: Observatory Pack
+    category: 0
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: -5100678491129985189, guid: 15da31acdde7b151dbad03054c9f6a5e, type: 3}
+    presentationSprite: {fileID: -5100678491129985189, guid: cbd9fde26a9384b07838b405e5f861a3, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png#cosmetic.captain.observatory-pack
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-backpacks.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-backpack-equipment-palette-mask.png
+    presentationLayerId: backpack-equipment
+    presentationEffectId: cosmetic.effect.captain.observatory-pack
+    primaryColor: '#1E3156'
+    accentColor: '#BDE9FF'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.solar-field-pack
+    displayName: Solar Field Pack
+    category: 0
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 3173552125315931707, guid: 15da31acdde7b151dbad03054c9f6a5e, type: 3}
+    presentationSprite: {fileID: 3173552125315931707, guid: cbd9fde26a9384b07838b405e5f861a3, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png#cosmetic.captain.solar-field-pack
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-backpacks.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-backpack-equipment-palette-mask.png
+    presentationLayerId: backpack-equipment
+    presentationEffectId: cosmetic.effect.captain.solar-field-pack
+    primaryColor: '#2A8A83'
+    accentColor: '#7BFFE0'
+    canBeEarned: 1
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.founder-patch
+    displayName: Founder Patch
+    category: 0
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 1429241097283998847, guid: 15da31acdde7b151dbad03054c9f6a5e, type: 3}
+    presentationSprite: {fileID: 1429241097283998847, guid: cbd9fde26a9384b07838b405e5f861a3, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png#cosmetic.captain.founder-patch
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-patches.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.founder-patch
+    primaryColor: '#E0AA45'
+    accentColor: '#FFD27B'
+    canBeEarned: 0
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.mirra-patch
+    displayName: Mirra Patch
+    category: 0
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 2725894387772588243, guid: 15da31acdde7b151dbad03054c9f6a5e, type: 3}
+    presentationSprite: {fileID: 2725894387772588243, guid: cbd9fde26a9384b07838b405e5f861a3, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png#cosmetic.captain.mirra-patch
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-patches.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-silhouette-costume-palette-mask.png
+    presentationLayerId: silhouette-costume
+    presentationEffectId: cosmetic.effect.captain.mirra-patch
+    primaryColor: '#B899D7'
+    accentColor: '#A89CFF'
+    canBeEarned: 0
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.constellation-watch
+    displayName: Constellation Watch
+    category: 0
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 5430079115328925524, guid: 15da31acdde7b151dbad03054c9f6a5e, type: 3}
+    presentationSprite: {fileID: 5430079115328925524, guid: cbd9fde26a9384b07838b405e5f861a3, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png#cosmetic.captain.constellation-watch
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-accessories.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-head-hair-palette-mask.png
+    presentationLayerId: head-hair
+    presentationEffectId: cosmetic.effect.captain.constellation-watch
+    primaryColor: '#F2C569'
+    accentColor: '#FFF0A1'
+    canBeEarned: 0
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.star-charm
+    displayName: Star Charm
+    category: 0
+    ownershipSource: 4
+    rarity: 2
+    packId: koro_vesper_collection
+    productId: jss.cosmetic.captain.star-charm
+    entitlementIds:
+    - koro_vesper_collection
+    - jss.cosmetic.captain.star-charm
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 9129383608818105746, guid: 15da31acdde7b151dbad03054c9f6a5e, type: 3}
+    presentationSprite: {fileID: 9129383608818105746, guid: cbd9fde26a9384b07838b405e5f861a3, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png#cosmetic.captain.star-charm
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-accessories.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-head-hair-palette-mask.png
+    presentationLayerId: head-hair
+    presentationEffectId: cosmetic.effect.captain.star-charm
+    primaryColor: '#4E718D'
+    accentColor: '#72CDEB'
+    canBeEarned: 0
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.birthday-charm
+    displayName: Birthday Charm
+    category: 0
+    ownershipSource: 4
+    rarity: 2
+    packId: koro_vesper_collection
+    productId: jss.cosmetic.captain.birthday-charm
+    entitlementIds:
+    - koro_vesper_collection
+    - jss.cosmetic.captain.birthday-charm
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 6024966885223508100, guid: 15da31acdde7b151dbad03054c9f6a5e, type: 3}
+    presentationSprite: {fileID: 6024966885223508100, guid: cbd9fde26a9384b07838b405e5f861a3, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png#cosmetic.captain.birthday-charm
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-accessories.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-head-hair-palette-mask.png
+    presentationLayerId: head-hair
+    presentationEffectId: cosmetic.effect.captain.birthday-charm
+    primaryColor: '#9D5A38'
+    accentColor: '#FFB573'
+    canBeEarned: 0
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.captain.ori-wristlink
+    displayName: Ori Wristlink
+    category: 0
+    ownershipSource: 4
+    rarity: 2
+    packId: koro_vesper_collection
+    productId: jss.cosmetic.captain.ori-wristlink
+    entitlementIds:
+    - koro_vesper_collection
+    - jss.cosmetic.captain.ori-wristlink
+    - complete_launch_collection
+    bodyFits: 000000000100000002000000
+    icon: {fileID: 2046256964156725368, guid: 15da31acdde7b151dbad03054c9f6a5e, type: 3}
+    presentationSprite: {fileID: 2046256964156725368, guid: cbd9fde26a9384b07838b405e5f861a3, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CaptainGearPresentation.png#cosmetic.captain.ori-wristlink
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/Modules/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-accessories.png
+    paletteMaskPath: Assets/_JustSomeStars/Art/2D/Characters/Captain/Customization/PaletteMasks/{body-family-title}/{facing}/captain-{body-family-slug}-{facing}-head-hair-palette-mask.png
+    presentationLayerId: head-hair
+    presentationEffectId: cosmetic.effect.captain.ori-wristlink
+    primaryColor: '#34396B'
+    accentColor: '#B573FF'
+    canBeEarned: 0
+    silhouetteChanging: 1
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.ori.clubhouse-brass
+    displayName: Clubhouse Brass
+    category: 1
+    ownershipSource: 0
+    rarity: 0
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: -1991139143947561444, guid: a31adc47d1acc56c3859663d1c1154fa, type: 3}
+    presentationSprite: {fileID: -1991139143947561444, guid: 4e3abfbe74ae024bda0f3f75582c2c84, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png#cosmetic.ori.clubhouse-brass
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Ori/Atlases/{facing}/ori-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: ori-shell-effect
+    presentationEffectId: cosmetic.effect.ori.clubhouse-brass
+    primaryColor: '#D68A3A'
+    accentColor: '#55D9FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.ori.mirra-frost
+    displayName: Mirra Frost
+    category: 1
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 8246597850501488955, guid: a31adc47d1acc56c3859663d1c1154fa, type: 3}
+    presentationSprite: {fileID: 8246597850501488955, guid: 4e3abfbe74ae024bda0f3f75582c2c84, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png#cosmetic.ori.mirra-frost
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Ori/Atlases/{facing}/ori-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: ori-shell-effect
+    presentationEffectId: cosmetic.effect.ori.mirra-frost
+    primaryColor: '#C7B18B'
+    accentColor: '#F0A33A'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.ori.signal-prism
+    displayName: Signal Prism
+    category: 1
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: -4921719292870889608, guid: a31adc47d1acc56c3859663d1c1154fa, type: 3}
+    presentationSprite: {fileID: -4921719292870889608, guid: 4e3abfbe74ae024bda0f3f75582c2c84, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png#cosmetic.ori.signal-prism
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Ori/Atlases/{facing}/ori-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: ori-shell-effect
+    presentationEffectId: cosmetic.effect.ori.signal-prism
+    primaryColor: '#4E9CB5'
+    accentColor: '#A9ECFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.ori.builder-gripper
+    displayName: Builder Gripper
+    category: 1
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 6970599129273070035, guid: a31adc47d1acc56c3859663d1c1154fa, type: 3}
+    presentationSprite: {fileID: 6970599129273070035, guid: 4e3abfbe74ae024bda0f3f75582c2c84, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png#cosmetic.ori.builder-gripper
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Ori/Atlases/{facing}/ori-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: ori-shell-effect
+    presentationEffectId: cosmetic.effect.ori.builder-gripper
+    primaryColor: '#7EC7E8'
+    accentColor: '#835CFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.ori.aster-beacon
+    displayName: Aster Beacon
+    category: 1
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 6732070455444423953, guid: a31adc47d1acc56c3859663d1c1154fa, type: 3}
+    presentationSprite: {fileID: 6732070455444423953, guid: 4e3abfbe74ae024bda0f3f75582c2c84, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png#cosmetic.ori.aster-beacon
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Ori/Atlases/{facing}/ori-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: ori-shell-effect
+    presentationEffectId: cosmetic.effect.ori.aster-beacon
+    primaryColor: '#734C95'
+    accentColor: '#63DCFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.ori.founder-dome
+    displayName: Founder Dome
+    category: 1
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 2469865572225475903, guid: a31adc47d1acc56c3859663d1c1154fa, type: 3}
+    presentationSprite: {fileID: 2469865572225475903, guid: 4e3abfbe74ae024bda0f3f75582c2c84, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png#cosmetic.ori.founder-dome
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Ori/Atlases/{facing}/ori-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: ori-shell-effect
+    presentationEffectId: cosmetic.effect.ori.founder-dome
+    primaryColor: '#4A73A5'
+    accentColor: '#BA72FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.ori.explorer-archive
+    displayName: Explorer Archive
+    category: 1
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -5219452055987074482, guid: a31adc47d1acc56c3859663d1c1154fa, type: 3}
+    presentationSprite: {fileID: -5219452055987074482, guid: 4e3abfbe74ae024bda0f3f75582c2c84, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png#cosmetic.ori.explorer-archive
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Ori/Atlases/{facing}/ori-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: ori-shell-effect
+    presentationEffectId: cosmetic.effect.ori.explorer-archive
+    primaryColor: '#D5633D'
+    accentColor: '#FF9B54'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: birthday.ori-starlight.2026
+    displayName: Birthday Starlight
+    category: 1
+    ownershipSource: 2
+    rarity: 2
+    packId: birthday.2026
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 709029951284694191, guid: a31adc47d1acc56c3859663d1c1154fa, type: 3}
+    presentationSprite: {fileID: 709029951284694191, guid: 4e3abfbe74ae024bda0f3f75582c2c84, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png#birthday.ori-starlight.2026
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Ori/Atlases/{facing}/ori-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: ori-shell-effect
+    presentationEffectId: cosmetic.effect.ori.birthday-starlight
+    primaryColor: '#7953B8'
+    accentColor: '#E29BFF'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.ori.garden-shell
+    displayName: Garden Shell
+    category: 1
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -1941277056436765411, guid: a31adc47d1acc56c3859663d1c1154fa, type: 3}
+    presentationSprite: {fileID: -1941277056436765411, guid: 4e3abfbe74ae024bda0f3f75582c2c84, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png#cosmetic.ori.garden-shell
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Ori/Atlases/{facing}/ori-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: ori-shell-effect
+    presentationEffectId: cosmetic.effect.ori.garden-shell
+    primaryColor: '#1E3156'
+    accentColor: '#BDE9FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.ori.vesper-diver
+    displayName: Vesper Diver
+    category: 1
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -207364717631201884, guid: a31adc47d1acc56c3859663d1c1154fa, type: 3}
+    presentationSprite: {fileID: -207364717631201884, guid: 4e3abfbe74ae024bda0f3f75582c2c84, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png#cosmetic.ori.vesper-diver
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Ori/Atlases/{facing}/ori-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: ori-shell-effect
+    presentationEffectId: cosmetic.effect.ori.vesper-diver
+    primaryColor: '#2A8A83'
+    accentColor: '#7BFFE0'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.ori.navigator-sail
+    displayName: Navigator Sail
+    category: 1
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 7561586637060964362, guid: a31adc47d1acc56c3859663d1c1154fa, type: 3}
+    presentationSprite: {fileID: 7561586637060964362, guid: 4e3abfbe74ae024bda0f3f75582c2c84, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png#cosmetic.ori.navigator-sail
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Ori/Atlases/{facing}/ori-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: ori-shell-effect
+    presentationEffectId: cosmetic.effect.ori.navigator-sail
+    primaryColor: '#E0AA45'
+    accentColor: '#FFD27B'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.ori.shadow-shell
+    displayName: Shadow Shell
+    category: 1
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -1685793565871976904, guid: a31adc47d1acc56c3859663d1c1154fa, type: 3}
+    presentationSprite: {fileID: -1685793565871976904, guid: 4e3abfbe74ae024bda0f3f75582c2c84, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png#cosmetic.ori.shadow-shell
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Ori/Atlases/{facing}/ori-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: ori-shell-effect
+    presentationEffectId: cosmetic.effect.ori.shadow-shell
+    primaryColor: '#B899D7'
+    accentColor: '#A89CFF'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.ori.repair-rig
+    displayName: Repair Rig
+    category: 1
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -629285853736967950, guid: a31adc47d1acc56c3859663d1c1154fa, type: 3}
+    presentationSprite: {fileID: -629285853736967950, guid: 4e3abfbe74ae024bda0f3f75582c2c84, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png#cosmetic.ori.repair-rig
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Ori/Atlases/{facing}/ori-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: ori-shell-effect
+    presentationEffectId: cosmetic.effect.ori.repair-rig
+    primaryColor: '#F2C569'
+    accentColor: '#FFF0A1'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.ori.festival-canopy
+    displayName: Festival Canopy
+    category: 1
+    ownershipSource: 4
+    rarity: 2
+    packId: aster_veil_collection
+    productId: jss.cosmetic.ori.festival-canopy
+    entitlementIds:
+    - aster_veil_collection
+    - jss.cosmetic.ori.festival-canopy
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -8367851937882167200, guid: a31adc47d1acc56c3859663d1c1154fa, type: 3}
+    presentationSprite: {fileID: -8367851937882167200, guid: 4e3abfbe74ae024bda0f3f75582c2c84, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png#cosmetic.ori.festival-canopy
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Ori/Atlases/{facing}/ori-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: ori-shell-effect
+    presentationEffectId: cosmetic.effect.ori.festival-canopy
+    primaryColor: '#4E718D'
+    accentColor: '#72CDEB'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.ori.moon-chimes
+    displayName: Moon Chimes
+    category: 1
+    ownershipSource: 4
+    rarity: 2
+    packId: aster_veil_collection
+    productId: jss.cosmetic.ori.moon-chimes
+    entitlementIds:
+    - aster_veil_collection
+    - jss.cosmetic.ori.moon-chimes
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 7635139693496242500, guid: a31adc47d1acc56c3859663d1c1154fa, type: 3}
+    presentationSprite: {fileID: 7635139693496242500, guid: 4e3abfbe74ae024bda0f3f75582c2c84, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png#cosmetic.ori.moon-chimes
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Ori/Atlases/{facing}/ori-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: ori-shell-effect
+    presentationEffectId: cosmetic.effect.ori.moon-chimes
+    primaryColor: '#9D5A38'
+    accentColor: '#FFB573'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.ori.comet-trail
+    displayName: Comet Trail
+    category: 1
+    ownershipSource: 4
+    rarity: 2
+    packId: aster_veil_collection
+    productId: jss.cosmetic.ori.comet-trail
+    entitlementIds:
+    - aster_veil_collection
+    - jss.cosmetic.ori.comet-trail
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 538751615227650019, guid: a31adc47d1acc56c3859663d1c1154fa, type: 3}
+    presentationSprite: {fileID: 538751615227650019, guid: 4e3abfbe74ae024bda0f3f75582c2c84, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/OriPresentation.png#cosmetic.ori.comet-trail
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/Ori/Atlases/{facing}/ori-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: ori-shell-effect
+    presentationEffectId: cosmetic.effect.ori.comet-trail
+    primaryColor: '#34396B'
+    accentColor: '#B573FF'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.ship.clubhouse-observatory
+    displayName: Clubhouse Observatory
+    category: 2
+    ownershipSource: 0
+    rarity: 0
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 2023175744787845296, guid: 46aa3b585abb977b6bc8db8323583365, type: 3}
+    presentationSprite: {fileID: 2023175744787845296, guid: adecd60a11d74e5edad705fa9a6359af, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png#cosmetic.ship.clubhouse-observatory
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/PlayerShipMaster.png
+    paletteMaskPath: 
+    presentationLayerId: ship-hull-effect
+    presentationEffectId: cosmetic.effect.ship.clubhouse-observatory
+    primaryColor: '#D68A3A'
+    accentColor: '#55D9FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - flight
+    - landing
+    - idle
+    compatibleFrameEvents:
+    - EnginePulse
+    - LandingContact
+    - Trail
+  - id: cosmetic.ship.garden-habitat
+    displayName: Garden Habitat
+    category: 2
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 7133050584470835490, guid: 46aa3b585abb977b6bc8db8323583365, type: 3}
+    presentationSprite: {fileID: 7133050584470835490, guid: adecd60a11d74e5edad705fa9a6359af, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png#cosmetic.ship.garden-habitat
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/PlayerShipMaster.png
+    paletteMaskPath: 
+    presentationLayerId: ship-hull-effect
+    presentationEffectId: cosmetic.effect.ship.garden-habitat
+    primaryColor: '#C7B18B'
+    accentColor: '#F0A33A'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - flight
+    - landing
+    - idle
+    compatibleFrameEvents:
+    - EnginePulse
+    - LandingContact
+    - Trail
+  - id: cosmetic.ship.surveyor-array
+    displayName: Surveyor Array
+    category: 2
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: -1933162299347345898, guid: 46aa3b585abb977b6bc8db8323583365, type: 3}
+    presentationSprite: {fileID: -1933162299347345898, guid: adecd60a11d74e5edad705fa9a6359af, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png#cosmetic.ship.surveyor-array
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/PlayerShipMaster.png
+    paletteMaskPath: 
+    presentationLayerId: ship-hull-effect
+    presentationEffectId: cosmetic.effect.ship.surveyor-array
+    primaryColor: '#4E9CB5'
+    accentColor: '#A9ECFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - flight
+    - landing
+    - idle
+    compatibleFrameEvents:
+    - EnginePulse
+    - LandingContact
+    - Trail
+  - id: cosmetic.ship.founder-constellation
+    displayName: Founder Constellation
+    category: 2
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: -1351330142610449830, guid: 46aa3b585abb977b6bc8db8323583365, type: 3}
+    presentationSprite: {fileID: -1351330142610449830, guid: adecd60a11d74e5edad705fa9a6359af, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png#cosmetic.ship.founder-constellation
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/PlayerShipMaster.png
+    paletteMaskPath: 
+    presentationLayerId: ship-hull-effect
+    presentationEffectId: cosmetic.effect.ship.founder-constellation
+    primaryColor: '#7EC7E8'
+    accentColor: '#835CFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - flight
+    - landing
+    - idle
+    compatibleFrameEvents:
+    - EnginePulse
+    - LandingContact
+    - Trail
+  - id: cosmetic.ship.signal-crystal
+    displayName: Signal Crystal
+    category: 2
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: -7984917560217095358, guid: 46aa3b585abb977b6bc8db8323583365, type: 3}
+    presentationSprite: {fileID: -7984917560217095358, guid: adecd60a11d74e5edad705fa9a6359af, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png#cosmetic.ship.signal-crystal
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/PlayerShipMaster.png
+    paletteMaskPath: 
+    presentationLayerId: ship-hull-effect
+    presentationEffectId: cosmetic.effect.ship.signal-crystal
+    primaryColor: '#734C95'
+    accentColor: '#63DCFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - flight
+    - landing
+    - idle
+    compatibleFrameEvents:
+    - EnginePulse
+    - LandingContact
+    - Trail
+  - id: cosmetic.ship.living-canopy
+    displayName: Living Canopy
+    category: 2
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -8141751322007412017, guid: 46aa3b585abb977b6bc8db8323583365, type: 3}
+    presentationSprite: {fileID: -8141751322007412017, guid: adecd60a11d74e5edad705fa9a6359af, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png#cosmetic.ship.living-canopy
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/PlayerShipMaster.png
+    paletteMaskPath: 
+    presentationLayerId: ship-hull-effect
+    presentationEffectId: cosmetic.effect.ship.living-canopy
+    primaryColor: '#4A73A5'
+    accentColor: '#BA72FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - flight
+    - landing
+    - idle
+    compatibleFrameEvents:
+    - EnginePulse
+    - LandingContact
+    - Trail
+  - id: cosmetic.ship.midnight-cockpit
+    displayName: Midnight Cockpit
+    category: 2
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -156229898640358360, guid: 46aa3b585abb977b6bc8db8323583365, type: 3}
+    presentationSprite: {fileID: -156229898640358360, guid: adecd60a11d74e5edad705fa9a6359af, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png#cosmetic.ship.midnight-cockpit
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/PlayerShipMaster.png
+    paletteMaskPath: 
+    presentationLayerId: ship-hull-effect
+    presentationEffectId: cosmetic.effect.ship.midnight-cockpit
+    primaryColor: '#D5633D'
+    accentColor: '#FF9B54'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - flight
+    - landing
+    - idle
+    compatibleFrameEvents:
+    - EnginePulse
+    - LandingContact
+    - Trail
+  - id: cosmetic.ship.warm-cabin
+    displayName: Warm Cabin
+    category: 2
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -8686021167502936150, guid: 46aa3b585abb977b6bc8db8323583365, type: 3}
+    presentationSprite: {fileID: -8686021167502936150, guid: adecd60a11d74e5edad705fa9a6359af, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png#cosmetic.ship.warm-cabin
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/PlayerShipMaster.png
+    paletteMaskPath: 
+    presentationLayerId: ship-hull-effect
+    presentationEffectId: cosmetic.effect.ship.warm-cabin
+    primaryColor: '#7953B8'
+    accentColor: '#E29BFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - flight
+    - landing
+    - idle
+    compatibleFrameEvents:
+    - EnginePulse
+    - LandingContact
+    - Trail
+  - id: cosmetic.ship.mirrorball-landing
+    displayName: Mirrorball Landing
+    category: 2
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -6052962608470296655, guid: 46aa3b585abb977b6bc8db8323583365, type: 3}
+    presentationSprite: {fileID: -6052962608470296655, guid: adecd60a11d74e5edad705fa9a6359af, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png#cosmetic.ship.mirrorball-landing
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/PlayerShipMaster.png
+    paletteMaskPath: 
+    presentationLayerId: ship-hull-effect
+    presentationEffectId: cosmetic.effect.ship.mirrorball-landing
+    primaryColor: '#1E3156'
+    accentColor: '#BDE9FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - flight
+    - landing
+    - idle
+    compatibleFrameEvents:
+    - EnginePulse
+    - LandingContact
+    - Trail
+  - id: cosmetic.ship.birthday-flight
+    displayName: Birthday Flight
+    category: 2
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 5522826098314192975, guid: 46aa3b585abb977b6bc8db8323583365, type: 3}
+    presentationSprite: {fileID: 5522826098314192975, guid: adecd60a11d74e5edad705fa9a6359af, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png#cosmetic.ship.birthday-flight
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/PlayerShipMaster.png
+    paletteMaskPath: 
+    presentationLayerId: ship-hull-effect
+    presentationEffectId: cosmetic.effect.ship.birthday-flight
+    primaryColor: '#2A8A83'
+    accentColor: '#7BFFE0'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - flight
+    - landing
+    - idle
+    compatibleFrameEvents:
+    - EnginePulse
+    - LandingContact
+    - Trail
+  - id: cosmetic.ship.aster-patched
+    displayName: Aster Patched
+    category: 2
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -5256737469377531318, guid: 46aa3b585abb977b6bc8db8323583365, type: 3}
+    presentationSprite: {fileID: -5256737469377531318, guid: adecd60a11d74e5edad705fa9a6359af, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png#cosmetic.ship.aster-patched
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/PlayerShipMaster.png
+    paletteMaskPath: 
+    presentationLayerId: ship-hull-effect
+    presentationEffectId: cosmetic.effect.ship.aster-patched
+    primaryColor: '#E0AA45'
+    accentColor: '#FFD27B'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - flight
+    - landing
+    - idle
+    compatibleFrameEvents:
+    - EnginePulse
+    - LandingContact
+    - Trail
+  - id: cosmetic.ship.vesper-snowcap
+    displayName: Vesper Snowcap
+    category: 2
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -1356313065091698745, guid: 46aa3b585abb977b6bc8db8323583365, type: 3}
+    presentationSprite: {fileID: -1356313065091698745, guid: adecd60a11d74e5edad705fa9a6359af, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png#cosmetic.ship.vesper-snowcap
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/PlayerShipMaster.png
+    paletteMaskPath: 
+    presentationLayerId: ship-hull-effect
+    presentationEffectId: cosmetic.effect.ship.vesper-snowcap
+    primaryColor: '#B899D7'
+    accentColor: '#A89CFF'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - flight
+    - landing
+    - idle
+    compatibleFrameEvents:
+    - EnginePulse
+    - LandingContact
+    - Trail
+  - id: cosmetic.ship.orrery-hull
+    displayName: Orrery Hull
+    category: 2
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 4362449257130275997, guid: 46aa3b585abb977b6bc8db8323583365, type: 3}
+    presentationSprite: {fileID: 4362449257130275997, guid: adecd60a11d74e5edad705fa9a6359af, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png#cosmetic.ship.orrery-hull
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/PlayerShipMaster.png
+    paletteMaskPath: 
+    presentationLayerId: ship-hull-effect
+    presentationEffectId: cosmetic.effect.ship.orrery-hull
+    primaryColor: '#F2C569'
+    accentColor: '#FFF0A1'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - flight
+    - landing
+    - idle
+    compatibleFrameEvents:
+    - EnginePulse
+    - LandingContact
+    - Trail
+  - id: cosmetic.ship.builder-rig
+    displayName: Builder Rig
+    category: 2
+    ownershipSource: 4
+    rarity: 2
+    packId: mirra_collection
+    productId: jss.cosmetic.ship.builder-rig
+    entitlementIds:
+    - mirra_collection
+    - jss.cosmetic.ship.builder-rig
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 926400858851486880, guid: 46aa3b585abb977b6bc8db8323583365, type: 3}
+    presentationSprite: {fileID: 926400858851486880, guid: adecd60a11d74e5edad705fa9a6359af, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png#cosmetic.ship.builder-rig
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/PlayerShipMaster.png
+    paletteMaskPath: 
+    presentationLayerId: ship-hull-effect
+    presentationEffectId: cosmetic.effect.ship.builder-rig
+    primaryColor: '#4E718D'
+    accentColor: '#72CDEB'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - flight
+    - landing
+    - idle
+    compatibleFrameEvents:
+    - EnginePulse
+    - LandingContact
+    - Trail
+  - id: cosmetic.ship.signal-tower
+    displayName: Signal Tower
+    category: 2
+    ownershipSource: 4
+    rarity: 2
+    packId: mirra_collection
+    productId: jss.cosmetic.ship.signal-tower
+    entitlementIds:
+    - mirra_collection
+    - jss.cosmetic.ship.signal-tower
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -8831271018946433829, guid: 46aa3b585abb977b6bc8db8323583365, type: 3}
+    presentationSprite: {fileID: -8831271018946433829, guid: adecd60a11d74e5edad705fa9a6359af, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png#cosmetic.ship.signal-tower
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/PlayerShipMaster.png
+    paletteMaskPath: 
+    presentationLayerId: ship-hull-effect
+    presentationEffectId: cosmetic.effect.ship.signal-tower
+    primaryColor: '#9D5A38'
+    accentColor: '#FFB573'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - flight
+    - landing
+    - idle
+    compatibleFrameEvents:
+    - EnginePulse
+    - LandingContact
+    - Trail
+  - id: cosmetic.ship.comet-launch
+    displayName: Comet Launch
+    category: 2
+    ownershipSource: 4
+    rarity: 2
+    packId: mirra_collection
+    productId: jss.cosmetic.ship.comet-launch
+    entitlementIds:
+    - mirra_collection
+    - jss.cosmetic.ship.comet-launch
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -4704951197537034253, guid: 46aa3b585abb977b6bc8db8323583365, type: 3}
+    presentationSprite: {fileID: -4704951197537034253, guid: adecd60a11d74e5edad705fa9a6359af, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ShipPresentation.png#cosmetic.ship.comet-launch
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Ship/PlayerShip/PlayerShipMaster.png
+    paletteMaskPath: 
+    presentationLayerId: ship-hull-effect
+    presentationEffectId: cosmetic.effect.ship.comet-launch
+    primaryColor: '#34396B'
+    accentColor: '#B573FF'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - flight
+    - landing
+    - idle
+    compatibleFrameEvents:
+    - EnginePulse
+    - LandingContact
+    - Trail
+  - id: cosmetic.lens.clubhouse-constellation
+    displayName: Clubhouse Constellation
+    category: 3
+    ownershipSource: 0
+    rarity: 0
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 8676752209141365658, guid: 0c7e8da78f684161db088215f29b699c, type: 3}
+    presentationSprite: {fileID: 8676752209141365658, guid: ed93fad7c00b40a729ca45640061e9fe, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png#cosmetic.lens.clubhouse-constellation
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Mirra/Hud/MirraLensButton.png
+    paletteMaskPath: 
+    presentationLayerId: lens-body-hologram
+    presentationEffectId: cosmetic.effect.lens.clubhouse-constellation
+    primaryColor: '#D68A3A'
+    accentColor: '#55D9FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - scan
+    - success
+    compatibleFrameEvents:
+    - ScanPulse
+    - Hologram
+    - Audio
+  - id: cosmetic.lens.galaxy-field
+    displayName: Galaxy Field
+    category: 3
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 6604289790637421479, guid: 0c7e8da78f684161db088215f29b699c, type: 3}
+    presentationSprite: {fileID: 6604289790637421479, guid: ed93fad7c00b40a729ca45640061e9fe, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png#cosmetic.lens.galaxy-field
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Mirra/Hud/MirraLensButton.png
+    paletteMaskPath: 
+    presentationLayerId: lens-body-hologram
+    presentationEffectId: cosmetic.effect.lens.galaxy-field
+    primaryColor: '#C7B18B'
+    accentColor: '#F0A33A'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - scan
+    - success
+    compatibleFrameEvents:
+    - ScanPulse
+    - Hologram
+    - Audio
+  - id: cosmetic.lens.planet-grid
+    displayName: Planet Grid
+    category: 3
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: -5146190344592773949, guid: 0c7e8da78f684161db088215f29b699c, type: 3}
+    presentationSprite: {fileID: -5146190344592773949, guid: ed93fad7c00b40a729ca45640061e9fe, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png#cosmetic.lens.planet-grid
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Mirra/Hud/MirraLensButton.png
+    paletteMaskPath: 
+    presentationLayerId: lens-body-hologram
+    presentationEffectId: cosmetic.effect.lens.planet-grid
+    primaryColor: '#4E9CB5'
+    accentColor: '#A9ECFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - scan
+    - success
+    compatibleFrameEvents:
+    - ScanPulse
+    - Hologram
+    - Audio
+  - id: cosmetic.lens.comet-glass
+    displayName: Comet Glass
+    category: 3
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 2441326684301478045, guid: 0c7e8da78f684161db088215f29b699c, type: 3}
+    presentationSprite: {fileID: 2441326684301478045, guid: ed93fad7c00b40a729ca45640061e9fe, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png#cosmetic.lens.comet-glass
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Mirra/Hud/MirraLensButton.png
+    paletteMaskPath: 
+    presentationLayerId: lens-body-hologram
+    presentationEffectId: cosmetic.effect.lens.comet-glass
+    primaryColor: '#7EC7E8'
+    accentColor: '#835CFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - scan
+    - success
+    compatibleFrameEvents:
+    - ScanPulse
+    - Hologram
+    - Audio
+  - id: cosmetic.lens.home-memory
+    displayName: Home Memory
+    category: 3
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 221097810437887012, guid: 0c7e8da78f684161db088215f29b699c, type: 3}
+    presentationSprite: {fileID: 221097810437887012, guid: ed93fad7c00b40a729ca45640061e9fe, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png#cosmetic.lens.home-memory
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Mirra/Hud/MirraLensButton.png
+    paletteMaskPath: 
+    presentationLayerId: lens-body-hologram
+    presentationEffectId: cosmetic.effect.lens.home-memory
+    primaryColor: '#734C95'
+    accentColor: '#63DCFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - scan
+    - success
+    compatibleFrameEvents:
+    - ScanPulse
+    - Hologram
+    - Audio
+  - id: cosmetic.lens.botany-display
+    displayName: Botany Display
+    category: 3
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 5297990442583044613, guid: 0c7e8da78f684161db088215f29b699c, type: 3}
+    presentationSprite: {fileID: 5297990442583044613, guid: ed93fad7c00b40a729ca45640061e9fe, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png#cosmetic.lens.botany-display
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Mirra/Hud/MirraLensButton.png
+    paletteMaskPath: 
+    presentationLayerId: lens-body-hologram
+    presentationEffectId: cosmetic.effect.lens.botany-display
+    primaryColor: '#4A73A5'
+    accentColor: '#BA72FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - scan
+    - success
+    compatibleFrameEvents:
+    - ScanPulse
+    - Hologram
+    - Audio
+  - id: cosmetic.lens.orbit-display
+    displayName: Orbit Display
+    category: 3
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 1357224683784754740, guid: 0c7e8da78f684161db088215f29b699c, type: 3}
+    presentationSprite: {fileID: 1357224683784754740, guid: ed93fad7c00b40a729ca45640061e9fe, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png#cosmetic.lens.orbit-display
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Mirra/Hud/MirraLensButton.png
+    paletteMaskPath: 
+    presentationLayerId: lens-body-hologram
+    presentationEffectId: cosmetic.effect.lens.orbit-display
+    primaryColor: '#D5633D'
+    accentColor: '#FF9B54'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - scan
+    - success
+    compatibleFrameEvents:
+    - ScanPulse
+    - Hologram
+    - Audio
+  - id: cosmetic.lens.signal-prism
+    displayName: Signal Prism
+    category: 3
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 7939470927994423337, guid: 0c7e8da78f684161db088215f29b699c, type: 3}
+    presentationSprite: {fileID: 7939470927994423337, guid: ed93fad7c00b40a729ca45640061e9fe, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png#cosmetic.lens.signal-prism
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Mirra/Hud/MirraLensButton.png
+    paletteMaskPath: 
+    presentationLayerId: lens-body-hologram
+    presentationEffectId: cosmetic.effect.lens.signal-prism
+    primaryColor: '#7953B8'
+    accentColor: '#E29BFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - scan
+    - success
+    compatibleFrameEvents:
+    - ScanPulse
+    - Hologram
+    - Audio
+  - id: cosmetic.lens.aster-beacon
+    displayName: Aster Beacon
+    category: 3
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 5639044512079895019, guid: 0c7e8da78f684161db088215f29b699c, type: 3}
+    presentationSprite: {fileID: 5639044512079895019, guid: ed93fad7c00b40a729ca45640061e9fe, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png#cosmetic.lens.aster-beacon
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Mirra/Hud/MirraLensButton.png
+    paletteMaskPath: 
+    presentationLayerId: lens-body-hologram
+    presentationEffectId: cosmetic.effect.lens.aster-beacon
+    primaryColor: '#1E3156'
+    accentColor: '#BDE9FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - scan
+    - success
+    compatibleFrameEvents:
+    - ScanPulse
+    - Hologram
+    - Audio
+  - id: cosmetic.lens.founder-map
+    displayName: Founder Map
+    category: 3
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -677645351956880413, guid: 0c7e8da78f684161db088215f29b699c, type: 3}
+    presentationSprite: {fileID: -677645351956880413, guid: ed93fad7c00b40a729ca45640061e9fe, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png#cosmetic.lens.founder-map
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Mirra/Hud/MirraLensButton.png
+    paletteMaskPath: 
+    presentationLayerId: lens-body-hologram
+    presentationEffectId: cosmetic.effect.lens.founder-map
+    primaryColor: '#2A8A83'
+    accentColor: '#7BFFE0'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - scan
+    - success
+    compatibleFrameEvents:
+    - ScanPulse
+    - Hologram
+    - Audio
+  - id: cosmetic.lens.explorer-archive
+    displayName: Explorer Archive
+    category: 3
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 6974448817534318579, guid: 0c7e8da78f684161db088215f29b699c, type: 3}
+    presentationSprite: {fileID: 6974448817534318579, guid: ed93fad7c00b40a729ca45640061e9fe, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png#cosmetic.lens.explorer-archive
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Mirra/Hud/MirraLensButton.png
+    paletteMaskPath: 
+    presentationLayerId: lens-body-hologram
+    presentationEffectId: cosmetic.effect.lens.explorer-archive
+    primaryColor: '#E0AA45'
+    accentColor: '#FFD27B'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - scan
+    - success
+    compatibleFrameEvents:
+    - ScanPulse
+    - Hologram
+    - Audio
+  - id: cosmetic.lens.field-wristlens
+    displayName: Field Wristlens
+    category: 3
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -5874633633062400272, guid: 0c7e8da78f684161db088215f29b699c, type: 3}
+    presentationSprite: {fileID: -5874633633062400272, guid: ed93fad7c00b40a729ca45640061e9fe, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png#cosmetic.lens.field-wristlens
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Mirra/Hud/MirraLensButton.png
+    paletteMaskPath: 
+    presentationLayerId: lens-body-hologram
+    presentationEffectId: cosmetic.effect.lens.field-wristlens
+    primaryColor: '#B899D7'
+    accentColor: '#A89CFF'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - scan
+    - success
+    compatibleFrameEvents:
+    - ScanPulse
+    - Hologram
+    - Audio
+  - id: cosmetic.lens.birthday-cake
+    displayName: Birthday Cake
+    category: 3
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -7479960561276729047, guid: 0c7e8da78f684161db088215f29b699c, type: 3}
+    presentationSprite: {fileID: -7479960561276729047, guid: ed93fad7c00b40a729ca45640061e9fe, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png#cosmetic.lens.birthday-cake
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Mirra/Hud/MirraLensButton.png
+    paletteMaskPath: 
+    presentationLayerId: lens-body-hologram
+    presentationEffectId: cosmetic.effect.lens.birthday-cake
+    primaryColor: '#F2C569'
+    accentColor: '#FFF0A1'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - scan
+    - success
+    compatibleFrameEvents:
+    - ScanPulse
+    - Hologram
+    - Audio
+  - id: cosmetic.lens.observatory-scope
+    displayName: Observatory Scope
+    category: 3
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -7090132104504746667, guid: 0c7e8da78f684161db088215f29b699c, type: 3}
+    presentationSprite: {fileID: -7090132104504746667, guid: ed93fad7c00b40a729ca45640061e9fe, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png#cosmetic.lens.observatory-scope
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Mirra/Hud/MirraLensButton.png
+    paletteMaskPath: 
+    presentationLayerId: lens-body-hologram
+    presentationEffectId: cosmetic.effect.lens.observatory-scope
+    primaryColor: '#4E718D'
+    accentColor: '#72CDEB'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - scan
+    - success
+    compatibleFrameEvents:
+    - ScanPulse
+    - Hologram
+    - Audio
+  - id: cosmetic.lens.rocket-window
+    displayName: Rocket Window
+    category: 3
+    ownershipSource: 4
+    rarity: 2
+    packId: koro_vesper_collection
+    productId: jss.cosmetic.lens.rocket-window
+    entitlementIds:
+    - koro_vesper_collection
+    - jss.cosmetic.lens.rocket-window
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -386073961407720864, guid: 0c7e8da78f684161db088215f29b699c, type: 3}
+    presentationSprite: {fileID: -386073961407720864, guid: ed93fad7c00b40a729ca45640061e9fe, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png#cosmetic.lens.rocket-window
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Mirra/Hud/MirraLensButton.png
+    paletteMaskPath: 
+    presentationLayerId: lens-body-hologram
+    presentationEffectId: cosmetic.effect.lens.rocket-window
+    primaryColor: '#9D5A38'
+    accentColor: '#FFB573'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - scan
+    - success
+    compatibleFrameEvents:
+    - ScanPulse
+    - Hologram
+    - Audio
+  - id: cosmetic.lens.starlight-compass
+    displayName: Starlight Compass
+    category: 3
+    ownershipSource: 4
+    rarity: 2
+    packId: koro_vesper_collection
+    productId: jss.cosmetic.lens.starlight-compass
+    entitlementIds:
+    - koro_vesper_collection
+    - jss.cosmetic.lens.starlight-compass
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 988088128043831339, guid: 0c7e8da78f684161db088215f29b699c, type: 3}
+    presentationSprite: {fileID: 988088128043831339, guid: ed93fad7c00b40a729ca45640061e9fe, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/LensPresentation.png#cosmetic.lens.starlight-compass
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Mirra/Hud/MirraLensButton.png
+    paletteMaskPath: 
+    presentationLayerId: lens-body-hologram
+    presentationEffectId: cosmetic.effect.lens.starlight-compass
+    primaryColor: '#34396B'
+    accentColor: '#B573FF'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - scan
+    - success
+    compatibleFrameEvents:
+    - ScanPulse
+    - Hologram
+    - Audio
+  - id: cosmetic.clubhouse.patchwork-chair
+    displayName: Patchwork Chair
+    category: 4
+    ownershipSource: 0
+    rarity: 0
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 8812068736510084563, guid: 39c779f8b524ebda6819c27d391012aa, type: 3}
+    presentationSprite: {fileID: 8812068736510084563, guid: 859441e70caf6f61d9eef5db6345db88, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png#cosmetic.clubhouse.patchwork-chair
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Clubhouse/Layers/ClubhouseDinnerTableForegroundV4.png
+    paletteMaskPath: 
+    presentationLayerId: clubhouse-prop
+    presentationEffectId: cosmetic.effect.clubhouse.patchwork-chair
+    primaryColor: '#D68A3A'
+    accentColor: '#55D9FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - celebration
+    compatibleFrameEvents:
+    - CelebrationCue
+  - id: cosmetic.clubhouse.painted-telescope
+    displayName: Painted Telescope
+    category: 4
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 7710622435160630000, guid: 39c779f8b524ebda6819c27d391012aa, type: 3}
+    presentationSprite: {fileID: 7710622435160630000, guid: 859441e70caf6f61d9eef5db6345db88, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png#cosmetic.clubhouse.painted-telescope
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Clubhouse/Layers/ClubhouseDinnerTableForegroundV4.png
+    paletteMaskPath: 
+    presentationLayerId: clubhouse-prop
+    presentationEffectId: cosmetic.effect.clubhouse.painted-telescope
+    primaryColor: '#C7B18B'
+    accentColor: '#F0A33A'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - celebration
+    compatibleFrameEvents:
+    - CelebrationCue
+  - id: cosmetic.clubhouse.planet-mobile
+    displayName: Planet Mobile
+    category: 4
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: -6356814214314543284, guid: 39c779f8b524ebda6819c27d391012aa, type: 3}
+    presentationSprite: {fileID: -6356814214314543284, guid: 859441e70caf6f61d9eef5db6345db88, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png#cosmetic.clubhouse.planet-mobile
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Clubhouse/Layers/ClubhouseDinnerTableForegroundV4.png
+    paletteMaskPath: 
+    presentationLayerId: clubhouse-prop
+    presentationEffectId: cosmetic.effect.clubhouse.planet-mobile
+    primaryColor: '#4E9CB5'
+    accentColor: '#A9ECFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - celebration
+    compatibleFrameEvents:
+    - CelebrationCue
+  - id: cosmetic.clubhouse.star-projector
+    displayName: Star Projector
+    category: 4
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: -1605474277124547509, guid: 39c779f8b524ebda6819c27d391012aa, type: 3}
+    presentationSprite: {fileID: -1605474277124547509, guid: 859441e70caf6f61d9eef5db6345db88, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png#cosmetic.clubhouse.star-projector
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Clubhouse/Layers/ClubhouseDinnerTableForegroundV4.png
+    paletteMaskPath: 
+    presentationLayerId: clubhouse-prop
+    presentationEffectId: cosmetic.effect.clubhouse.star-projector
+    primaryColor: '#7EC7E8'
+    accentColor: '#835CFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - celebration
+    compatibleFrameEvents:
+    - CelebrationCue
+  - id: cosmetic.clubhouse.pallet-sofa
+    displayName: Pallet Sofa
+    category: 4
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 7582640238138017325, guid: 39c779f8b524ebda6819c27d391012aa, type: 3}
+    presentationSprite: {fileID: 7582640238138017325, guid: 859441e70caf6f61d9eef5db6345db88, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png#cosmetic.clubhouse.pallet-sofa
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Clubhouse/Layers/ClubhouseDinnerTableForegroundV4.png
+    paletteMaskPath: 
+    presentationLayerId: clubhouse-prop
+    presentationEffectId: cosmetic.effect.clubhouse.pallet-sofa
+    primaryColor: '#734C95'
+    accentColor: '#63DCFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - celebration
+    compatibleFrameEvents:
+    - CelebrationCue
+  - id: cosmetic.clubhouse.brass-orrery
+    displayName: Brass Orrery
+    category: 4
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 8441454102622970197, guid: 39c779f8b524ebda6819c27d391012aa, type: 3}
+    presentationSprite: {fileID: 8441454102622970197, guid: 859441e70caf6f61d9eef5db6345db88, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png#cosmetic.clubhouse.brass-orrery
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Clubhouse/Layers/ClubhouseDinnerTableForegroundV4.png
+    paletteMaskPath: 
+    presentationLayerId: clubhouse-prop
+    presentationEffectId: cosmetic.effect.clubhouse.brass-orrery
+    primaryColor: '#4A73A5'
+    accentColor: '#BA72FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - celebration
+    compatibleFrameEvents:
+    - CelebrationCue
+  - id: cosmetic.clubhouse.constellation-window
+    displayName: Constellation Window
+    category: 4
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 8005122928229318701, guid: 39c779f8b524ebda6819c27d391012aa, type: 3}
+    presentationSprite: {fileID: 8005122928229318701, guid: 859441e70caf6f61d9eef5db6345db88, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png#cosmetic.clubhouse.constellation-window
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Clubhouse/Layers/ClubhouseDinnerTableForegroundV4.png
+    paletteMaskPath: 
+    presentationLayerId: clubhouse-prop
+    presentationEffectId: cosmetic.effect.clubhouse.constellation-window
+    primaryColor: '#D5633D'
+    accentColor: '#FF9B54'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - celebration
+    compatibleFrameEvents:
+    - CelebrationCue
+  - id: cosmetic.clubhouse.atlas-table
+    displayName: Atlas Table
+    category: 4
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 5188044847053363227, guid: 39c779f8b524ebda6819c27d391012aa, type: 3}
+    presentationSprite: {fileID: 5188044847053363227, guid: 859441e70caf6f61d9eef5db6345db88, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png#cosmetic.clubhouse.atlas-table
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Clubhouse/Layers/ClubhouseDinnerTableForegroundV4.png
+    paletteMaskPath: 
+    presentationLayerId: clubhouse-prop
+    presentationEffectId: cosmetic.effect.clubhouse.atlas-table
+    primaryColor: '#7953B8'
+    accentColor: '#E29BFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - celebration
+    compatibleFrameEvents:
+    - CelebrationCue
+  - id: cosmetic.clubhouse.signal-stringlights
+    displayName: Signal Stringlights
+    category: 4
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -7596359658845606694, guid: 39c779f8b524ebda6819c27d391012aa, type: 3}
+    presentationSprite: {fileID: -7596359658845606694, guid: 859441e70caf6f61d9eef5db6345db88, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png#cosmetic.clubhouse.signal-stringlights
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Clubhouse/Layers/ClubhouseDinnerTableForegroundV4.png
+    paletteMaskPath: 
+    presentationLayerId: clubhouse-prop
+    presentationEffectId: cosmetic.effect.clubhouse.signal-stringlights
+    primaryColor: '#1E3156'
+    accentColor: '#BDE9FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - celebration
+    compatibleFrameEvents:
+    - CelebrationCue
+  - id: cosmetic.clubhouse.miniature-observatory
+    displayName: Miniature Observatory
+    category: 4
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -885121761901529492, guid: 39c779f8b524ebda6819c27d391012aa, type: 3}
+    presentationSprite: {fileID: -885121761901529492, guid: 859441e70caf6f61d9eef5db6345db88, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png#cosmetic.clubhouse.miniature-observatory
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Clubhouse/Layers/ClubhouseDinnerTableForegroundV4.png
+    paletteMaskPath: 
+    presentationLayerId: clubhouse-prop
+    presentationEffectId: cosmetic.effect.clubhouse.miniature-observatory
+    primaryColor: '#2A8A83'
+    accentColor: '#7BFFE0'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - celebration
+    compatibleFrameEvents:
+    - CelebrationCue
+  - id: cosmetic.clubhouse.founder-rug
+    displayName: Founder Rug
+    category: 4
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 1994907150389299781, guid: 39c779f8b524ebda6819c27d391012aa, type: 3}
+    presentationSprite: {fileID: 1994907150389299781, guid: 859441e70caf6f61d9eef5db6345db88, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png#cosmetic.clubhouse.founder-rug
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Clubhouse/Layers/ClubhouseDinnerTableForegroundV4.png
+    paletteMaskPath: 
+    presentationLayerId: clubhouse-prop
+    presentationEffectId: cosmetic.effect.clubhouse.founder-rug
+    primaryColor: '#E0AA45'
+    accentColor: '#FFD27B'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - celebration
+    compatibleFrameEvents:
+    - CelebrationCue
+  - id: cosmetic.clubhouse.canvas-hideaway
+    displayName: Canvas Hideaway
+    category: 4
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -7108446873090849089, guid: 39c779f8b524ebda6819c27d391012aa, type: 3}
+    presentationSprite: {fileID: -7108446873090849089, guid: 859441e70caf6f61d9eef5db6345db88, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png#cosmetic.clubhouse.canvas-hideaway
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Clubhouse/Layers/ClubhouseDinnerTableForegroundV4.png
+    paletteMaskPath: 
+    presentationLayerId: clubhouse-prop
+    presentationEffectId: cosmetic.effect.clubhouse.canvas-hideaway
+    primaryColor: '#B899D7'
+    accentColor: '#A89CFF'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - celebration
+    compatibleFrameEvents:
+    - CelebrationCue
+  - id: cosmetic.clubhouse.specimen-shelf
+    displayName: Specimen Shelf
+    category: 4
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -7230745386837176681, guid: 39c779f8b524ebda6819c27d391012aa, type: 3}
+    presentationSprite: {fileID: -7230745386837176681, guid: 859441e70caf6f61d9eef5db6345db88, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png#cosmetic.clubhouse.specimen-shelf
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Clubhouse/Layers/ClubhouseDinnerTableForegroundV4.png
+    paletteMaskPath: 
+    presentationLayerId: clubhouse-prop
+    presentationEffectId: cosmetic.effect.clubhouse.specimen-shelf
+    primaryColor: '#F2C569'
+    accentColor: '#FFF0A1'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - celebration
+    compatibleFrameEvents:
+    - CelebrationCue
+  - id: cosmetic.clubhouse.solar-scroll
+    displayName: Solar Scroll
+    category: 4
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -2319568390479244622, guid: 39c779f8b524ebda6819c27d391012aa, type: 3}
+    presentationSprite: {fileID: -2319568390479244622, guid: 859441e70caf6f61d9eef5db6345db88, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png#cosmetic.clubhouse.solar-scroll
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Clubhouse/Layers/ClubhouseDinnerTableForegroundV4.png
+    paletteMaskPath: 
+    presentationLayerId: clubhouse-prop
+    presentationEffectId: cosmetic.effect.clubhouse.solar-scroll
+    primaryColor: '#4E718D'
+    accentColor: '#72CDEB'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - celebration
+    compatibleFrameEvents:
+    - CelebrationCue
+  - id: cosmetic.clubhouse.moon-chair
+    displayName: Moon Chair
+    category: 4
+    ownershipSource: 4
+    rarity: 2
+    packId: aster_veil_collection
+    productId: jss.cosmetic.clubhouse.moon-chair
+    entitlementIds:
+    - aster_veil_collection
+    - jss.cosmetic.clubhouse.moon-chair
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 5144231450580954120, guid: 39c779f8b524ebda6819c27d391012aa, type: 3}
+    presentationSprite: {fileID: 5144231450580954120, guid: 859441e70caf6f61d9eef5db6345db88, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png#cosmetic.clubhouse.moon-chair
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Clubhouse/Layers/ClubhouseDinnerTableForegroundV4.png
+    paletteMaskPath: 
+    presentationLayerId: clubhouse-prop
+    presentationEffectId: cosmetic.effect.clubhouse.moon-chair
+    primaryColor: '#9D5A38'
+    accentColor: '#FFB573'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - celebration
+    compatibleFrameEvents:
+    - CelebrationCue
+  - id: cosmetic.clubhouse.ori-radio
+    displayName: Ori Radio
+    category: 4
+    ownershipSource: 4
+    rarity: 2
+    packId: aster_veil_collection
+    productId: jss.cosmetic.clubhouse.ori-radio
+    entitlementIds:
+    - aster_veil_collection
+    - jss.cosmetic.clubhouse.ori-radio
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 8714495979406195667, guid: 39c779f8b524ebda6819c27d391012aa, type: 3}
+    presentationSprite: {fileID: 8714495979406195667, guid: 859441e70caf6f61d9eef5db6345db88, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/ClubhousePresentation.png#cosmetic.clubhouse.ori-radio
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Environments/Clubhouse/Layers/ClubhouseDinnerTableForegroundV4.png
+    paletteMaskPath: 
+    presentationLayerId: clubhouse-prop
+    presentationEffectId: cosmetic.effect.clubhouse.ori-radio
+    primaryColor: '#34396B'
+    accentColor: '#B573FF'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - celebration
+    compatibleFrameEvents:
+    - CelebrationCue
+  - id: cosmetic.photo.ori-camera
+    displayName: Ori Camera
+    category: 5
+    ownershipSource: 0
+    rarity: 0
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 3303130443919299492, guid: 261b896be8984b6969adf917d7603d6f, type: 3}
+    presentationSprite: {fileID: 3303130443919299492, guid: afca01e7da301ddc2a2f965002ec1eb5, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png#cosmetic.photo.ori-camera
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/IconAtlases/Photo.png
+    paletteMaskPath: 
+    presentationLayerId: photo-frame-filter-pose
+    presentationEffectId: cosmetic.effect.photo.ori-camera
+    primaryColor: '#D68A3A'
+    accentColor: '#55D9FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - capture
+    - pose
+    compatibleFrameEvents:
+    - CaptureFlash
+    - PoseReady
+  - id: cosmetic.photo.field-satchel
+    displayName: Field Satchel
+    category: 5
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 8672028782592851535, guid: 261b896be8984b6969adf917d7603d6f, type: 3}
+    presentationSprite: {fileID: 8672028782592851535, guid: afca01e7da301ddc2a2f965002ec1eb5, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png#cosmetic.photo.field-satchel
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/IconAtlases/Photo.png
+    paletteMaskPath: 
+    presentationLayerId: photo-frame-filter-pose
+    presentationEffectId: cosmetic.effect.photo.field-satchel
+    primaryColor: '#C7B18B'
+    accentColor: '#F0A33A'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - capture
+    - pose
+    compatibleFrameEvents:
+    - CaptureFlash
+    - PoseReady
+  - id: cosmetic.photo.brass-tripod
+    displayName: Brass Tripod
+    category: 5
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: -4253093604857632670, guid: 261b896be8984b6969adf917d7603d6f, type: 3}
+    presentationSprite: {fileID: -4253093604857632670, guid: afca01e7da301ddc2a2f965002ec1eb5, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png#cosmetic.photo.brass-tripod
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/IconAtlases/Photo.png
+    paletteMaskPath: 
+    presentationLayerId: photo-frame-filter-pose
+    presentationEffectId: cosmetic.effect.photo.brass-tripod
+    primaryColor: '#4E9CB5'
+    accentColor: '#A9ECFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - capture
+    - pose
+    compatibleFrameEvents:
+    - CaptureFlash
+    - PoseReady
+  - id: cosmetic.photo.aster-frame
+    displayName: Aster Frame
+    category: 5
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 3960853699390023706, guid: 261b896be8984b6969adf917d7603d6f, type: 3}
+    presentationSprite: {fileID: 3960853699390023706, guid: afca01e7da301ddc2a2f965002ec1eb5, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png#cosmetic.photo.aster-frame
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/IconAtlases/Photo.png
+    paletteMaskPath: 
+    presentationLayerId: photo-frame-filter-pose
+    presentationEffectId: cosmetic.effect.photo.aster-frame
+    primaryColor: '#7EC7E8'
+    accentColor: '#835CFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - capture
+    - pose
+    compatibleFrameEvents:
+    - CaptureFlash
+    - PoseReady
+  - id: cosmetic.photo.moon-compass
+    displayName: Moon Compass
+    category: 5
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 5403437857243819354, guid: 261b896be8984b6969adf917d7603d6f, type: 3}
+    presentationSprite: {fileID: 5403437857243819354, guid: afca01e7da301ddc2a2f965002ec1eb5, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png#cosmetic.photo.moon-compass
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/IconAtlases/Photo.png
+    paletteMaskPath: 
+    presentationLayerId: photo-frame-filter-pose
+    presentationEffectId: cosmetic.effect.photo.moon-compass
+    primaryColor: '#734C95'
+    accentColor: '#63DCFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - capture
+    - pose
+    compatibleFrameEvents:
+    - CaptureFlash
+    - PoseReady
+  - id: cosmetic.photo.vesper-filter
+    displayName: Vesper Filter
+    category: 5
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 4878681127927320700, guid: 261b896be8984b6969adf917d7603d6f, type: 3}
+    presentationSprite: {fileID: 4878681127927320700, guid: afca01e7da301ddc2a2f965002ec1eb5, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png#cosmetic.photo.vesper-filter
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/IconAtlases/Photo.png
+    paletteMaskPath: 
+    presentationLayerId: photo-frame-filter-pose
+    presentationEffectId: cosmetic.effect.photo.vesper-filter
+    primaryColor: '#4A73A5'
+    accentColor: '#BA72FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - capture
+    - pose
+    compatibleFrameEvents:
+    - CaptureFlash
+    - PoseReady
+  - id: cosmetic.photo.koro-filter
+    displayName: Koro Filter
+    category: 5
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -82910813601989997, guid: 261b896be8984b6969adf917d7603d6f, type: 3}
+    presentationSprite: {fileID: -82910813601989997, guid: afca01e7da301ddc2a2f965002ec1eb5, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png#cosmetic.photo.koro-filter
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/IconAtlases/Photo.png
+    paletteMaskPath: 
+    presentationLayerId: photo-frame-filter-pose
+    presentationEffectId: cosmetic.effect.photo.koro-filter
+    primaryColor: '#D5633D'
+    accentColor: '#FF9B54'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - capture
+    - pose
+    compatibleFrameEvents:
+    - CaptureFlash
+    - PoseReady
+  - id: cosmetic.photo.mirra-filter
+    displayName: Mirra Filter
+    category: 5
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 4443793023420825376, guid: 261b896be8984b6969adf917d7603d6f, type: 3}
+    presentationSprite: {fileID: 4443793023420825376, guid: afca01e7da301ddc2a2f965002ec1eb5, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png#cosmetic.photo.mirra-filter
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/IconAtlases/Photo.png
+    paletteMaskPath: 
+    presentationLayerId: photo-frame-filter-pose
+    presentationEffectId: cosmetic.effect.photo.mirra-filter
+    primaryColor: '#7953B8'
+    accentColor: '#E29BFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - capture
+    - pose
+    compatibleFrameEvents:
+    - CaptureFlash
+    - PoseReady
+  - id: cosmetic.photo.crew-keepsake
+    displayName: Crew Keepsake
+    category: 5
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -5243606927815326385, guid: 261b896be8984b6969adf917d7603d6f, type: 3}
+    presentationSprite: {fileID: -5243606927815326385, guid: afca01e7da301ddc2a2f965002ec1eb5, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png#cosmetic.photo.crew-keepsake
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/IconAtlases/Photo.png
+    paletteMaskPath: 
+    presentationLayerId: photo-frame-filter-pose
+    presentationEffectId: cosmetic.effect.photo.crew-keepsake
+    primaryColor: '#1E3156'
+    accentColor: '#BDE9FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - capture
+    - pose
+    compatibleFrameEvents:
+    - CaptureFlash
+    - PoseReady
+  - id: cosmetic.photo.signal-charm
+    displayName: Signal Charm
+    category: 5
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -7125016849604029391, guid: 261b896be8984b6969adf917d7603d6f, type: 3}
+    presentationSprite: {fileID: -7125016849604029391, guid: afca01e7da301ddc2a2f965002ec1eb5, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png#cosmetic.photo.signal-charm
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/IconAtlases/Photo.png
+    paletteMaskPath: 
+    presentationLayerId: photo-frame-filter-pose
+    presentationEffectId: cosmetic.effect.photo.signal-charm
+    primaryColor: '#2A8A83'
+    accentColor: '#7BFFE0'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - capture
+    - pose
+    compatibleFrameEvents:
+    - CaptureFlash
+    - PoseReady
+  - id: cosmetic.photo.film-roll
+    displayName: Film Roll
+    category: 5
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -8610990148093559990, guid: 261b896be8984b6969adf917d7603d6f, type: 3}
+    presentationSprite: {fileID: -8610990148093559990, guid: afca01e7da301ddc2a2f965002ec1eb5, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png#cosmetic.photo.film-roll
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/IconAtlases/Photo.png
+    paletteMaskPath: 
+    presentationLayerId: photo-frame-filter-pose
+    presentationEffectId: cosmetic.effect.photo.film-roll
+    primaryColor: '#E0AA45'
+    accentColor: '#FFD27B'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - capture
+    - pose
+    compatibleFrameEvents:
+    - CaptureFlash
+    - PoseReady
+  - id: cosmetic.photo.founder-album
+    displayName: Founder Album
+    category: 5
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 9144520962233587047, guid: 261b896be8984b6969adf917d7603d6f, type: 3}
+    presentationSprite: {fileID: 9144520962233587047, guid: afca01e7da301ddc2a2f965002ec1eb5, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png#cosmetic.photo.founder-album
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/IconAtlases/Photo.png
+    paletteMaskPath: 
+    presentationLayerId: photo-frame-filter-pose
+    presentationEffectId: cosmetic.effect.photo.founder-album
+    primaryColor: '#B899D7'
+    accentColor: '#A89CFF'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - capture
+    - pose
+    compatibleFrameEvents:
+    - CaptureFlash
+    - PoseReady
+  - id: cosmetic.photo.hologram-frame
+    displayName: Hologram Frame
+    category: 5
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 7995120979603213209, guid: 261b896be8984b6969adf917d7603d6f, type: 3}
+    presentationSprite: {fileID: 7995120979603213209, guid: afca01e7da301ddc2a2f965002ec1eb5, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png#cosmetic.photo.hologram-frame
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/IconAtlases/Photo.png
+    paletteMaskPath: 
+    presentationLayerId: photo-frame-filter-pose
+    presentationEffectId: cosmetic.effect.photo.hologram-frame
+    primaryColor: '#F2C569'
+    accentColor: '#FFF0A1'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - capture
+    - pose
+    compatibleFrameEvents:
+    - CaptureFlash
+    - PoseReady
+  - id: cosmetic.photo.chronicler-pose
+    displayName: Chronicler Pose
+    category: 5
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 3162897514180083441, guid: 261b896be8984b6969adf917d7603d6f, type: 3}
+    presentationSprite: {fileID: 3162897514180083441, guid: afca01e7da301ddc2a2f965002ec1eb5, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png#cosmetic.photo.chronicler-pose
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/IconAtlases/Photo.png
+    paletteMaskPath: 
+    presentationLayerId: photo-frame-filter-pose
+    presentationEffectId: cosmetic.effect.photo.chronicler-pose
+    primaryColor: '#4E718D'
+    accentColor: '#72CDEB'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - capture
+    - pose
+    compatibleFrameEvents:
+    - CaptureFlash
+    - PoseReady
+  - id: cosmetic.photo.captain-pose
+    displayName: Captain Pose
+    category: 5
+    ownershipSource: 4
+    rarity: 2
+    packId: mirra_collection
+    productId: jss.cosmetic.photo.captain-pose
+    entitlementIds:
+    - mirra_collection
+    - jss.cosmetic.photo.captain-pose
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -1192006953246552308, guid: 261b896be8984b6969adf917d7603d6f, type: 3}
+    presentationSprite: {fileID: -1192006953246552308, guid: afca01e7da301ddc2a2f965002ec1eb5, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png#cosmetic.photo.captain-pose
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/IconAtlases/Photo.png
+    paletteMaskPath: 
+    presentationLayerId: photo-frame-filter-pose
+    presentationEffectId: cosmetic.effect.photo.captain-pose
+    primaryColor: '#9D5A38'
+    accentColor: '#FFB573'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - capture
+    - pose
+    compatibleFrameEvents:
+    - CaptureFlash
+    - PoseReady
+  - id: cosmetic.photo.stargazer-pose
+    displayName: Stargazer Pose
+    category: 5
+    ownershipSource: 4
+    rarity: 2
+    packId: mirra_collection
+    productId: jss.cosmetic.photo.stargazer-pose
+    entitlementIds:
+    - mirra_collection
+    - jss.cosmetic.photo.stargazer-pose
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 3053979770000227385, guid: 261b896be8984b6969adf917d7603d6f, type: 3}
+    presentationSprite: {fileID: 3053979770000227385, guid: afca01e7da301ddc2a2f965002ec1eb5, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/PhotoPresentation.png#cosmetic.photo.stargazer-pose
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/IconAtlases/Photo.png
+    paletteMaskPath: 
+    presentationLayerId: photo-frame-filter-pose
+    presentationEffectId: cosmetic.effect.photo.stargazer-pose
+    primaryColor: '#34396B'
+    accentColor: '#B573FF'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - capture
+    - pose
+    compatibleFrameEvents:
+    - CaptureFlash
+    - PoseReady
+  - id: cosmetic.crew.mira-light-study
+    displayName: Mira Light Study
+    category: 6
+    ownershipSource: 0
+    rarity: 0
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: -7623696860554604517, guid: 0a3866e9da6a591c8bfb68272e50900d, type: 3}
+    presentationSprite: {fileID: -7623696860554604517, guid: 0f29f345d424eb5f1a771d7b9899fa5d, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png#cosmetic.crew.mira-light-study
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/{crew}/Atlases/{facing}/{crew}-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: crew-fullbody-outfit
+    presentationEffectId: cosmetic.effect.crew.mira-light-study
+    primaryColor: '#D68A3A'
+    accentColor: '#55D9FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.crew.juno-builder-rig
+    displayName: Juno Builder Rig
+    category: 6
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: -1098401792823205333, guid: 0a3866e9da6a591c8bfb68272e50900d, type: 3}
+    presentationSprite: {fileID: -1098401792823205333, guid: 0f29f345d424eb5f1a771d7b9899fa5d, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png#cosmetic.crew.juno-builder-rig
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/{crew}/Atlases/{facing}/{crew}-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: crew-fullbody-outfit
+    presentationEffectId: cosmetic.effect.crew.juno-builder-rig
+    primaryColor: '#C7B18B'
+    accentColor: '#F0A33A'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.crew.kai-navigator-layers
+    displayName: Kai Navigator Layers
+    category: 6
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: 6592529343132714012, guid: 0a3866e9da6a591c8bfb68272e50900d, type: 3}
+    presentationSprite: {fileID: 6592529343132714012, guid: 0f29f345d424eb5f1a771d7b9899fa5d, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png#cosmetic.crew.kai-navigator-layers
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/{crew}/Atlases/{facing}/{crew}-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: crew-fullbody-outfit
+    presentationEffectId: cosmetic.effect.crew.kai-navigator-layers
+    primaryColor: '#4E9CB5'
+    accentColor: '#A9ECFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.crew.bea-field-kit
+    displayName: Bea Field Kit
+    category: 6
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: -7671079928433932715, guid: 0a3866e9da6a591c8bfb68272e50900d, type: 3}
+    presentationSprite: {fileID: -7671079928433932715, guid: 0f29f345d424eb5f1a771d7b9899fa5d, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png#cosmetic.crew.bea-field-kit
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/{crew}/Atlases/{facing}/{crew}-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: crew-fullbody-outfit
+    presentationEffectId: cosmetic.effect.crew.bea-field-kit
+    primaryColor: '#7EC7E8'
+    accentColor: '#835CFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.crew.clubhouse-flight
+    displayName: Clubhouse Flight
+    category: 6
+    ownershipSource: 1
+    rarity: 1
+    packId: launch.earned
+    productId: 
+    entitlementIds: []
+    bodyFits: 
+    icon: {fileID: -6924335537928221297, guid: 0a3866e9da6a591c8bfb68272e50900d, type: 3}
+    presentationSprite: {fileID: -6924335537928221297, guid: 0f29f345d424eb5f1a771d7b9899fa5d, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png#cosmetic.crew.clubhouse-flight
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/{crew}/Atlases/{facing}/{crew}-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: crew-fullbody-outfit
+    presentationEffectId: cosmetic.effect.crew.clubhouse-flight
+    primaryColor: '#734C95'
+    accentColor: '#63DCFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.crew.founder-stargazer
+    displayName: Founder Stargazer
+    category: 6
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -7169446651010478417, guid: 0a3866e9da6a591c8bfb68272e50900d, type: 3}
+    presentationSprite: {fileID: -7169446651010478417, guid: 0f29f345d424eb5f1a771d7b9899fa5d, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png#cosmetic.crew.founder-stargazer
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/{crew}/Atlases/{facing}/{crew}-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: crew-fullbody-outfit
+    presentationEffectId: cosmetic.effect.crew.founder-stargazer
+    primaryColor: '#4A73A5'
+    accentColor: '#BA72FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.crew.founder-navigator
+    displayName: Founder Navigator
+    category: 6
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -9036201815056733676, guid: 0a3866e9da6a591c8bfb68272e50900d, type: 3}
+    presentationSprite: {fileID: -9036201815056733676, guid: 0f29f345d424eb5f1a771d7b9899fa5d, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png#cosmetic.crew.founder-navigator
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/{crew}/Atlases/{facing}/{crew}-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: crew-fullbody-outfit
+    presentationEffectId: cosmetic.effect.crew.founder-navigator
+    primaryColor: '#D5633D'
+    accentColor: '#FF9B54'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.crew.signal-surveyor
+    displayName: Signal Surveyor
+    category: 6
+    ownershipSource: 3
+    rarity: 3
+    packId: explorer_edition
+    productId: 
+    entitlementIds:
+    - explorer_edition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 2276385147747300750, guid: 0a3866e9da6a591c8bfb68272e50900d, type: 3}
+    presentationSprite: {fileID: 2276385147747300750, guid: 0f29f345d424eb5f1a771d7b9899fa5d, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png#cosmetic.crew.signal-surveyor
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/{crew}/Atlases/{facing}/{crew}-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: crew-fullbody-outfit
+    presentationEffectId: cosmetic.effect.crew.signal-surveyor
+    primaryColor: '#7953B8'
+    accentColor: '#E29BFF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.crew.mirra-expedition
+    displayName: Mirra Expedition
+    category: 6
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 3428575030132811220, guid: 0a3866e9da6a591c8bfb68272e50900d, type: 3}
+    presentationSprite: {fileID: 3428575030132811220, guid: 0f29f345d424eb5f1a771d7b9899fa5d, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png#cosmetic.crew.mirra-expedition
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/{crew}/Atlases/{facing}/{crew}-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: crew-fullbody-outfit
+    presentationEffectId: cosmetic.effect.crew.mirra-expedition
+    primaryColor: '#1E3156'
+    accentColor: '#BDE9FF'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.crew.koro-observer
+    displayName: Koro Observer
+    category: 6
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -6258012614047763850, guid: 0a3866e9da6a591c8bfb68272e50900d, type: 3}
+    presentationSprite: {fileID: -6258012614047763850, guid: 0f29f345d424eb5f1a771d7b9899fa5d, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png#cosmetic.crew.koro-observer
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/{crew}/Atlases/{facing}/{crew}-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: crew-fullbody-outfit
+    presentationEffectId: cosmetic.effect.crew.koro-observer
+    primaryColor: '#2A8A83'
+    accentColor: '#7BFFE0'
+    canBeEarned: 1
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.crew.vesper-fieldcoat
+    displayName: Vesper Fieldcoat
+    category: 6
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 2216498947657674585, guid: 0a3866e9da6a591c8bfb68272e50900d, type: 3}
+    presentationSprite: {fileID: 2216498947657674585, guid: 0f29f345d424eb5f1a771d7b9899fa5d, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png#cosmetic.crew.vesper-fieldcoat
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/{crew}/Atlases/{facing}/{crew}-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: crew-fullbody-outfit
+    presentationEffectId: cosmetic.effect.crew.vesper-fieldcoat
+    primaryColor: '#E0AA45'
+    accentColor: '#FFD27B'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.crew.aster-driftcoat
+    displayName: Aster Driftcoat
+    category: 6
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -1712405812468831765, guid: 0a3866e9da6a591c8bfb68272e50900d, type: 3}
+    presentationSprite: {fileID: -1712405812468831765, guid: 0f29f345d424eb5f1a771d7b9899fa5d, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png#cosmetic.crew.aster-driftcoat
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/{crew}/Atlases/{facing}/{crew}-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: crew-fullbody-outfit
+    presentationEffectId: cosmetic.effect.crew.aster-driftcoat
+    primaryColor: '#B899D7'
+    accentColor: '#A89CFF'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.crew.explorer-constellation
+    displayName: Explorer Constellation
+    category: 6
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 3353393096261272669, guid: 0a3866e9da6a591c8bfb68272e50900d, type: 3}
+    presentationSprite: {fileID: 3353393096261272669, guid: 0f29f345d424eb5f1a771d7b9899fa5d, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png#cosmetic.crew.explorer-constellation
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/{crew}/Atlases/{facing}/{crew}-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: crew-fullbody-outfit
+    presentationEffectId: cosmetic.effect.crew.explorer-constellation
+    primaryColor: '#F2C569'
+    accentColor: '#FFF0A1'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.crew.explorer-archive
+    displayName: Explorer Archive
+    category: 6
+    ownershipSource: 3
+    rarity: 3
+    packId: founders_constellation
+    productId: 
+    entitlementIds:
+    - founders_constellation
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: 8086617923308689928, guid: 0a3866e9da6a591c8bfb68272e50900d, type: 3}
+    presentationSprite: {fileID: 8086617923308689928, guid: 0f29f345d424eb5f1a771d7b9899fa5d, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png#cosmetic.crew.explorer-archive
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/{crew}/Atlases/{facing}/{crew}-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: crew-fullbody-outfit
+    presentationEffectId: cosmetic.effect.crew.explorer-archive
+    primaryColor: '#4E718D'
+    accentColor: '#72CDEB'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.crew.launch-homecoming
+    displayName: Launch Homecoming
+    category: 6
+    ownershipSource: 4
+    rarity: 2
+    packId: koro_vesper_collection
+    productId: jss.cosmetic.crew.launch-homecoming
+    entitlementIds:
+    - koro_vesper_collection
+    - jss.cosmetic.crew.launch-homecoming
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -7101250324813803455, guid: 0a3866e9da6a591c8bfb68272e50900d, type: 3}
+    presentationSprite: {fileID: -7101250324813803455, guid: 0f29f345d424eb5f1a771d7b9899fa5d, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png#cosmetic.crew.launch-homecoming
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/{crew}/Atlases/{facing}/{crew}-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: crew-fullbody-outfit
+    presentationEffectId: cosmetic.effect.crew.launch-homecoming
+    primaryColor: '#9D5A38'
+    accentColor: '#FFB573'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx
+  - id: cosmetic.crew.birthday-expedition
+    displayName: Birthday Expedition
+    category: 6
+    ownershipSource: 4
+    rarity: 2
+    packId: koro_vesper_collection
+    productId: jss.cosmetic.crew.birthday-expedition
+    entitlementIds:
+    - koro_vesper_collection
+    - jss.cosmetic.crew.birthday-expedition
+    - complete_launch_collection
+    bodyFits: 
+    icon: {fileID: -3336098273111881243, guid: 0a3866e9da6a591c8bfb68272e50900d, type: 3}
+    presentationSprite: {fileID: -3336098273111881243, guid: 0f29f345d424eb5f1a771d7b9899fa5d, type: 3}
+    presentationAssetPath: Assets/_JustSomeStars/Art/2D/Cosmetics/PresentationAtlases/CrewPresentation.png#cosmetic.crew.birthday-expedition
+    attachmentAssetPath: Assets/_JustSomeStars/Art/2D/Characters/{crew}/Atlases/{facing}/{crew}-{facing}.png
+    paletteMaskPath: 
+    presentationLayerId: crew-fullbody-outfit
+    presentationEffectId: cosmetic.effect.crew.birthday-expedition
+    primaryColor: '#34396B'
+    accentColor: '#B573FF'
+    canBeEarned: 0
+    silhouetteChanging: 0
+    compatibleClipIds:
+    - idle
+    - run
+    - turn
+    - jump
+    - land
+    - interact
+    - scan
+    - climb
+    compatibleFrameEvents:
+    - FootContact
+    - ToolAttach
+    - ToolDetach
+    - Interaction
+    - Audio
+    - Vfx

@@ -527,6 +527,65 @@ namespace JustSomeStars.Tests.EditMode
         }
 
         [Test]
+        public async Task GalaxyRestore_AdoptsEveryIndividualCosmeticEntitlement()
+        {
+            var itemIds = new[]
+            {
+                "jss.cosmetic.captain.launch-navigator",
+                "jss.cosmetic.captain.launch-planetary",
+                "jss.cosmetic.captain.launch-starlight",
+                "jss.cosmetic.captain.star-charm",
+                "jss.cosmetic.captain.birthday-charm",
+                "jss.cosmetic.captain.ori-wristlink",
+                "jss.cosmetic.ori.festival-canopy",
+                "jss.cosmetic.ori.moon-chimes",
+                "jss.cosmetic.ori.comet-trail",
+                "jss.cosmetic.ship.builder-rig",
+                "jss.cosmetic.ship.signal-tower",
+                "jss.cosmetic.ship.comet-launch",
+                "jss.cosmetic.lens.rocket-window",
+                "jss.cosmetic.lens.starlight-compass",
+                "jss.cosmetic.clubhouse.moon-chair",
+                "jss.cosmetic.clubhouse.ori-radio",
+                "jss.cosmetic.photo.captain-pose",
+                "jss.cosmetic.photo.stargazer-pose",
+                "jss.cosmetic.crew.launch-homecoming",
+                "jss.cosmetic.crew.birthday-expedition",
+            };
+            var events = new List<string>();
+            var identity = "guest:guest-a";
+            var verifier = new FakeGalaxyVerifier(events) { Verified = true };
+            var owned = new GalaxyNativePurchase[itemIds.Length];
+            for (var index = 0; index < itemIds.Length; index++)
+            {
+                var purchaseId = $"catalogue-restore-{index}";
+                verifier.PurchaseItems[purchaseId] = itemIds[index];
+                owned[index] = new GalaxyNativePurchase(
+                    GalaxyNativeStatus.Succeeded,
+                    purchaseId,
+                    itemIds[index],
+                    AccountHash(identity),
+                    ProfileHash(identity));
+            }
+            var gateway = new FakeGalaxyGateway(events) { Owned = owned };
+            var service = new GalaxyStoreService(
+                new FakeAccount("guest-a"),
+                gateway,
+                verifier,
+                new FakeGalaxyLedger(events));
+            await service.InitializeAsync(CancellationToken.None);
+
+            var restored = await service.RestoreAsync(CancellationToken.None);
+
+            Assert.That(verifier.VerifyCount, Is.EqualTo(itemIds.Length));
+            Assert.That(gateway.AcknowledgeCount, Is.EqualTo(itemIds.Length));
+            foreach (var itemId in itemIds)
+            {
+                Assert.That(restored.Owns(new ContentId(itemId)), Is.True, itemId);
+            }
+        }
+
+        [Test]
         public async Task GalaxyService_RestartRehydratesSignedAndPendingAuthority()
         {
             var events = new List<string>();
@@ -837,6 +896,8 @@ namespace JustSomeStars.Tests.EditMode
             public bool IsConfigured => true;
             public string Revision => "fake-v1";
             public bool Verified { get; set; }
+            public Dictionary<string, string> PurchaseItems { get; } =
+                new(StringComparer.Ordinal);
             public int VerifyCount { get; private set; }
             public int CacheValidationCount { get; private set; }
 
@@ -846,7 +907,11 @@ namespace JustSomeStars.Tests.EditMode
             {
                 VerifyCount++;
                 m_Events.Add("verify:" + purchaseId);
-                var itemId = purchaseId == "owned-unknown"
+                var itemId = PurchaseItems.TryGetValue(
+                    purchaseId,
+                    out var restoredItem)
+                    ? restoredItem
+                    : purchaseId == "owned-unknown"
                     ? "jss.edition.explorer"
                     : purchaseId == "interrupted-mirra"
                         ? "jss.collection.mirra"
