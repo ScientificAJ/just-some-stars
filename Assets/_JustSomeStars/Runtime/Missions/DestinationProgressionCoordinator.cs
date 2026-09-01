@@ -51,10 +51,13 @@ namespace JustSomeStars.Runtime.Missions
             }
 
             var loaded = await m_Saves.LoadAsync(cancellationToken);
-            var useKoro = loaded.HasSave && ShouldEnterKoro(loaded.Save);
-            m_Active = useKoro
-                ? new KoroVesperProgressionService(m_Events, m_Saves, m_Settings)
-                : new MirraProgressionService(m_Events, m_Saves, m_Settings);
+            var useAster = loaded.HasSave && ShouldEnterAster(loaded.Save);
+            var useKoro = loaded.HasSave && !useAster && ShouldEnterKoro(loaded.Save);
+            m_Active = useAster
+                ? new AsterVeilProgressionService(m_Events, m_Saves, m_Settings)
+                : useKoro
+                    ? new KoroVesperProgressionService(m_Events, m_Saves, m_Settings)
+                    : new MirraProgressionService(m_Events, m_Saves, m_Settings);
             var result = await m_Active.InitializeAsync(cancellationToken);
             if (result.State != StartupResultState.Available)
             {
@@ -100,6 +103,44 @@ namespace JustSomeStars.Runtime.Missions
                 $"Active chapter '{ActiveChapterId}' is not {typeof(T).Name}.");
         }
 
+        public async Task<AsterVeilProgressionService> AdvanceToAsterAsync(
+            CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            if (m_Shutdown)
+            {
+                throw new InvalidOperationException(
+                    "Destination progression cannot advance after shutdown.");
+            }
+            if (m_Active is AsterVeilProgressionService current)
+            {
+                return current;
+            }
+            if (m_Active is not KoroVesperProgressionService koro ||
+                !koro.IsMissionComplete)
+            {
+                throw new InvalidOperationException(
+                    "Aster Veil unlocks only after the Koro Signal fragment.");
+            }
+
+            await m_Active.ShutdownAsync();
+            var aster = new AsterVeilProgressionService(
+                m_Events,
+                m_Saves,
+                m_Settings);
+            var result = await aster.InitializeAsync(cancellationToken);
+            if (result.State != StartupResultState.Available)
+            {
+                await aster.ShutdownAsync();
+                throw new InvalidOperationException(
+                    result.Message.Length > 0
+                        ? result.Message
+                        : "Aster Veil progression could not initialize.");
+            }
+            m_Active = aster;
+            return aster;
+        }
+
         private IChapterProgression RequireActive() => m_Active ??
             throw new InvalidOperationException(
                 "Destination progression must initialize before it is queried.");
@@ -129,6 +170,27 @@ namespace JustSomeStars.Runtime.Missions
                     "mission.mirra.complete",
                     StringComparer.Ordinal) ||
                 save.Story.CheckpointOrdinal >= 7;
+        }
+
+        private static bool ShouldEnterAster(GameSave save)
+        {
+            if (string.Equals(
+                    save.Mission?.MissionId,
+                    AsterVeilProgressionService.MissionId,
+                    StringComparison.Ordinal))
+            {
+                return true;
+            }
+
+            return save.ChapterOne.Phase >= ChapterOnePhase.KoroComplete ||
+                save.DiscoveryIds.Contains(
+                    KoroVesperProgressionService.FragmentIdValue,
+                    StringComparer.Ordinal) ||
+                (string.Equals(
+                     save.Mission?.MissionId,
+                     KoroVesperProgressionService.MissionId,
+                     StringComparison.Ordinal) &&
+                 save.Mission.CheckpointOrdinal >= 6);
         }
     }
 }

@@ -102,7 +102,7 @@ namespace JustSomeStars.Tests.EditMode
             };
             await service.UploadAsync("firebase-user-v2", original, CancellationToken.None);
             gateway.Documents[gateway.LastPath] = gateway.Documents[gateway.LastPath]
-                .Replace("\"schemaVersion\": 3", "\"schemaVersion\": 2")
+                .Replace("\"schemaVersion\": 4", "\"schemaVersion\": 2")
                 .Replace("    \"correctionCount\": 0,\n", string.Empty);
 
             var downloaded = await service.DownloadAsync(

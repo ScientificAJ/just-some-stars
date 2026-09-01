@@ -174,6 +174,40 @@ namespace JustSomeStars.Runtime.Core
             return false;
         }
 
+        public bool TryResolveEntry(
+            string destinationIdOrAddress,
+            out SceneCatalogEntry entry)
+        {
+            if (TryGetEntry(destinationIdOrAddress, out entry))
+            {
+                return true;
+            }
+            if (string.IsNullOrWhiteSpace(destinationIdOrAddress) ||
+                !string.Equals(
+                    destinationIdOrAddress,
+                    destinationIdOrAddress.Trim(),
+                    StringComparison.Ordinal))
+            {
+                entry = null;
+                return false;
+            }
+
+            foreach (var candidate in m_Entries ?? Array.Empty<SceneCatalogEntry>())
+            {
+                if (candidate != null && string.Equals(
+                        candidate.Address,
+                        destinationIdOrAddress,
+                        StringComparison.Ordinal))
+                {
+                    entry = candidate;
+                    return true;
+                }
+            }
+
+            entry = null;
+            return false;
+        }
+
         private static void RequireTrimmedValue(string value, string label)
         {
             if (string.IsNullOrWhiteSpace(value) ||

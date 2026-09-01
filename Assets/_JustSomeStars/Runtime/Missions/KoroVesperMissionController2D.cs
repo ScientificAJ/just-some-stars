@@ -140,6 +140,17 @@ namespace JustSomeStars.Runtime.Missions
             fragmentCue.volume = m_Dependencies.Settings.Current.EffectsVolume;
             fragmentCue.Play();
             SynchronizePresentation();
+            if (m_Dependencies.ChapterProgression is
+                DestinationProgressionCoordinator coordinator)
+            {
+                await coordinator.AdvanceToAsterAsync(cancellationToken);
+                await m_Dependencies.Modes.EnterAsync(
+                    GameMode.Flight,
+                    cancellationToken);
+                await m_Dependencies.Scenes.RouteAsync(
+                    AsterVeilProgressionService.FlightSceneName,
+                    cancellationToken);
+            }
             return true;
         }
 

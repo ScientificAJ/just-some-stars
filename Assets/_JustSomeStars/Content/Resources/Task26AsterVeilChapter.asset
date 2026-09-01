@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4ed7649d308ca8baed1214acfb69b0, type: 3}
+  m_Name: Task26AsterVeilChapter
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Missions.AsterVeilChapterContent
+  mission: {fileID: 11400000, guid: 9d85a85737508dd0e841ecbe657c860c, type: 2}
+  relativeMotion: {fileID: 11400000, guid: 09e398d32d3082427b25a6ca71af358b, type: 2}
+  motionTracker: {fileID: 11400000, guid: 5c1a377866605898aa7138a09953be82, type: 2}
+  scienceSource: {fileID: 11400000, guid: 45739a2388556cf40817a4026dc20ec5, type: 2}
+  dialogue:
+  - {fileID: 11400000, guid: 92cb4c0ebf2c07963ae7367097b1474c, type: 2}
+  - {fileID: 11400000, guid: 74398e218d61436d5b78526b37d462b1, type: 2}
+  - {fileID: 11400000, guid: 52db3924334eeb64ea87e3f84785bdb2, type: 2}
+  - {fileID: 11400000, guid: f380f357d42298a19898da246e255cdc, type: 2}
+  - {fileID: 11400000, guid: 66747766dc7eca47980b3ed0cd9d1895, type: 2}
+  checkpointNodeIds:
+  - mission.aster-veil.approach
+  - mission.aster-veil.route
+  - mission.aster-veil.relative-motion
+  - mission.aster-veil.debris
+  - mission.aster-veil.fragment
+  - mission.aster-veil.reassembly
+  - mission.aster-veil.escape
+  - mission.aster-veil.return
+  - mission.aster-veil.dinner
+  authoredSeedId: seed.aster.debris.260826.v1

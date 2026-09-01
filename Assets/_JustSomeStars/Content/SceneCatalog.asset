@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SceneCatalog
   m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Core.SceneCatalog
   m_SchemaVersion: 1
-  m_FallbackSceneName: Frontend
-  m_FallbackMode: 0
+  m_FallbackSceneName: Clubhouse
+  m_FallbackMode: 2
   m_Entries:
   - m_DestinationId: destination.mirra.approach
     m_Address: Task17FlightGraybox
@@ -28,3 +28,15 @@ MonoBehaviour:
   - m_DestinationId: destination.koro.surface
     m_Address: KoroVesper
     m_TargetMode: 4
+  - m_DestinationId: destination.chapter-one.opening
+    m_Address: Opening
+    m_TargetMode: 2
+  - m_DestinationId: destination.aster.approach
+    m_Address: AsterVeil
+    m_TargetMode: 3
+  - m_DestinationId: destination.signal.reassembly
+    m_Address: SignalReassembly
+    m_TargetMode: 3
+  - m_DestinationId: destination.dinner.ending
+    m_Address: DinnerEnding
+    m_TargetMode: 2

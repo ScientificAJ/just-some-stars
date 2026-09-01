@@ -106,6 +106,7 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - Characters-Crew
+    - Task26ChapterOne
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 660d4c852267c974798113ea9bcb1da3, type: 2}

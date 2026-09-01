@@ -140,14 +140,8 @@ namespace JustSomeStars.Runtime.Flight
             ApplyPresentation();
         }
 
-        public bool RecoverLatestCheckpoint()
+        public void RestoreCheckpointState(FlightState checkpoint)
         {
-            if (!latestCheckpoint.HasValue)
-            {
-                return false;
-            }
-
-            var checkpoint = latestCheckpoint.Value.State;
             State = new FlightState(
                 checkpoint.Position,
                 checkpoint.Velocity,
@@ -160,6 +154,16 @@ namespace JustSomeStars.Runtime.Flight
             failureElapsed = 0f;
             laneInputHeld = false;
             ApplyPresentation();
+        }
+
+        public bool RecoverLatestCheckpoint()
+        {
+            if (!latestCheckpoint.HasValue)
+            {
+                return false;
+            }
+
+            RestoreCheckpointState(latestCheckpoint.Value.State);
             return true;
         }
 

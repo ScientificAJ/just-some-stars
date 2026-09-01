@@ -431,7 +431,7 @@ namespace JustSomeStars.Tests.EditMode
         }
 
         [Test]
-        public void CommittedCatalog_IsVersionOneEmptyAndAddressableAtCanonicalKey()
+        public void CommittedCatalog_FallsBackToClubhouseAndPublishesChapterOneRoute()
         {
             const string path = "Assets/_JustSomeStars/Content/SceneCatalog.asset";
             var catalog = AssetDatabase.LoadAssetAtPath<SceneCatalog>(path);
@@ -439,9 +439,22 @@ namespace JustSomeStars.Tests.EditMode
             Assert.That(catalog, Is.Not.Null);
             Assert.DoesNotThrow(() => catalog.Validate());
             Assert.That(catalog.SchemaVersion, Is.EqualTo(SceneCatalog.CurrentSchemaVersion));
-            Assert.That(catalog.FallbackSceneName, Is.EqualTo("Frontend"));
-            Assert.That(catalog.FallbackMode, Is.EqualTo(GameMode.Frontend));
-            Assert.That(catalog.Entries, Is.Empty);
+            Assert.That(catalog.FallbackSceneName, Is.EqualTo("Clubhouse"));
+            Assert.That(catalog.FallbackMode, Is.EqualTo(GameMode.Clubhouse));
+            Assert.That(
+                catalog.Entries.Select(item =>
+                    (item.DestinationId, item.Address, item.TargetMode)),
+                Is.EquivalentTo(new[]
+                {
+                    ("destination.mirra.approach", "Task17FlightGraybox", GameMode.Flight),
+                    ("destination.mirra.surface", "Mirra", GameMode.Surface),
+                    ("destination.vesper.approach", "Task25VesperFlight", GameMode.Flight),
+                    ("destination.koro.surface", "KoroVesper", GameMode.Surface),
+                    ("destination.chapter-one.opening", "Opening", GameMode.Clubhouse),
+                    ("destination.aster.approach", "AsterVeil", GameMode.Flight),
+                    ("destination.signal.reassembly", "SignalReassembly", GameMode.Flight),
+                    ("destination.dinner.ending", "DinnerEnding", GameMode.Clubhouse),
+                }));
 
             var settings = AddressableAssetSettingsDefaultObject.GetSettings(false);
             Assert.That(settings, Is.Not.Null);
@@ -450,6 +463,22 @@ namespace JustSomeStars.Tests.EditMode
             Assert.That(entry, Is.Not.Null);
             Assert.That(entry.address, Is.EqualTo(SceneCatalog.AddressablesKey));
             Assert.That(entry.parentGroup, Is.SameAs(settings.DefaultGroup));
+            foreach (var route in catalog.Entries)
+            {
+                Assert.That(
+                    settings.groups
+                        .Where(group => group != null)
+                        .SelectMany(group => group.entries)
+                        .Any(candidate => candidate.address == route.Address),
+                    Is.True,
+                    $"Catalog route '{route.Address}' must be truly Addressable.");
+            }
+            Assert.That(
+                EditorBuildSettings.scenes.Any(scene => scene.enabled &&
+                    scene.path.EndsWith("/Scenes/Core/Clubhouse.unity",
+                        StringComparison.Ordinal)),
+                Is.True,
+                "Clubhouse fallback must remain a direct, reusable safe scene.");
         }
 
         private static void AssertCatalogRejected(SceneCatalogEntry entry)

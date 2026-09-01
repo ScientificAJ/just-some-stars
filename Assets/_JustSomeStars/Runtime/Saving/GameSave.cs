@@ -52,6 +52,116 @@ namespace JustSomeStars.Runtime.Saving
         }
     }
 
+    public enum ChapterOnePhase
+    {
+        NotStarted = 0,
+        OpeningComplete = 1,
+        MirraComplete = 2,
+        KoroComplete = 3,
+        AsterFragmentRecovered = 4,
+        SignalReassembled = 5,
+        ReturnedHome = 6,
+        DinnerComplete = 7,
+    }
+
+    [Serializable]
+    public sealed class ChapterOneProgress : IEquatable<ChapterOneProgress>
+    {
+        [SerializeField] private ChapterOnePhase phase;
+        [SerializeField] private bool starMapRevealed;
+        [SerializeField] private bool finalPulseSeen;
+
+        public ChapterOnePhase Phase
+        {
+            get => phase;
+            set => phase = value;
+        }
+
+        public bool StarMapRevealed
+        {
+            get => starMapRevealed;
+            set => starMapRevealed = value;
+        }
+
+        public bool FinalPulseSeen
+        {
+            get => finalPulseSeen;
+            set => finalPulseSeen = value;
+        }
+
+        public bool CreditsUnlocked =>
+            phase == ChapterOnePhase.DinnerComplete &&
+            starMapRevealed &&
+            finalPulseSeen;
+
+        public ChapterOneProgress Copy()
+        {
+            return new ChapterOneProgress
+            {
+                phase = phase,
+                starMapRevealed = starMapRevealed,
+                finalPulseSeen = finalPulseSeen,
+            };
+        }
+
+        public bool Equals(ChapterOneProgress other)
+        {
+            return other != null &&
+                phase == other.phase &&
+                starMapRevealed == other.starMapRevealed &&
+                finalPulseSeen == other.finalPulseSeen;
+        }
+
+        public override bool Equals(object obj) => Equals(obj as ChapterOneProgress);
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return (((int)phase * 397) ^ starMapRevealed.GetHashCode()) * 397 ^
+                    finalPulseSeen.GetHashCode();
+            }
+        }
+
+        internal void ThrowIfInvalid(string parameterName)
+        {
+            if (!Enum.IsDefined(typeof(ChapterOnePhase), phase))
+            {
+                throw new ArgumentOutOfRangeException(
+                    parameterName,
+                    "Chapter One phase is not authored.");
+            }
+
+            if (phase < ChapterOnePhase.SignalReassembled && starMapRevealed)
+            {
+                throw new ArgumentException(
+                    "The star map cannot be revealed before Signal reconstruction.",
+                    parameterName);
+            }
+
+            if (phase >= ChapterOnePhase.SignalReassembled && !starMapRevealed)
+            {
+                throw new ArgumentException(
+                    "Signal reconstruction must reveal the star map.",
+                    parameterName);
+            }
+
+            if (phase != ChapterOnePhase.DinnerComplete && finalPulseSeen)
+            {
+                throw new ArgumentException(
+                    "The final pulse cannot be recorded before dinner completes.",
+                    parameterName);
+            }
+
+            if (phase == ChapterOnePhase.DinnerComplete && !finalPulseSeen)
+            {
+                throw new ArgumentException(
+                    "Dinner completion requires the final Ori/fragment pulse.",
+                    parameterName);
+            }
+        }
+    }
+
     [Serializable]
     public sealed class CaptainState : IEquatable<CaptainState>
     {
@@ -510,12 +620,13 @@ namespace JustSomeStars.Runtime.Saving
     [Serializable]
     public sealed class GameSave : IEquatable<GameSave>
     {
-        public const int CurrentSchemaVersion = 3;
+        public const int CurrentSchemaVersion = 4;
 
         internal static readonly string[] RequiredJsonFields =
         {
             "schemaVersion",
             "story",
+            "chapterOne",
             "mission",
             "captain",
             "discoveryIds",
@@ -528,6 +639,8 @@ namespace JustSomeStars.Runtime.Saving
 
         [SerializeField] private int schemaVersion = CurrentSchemaVersion;
         [SerializeField] private StoryProgress story = new StoryProgress();
+        [SerializeField] private ChapterOneProgress chapterOne =
+            new ChapterOneProgress();
         [SerializeField] private MissionProgress mission = MissionProgress.Empty();
         [SerializeField] private CaptainState captain = new CaptainState();
         [SerializeField] private string[] discoveryIds = Array.Empty<string>();
@@ -553,6 +666,12 @@ namespace JustSomeStars.Runtime.Saving
         {
             get => story;
             set => story = value;
+        }
+
+        public ChapterOneProgress ChapterOne
+        {
+            get => chapterOne;
+            set => chapterOne = value;
         }
 
         public MissionProgress Mission
@@ -619,6 +738,7 @@ namespace JustSomeStars.Runtime.Saving
             {
                 schemaVersion = CurrentSchemaVersion,
                 story = new StoryProgress(),
+                chapterOne = new ChapterOneProgress(),
                 mission = MissionProgress.Empty(),
                 captain = new CaptainState
                 {
@@ -645,6 +765,7 @@ namespace JustSomeStars.Runtime.Saving
             {
                 schemaVersion = schemaVersion,
                 story = story?.Copy(),
+                chapterOne = chapterOne?.Copy(),
                 mission = mission?.Copy(),
                 captain = captain?.Copy(),
                 discoveryIds = discoveryIds?.ToArray(),
@@ -661,6 +782,7 @@ namespace JustSomeStars.Runtime.Saving
             return other != null &&
                 schemaVersion == other.schemaVersion &&
                 Equals(story, other.story) &&
+                Equals(chapterOne, other.chapterOne) &&
                 Equals(mission, other.mission) &&
                 Equals(captain, other.captain) &&
                 SequenceEqual(discoveryIds, other.discoveryIds) &&
@@ -679,6 +801,7 @@ namespace JustSomeStars.Runtime.Saving
             {
                 var hash = schemaVersion;
                 hash = (hash * 397) ^ (story?.GetHashCode() ?? 0);
+                hash = (hash * 397) ^ (chapterOne?.GetHashCode() ?? 0);
                 hash = (hash * 397) ^ (mission?.GetHashCode() ?? 0);
                 hash = (hash * 397) ^ (captain?.GetHashCode() ?? 0);
                 hash = (hash * 397) ^ (birthday?.GetHashCode() ?? 0);
@@ -695,7 +818,7 @@ namespace JustSomeStars.Runtime.Saving
                     parameterName);
             }
 
-            if (story == null || mission == null || captain == null ||
+            if (story == null || chapterOne == null || mission == null || captain == null ||
                 birthday == null || metadata == null)
             {
                 throw new ArgumentException("Save domains cannot be missing.", parameterName);
@@ -708,6 +831,8 @@ namespace JustSomeStars.Runtime.Saving
                     parameterName,
                     "Story checkpoint ordinal cannot be negative.");
             }
+
+            chapterOne.ThrowIfInvalid(parameterName);
 
             mission.ThrowIfInvalid(parameterName);
 

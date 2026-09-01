@@ -6,6 +6,13 @@ using UnityEngine;
 
 namespace JustSomeStars.Runtime.Flight
 {
+    public interface IFlightGameplayExtension
+    {
+        void Configure(FlightGameplayDependencies dependencies);
+
+        void Release(FlightGameplayDependencies dependencies);
+    }
+
     [DisallowMultipleComponent]
     public sealed class FlightGameplayLifecycle2D : MonoBehaviour
     {
@@ -16,6 +23,9 @@ namespace JustSomeStars.Runtime.Flight
         [SerializeField] private FlightPredictionArc2D predictionArc;
         [SerializeField] private FlightTouchHudLayout2D touchHud;
         [SerializeField] private float nominalRouteSeconds = 90f;
+
+        private IFlightGameplayExtension[] m_Extensions =
+            Array.Empty<IFlightGameplayExtension>();
 
         public FlightGameplayDependencies Dependencies { get; private set; }
         public bool IsConfigured => Dependencies != null;
@@ -64,6 +74,11 @@ namespace JustSomeStars.Runtime.Flight
                 compositionCamera.SetTargetVelocity(targetBody.linearVelocity);
                 dependencies.Settings.SettingsChanged += OnSettingsChanged;
                 dependencies.Modes.StateChanged += OnModeStateChanged;
+                m_Extensions = GetComponentsInChildren<IFlightGameplayExtension>(true);
+                foreach (var extension in m_Extensions)
+                {
+                    extension.Configure(dependencies);
+                }
                 ApplyPolicy(dependencies.Modes.CurrentPolicy);
                 Dependencies = dependencies;
                 if (dependencies.Progression?.HasPendingDeparture == true)
@@ -73,6 +88,18 @@ namespace JustSomeStars.Runtime.Flight
             }
             catch
             {
+                for (var index = m_Extensions.Length - 1; index >= 0; index--)
+                {
+                    try
+                    {
+                        m_Extensions[index].Release(dependencies);
+                    }
+                    catch (Exception exception)
+                    {
+                        Debug.LogException(exception, this);
+                    }
+                }
+                m_Extensions = Array.Empty<IFlightGameplayExtension>();
                 dependencies.Settings.SettingsChanged -= OnSettingsChanged;
                 dependencies.Modes.StateChanged -= OnModeStateChanged;
                 landing.Release();
@@ -112,6 +139,11 @@ namespace JustSomeStars.Runtime.Flight
             }
 
             Dependencies = null;
+            for (var index = m_Extensions.Length - 1; index >= 0; index--)
+            {
+                m_Extensions[index].Release(dependencies);
+            }
+            m_Extensions = Array.Empty<IFlightGameplayExtension>();
             dependencies.Settings.SettingsChanged -= OnSettingsChanged;
             dependencies.Modes.StateChanged -= OnModeStateChanged;
             landing.Release();

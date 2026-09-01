@@ -332,6 +332,7 @@ namespace JustSomeStars.Runtime.Saving
         {
             public int schemaVersion;
             public StoryProgress story;
+            public ChapterOneProgress chapterOne;
             public MissionProgress mission;
             public CaptainState captain;
             public string[] discoveryIds;
@@ -346,6 +347,7 @@ namespace JustSomeStars.Runtime.Saving
                 {
                     schemaVersion = save.SchemaVersion,
                     story = save.Story.Copy(),
+                    chapterOne = save.ChapterOne.Copy(),
                     mission = save.Mission.Copy(),
                     captain = save.Captain.Copy(),
                     discoveryIds = (string[])save.DiscoveryIds.Clone(),
@@ -368,6 +370,7 @@ namespace JustSomeStars.Runtime.Saving
                     metadata.SaveId,
                     metadata.CreatedUtcTicks);
                 projected.Story = story;
+                projected.ChapterOne = chapterOne;
                 projected.Mission = mission;
                 projected.Captain = captain;
                 projected.DiscoveryIds = discoveryIds;

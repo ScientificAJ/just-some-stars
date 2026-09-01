@@ -1,3 +1,6 @@
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace JustSomeStars.Runtime.UI
@@ -7,6 +10,8 @@ namespace JustSomeStars.Runtime.UI
     {
         private const string ContinueExplanation =
             "Gameplay is not in this flight yet.";
+        private const string BeginChapterExplanation =
+            "Begin Chapter One";
         private const string SettingsTitle = "Settings";
         private const string SettingsBody =
             "Device settings are saved locally and are not included in cloud backup.";
@@ -58,6 +63,7 @@ namespace JustSomeStars.Runtime.UI
         private IFrontendSettingsPanel m_SettingsPanel;
         private bool m_IsBound;
         private bool m_IsPanelVisible;
+        private bool m_ContinueInFlight;
 
         public bool IsConfigured => Dependencies != null;
 
@@ -122,8 +128,10 @@ namespace JustSomeStars.Runtime.UI
             Dependencies = dependencies;
             m_View.PresentVersion($"Version {Application.version}");
             m_View.PresentContinue(
-                interactable: false,
-                ContinueExplanation);
+                dependencies.BeginChapterOne != null,
+                dependencies.BeginChapterOne != null
+                    ? BeginChapterExplanation
+                    : ContinueExplanation);
             Bind();
         }
 
@@ -209,7 +217,33 @@ namespace JustSomeStars.Runtime.UI
 
         private void HandleContinueRequested()
         {
-            // Continue is intentionally disabled in this truthful skeleton.
+            if (Dependencies?.BeginChapterOne == null || m_ContinueInFlight)
+            {
+                return;
+            }
+            m_ContinueInFlight = true;
+            m_View.PresentContinue(false, "Preparing the Clubhouse…");
+            _ = BeginChapterOneAsync();
+        }
+
+        private async Task BeginChapterOneAsync()
+        {
+            try
+            {
+                await Dependencies.BeginChapterOne(CancellationToken.None);
+            }
+            catch (Exception exception)
+            {
+                Debug.LogException(exception, this);
+                if (Dependencies?.BeginChapterOne != null)
+                {
+                    m_View.PresentContinue(true, BeginChapterExplanation);
+                }
+            }
+            finally
+            {
+                m_ContinueInFlight = false;
+            }
         }
 
         private void HandleSettingsRequested()

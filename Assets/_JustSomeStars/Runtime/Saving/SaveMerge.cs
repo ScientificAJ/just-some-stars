@@ -44,6 +44,7 @@ namespace JustSomeStars.Runtime.Saving
 
             var merged = local.Copy();
             merged.Story = MergeStory(local.Story, cloud.Story);
+            merged.ChapterOne = MergeChapterOne(local.ChapterOne, cloud.ChapterOne);
             merged.Mission = MergeMission(local.Mission, cloud.Mission);
             merged.Captain = MergeCaptain(local.Captain, cloud.Captain);
             merged.DiscoveryIds = Union(local.DiscoveryIds, cloud.DiscoveryIds);
@@ -92,6 +93,7 @@ namespace JustSomeStars.Runtime.Saving
 
             var preferred = preferLocal ? local : cloud;
             var merged = preferred.Copy();
+            merged.ChapterOne = MergeChapterOne(local.ChapterOne, cloud.ChapterOne);
             try
             {
                 merged.Story = MergeStory(local.Story, cloud.Story);
@@ -207,6 +209,26 @@ namespace JustSomeStars.Runtime.Saving
             return local.Copy();
         }
 
+        private static ChapterOneProgress MergeChapterOne(
+            ChapterOneProgress local,
+            ChapterOneProgress cloud)
+        {
+            var phase = local.Phase >= cloud.Phase ? local.Phase : cloud.Phase;
+            var merged = new ChapterOneProgress
+            {
+                Phase = phase,
+                StarMapRevealed =
+                    phase >= ChapterOnePhase.SignalReassembled ||
+                    local.StarMapRevealed ||
+                    cloud.StarMapRevealed,
+                FinalPulseSeen =
+                    phase == ChapterOnePhase.DinnerComplete &&
+                    (local.FinalPulseSeen || cloud.FinalPulseSeen),
+            };
+            merged.ThrowIfInvalid(nameof(merged));
+            return merged;
+        }
+
         private static MissionProgress MergeMission(
             MissionProgress local,
             MissionProgress cloud)
@@ -266,6 +288,7 @@ namespace JustSomeStars.Runtime.Saving
             {
                 "mission.mirra.chapter-one" => 1,
                 "mission.koro-vesper.chapter-one" => 2,
+                "mission.aster-veil.chapter-one" => 3,
                 _ => 0,
             };
         }

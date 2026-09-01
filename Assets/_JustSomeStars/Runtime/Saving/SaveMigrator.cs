@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JustSomeStars.Runtime.Missions;
 using UnityEngine;
 
 namespace JustSomeStars.Runtime.Saving
@@ -84,6 +85,7 @@ namespace JustSomeStars.Runtime.Saving
                 {
                     new SaveMigrationV1ToV2(),
                     new SaveMigrationV2ToV3(),
+                    new SaveMigrationV3ToV4(),
                 });
         }
 
@@ -244,11 +246,95 @@ namespace JustSomeStars.Runtime.Saving
                 };
                 migrated.Metadata = legacy.metadata;
                 migrated.ThrowIfInvalid(nameof(document));
+                migrated.SetSchemaVersionForMigration(ToVersion);
                 return JsonUtility.ToJson(migrated, prettyPrint: true);
             }
 
             [Serializable]
             private sealed class LegacySaveV2
+            {
+                public StoryProgress story;
+                public MissionProgress mission;
+                public CaptainState captain;
+                public string[] discoveryIds;
+                public string[] earnedCosmeticIds;
+                public string[] atlasEntryIds;
+                public PhotoMetadata[] photographs;
+                public BirthdayState birthday;
+                public SaveMetadata metadata;
+            }
+        }
+
+        private sealed class SaveMigrationV3ToV4 : ISaveMigration
+        {
+            public int FromVersion => 3;
+
+            public int ToVersion => 4;
+
+            public string Migrate(string document)
+            {
+                var legacy = JsonUtility.FromJson<LegacySaveV3>(document);
+                if (legacy == null || legacy.story == null || legacy.mission == null ||
+                    legacy.captain == null || legacy.birthday == null ||
+                    legacy.metadata == null)
+                {
+                    throw new FormatException("Schema v3 save is incomplete.");
+                }
+
+                var migrated = GameSave.CreateNew(
+                    legacy.metadata.SaveId,
+                    legacy.metadata.CreatedUtcTicks);
+                migrated.Story = legacy.story;
+                migrated.Mission = legacy.mission;
+                migrated.Captain = legacy.captain;
+                migrated.DiscoveryIds = legacy.discoveryIds;
+                migrated.EarnedCosmeticIds = legacy.earnedCosmeticIds;
+                migrated.AtlasEntryIds = legacy.atlasEntryIds;
+                migrated.Photographs = legacy.photographs;
+                migrated.Birthday = legacy.birthday;
+                migrated.Metadata = legacy.metadata;
+                migrated.ChapterOne = new ChapterOneProgress
+                {
+                    Phase = DerivePriorPhase(legacy),
+                    StarMapRevealed = false,
+                    FinalPulseSeen = false,
+                };
+                migrated.ThrowIfInvalid(nameof(document));
+                return JsonUtility.ToJson(migrated, prettyPrint: true);
+            }
+
+            private static ChapterOnePhase DerivePriorPhase(LegacySaveV3 legacy)
+            {
+                var discoveryIds = legacy.discoveryIds ?? Array.Empty<string>();
+                if (discoveryIds.Contains(
+                        KoroVesperProgressionService.FragmentIdValue,
+                        StringComparer.Ordinal) ||
+                    (string.Equals(
+                         legacy.mission.MissionId,
+                         KoroVesperProgressionService.MissionId,
+                         StringComparison.Ordinal) &&
+                     legacy.mission.CheckpointOrdinal >= 6))
+                {
+                    return ChapterOnePhase.KoroComplete;
+                }
+
+                if (discoveryIds.Contains(
+                        "fragment.signal.mirra.001",
+                        StringComparer.Ordinal) ||
+                    (string.Equals(
+                         legacy.mission.MissionId,
+                         "mission.mirra.chapter-one",
+                         StringComparison.Ordinal) &&
+                     legacy.mission.CheckpointOrdinal >= 7))
+                {
+                    return ChapterOnePhase.MirraComplete;
+                }
+
+                return ChapterOnePhase.NotStarted;
+            }
+
+            [Serializable]
+            private sealed class LegacySaveV3
             {
                 public StoryProgress story;
                 public MissionProgress mission;

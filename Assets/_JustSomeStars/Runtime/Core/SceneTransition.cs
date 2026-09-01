@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using JustSomeStars.Runtime.Flight;
+using JustSomeStars.Runtime.Cinematics;
 using JustSomeStars.Runtime.Player;
 using JustSomeStars.Runtime.UI;
 using UnityEngine;
@@ -31,12 +32,14 @@ namespace JustSomeStars.Runtime.Core
         private readonly FrontendDependencies m_FrontendDependencies;
         private readonly SurfaceGameplayDependencies m_SurfaceDependencies;
         private FlightGameplayDependencies m_FlightDependencies;
+        private ChapterOneSequenceDependencies m_ChapterOneDependencies;
 
         private FrontendController m_Controller;
         private UnityFrontendLifecycle m_Lifecycle;
         private FrontendSettingsPanel m_SettingsPanel;
         private SurfaceGameplayLifecycle2D m_SurfaceLifecycle;
         private FlightGameplayLifecycle2D m_FlightLifecycle;
+        private ChapterOneSequenceController2D m_ChapterOneSequence;
 
         public UnitySceneTransition()
         {
@@ -239,7 +242,8 @@ namespace JustSomeStars.Runtime.Core
                 IsBoundToScene(m_Lifecycle, scene) ||
                 IsBoundToScene(m_SettingsPanel, scene) ||
                 IsBoundToScene(m_SurfaceLifecycle, scene) ||
-                IsBoundToScene(m_FlightLifecycle, scene);
+                IsBoundToScene(m_FlightLifecycle, scene) ||
+                IsBoundToScene(m_ChapterOneSequence, scene);
         }
 
         private static bool IsBoundToScene(Component component, Scene scene)
@@ -383,6 +387,27 @@ namespace JustSomeStars.Runtime.Core
 
             if (match == null)
             {
+                var sequences = FindInActiveScene<ChapterOneSequenceController2D>();
+                if (sequences.Length == 0)
+                {
+                    return;
+                }
+                if (sequences.Length != 1 || m_ChapterOneDependencies == null)
+                {
+                    throw new InvalidOperationException(
+                        "A routed Chapter One sequence requires exactly one " +
+                        "controller and composition-owned dependencies.");
+                }
+                m_ChapterOneSequence = sequences[0];
+                try
+                {
+                    m_ChapterOneSequence.Configure(m_ChapterOneDependencies);
+                }
+                catch
+                {
+                    m_ChapterOneSequence = null;
+                    throw;
+                }
                 return;
             }
 
@@ -464,13 +489,25 @@ namespace JustSomeStars.Runtime.Core
             var settingsPanel = m_SettingsPanel;
             var surfaceLifecycle = m_SurfaceLifecycle;
             var flightLifecycle = m_FlightLifecycle;
+            var chapterOneSequence = m_ChapterOneSequence;
             m_Controller = null;
             m_Lifecycle = null;
             m_SettingsPanel = null;
             m_SurfaceLifecycle = null;
             m_FlightLifecycle = null;
+            m_ChapterOneSequence = null;
 
             var failures = new List<Exception>();
+            TryRelease(
+                () =>
+                {
+                    if (chapterOneSequence != null &&
+                        m_ChapterOneDependencies != null)
+                    {
+                        chapterOneSequence.Release(m_ChapterOneDependencies);
+                    }
+                },
+                failures);
             TryRelease(
                 () =>
                 {
@@ -543,6 +580,22 @@ namespace JustSomeStars.Runtime.Core
             }
 
             m_FlightDependencies = dependencies;
+        }
+
+        public void ConfigureChapterOneDependencies(
+            ChapterOneSequenceDependencies dependencies)
+        {
+            if (dependencies == null)
+            {
+                throw new ArgumentNullException(nameof(dependencies));
+            }
+            if (m_ChapterOneDependencies != null &&
+                !ReferenceEquals(m_ChapterOneDependencies, dependencies))
+            {
+                throw new InvalidOperationException(
+                    "Chapter One routing dependencies are already configured.");
+            }
+            m_ChapterOneDependencies = dependencies;
         }
 
         private static void TryRelease(

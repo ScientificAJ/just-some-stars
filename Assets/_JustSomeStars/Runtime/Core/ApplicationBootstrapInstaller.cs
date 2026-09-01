@@ -1,7 +1,10 @@
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using JustSomeStars.Runtime.Accounts;
 using JustSomeStars.Runtime.Accessibility;
 using JustSomeStars.Runtime.Commerce;
+using JustSomeStars.Runtime.Cinematics;
 using JustSomeStars.Runtime.Input;
 using JustSomeStars.Runtime.Flight;
 using JustSomeStars.Runtime.Player;
@@ -80,17 +83,35 @@ namespace JustSomeStars.Runtime.Core
                 gameEvents,
                 saves,
                 progression);
+            var sceneRouter = new SceneRoutingTransition();
             var sceneTransition = new UnitySceneTransition(
-                new FrontendDependencies(settings, input, account),
+                new FrontendDependencies(
+                    settings,
+                    input,
+                    account,
+                    token => BeginOrResumeChapterOneAsync(
+                        saves,
+                        progression,
+                        modeController,
+                        sceneRouter,
+                        token)),
                 surfaceDependencies);
-            surfaceDependencies.ConfigureSceneTransition(sceneTransition);
+            surfaceDependencies.ConfigureSceneTransition(sceneRouter);
             sceneTransition.ConfigureFlightDependencies(
                 new FlightGameplayDependencies(
                     settings,
                     input,
                     modeController,
                     gameEvents,
-                    sceneTransition,
+                    sceneRouter,
+                    progression));
+            sceneTransition.ConfigureChapterOneDependencies(
+                new ChapterOneSequenceDependencies(
+                    saves,
+                    input,
+                    modeController,
+                    gameEvents,
+                    sceneRouter,
                     progression));
             return CreateCompositionWithModeController(
                 settings,
@@ -102,7 +123,8 @@ namespace JustSomeStars.Runtime.Core
                 sceneTransition,
                 new AddressablesSceneCatalogSource(SceneCatalog.AddressablesKey),
                 new AddressablesSceneStreamBackend(),
-                progression);
+                progression,
+                sceneRouter);
         }
 
         private static GameBootstrapComposition CreateComposition(
@@ -160,13 +182,16 @@ namespace JustSomeStars.Runtime.Core
             ISceneTransition sceneTransition,
             ISceneCatalogSource catalogSource,
             ISceneStreamBackend sceneBackend,
-            IChapterProgression progression = null)
+            IChapterProgression progression = null,
+            SceneRoutingTransition sceneRouter = null)
         {
             var sceneStream = new SceneStreamService(
                 catalogSource,
                 sceneBackend,
                 sceneTransition,
                 modeController);
+            sceneRouter?.Configure(sceneStream, sceneTransition);
+            var routedTransition = (ISceneTransition)sceneRouter ?? sceneTransition;
             var registrations = new System.Collections.Generic.List<
                 GameServiceRegistration>
                 {
@@ -195,12 +220,12 @@ namespace JustSomeStars.Runtime.Core
 
             if (progression == null)
             {
-                return new GameBootstrapComposition(registrations, sceneTransition);
+                return new GameBootstrapComposition(registrations, routedTransition);
             }
 
             return new GameBootstrapComposition(
                 registrations,
-                sceneTransition,
+                routedTransition,
                 () => InitialExperiencePolicy.CurrentMode == GameMode.Flight
                     ? progression.ResumeSceneName
                     : InitialExperiencePolicy.CurrentDestination,
@@ -219,6 +244,68 @@ namespace JustSomeStars.Runtime.Core
                     new UnavailableFirestoreDocumentGateway()),
                 new UnavailableFirebaseAuthGateway(),
                 new UnavailableAccountDeletionGateway());
+        }
+
+        private static async ValueTask BeginOrResumeChapterOneAsync(
+            ISaveService saves,
+            DestinationProgressionCoordinator progression,
+            GameModeController modes,
+            ISceneTransition scenes,
+            CancellationToken cancellationToken)
+        {
+            var loaded = await saves.LoadAsync(cancellationToken);
+            var hasStarted = loaded.HasSave &&
+                loaded.Save.ChapterOne.Phase >= ChapterOnePhase.OpeningComplete;
+            var destination = hasStarted
+                ? progression.ResumeSceneName
+                : "Opening";
+            var destinationMode = hasStarted
+                ? progression.ResumeMode
+                : GameMode.Clubhouse;
+
+            await EnterChapterModeAsync(modes, destinationMode, cancellationToken);
+            await scenes.RouteAsync(destination, cancellationToken);
+        }
+
+        private static async ValueTask EnterChapterModeAsync(
+            GameModeController modes,
+            GameMode destination,
+            CancellationToken cancellationToken)
+        {
+            if (destination != GameMode.Clubhouse &&
+                destination != GameMode.Flight &&
+                destination != GameMode.Surface)
+            {
+                throw new InvalidOperationException(
+                    $"Chapter routing cannot enter unsupported mode '{destination}'.");
+            }
+
+            for (var transition = 0;
+                 modes.CurrentMode != destination && transition < 6;
+                 transition++)
+            {
+                var next = modes.CurrentMode switch
+                {
+                    GameMode.Frontend => GameMode.Customization,
+                    GameMode.Customization => GameMode.Clubhouse,
+                    GameMode.Clubhouse => GameMode.Flight,
+                    GameMode.Flight when destination == GameMode.Surface =>
+                        GameMode.Surface,
+                    GameMode.Flight => GameMode.Clubhouse,
+                    GameMode.Surface => GameMode.Flight,
+                    GameMode.Lens or GameMode.Dialogue or GameMode.Cinematic =>
+                        GameMode.Surface,
+                    _ => throw new InvalidOperationException(
+                        $"No Chapter One route exists from '{modes.CurrentMode}'."),
+                };
+                await modes.EnterAsync(next, cancellationToken);
+            }
+
+            if (modes.CurrentMode != destination)
+            {
+                throw new InvalidOperationException(
+                    $"Chapter routing could not reach mode '{destination}'.");
+            }
         }
 
         private static InputActionAsset RequireProjectActions()

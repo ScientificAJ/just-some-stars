@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using JustSomeStars.Runtime.Saving;
 using UnityEngine;
 
 namespace JustSomeStars.Runtime.Cosmetics
@@ -154,6 +155,37 @@ namespace JustSomeStars.Runtime.Cosmetics
             return result;
         }
 
+        public static CaptainSpriteLoadout FromCaptainState(
+            CaptainState state,
+            int activeLayerCount = MaximumLayerCount)
+        {
+            if (state == null)
+            {
+                throw new ArgumentNullException(nameof(state));
+            }
+
+            var family = state.BodyFamilyId switch
+            {
+                "captain.family.a" => CaptainBodyFamily.Compact,
+                "captain.family.b" => CaptainBodyFamily.Average,
+                "captain.family.c" => CaptainBodyFamily.TallBroad,
+                _ => throw new InvalidOperationException(
+                    $"Saved Captain family '{state.BodyFamilyId}' is unsupported."),
+            };
+            var result = CreateLaunchLook(family, activeLayerCount);
+            var faceIndex = ParseTrailingIndex(state.AppearancePresetId, 6);
+            result.facePreset = $"face-{faceIndex}";
+            result.suitColorway = state.SuitCosmeticId switch
+            {
+                "suit.clubhouse" => "sandstone",
+                "suit.signal" => "dusk-purple",
+                "suit.flight" => "deep-teal",
+                _ => "sandstone",
+            };
+            result.ValidateOrThrow();
+            return result;
+        }
+
         public CaptainSpriteLoadout WithOption(
             CaptainCustomizationCategory category,
             string optionId)
@@ -278,6 +310,16 @@ namespace JustSomeStars.Runtime.Cosmetics
                 result[index] = $"{prefix}-{index + 1}";
             }
             return result;
+        }
+
+        private static int ParseTrailingIndex(string value, int maximum)
+        {
+            if (string.IsNullOrWhiteSpace(value)) return 1;
+            var separator = value.LastIndexOf('.');
+            var suffix = separator >= 0 ? value.Substring(separator + 1) : value;
+            return int.TryParse(suffix, out var parsed)
+                ? Mathf.Clamp(parsed, 1, maximum)
+                : 1;
         }
     }
 }

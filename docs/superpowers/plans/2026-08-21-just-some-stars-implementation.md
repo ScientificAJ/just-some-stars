@@ -2329,38 +2329,54 @@ git commit -m "feat: complete Koro and Vesper chapter"
 
 **Files:**
 - Create: `Assets/_JustSomeStars/Scenes/Destinations/AsterVeil.unity`
-- Create: `Assets/_JustSomeStars/Content/Missions/aster-veil-chapter.asset`
-- Create: `Assets/_JustSomeStars/Runtime/Flight/DebrisFieldController.cs`
-- Create: `Assets/_JustSomeStars/Art/2D/Environments/AsterVeil/`
+- Create: `Assets/_JustSomeStars/Content/Missions/AsterVeil/`, `Assets/_JustSomeStars/Content/Dialogue/AsterVeil/` and `Assets/_JustSomeStars/Content/Resources/Task26AsterVeilChapter.asset`
+- Create: `Assets/_JustSomeStars/Runtime/Flight/{DebrisFieldController,DebrisHazard2D}.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Missions/AsterVeil*.cs` and `Assets/_JustSomeStars/Runtime/Cinematics/`
+- Create: `Assets/_JustSomeStars/Art/2D/Environments/{AsterVeil,SignalReassembly,Clubhouse}/` and `Assets/_JustSomeStars/Art/2D/Characters/Parent/`
 - Create: `Assets/_JustSomeStars/Scenes/Cinematics/SignalReassembly.unity`
 - Create: `Assets/_JustSomeStars/Scenes/Core/Clubhouse.unity`
 - Create: `Assets/_JustSomeStars/Scenes/Cinematics/Opening.unity`
 - Create: `Assets/_JustSomeStars/Scenes/Cinematics/DinnerEnding.unity`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/ChapterOneCompletionTests.cs`
+- Create: `Assets/_JustSomeStars/Editor/Task26ChapterOne{Builder,EvidenceCapture}.cs` and `outputs/task26-chapter-one-targets/`
+- Modify: the scene catalogue, Addressables groups, bootstrap/streaming/mode/save integration, affected focused tests and `ProjectSettings/EditorBuildSettings.asset`
+- Modify: `docs/issue-register.md`, `docs/progress/production-execution-ledger.md` and this implementation plan
 
 **Interfaces:**
 - Produces: third fragment, star-map reveal, return, dinner line, Ori pulse and Chapter Two hook.
 
-- [ ] **Step 1: Graybox the 2.5D momentum/gravity-assist route and authored shifting-debris lanes**
+- [x] **Step 1: Graybox the 2.5D momentum/gravity-assist route and authored shifting-debris lanes**
 
-- [ ] **Step 2: Write an end-to-end Chapter One test from clean save to credits flag**
+- [x] **Step 2: Write an end-to-end Chapter One test from clean save to credits flag**
 
-- [ ] **Step 3: Implement deterministic seeded debris lanes and recovery checkpoints**
+- [x] **Step 3: Implement deterministic seeded debris lanes and recovery checkpoints**
 
-- [ ] **Step 4: Author crew trust payoff, fragment reconstruction and escape**
+- [x] **Step 4: Author crew trust payoff, fragment reconstruction and escape**
 
-- [ ] **Step 5: Build the reusable Clubhouse, opening promise and departure sequence**
+- [x] **Step 5: Build the reusable Clubhouse, opening promise and departure sequence**
 
 The opening introduces all five kids and Ori, records the Captain customization, establishes the parents' “back before dinner” permission and launches the transformed homemade ship.
 
-- [ ] **Step 6: Build the Clubhouse crash-return and dinner ending as real-time scenes where the customized Captain is visible**
+- [x] **Step 6: Build the Clubhouse crash-return and dinner ending as real-time scenes where the customized Captain is visible**
 
-- [ ] **Step 7: Add final pulse and save the completed Chapter One state before credits**
+- [x] **Step 7: Add final pulse and save the completed Chapter One state before credits**
 
-- [ ] **Step 8: Complete full Guided/Balanced/Ace device runs and commit**
+- [x] **Step 8: Freeze the source-complete Task 26 package after its bounded
+  implementation sanity check**
+
+The user moved full Guided/Balanced/Ace, APK and device verification into one
+source-fresh final matrix after Task 30 implementation. Task 26 may be recorded
+as implemented before that batch, but its ledger/report must keep final-batch
+verification explicitly pending rather than reusing older evidence.
+
+The final source-freeze uses only Task 26's explicit paths. It includes the
+independent Aster/Signal/Clubhouse image bands and their metas, but excludes the
+preserved Task 12 3D WIP and later-task commerce/package dirt. The bounded
+critic returned `PROCEED`; Runtime, Editor, EditMode-test and PlayMode-test
+assemblies compile. Unity test execution remains intentionally deferred to the
+Task 26–30 final matrix requested by the user.
 
 ```bash
-git add Assets/_JustSomeStars/Scenes Assets/_JustSomeStars/Content Assets/_JustSomeStars/Runtime/Flight Assets/_JustSomeStars/Art/2D/Environments/AsterVeil Assets/_JustSomeStars/Tests
 git commit -m "feat: complete Aster Veil and dinner finale"
 ```
 
@@ -2539,6 +2555,13 @@ Record median, 1% low, memory peak, thermal behavior and battery change in `perf
 - [ ] **Step 6: Repeat until Performance sustains 30 FPS and no destination exceeds its memory budget**
 
 - [ ] **Step 7: Capture the content-lock quality comparison and commit**
+
+- [ ] **Step 8: Run the deferred Tasks 12–30 verification matrix one task at a
+  time, then build/inspect the final APK and execute the bounded device pass**
+
+This single final batch replaces repeated full suites, APK builds and device
+runs during Tasks 26–29. Preserve per-task result files and report failures
+against the owning task before accepting the final package.
 
 ```bash
 git add Assets/_JustSomeStars/Runtime/Core Assets/_JustSomeStars/Editor/Validation Assets/_JustSomeStars/Tests docs/qa outputs/quality-reviews

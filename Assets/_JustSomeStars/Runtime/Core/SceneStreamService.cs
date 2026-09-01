@@ -399,6 +399,48 @@ namespace JustSomeStars.Runtime.Core
 
         internal ISceneTransition FallbackTransition => m_FallbackTransition;
 
+        internal string FallbackSceneName
+        {
+            get
+            {
+                lock (m_Gate)
+                {
+                    EnsureOperationalLocked();
+                    return m_Catalog.FallbackSceneName;
+                }
+            }
+        }
+
+        internal GameMode FallbackMode
+        {
+            get
+            {
+                lock (m_Gate)
+                {
+                    EnsureOperationalLocked();
+                    return m_Catalog.FallbackMode;
+                }
+            }
+        }
+
+        internal bool TryResolveDestination(
+            string destinationIdOrAddress,
+            out string destinationId)
+        {
+            RequireDestinationId(destinationIdOrAddress);
+            lock (m_Gate)
+            {
+                EnsureOperationalLocked();
+                if (m_Catalog.TryResolveEntry(destinationIdOrAddress, out var entry))
+                {
+                    destinationId = entry.DestinationId;
+                    return true;
+                }
+            }
+            destinationId = null;
+            return false;
+        }
+
         public async ValueTask<StartupResult> InitializeAsync(
             CancellationToken cancellationToken)
         {
@@ -451,13 +493,18 @@ namespace JustSomeStars.Runtime.Core
         }
 
         public ValueTask<SceneStreamResult> LoadDestinationAsync(
-            string destinationId,
+            string destinationIdOrAddress,
             CancellationToken cancellationToken)
         {
-            RequireDestinationId(destinationId);
+            RequireDestinationId(destinationIdOrAddress);
             lock (m_Gate)
             {
                 EnsureOperationalLocked();
+                var destinationId = m_Catalog.TryResolveEntry(
+                        destinationIdOrAddress,
+                        out var resolved)
+                    ? resolved.DestinationId
+                    : destinationIdOrAddress;
                 if (m_LoadedDestinationId != null)
                 {
                     if (string.Equals(
@@ -1031,6 +1078,109 @@ namespace JustSomeStars.Runtime.Core
                     stage,
                     monotonic));
             }
+        }
+    }
+
+    internal sealed class SceneRoutingTransition :
+        ISceneTransition,
+        ISceneBindingLifecycle
+    {
+        private SceneStreamService m_Stream;
+        private ISceneTransition m_Fallback;
+
+        public void Configure(
+            SceneStreamService stream,
+            ISceneTransition fallback)
+        {
+            if (stream == null) throw new ArgumentNullException(nameof(stream));
+            if (fallback == null) throw new ArgumentNullException(nameof(fallback));
+            if (m_Stream != null)
+            {
+                if (ReferenceEquals(m_Stream, stream) &&
+                    ReferenceEquals(m_Fallback, fallback))
+                {
+                    return;
+                }
+                throw new InvalidOperationException(
+                    "Scene routing transition is already composition-owned.");
+            }
+            m_Stream = stream;
+            m_Fallback = fallback;
+        }
+
+        public async ValueTask RouteAsync(
+            string destination,
+            CancellationToken cancellationToken)
+        {
+            if (m_Stream == null || m_Fallback == null)
+            {
+                throw new InvalidOperationException(
+                    "Scene routing transition is not configured.");
+            }
+
+            if (!m_Stream.TryResolveDestination(destination, out var destinationId))
+            {
+                await UnloadCurrentAsync(cancellationToken);
+                await m_Fallback.RouteAsync(destination, cancellationToken);
+                if (string.Equals(
+                        destination,
+                        m_Stream.FallbackSceneName,
+                        StringComparison.Ordinal))
+                {
+                    await m_Stream.ModeController.RecoverAsync(
+                        m_Stream.FallbackMode,
+                        cancellationToken);
+                }
+                return;
+            }
+
+            var current = m_Stream.LoadedDestinationId;
+            if (string.Equals(current, destinationId, StringComparison.Ordinal))
+            {
+                return;
+            }
+            await UnloadCurrentAsync(cancellationToken);
+            var result = await m_Stream.LoadDestinationAsync(
+                destinationId,
+                cancellationToken);
+            if (result.Status == SceneStreamStatus.Failed)
+            {
+                throw new InvalidOperationException(result.Diagnostic);
+            }
+        }
+
+        public void BindActiveScene()
+        {
+            RequireFallbackLifecycle().BindActiveScene();
+        }
+
+        public void ReleaseBindings()
+        {
+            RequireFallbackLifecycle().ReleaseBindings();
+        }
+
+        private async ValueTask UnloadCurrentAsync(
+            CancellationToken cancellationToken)
+        {
+            var current = m_Stream.LoadedDestinationId;
+            if (string.IsNullOrEmpty(current)) return;
+            var result = await m_Stream.UnloadDestinationAsync(
+                current,
+                cancellationToken);
+            if (result.Status == SceneStreamStatus.Failed)
+            {
+                throw new InvalidOperationException(result.Diagnostic);
+            }
+        }
+
+        private ISceneBindingLifecycle RequireFallbackLifecycle()
+        {
+            if (m_Fallback is ISceneBindingLifecycle lifecycle)
+            {
+                return lifecycle;
+            }
+            throw new InvalidOperationException(
+                "Scene routing requires a binding-aware fallback transition.");
         }
     }
 }

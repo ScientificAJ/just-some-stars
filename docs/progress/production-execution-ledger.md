@@ -1,6 +1,6 @@
 # Just Some Stars production execution ledger
 
-Last updated: 2026-08-31
+Last updated: 2026-09-01
 
 This tracked ledger preserves the active production state, decisions, evidence,
 next action and user-help queue across context compaction. It complements the
@@ -10,7 +10,7 @@ implementation plans and issue register; it does not replace either authority.
 
 - Complete Tasks 12 through 30 inclusive, then stop before Task 31 so the user
   can return for ShipKit integrations and final publishing work.
-- Execute one task at a time. Finish, verify, commit, push and report a
+- Execute one task at a time. Finish, minimally sanity-check, commit, push and report a
   checkpoint, then automatically begin the next task unless the user interrupts.
 - Replacement Task 12 Stages 1 through 5 each receive one independent,
   maximally strict critic review. Later Tasks 13 through 30 each receive one.
@@ -20,8 +20,14 @@ implementation plans and issue register; it does not replace either authority.
 - The critic approves implementation autonomously. A new canonical graphical
   result for gameplay, a character or another major visual direction is shown
   to the user for approval between tasks, not repeatedly between internal steps.
-- Use focused verification during a task. Run full regressions, APK builds and
-  paid-device QA only at the package boundaries declared by the plans.
+- During Tasks 26–29, run only the smallest static/compile/focused smoke check
+  needed to catch an obvious implementation break. Do not repeat full suites,
+  APK builds or device QA per task. After Task 30 implementation, run one
+  source-fresh final matrix that verifies Tasks 12–30 one by one, then build
+  and inspect the APK and perform the bounded device/performance pass.
+- A task ledger row marked `implemented` is not a claim that the deferred final
+  matrix has passed. Record final-batch verification separately and never
+  relabel stale evidence.
 - Commit and push each completed task. Merge into `main` at work-package
   boundaries rather than after every task.
 - Record real out-of-scope findings in `docs/issue-register.md`; do not expand
@@ -472,17 +478,18 @@ deliberately uses unavailable gateways until JSS-021 supplies the real
 Firebase/OAuth project, maintained Google identity-token bridge, concrete SDK
 wiring, deployed rules/indexes and two-device proof.
 
-## Immediate next task: Task 26
+## Immediate next task: Task 27
 
-Build Aster Veil, the third Signal fragment, star-map reveal, return to the real
-Clubhouse, opening and dinner ending without expanding into Task 27 cosmetics.
+Build the 100-plus cosmetic catalogue and edition-feature boundary without
+expanding into Task 28 localization.
 
 ## User-help queue
 
-No user decision blocks Task 26 local implementation. Task 24's Samsung
-activation remains JSS-024, and the corrected Task 25 exact-APK completion
-spot-check remains JSS-025 for the Task 30 device pass; neither may be
-fabricated.
+No user decision blocks Task 27 local implementation. Task 26's source-fresh
+Unity tests are queued with Tasks 27–30 in the user-requested final matrix.
+Task 24's Samsung activation remains JSS-024, and the corrected Task 25
+exact-APK completion spot-check remains JSS-025 for the Task 30 device pass;
+neither may be fabricated.
 
 ## Chronological checkpoint log
 
@@ -685,3 +692,14 @@ fabricated.
   the same extreme critic returned `PROCEED`. The final exact-APK completion
   spot-check is recorded honestly as JSS-025 because Limrun had no remaining
   credit and no local Android device was attached. Task 26 is next.
+- 2026-09-01: Task 26 completed the Aster Veil/finale implementation checkpoint.
+  The chapter now owns deterministic moving debris and gravity-assist routing,
+  clean-save production progression through all three fragments, real Signal
+  reassembly, a durable reusable Clubhouse, the opening promise, populated
+  dinner payoff and credits hook. Opening, Signal, Clubhouse and Dinner use
+  separately owned sky, far-world, architecture, actor, foreground and HUD
+  image bands rather than a flattened environment plate. Runtime, Editor,
+  EditMode-test and PlayMode-test assemblies compile and the same bounded
+  extreme critic returned `PROCEED`. Per the user's efficiency rule, Task 26's
+  source-fresh Unity test execution is deferred to the one Tasks 26–30 final
+  matrix. Task 27 is next.

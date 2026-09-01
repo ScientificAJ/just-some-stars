@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0713d8ce08b3eae8046373db4e6d8b, type: 3}
+  m_Name: aster-veil-chapter
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Missions.MissionDefinition
+  stableId: mission.aster-veil.chapter-one
+  entryNodeId: mission.aster-veil.approach
+  nodes:
+  - stableId: mission.aster-veil.approach
+    kind: 0
+    requirements: []
+    nextNodeIds:
+    - mission.aster-veil.route
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 0
+  - stableId: mission.aster-veil.route
+    kind: 3
+    requirements: []
+    nextNodeIds:
+    - mission.aster-veil.relative-motion
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 1
+  - stableId: mission.aster-veil.relative-motion
+    kind: 3
+    requirements: []
+    nextNodeIds:
+    - mission.aster-veil.debris
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 2
+  - stableId: mission.aster-veil.debris
+    kind: 3
+    requirements: []
+    nextNodeIds:
+    - mission.aster-veil.fragment
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 3
+  - stableId: mission.aster-veil.fragment
+    kind: 3
+    requirements: []
+    nextNodeIds:
+    - mission.aster-veil.reassembly
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 4
+  - stableId: mission.aster-veil.reassembly
+    kind: 3
+    requirements: []
+    nextNodeIds:
+    - mission.aster-veil.escape
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 5
+  - stableId: mission.aster-veil.escape
+    kind: 3
+    requirements: []
+    nextNodeIds:
+    - mission.aster-veil.return
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 6
+  - stableId: mission.aster-veil.return
+    kind: 3
+    requirements: []
+    nextNodeIds:
+    - mission.aster-veil.dinner
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 7
+  - stableId: mission.aster-veil.dinner
+    kind: 5
+    requirements: []
+    nextNodeIds: []
+    dialogueIds: []
+    recoveryNodeId: 
+    checkpointOrdinal: 0

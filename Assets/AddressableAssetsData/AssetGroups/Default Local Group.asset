@@ -18,6 +18,18 @@ MonoBehaviour:
   - m_GUID: 106ddb6ba70520c8d8531558bc216740
     m_Address: jss.scene-catalog
     m_ReadOnly: 0
+    m_SerializedLabels:
+    - Task26ChapterOne
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 134089218ed15e48f90dc8eaaf94f6da
+    m_Address: AsterVeil
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Task26ChapterOne
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1cf2f9b36841ffd35a0264abfdced8e4
+    m_Address: Mirra
+    m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 43accc154182d299b974345687db43fb
@@ -25,10 +37,39 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 610149b37884007cea2e1113faad2e82
+    m_Address: Opening
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Task26ChapterOne
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 70dcdd061eb149dc19a48a722ca07498
     m_Address: KoroVesper
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9324f43476416a06cbcfc6d064b62b71
+    m_Address: Task26AsterVeilChapter
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Task26ChapterOne
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b42c5193565e9f8009acb9d51a19ca36
+    m_Address: SignalReassembly
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Task26ChapterOne
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc32fa590a4e852448d9a239a785bc5f
+    m_Address: Task17FlightGraybox
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eff012af14bc90f7391fdc863470ed0b
+    m_Address: DinnerEnding
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Task26ChapterOne
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 24916abbd8621a2469b664daeb114b68, type: 2}
