@@ -10,6 +10,10 @@ namespace JustSomeStars.Runtime.Animation2D
         Interaction = 3,
         Audio = 4,
         Vfx = 5,
+        Caption = 6,
+        Expression = 7,
+        Viseme = 8,
+        InteractionRelease = 9,
     }
 
     [Serializable]

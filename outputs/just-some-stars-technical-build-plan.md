@@ -196,7 +196,11 @@ blender -b optional_prop_source.blend --python tools/blender/export_unity_fbx.py
 - Google Flow produces Signal visions, distant cosmic events, travel transitions, establishing shots without the customized Captain, and marketing shots.
 - Scenes visibly containing the customized Captain use approved in-engine
   sprite clips and layered Unity cinematics.
-- Lyria/Flowmusic produces musical material that is edited into offline loops, stems and intensity variants; music is not generated at runtime.
+- Music ships as edited offline loops, stems and intensity variants; it is never
+  generated at runtime. Lyria/Flow Music remains a preferred source when its
+  authenticated generation surface is available, while deterministic original
+  project synthesis is the approved offline fallback with exact rights and hash
+  provenance.
 - Character animation is authored as coherent frame strips. Mixamo and Blender
   Rigify are not shipping dependencies.
 - Sound effects come from recording, synthesis and appropriately licensed libraries.

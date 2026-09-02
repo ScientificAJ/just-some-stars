@@ -76,30 +76,60 @@ namespace JustSomeStars.Runtime.Interaction
             }
 
             clip.ValidateOrThrow();
-            if (layeredRenderer != null)
+            if (!clip.FrameEvents.Any(frameEvent =>
+                    frameEvent.Kind == SpriteFrameEventKind.InteractionRelease ||
+                    frameEvent.Kind == SpriteFrameEventKind.Interaction &&
+                    string.Equals(
+                        frameEvent.Id,
+                        "interact-commit",
+                        StringComparison.Ordinal)))
             {
-                layeredRenderer.Play("interact");
+                throw new InvalidOperationException(
+                    $"Interaction clip '{clip.StableId}' has no authored release event.");
             }
+
+            var released = new TaskCompletionSource<bool>(
+                TaskCreationOptions.RunContinuationsAsynchronously);
+            void OnFrameEvent(SpriteFrameEvent frameEvent)
+            {
+                if (frameEvent.Kind == SpriteFrameEventKind.InteractionRelease ||
+                    frameEvent.Kind == SpriteFrameEventKind.Interaction &&
+                    string.Equals(
+                        frameEvent.Id,
+                        "interact-commit",
+                        StringComparison.Ordinal))
+                {
+                    released.TrySetResult(true);
+                }
+            }
+
+            if (layeredRenderer != null)
+                layeredRenderer.FrameEventEmitted += OnFrameEvent;
             else
+                atlasAnimator.FrameEventEmitted += OnFrameEvent;
+            using var cancellation = cancellationToken.Register(() =>
+                released.TrySetCanceled(cancellationToken));
+            try
             {
-                atlasAnimator.Play(clip);
+                if (layeredRenderer != null)
+                    layeredRenderer.Play("interact");
+                else
+                    atlasAnimator.Play(clip);
+                await released.Task;
             }
-
-            var elapsed = 0f;
-            while (elapsed < clip.TotalDuration)
+            finally
             {
-                cancellationToken.ThrowIfCancellationRequested();
-                await Task.Yield();
-                elapsed += Time.unscaledDeltaTime;
-            }
-
-            if (layeredRenderer != null)
-            {
-                layeredRenderer.Play("idle");
-            }
-            else if (spriteSet != null && !string.IsNullOrWhiteSpace(idleClipId))
-            {
-                atlasAnimator.Play(spriteSet.FindClip(idleClipId));
+                if (layeredRenderer != null)
+                {
+                    layeredRenderer.FrameEventEmitted -= OnFrameEvent;
+                    layeredRenderer.Play("idle");
+                }
+                else
+                {
+                    atlasAnimator.FrameEventEmitted -= OnFrameEvent;
+                    if (spriteSet != null && !string.IsNullOrWhiteSpace(idleClipId))
+                        atlasAnimator.Play(spriteSet.FindClip(idleClipId));
+                }
             }
         }
 

@@ -25,6 +25,13 @@ namespace JustSomeStars.Runtime.Cinematics
         void Release(ChapterOneSequenceDependencies dependencies);
     }
 
+    public interface IChapterOnePresentationGate
+    {
+        bool InteractionIsReleased { get; }
+
+        void BeginAfterSceneStateApplied();
+    }
+
     public enum ChapterOneSequenceKind
     {
         Opening = 0,
@@ -115,10 +122,13 @@ namespace JustSomeStars.Runtime.Cinematics
         private int m_BeatIndex;
         private bool m_IsSafeHub;
         private bool m_BirthdayCelebration;
+        private IChapterOnePresentationGate[] m_PresentationGates =
+            Array.Empty<IChapterOnePresentationGate>();
 
         public ChapterOneSequenceKind SequenceKind => sequenceKind;
         public bool IsConfigured => m_Dependencies != null;
-        public bool IsReady => m_Initialization.IsCompletedSuccessfully;
+        public bool IsReady => m_Initialization.IsCompletedSuccessfully &&
+            m_PresentationGates.All(gate => gate.InteractionIsReleased);
         public Task InitializationTask => m_Initialization;
         public string BirthdayDeliveryStableId => BirthdayDeliveryId;
         public string BirthdayDecorationsStableId => BirthdayDecorationsId;
@@ -156,6 +166,9 @@ namespace JustSomeStars.Runtime.Cinematics
             }
             m_SignalBaseScale = signalHologram.localScale;
             var extensions = RequirePlayerUiExtensions();
+            m_PresentationGates = extensions
+                .OfType<IChapterOnePresentationGate>()
+                .ToArray();
             var configuredExtensionCount = 0;
             var inputBound = false;
             m_Dependencies = dependencies;
@@ -193,6 +206,7 @@ namespace JustSomeStars.Runtime.Cinematics
                 m_Lifetime.Dispose();
                 m_Lifetime = null;
                 m_Dependencies = null;
+                m_PresentationGates = Array.Empty<IChapterOnePresentationGate>();
                 m_Initialization = Task.CompletedTask;
                 throw;
             }
@@ -216,6 +230,7 @@ namespace JustSomeStars.Runtime.Cinematics
             m_Lifetime.Dispose();
             m_Lifetime = null;
             m_Dependencies = null;
+            m_PresentationGates = Array.Empty<IChapterOnePresentationGate>();
             m_CommandInFlight = false;
         }
 
@@ -358,6 +373,11 @@ namespace JustSomeStars.Runtime.Cinematics
             oriPulse?.SetActive(save.ChapterOne.FinalPulseSeen);
             fragmentPulse?.SetActive(save.ChapterOne.FinalPulseSeen);
             ApplyAuthoredCopy(save);
+            foreach (var gate in m_PresentationGates)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                gate.BeginAfterSceneStateApplied();
+            }
         }
 
         private void ApplyAuthoredCopy(GameSave save)

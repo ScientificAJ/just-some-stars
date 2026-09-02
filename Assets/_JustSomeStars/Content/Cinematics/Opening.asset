@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3302f89a3c57dcdc847fcd4f48c5b68, type: 3}
+  m_Name: Opening
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Core.CinematicSequenceDefinition
+  stableId: cinematic.opening
+  optionalVideo: {fileID: 0}
+  fallbackStill: {fileID: 21300000, guid: 2e51f0016bcb98742910d9bddad858fd, type: 3}
+  beats:
+  - startSeconds: 0
+    kind: 0
+    actorId: captain
+    value: cinematic.opening
+    durationSeconds: 0
+  - startSeconds: 0
+    kind: 0
+    actorId: mira
+    value: cinematic.opening
+    durationSeconds: 0

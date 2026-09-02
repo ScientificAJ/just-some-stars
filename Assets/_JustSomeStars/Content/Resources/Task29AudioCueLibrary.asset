@@ -1,0 +1,157 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 286e318ec2f2539d9992638dac944a70, type: 3}
+  m_Name: Task29AudioCueLibrary
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Core.AudioCueLibrary
+  cues:
+  - stableId: stem.signal.aster-veil-signal
+    bus: 0
+    clip: {fileID: 8300000, guid: 2615a059313843ea5a9d07aac9d16d7c, type: 3}
+    loop: 1
+    gain: 0.82
+  - stableId: cue.aster-veil.signal
+    bus: 0
+    clip: {fileID: 8300000, guid: 545c0900f52f6ba0d99b126283a7c615, type: 3}
+    loop: 1
+    gain: 0.82
+  - stableId: stem.signal.clubhouse-before-dinner
+    bus: 0
+    clip: {fileID: 8300000, guid: db72057d20319ca6792af01443da0837, type: 3}
+    loop: 1
+    gain: 0.82
+  - stableId: cue.clubhouse.before-dinner
+    bus: 0
+    clip: {fileID: 8300000, guid: 6310bb5208758c704b65feb30b5b07d4, type: 3}
+    loop: 1
+    gain: 0.82
+  - stableId: stem.signal.dinner-homecoming
+    bus: 0
+    clip: {fileID: 8300000, guid: 99fbf30b94a8e05faaa3714bde4c20c7, type: 3}
+    loop: 1
+    gain: 0.82
+  - stableId: cue.dinner.homecoming
+    bus: 0
+    clip: {fileID: 8300000, guid: 38f7c813937e150b3bb5c9db145c3d7d, type: 3}
+    loop: 1
+    gain: 0.82
+  - stableId: stem.signal.koro-vesper-orbit
+    bus: 0
+    clip: {fileID: 8300000, guid: f58c1f587ff96aab39a08b5e8e2280ca, type: 3}
+    loop: 1
+    gain: 0.82
+  - stableId: cue.koro-vesper.orbit
+    bus: 0
+    clip: {fileID: 8300000, guid: 604b0b7a02ed7692d87acac025bde51e, type: 3}
+    loop: 1
+    gain: 0.82
+  - stableId: stem.signal.mirra-warm-cold-horizon
+    bus: 0
+    clip: {fileID: 8300000, guid: bf35c63c8630de4d7b0421dbcc8918aa, type: 3}
+    loop: 1
+    gain: 0.82
+  - stableId: cue.mirra.horizon
+    bus: 0
+    clip: {fileID: 8300000, guid: ce5f3db0db14997b18eb7a891e2164e3, type: 3}
+    loop: 1
+    gain: 0.82
+  - stableId: cue.sfx.footstep.ice
+    bus: 2
+    clip: {fileID: 8300000, guid: 283ddf1a0fc73f849b3d7e3a29e31f8b, type: 3}
+    loop: 0
+    gain: 0.86
+  - stableId: cue.sfx.footstep.soil
+    bus: 2
+    clip: {fileID: 8300000, guid: dcb8fd7fa3d78142b9c1bf9b890afc88, type: 3}
+    loop: 0
+    gain: 0.86
+  - stableId: cue.sfx.interaction.release
+    bus: 2
+    clip: {fileID: 8300000, guid: fa3d543805f935465884d2508d3e310f, type: 3}
+    loop: 0
+    gain: 0.86
+  - stableId: cue.sfx.lens.focus
+    bus: 2
+    clip: {fileID: 8300000, guid: ede866d5d333735aebe213ac3c91355a, type: 3}
+    loop: 0
+    gain: 0.86
+  - stableId: cue.sfx.signal.pulse
+    bus: 2
+    clip: {fileID: 8300000, guid: 9c36a2ccaaf0890d999899398a7093ea, type: 3}
+    loop: 0
+    gain: 0.86
+  - stableId: cue.sfx.tool.attach
+    bus: 2
+    clip: {fileID: 8300000, guid: d8d02913a41b7612eb529ee7c096b881, type: 3}
+    loop: 0
+    gain: 0.86
+  - stableId: cue.sfx.tool.detach
+    bus: 2
+    clip: {fileID: 8300000, guid: 5f1f4d9b46ae525ababe2d294733251d, type: 3}
+    loop: 0
+    gain: 0.86
+  - stableId: cue.sfx.ui.positive
+    bus: 2
+    clip: {fileID: 8300000, guid: 2fb271fcebe8be54b9eb560407cece00, type: 3}
+    loop: 0
+    gain: 0.86
+  - stableId: jump-audio
+    bus: 2
+    clip: {fileID: 8300000, guid: 2fb271fcebe8be54b9eb560407cece00, type: 3}
+    loop: 0
+    gain: 0.86
+  - stableId: land-audio
+    bus: 2
+    clip: {fileID: 8300000, guid: dcb8fd7fa3d78142b9c1bf9b890afc88, type: 3}
+    loop: 0
+    gain: 0.86
+  - stableId: scan-audio
+    bus: 2
+    clip: {fileID: 8300000, guid: ede866d5d333735aebe213ac3c91355a, type: 3}
+    loop: 0
+    gain: 0.86
+  musicStates:
+  - stableId: music.clubhouse
+    foundationCueId: cue.clubhouse.before-dinner
+    signalStemCueId: stem.signal.clubhouse-before-dinner
+    signalLevel: 0.1
+    crossfadeSeconds: 0.45
+  - stableId: music.mirra
+    foundationCueId: cue.mirra.horizon
+    signalStemCueId: stem.signal.mirra-warm-cold-horizon
+    signalLevel: 0.22
+    crossfadeSeconds: 0.45
+  - stableId: music.koro-vesper
+    foundationCueId: cue.koro-vesper.orbit
+    signalStemCueId: stem.signal.koro-vesper-orbit
+    signalLevel: 0.34
+    crossfadeSeconds: 0.45
+  - stableId: music.aster-veil
+    foundationCueId: cue.aster-veil.signal
+    signalStemCueId: stem.signal.aster-veil-signal
+    signalLevel: 0.58
+    crossfadeSeconds: 0.45
+  - stableId: music.dinner
+    foundationCueId: cue.dinner.homecoming
+    signalStemCueId: stem.signal.dinner-homecoming
+    signalLevel: 0.82
+    crossfadeSeconds: 0.45
+  explicitlyUnvoiced:
+  - voice.aster.bea.fragment
+  - voice.aster.juno.motion
+  - voice.aster.kai.trust
+  - voice.aster.mira.route
+  - voice.aster.ori.pulse
+  - voice.juno.mirra-hint
+  - voice.juno.mirra-repair
+  - voice.mira.mirra-arrival
+  - voice.ori.mirra-fragment
+  - voice.task25.unvoiced

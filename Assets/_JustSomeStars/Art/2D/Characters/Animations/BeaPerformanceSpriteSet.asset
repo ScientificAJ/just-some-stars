@@ -1,0 +1,549 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8170578311834287961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.conversation.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.conversation.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 4072861504486917376, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: -930735099976422127, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: -1106463930574240111, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: 854644287240808712, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: -8427001162652265590, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: 1591264026164281350, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: neutral
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 5
+    kind: 9
+    id: conversation-complete
+--- !u!114 &-4617779323111797690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.dialogue.dialogue.koro.bea.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.dialogue.dialogue.koro.bea.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: -3147799180911816735, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: 3701145328031819541, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: 1850982833229472144, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: -6713276055405009161, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: 8166753060798342972, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: 7261633411962882499, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: observe
+  - frameIndex: 1
+    kind: 6
+    id: koro.dialogue.bea
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &-96347726707683087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.reaction.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.reaction.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: turn
+  frames:
+  - {fileID: -4240475347175537113, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: 6407160111238607403, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: -7507690385485663719, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: -7863288763700563641, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: curious
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41759a4bdd9cbad87b0bb61030e13fb0, type: 3}
+  m_Name: BeaPerformanceSpriteSet
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.CharacterSpriteSet
+  characterId: bea
+  clips:
+  - {fileID: 1175441629035882284}
+  - {fileID: -8170578311834287961}
+  - {fileID: 2576052683245738421}
+  - {fileID: 3656342593359255470}
+  - {fileID: -96347726707683087}
+  - {fileID: 3444879747629705976}
+  - {fileID: 7251909866570835035}
+  - {fileID: -4617779323111797690}
+  anchorTracks: []
+--- !u!114 &1175441629035882284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.reaction.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.reaction.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: turn
+  frames:
+  - {fileID: -2154584857205580568, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: -3328430430955361284, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: -1561692119595132955, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: 176184142853685296, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: curious
+--- !u!114 &2576052683245738421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.dialogue.dialogue.aster.bea.fragment.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.dialogue.dialogue.aster.bea.fragment.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 4072861504486917376, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: -930735099976422127, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: -1106463930574240111, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: 854644287240808712, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: -8427001162652265590, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: 1591264026164281350, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: bright
+  - frameIndex: 1
+    kind: 6
+    id: dialogue.aster.bea.fragment
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &3444879747629705976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.conversation.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.conversation.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: -3147799180911816735, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: 3701145328031819541, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: 1850982833229472144, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: -6713276055405009161, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: 8166753060798342972, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: 7261633411962882499, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: neutral
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 5
+    kind: 9
+    id: conversation-complete
+--- !u!114 &3656342593359255470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.dialogue.dialogue.koro.bea.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.dialogue.dialogue.koro.bea.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 4072861504486917376, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: -930735099976422127, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: -1106463930574240111, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: 854644287240808712, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: -8427001162652265590, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  - {fileID: 1591264026164281350, guid: c94dac3533ffd1c26ac26131b8506e25, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: observe
+  - frameIndex: 1
+    kind: 6
+    id: koro.dialogue.bea
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &7251909866570835035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.dialogue.dialogue.aster.bea.fragment.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.dialogue.dialogue.aster.bea.fragment.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: -3147799180911816735, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: 3701145328031819541, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: 1850982833229472144, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: -6713276055405009161, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: 8166753060798342972, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  - {fileID: 7261633411962882499, guid: 541856e3b85acd911b7b49072baedbd6, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: bright
+  - frameIndex: 1
+    kind: 6
+    id: dialogue.aster.bea.fragment
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: dialogue-complete

@@ -1,0 +1,967 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8103766942893606249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: juno.cinematic.clubhouse.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: juno.cinematic.clubhouse.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 8441971376609408524, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -7609173101923433619, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -182781930947008293, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -3244651991613708343, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: 5439651802799275431, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: 1554915140832521419, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: RightHand
+  - frameIndex: 2
+    id: RightHand
+  - frameIndex: 3
+    id: RightHand
+  - frameIndex: 4
+    id: RightHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 4
+    id: state:music.clubhouse
+  - frameIndex: 0
+    kind: 7
+    id: happy
+  - frameIndex: 1
+    kind: 6
+    id: cinematic.clubhouse.juno
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: continue
+--- !u!114 &-7702451213097634130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: juno.conversation.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: juno.conversation.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 8441971376609408524, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -7609173101923433619, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -182781930947008293, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -3244651991613708343, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: 5439651802799275431, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: 1554915140832521419, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: RightHand
+  - frameIndex: 2
+    id: RightHand
+  - frameIndex: 3
+    id: RightHand
+  - frameIndex: 4
+    id: RightHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: neutral
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 5
+    kind: 9
+    id: conversation-complete
+--- !u!114 &-5270190721798519475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: juno.dialogue.dialogue.mirra.juno-repair.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: juno.dialogue.dialogue.mirra.juno-repair.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: scan
+  frames:
+  - {fileID: -7174316833586681057, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: 8712044182729123326, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -8278761605010016809, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -3056980772263790412, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: 6866030862952141745, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: 5829506063157094871, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -1090654361165069821, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: 2509829368412978580, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  - frameIndex: 6
+    id: LeftFoot
+  - frameIndex: 6
+    id: RightFoot
+  - frameIndex: 7
+    id: LeftFoot
+  - frameIndex: 7
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: small-smile
+  - frameIndex: 1
+    kind: 6
+    id: dialogue.mirra.juno-repair.text
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 4
+    kind: 3
+    id: scan-commit
+  - frameIndex: 4
+    kind: 4
+    id: scan-audio
+  - frameIndex: 4
+    kind: 5
+    id: scan-vfx
+  - frameIndex: 4
+    kind: 8
+    id: 2
+  - frameIndex: 6
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 6
+    kind: 8
+    id: 4
+  - frameIndex: 7
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &-4163063716527909843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: juno.dialogue.dialogue.mirra.hint.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: juno.dialogue.dialogue.mirra.hint.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: scan
+  frames:
+  - {fileID: -7174316833586681057, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: 8712044182729123326, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -8278761605010016809, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -3056980772263790412, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: 6866030862952141745, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: 5829506063157094871, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -1090654361165069821, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: 2509829368412978580, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  - frameIndex: 6
+    id: LeftFoot
+  - frameIndex: 6
+    id: RightFoot
+  - frameIndex: 7
+    id: LeftFoot
+  - frameIndex: 7
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: encouraging
+  - frameIndex: 1
+    kind: 6
+    id: dialogue.mirra.hint.text
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 4
+    kind: 3
+    id: scan-commit
+  - frameIndex: 4
+    kind: 4
+    id: scan-audio
+  - frameIndex: 4
+    kind: 5
+    id: scan-vfx
+  - frameIndex: 4
+    kind: 8
+    id: 2
+  - frameIndex: 6
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 6
+    kind: 8
+    id: 4
+  - frameIndex: 7
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &-2650803583795725917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: juno.conversation.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: juno.conversation.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 6108768257518811584, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -207770235101574077, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -2041526214684161732, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -757002148666784717, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: 3322937785266382328, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -145495905681385994, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftHand
+  - frameIndex: 2
+    id: LeftHand
+  - frameIndex: 3
+    id: LeftHand
+  - frameIndex: 4
+    id: LeftHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: neutral
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 5
+    kind: 9
+    id: conversation-complete
+--- !u!114 &-2079337108888276058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: juno.cinematic.clubhouse.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: juno.cinematic.clubhouse.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 6108768257518811584, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -207770235101574077, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -2041526214684161732, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -757002148666784717, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: 3322937785266382328, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -145495905681385994, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftHand
+  - frameIndex: 2
+    id: LeftHand
+  - frameIndex: 3
+    id: LeftHand
+  - frameIndex: 4
+    id: LeftHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 4
+    id: state:music.clubhouse
+  - frameIndex: 0
+    kind: 7
+    id: happy
+  - frameIndex: 1
+    kind: 6
+    id: cinematic.clubhouse.juno
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: continue
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41759a4bdd9cbad87b0bb61030e13fb0, type: 3}
+  m_Name: JunoPerformanceSpriteSet
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.CharacterSpriteSet
+  characterId: juno
+  clips:
+  - {fileID: 3237527268567802513}
+  - {fileID: -2650803583795725917}
+  - {fileID: -2079337108888276058}
+  - {fileID: 3791219444397556582}
+  - {fileID: -4163063716527909843}
+  - {fileID: -5270190721798519475}
+  - {fileID: 1337741229618636876}
+  - {fileID: -7702451213097634130}
+  - {fileID: -8103766942893606249}
+  - {fileID: 2750289113286645722}
+  - {fileID: 1723516690809531561}
+  - {fileID: 5155670633510972817}
+  anchorTracks: []
+--- !u!114 &1337741229618636876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: juno.reaction.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: juno.reaction.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: turn
+  frames:
+  - {fileID: -9005251557404603322, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -8761099918778897467, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: 3946348025723804085, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -2863011445058455447, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: curious
+--- !u!114 &1723516690809531561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: juno.dialogue.dialogue.mirra.hint.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: juno.dialogue.dialogue.mirra.hint.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: scan
+  frames:
+  - {fileID: 6333469591864919576, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -8953867583201214118, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: 7142105528238327760, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -413001736792331592, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -1699104236028804616, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: 3459174044899745332, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: 5992644356557467995, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -7421478162610745170, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  - frameIndex: 6
+    id: LeftFoot
+  - frameIndex: 6
+    id: RightFoot
+  - frameIndex: 7
+    id: LeftFoot
+  - frameIndex: 7
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: encouraging
+  - frameIndex: 1
+    kind: 6
+    id: dialogue.mirra.hint.text
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 4
+    kind: 3
+    id: scan-commit
+  - frameIndex: 4
+    kind: 4
+    id: scan-audio
+  - frameIndex: 4
+    kind: 5
+    id: scan-vfx
+  - frameIndex: 4
+    kind: 8
+    id: 2
+  - frameIndex: 6
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 6
+    kind: 8
+    id: 4
+  - frameIndex: 7
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &2750289113286645722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: juno.dialogue.dialogue.aster.juno.motion.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: juno.dialogue.dialogue.aster.juno.motion.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: scan
+  frames:
+  - {fileID: 6333469591864919576, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -8953867583201214118, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: 7142105528238327760, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -413001736792331592, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -1699104236028804616, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: 3459174044899745332, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: 5992644356557467995, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -7421478162610745170, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  - frameIndex: 6
+    id: LeftFoot
+  - frameIndex: 6
+    id: RightFoot
+  - frameIndex: 7
+    id: LeftFoot
+  - frameIndex: 7
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: alert
+  - frameIndex: 1
+    kind: 6
+    id: dialogue.aster.juno.motion
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 4
+    kind: 3
+    id: scan-commit
+  - frameIndex: 4
+    kind: 4
+    id: scan-audio
+  - frameIndex: 4
+    kind: 5
+    id: scan-vfx
+  - frameIndex: 4
+    kind: 8
+    id: 2
+  - frameIndex: 6
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 6
+    kind: 8
+    id: 4
+  - frameIndex: 7
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &3237527268567802513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: juno.reaction.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: juno.reaction.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: turn
+  frames:
+  - {fileID: 890680718604976585, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -7826511411283884991, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -2851655794430490017, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: 5594767052330590909, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: curious
+--- !u!114 &3791219444397556582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: juno.dialogue.dialogue.aster.juno.motion.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: juno.dialogue.dialogue.aster.juno.motion.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: scan
+  frames:
+  - {fileID: -7174316833586681057, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: 8712044182729123326, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -8278761605010016809, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -3056980772263790412, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: 6866030862952141745, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: 5829506063157094871, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: -1090654361165069821, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  - {fileID: 2509829368412978580, guid: 29ddb8150d97e1b59b4e4ceaf7df77ce, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  - frameIndex: 6
+    id: LeftFoot
+  - frameIndex: 6
+    id: RightFoot
+  - frameIndex: 7
+    id: LeftFoot
+  - frameIndex: 7
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: alert
+  - frameIndex: 1
+    kind: 6
+    id: dialogue.aster.juno.motion
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 4
+    kind: 3
+    id: scan-commit
+  - frameIndex: 4
+    kind: 4
+    id: scan-audio
+  - frameIndex: 4
+    kind: 5
+    id: scan-vfx
+  - frameIndex: 4
+    kind: 8
+    id: 2
+  - frameIndex: 6
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 6
+    kind: 8
+    id: 4
+  - frameIndex: 7
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &5155670633510972817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: juno.dialogue.dialogue.mirra.juno-repair.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: juno.dialogue.dialogue.mirra.juno-repair.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: scan
+  frames:
+  - {fileID: 6333469591864919576, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -8953867583201214118, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: 7142105528238327760, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -413001736792331592, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -1699104236028804616, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: 3459174044899745332, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: 5992644356557467995, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  - {fileID: -7421478162610745170, guid: ad1d66248600c2e3581623cc9bd79d3f, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  - frameIndex: 6
+    id: LeftFoot
+  - frameIndex: 6
+    id: RightFoot
+  - frameIndex: 7
+    id: LeftFoot
+  - frameIndex: 7
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: small-smile
+  - frameIndex: 1
+    kind: 6
+    id: dialogue.mirra.juno-repair.text
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 4
+    kind: 3
+    id: scan-commit
+  - frameIndex: 4
+    kind: 4
+    id: scan-audio
+  - frameIndex: 4
+    kind: 5
+    id: scan-vfx
+  - frameIndex: 4
+    kind: 8
+    id: 2
+  - frameIndex: 6
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 6
+    kind: 8
+    id: 4
+  - frameIndex: 7
+    kind: 9
+    id: dialogue-complete

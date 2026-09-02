@@ -32,6 +32,7 @@ namespace JustSomeStars.Runtime.Accessibility
         public bool CaptionsEnabled { get; private set; } = true;
         public bool ReducedMotionActive { get; private set; }
         public bool ReducedFlashingActive { get; private set; }
+        public float DialogueSpeed => m_Settings?.Current.DialogueSpeed ?? 1f;
 
         private void OnDestroy()
         {

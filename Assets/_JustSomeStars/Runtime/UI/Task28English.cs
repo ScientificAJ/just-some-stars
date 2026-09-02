@@ -43,6 +43,10 @@ namespace JustSomeStars.Runtime.UI
         public const string PhotoTitle = "photo.title";
         public const string PhotoExplorer = "photo.explorer";
         public const string CreditsButton = "credits.button";
+        public const string CinematicOpening = "cinematic.opening.mira";
+        public const string CinematicSignal = "cinematic.signal.ori";
+        public const string CinematicClubhouse = "cinematic.clubhouse.juno";
+        public const string CinematicDinner = "cinematic.dinner.mira";
 
         private static readonly LocalizedEnglishText[] Entries =
         {
@@ -72,6 +76,18 @@ namespace JustSomeStars.Runtime.UI
                 "Device settings are saved locally and are never included in cloud backup."),
             Entry(CreditsTitle, "Credits & Licenses"),
             Entry(CreditsButton, "Credits"),
+            Entry(CinematicOpening, "Tonight, the sky answered back."),
+            Entry(CinematicSignal, "The pieces remember the same song."),
+            Entry(CinematicClubhouse,
+                "Home is the place we build between stars."),
+            Entry(CinematicDinner,
+                "We found the Signal. We also found our way home."),
+            Entry("actor.captain", "Captain"),
+            Entry("actor.mira", "Mira"),
+            Entry("actor.juno", "Juno"),
+            Entry("actor.kai", "Kai"),
+            Entry("actor.bea", "Bea"),
+            Entry("actor.ori", "Ori"),
             Entry(CreditsWrapper,
                 "Just Some Stars is created by ScientificAJ.\n\n" +
                 "Liberation Sans · Copyright 2010 Google Corporation and " +

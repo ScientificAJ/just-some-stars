@@ -1,0 +1,385 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9078131791375551809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.speech.3
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.speech.3
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 8132933090028925907, guid: c25e1cdc9f3878db7b504f6e95d34c86, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-8805043648799231126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.speech.5
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.speech.5
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 6990148404366145591, guid: c25e1cdc9f3878db7b504f6e95d34c86, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-7167986379846501960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.expression.surprised
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.expression.surprised
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -4114804870768242847, guid: c25e1cdc9f3878db7b504f6e95d34c86, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-5865127830985997280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.speech.2
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.speech.2
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 1415176183236797693, guid: c25e1cdc9f3878db7b504f6e95d34c86, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-5491498213367832462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.expression.curious
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.expression.curious
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -2691756003028363298, guid: c25e1cdc9f3878db7b504f6e95d34c86, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-4428040998900068265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.expression.afraid
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.expression.afraid
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 6210247185912677841, guid: c25e1cdc9f3878db7b504f6e95d34c86, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-3918373841558724842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.speech.0
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.speech.0
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -1356232099302510778, guid: c25e1cdc9f3878db7b504f6e95d34c86, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-3580046860043676057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.expression.speaking
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.expression.speaking
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 1781757468965115559, guid: c25e1cdc9f3878db7b504f6e95d34c86, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-664035172842093034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.expression.sad
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.expression.sad
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 2749463951790254539, guid: c25e1cdc9f3878db7b504f6e95d34c86, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-331407776849425739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.expression.neutral
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.expression.neutral
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -6777236516849205480, guid: c25e1cdc9f3878db7b504f6e95d34c86, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41759a4bdd9cbad87b0bb61030e13fb0, type: 3}
+  m_Name: OriFaceSpriteSet
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.CharacterSpriteSet
+  characterId: ori
+  clips:
+  - {fileID: -331407776849425739}
+  - {fileID: 808465732233400370}
+  - {fileID: -5491498213367832462}
+  - {fileID: 8455588787720266631}
+  - {fileID: -4428040998900068265}
+  - {fileID: -7167986379846501960}
+  - {fileID: 263159150676624973}
+  - {fileID: -664035172842093034}
+  - {fileID: 8307477448594116030}
+  - {fileID: -3580046860043676057}
+  - {fileID: -3918373841558724842}
+  - {fileID: 1875939524766924631}
+  - {fileID: -5865127830985997280}
+  - {fileID: -9078131791375551809}
+  - {fileID: 1129543340644421906}
+  - {fileID: -8805043648799231126}
+  anchorTracks: []
+--- !u!114 &263159150676624973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.expression.determined
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.expression.determined
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -341113130520091384, guid: c25e1cdc9f3878db7b504f6e95d34c86, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &808465732233400370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.expression.happy
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.expression.happy
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -1936532152765724643, guid: c25e1cdc9f3878db7b504f6e95d34c86, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &1129543340644421906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.speech.4
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.speech.4
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -4357700716013841607, guid: c25e1cdc9f3878db7b504f6e95d34c86, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &1875939524766924631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.speech.1
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.speech.1
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -3345184810206006422, guid: c25e1cdc9f3878db7b504f6e95d34c86, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &8307477448594116030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.expression.blink
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.expression.blink
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -8700400633919982698, guid: c25e1cdc9f3878db7b504f6e95d34c86, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &8455588787720266631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.expression.worried
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.expression.worried
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -3633339457334794470, guid: c25e1cdc9f3878db7b504f6e95d34c86, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []

@@ -1,0 +1,687 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8942634976978981846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.cinematic.opening.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.cinematic.opening.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 5382569857648787928, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: 4141902888171701413, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: -744026985234953832, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: -2827932292688515198, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: 1546951408284536411, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: 5666856513434866760, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+--- !u!114 &-7937399381109178309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.reaction.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.reaction.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: turn
+  frames:
+  - {fileID: -3499151590558754933, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: -7137883379126590721, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 8890063094700758523, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: -4202729366639761685, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: curious
+--- !u!114 &-7620779316394980260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.cinematic.clubhouse.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.cinematic.clubhouse.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: idle
+  frames:
+  - {fileID: 8952811290944794255, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 4855121625200202316, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: -1899979630396976791, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 1525589289333206494, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents: []
+--- !u!114 &-6076296225702133906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.cinematic.signal-reassembly.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.cinematic.signal-reassembly.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 5382569857648787928, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: 4141902888171701413, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: -744026985234953832, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: -2827932292688515198, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: 1546951408284536411, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: 5666856513434866760, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+--- !u!114 &-2626331007271408398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.cinematic.signal-reassembly.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.cinematic.signal-reassembly.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: -7692319822463591221, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 5631864425848406807, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 7915284770675023793, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 772813505827692805, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 1745957182806497269, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 4829718548915768791, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+--- !u!114 &-2510363803551178927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.cinematic.opening.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.cinematic.opening.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: -7692319822463591221, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 5631864425848406807, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 7915284770675023793, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 772813505827692805, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 1745957182806497269, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 4829718548915768791, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+--- !u!114 &-866727321834920319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.reaction.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.reaction.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: turn
+  frames:
+  - {fileID: -5462979450954602875, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: -5238466395569741931, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: 4587958699035067397, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: -8830079123578014836, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: curious
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41759a4bdd9cbad87b0bb61030e13fb0, type: 3}
+  m_Name: CaptainPerformanceSpriteSet
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.CharacterSpriteSet
+  characterId: captain
+  clips:
+  - {fileID: -7937399381109178309}
+  - {fileID: 253119608811243937}
+  - {fileID: -2510363803551178927}
+  - {fileID: -2626331007271408398}
+  - {fileID: -7620779316394980260}
+  - {fileID: 6652513129616315516}
+  - {fileID: -866727321834920319}
+  - {fileID: 7925437943206437789}
+  - {fileID: -8942634976978981846}
+  - {fileID: -6076296225702133906}
+  - {fileID: 1604702708559658573}
+  - {fileID: 4894025176572671083}
+  anchorTracks: []
+--- !u!114 &253119608811243937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.conversation.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.conversation.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: -7692319822463591221, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 5631864425848406807, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 7915284770675023793, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 772813505827692805, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 1745957182806497269, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 4829718548915768791, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: neutral
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 5
+    kind: 9
+    id: conversation-complete
+--- !u!114 &1604702708559658573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.cinematic.clubhouse.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.cinematic.clubhouse.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: idle
+  frames:
+  - {fileID: 2768105939875571645, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: -511796342980269828, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: -5595313219653170785, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: 8895077426338026609, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents: []
+--- !u!114 &4894025176572671083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.cinematic.dinner-ending.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.cinematic.dinner-ending.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 5382569857648787928, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: 4141902888171701413, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: -744026985234953832, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: -2827932292688515198, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: 1546951408284536411, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: 5666856513434866760, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+--- !u!114 &6652513129616315516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.cinematic.dinner-ending.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.cinematic.dinner-ending.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: -7692319822463591221, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 5631864425848406807, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 7915284770675023793, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 772813505827692805, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 1745957182806497269, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  - {fileID: 4829718548915768791, guid: a4639a25ee8f4a6a29ebb5ede8b70270, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+--- !u!114 &7925437943206437789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.conversation.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.conversation.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 5382569857648787928, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: 4141902888171701413, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: -744026985234953832, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: -2827932292688515198, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: 1546951408284536411, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  - {fileID: 5666856513434866760, guid: 7fa1952af6cf6d43b9db54aad39d49de, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  - frameIndex: 4
+    id: LeftFoot
+  - frameIndex: 4
+    id: RightFoot
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: neutral
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 5
+    kind: 9
+    id: conversation-complete

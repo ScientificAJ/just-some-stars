@@ -1,0 +1,627 @@
+{
+  "atlas": {
+    "format": "PNG",
+    "height": 512,
+    "path": "captain-face-speech.png",
+    "sha256": "3cb687c021f75ba8875e81ad7239c767dbe1e31e4481fcf96a0621e56934ce4b",
+    "width": 512
+  },
+  "characterId": "captain",
+  "clips": [
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 0,
+            "y": 384
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "captain__face_speech__000"
+        }
+      ],
+      "id": "captain.expression.neutral",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/captain-expressions-2x.png",
+      "sourceStripSha256": "cc10dffa38753a7c95876b023f28e72a0de135e3b130bc3ac599f232f7abde10"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 128,
+            "y": 384
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "captain__face_speech__001"
+        }
+      ],
+      "id": "captain.expression.happy",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/captain-expressions-2x.png",
+      "sourceStripSha256": "cc10dffa38753a7c95876b023f28e72a0de135e3b130bc3ac599f232f7abde10"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 256,
+            "y": 384
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "captain__face_speech__002"
+        }
+      ],
+      "id": "captain.expression.curious",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/captain-expressions-2x.png",
+      "sourceStripSha256": "cc10dffa38753a7c95876b023f28e72a0de135e3b130bc3ac599f232f7abde10"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 384,
+            "y": 384
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "captain__face_speech__003"
+        }
+      ],
+      "id": "captain.expression.worried",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/captain-expressions-2x.png",
+      "sourceStripSha256": "cc10dffa38753a7c95876b023f28e72a0de135e3b130bc3ac599f232f7abde10"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 0,
+            "y": 256
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "captain__face_speech__004"
+        }
+      ],
+      "id": "captain.expression.afraid",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/captain-expressions-2x.png",
+      "sourceStripSha256": "cc10dffa38753a7c95876b023f28e72a0de135e3b130bc3ac599f232f7abde10"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 128,
+            "y": 256
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "captain__face_speech__005"
+        }
+      ],
+      "id": "captain.expression.surprised",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/captain-expressions-2x.png",
+      "sourceStripSha256": "cc10dffa38753a7c95876b023f28e72a0de135e3b130bc3ac599f232f7abde10"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 256,
+            "y": 256
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "captain__face_speech__006"
+        }
+      ],
+      "id": "captain.expression.determined",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/captain-expressions-2x.png",
+      "sourceStripSha256": "cc10dffa38753a7c95876b023f28e72a0de135e3b130bc3ac599f232f7abde10"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 384,
+            "y": 256
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "captain__face_speech__007"
+        }
+      ],
+      "id": "captain.expression.sad",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/captain-expressions-2x.png",
+      "sourceStripSha256": "cc10dffa38753a7c95876b023f28e72a0de135e3b130bc3ac599f232f7abde10"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 0,
+            "y": 128
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "captain__face_speech__008"
+        }
+      ],
+      "id": "captain.expression.blink",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/captain-expressions-2x.png",
+      "sourceStripSha256": "cc10dffa38753a7c95876b023f28e72a0de135e3b130bc3ac599f232f7abde10"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            0,
+            0,
+            128,
+            128
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 128,
+            "y": 128
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "captain__face_speech__009"
+        }
+      ],
+      "id": "captain.expression.speaking",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/captain-expressions-2x.png",
+      "sourceStripSha256": "cc10dffa38753a7c95876b023f28e72a0de135e3b130bc3ac599f232f7abde10"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            44,
+            29,
+            41,
+            19
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 256,
+            "y": 128
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "captain__face_speech__010"
+        }
+      ],
+      "id": "captain.speech.0",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/captain-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            44,
+            31,
+            41,
+            8
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 384,
+            "y": 128
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "captain__face_speech__011"
+        }
+      ],
+      "id": "captain.speech.1",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/captain-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            54,
+            26,
+            21,
+            24
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 0,
+            "y": 0
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "captain__face_speech__012"
+        }
+      ],
+      "id": "captain.speech.2",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/captain-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            46,
+            33,
+            37,
+            11
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 128,
+            "y": 0
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "captain__face_speech__013"
+        }
+      ],
+      "id": "captain.speech.3",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/captain-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            56,
+            24,
+            17,
+            29
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 256,
+            "y": 0
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "captain__face_speech__014"
+        }
+      ],
+      "id": "captain.speech.4",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/captain-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    },
+    {
+      "cadenceFps": 12,
+      "facing": "Neutral",
+      "frames": [
+        {
+          "alphaBoundsPixels": [
+            43,
+            31,
+            44,
+            16
+          ],
+          "anchors": [],
+          "contacts": [],
+          "durationSeconds": 0.083333333,
+          "events": [],
+          "index": 0,
+          "interiorAlphaHolePixels": 0,
+          "pivotNormalized": [
+            0.5,
+            0.5
+          ],
+          "rectPixels": {
+            "height": 128,
+            "width": 128,
+            "x": 384,
+            "y": 0
+          },
+          "registeredBaselinePixels": 0,
+          "registrationOffsetPixels": 0,
+          "sourceBaselinePixels": 0,
+          "spriteName": "captain__face_speech__015"
+        }
+      ],
+      "id": "captain.speech.5",
+      "loopMode": "HoldLast",
+      "sourceStrip": "Source/Rows/neutral/captain-speech-2x.png",
+      "sourceStripSha256": "bfb31da32870ef02114f85e9017f304b57027a9122d5a9852891fdf818ac1d80"
+    }
+  ],
+  "pixelsPerUnit": 100,
+  "schemaVersion": 1,
+  "sourceRequestSha256": "cda3afe4e215237313dc18ab190eef6080387eb22a4c1677bc13a307b3cea655",
+  "validation": {
+    "isValid": true,
+    "issues": []
+  }
+}

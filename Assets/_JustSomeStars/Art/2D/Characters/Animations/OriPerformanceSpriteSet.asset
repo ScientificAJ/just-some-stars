@@ -1,0 +1,961 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8531167637488846155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.dialogue.dialogue.mirra.ori-fragment.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.dialogue.dialogue.mirra.ori-fragment.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: scan
+  frames:
+  - {fileID: 4143855865159618672, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 3573886905603905074, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -4971384909587732293, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -9011643463017221881, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -5848876538330249609, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 660961668657361852, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -3909154696761940314, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -14972948131084687, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: LeftWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: LeftWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightWheelContact
+  - frameIndex: 4
+    id: LeftWheelContact
+  - frameIndex: 4
+    id: RightWheelContact
+  - frameIndex: 5
+    id: LeftWheelContact
+  - frameIndex: 5
+    id: RightWheelContact
+  - frameIndex: 6
+    id: LeftWheelContact
+  - frameIndex: 6
+    id: RightWheelContact
+  - frameIndex: 7
+    id: LeftWheelContact
+  - frameIndex: 7
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: signal-pulse
+  - frameIndex: 1
+    kind: 6
+    id: dialogue.mirra.ori-fragment.text
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 4
+    kind: 3
+    id: scan-commit
+  - frameIndex: 4
+    kind: 4
+    id: scan-audio
+  - frameIndex: 4
+    kind: 5
+    id: scan-vfx
+  - frameIndex: 4
+    kind: 8
+    id: 2
+  - frameIndex: 6
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 6
+    kind: 8
+    id: 4
+  - frameIndex: 7
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &-5085910856544759190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.dialogue.dialogue.aster.ori.pulse.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.dialogue.dialogue.aster.ori.pulse.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: scan
+  frames:
+  - {fileID: -7644557726295781940, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -615138796514619137, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 7766116787263289102, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -7543987328979274861, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 8934514316249340283, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -618006993991898773, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -13809698775852546, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -9055804919283920283, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: LeftWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: LeftWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightWheelContact
+  - frameIndex: 4
+    id: LeftWheelContact
+  - frameIndex: 4
+    id: RightWheelContact
+  - frameIndex: 5
+    id: LeftWheelContact
+  - frameIndex: 5
+    id: RightWheelContact
+  - frameIndex: 6
+    id: LeftWheelContact
+  - frameIndex: 6
+    id: RightWheelContact
+  - frameIndex: 7
+    id: LeftWheelContact
+  - frameIndex: 7
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: flicker
+  - frameIndex: 1
+    kind: 6
+    id: dialogue.aster.ori.pulse
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 4
+    kind: 3
+    id: scan-commit
+  - frameIndex: 4
+    kind: 4
+    id: scan-audio
+  - frameIndex: 4
+    kind: 5
+    id: scan-vfx
+  - frameIndex: 4
+    kind: 8
+    id: 2
+  - frameIndex: 6
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 6
+    kind: 8
+    id: 4
+  - frameIndex: 7
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &-3244554420421430753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.dialogue.dialogue.koro.ori.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.dialogue.dialogue.koro.ori.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 6597932932597764713, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -4462567072057120586, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -1316547861553798143, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -6397590772423986931, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 6741620945068974580, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 8065227607484971265, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: LeftGripper
+  - frameIndex: 2
+    id: LeftGripper
+  - frameIndex: 3
+    id: LeftGripper
+  - frameIndex: 4
+    id: LeftGripper
+  - frameIndex: 5
+    id: LeftWheelContact
+  - frameIndex: 5
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: observe
+  - frameIndex: 1
+    kind: 6
+    id: koro.dialogue.ori
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &-2301885126880823838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.cinematic.signal-reassembly.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.cinematic.signal-reassembly.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: scan
+  frames:
+  - {fileID: -7644557726295781940, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -615138796514619137, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 7766116787263289102, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -7543987328979274861, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 8934514316249340283, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -618006993991898773, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -13809698775852546, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -9055804919283920283, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: LeftWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: LeftWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightWheelContact
+  - frameIndex: 4
+    id: LeftWheelContact
+  - frameIndex: 4
+    id: RightWheelContact
+  - frameIndex: 5
+    id: LeftWheelContact
+  - frameIndex: 5
+    id: RightWheelContact
+  - frameIndex: 6
+    id: LeftWheelContact
+  - frameIndex: 6
+    id: RightWheelContact
+  - frameIndex: 7
+    id: LeftWheelContact
+  - frameIndex: 7
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 0
+    kind: 4
+    id: state:music.aster-veil
+  - frameIndex: 0
+    kind: 7
+    id: surprised
+  - frameIndex: 1
+    kind: 6
+    id: cinematic.signal.ori
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 4
+    kind: 3
+    id: scan-commit
+  - frameIndex: 4
+    kind: 4
+    id: scan-audio
+  - frameIndex: 4
+    kind: 5
+    id: scan-vfx
+  - frameIndex: 4
+    kind: 8
+    id: 2
+  - frameIndex: 6
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 6
+    kind: 8
+    id: 4
+  - frameIndex: 7
+    kind: 9
+    id: continue
+--- !u!114 &-836653266906907003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.conversation.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.conversation.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 6597932932597764713, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -4462567072057120586, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -1316547861553798143, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -6397590772423986931, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 6741620945068974580, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 8065227607484971265, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: LeftGripper
+  - frameIndex: 2
+    id: LeftGripper
+  - frameIndex: 3
+    id: LeftGripper
+  - frameIndex: 4
+    id: LeftGripper
+  - frameIndex: 5
+    id: LeftWheelContact
+  - frameIndex: 5
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: neutral
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 5
+    kind: 9
+    id: conversation-complete
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41759a4bdd9cbad87b0bb61030e13fb0, type: 3}
+  m_Name: OriPerformanceSpriteSet
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.CharacterSpriteSet
+  characterId: ori
+  clips:
+  - {fileID: 356481448197729507}
+  - {fileID: -836653266906907003}
+  - {fileID: -2301885126880823838}
+  - {fileID: -5085910856544759190}
+  - {fileID: -3244554420421430753}
+  - {fileID: 3571510610076826992}
+  - {fileID: 152528564845552701}
+  - {fileID: 3629826742754278005}
+  - {fileID: 4944201346609387527}
+  - {fileID: 2059187322628695866}
+  - {fileID: 1896996721453508747}
+  - {fileID: -8531167637488846155}
+  anchorTracks: []
+--- !u!114 &152528564845552701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.reaction.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.reaction.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: turn
+  frames:
+  - {fileID: -4044005806899202158, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 2440483102325707687, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 6766453374335543933, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -5944825740574242595, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: curious
+--- !u!114 &356481448197729507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.reaction.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.reaction.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: turn
+  frames:
+  - {fileID: -1118140750189567130, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -5151635269980805994, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -6852355861829884558, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 5606062238088649874, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: curious
+--- !u!114 &1896996721453508747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.dialogue.dialogue.koro.ori.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.dialogue.dialogue.koro.ori.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: -5999787352190587997, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -8279524540202228765, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 2212736123300866997, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 5639306322210358080, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -5852919741622002609, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 680126164928015851, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: RightGripper
+  - frameIndex: 2
+    id: RightGripper
+  - frameIndex: 3
+    id: RightGripper
+  - frameIndex: 4
+    id: RightGripper
+  - frameIndex: 5
+    id: LeftWheelContact
+  - frameIndex: 5
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: observe
+  - frameIndex: 1
+    kind: 6
+    id: koro.dialogue.ori
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &2059187322628695866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.dialogue.dialogue.aster.ori.pulse.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.dialogue.dialogue.aster.ori.pulse.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: scan
+  frames:
+  - {fileID: 4143855865159618672, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 3573886905603905074, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -4971384909587732293, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -9011643463017221881, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -5848876538330249609, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 660961668657361852, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -3909154696761940314, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -14972948131084687, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: LeftWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: LeftWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightWheelContact
+  - frameIndex: 4
+    id: LeftWheelContact
+  - frameIndex: 4
+    id: RightWheelContact
+  - frameIndex: 5
+    id: LeftWheelContact
+  - frameIndex: 5
+    id: RightWheelContact
+  - frameIndex: 6
+    id: LeftWheelContact
+  - frameIndex: 6
+    id: RightWheelContact
+  - frameIndex: 7
+    id: LeftWheelContact
+  - frameIndex: 7
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: flicker
+  - frameIndex: 1
+    kind: 6
+    id: dialogue.aster.ori.pulse
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 4
+    kind: 3
+    id: scan-commit
+  - frameIndex: 4
+    kind: 4
+    id: scan-audio
+  - frameIndex: 4
+    kind: 5
+    id: scan-vfx
+  - frameIndex: 4
+    kind: 8
+    id: 2
+  - frameIndex: 6
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 6
+    kind: 8
+    id: 4
+  - frameIndex: 7
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &3571510610076826992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.dialogue.dialogue.mirra.ori-fragment.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.dialogue.dialogue.mirra.ori-fragment.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: scan
+  frames:
+  - {fileID: -7644557726295781940, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -615138796514619137, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 7766116787263289102, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -7543987328979274861, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: 8934514316249340283, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -618006993991898773, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -13809698775852546, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  - {fileID: -9055804919283920283, guid: 241a9d25f55f89636ae6c4efd3069558, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: LeftWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: LeftWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightWheelContact
+  - frameIndex: 4
+    id: LeftWheelContact
+  - frameIndex: 4
+    id: RightWheelContact
+  - frameIndex: 5
+    id: LeftWheelContact
+  - frameIndex: 5
+    id: RightWheelContact
+  - frameIndex: 6
+    id: LeftWheelContact
+  - frameIndex: 6
+    id: RightWheelContact
+  - frameIndex: 7
+    id: LeftWheelContact
+  - frameIndex: 7
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: signal-pulse
+  - frameIndex: 1
+    kind: 6
+    id: dialogue.mirra.ori-fragment.text
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 4
+    kind: 3
+    id: scan-commit
+  - frameIndex: 4
+    kind: 4
+    id: scan-audio
+  - frameIndex: 4
+    kind: 5
+    id: scan-vfx
+  - frameIndex: 4
+    kind: 8
+    id: 2
+  - frameIndex: 6
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 6
+    kind: 8
+    id: 4
+  - frameIndex: 7
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &3629826742754278005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.conversation.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.conversation.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: -5999787352190587997, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -8279524540202228765, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 2212736123300866997, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 5639306322210358080, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -5852919741622002609, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 680126164928015851, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: RightGripper
+  - frameIndex: 2
+    id: RightGripper
+  - frameIndex: 3
+    id: RightGripper
+  - frameIndex: 4
+    id: RightGripper
+  - frameIndex: 5
+    id: LeftWheelContact
+  - frameIndex: 5
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: neutral
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 5
+    kind: 9
+    id: conversation-complete
+--- !u!114 &4944201346609387527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: ori.cinematic.signal-reassembly.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: ori.cinematic.signal-reassembly.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: scan
+  frames:
+  - {fileID: 4143855865159618672, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 3573886905603905074, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -4971384909587732293, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -9011643463017221881, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -5848876538330249609, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: 660961668657361852, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -3909154696761940314, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  - {fileID: -14972948131084687, guid: 2acc2436d16e45bcfb6c120273f23667, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftWheelContact
+  - frameIndex: 0
+    id: RightWheelContact
+  - frameIndex: 1
+    id: LeftWheelContact
+  - frameIndex: 1
+    id: RightWheelContact
+  - frameIndex: 2
+    id: LeftWheelContact
+  - frameIndex: 2
+    id: RightWheelContact
+  - frameIndex: 3
+    id: LeftWheelContact
+  - frameIndex: 3
+    id: RightWheelContact
+  - frameIndex: 4
+    id: LeftWheelContact
+  - frameIndex: 4
+    id: RightWheelContact
+  - frameIndex: 5
+    id: LeftWheelContact
+  - frameIndex: 5
+    id: RightWheelContact
+  - frameIndex: 6
+    id: LeftWheelContact
+  - frameIndex: 6
+    id: RightWheelContact
+  - frameIndex: 7
+    id: LeftWheelContact
+  - frameIndex: 7
+    id: RightWheelContact
+  frameEvents:
+  - frameIndex: 0
+    kind: 4
+    id: state:music.aster-veil
+  - frameIndex: 0
+    kind: 7
+    id: surprised
+  - frameIndex: 1
+    kind: 6
+    id: cinematic.signal.ori
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 4
+    kind: 3
+    id: scan-commit
+  - frameIndex: 4
+    kind: 4
+    id: scan-audio
+  - frameIndex: 4
+    kind: 5
+    id: scan-vfx
+  - frameIndex: 4
+    kind: 8
+    id: 2
+  - frameIndex: 6
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 6
+    kind: 8
+    id: 4
+  - frameIndex: 7
+    kind: 9
+    id: continue

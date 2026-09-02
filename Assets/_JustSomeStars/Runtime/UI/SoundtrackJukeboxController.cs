@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using JustSomeStars.Runtime.Cosmetics;
+using JustSomeStars.Runtime.Core;
 using UnityEngine;
 
 namespace JustSomeStars.Runtime.UI
@@ -27,36 +28,15 @@ namespace JustSomeStars.Runtime.UI
 
     public sealed class UnitySoundtrackPlayer : MonoBehaviour, ISoundtrackPlayer
     {
-        [SerializeField] private AudioSource output;
-
         public bool Play(SoundtrackTrack track)
         {
-            if (track == null || output == null)
-            {
-                return false;
-            }
-
-            var clip = Resources.Load<AudioClip>(track.CueId);
-            if (clip == null)
-            {
-                return false;
-            }
-
-            output.clip = clip;
-            output.loop = true;
-            output.Play();
-            return true;
+            return track != null && AudioDirector.Instance != null &&
+                AudioDirector.Instance.PlayCue(track.CueId);
         }
 
         public void Stop()
         {
-            if (output == null)
-            {
-                return;
-            }
-
-            output.Stop();
-            output.clip = null;
+            AudioDirector.Instance?.Stop();
         }
     }
 

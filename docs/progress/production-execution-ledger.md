@@ -478,16 +478,16 @@ deliberately uses unavailable gateways until JSS-021 supplies the real
 Firebase/OAuth project, maintained Google identity-token bridge, concrete SDK
 wiring, deployed rules/indexes and two-device proof.
 
-## Immediate next task: Task 29
+## Immediate next task: Task 30
 
-Complete the frame-atlas animation, audio and cinematic-media package without
-starting Task 30 performance certification early.
+Run the one source-fresh Tasks 26–30 verification matrix, resolve only genuine
+failures caused by the implemented scope, then certify performance, memory,
+thermal behavior, the Android artifact and exact-device player experience.
 
 ## User-help queue
 
-No user decision blocks Task 29 local implementation. Tasks 26–28's
-source-fresh focused tests are queued with Tasks 29–30 in the user-requested
-final matrix.
+No user decision blocks Task 30 local verification. Tasks 26–29's source-fresh
+focused tests are queued in the user-requested final matrix.
 Task 24's Samsung activation remains JSS-024, and the corrected Task 25
 exact-APK completion spot-check remains JSS-025 for the Task 30 device pass;
 neither may be fabricated.
@@ -728,3 +728,15 @@ neither may be fabricated.
   `PROCEED`. Per the user's efficiency rule, Task 28 focused/runtime/device
   evidence remains queued for the one Tasks 26–30 final matrix. Task 29 is
   next.
+- 2026-09-02: Task 29 completed the animation, audio and cinematic-media
+  implementation checkpoint. Captain, Mira, Juno, Kai, Bea and Ori now have
+  expression/speech sets and event-driven performance libraries; body, face,
+  captions, audio, VFX and interaction release share one media clock. Four
+  customized-Captain cinematics retain visible still fallbacks, mission dialogue
+  honors localization and saved dialogue speed, and the original 18-file stereo
+  music/SFX package has exact deterministic rights and hash provenance. The
+  builder saved, reopened and validated the seven owned scenes and content;
+  Runtime, Editor and both test assemblies compile. The single bounded extreme
+  critic returned `PROCEED`. Per the user's efficiency rule, Task 29 focused
+  execution, playback, APK/device and performance evidence now join Tasks 26–28
+  in the one Task 30 final matrix. Task 30 is next.

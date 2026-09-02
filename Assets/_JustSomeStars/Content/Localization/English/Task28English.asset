@@ -63,6 +63,26 @@ MonoBehaviour:
     value: Credits & Licenses
   - key: credits.button
     value: Credits
+  - key: cinematic.opening.mira
+    value: Tonight, the sky answered back.
+  - key: cinematic.signal.ori
+    value: The pieces remember the same song.
+  - key: cinematic.clubhouse.juno
+    value: Home is the place we build between stars.
+  - key: cinematic.dinner.mira
+    value: We found the Signal. We also found our way home.
+  - key: actor.captain
+    value: Captain
+  - key: actor.mira
+    value: Mira
+  - key: actor.juno
+    value: Juno
+  - key: actor.kai
+    value: Kai
+  - key: actor.bea
+    value: Bea
+  - key: actor.ori
+    value: Ori
   - key: credits.wrapper
     value: "Just Some Stars is created by ScientificAJ.\n\nLiberation Sans \xB7 Copyright
       2010 Google Corporation and 2012 Red Hat, Inc.\nNoto Sans \xB7 Copyright 2010,

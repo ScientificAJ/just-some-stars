@@ -2545,37 +2545,60 @@ git commit -m "feat: complete accessible localized mobile UI"
 
 **Files:**
 - Create: `Assets/_JustSomeStars/Art/2D/Characters/Animations/`
+- Create: `Assets/_JustSomeStars/Art/2D/Characters/Captain/Atlases/neutral/`
+- Create: `Assets/_JustSomeStars/Art/2D/Characters/Captain/Source/Rows/neutral/`
 - Create: `Assets/_JustSomeStars/Audio/Music/`
 - Create: `Assets/_JustSomeStars/Audio/SFX/`
-- Create: `Assets/_JustSomeStars/Runtime/Core/CinematicDirector.cs`
-- Create: `Assets/_JustSomeStars/Runtime/Core/AudioDirector.cs`
-- Create: `Assets/_JustSomeStars/Content/Cinematics/`
+- Create/Modify: `Assets/_JustSomeStars/Runtime/{Accessibility,Animation2D,Cinematics,Core,Dialogue,Interaction,UI}/`
+- Modify: `Assets/_JustSomeStars/Scenes/{Cinematics,Core,Destinations}/`
+- Create/Modify: `Assets/_JustSomeStars/Content/{Characters/Faces,Cinematics,Localization,Resources}/`
+- Create/Modify: `Assets/_JustSomeStars/Editor/Build/Task29MediaBuilder.cs`
+- Create/Modify: `Assets/_JustSomeStars/Tests/{EditMode,PlayMode}/`
+- Create: `tools/media/generate_task29_{audio,captain_face}.py`
 - Create: `docs/media/media-rights-ledger.csv`
+- Create: `docs/qa/task29-media-review.md`
+- Modify: `docs/issue-register.md`
+- Modify: `docs/progress/production-execution-ledger.md`
 
 **Interfaces:**
 - Produces: real-time customized-Captain sprite cinematics, optional
   pre-rendered establishing shots, layered music and caption-safe dialogue timing.
 
-- [ ] **Step 1: Import/author coherent frame-atlas locomotion, interaction, reaction, conversation and cinematic clips**
+- [x] **Step 1: Import/author coherent frame-atlas locomotion, interaction, reaction, conversation and cinematic clips**
 
-- [ ] **Step 2: Implement deterministic frame events and facial-expression/viseme atlas control**
+- [x] **Step 2: Implement deterministic frame events and facial-expression/viseme atlas control**
 
 The same event contract drives foot contacts, tools, audio, VFX, captions and
 interaction release. Missing frames, mismatched pivots or unsynchronized
 Captain layers fail closed rather than silently substituting skeletal motion.
 
-- [ ] **Step 3: Generate approved Flow shots only where the customized Captain is absent**
+- [x] **Step 3: Generate approved Flow shots only where the customized Captain is absent**
 
-- [ ] **Step 4: Generate Lyria/Flowmusic material and edit it into loops, stems and intensity variants**
+No pre-rendered shot is required at this checkpoint. All four owned sequences
+retain the customized Captain and therefore use deterministic in-engine sprite
+cinematics with authored still fallbacks; no mismatched Captain is baked into
+video.
 
-- [ ] **Step 5: Implement Signal motif progression and music state transitions**
+- [x] **Step 4: Produce original music material and edit it into loops, stems and intensity variants**
 
-- [ ] **Step 6: Record source, license, generation tool and edit status for every external media asset**
+The authenticated Lyria/Flow Music surface was unavailable to this agent
+session. Task 29 therefore truthfully ships deterministic original project
+synthesis with no external samples, rather than fabricating Lyria provenance or
+leaving silent placeholders.
 
-- [ ] **Step 7: Test missing-video fallback, subtitle timing and independent audio volumes, then commit**
+- [x] **Step 5: Implement Signal motif progression and music state transitions**
+
+- [x] **Step 6: Record source, license, generation tool and edit status for every external media asset**
+
+- [x] **Step 7: Author missing-video fallback, subtitle timing and independent audio-volume tests, then commit**
+
+Per the user-approved efficiency cadence, the focused tests are authored but
+their Unity Test Runner execution joins the single source-fresh Tasks 26–30
+matrix in Task 30. Task 29's local gate is deterministic media validation plus
+successful Runtime, Editor, EditModeTests and PlayModeTests compilation.
 
 ```bash
-git add Assets/_JustSomeStars/Art/2D/Characters/Animations Assets/_JustSomeStars/Audio Assets/_JustSomeStars/Runtime/Core Assets/_JustSomeStars/Content/Cinematics docs/media
+git add -- <the explicit Task 29 path manifest only>
 git commit -m "feat: complete animation audio and cinematics"
 ```
 

@@ -1,0 +1,385 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8605927328454082766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.speech.5
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.speech.5
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 2409784717757881042, guid: fa213c3ef015c246facce0aca8cb61b0, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-4966510298934644166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.speech.3
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.speech.3
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 2117554420870105369, guid: fa213c3ef015c246facce0aca8cb61b0, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-4331459537376801549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.speech.2
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.speech.2
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -4129412868735781379, guid: fa213c3ef015c246facce0aca8cb61b0, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-4108053499875624000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.speech.0
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.speech.0
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 5753374997439663440, guid: fa213c3ef015c246facce0aca8cb61b0, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-3427516277037608540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.speech.1
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.speech.1
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -9199368125754721136, guid: fa213c3ef015c246facce0aca8cb61b0, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-2414820123459629704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.expression.blink
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.expression.blink
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 3809123771409110476, guid: fa213c3ef015c246facce0aca8cb61b0, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-1644495873371275407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.expression.surprised
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.expression.surprised
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -4840534788442804495, guid: fa213c3ef015c246facce0aca8cb61b0, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-1197276073196912941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.speech.4
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.speech.4
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 7028592933943091759, guid: fa213c3ef015c246facce0aca8cb61b0, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-1120472678619116236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.expression.curious
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.expression.curious
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 3764468174976311440, guid: fa213c3ef015c246facce0aca8cb61b0, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-198684861568442226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.expression.happy
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.expression.happy
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -3897444091179605233, guid: fa213c3ef015c246facce0aca8cb61b0, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41759a4bdd9cbad87b0bb61030e13fb0, type: 3}
+  m_Name: BeaFaceSpriteSet
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.CharacterSpriteSet
+  characterId: bea
+  clips:
+  - {fileID: 2452904061245843939}
+  - {fileID: -198684861568442226}
+  - {fileID: -1120472678619116236}
+  - {fileID: 4644266224512003355}
+  - {fileID: 3526699869971295851}
+  - {fileID: -1644495873371275407}
+  - {fileID: 8238686914360028778}
+  - {fileID: 252013083031993661}
+  - {fileID: -2414820123459629704}
+  - {fileID: 8479631211696188722}
+  - {fileID: -4108053499875624000}
+  - {fileID: -3427516277037608540}
+  - {fileID: -4331459537376801549}
+  - {fileID: -4966510298934644166}
+  - {fileID: -1197276073196912941}
+  - {fileID: -8605927328454082766}
+  anchorTracks: []
+--- !u!114 &252013083031993661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.expression.sad
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.expression.sad
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 6380194120846112594, guid: fa213c3ef015c246facce0aca8cb61b0, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &2452904061245843939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.expression.neutral
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.expression.neutral
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -317275366629001660, guid: fa213c3ef015c246facce0aca8cb61b0, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &3526699869971295851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.expression.afraid
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.expression.afraid
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 5830779273875536704, guid: fa213c3ef015c246facce0aca8cb61b0, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &4644266224512003355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.expression.worried
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.expression.worried
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -988621958505527149, guid: fa213c3ef015c246facce0aca8cb61b0, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &8238686914360028778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.expression.determined
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.expression.determined
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 39063094250055052, guid: fa213c3ef015c246facce0aca8cb61b0, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &8479631211696188722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: bea.expression.speaking
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: bea.expression.speaking
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -8087002753171166914, guid: fa213c3ef015c246facce0aca8cb61b0, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []

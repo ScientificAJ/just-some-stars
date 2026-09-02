@@ -1,0 +1,385 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8438998650323072971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.speech.0
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.speech.0
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 823334943195737339, guid: f5547d77479b0e436b998bc973bfc993, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-6523463586035029617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.speech.1
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.speech.1
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 8214464911905447252, guid: f5547d77479b0e436b998bc973bfc993, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-6459750223641523547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.expression.surprised
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.expression.surprised
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -7869032981561186621, guid: f5547d77479b0e436b998bc973bfc993, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-6147633530748371009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.expression.afraid
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.expression.afraid
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 5859950091971929432, guid: f5547d77479b0e436b998bc973bfc993, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-2737498122428763602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.expression.determined
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.expression.determined
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 8104658296177128198, guid: f5547d77479b0e436b998bc973bfc993, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-2293694216180027876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.expression.worried
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.expression.worried
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -7553753910552512559, guid: f5547d77479b0e436b998bc973bfc993, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-1773371326630635055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.expression.blink
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.expression.blink
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -8505232580088114785, guid: f5547d77479b0e436b998bc973bfc993, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-934221066080659934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.speech.2
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.speech.2
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -5529599334758070699, guid: f5547d77479b0e436b998bc973bfc993, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41759a4bdd9cbad87b0bb61030e13fb0, type: 3}
+  m_Name: CaptainFaceSpriteSet
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.CharacterSpriteSet
+  characterId: captain
+  clips:
+  - {fileID: 7842130775817504534}
+  - {fileID: 384018551433631222}
+  - {fileID: 8784570907148107396}
+  - {fileID: -2293694216180027876}
+  - {fileID: -6147633530748371009}
+  - {fileID: -6459750223641523547}
+  - {fileID: -2737498122428763602}
+  - {fileID: 3403349667193288122}
+  - {fileID: -1773371326630635055}
+  - {fileID: 9043785617819942335}
+  - {fileID: -8438998650323072971}
+  - {fileID: -6523463586035029617}
+  - {fileID: -934221066080659934}
+  - {fileID: 4461317701305936678}
+  - {fileID: 1009158776263058841}
+  - {fileID: 4495700991977063824}
+  anchorTracks: []
+--- !u!114 &384018551433631222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.expression.happy
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.expression.happy
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -4739233309193698884, guid: f5547d77479b0e436b998bc973bfc993, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &1009158776263058841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.speech.4
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.speech.4
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -885301571613708663, guid: f5547d77479b0e436b998bc973bfc993, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &3403349667193288122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.expression.sad
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.expression.sad
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -2674504839088785166, guid: f5547d77479b0e436b998bc973bfc993, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &4461317701305936678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.speech.3
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.speech.3
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 6036929640896586023, guid: f5547d77479b0e436b998bc973bfc993, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &4495700991977063824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.speech.5
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.speech.5
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -5581303666574169232, guid: f5547d77479b0e436b998bc973bfc993, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &7842130775817504534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.expression.neutral
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.expression.neutral
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -1824666698699054825, guid: f5547d77479b0e436b998bc973bfc993, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &8784570907148107396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.expression.curious
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.expression.curious
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -2643738070901873942, guid: f5547d77479b0e436b998bc973bfc993, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &9043785617819942335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: captain.expression.speaking
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: captain.expression.speaking
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 5839675003060215045, guid: f5547d77479b0e436b998bc973bfc993, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []

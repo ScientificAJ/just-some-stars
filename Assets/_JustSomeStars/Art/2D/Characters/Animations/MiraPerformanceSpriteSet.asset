@@ -1,0 +1,945 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8006627263442180002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.dialogue.dialogue.aster.mira.route.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.dialogue.dialogue.aster.mira.route.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 6273830968544022540, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 3280852573962968700, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -8953163036091446154, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 2664450213149982632, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -8620733727782659371, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 1072953212442108611, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: RightHand
+  - frameIndex: 2
+    id: RightHand
+  - frameIndex: 3
+    id: RightHand
+  - frameIndex: 4
+    id: RightHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: focused
+  - frameIndex: 1
+    kind: 6
+    id: dialogue.aster.mira.route
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &-7289052303634498862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.cinematic.dinner-ending.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.cinematic.dinner-ending.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 602817355116252859, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -2345766889263262834, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 6617290679220630123, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -4006808495216848004, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 707697386758089561, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -765375516807963673, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftHand
+  - frameIndex: 2
+    id: LeftHand
+  - frameIndex: 3
+    id: LeftHand
+  - frameIndex: 4
+    id: LeftHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 4
+    id: state:music.dinner
+  - frameIndex: 0
+    kind: 7
+    id: happy
+  - frameIndex: 1
+    kind: 6
+    id: cinematic.dinner.mira
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: continue
+--- !u!114 &-5352400795828318111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.conversation.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.conversation.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 602817355116252859, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -2345766889263262834, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 6617290679220630123, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -4006808495216848004, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 707697386758089561, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -765375516807963673, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftHand
+  - frameIndex: 2
+    id: LeftHand
+  - frameIndex: 3
+    id: LeftHand
+  - frameIndex: 4
+    id: LeftHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: neutral
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 5
+    kind: 9
+    id: conversation-complete
+--- !u!114 &-5070626808553517922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.dialogue.dialogue.aster.mira.route.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.dialogue.dialogue.aster.mira.route.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 602817355116252859, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -2345766889263262834, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 6617290679220630123, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -4006808495216848004, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 707697386758089561, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -765375516807963673, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftHand
+  - frameIndex: 2
+    id: LeftHand
+  - frameIndex: 3
+    id: LeftHand
+  - frameIndex: 4
+    id: LeftHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: focused
+  - frameIndex: 1
+    kind: 6
+    id: dialogue.aster.mira.route
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &-4704605423845744898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.dialogue.dialogue.koro.mira.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.dialogue.dialogue.koro.mira.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 602817355116252859, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -2345766889263262834, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 6617290679220630123, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -4006808495216848004, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 707697386758089561, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -765375516807963673, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftHand
+  - frameIndex: 2
+    id: LeftHand
+  - frameIndex: 3
+    id: LeftHand
+  - frameIndex: 4
+    id: LeftHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: observe
+  - frameIndex: 1
+    kind: 6
+    id: koro.dialogue.mira
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &-4528654307909750870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.reaction.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.reaction.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: turn
+  frames:
+  - {fileID: 2053230949613668638, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -976378997831585962, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -533678352452837506, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -2941422933489524221, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftFoot
+  - frameIndex: 2
+    id: LeftFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: curious
+--- !u!114 &-4342433599010355131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.cinematic.dinner-ending.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.cinematic.dinner-ending.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 6273830968544022540, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 3280852573962968700, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -8953163036091446154, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 2664450213149982632, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -8620733727782659371, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 1072953212442108611, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: RightHand
+  - frameIndex: 2
+    id: RightHand
+  - frameIndex: 3
+    id: RightHand
+  - frameIndex: 4
+    id: RightHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 4
+    id: state:music.dinner
+  - frameIndex: 0
+    kind: 7
+    id: happy
+  - frameIndex: 1
+    kind: 6
+    id: cinematic.dinner.mira
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: continue
+--- !u!114 &-4168307233921058866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.dialogue.dialogue.mirra.arrival.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.dialogue.dialogue.mirra.arrival.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 6273830968544022540, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 3280852573962968700, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -8953163036091446154, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 2664450213149982632, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -8620733727782659371, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 1072953212442108611, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: RightHand
+  - frameIndex: 2
+    id: RightHand
+  - frameIndex: 3
+    id: RightHand
+  - frameIndex: 4
+    id: RightHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: bright-focus
+  - frameIndex: 1
+    kind: 6
+    id: dialogue.mirra.arrival.text
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &-3220820979088052887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.conversation.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.conversation.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 6273830968544022540, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 3280852573962968700, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -8953163036091446154, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 2664450213149982632, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -8620733727782659371, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 1072953212442108611, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: RightHand
+  - frameIndex: 2
+    id: RightHand
+  - frameIndex: 3
+    id: RightHand
+  - frameIndex: 4
+    id: RightHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: neutral
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 5
+    kind: 9
+    id: conversation-complete
+--- !u!114 &-3146103300823095379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.dialogue.dialogue.mirra.arrival.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.dialogue.dialogue.mirra.arrival.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 602817355116252859, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -2345766889263262834, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 6617290679220630123, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -4006808495216848004, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 707697386758089561, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -765375516807963673, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftHand
+  - frameIndex: 2
+    id: LeftHand
+  - frameIndex: 3
+    id: LeftHand
+  - frameIndex: 4
+    id: LeftHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: bright-focus
+  - frameIndex: 1
+    kind: 6
+    id: dialogue.mirra.arrival.text
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: dialogue-complete
+--- !u!114 &-1979473277836889528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.reaction.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.reaction.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: turn
+  frames:
+  - {fileID: -7695569246399700422, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -5630115954561132847, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -5026985260768340210, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -5207406620938413072, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: RightFoot
+  - frameIndex: 2
+    id: RightFoot
+  - frameIndex: 3
+    id: LeftFoot
+  - frameIndex: 3
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: curious
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41759a4bdd9cbad87b0bb61030e13fb0, type: 3}
+  m_Name: MiraPerformanceSpriteSet
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.CharacterSpriteSet
+  characterId: mira
+  clips:
+  - {fileID: -4528654307909750870}
+  - {fileID: -5352400795828318111}
+  - {fileID: 6113813343620520636}
+  - {fileID: -7289052303634498862}
+  - {fileID: -5070626808553517922}
+  - {fileID: -4704605423845744898}
+  - {fileID: -3146103300823095379}
+  - {fileID: -1979473277836889528}
+  - {fileID: -3220820979088052887}
+  - {fileID: 2758161428205398770}
+  - {fileID: -4342433599010355131}
+  - {fileID: -8006627263442180002}
+  - {fileID: 7219432019735839238}
+  - {fileID: -4168307233921058866}
+  anchorTracks: []
+--- !u!114 &2758161428205398770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.cinematic.opening.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.cinematic.opening.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 6273830968544022540, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 3280852573962968700, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -8953163036091446154, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 2664450213149982632, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -8620733727782659371, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 1072953212442108611, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: RightHand
+  - frameIndex: 2
+    id: RightHand
+  - frameIndex: 3
+    id: RightHand
+  - frameIndex: 4
+    id: RightHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 4
+    id: state:music.clubhouse
+  - frameIndex: 0
+    kind: 7
+    id: curious
+  - frameIndex: 1
+    kind: 6
+    id: cinematic.opening.mira
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: continue
+--- !u!114 &6113813343620520636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.cinematic.opening.left
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.cinematic.opening.left
+  facing: 1
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 602817355116252859, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -2345766889263262834, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 6617290679220630123, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -4006808495216848004, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: 707697386758089561, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  - {fileID: -765375516807963673, guid: 70bd62efaf94c0f9bb637d017ec62a85, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: LeftHand
+  - frameIndex: 2
+    id: LeftHand
+  - frameIndex: 3
+    id: LeftHand
+  - frameIndex: 4
+    id: LeftHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 4
+    id: state:music.clubhouse
+  - frameIndex: 0
+    kind: 7
+    id: curious
+  - frameIndex: 1
+    kind: 6
+    id: cinematic.opening.mira
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 5
+    id: signal-pulse
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: continue
+--- !u!114 &7219432019735839238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.dialogue.dialogue.koro.mira.right
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.dialogue.dialogue.koro.mira.right
+  facing: 2
+  loopMode: 1
+  playbackMotionId: interact
+  frames:
+  - {fileID: 6273830968544022540, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 3280852573962968700, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -8953163036091446154, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 2664450213149982632, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: -8620733727782659371, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  - {fileID: 1072953212442108611, guid: ed7b98c7a79c942e393123b5db624109, type: 3}
+  frameDurations:
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  - 0.083333336
+  frameContacts:
+  - frameIndex: 0
+    id: LeftFoot
+  - frameIndex: 0
+    id: RightFoot
+  - frameIndex: 1
+    id: RightHand
+  - frameIndex: 2
+    id: RightHand
+  - frameIndex: 3
+    id: RightHand
+  - frameIndex: 4
+    id: RightHand
+  - frameIndex: 5
+    id: LeftFoot
+  - frameIndex: 5
+    id: RightFoot
+  frameEvents:
+  - frameIndex: 0
+    kind: 7
+    id: observe
+  - frameIndex: 1
+    kind: 6
+    id: koro.dialogue.mira
+  - frameIndex: 1
+    kind: 8
+    id: 0
+  - frameIndex: 3
+    kind: 3
+    id: interact-commit
+  - frameIndex: 3
+    kind: 8
+    id: 2
+  - frameIndex: 4
+    kind: 8
+    id: 4
+  - frameIndex: 5
+    kind: 9
+    id: dialogue-complete

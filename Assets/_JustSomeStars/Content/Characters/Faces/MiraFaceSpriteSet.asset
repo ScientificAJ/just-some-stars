@@ -1,0 +1,385 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9134596337936736295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.expression.sad
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.expression.sad
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 3106167992326873224, guid: f164cebab4e78f7a0b11bfc1d84b78fb, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-8973513381151056836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.speech.3
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.speech.3
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -2607497584429601128, guid: f164cebab4e78f7a0b11bfc1d84b78fb, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-7011475027618819244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.expression.determined
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.expression.determined
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -7483624224777755560, guid: f164cebab4e78f7a0b11bfc1d84b78fb, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-5398080530289175787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.speech.4
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.speech.4
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -2091010311559123445, guid: f164cebab4e78f7a0b11bfc1d84b78fb, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-4263099659748114954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.speech.0
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.speech.0
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -2098944282567837425, guid: f164cebab4e78f7a0b11bfc1d84b78fb, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-3920903048911275317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.expression.happy
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.expression.happy
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 5870560309178470002, guid: f164cebab4e78f7a0b11bfc1d84b78fb, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-2617093771117642527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.expression.neutral
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.expression.neutral
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 9007710205257971906, guid: f164cebab4e78f7a0b11bfc1d84b78fb, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-2519966420710727423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.speech.1
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.speech.1
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 3510588889673830875, guid: f164cebab4e78f7a0b11bfc1d84b78fb, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &-1263036634351771691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.expression.curious
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.expression.curious
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 677909172031560940, guid: f164cebab4e78f7a0b11bfc1d84b78fb, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41759a4bdd9cbad87b0bb61030e13fb0, type: 3}
+  m_Name: MiraFaceSpriteSet
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.CharacterSpriteSet
+  characterId: mira
+  clips:
+  - {fileID: -2617093771117642527}
+  - {fileID: -3920903048911275317}
+  - {fileID: -1263036634351771691}
+  - {fileID: 8579624100499688493}
+  - {fileID: 8714831817985738554}
+  - {fileID: 7192870392982894304}
+  - {fileID: -7011475027618819244}
+  - {fileID: -9134596337936736295}
+  - {fileID: 3910189423298033102}
+  - {fileID: 8733003365266632189}
+  - {fileID: -4263099659748114954}
+  - {fileID: -2519966420710727423}
+  - {fileID: 4564979419280081823}
+  - {fileID: -8973513381151056836}
+  - {fileID: -5398080530289175787}
+  - {fileID: 4999732079691427224}
+  anchorTracks: []
+--- !u!114 &3910189423298033102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.expression.blink
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.expression.blink
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -12322476798511914, guid: f164cebab4e78f7a0b11bfc1d84b78fb, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &4564979419280081823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.speech.2
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.speech.2
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 8250939628193975483, guid: f164cebab4e78f7a0b11bfc1d84b78fb, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &4999732079691427224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.speech.5
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.speech.5
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 4571793088265162546, guid: f164cebab4e78f7a0b11bfc1d84b78fb, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &7192870392982894304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.expression.surprised
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.expression.surprised
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 5491310011160038917, guid: f164cebab4e78f7a0b11bfc1d84b78fb, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &8579624100499688493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.expression.worried
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.expression.worried
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 8044620251017536528, guid: f164cebab4e78f7a0b11bfc1d84b78fb, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &8714831817985738554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.expression.afraid
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.expression.afraid
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: 5041504989623778050, guid: f164cebab4e78f7a0b11bfc1d84b78fb, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []
+--- !u!114 &8733003365266632189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99fc15f1c32a262bb7ce9a7d2dce09e, type: 3}
+  m_Name: mira.expression.speaking
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAnimationClipDefinition
+  stableId: mira.expression.speaking
+  facing: 0
+  loopMode: 2
+  playbackMotionId: 
+  frames:
+  - {fileID: -5654982407534069059, guid: f164cebab4e78f7a0b11bfc1d84b78fb, type: 3}
+  frameDurations:
+  - 0.083333336
+  frameContacts: []
+  frameEvents: []

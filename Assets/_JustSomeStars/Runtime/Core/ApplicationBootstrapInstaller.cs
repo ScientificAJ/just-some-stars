@@ -62,6 +62,7 @@ namespace JustSomeStars.Runtime.Core
         private static GameBootstrapComposition CreateComposition()
         {
             var settings = new SettingsService();
+            AudioDirector.EnsureInstalled(settings);
             var localSave = new LocalSaveService();
             var account = CreateAccountService(localSave);
             var commerce = StoreProviderRegistry.Create(account);
