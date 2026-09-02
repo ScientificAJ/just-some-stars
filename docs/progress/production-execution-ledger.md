@@ -478,15 +478,15 @@ deliberately uses unavailable gateways until JSS-021 supplies the real
 Firebase/OAuth project, maintained Google identity-token bridge, concrete SDK
 wiring, deployed rules/indexes and two-device proof.
 
-## Immediate next task: Task 28
+## Immediate next task: Task 29
 
-Complete the player-facing UI, English localization and accessibility surfaces
-without expanding into Task 29 audio production.
+Complete the frame-atlas animation, audio and cinematic-media package without
+starting Task 30 performance certification early.
 
 ## User-help queue
 
-No user decision blocks Task 28 local implementation. Tasks 26 and 27's
-source-fresh focused tests are queued with Tasks 28–30 in the user-requested
+No user decision blocks Task 29 local implementation. Tasks 26–28's
+source-fresh focused tests are queued with Tasks 29–30 in the user-requested
 final matrix.
 Task 24's Samsung activation remains JSS-024, and the corrected Task 25
 exact-APK completion spot-check remains JSS-025 for the Task 30 device pass;
@@ -715,3 +715,16 @@ neither may be fabricated.
   same bounded extreme critic returned `PROCEED`. Per the user's efficiency
   rule, Task 27's authored focused execution is deferred to the one Tasks 26–30
   final matrix. Task 28 is next.
+- 2026-09-02: Task 28 completed the accessible localized player-UI
+  implementation checkpoint. The approved Homemade/Signal Frontend language is
+  preserved while New Game and Continue now follow real save/content state;
+  responsive gameplay menus, Atlas, customization, account/birthday/shop
+  surfaces, base and Explorer Photo Mode, localized English copy and effective
+  accessibility options are authored across the Chapter One compositions.
+  Cloud-account linking and Restore Purchases share an age-aware grown-up gate
+  and fail closed on cancellation. The final builder saves, reopens and
+  validates the serialized UI/accessibility components; Runtime, Editor and
+  both test assemblies compile. The same bounded extreme critic returned
+  `PROCEED`. Per the user's efficiency rule, Task 28 focused/runtime/device
+  evidence remains queued for the one Tasks 26–30 final matrix. Task 29 is
+  next.

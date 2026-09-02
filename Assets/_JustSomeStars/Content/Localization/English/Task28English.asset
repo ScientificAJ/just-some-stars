@@ -1,0 +1,550 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2547e55ec9dfbbef9928c19f015c725e, type: 3}
+  m_Name: Task28English
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Atlas.LocalizedEnglishCatalog
+  entries:
+  - key: frontend.title
+    value: Just Some Stars
+  - key: frontend.status
+    value: CHAPTER ONE
+  - key: frontend.version
+    value: Version {0}
+  - key: frontend.newGame
+    value: New Game
+  - key: frontend.newGame.ready
+    value: Begin at the observatory
+  - key: frontend.newGame.loading
+    value: "Opening the observatory\u2026"
+  - key: frontend.continue
+    value: Continue
+  - key: frontend.continue.noSave
+    value: No journey saved yet
+  - key: frontend.continue.ready
+    value: Return to {0}
+  - key: frontend.continue.recovered
+    value: "Recovered backup \xB7 Return to {0}"
+  - key: frontend.continue.unreadable
+    value: Save needs recovery before continuing
+  - key: frontend.continue.storageUnavailable
+    value: Local saves are temporarily unavailable
+  - key: frontend.continue.contentUnavailable
+    value: That checkpoint is not installed
+  - key: frontend.continue.loading
+    value: "Returning to your crew\u2026"
+  - key: frontend.checkpointFallback
+    value: your last checkpoint
+  - key: frontend.state.ready
+    value: READY
+  - key: frontend.state.recovered
+    value: RECOVERED
+  - key: frontend.state.recovery
+    value: CHECK SAVE
+  - key: frontend.state.offline
+    value: LOCAL OFFLINE
+  - key: frontend.state.unavailable
+    value: NOT INSTALLED
+  - key: frontend.state.new
+    value: NEW
+  - key: settings.title
+    value: Settings
+  - key: settings.body
+    value: Device settings are saved locally and are never included in cloud backup.
+  - key: credits.title
+    value: Credits & Licenses
+  - key: credits.button
+    value: Credits
+  - key: credits.wrapper
+    value: "Just Some Stars is created by ScientificAJ.\n\nLiberation Sans \xB7 Copyright
+      2010 Google Corporation and 2012 Red Hat, Inc.\nNoto Sans \xB7 Copyright 2010,
+      2012\u20132020 Google Inc. and 2015\u20132020 Google LLC.\nBoth fonts are distributed
+      under the SIL Open Font License 1.1. The complete license follows.\n\n"
+  - key: credits.apacheWrapper
+    value: '
+
+
+      Android open-source components
+
+
+      This Android build includes
+      AndroidX, Kotlin, Kotlin coroutines, JetBrains annotations, and Guava components
+      distributed under the Apache License 2.0. The complete license follows.
+
+
+      Apache
+      License 2.0
+
+
+'
+  - key: privacy.title
+    value: Privacy
+  - key: privacy.body
+    value: An account is optional. Progress stays on this device unless a grown-up
+      chooses private Google cloud backup. Photos and device settings always stay
+      local. Cloud data can be exported, signed out, or deleted from Settings. Google
+      sign-in data is never used for advertising. Optional store purchases never
+      sell story, science, or accessibility.
+  - key: common.close
+    value: Close
+  - key: common.localPanelNote
+    value: LOCAL NOTE // NOTHING LEAVES THIS SCREEN
+  - key: common.on
+    value: On
+  - key: common.off
+    value: Off
+  - key: common.reduced
+    value: Reduced
+  - key: common.full
+    value: Full
+  - key: common.left
+    value: Left
+  - key: common.right
+    value: Right
+  - key: common.notAvailable
+    value: Not available
+  - key: common.confirm
+    value: Confirm
+  - key: common.percent
+    value: '{0}%'
+  - key: common.multiplier
+    value: '{0:0.00}x'
+  - key: settings.pilotingAssist
+    value: Piloting assist
+  - key: settings.explorationAssist
+    value: Exploration assist
+  - key: settings.scienceDepth
+    value: Science detail
+  - key: settings.captions
+    value: Captions and speaker labels
+  - key: settings.textScale
+    value: Text size
+  - key: settings.readableType
+    value: Readable type
+  - key: settings.dialogueSpeed
+    value: Dialogue speed
+  - key: settings.colorVision
+    value: Color-safe symbols
+  - key: settings.cameraShake
+    value: Camera shake
+  - key: settings.flashing
+    value: Flashing
+  - key: settings.motion
+    value: Interface motion
+  - key: settings.motionBlur
+    value: Motion blur
+  - key: settings.particles
+    value: Particle density
+  - key: settings.quality
+    value: Presentation quality
+  - key: settings.music
+    value: Music
+  - key: settings.dialogue
+    value: Dialogue
+  - key: settings.effects
+    value: Effects
+  - key: settings.haptics
+    value: Haptics
+  - key: settings.controlSide
+    value: Control side
+  - key: settings.touchSensitivity
+    value: Touch sensitivity
+  - key: value.guided
+    value: Guided
+  - key: value.balanced
+    value: Balanced
+  - key: value.ace
+    value: Ace
+  - key: value.deep
+    value: Deep
+  - key: value.standard
+    value: Standard
+  - key: value.protanopia
+    value: Protanopia
+  - key: value.deuteranopia
+    value: Deuteranopia
+  - key: value.tritanopia
+    value: Tritanopia
+  - key: value.performance
+    value: Performance
+  - key: value.cinematic
+    value: Cinematic
+  - key: value.highFrameRate
+    value: High frame rate
+  - key: account.unavailable
+    value: "Google backup isn\u2019t available in this build. Offline progress still
+      works."
+  - key: account.available
+    value: Private Google backup is available.
+  - key: account.linked
+    value: Private backup is linked and ready.
+  - key: account.pending
+    value: Backup will finish when the connection returns.
+  - key: account.conflict
+    value: Choose which complete checkpoint to keep.
+  - key: account.offline
+    value: Playing offline. Progress stays on this device.
+  - key: account.link
+    value: Back up with Google
+  - key: account.linkCancelled
+    value: Cloud linking stayed closed. No account was changed.
+  - key: account.grownUpArithmetic
+    value: 'Grown-up check for private backup: what is {0} + {1}?'
+  - key: account.grownUpConfirm
+    value: A grown-up must confirm private Google cloud backup.
+  - key: account.sync
+    value: Sync backup
+  - key: account.export
+    value: Export my data
+  - key: account.signOut
+    value: Sign out
+  - key: account.unlink
+    value: Unlink Google
+  - key: account.delete
+    value: Delete cloud account
+  - key: account.confirmDelete
+    value: Confirm delete
+  - key: account.useDevice
+    value: Use this device
+  - key: account.useBackup
+    value: Use cloud backup
+  - key: account.busy
+    value: 'Private backup is working: {0}'
+  - key: account.operation.linking
+    value: linking
+  - key: account.operation.syncing
+    value: syncing
+  - key: account.operation.resolvingConflict
+    value: resolving a conflict
+  - key: account.operation.exporting
+    value: exporting
+  - key: account.operation.signingOut
+    value: signing out
+  - key: account.operation.unlinking
+    value: unlinking
+  - key: account.operation.deleting
+    value: deleting
+  - key: hud.pause
+    value: Pause
+  - key: hud.accessibility
+    value: Accessibility
+  - key: hud.photoMode
+    value: Photo Mode
+  - key: hud.interact
+    value: Interact
+  - key: hud.signalLinked
+    value: Signal linked
+  - key: hud.lens
+    value: Discovery Lens
+  - key: subtitle.speaker
+    value: '{0}: {1}'
+  - key: menu.resume
+    value: Resume
+  - key: menu.journey
+    value: Journey
+  - key: menu.atlas
+    value: Atlas
+  - key: menu.customization
+    value: Captain
+  - key: menu.shop
+    value: Optional extras
+  - key: menu.account
+    value: Private backup
+  - key: menu.grownUp
+    value: Grown-up check
+  - key: menu.context
+    value: PAUSED // THE JOURNEY WAITS FOR YOU
+  - key: menu.journey.noSave
+    value: No local journey is available.
+  - key: menu.journey.detail
+    value: 'Next: {0}
+
+      Checkpoint {1}'
+  - key: menu.accessibility.detail
+    value: Accessibility changes apply immediately to every player surface.
+  - key: menu.accessibility.applied
+    value: Accessibility updated.
+  - key: menu.accessibility.previous
+    value: Previous setting
+  - key: menu.accessibility.next
+    value: Next setting
+  - key: menu.accessibility.decrease
+    value: Decrease
+  - key: menu.accessibility.increase
+    value: Increase
+  - key: menu.atlas.none
+    value: No Atlas entries have been discovered yet. Use the Discovery Lens in the
+      field.
+  - key: menu.atlas.entry
+    value: "{0}\n{1}\n{2} detail \xB7 {3}/{4}"
+  - key: menu.atlas.previous
+    value: Previous entry
+  - key: menu.atlas.next
+    value: Next entry
+  - key: menu.atlas.depth
+    value: Science detail
+  - key: atlas.mirra.title
+    value: "Mirra \xB7 Twilight climate"
+  - key: atlas.koro.title
+    value: "Koro \xB7 Geyser spectra"
+  - key: atlas.mirra.temperature.short
+    value: Mirra has a permanent hot day side and a cold night side.
+  - key: atlas.mirra.temperature.balanced
+    value: Mirra keeps one face toward its star, while its atmosphere moves heat
+      from permanent day toward permanent night.
+  - key: atlas.mirra.temperature.deep
+    value: On a tidally locked world, atmospheric circulation can reduce the temperature
+      contrast between the permanent day and night hemispheres. Mirra's thermal gradient
+      is evidence of that continuing heat transport.
+  - key: koro.atlas.guided
+    value: Both plumes may carry water-related ultraviolet signatures.
+  - key: koro.atlas.balanced
+    value: Both plumes may contain water-related material, but the violet plume repeats
+      one stronger line. That difference is evidence of the Signal pattern, not proof
+      of life or a direct ocean source.
+  - key: koro.atlas.deep
+    value: The spectrometer compares authored false-color ultraviolet samples at
+      121.6, 130.4 and 135.6 nm. Their shared pattern may be consistent with water-related
+      material; the enhanced 135.6 nm intensity in the violet plume marks a repeating
+      fictional Signal component. Tidal flexing can provide energy and Europa-like
+      worlds may hide oceans beneath ice, but these observations alone do not prove
+      life, habitability, or direct exchange with a global ocean.
+  - key: menu.customization.noSave
+    value: Start a journey before changing your Captain.
+  - key: menu.customization.detail
+    value: 'Body: {0}
+
+      Look: {1}
+
+      Suit: {2}
+
+      Owned item: {3}'
+  - key: menu.customization.clubhouseOnly
+    value: Captain changes are saved safely at the Clubhouse.
+  - key: menu.customization.saved
+    value: Saved {0} Captain.
+  - key: menu.customization.noOwned
+    value: No Captain items are owned yet.
+  - key: menu.customization.body
+    value: Body family
+  - key: menu.customization.appearance
+    value: Face and colors
+  - key: menu.customization.suit
+    value: Field suit
+  - key: menu.customization.cosmetic
+    value: Owned item
+  - key: menu.operationFailed
+    value: That action did not finish. Your progress is safe.
+  - key: location.clubhouse
+    value: the Clubhouse
+  - key: location.opening
+    value: the observatory
+  - key: location.mirra
+    value: Mirra
+  - key: location.koro
+    value: Koro
+  - key: location.vesper
+    value: Vesper flight
+  - key: location.aster
+    value: Aster Veil
+  - key: captain.family.compact
+    value: Compact
+  - key: captain.family.average
+    value: Average
+  - key: captain.family.tallBroad
+    value: Tall Broad
+  - key: captain.family.custom
+    value: Custom
+  - key: captain.appearance
+    value: Crew look {0}
+  - key: captain.suit.clubhouse
+    value: Clubhouse canvas
+  - key: captain.suit.signal
+    value: Signal field suit
+  - key: captain.suit.flight
+    value: Flight suit
+  - key: shop.previous
+    value: Previous item
+  - key: shop.next
+    value: Next item
+  - key: shop.purchase
+    value: Choose item
+  - key: shop.restore
+    value: Restore purchases
+  - key: shop.available
+    value: '{0} optional cosmetic items
+
+      {1} store products available'
+  - key: shop.unavailable
+    value: Optional purchases are unavailable. The complete story remains playable.
+  - key: shop.unavailable.detail
+    value: '{0} cosmetic items are included in the catalogue. Purchases are unavailable
+      in this build.'
+  - key: shop.grownUpRequired
+    value: A grown-up must confirm before the store opens. Nothing was charged.
+  - key: shop.grownUpArithmetic
+    value: 'Grown-up check: what is {0} + {1}?'
+  - key: shop.grownUpConfirm
+    value: A grown-up must confirm this optional purchase action.
+  - key: shop.answerDown
+    value: Answer down
+  - key: shop.answerUp
+    value: Answer up
+  - key: shop.confirm
+    value: Confirm
+  - key: shop.cancel
+    value: Cancel
+  - key: shop.loading
+    value: "Checking optional cosmetic items\u2026\nThe complete story remains free."
+  - key: shop.product
+    value: "{0}\n{1}\n{2} \xB7 Item {3}/{4}\nThe complete story remains free."
+  - key: shop.purchaseFinished
+    value: The store finished checking this item.
+  - key: shop.restoreComplete
+    value: Restore finished. Verified ownership is now shown on this profile.
+  - key: birthday.title
+    value: Birthday gift
+  - key: birthday.private
+    value: Your birthday stays private.
+  - key: birthday.notSet
+    value: No birthday is saved. It is optional and always private.
+  - key: birthday.set
+    value: 'Private birthday: {0}/{1}/{2}
+
+      Corrections used: {3}'
+  - key: birthday.day
+    value: Day
+  - key: birthday.month
+    value: Month
+  - key: birthday.year
+    value: Year
+  - key: birthday.save
+    value: Save privately
+  - key: birthday.confirmCorrection
+    value: Grown-up confirm
+  - key: birthday.grownUpRequired
+    value: A grown-up must confirm a birthday correction. Nothing is shared.
+  - key: birthday.saved
+    value: Birthday saved privately on this device.
+  - key: birthday.unavailable
+    value: Start a local journey before saving a private birthday.
+  - key: chapter.opening.title
+    value: "THE CLUBHOUSE \xB7 BEFORE DINNER"
+  - key: chapter.opening.copy
+    value: "Mira \xB7 Juno \xB7 Kai \xB7 Bea \xB7 Ori\nWe\u2019re going exploring!
+      We\u2019ll be back before dinner!\nPermission granted. Antenna awake. Signal
+      received."
+  - key: chapter.opening.beat
+    value: "Permission granted. Helmets sealed.\nOri wakes the antenna\u2014the first
+      Signal pulse answers."
+  - key: chapter.reassembly.title
+    value: "THREE FRAGMENTS \xB7 ONE SIGNAL"
+  - key: chapter.reassembly.copy
+    value: "The crew trusts your route. Rebuild the Signal.\nSTAR MAP: BEYOND AURELIA
+      \xB7 RECENT PULSE CONFIRMED"
+  - key: chapter.reassembly.beat
+    value: "MIRRA \xB7 KORO \xB7 ASTER\nThree fragments align. A route beyond Aurelia
+      appears."
+  - key: chapter.clubhouse.safe.title
+    value: "THE CLUBHOUSE \xB7 SAFE HARBOR"
+  - key: chapter.clubhouse.safe.copy
+    value: Rest, review the star map, or continue when the crew is ready.
+  - key: chapter.clubhouse.return.title
+    value: "CLUBHOUSE \xB7 CRASH RETURN"
+  - key: chapter.clubhouse.return.copy
+    value: "THE SCOUT SKIDS INTO THE CLUBHOUSE.\nEveryone is safe. Grab the fragment\u2014race
+      home."
+  - key: chapter.clubhouse.birthday
+    value: '
+
+      Ori left a birthday delivery and handmade stars.'
+  - key: chapter.clubhouse.beat1
+    value: "IMPACT ABSORBED \xB7 HULL SAFE\nThe hatch opens. Everyone runs the fragment
+      home."
+  - key: chapter.clubhouse.beat2
+    value: "Across the ridge before the last light\u2014home before dinner."
+  - key: chapter.dinner.title
+    value: HOME BEFORE DINNER
+  - key: chapter.dinner.question
+    value: So, did you discover anything?
+  - key: chapter.dinner.answer
+    value: Just some stars.
+  - key: chapter.dinner.copy
+    value: "So, did you discover anything?\nJust some stars.\nORI EYE FLICKER \xB7
+      POCKET FRAGMENT PULSE\nCHAPTER TWO \xB7 SIGNAL BEYOND AURELIA\nCREDITS"
+  - key: chapter.dinner.beat2
+    value: "Just some stars.\nOri\u2019s eye flickers. The pocket fragment answers
+      once."
+  - key: aster.trust.pick
+    value: "MIRA \xB7 JUNO \xB7 KAI \xB7 BEA\nYOUR CALL, CAPTAIN. PICK THE LINE."
+  - key: aster.trust.withYou
+    value: "MIRA \xB7 JUNO \xB7 KAI \xB7 BEA\nYOUR CALL, CAPTAIN. WE\u2019RE WITH
+      YOU."
+  - key: aster.fragment.safeLane
+    value: "FLY TO THE THIRD FRAGMENT \xB7 HOLD THE SAFE LANE"
+  - key: aster.escape.openLine
+    value: ESCAPE LEFT ON THE OPEN MOMENTUM LINE
+  - key: aster.objective.0
+    value: "ASTER VEIL \xB7 READ THE SHIFTING LANES"
+  - key: aster.objective.1
+    value: "THE CREW TRUSTS YOU \xB7 CHOOSE THE GRAVITY LINE"
+  - key: aster.objective.2
+    value: "TRACK RELATIVE MOTION \xB7 NOT ABSOLUTE SPEED"
+  - key: aster.objective.3
+    value: THREAD THE SHATTERED-MOON DEBRIS
+  - key: aster.objective.4
+    value: RECOVER THE THIRD SIGNAL FRAGMENT
+  - key: aster.objective.5
+    value: REASSEMBLE ALL THREE SIGNAL FRAGMENTS
+  - key: aster.objective.6
+    value: ESCAPE ON THE MOMENTUM LINE
+  - key: aster.objective.complete
+    value: ASTER VEIL COMPLETE
+  - key: koro.objective.complete
+    value: "CHAPTER COMPLETE \xB7 SECOND SIGNAL RECOVERED"
+  - key: koro.objective.landed
+    value: LAND ON KORO
+  - key: koro.objective.traversal
+    value: CROSS THE LOW-GRAVITY SHELVES
+  - key: koro.objective.spectra
+    value: COMPARE BOTH GEYSER SPECTRA
+  - key: koro.objective.rhythm
+    value: FOLLOW THE REPEATING RHYTHM
+  - key: koro.objective.fragment
+    value: RECOVER THE SECOND FRAGMENT
+  - key: koro.objective.default
+    value: "SECOND SIGNAL \xB7 KORO"
+  - key: photo.title
+    value: Photo Mode
+  - key: photo.pan
+    value: Pan
+  - key: photo.zoom
+    value: Zoom
+  - key: photo.depth
+    value: Depth focus
+  - key: photo.exposure
+    value: Exposure
+  - key: photo.cleanHud
+    value: Clean view
+  - key: photo.frame
+    value: Earned frame
+  - key: photo.capture
+    value: Capture
+  - key: photo.explorer
+    value: Explorer tools
+  - key: photo.lens
+    value: Cinematic lens
+  - key: photo.pose
+    value: Expanded pose
+  - key: photo.preset
+    value: Save preset
+  - key: photo.loadPreset
+    value: Load preset

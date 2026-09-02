@@ -209,9 +209,14 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(
                 panelScroll.GetComponent<RectTransform>().sizeDelta.y,
                 Is.EqualTo(180f));
-            Assert.That(panelBody.text, Does.Contain("<b><color=#F7D7AB>Liberation Sans"));
-            Assert.That(panelBody.text, Does.Contain("<size=14><line-height=150%>"));
-            Assert.That(panelBody.text, Does.Not.Match("(?m)^ {2,}\\S"));
+            Assert.That(panelBody.richText, Is.False);
+            Assert.That(panelBody.text, Does.Not.Contain("<b>"));
+            Assert.That(panelBody.text, Does.Not.Contain("<size="));
+            Assert.That(panelBody.text, Does.Contain("SIL OPEN FONT LICENSE"));
+            Assert.That(panelBody.text, Does.Contain("Apache License\nVersion 2.0"));
+            Assert.That(
+                panelBody.text,
+                Does.EndWith("limitations under the License.\n"));
 
             close.onClick.Invoke();
             yield return WaitForPanelState(panel, active: false);

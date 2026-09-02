@@ -8,9 +8,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using JustSomeStars.Runtime.Accounts;
 using JustSomeStars.Runtime.Accessibility;
+using JustSomeStars.Runtime.Atlas;
 using JustSomeStars.Runtime.Core;
 using JustSomeStars.Runtime.Input;
 using JustSomeStars.Runtime.UI;
+using JustSomeStars.Runtime.UI.Shop;
 using NUnit.Framework;
 using TMPro;
 using UnityEngine;
@@ -75,6 +77,38 @@ namespace JustSomeStars.Tests.PlayMode
         }
 
         [Test]
+        public async Task AccountLinkAuthorization_FailsClosedUntilAgeAwareGateApproves()
+        {
+            var account = new AvailableAccountService();
+            var gate = new RecordingGrownUpGate { Allow = false };
+
+            Assert.That(
+                await AccountLinkAuthorization.TryLinkAsync(
+                    account,
+                    gate,
+                    BirthdayAgeBand.Unknown,
+                    CancellationToken.None),
+                Is.False);
+            Assert.That(gate.CallCount, Is.EqualTo(1));
+            Assert.That(gate.LastAgeBand, Is.EqualTo(BirthdayAgeBand.Unknown));
+            Assert.That(gate.LastAction, Is.EqualTo(GrownUpAction.CloudLink));
+            Assert.That(account.LinkCount, Is.EqualTo(0));
+
+            gate.Allow = true;
+            Assert.That(
+                await AccountLinkAuthorization.TryLinkAsync(
+                    account,
+                    gate,
+                    BirthdayAgeBand.Child,
+                    CancellationToken.None),
+                Is.True);
+            Assert.That(gate.CallCount, Is.EqualTo(2));
+            Assert.That(gate.LastAgeBand, Is.EqualTo(BirthdayAgeBand.Child));
+            Assert.That(gate.LastAction, Is.EqualTo(GrownUpAction.CloudLink));
+            Assert.That(account.LinkCount, Is.EqualTo(1));
+        }
+
+        [Test]
         public async Task Controller_RemainsNonInteractiveUntilExactDependenciesArePushed()
         {
             var settings = await CreateSettings();
@@ -96,6 +130,7 @@ namespace JustSomeStars.Tests.PlayMode
             SetField(controller, "m_ViewSource", view);
             SetField(controller, "m_LifecycleSource", lifecycle);
             SetField(controller, "m_SettingsPanelSource", settingsPanel);
+            SetField(controller, "m_English", CreateEnglishCatalog());
             SetField(controller, "m_LiberationSansLicense", Own(new TextAsset("OFL")));
             SetField(controller, "m_ApacheLicense", Own(new TextAsset("Apache")));
 
@@ -174,11 +209,13 @@ namespace JustSomeStars.Tests.PlayMode
             var decrease = new Button[FrontendSettingsPanel.ControlCount];
             var increase = new Button[FrontendSettingsPanel.ControlCount];
             var values = new TMP_Text[FrontendSettingsPanel.ControlCount];
+            var names = new TMP_Text[FrontendSettingsPanel.ControlCount];
             for (var index = 0; index < FrontendSettingsPanel.ControlCount; index++)
             {
                 decrease[index] = CreateButton($"Decrease{index}");
                 increase[index] = CreateButton($"Increase{index}");
                 values[index] = CreateText($"Value{index}");
+                names[index] = CreateText($"Name{index}");
             }
 
             SetField(panel, "m_Root", m_Root);
@@ -186,6 +223,7 @@ namespace JustSomeStars.Tests.PlayMode
             SetField(panel, "m_DecreaseButtons", decrease);
             SetField(panel, "m_IncreaseButtons", increase);
             SetField(panel, "m_ValueLabels", values);
+            SetField(panel, "m_NameLabels", names);
             SetField(panel, "m_CloudStatusLabel", CreateText("CloudStatus"));
             SetField(panel, "m_CloudLinkButton", CreateButton("CloudLink"));
             SetField(panel, "m_CloudSyncButton", CreateButton("CloudSync"));
@@ -198,6 +236,7 @@ namespace JustSomeStars.Tests.PlayMode
             SetField(panel, "m_CloudLinkLabel", CreateText("CloudLinkLabel"));
             SetField(panel, "m_CloudDeleteLabel", CreateText("CloudDeleteLabel"));
 
+            panel.SetLocalization(CreateEnglishCatalog());
             Assert.That(panel.IsReady, Is.True);
             panel.Configure(dependencies);
             panel.Show();
@@ -262,11 +301,13 @@ namespace JustSomeStars.Tests.PlayMode
             var decrease = new Button[FrontendSettingsPanel.ControlCount];
             var increase = new Button[FrontendSettingsPanel.ControlCount];
             var values = new TMP_Text[FrontendSettingsPanel.ControlCount];
+            var names = new TMP_Text[FrontendSettingsPanel.ControlCount];
             for (var index = 0; index < FrontendSettingsPanel.ControlCount; index++)
             {
                 decrease[index] = CreateButton($"Decrease{index}");
                 increase[index] = CreateButton($"Increase{index}");
                 values[index] = CreateText($"Value{index}");
+                names[index] = CreateText($"Name{index}");
             }
 
             var deleteButton = CreateButton("CloudDelete");
@@ -277,6 +318,7 @@ namespace JustSomeStars.Tests.PlayMode
             SetField(panel, "m_DecreaseButtons", decrease);
             SetField(panel, "m_IncreaseButtons", increase);
             SetField(panel, "m_ValueLabels", values);
+            SetField(panel, "m_NameLabels", names);
             SetField(panel, "m_CloudStatusLabel", CreateText("CloudStatus"));
             SetField(panel, "m_CloudLinkButton", CreateButton("CloudLink"));
             SetField(panel, "m_CloudSyncButton", CreateButton("CloudSync"));
@@ -289,6 +331,7 @@ namespace JustSomeStars.Tests.PlayMode
             SetField(panel, "m_CloudLinkLabel", CreateText("CloudLinkLabel"));
             SetField(panel, "m_CloudDeleteLabel", deleteLabel);
 
+            panel.SetLocalization(CreateEnglishCatalog());
             Assert.That(panel.IsReady, Is.True);
             panel.Configure(dependencies);
             panel.Show();
@@ -495,6 +538,14 @@ namespace JustSomeStars.Tests.PlayMode
             return child.AddComponent<TextMeshProUGUI>();
         }
 
+        private LocalizedEnglishCatalog CreateEnglishCatalog()
+        {
+            var catalog = Own(
+                ScriptableObject.CreateInstance<LocalizedEnglishCatalog>());
+            catalog.Configure(Task28English.CreateEntries());
+            return catalog;
+        }
+
         private static void SetField(
             object target,
             string fieldName,
@@ -507,9 +558,13 @@ namespace JustSomeStars.Tests.PlayMode
             field.SetValue(target, value);
         }
 
-        private sealed class FakeFrontendView : MonoBehaviour, IFrontendView
+        private sealed class FakeFrontendView :
+            MonoBehaviour,
+            IFrontendView,
+            IFrontendLaunchView
         {
             private Action m_SettingsRequested;
+            private Action m_NewGameRequested;
 
             public bool IsReady => true;
 
@@ -523,6 +578,12 @@ namespace JustSomeStars.Tests.PlayMode
             public string PanelBody { get; private set; }
 
             public event Action ContinueRequested;
+
+            public event Action NewGameRequested
+            {
+                add => m_NewGameRequested += value;
+                remove => m_NewGameRequested -= value;
+            }
 
             public event Action SettingsRequested
             {
@@ -546,6 +607,16 @@ namespace JustSomeStars.Tests.PlayMode
             {
                 _ = interactable;
                 _ = explanation;
+            }
+
+            public void PresentLocalizedChrome(LocalizedEnglishCatalog english)
+            {
+                _ = english;
+            }
+
+            public void PresentLaunch(FrontendLaunchPresentation presentation)
+            {
+                _ = presentation;
             }
 
             public void ShowPanel(string title, string body)
@@ -604,6 +675,11 @@ namespace JustSomeStars.Tests.PlayMode
             public int ShowCount { get; private set; }
 
             public int HideCount { get; private set; }
+
+            public void SetLocalization(LocalizedEnglishCatalog english)
+            {
+                _ = english;
+            }
 
             public void Configure(FrontendDependencies dependencies)
             {
@@ -716,6 +792,91 @@ namespace JustSomeStars.Tests.PlayMode
                 DeleteCount++;
                 return default;
             }
+
+            public ValueTask ShutdownAsync()
+            {
+                StateChanged = null;
+                return default;
+            }
+        }
+
+        private sealed class RecordingGrownUpGate : IGrownUpPurchaseGate
+        {
+            public bool Allow { get; set; }
+
+            public int CallCount { get; private set; }
+
+            public BirthdayAgeBand LastAgeBand { get; private set; }
+
+            public GrownUpAction LastAction { get; private set; }
+
+            public ValueTask<bool> AuthorizeAsync(
+                BirthdayAgeBand ageBand,
+                GrownUpAction action,
+                CancellationToken cancellationToken)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                CallCount++;
+                LastAgeBand = ageBand;
+                LastAction = action;
+                return new ValueTask<bool>(Allow);
+            }
+        }
+
+        private sealed class AvailableAccountService : IAccountService
+        {
+            public AccountState Current { get; } = new AccountState(
+                AccountConnection.CloudAvailable,
+                AccountCapability.Available,
+                AccountSyncState.LocalOnly,
+                AccountOperation.None,
+                "guest-task28",
+                string.Empty,
+                "Private backup available");
+
+            public int LinkCount { get; private set; }
+
+            public event Action<AccountState> StateChanged;
+
+            public ValueTask<StartupResult> InitializeAsync(
+                CancellationToken cancellationToken)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                return new ValueTask<StartupResult>(StartupResult.Available());
+            }
+
+            public ValueTask<AccountLinkResult> LinkGoogleAsync(
+                CancellationToken cancellationToken)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                LinkCount++;
+                return new ValueTask<AccountLinkResult>(
+                    new AccountLinkResult(AccountLinkStatus.Linked));
+            }
+
+            public ValueTask<AccountLinkResult> ResolveConflictAsync(
+                AccountConflictChoice choice,
+                CancellationToken cancellationToken) =>
+                throw new NotSupportedException();
+
+            public ValueTask<CloudSyncResult> SyncAsync(
+                CancellationToken cancellationToken) =>
+                throw new NotSupportedException();
+
+            public ValueTask<AccountExportResult> ExportDataAsync(
+                CancellationToken cancellationToken) =>
+                throw new NotSupportedException();
+
+            public ValueTask<AccountUnlinkResult> UnlinkGoogleAsync(
+                CancellationToken cancellationToken) =>
+                throw new NotSupportedException();
+
+            public ValueTask SignOutAsync(CancellationToken cancellationToken) =>
+                throw new NotSupportedException();
+
+            public ValueTask DeleteAccountAsync(
+                CancellationToken cancellationToken) =>
+                throw new NotSupportedException();
 
             public ValueTask ShutdownAsync()
             {

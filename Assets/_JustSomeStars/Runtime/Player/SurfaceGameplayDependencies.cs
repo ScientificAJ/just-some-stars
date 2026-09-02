@@ -1,5 +1,7 @@
 using System;
+using JustSomeStars.Runtime.Accounts;
 using JustSomeStars.Runtime.Accessibility;
+using JustSomeStars.Runtime.Commerce;
 using JustSomeStars.Runtime.Core;
 using JustSomeStars.Runtime.Input;
 using JustSomeStars.Runtime.Missions;
@@ -28,12 +30,16 @@ namespace JustSomeStars.Runtime.Player
             GameModeController modes,
             GameEventBus gameEvents,
             ISaveService saves,
-            IChapterProgression progression)
+            IChapterProgression progression,
+            IStoreService store = null,
+            IAccountService account = null)
             : this(settings, input, modes, gameEvents)
         {
             Saves = saves ?? throw new ArgumentNullException(nameof(saves));
             ChapterProgression = progression ?? throw new ArgumentNullException(
                 nameof(progression));
+            Store = store;
+            Account = account;
         }
 
         public SettingsService Settings { get; }
@@ -47,6 +53,10 @@ namespace JustSomeStars.Runtime.Player
         public ISaveService Saves { get; }
 
         public IChapterProgression ChapterProgression { get; }
+
+        public IStoreService Store { get; }
+
+        public IAccountService Account { get; }
 
         public MirraProgressionService Progression =>
             ResolveProgression<MirraProgressionService>();

@@ -2452,13 +2452,33 @@ git commit -m "feat: add launch cosmetic catalogue and editions"
 - Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendController.cs`
 - Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendView.cs`
 - Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendContracts.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendDependencies.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/UI/FrontendSettingsPanel.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Animation2D/LayeredCharacterRenderer.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Cinematics/ChapterOneSequenceController2D.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Core/ApplicationBootstrapInstaller.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Dialogue/MirraDialoguePresenter2D.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Flight/FlightGameplayDependencies.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Missions/{AsterVeilMissionController2D,KoroVesperMissionController2D}.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/Player/{SurfaceGameplayDependencies,SurfaceInteractionProbe2D}.cs`
+- Modify: `Assets/_JustSomeStars/Runtime/JustSomeStars.Runtime.asmdef`
+- Modify: `Assets/_JustSomeStars/Editor/JustSomeStars.Editor.asmdef`
 - Modify: `Assets/_JustSomeStars/Scenes/Core/Frontend.unity`
+- Modify: `Assets/_JustSomeStars/Prefabs/UI/FrontendVisualRoot.prefab`
+- Modify: `Assets/_JustSomeStars/Scenes/Destinations/{Mirra,KoroVesper,AsterVeil,Task25VesperFlight}.unity`
+- Modify: `Assets/_JustSomeStars/Scenes/Benchmarks/Task17FlightGraybox.unity`
+- Modify: `Assets/_JustSomeStars/Scenes/Cinematics/{Opening,SignalReassembly,DinnerEnding}.unity`
+- Modify: `Assets/_JustSomeStars/Scenes/Core/Clubhouse.unity`
 - Modify: `Assets/_JustSomeStars/Tests/EditMode/FrontendSceneAssetTests.cs`
 - Modify: `Assets/_JustSomeStars/Tests/PlayMode/FrontendControllerTests.cs`
 - Modify: `Assets/_JustSomeStars/Tests/PlayMode/ApplicationLaunchIntegrationTests.cs`
-- Create: `Assets/_JustSomeStars/Runtime/UI/PhotoModeController.cs`
-- Create: `Assets/_JustSomeStars/Runtime/Accessibility/AccessibilityApplier.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/FrontendDependencyInjectionTests.cs`
+- Modify: `Assets/_JustSomeStars/Tests/PlayMode/FrontendMotionTests.cs`
+- Create: `Assets/_JustSomeStars/Runtime/UI/{HomemadeSignalUiTokens,LocalizedUiLabel,PhotoModeController,PlayerMenuController,Task28English}.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Accessibility/{AccessibilityApplier,AccessibleCaption,AccessibleEffect,AccessibleSignalPulse,AccessibleStatusSymbol,AccessibleTouchLayout}.cs`
+- Create: `Assets/_JustSomeStars/Content/Accessibility/`
 - Create: `Assets/_JustSomeStars/Content/Localization/English/`
+- Create: `Assets/_JustSomeStars/Editor/UI/Task28UiBuilder.cs`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/AccessibilityUiTests.cs`
 - Create: `docs/qa/accessibility-matrix.md`
 
@@ -2466,11 +2486,11 @@ git commit -m "feat: add launch cosmetic catalogue and editions"
 - Consumes: settings, mode, mission, dialogue, account, store and catalogue state.
 - Produces: responsive touch HUD, subtitles, menus, customization, Atlas, shop, account and parental flows.
 
-- [ ] **Step 1: Create the homemade/Signal UI token set and reusable components**
+- [x] **Step 1: Create the homemade/Signal UI token set and reusable components**
 
-- [ ] **Step 2: Implement responsive safe-area layouts for common phone and foldable aspect ratios**
+- [x] **Step 2: Implement responsive safe-area layouts for common phone and foldable aspect ratios**
 
-- [ ] **Step 3: Move every player-facing Task 5 and later string to English localization tables**
+- [x] **Step 3: Move every player-facing Task 5 and later string to English localization tables**
 
 This includes the Frontend title/status/version wrapper, disabled Continue
 explanation, Settings, Privacy, the Task-21 state-derived footer and the
@@ -2490,23 +2510,34 @@ scene, integration and accessibility tests cover no-save, valid-save, corrupt
 save/recovery and unavailable-content states without weakening verbatim OFL
 scroll access.
 
-- [ ] **Step 4: Implement text scale, font choice, captions, speaker labels, color-safe symbols, contrast, reduced effects and left-handed controls**
+- [x] **Step 4: Implement text scale, font choice, captions, speaker labels, color-safe symbols, contrast, reduced effects and left-handed controls**
 
-- [ ] **Step 5: Implement base Photo Mode and Explorer Edition extensions**
+- [x] **Step 5: Implement base Photo Mode and Explorer Edition extensions**
 
 Base Photo Mode provides pause, bounded pan/zoom, depth-layer focus, exposure,
 clean HUD and earned frames. Explorer Edition adds cinematic lenses, expanded
 poses, advanced framing and saved presets without introducing a free 3D orbit
 or reducing base-game screenshot quality.
 
-- [ ] **Step 6: Write automated navigation tests with maximum text size and combined accessibility options**
+- [x] **Step 6: Write automated navigation tests with maximum text size and combined accessibility options**
 
 - [ ] **Step 7: Complete the manual matrix before the opening cinematic and in every game mode**
 
-- [ ] **Step 8: Commit**
+Per the user-approved Tasks 26–30 efficiency cadence, the focused Task 28 Unity
+executions, shared full regression, APK/device run and this manual matrix are
+queued for one post-Task-30 verification batch. The Task 28 source checkpoint
+may be reviewed, committed and continued without misrepresenting those runtime
+gates as complete.
+
+The final cheap gate saves and reopens every owned scene/prefab, proves the
+age-aware grown-up authorization path for cloud-account linking is serialized,
+and compiles Runtime, Editor and both test assemblies. The bounded extreme
+critic returned `PROCEED`; deferred runtime evidence remains pending Step 7.
+
+- [x] **Step 8: Commit**
 
 ```bash
-git add Assets/_JustSomeStars/Runtime/UI Assets/_JustSomeStars/Runtime/Accessibility Assets/_JustSomeStars/Content/Localization Assets/_JustSomeStars/Tests docs/qa
+git add -- <the explicit Task 28 path manifest only>
 git commit -m "feat: complete accessible localized mobile UI"
 ```
 

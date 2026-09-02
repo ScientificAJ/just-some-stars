@@ -82,19 +82,30 @@ namespace JustSomeStars.Runtime.Core
                 modeController,
                 gameEvents,
                 saves,
-                progression);
+                progression,
+                commerce,
+                account);
             var sceneRouter = new SceneRoutingTransition();
             var sceneTransition = new UnitySceneTransition(
                 new FrontendDependencies(
-                    settings,
-                    input,
-                    account,
-                    token => BeginOrResumeChapterOneAsync(
+                    settings: settings,
+                    input: input,
+                    account: account,
+                    beginChapterOne: null,
+                    saves: saves,
+                    startNewGame: token => StartNewChapterOneAsync(
                         saves,
+                        modeController,
+                        sceneRouter,
+                        token),
+                    continueGame: (save, token) => ContinueChapterOneAsync(
+                        save,
                         progression,
                         modeController,
                         sceneRouter,
-                        token)),
+                        token),
+                    canContinue: save => CanContinueChapterOne(save, progression),
+                    describeCheckpoint: save => DescribeCheckpoint(save, progression)),
                 surfaceDependencies);
             surfaceDependencies.ConfigureSceneTransition(sceneRouter);
             sceneTransition.ConfigureFlightDependencies(
@@ -104,7 +115,10 @@ namespace JustSomeStars.Runtime.Core
                     modeController,
                     gameEvents,
                     sceneRouter,
-                    progression));
+                    progression,
+                    commerce,
+                    account,
+                    saves));
             sceneTransition.ConfigureChapterOneDependencies(
                 new ChapterOneSequenceDependencies(
                     saves,
@@ -112,7 +126,10 @@ namespace JustSomeStars.Runtime.Core
                     modeController,
                     gameEvents,
                     sceneRouter,
-                    progression));
+                    progression,
+                    settings,
+                    account,
+                    commerce));
             return CreateCompositionWithModeController(
                 settings,
                 saves,
@@ -246,25 +263,55 @@ namespace JustSomeStars.Runtime.Core
                 new UnavailableAccountDeletionGateway());
         }
 
-        private static async ValueTask BeginOrResumeChapterOneAsync(
+        private static async ValueTask StartNewChapterOneAsync(
             ISaveService saves,
+            GameModeController modes,
+            ISceneTransition scenes,
+            CancellationToken cancellationToken)
+        {
+            var save = GameSave.CreateNew(
+                Guid.NewGuid().ToString("N"),
+                DateTime.UtcNow.Ticks);
+            await saves.SaveCheckpointAsync(save, cancellationToken);
+            await EnterChapterModeAsync(modes, GameMode.Clubhouse, cancellationToken);
+            await scenes.RouteAsync("Opening", cancellationToken);
+        }
+
+        private static async ValueTask ContinueChapterOneAsync(
+            GameSave save,
             DestinationProgressionCoordinator progression,
             GameModeController modes,
             ISceneTransition scenes,
             CancellationToken cancellationToken)
         {
-            var loaded = await saves.LoadAsync(cancellationToken);
-            var hasStarted = loaded.HasSave &&
-                loaded.Save.ChapterOne.Phase >= ChapterOnePhase.OpeningComplete;
-            var destination = hasStarted
+            if (!CanContinueChapterOne(save, progression))
+            {
+                throw new InvalidOperationException(
+                    "Continue requires a valid installed Chapter One checkpoint.");
+            }
+            await EnterChapterModeAsync(
+                modes,
+                progression.ResumeMode,
+                cancellationToken);
+            await scenes.RouteAsync(progression.ResumeSceneName, cancellationToken);
+        }
+
+        private static bool CanContinueChapterOne(
+            GameSave save,
+            DestinationProgressionCoordinator progression)
+        {
+            return save != null && progression != null &&
+                save.ChapterOne.Phase >= ChapterOnePhase.OpeningComplete &&
+                !string.IsNullOrWhiteSpace(progression.ResumeSceneName);
+        }
+
+        private static string DescribeCheckpoint(
+            GameSave save,
+            DestinationProgressionCoordinator progression)
+        {
+            return CanContinueChapterOne(save, progression)
                 ? progression.ResumeSceneName
                 : "Opening";
-            var destinationMode = hasStarted
-                ? progression.ResumeMode
-                : GameMode.Clubhouse;
-
-            await EnterChapterModeAsync(modes, destinationMode, cancellationToken);
-            await scenes.RouteAsync(destination, cancellationToken);
         }
 
         private static async ValueTask EnterChapterModeAsync(

@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b990ccbf8090f8c8db2a6a001606e5f9, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAtlasAnimator
   targetRenderer: {fileID: 5619475}
 --- !u!212 &5619475
@@ -334,7 +334,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 862580748d932b46f927e8928156fdf5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Rendering2D.ParallaxRig2D
   cameraAnchor: {fileID: 1470936531}
   layers:
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00926ef19e15dc4ed8805bb0d4ca52c5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.LayeredCharacterRenderer
   spriteSet: {fileID: 11400000, guid: d67078969364bdc52a9f386a9c07b4ca, type: 2}
   family: 1
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a970dbdba2ac8647ae000d434d2d4f1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Rendering2D.ParallaxLayer2D
   factor: 0.32
   axisScale: {x: 0.26, y: 0.18}
@@ -645,7 +645,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -854,7 +854,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a970dbdba2ac8647ae000d434d2d4f1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Rendering2D.ParallaxLayer2D
   factor: 0.48
   axisScale: {x: 0.38, y: 0.3}
@@ -892,7 +892,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -1000,7 +1000,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1130,7 +1130,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -1206,7 +1206,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b990ccbf8090f8c8db2a6a001606e5f9, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAtlasAnimator
   targetRenderer: {fileID: 824964534}
 --- !u!212 &824964534
@@ -1332,7 +1332,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
     m_Mode: 3
@@ -1373,10 +1373,10 @@ MonoBehaviour:
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName:
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument:
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &831463035
@@ -1389,7 +1389,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.025, g: 0.07, b: 0.16, a: 0.76}
@@ -1464,7 +1464,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1642,7 +1642,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a970dbdba2ac8647ae000d434d2d4f1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Rendering2D.ParallaxLayer2D
   factor: 0.74
   axisScale: {x: 0.66, y: 0.52}
@@ -1780,7 +1780,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b990ccbf8090f8c8db2a6a001606e5f9, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAtlasAnimator
   targetRenderer: {fileID: 1083533875}
 --- !u!212 &1083533875
@@ -1856,6 +1856,70 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1937103427}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1122587190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1122587193}
+  - component: {fileID: 1122587192}
+  - component: {fileID: 1122587191}
+  m_Layer: 0
+  m_Name: Task28MotionBlur
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1122587191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122587190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f7eaea5f18095cfa57970651c47c02, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Accessibility.AccessibleEffect
+  kind: 3
+  effect: {fileID: 1122587192}
+--- !u!114 &1122587192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122587190}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 900
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 9bfb785db66aba7c0992b6215392e747, type: 2}
+--- !u!4 &1122587193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122587190}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1167239325
 GameObject:
@@ -1959,6 +2023,7 @@ GameObject:
   - component: {fileID: 1196906132}
   - component: {fileID: 1196906130}
   - component: {fileID: 1196906131}
+  - component: {fileID: 1196906133}
   m_Layer: 0
   m_Name: ChapterOneSequence
   m_TagString: Untagged
@@ -1976,7 +2041,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d650430421041e36284923b57999c3b1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Cinematics.ChapterOneSequenceController2D
   sequenceKind: 1
   captainRenderer: {fileID: 160398701}
@@ -2019,6 +2084,9 @@ MonoBehaviour:
   signalCue: {fileID: 1196906131}
   scoutShip: {fileID: 2015250450}
   signalHologram: {fileID: 39108994}
+  english: {fileID: 0}
+  playerUiExtensions:
+  - {fileID: 1196906133}
 --- !u!82 &1196906131
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2131,6 +2199,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1761405621}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1196906133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196906129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e981a23cd7e3d0b499a35705e378a688, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Accessibility.AccessibilityApplier
+  m_StandardFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_ReadableFont: {fileID: 11400000, guid: 036ab989bbf64bdac9cbef96c975cd32, type: 2}
+  m_ScopeRoot: {fileID: 0}
 --- !u!21 &1229865210
 Material:
   serializedVersion: 8
@@ -2150,7 +2233,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -2285,7 +2368,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a970dbdba2ac8647ae000d434d2d4f1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Rendering2D.ParallaxLayer2D
   factor: 0.94
   axisScale: {x: 0.9, y: 0.72}
@@ -2656,7 +2739,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a970dbdba2ac8647ae000d434d2d4f1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Rendering2D.ParallaxLayer2D
   factor: 0.14
   axisScale: {x: 0.1, y: 0.08}
@@ -2727,7 +2810,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
@@ -2744,7 +2827,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
@@ -2808,7 +2891,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b990ccbf8090f8c8db2a6a001606e5f9, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAtlasAnimator
   targetRenderer: {fileID: 1684665197}
 --- !u!212 &1684665197
@@ -3069,7 +3152,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3329,7 +3412,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b990ccbf8090f8c8db2a6a001606e5f9, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.Animation2D.SpriteAtlasAnimator
   targetRenderer: {fileID: 1849520441}
 --- !u!212 &1849520441
@@ -3678,3 +3761,4 @@ SceneRoots:
   - {fileID: 1771490587}
   - {fileID: 666899094}
   - {fileID: 1470936531}
+  - {fileID: 1122587193}

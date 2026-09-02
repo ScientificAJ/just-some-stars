@@ -4,15 +4,27 @@ using System.Threading;
 using System.Threading.Tasks;
 using JustSomeStars.Runtime.Animation2D;
 using JustSomeStars.Runtime.Core;
+using JustSomeStars.Runtime.Accessibility;
+using JustSomeStars.Runtime.Accounts;
+using JustSomeStars.Runtime.Atlas;
+using JustSomeStars.Runtime.Commerce;
 using JustSomeStars.Runtime.Cosmetics;
 using JustSomeStars.Runtime.Input;
 using JustSomeStars.Runtime.Missions;
 using JustSomeStars.Runtime.Saving;
+using JustSomeStars.Runtime.UI;
 using TMPro;
 using UnityEngine;
 
 namespace JustSomeStars.Runtime.Cinematics
 {
+    public interface IChapterOneSequenceExtension
+    {
+        void Configure(ChapterOneSequenceDependencies dependencies);
+
+        void Release(ChapterOneSequenceDependencies dependencies);
+    }
+
     public enum ChapterOneSequenceKind
     {
         Opening = 0,
@@ -29,7 +41,10 @@ namespace JustSomeStars.Runtime.Cinematics
             GameModeController modes,
             GameEventBus events,
             ISceneTransition scenes,
-            IChapterProgression progression)
+            IChapterProgression progression,
+            SettingsService settings = null,
+            IAccountService account = null,
+            IStoreService store = null)
         {
             Saves = saves ?? throw new ArgumentNullException(nameof(saves));
             Input = input ?? throw new ArgumentNullException(nameof(input));
@@ -38,6 +53,9 @@ namespace JustSomeStars.Runtime.Cinematics
             Scenes = scenes ?? throw new ArgumentNullException(nameof(scenes));
             Progression = progression ?? throw new ArgumentNullException(
                 nameof(progression));
+            Settings = settings;
+            Account = account;
+            Store = store;
         }
 
         public ISaveService Saves { get; }
@@ -46,6 +64,9 @@ namespace JustSomeStars.Runtime.Cinematics
         public GameEventBus Events { get; }
         public ISceneTransition Scenes { get; }
         public IChapterProgression Progression { get; }
+        public SettingsService Settings { get; }
+        public IAccountService Account { get; }
+        public IStoreService Store { get; }
     }
 
     [DisallowMultipleComponent]
@@ -78,6 +99,9 @@ namespace JustSomeStars.Runtime.Cinematics
         [SerializeField] private AudioSource signalCue;
         [SerializeField] private Transform scoutShip;
         [SerializeField] private Transform signalHologram;
+        [SerializeField] private LocalizedEnglishCatalog english;
+        [SerializeField] private MonoBehaviour[] playerUiExtensions =
+            Array.Empty<MonoBehaviour>();
 
         private ChapterOneSequenceDependencies m_Dependencies;
         private CancellationTokenSource m_Lifetime;
@@ -131,10 +155,47 @@ namespace JustSomeStars.Runtime.Cinematics
                 m_ScoutBasePosition = scoutShip.localPosition;
             }
             m_SignalBaseScale = signalHologram.localScale;
+            var extensions = RequirePlayerUiExtensions();
+            var configuredExtensionCount = 0;
+            var inputBound = false;
             m_Dependencies = dependencies;
             m_Lifetime = new CancellationTokenSource();
-            dependencies.Input.GameplayCommandPerformed += OnGameplayCommand;
-            m_Initialization = InitializePresentationAsync(m_Lifetime.Token);
+            try
+            {
+                dependencies.Input.GameplayCommandPerformed += OnGameplayCommand;
+                inputBound = true;
+                foreach (var extension in extensions)
+                {
+                    extension.Configure(dependencies);
+                    configuredExtensionCount++;
+                }
+                m_Initialization = InitializePresentationAsync(m_Lifetime.Token);
+            }
+            catch
+            {
+                if (inputBound)
+                {
+                    dependencies.Input.GameplayCommandPerformed -=
+                        OnGameplayCommand;
+                }
+                for (var index = configuredExtensionCount - 1; index >= 0; index--)
+                {
+                    try
+                    {
+                        extensions[index].Release(dependencies);
+                    }
+                    catch (Exception exception)
+                    {
+                        Debug.LogException(exception, this);
+                    }
+                }
+                m_Lifetime.Cancel();
+                m_Lifetime.Dispose();
+                m_Lifetime = null;
+                m_Dependencies = null;
+                m_Initialization = Task.CompletedTask;
+                throw;
+            }
         }
 
         public void Release(ChapterOneSequenceDependencies dependencies)
@@ -146,11 +207,32 @@ namespace JustSomeStars.Runtime.Cinematics
                     "Chapter One sequence can only release its owner.");
             }
             dependencies.Input.GameplayCommandPerformed -= OnGameplayCommand;
+            var extensions = RequirePlayerUiExtensions();
+            for (var index = extensions.Length - 1; index >= 0; index--)
+            {
+                extensions[index].Release(dependencies);
+            }
             m_Lifetime.Cancel();
             m_Lifetime.Dispose();
             m_Lifetime = null;
             m_Dependencies = null;
             m_CommandInFlight = false;
+        }
+
+        private IChapterOneSequenceExtension[] RequirePlayerUiExtensions()
+        {
+            playerUiExtensions ??= Array.Empty<MonoBehaviour>();
+            if (playerUiExtensions.Any(extension =>
+                    extension == null ||
+                    extension is not IChapterOneSequenceExtension) ||
+                playerUiExtensions.Distinct().Count() != playerUiExtensions.Length)
+            {
+                throw new InvalidOperationException(
+                    "Chapter One UI extensions must be unique typed components.");
+            }
+            return playerUiExtensions
+                .Cast<IChapterOneSequenceExtension>()
+                .ToArray();
         }
 
         public async Task CompleteOpeningAsync(CancellationToken cancellationToken)
@@ -284,34 +366,27 @@ namespace JustSomeStars.Runtime.Cinematics
             switch (sequenceKind)
             {
                 case ChapterOneSequenceKind.Opening:
-                    chapterTitle.text = "THE CLUBHOUSE · BEFORE DINNER";
-                    storyCopy.text =
-                        "Mira · Juno · Kai · Bea · Ori\n" + OpeningPromise +
-                        "\nPermission granted. Antenna awake. Signal received.";
+                    chapterTitle.text = ResolveUi("chapter.opening.title");
+                    storyCopy.text = ResolveUi("chapter.opening.copy");
                     break;
                 case ChapterOneSequenceKind.SignalReassembly:
-                    chapterTitle.text = "THREE FRAGMENTS · ONE SIGNAL";
-                    storyCopy.text =
-                        "The crew trusts your route. Rebuild the Signal.\n" +
-                        "STAR MAP: BEYOND AURELIA · RECENT PULSE CONFIRMED";
+                    chapterTitle.text = ResolveUi("chapter.reassembly.title");
+                    storyCopy.text = ResolveUi("chapter.reassembly.copy");
                     break;
                 case ChapterOneSequenceKind.Clubhouse:
                     chapterTitle.text = m_IsSafeHub
-                        ? "THE CLUBHOUSE · SAFE HARBOR"
-                        : "CLUBHOUSE · CRASH RETURN";
+                        ? ResolveUi("chapter.clubhouse.safe.title")
+                        : ResolveUi("chapter.clubhouse.return.title");
                     storyCopy.text = m_IsSafeHub
-                        ? "Rest, review the star map, or continue when the crew is ready."
-                        : "THE SCOUT SKIDS INTO THE CLUBHOUSE.\n" +
-                          "Everyone is safe. Grab the fragment—race home." +
+                        ? ResolveUi("chapter.clubhouse.safe.copy")
+                        : ResolveUi("chapter.clubhouse.return.copy") +
                           (m_BirthdayCelebration
-                              ? "\nOri left a birthday delivery and handmade stars."
+                              ? ResolveUi("chapter.clubhouse.birthday")
                               : string.Empty);
                     break;
                 case ChapterOneSequenceKind.DinnerEnding:
-                    chapterTitle.text = "HOME BEFORE DINNER";
-                    storyCopy.text = ParentQuestion + "\n" + DinnerAnswer +
-                        "\nORI EYE FLICKER · POCKET FRAGMENT PULSE\n" +
-                        "CHAPTER TWO · SIGNAL BEYOND AURELIA\nCREDITS";
+                    chapterTitle.text = ResolveUi("chapter.dinner.title");
+                    storyCopy.text = ResolveUi("chapter.dinner.copy");
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -426,21 +501,17 @@ namespace JustSomeStars.Runtime.Cinematics
             storyCopy.text = sequenceKind switch
             {
                 ChapterOneSequenceKind.Opening =>
-                    "Permission granted. Helmets sealed.\n" +
-                    "Ori wakes the antenna—the first Signal pulse answers.",
+                    ResolveUi("chapter.opening.beat"),
                 ChapterOneSequenceKind.SignalReassembly =>
-                    "MIRRA · KORO · ASTER\n" +
-                    "Three fragments align. A route beyond Aurelia appears.",
+                    ResolveUi("chapter.reassembly.beat"),
                 ChapterOneSequenceKind.Clubhouse when m_BeatIndex == 1 =>
-                    "IMPACT ABSORBED · HULL SAFE\n" +
-                    "The hatch opens. Everyone runs the fragment home.",
+                    ResolveUi("chapter.clubhouse.beat1"),
                 ChapterOneSequenceKind.Clubhouse =>
-                    "Across the ridge before the last light—home before dinner.",
+                    ResolveUi("chapter.clubhouse.beat2"),
                 ChapterOneSequenceKind.DinnerEnding when m_BeatIndex == 1 =>
-                    ParentQuestion,
+                    ResolveUi("chapter.dinner.question"),
                 ChapterOneSequenceKind.DinnerEnding =>
-                    DinnerAnswer +
-                    "\nOri’s eye flickers. The pocket fragment answers once.",
+                    ResolveUi("chapter.dinner.beat2"),
                 _ => storyCopy.text,
             };
             return true;
@@ -576,6 +647,10 @@ namespace JustSomeStars.Runtime.Cinematics
             if (signalCue == null) return;
             signalCue.Play();
         }
+
+        private string ResolveUi(string key) => english != null
+            ? english.Resolve(key)
+            : Task28English.ResolveDefault(key);
 
         private void ValidateOrThrow()
         {

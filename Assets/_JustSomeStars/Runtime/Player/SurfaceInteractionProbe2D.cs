@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using JustSomeStars.Runtime.Input;
+using JustSomeStars.Runtime.UI;
 using TMPro;
 using UnityEngine;
 
@@ -11,8 +12,10 @@ namespace JustSomeStars.Runtime.Player
     public sealed class SurfaceInteractionProbe2D : MonoBehaviour
     {
         [SerializeField] private TMP_Text label;
-        [SerializeField] private string availableText = "INTERACT";
-        [SerializeField] private string activatedText = "SIGNAL LINKED";
+        [SerializeField] private string availableText =
+            Task28English.ResolveDefault("hud.interact");
+        [SerializeField] private string activatedText =
+            Task28English.ResolveDefault("hud.signalLinked");
 
         private readonly HashSet<Collider2D> nearbyActors =
             new HashSet<Collider2D>();

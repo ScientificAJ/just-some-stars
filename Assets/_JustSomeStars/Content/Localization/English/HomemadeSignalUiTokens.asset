@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 540971b1c8bbbc93e99e590c545da1c1, type: 3}
+  m_Name: HomemadeSignalUiTokens
+  m_EditorClassIdentifier: JustSomeStars.Runtime::JustSomeStars.Runtime.UI.HomemadeSignalUiTokens
+  smokedGlass: {r: 0.012, g: 0.035, b: 0.066, a: 0.92}
+  paintedMetal: {r: 0.18, g: 0.19, b: 0.2, a: 1}
+  brass: {r: 0.86, g: 0.62, b: 0.28, a: 1}
+  signalCyan: {r: 0.16, g: 0.88, b: 0.96, a: 1}
+  warmPaper: {r: 0.97, g: 0.84, b: 0.67, a: 1}
+  bodyText: {r: 0.86, g: 0.9, b: 0.96, a: 1}
+  minimumTouchTargetDp: 48
+  minimumBodySp: 14
+  phoneReferenceResolution: {x: 1280, y: 720}
+  foldableReferenceResolution: {x: 1768, y: 884}

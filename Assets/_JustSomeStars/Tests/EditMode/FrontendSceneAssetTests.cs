@@ -6,6 +6,8 @@ using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Xml;
+using JustSomeStars.Runtime.Accessibility;
+using JustSomeStars.Runtime.Atlas;
 using JustSomeStars.Runtime.UI;
 using NUnit.Framework;
 using UnityEditor;
@@ -26,6 +28,14 @@ namespace JustSomeStars.Tests.EditMode
             "Assets/_JustSomeStars/Runtime/UI";
         private const string FrontendVisualPrefabPath =
             "Assets/_JustSomeStars/Prefabs/UI/FrontendVisualRoot.prefab";
+        private const string Task28EnglishAssetPath =
+            "Assets/_JustSomeStars/Content/Localization/English/Task28English.asset";
+        private const string Task28TokensAssetPath =
+            "Assets/_JustSomeStars/Content/Localization/English/" +
+            "HomemadeSignalUiTokens.asset";
+        private const string Task28ReadableFontPath =
+            "Assets/_JustSomeStars/Content/Localization/English/" +
+            "NotoSansReadable SDF.asset";
         private const string FrontendFontAssetPath =
             "Assets/TextMesh Pro/Resources/Fonts & Materials/" +
             "LiberationSans SDF.asset";
@@ -69,8 +79,9 @@ namespace JustSomeStars.Tests.EditMode
         private const string GvhSettingsPath =
             "ProjectSettings/GvhProjectSettings.xml";
         private const string RequiredLaunchCopy =
-            "Just Some Stars Development Flight Version 1.0 Continue " +
-            "Gameplay is not in this flight yet. Settings Credits Privacy Close";
+            "Just Some Stars CHAPTER ONE Version 1.0 New Game Begin at the " +
+            "observatory Continue No journey saved yet LOCAL OFFLINE Settings " +
+            "Credits Privacy Close";
         private const float AndroidDensityBaseline = 160f;
         private const float RequiredTouchTargetDp = 48f;
         private const float RequiredMinimumAuthoredFontSize = 12f;
@@ -87,18 +98,37 @@ namespace JustSomeStars.Tests.EditMode
             new MobileProfile("Landscape", 1616f, 720f, 280f, 1f),
         };
 
+        private static readonly MobileProfile[] Task28GameplayProfiles =
+        {
+            new MobileProfile(
+                "LandscapePhoneMaxText",
+                1920f,
+                1080f,
+                420f,
+                1.35f),
+            new MobileProfile(
+                "FoldableInnerMaxText",
+                2208f,
+                1768f,
+                420f,
+                1.35f),
+        };
+
         private static readonly IReadOnlyDictionary<string, string>
             IntentionalNonScrollLabels = new Dictionary<string, string>
             {
-                { "StatusLabel", "Development Flight" },
+                { "StatusLabel", "CHAPTER ONE" },
+                { "NewGameButtonLabel", "New Game" },
+                { "NewGameState", "NEW" },
+                { "NewGameExplanation", "Begin at the observatory" },
                 {
                     "ContinueExplanation",
-                    "Gameplay is not in this flight yet."
+                    "No journey saved yet"
                 },
                 { "PanelTitle", "Settings" },
                 { "VersionLabel", "Version 1.0" },
                 { "CloseButtonLabel", "Close" },
-                { "ContinueState", "Not yet" },
+                { "ContinueState", "LOCAL OFFLINE" },
                 {
                     "LocalPanelLabel",
                     "LOCAL NOTE // NOTHING LEAVES THIS SCREEN"
@@ -114,6 +144,8 @@ namespace JustSomeStars.Tests.EditMode
             new HashSet<string>
             {
                 "ContinueExplanation",
+                "NewGameExplanation",
+                "NewGameButtonLabel",
                 "PanelBody",
                 "ContinueButtonLabel",
                 "SettingsButtonLabel",
@@ -435,12 +467,14 @@ namespace JustSomeStars.Tests.EditMode
                 var activeText = TextValues(root, includeInactive: false);
                 var allText = TextValues(root, includeInactive: true);
                 Assert.That(allText, Does.Contain("Just Some Stars"));
-                Assert.That(activeText, Does.Contain("Development Flight"));
+                Assert.That(activeText, Does.Contain("CHAPTER ONE"));
                 Assert.That(activeText, Does.Contain($"Version {Application.version}"));
+                Assert.That(activeText, Does.Contain("New Game"));
+                Assert.That(activeText, Does.Contain("Begin at the observatory"));
                 Assert.That(activeText, Does.Contain("Continue"));
                 Assert.That(
                     activeText,
-                    Does.Contain("Gameplay is not in this flight yet."));
+                    Does.Contain("No journey saved yet"));
                 Assert.That(activeText, Does.Contain("Settings"));
                 Assert.That(activeText, Does.Contain("Credits"));
                 Assert.That(activeText, Does.Contain("Privacy"));
@@ -493,6 +527,11 @@ namespace JustSomeStars.Tests.EditMode
                     continueObject,
                     "UnityEngine.UI.Button");
                 Assert.That((bool)Property(continueButton, "interactable"), Is.False);
+                var newGameObject = FindDescendant(root.transform, "NewGameButton");
+                var newGameButton = ComponentByFullName(
+                    newGameObject,
+                    "UnityEngine.UI.Button");
+                Assert.That((bool)Property(newGameButton, "interactable"), Is.True);
 
                 var localPanel = FindDescendant(root.transform, "LocalPanel");
                 Assert.That(localPanel.activeSelf, Is.False);
@@ -563,17 +602,29 @@ namespace JustSomeStars.Tests.EditMode
                 foreach (var propertyName in new[]
                          {
                              "m_VersionLabel",
+                             "m_TitleSemantic",
+                             "m_StatusLabel",
+                             "m_NewGameButton",
+                             "m_NewGameButtonLabel",
+                             "m_NewGameExplanation",
                              "m_ContinueButton",
+                             "m_ContinueButtonLabel",
+                             "m_ContinueState",
                              "m_ContinueExplanation",
                              "m_SettingsButton",
+                             "m_SettingsButtonLabel",
                              "m_CreditsButton",
+                             "m_CreditsButtonLabel",
                              "m_PrivacyButton",
+                             "m_PrivacyButtonLabel",
                              "m_PanelRoot",
                              "m_PanelTitle",
                              "m_PanelBody",
                              "m_PanelScrollRect",
+                             "m_LocalPanelLabel",
                              "m_SettingsControlsRoot",
                              "m_CloseButton",
+                             "m_CloseButtonLabel",
                          })
                 {
                     var property = serializedView.FindProperty(propertyName);
@@ -727,13 +778,37 @@ namespace JustSomeStars.Tests.EditMode
                 FrontendVisualPrefabPath);
             try
             {
-                Assert.That(
-                    prefabRoot.GetComponentInChildren<FrontendSettingsPanel>(true),
-                    Is.Not.Null,
+                var settingsPanel = prefabRoot.GetComponentInChildren<
+                    FrontendSettingsPanel>(true);
+                Assert.That(settingsPanel, Is.Not.Null,
                     "The approved Frontend prefab is the settings UI authority.");
                 Assert.That(
                     FindDescendant(prefabRoot.transform, "SettingsControls"),
                     Is.Not.Null);
+                Assert.That(
+                    FindDescendant(
+                        prefabRoot.transform,
+                        "FrontendGrownUpChallenge"),
+                    Is.Not.Null,
+                    "Frontend cloud linking requires its own grown-up gate UI.");
+                var serializedPanel = new SerializedObject(settingsPanel);
+                foreach (var propertyName in new[]
+                         {
+                             "m_GrownUpChallengeRoot",
+                             "m_GrownUpPrompt",
+                             "m_GrownUpAnswerValue",
+                             "m_GrownUpAnswerDownButton",
+                             "m_GrownUpAnswerUpButton",
+                             "m_GrownUpConfirmButton",
+                             "m_GrownUpCancelButton",
+                         })
+                {
+                    Assert.That(
+                        serializedPanel.FindProperty(propertyName)?
+                            .objectReferenceValue,
+                        Is.Not.Null,
+                        propertyName);
+                }
             }
             finally
             {
@@ -1134,6 +1209,285 @@ namespace JustSomeStars.Tests.EditMode
                 Assert.That(source, Does.Not.Contain("Input.Get"));
                 Assert.That(source, Does.Not.Contain("Application.OpenURL"));
                 Assert.That(source, Does.Not.Contain("UnityWebRequest"));
+            }
+        }
+
+        [Test]
+        public void Task28PlayerUi_HasLocalizedAccessiblePhotoModeAssetsAndScenes()
+        {
+            var english = AssetDatabase.LoadAssetAtPath<LocalizedEnglishCatalog>(
+                Task28EnglishAssetPath);
+            Assert.That(english, Is.Not.Null);
+            english.ValidateOrThrow();
+            foreach (var key in Task28English.RequiredKeys)
+            {
+                Assert.That(english.Resolve(key), Is.Not.Empty, key);
+            }
+            Assert.That(
+                string.Join("\n", Task28English.RequiredKeys.Select(english.Resolve)),
+                Does.Not.Contain("Development Flight"));
+            Assert.That(
+                string.Join("\n", Task28English.RequiredKeys.Select(english.Resolve)),
+                Does.Not.Contain("SIL OPEN FONT LICENSE"));
+            Assert.That(
+                string.Join("\n", Task28English.RequiredKeys.Select(english.Resolve)),
+                Does.Not.Contain("Apache License\nVersion 2.0"));
+
+            var tokens = AssetDatabase.LoadAssetAtPath<HomemadeSignalUiTokens>(
+                Task28TokensAssetPath);
+            Assert.That(tokens, Is.Not.Null);
+            tokens.ValidateOrThrow();
+            Assert.That(tokens.MinimumTouchTargetDp, Is.GreaterThanOrEqualTo(48f));
+            Assert.That(tokens.MinimumBodySp, Is.GreaterThanOrEqualTo(14f));
+
+            var readable = AssetDatabase.LoadMainAssetAtPath(
+                Task28ReadableFontPath);
+            Assert.That(readable, Is.Not.Null);
+            Assert.That(
+                readable.GetType().FullName,
+                Is.EqualTo("TMPro.TMP_FontAsset"));
+            Assert.That(
+                AssetDatabase.LoadAllAssetsAtPath(Task28ReadableFontPath)
+                    .Any(asset => asset is Material),
+                Is.True);
+            Assert.That(
+                AssetDatabase.LoadAllAssetsAtPath(Task28ReadableFontPath)
+                    .Any(asset => asset is Texture2D),
+                Is.True);
+
+            var gameplayScenes = new[]
+            {
+                "Assets/_JustSomeStars/Scenes/Destinations/Mirra.unity",
+                "Assets/_JustSomeStars/Scenes/Destinations/KoroVesper.unity",
+                "Assets/_JustSomeStars/Scenes/Destinations/AsterVeil.unity",
+                "Assets/_JustSomeStars/Scenes/Destinations/Task25VesperFlight.unity",
+                "Assets/_JustSomeStars/Scenes/Benchmarks/Task17FlightGraybox.unity",
+            };
+            var previous = EditorSceneManager.GetSceneManagerSetup();
+            try
+            {
+                foreach (var path in gameplayScenes)
+                {
+                    var scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Single);
+                    var roots = scene.GetRootGameObjects();
+                    var photo = roots.SelectMany(root =>
+                            root.GetComponentsInChildren<PhotoModeController>(true))
+                        .SingleOrDefault();
+                    var menu = roots.SelectMany(root =>
+                            root.GetComponentsInChildren<PlayerMenuController>(true))
+                        .SingleOrDefault();
+                    var accessibility = roots.SelectMany(root =>
+                            root.GetComponentsInChildren<AccessibilityApplier>(true))
+                        .SingleOrDefault();
+                    Assert.That(photo, Is.Not.Null, path);
+                    Assert.That(menu, Is.Not.Null, path);
+                    Assert.That(photo.AllowsFreeOrbit, Is.False, path);
+                    Assert.That(accessibility, Is.Not.Null, path);
+                    var serializedMenu = new SerializedObject(menu);
+                    foreach (var propertyName in new[]
+                             {
+                                 "m_AccessibilityControlsRoot",
+                                 "m_AtlasControlsRoot",
+                                 "m_CaptainControlsRoot",
+                                 "m_ShopControlsRoot",
+                                 "m_GrownUpChallengeRoot",
+                                 "m_AccessibilitySettingName",
+                                 "m_AccessibilitySettingValue",
+                                 "m_AtlasValue",
+                                 "m_CaptainValue",
+                                 "m_ShopProductValue",
+                                 "m_GrownUpPrompt",
+                                 "m_GrownUpAnswerValue",
+                                 "m_BirthdayControlsRoot",
+                                 "m_BirthdayDayValue",
+                                 "m_BirthdayMonthValue",
+                                 "m_BirthdayYearValue",
+                                 "m_BirthdaySaveButton",
+                                 "m_BirthdayConfirmButton",
+                             })
+                    {
+                        Assert.That(
+                            serializedMenu.FindProperty(propertyName)?
+                                .objectReferenceValue,
+                            Is.Not.Null,
+                            $"{path}/{propertyName}");
+                    }
+                    var atlasEntries = serializedMenu.FindProperty(
+                        "m_AtlasEntries");
+                    Assert.That(atlasEntries, Is.Not.Null, path);
+                    Assert.That(atlasEntries.arraySize, Is.GreaterThan(0), path);
+                    var serializedPhoto = new SerializedObject(photo);
+                    var earnedFrames = serializedPhoto.FindProperty(
+                        "earnedFrames");
+                    var earnedFrameIds = serializedPhoto.FindProperty(
+                        "earnedFrameIds");
+                    Assert.That(earnedFrames, Is.Not.Null, path);
+                    Assert.That(earnedFrameIds, Is.Not.Null, path);
+                    Assert.That(earnedFrames.arraySize, Is.GreaterThan(0), path);
+                    Assert.That(
+                        earnedFrameIds.arraySize,
+                        Is.EqualTo(earnedFrames.arraySize),
+                        path);
+                    var localized = roots.SelectMany(root =>
+                            root.GetComponentsInChildren<LocalizedUiLabel>(true))
+                        .ToArray();
+                    Assert.That(localized, Has.Length.GreaterThanOrEqualTo(25), path);
+                    foreach (var label in localized)
+                    {
+                        var serialized = new SerializedObject(label);
+                        Assert.That(
+                            serialized.FindProperty("english")?.objectReferenceValue,
+                            Is.SameAs(english),
+                            $"{path}/{label.name}");
+                        var key = serialized.FindProperty("key")?.stringValue;
+                        Assert.That(
+                            Task28English.RequiredKeys,
+                            Does.Contain(key),
+                            $"{path}/{label.name}");
+                    }
+
+                    var task28Root = roots.Single(root =>
+                        root.name == "Task28PlayerUi");
+                    var canvasRect = task28Root.GetComponent<RectTransform>();
+                    var scaler = ComponentByFullName(
+                        task28Root,
+                        "UnityEngine.UI.CanvasScaler");
+                    var safeAreas = task28Root
+                        .GetComponentsInChildren<SafeAreaFitter>(true);
+                    Assert.That(safeAreas, Has.Length.EqualTo(1), path);
+                    Assert.That(safeAreas[0].gameObject.name, Is.EqualTo("SafeArea"));
+                    foreach (var profile in Task28GameplayProfiles)
+                    {
+                        var scale = CalculateCanvasScale(scaler, profile);
+                        var logicalCanvas = LogicalCanvasRect(profile, scale);
+                        foreach (var button in ComponentsByFullName(
+                                     task28Root,
+                                     "UnityEngine.UI.Button"))
+                        {
+                            var rect = ResolveSyntheticRect(
+                                button.GetComponent<RectTransform>(),
+                                canvasRect,
+                                logicalCanvas);
+                            AssertRectContained(
+                                logicalCanvas,
+                                rect,
+                                $"{profile.Name}/{path}/{button.name}");
+                            AssertPhysicalAxisAtLeastDp(
+                                rect.width,
+                                scale,
+                                profile,
+                                $"{path}/{button.name}",
+                                "width");
+                            AssertPhysicalAxisAtLeastDp(
+                                rect.height,
+                                scale,
+                                profile,
+                                $"{path}/{button.name}",
+                                "height");
+                        }
+                        foreach (var label in localized)
+                        {
+                            var textComponent = label.GetComponents<Component>()
+                                .SingleOrDefault(component =>
+                                    component != null &&
+                                    component.GetType().FullName ==
+                                        "TMPro.TextMeshProUGUI");
+                            Assert.That(textComponent, Is.Not.Null, label.name);
+                            AssertCompleteTextFitsInProfileAtFontScale(
+                                textComponent,
+                                (string)Property(textComponent, "text"),
+                                profile,
+                                scaler,
+                                canvasRect);
+                        }
+                    }
+
+                    var isSurface = path.EndsWith("Mirra.unity") ||
+                        path.EndsWith("KoroVesper.unity") ||
+                        path.EndsWith("AsterVeil.unity");
+                    Assert.That(
+                        roots.SelectMany(root => root.GetComponentsInChildren<
+                            AccessibleTouchLayout>(true)).Count(),
+                        Is.EqualTo(isSurface ? 1 : 0),
+                        path);
+                    Assert.That(
+                        roots.SelectMany(root => root.GetComponentsInChildren<
+                            AccessibleCaption>(true)).Count(),
+                        Is.EqualTo(
+                            path.EndsWith("Mirra.unity") ||
+                            path.EndsWith("KoroVesper.unity") ? 1 : 0),
+                        path);
+                    Assert.That(
+                        roots.SelectMany(root => root.GetComponentsInChildren<
+                            AccessibleStatusSymbol>(true)).ToArray(),
+                        Has.Length.EqualTo(1),
+                        path);
+                    var accessibilityEffects = roots
+                        .SelectMany(root => root.GetComponentsInChildren<
+                            AccessibleEffect>(true))
+                        .ToArray();
+                    Assert.That(accessibilityEffects, Has.Length.EqualTo(2), path);
+                    foreach (var effect in accessibilityEffects)
+                    {
+                        var serializedEffect = new SerializedObject(effect);
+                        Assert.That(
+                            serializedEffect.FindProperty("effect")?
+                                .objectReferenceValue,
+                            Is.Not.Null,
+                            $"{path}/{effect.name}");
+                    }
+                }
+
+                foreach (var path in new[]
+                         {
+                             "Assets/_JustSomeStars/Scenes/Cinematics/Opening.unity",
+                             "Assets/_JustSomeStars/Scenes/Cinematics/SignalReassembly.unity",
+                             "Assets/_JustSomeStars/Scenes/Core/Clubhouse.unity",
+                             "Assets/_JustSomeStars/Scenes/Cinematics/DinnerEnding.unity",
+                         })
+                {
+                    var scene = EditorSceneManager.OpenScene(
+                        path,
+                        OpenSceneMode.Single);
+                    var roots = scene.GetRootGameObjects();
+                    Assert.That(
+                        roots.SelectMany(root => root.GetComponentsInChildren<
+                            AccessibilityApplier>(true)),
+                        Has.Length.EqualTo(1),
+                        path);
+                    Assert.That(
+                        roots.SelectMany(root => root.GetComponentsInChildren<
+                            AccessibleEffect>(true)).Count(effect =>
+                            new SerializedObject(effect).FindProperty("kind")?
+                                .enumValueIndex ==
+                            (int)AccessibilityEffectKind.MotionBlur),
+                        Is.EqualTo(1),
+                        path);
+                    var isClubhouse = path.EndsWith("Clubhouse.unity");
+                    Assert.That(
+                        roots.SelectMany(root => root.GetComponentsInChildren<
+                            PlayerMenuController>(true)).Count(),
+                        Is.EqualTo(isClubhouse ? 1 : 0),
+                        path);
+                    Assert.That(
+                        roots.SelectMany(root => root.GetComponentsInChildren<
+                            PhotoModeController>(true)).Count(),
+                        Is.EqualTo(isClubhouse ? 1 : 0),
+                        path);
+                }
+            }
+            finally
+            {
+                if (previous.Length > 0)
+                {
+                    EditorSceneManager.RestoreSceneManagerSetup(previous);
+                }
+                else
+                {
+                    EditorSceneManager.NewScene(
+                        NewSceneSetup.EmptyScene,
+                        NewSceneMode.Single);
+                }
             }
         }
 
@@ -1895,6 +2249,32 @@ namespace JustSomeStars.Tests.EditMode
                 $"{profile.Name}/{textComponent.name} needs " +
                 $"{preferred.y:F3} logical height for exact copy " +
                 $"'{fullText}' but has {available.height:F3}.");
+        }
+
+        private static void AssertCompleteTextFitsInProfileAtFontScale(
+            Component textComponent,
+            string fullText,
+            MobileProfile profile,
+            Component scaler,
+            RectTransform canvas)
+        {
+            var fontSize = textComponent.GetType().GetProperty("fontSize");
+            Assert.That(fontSize, Is.Not.Null, textComponent.name);
+            var original = (float)fontSize.GetValue(textComponent);
+            try
+            {
+                fontSize.SetValue(textComponent, original * profile.FontScale);
+                AssertCompleteTextFitsInProfile(
+                    textComponent,
+                    fullText,
+                    profile,
+                    scaler,
+                    canvas);
+            }
+            finally
+            {
+                fontSize.SetValue(textComponent, original);
+            }
         }
 
         private static bool IsNoWrapMode(object wrappingMode)

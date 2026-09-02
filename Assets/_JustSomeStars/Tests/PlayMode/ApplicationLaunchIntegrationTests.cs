@@ -21,9 +21,8 @@ namespace JustSomeStars.Tests.PlayMode
     public sealed class ApplicationLaunchIntegrationTests
     {
         private const string CreditsPrefix =
-            "Just Some Stars is being built by ScientificAJ. This Development " +
-            "Flight contains a launch screen, not finished gameplay.\n\n" +
-            "Liberation Sans\n\n";
+            "Just Some Stars is created by ScientificAJ.\n\n" +
+            "Liberation Sans and Noto Sans\n\n";
         private const string ApacheCreditsPrefix =
             "\n\nAndroid open-source components\n\n" +
             "This Android build includes AndroidX, Kotlin, Kotlin coroutines, " +
@@ -132,6 +131,8 @@ namespace JustSomeStars.Tests.PlayMode
                 .GetComponent<TextMeshProUGUI>();
             var continueButton = FindDescendant(view.transform, "ContinueButton")
                 .GetComponent<Button>();
+            var newGameButton = FindDescendant(view.transform, "NewGameButton")
+                .GetComponent<Button>();
             var settingsButton = FindDescendant(view.transform, "SettingsButton")
                 .GetComponent<Button>();
             var creditsButton = FindDescendant(view.transform, "CreditsButton")
@@ -142,6 +143,7 @@ namespace JustSomeStars.Tests.PlayMode
                 .GetComponent<Button>();
 
             Assert.That(localPanel.activeSelf, Is.False);
+            Assert.That(newGameButton.interactable, Is.True);
             Assert.That(continueButton.interactable, Is.False);
             continueButton.onClick.Invoke();
             Assert.That(localPanel.activeSelf, Is.False);
@@ -251,8 +253,9 @@ namespace JustSomeStars.Tests.PlayMode
                     "An account is optional. Progress stays on this device unless a " +
                     "grown-up chooses private Google cloud backup. Photos and device " +
                     "settings always stay local. Cloud data can be exported, signed " +
-                    "out, or deleted from Settings. Google sign-in data is not used " +
-                    "for advertising. This flight has no purchases."));
+                    "out, or deleted from Settings. Google sign-in data is never used " +
+                    "for advertising. Optional store purchases never sell story, " +
+                    "science, or accessibility."));
             Assert.That(
                 panelBody.text,
                 Does.Not.Contain("SIL OPEN FONT LICENSE"),

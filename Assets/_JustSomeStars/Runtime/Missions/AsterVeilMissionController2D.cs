@@ -5,6 +5,7 @@ using JustSomeStars.Runtime.Core;
 using JustSomeStars.Runtime.Flight;
 using JustSomeStars.Runtime.Input;
 using TMPro;
+using JustSomeStars.Runtime.UI;
 using UnityEngine;
 
 namespace JustSomeStars.Runtime.Missions
@@ -102,7 +103,7 @@ namespace JustSomeStars.Runtime.Missions
                 {
                     case 0:
                         crewTrustLabel.text =
-                            "MIRA · JUNO · KAI · BEA\nYOUR CALL, CAPTAIN. PICK THE LINE.";
+                            Task28English.ResolveDefault("aster.trust.pick");
                         m_Dependencies.Events.Publish(new ApproachCompleted(
                             m_Progression.ApproachId));
                         routeCue.Play();
@@ -123,7 +124,8 @@ namespace JustSomeStars.Runtime.Missions
                                 1.35f))
                         {
                             objectiveLabel.text =
-                                "FLY TO THE THIRD FRAGMENT · HOLD THE SAFE LANE";
+                                Task28English.ResolveDefault(
+                                    "aster.fragment.safeLane");
                             return;
                         }
                         m_Dependencies.Events.Publish(new SignalFragmentRecovered(
@@ -140,7 +142,8 @@ namespace JustSomeStars.Runtime.Missions
                         if (!debrisField.CanEscape)
                         {
                             objectiveLabel.text =
-                                "ESCAPE LEFT ON THE OPEN MOMENTUM LINE";
+                                Task28English.ResolveDefault(
+                                    "aster.escape.openLine");
                             return;
                         }
                         m_Dependencies.Events.Publish(new DepartureCompleted(
@@ -168,21 +171,21 @@ namespace JustSomeStars.Runtime.Missions
             if (m_Progression == null) return;
             objectiveLabel.text = m_Progression.CheckpointOrdinal switch
             {
-                0 => "ASTER VEIL · READ THE SHIFTING LANES",
-                1 => "THE CREW TRUSTS YOU · CHOOSE THE GRAVITY LINE",
-                2 => "TRACK RELATIVE MOTION · NOT ABSOLUTE SPEED",
-                3 => "THREAD THE SHATTERED-MOON DEBRIS",
-                4 => "RECOVER THE THIRD SIGNAL FRAGMENT",
-                5 => "REASSEMBLE ALL THREE SIGNAL FRAGMENTS",
-                6 => "ESCAPE ON THE MOMENTUM LINE",
-                _ => "ASTER VEIL COMPLETE",
+                0 => Task28English.ResolveDefault("aster.objective.0"),
+                1 => Task28English.ResolveDefault("aster.objective.1"),
+                2 => Task28English.ResolveDefault("aster.objective.2"),
+                3 => Task28English.ResolveDefault("aster.objective.3"),
+                4 => Task28English.ResolveDefault("aster.objective.4"),
+                5 => Task28English.ResolveDefault("aster.objective.5"),
+                6 => Task28English.ResolveDefault("aster.objective.6"),
+                _ => Task28English.ResolveDefault("aster.objective.complete"),
             };
             fragmentVisual.SetActive(m_Progression.CheckpointOrdinal == 4);
             routeHologram.SetActive(m_Progression.CheckpointOrdinal >= 2);
             if (m_Progression.CheckpointOrdinal >= 1)
             {
                 crewTrustLabel.text =
-                    "MIRA · JUNO · KAI · BEA\nYOUR CALL, CAPTAIN. WE’RE WITH YOU.";
+                    Task28English.ResolveDefault("aster.trust.withYou");
             }
         }
 

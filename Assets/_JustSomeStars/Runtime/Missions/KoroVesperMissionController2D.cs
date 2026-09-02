@@ -11,6 +11,7 @@ using JustSomeStars.Runtime.Input;
 using JustSomeStars.Runtime.Interaction;
 using JustSomeStars.Runtime.Player;
 using TMPro;
+using JustSomeStars.Runtime.UI;
 using UnityEngine;
 
 namespace JustSomeStars.Runtime.Missions
@@ -258,15 +259,20 @@ namespace JustSomeStars.Runtime.Missions
             if (m_Progression == null) return;
             m_PresentedObjectiveId = m_Progression.CurrentObjectiveId;
             objectiveLabel.text = m_Progression.IsMissionComplete
-                ? "CHAPTER COMPLETE · SECOND SIGNAL RECOVERED"
+                ? Task28English.ResolveDefault("koro.objective.complete")
                 : m_PresentedObjectiveId switch
             {
-                "mission.koro-vesper.landed" => "LAND ON KORO",
-                "mission.koro-vesper.traversal" => "CROSS THE LOW-GRAVITY SHELVES",
-                "mission.koro-vesper.spectra" => "COMPARE BOTH GEYSER SPECTRA",
-                "mission.koro-vesper.rhythm" => "FOLLOW THE REPEATING RHYTHM",
-                "mission.koro-vesper.fragment" => "RECOVER THE SECOND FRAGMENT",
-                _ => "SECOND SIGNAL · KORO",
+                "mission.koro-vesper.landed" =>
+                    Task28English.ResolveDefault("koro.objective.landed"),
+                "mission.koro-vesper.traversal" =>
+                    Task28English.ResolveDefault("koro.objective.traversal"),
+                "mission.koro-vesper.spectra" =>
+                    Task28English.ResolveDefault("koro.objective.spectra"),
+                "mission.koro-vesper.rhythm" =>
+                    Task28English.ResolveDefault("koro.objective.rhythm"),
+                "mission.koro-vesper.fragment" =>
+                    Task28English.ResolveDefault("koro.objective.fragment"),
+                _ => Task28English.ResolveDefault("koro.objective.default"),
             };
             fragmentVisual.SetActive(
                 m_Progression.CheckpointOrdinal >= 5 &&

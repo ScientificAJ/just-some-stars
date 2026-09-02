@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Threading;
+using System.Threading.Tasks;
 using JustSomeStars.Runtime.Accessibility;
+using JustSomeStars.Runtime.Atlas;
 using JustSomeStars.Runtime.Core;
 using JustSomeStars.Runtime.Input;
+using JustSomeStars.Runtime.Saving;
 using JustSomeStars.Runtime.UI;
 using NUnit.Framework;
 using UnityEngine;
@@ -25,9 +28,8 @@ namespace JustSomeStars.Tests.PlayMode
             "Apache License Version 2.0 test fixture.\n" +
             "Every Android dependency line must remain visible.\n";
         private const string CreditsPrefix =
-            "Just Some Stars is being built by ScientificAJ. This Development " +
-            "Flight contains a launch screen, not finished gameplay.\n\n" +
-            "Liberation Sans\n\n";
+            "Just Some Stars is created by ScientificAJ.\n\n" +
+            "Liberation Sans and Noto Sans\n\n";
         private const string ApacheCreditsPrefix =
             "\n\nAndroid open-source components\n\n" +
             "This Android build includes AndroidX, Kotlin, Kotlin coroutines, " +
@@ -86,7 +88,7 @@ namespace JustSomeStars.Tests.PlayMode
         }
 
         [Test]
-        public void Awake_PresentsApplicationVersionAndTruthfullyDisablesContinue()
+        public void Awake_PresentsLocalizedVersionAndTruthfulNoSaveLaunchState()
         {
             var fixture = CreateController();
 
@@ -94,10 +96,16 @@ namespace JustSomeStars.Tests.PlayMode
                 fixture.View.VersionText,
                 Is.EqualTo($"Version {Application.version}"));
             Assert.That(fixture.View.VersionPresentationCount, Is.EqualTo(1));
+            Assert.That(fixture.View.NewGameInteractable, Is.True);
+            Assert.That(
+                fixture.View.NewGameExplanation,
+                Is.EqualTo("Begin at the observatory"));
             Assert.That(fixture.View.ContinueInteractable, Is.False);
             Assert.That(
                 fixture.View.ContinueExplanation,
-                Is.EqualTo("Gameplay is not in this flight yet."));
+                Is.EqualTo("No journey saved yet"));
+            Assert.That(fixture.View.LaunchState, Is.EqualTo(
+                FrontendContinueState.NoSave));
 
             fixture.View.RaiseContinue();
 
@@ -115,7 +123,7 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(
                 fixture.View.PanelBody,
                 Is.EqualTo(
-                    "Device settings are saved locally and are not included " +
+                    "Device settings are saved locally and are never included " +
                     "in cloud backup."));
             Assert.That(fixture.SettingsPanel.ShowCount, Is.EqualTo(1));
 
@@ -156,8 +164,9 @@ namespace JustSomeStars.Tests.PlayMode
                     "An account is optional. Progress stays on this device unless a " +
                     "grown-up chooses private Google cloud backup. Photos and device " +
                     "settings always stay local. Cloud data can be exported, signed " +
-                    "out, or deleted from Settings. Google sign-in data is not used " +
-                    "for advertising. This flight has no purchases."));
+                    "out, or deleted from Settings. Google sign-in data is never used " +
+                    "for advertising. Optional store purchases never sell story, " +
+                    "science, or accessibility."));
             Assert.That(fixture.View.ShowPanelCount, Is.EqualTo(3));
             Assert.That(fixture.Lifecycle.ExitRequestCount, Is.EqualTo(0));
         }
@@ -204,6 +213,7 @@ namespace JustSomeStars.Tests.PlayMode
             fixture.Controller.enabled = true;
 
             Assert.That(fixture.View.ContinueSubscriberCount, Is.EqualTo(1));
+            Assert.That(fixture.View.NewGameSubscriberCount, Is.EqualTo(1));
             Assert.That(fixture.View.SettingsSubscriberCount, Is.EqualTo(1));
             Assert.That(fixture.View.CreditsSubscriberCount, Is.EqualTo(1));
             Assert.That(fixture.View.PrivacySubscriberCount, Is.EqualTo(1));
@@ -216,6 +226,69 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(fixture.View.ShowPanelCount, Is.EqualTo(1));
             Assert.That(fixture.View.HidePanelCount, Is.EqualTo(1));
             Assert.That(fixture.Lifecycle.ExitRequestCount, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void LaunchPresentation_CoversValidRecoveredCorruptAndUnavailableStates()
+        {
+            var save = GameSave.CreateNew("task28-launch", 28L);
+            AssertLaunchState(
+                new LoadSaveResult(LoadSaveStatus.LoadedPrimary, save, string.Empty),
+                canContinue: true,
+                FrontendContinueState.Ready,
+                expectedInteractable: true,
+                "Return to Mirra");
+            AssertLaunchState(
+                new LoadSaveResult(
+                    LoadSaveStatus.RecoveredBackup,
+                    save,
+                    string.Empty),
+                canContinue: true,
+                FrontendContinueState.RecoveredBackup,
+                expectedInteractable: true,
+                "Recovered backup · Return to Mirra");
+            AssertLaunchState(
+                new LoadSaveResult(
+                    LoadSaveStatus.Unreadable,
+                    null,
+                    string.Empty),
+                canContinue: true,
+                FrontendContinueState.Unreadable,
+                expectedInteractable: false,
+                "Save needs recovery before continuing");
+            AssertLaunchState(
+                new LoadSaveResult(
+                    LoadSaveStatus.StorageUnavailable,
+                    null,
+                    string.Empty),
+                canContinue: true,
+                FrontendContinueState.StorageUnavailable,
+                expectedInteractable: false,
+                "Local saves are temporarily unavailable");
+            AssertLaunchState(
+                new LoadSaveResult(LoadSaveStatus.LoadedPrimary, save, string.Empty),
+                canContinue: false,
+                FrontendContinueState.ContentUnavailable,
+                expectedInteractable: false,
+                "That checkpoint is not installed");
+        }
+
+        private void AssertLaunchState(
+            LoadSaveResult result,
+            bool canContinue,
+            FrontendContinueState expectedState,
+            bool expectedInteractable,
+            string expectedExplanation)
+        {
+            var fixture = CreateController(result, canContinue);
+            Assert.That(fixture.View.LaunchState, Is.EqualTo(expectedState));
+            Assert.That(
+                fixture.View.ContinueInteractable,
+                Is.EqualTo(expectedInteractable));
+            Assert.That(
+                fixture.View.ContinueExplanation,
+                Is.EqualTo(expectedExplanation));
+            DestroyCurrentRootImmediately();
         }
 
         [Test]
@@ -432,11 +505,15 @@ namespace JustSomeStars.Tests.PlayMode
             }
         }
 
-        private ControllerFixture CreateController()
+        private ControllerFixture CreateController(
+            LoadSaveResult loadResult = null,
+            bool canContinue = true)
         {
             var fixture = CreateControllerWithLicenses(
                 CreateLicense(TestLiberationLicenseText),
-                CreateLicense(TestApacheLicenseText));
+                CreateLicense(TestApacheLicenseText),
+                loadResult,
+                canContinue);
             m_TestRoot.SetActive(true);
             fixture.Controller.Configure(fixture.Dependencies);
             return fixture;
@@ -444,7 +521,9 @@ namespace JustSomeStars.Tests.PlayMode
 
         private ControllerFixture CreateControllerWithLicenses(
             TextAsset liberationLicense,
-            TextAsset apacheLicense)
+            TextAsset apacheLicense,
+            LoadSaveResult loadResult = null,
+            bool canContinue = true)
         {
             m_TestRoot = new GameObject("FrontendControllerFixture");
             m_TestRoot.SetActive(false);
@@ -464,22 +543,36 @@ namespace JustSomeStars.Tests.PlayMode
                 controller,
                 "m_ApacheLicense",
                 apacheLicense);
+            var english = Own(ScriptableObject.CreateInstance<
+                LocalizedEnglishCatalog>());
+            english.Configure(Task28English.CreateEntries());
+            SetPrivateField(controller, "m_English", english);
 
             return new ControllerFixture(
                 controller,
                 view,
                 lifecycle,
                 settingsPanel,
-                CreateDependencies());
+                CreateDependencies(loadResult, canContinue));
         }
 
-        private FrontendDependencies CreateDependencies()
+        private FrontendDependencies CreateDependencies(
+            LoadSaveResult loadResult = null,
+            bool canContinue = true)
         {
             var settings = CreateSettingsService();
             var actions = Own(ScriptableObject.CreateInstance<InputActionAsset>());
             return new FrontendDependencies(
                 settings,
-                new InputRouter(actions, settings));
+                new InputRouter(actions, settings),
+                saves: new FakeSaveService(loadResult ?? new LoadSaveResult(
+                    LoadSaveStatus.Missing,
+                    null,
+                    string.Empty)),
+                startNewGame: token => default,
+                continueGame: (save, token) => default,
+                canContinue: save => canContinue,
+                describeCheckpoint: save => "Mirra");
         }
 
         private SettingsService CreateSettingsService()
@@ -631,8 +724,12 @@ namespace JustSomeStars.Tests.PlayMode
             public FrontendDependencies Dependencies { get; }
         }
 
-        public sealed class FakeFrontendView : MonoBehaviour, IFrontendView
+        public sealed class FakeFrontendView :
+            MonoBehaviour,
+            IFrontendView,
+            IFrontendLaunchView
         {
+            private Action m_NewGameRequested;
             private Action m_ContinueRequested;
             private Action m_SettingsRequested;
             private Action m_CreditsRequested;
@@ -645,6 +742,12 @@ namespace JustSomeStars.Tests.PlayMode
             {
                 add => m_ContinueRequested += value;
                 remove => m_ContinueRequested -= value;
+            }
+
+            public event Action NewGameRequested
+            {
+                add => m_NewGameRequested += value;
+                remove => m_NewGameRequested -= value;
             }
 
             public event Action SettingsRequested
@@ -677,6 +780,14 @@ namespace JustSomeStars.Tests.PlayMode
 
             public bool ContinueInteractable { get; private set; }
 
+            public bool NewGameInteractable { get; private set; }
+
+            public string NewGameExplanation { get; private set; }
+
+            public string ContinueState { get; private set; }
+
+            public FrontendContinueState LaunchState { get; private set; }
+
             public string ContinueExplanation { get; private set; }
 
             public bool IsPanelVisible { get; private set; }
@@ -692,6 +803,8 @@ namespace JustSomeStars.Tests.PlayMode
             public int SettingsSubscriberCount => SubscriberCount(m_SettingsRequested);
 
             public int ContinueSubscriberCount => SubscriberCount(m_ContinueRequested);
+
+            public int NewGameSubscriberCount => SubscriberCount(m_NewGameRequested);
 
             public int CreditsSubscriberCount => SubscriberCount(m_CreditsRequested);
 
@@ -711,6 +824,21 @@ namespace JustSomeStars.Tests.PlayMode
                 ContinueExplanation = explanation;
             }
 
+            public void PresentLocalizedChrome(LocalizedEnglishCatalog english)
+            {
+                Assert.That(english, Is.Not.Null);
+            }
+
+            public void PresentLaunch(FrontendLaunchPresentation presentation)
+            {
+                NewGameInteractable = presentation.NewGameInteractable;
+                NewGameExplanation = presentation.NewGameExplanation;
+                ContinueInteractable = presentation.ContinueInteractable;
+                ContinueState = presentation.ContinueState;
+                ContinueExplanation = presentation.ContinueExplanation;
+                LaunchState = presentation.State;
+            }
+
             public void ShowPanel(string title, string body)
             {
                 IsPanelVisible = true;
@@ -728,6 +856,11 @@ namespace JustSomeStars.Tests.PlayMode
             public void RaiseContinue()
             {
                 m_ContinueRequested?.Invoke();
+            }
+
+            public void RaiseNewGame()
+            {
+                m_NewGameRequested?.Invoke();
             }
 
             public void RaiseSettings()
@@ -794,6 +927,11 @@ namespace JustSomeStars.Tests.PlayMode
 
             public FrontendDependencies Dependencies { get; private set; }
 
+            public void SetLocalization(LocalizedEnglishCatalog english)
+            {
+                Assert.That(english, Is.Not.Null);
+            }
+
             public int ShowCount { get; private set; }
 
             public int HideCount { get; private set; }
@@ -820,6 +958,43 @@ namespace JustSomeStars.Tests.PlayMode
             {
                 HideCount++;
             }
+        }
+
+        private sealed class FakeSaveService : ISaveService
+        {
+            private readonly LoadSaveResult m_Result;
+
+            public FakeSaveService(LoadSaveResult result)
+            {
+                m_Result = result ?? throw new ArgumentNullException(nameof(result));
+            }
+
+            public ValueTask<StartupResult> InitializeAsync(
+                CancellationToken cancellationToken)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                return new ValueTask<StartupResult>(StartupResult.Available());
+            }
+
+            public ValueTask ShutdownAsync() => default;
+
+            public ValueTask<LoadSaveResult> LoadAsync(
+                CancellationToken cancellationToken)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                return new ValueTask<LoadSaveResult>(m_Result.Copy());
+            }
+
+            public ValueTask SaveCheckpointAsync(
+                GameSave save,
+                CancellationToken cancellationToken) => default;
+
+            public ValueTask<LoadSaveResult> RecoverAsync(
+                CancellationToken cancellationToken) =>
+                LoadAsync(cancellationToken);
+
+            public GameSave Merge(GameSave local, GameSave cloud) =>
+                local?.Copy() ?? cloud?.Copy();
         }
     }
 }

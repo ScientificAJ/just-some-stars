@@ -30,6 +30,7 @@ namespace JustSomeStars.Runtime.Animation2D
         public int CurrentFrameIndex => animators.Length == 0
             ? 0
             : animators[0].CurrentFrameIndex;
+        public string CurrentMotion => currentMotion;
 
         public void Configure(
             CaptainSpriteSet configuredSpriteSet,
