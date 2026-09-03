@@ -6,17 +6,41 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_JustSomeStars/Scenes/Core/Boot.unity
+    guid: e7dda99d5e32099c2a5072800012d3cf
+  - enabled: 1
+    path: Assets/_JustSomeStars/Scenes/Core/Frontend.unity
+    guid: dd97f07d694c430268984de2714a90a2
+  - enabled: 1
+    path: Assets/_JustSomeStars/Scenes/Cinematics/Opening.unity
+    guid: 610149b37884007cea2e1113faad2e82
+  - enabled: 1
     path: Assets/_JustSomeStars/Scenes/Benchmarks/Mirra2DProof.unity
     guid: b5710e29502f8cb109a866a2c7561803
   - enabled: 1
-    path: Assets/_JustSomeStars/Scenes/Core/Boot.unity
-    guid: e7dda99d5e32099c2a5072800012d3cf
+    path: Assets/_JustSomeStars/Scenes/Destinations/Mirra.unity
+    guid: 1cf2f9b36841ffd35a0264abfdced8e4
+  - enabled: 1
+    path: Assets/_JustSomeStars/Scenes/Benchmarks/Task17FlightGraybox.unity
+    guid: cc32fa590a4e852448d9a239a785bc5f
+  - enabled: 1
+    path: Assets/_JustSomeStars/Scenes/Destinations/KoroVesper.unity
+    guid: 70dcdd061eb149dc19a48a722ca07498
+  - enabled: 1
+    path: Assets/_JustSomeStars/Scenes/Destinations/Task25VesperFlight.unity
+    guid: 43accc154182d299b974345687db43fb
+  - enabled: 1
+    path: Assets/_JustSomeStars/Scenes/Destinations/AsterVeil.unity
+    guid: 134089218ed15e48f90dc8eaaf94f6da
+  - enabled: 1
+    path: Assets/_JustSomeStars/Scenes/Cinematics/SignalReassembly.unity
+    guid: b42c5193565e9f8009acb9d51a19ca36
   - enabled: 1
     path: Assets/_JustSomeStars/Scenes/Core/Clubhouse.unity
     guid: 443c7b30f8f782f0db940232a7e3ce90
   - enabled: 1
-    path: Assets/_JustSomeStars/Scenes/Core/Frontend.unity
-    guid: dd97f07d694c430268984de2714a90a2
+    path: Assets/_JustSomeStars/Scenes/Cinematics/DinnerEnding.unity
+    guid: eff012af14bc90f7391fdc863470ed0b
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: cd66d02828868ea2f9ae34187f8dbb77, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: bf9300ba3765bd0228665825d7ae812b, type: 3}

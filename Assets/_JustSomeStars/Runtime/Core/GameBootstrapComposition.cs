@@ -25,7 +25,9 @@ namespace JustSomeStars.Runtime.Core
         public IGameService Service { get; }
 
         public ServiceRequirement Requirement =>
-            Role <= GameServiceRole.ModeController || Role == GameServiceRole.Progression
+            Role <= GameServiceRole.ModeController ||
+            Role == GameServiceRole.Progression ||
+            Role == GameServiceRole.QualityProfile
             ? ServiceRequirement.Required
             : ServiceRequirement.Optional;
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using JustSomeStars.Runtime.Accessibility;
+using JustSomeStars.Runtime.Core;
 using JustSomeStars.Runtime.Player;
 using UnityEngine;
 
@@ -30,12 +31,14 @@ namespace JustSomeStars.Runtime.Rendering2D
         private readonly Dictionary<ParallaxLayer2D, float> m_ParallaxFactors = new();
 
         private SettingsService m_Settings;
+        private QualityProfileService m_GlobalQuality;
         private int m_OriginalTargetFrameRate;
         private float m_OriginalWidthScale = 1f;
         private float m_OriginalHeightScale = 1f;
         private bool m_OriginalDynamicResolution;
         private float m_OriginalVolumeWeight;
         private bool m_HasSnapshot;
+        private bool m_OwnsGlobalState;
 
         public MirraQualityProfile[] Profiles => profiles.ToArray();
         public string ActiveProfileId { get; private set; } = string.Empty;
@@ -77,6 +80,11 @@ namespace JustSomeStars.Runtime.Rendering2D
                 CaptureGlobalState();
                 m_Settings = dependencies.Settings;
                 m_Settings.SettingsChanged += OnSettingsChanged;
+                m_GlobalQuality = QualityProfileService.Instance;
+                if (m_GlobalQuality != null && m_GlobalQuality.IsBound)
+                {
+                    m_GlobalQuality.ProfileApplied += OnGlobalProfileApplied;
+                }
                 ApplyQuality(m_Settings.Current.PresentationQuality);
             }
             catch
@@ -85,6 +93,11 @@ namespace JustSomeStars.Runtime.Rendering2D
                 {
                     m_Settings.SettingsChanged -= OnSettingsChanged;
                     m_Settings = null;
+                }
+                if (m_GlobalQuality != null)
+                {
+                    m_GlobalQuality.ProfileApplied -= OnGlobalProfileApplied;
+                    m_GlobalQuality = null;
                 }
 
                 RestoreGlobalState();
@@ -107,6 +120,11 @@ namespace JustSomeStars.Runtime.Rendering2D
             }
 
             m_Settings.SettingsChanged -= OnSettingsChanged;
+            if (m_GlobalQuality != null)
+            {
+                m_GlobalQuality.ProfileApplied -= OnGlobalProfileApplied;
+                m_GlobalQuality = null;
+            }
             m_Settings = null;
             RestoreGlobalState();
         }
@@ -120,13 +138,27 @@ namespace JustSomeStars.Runtime.Rendering2D
                     item.Quality == PresentationQuality.Balanced);
             profile.ValidateOrThrow();
 
-            Application.targetFrameRate = profile.TargetFrameRate;
-            ScalableBufferManager.ResizeBuffers(
-                profile.RenderScale,
-                profile.RenderScale);
+            var targetFrameRate = profile.TargetFrameRate;
+            var renderScale = profile.RenderScale;
             var usesScalableBufferPath =
                 profile.UsesDynamicResolution || profile.RenderScale < 1f;
-            qualityCamera.allowDynamicResolution = usesScalableBufferPath;
+            m_OwnsGlobalState = m_GlobalQuality == null ||
+                !m_GlobalQuality.IsBound;
+            if (m_OwnsGlobalState)
+            {
+                Application.targetFrameRate = targetFrameRate;
+                ScalableBufferManager.ResizeBuffers(renderScale, renderScale);
+                qualityCamera.allowDynamicResolution = usesScalableBufferPath;
+            }
+            else
+            {
+                targetFrameRate = m_GlobalQuality.ActiveTargetFrameRate;
+                renderScale = m_GlobalQuality.ActiveRenderScale;
+                usesScalableBufferPath =
+                    m_GlobalQuality.ActiveUsesAdaptiveResolution ||
+                    renderScale < 0.999f;
+                m_GlobalQuality.ApplyCurrentToCamera(qualityCamera);
+            }
 
             for (var index = 0; index < qualityLights.Length; index++)
             {
@@ -168,15 +200,15 @@ namespace JustSomeStars.Runtime.Rendering2D
             }
 
             ActiveProfileId = profile.StableId;
-            ActiveTargetFrameRate = profile.TargetFrameRate;
-            ActiveRenderScale = profile.RenderScale;
+            ActiveTargetFrameRate = targetFrameRate;
+            ActiveRenderScale = renderScale;
             ActiveLightCount = profile.ActiveLightCount;
             ActiveParticleMultiplier = profile.ParticleMultiplier;
             ActiveVolumeWeight = profile.VolumeWeight;
             ActiveUsesScalableBufferPath = usesScalableBufferPath;
             Debug.Log(
                 $"[JSS Quality] profile={profile.StableId} " +
-                $"renderScale={profile.RenderScale:F3} " +
+                $"renderScale={renderScale:F3} " +
                 $"scalableBufferPath={usesScalableBufferPath} " +
                 $"cameraAllowDynamicResolution={qualityCamera.allowDynamicResolution} " +
                 $"systemSupportsDynamicResolution={SystemInfo.supportsDynamicResolution}");
@@ -190,10 +222,13 @@ namespace JustSomeStars.Runtime.Rendering2D
                 return;
             }
 
-            Application.targetFrameRate = m_OriginalTargetFrameRate;
-            ScalableBufferManager.ResizeBuffers(
-                m_OriginalWidthScale,
-                m_OriginalHeightScale);
+            if (m_OwnsGlobalState)
+            {
+                Application.targetFrameRate = m_OriginalTargetFrameRate;
+                ScalableBufferManager.ResizeBuffers(
+                    m_OriginalWidthScale,
+                    m_OriginalHeightScale);
+            }
             if (qualityCamera != null)
             {
                 qualityCamera.allowDynamicResolution = m_OriginalDynamicResolution;
@@ -239,6 +274,7 @@ namespace JustSomeStars.Runtime.Rendering2D
             ActiveVolumeWeight = 0f;
             ActiveUsesScalableBufferPath = false;
             m_HasSnapshot = false;
+            m_OwnsGlobalState = false;
             m_LightStates.Clear();
             m_LightIntensities.Clear();
             m_EmissionRates.Clear();
@@ -316,6 +352,21 @@ namespace JustSomeStars.Runtime.Rendering2D
             ApplyQuality(settings.PresentationQuality);
         }
 
+        private void OnGlobalProfileApplied(QualityProfileService service)
+        {
+            if (!ReferenceEquals(service, m_GlobalQuality) || qualityCamera == null)
+            {
+                return;
+            }
+
+            service.ApplyCurrentToCamera(qualityCamera);
+            ActiveTargetFrameRate = service.ActiveTargetFrameRate;
+            ActiveRenderScale = service.ActiveRenderScale;
+            ActiveUsesScalableBufferPath =
+                service.ActiveUsesAdaptiveResolution ||
+                service.ActiveRenderScale < 0.999f;
+        }
+
         private static float GetFloatProperty(object target, string propertyName)
         {
             var property = target.GetType().GetProperty(
@@ -372,6 +423,11 @@ namespace JustSomeStars.Runtime.Rendering2D
             {
                 m_Settings.SettingsChanged -= OnSettingsChanged;
                 m_Settings = null;
+            }
+            if (m_GlobalQuality != null)
+            {
+                m_GlobalQuality.ProfileApplied -= OnGlobalProfileApplied;
+                m_GlobalQuality = null;
             }
 
             RestoreGlobalState();

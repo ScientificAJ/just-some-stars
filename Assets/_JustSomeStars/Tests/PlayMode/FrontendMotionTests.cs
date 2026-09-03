@@ -160,7 +160,8 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(
                 panelBody.text,
                 Is.EqualTo(
-                    "Saved locally on this device. Nothing leaves this screen."));
+                    "Device settings are saved locally and are never included " +
+                    "in cloud backup."));
             Assert.That(settingsControls.activeSelf, Is.True);
             Assert.That(panelScroll.gameObject.activeSelf, Is.False);
             Assert.That(panelFrame.sizeDelta.y, Is.EqualTo(424f));
@@ -213,7 +214,10 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(panelBody.text, Does.Not.Contain("<b>"));
             Assert.That(panelBody.text, Does.Not.Contain("<size="));
             Assert.That(panelBody.text, Does.Contain("SIL OPEN FONT LICENSE"));
-            Assert.That(panelBody.text, Does.Contain("Apache License\nVersion 2.0"));
+            Assert.That(panelBody.text, Does.Contain("Apache License 2.0"));
+            Assert.That(
+                panelBody.text,
+                Does.Contain("Version 2.0, January 2004"));
             Assert.That(
                 panelBody.text,
                 Does.EndWith("limitations under the License.\n"));

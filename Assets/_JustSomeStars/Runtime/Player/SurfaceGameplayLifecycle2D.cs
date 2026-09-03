@@ -187,6 +187,7 @@ namespace JustSomeStars.Runtime.Player
 
         private void Update()
         {
+            using var performance = PerformanceMarkers.Player.Auto();
             if (Dependencies != null)
             {
                 compositionCamera.SetTargetVelocity(targetBody.linearVelocity);

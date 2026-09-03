@@ -454,9 +454,8 @@ namespace JustSomeStars.Runtime.Core
             m_Controller = controllers[0];
             try
             {
-                m_SettingsPanel.Configure(m_FrontendDependencies);
-                m_Lifecycle.Configure(m_FrontendDependencies);
                 m_Controller.Configure(m_FrontendDependencies);
+                m_Lifecycle.Configure(m_FrontendDependencies);
             }
             catch
             {

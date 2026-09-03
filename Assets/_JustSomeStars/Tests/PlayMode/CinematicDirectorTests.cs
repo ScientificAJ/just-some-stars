@@ -63,8 +63,10 @@ namespace JustSomeStars.Tests.PlayMode
             var settings = CreateSettings();
             var root = Own(new GameObject("CinematicDirectorTests"));
             var fallback = root.AddComponent<SpriteRenderer>();
-            var speaker = CreateText("Speaker", root.transform);
-            var body = CreateText("Body", root.transform);
+            var captionRoot = Own(new GameObject("CaptionRoot"));
+            captionRoot.transform.SetParent(root.transform, false);
+            var speaker = CreateText("Speaker", captionRoot.transform);
+            var body = CreateText("Body", captionRoot.transform);
             var director = root.AddComponent<CinematicDirector>();
             director.ConfigureForTests(
                 sequence, english, settings, fallback, speaker, body);
@@ -160,8 +162,10 @@ namespace JustSomeStars.Tests.PlayMode
                     "cinematic.test.caption",
                     "The Signal is still moving beyond the ridge."),
             });
-            var speaker = CreateText("Speaker", root.transform);
-            var body = CreateText("Body", root.transform);
+            var captionRoot = Own(new GameObject("CaptionRoot"));
+            captionRoot.transform.SetParent(root.transform, false);
+            var speaker = CreateText("Speaker", captionRoot.transform);
+            var body = CreateText("Body", captionRoot.transform);
             var director = root.AddComponent<CinematicDirector>();
             director.ConfigureForTests(
                 sequence,

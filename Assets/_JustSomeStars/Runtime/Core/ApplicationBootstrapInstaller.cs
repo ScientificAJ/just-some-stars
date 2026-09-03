@@ -228,6 +228,9 @@ namespace JustSomeStars.Runtime.Core
                     new GameServiceRegistration(
                         GameServiceRole.Commerce,
                         commerce),
+                    new GameServiceRegistration(
+                        GameServiceRole.QualityProfile,
+                        new QualityProfileGameService(settings)),
                 };
             if (progression != null)
             {

@@ -30,6 +30,11 @@ namespace JustSomeStars.Tests.PlayMode
             {
                 if (m_Owned[index] != null)
                 {
+                    if (m_Owned[index] is TMP_FontAsset fontAsset)
+                    {
+                        fontAsset.atlasTextures = Array.Empty<Texture2D>();
+                        fontAsset.material = null;
+                    }
                     UnityEngine.Object.Destroy(m_Owned[index]);
                 }
             }

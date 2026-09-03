@@ -86,6 +86,7 @@ namespace JustSomeStars.Runtime.Core
         Attribution = 8,
         Growth = 9,
         Progression = 10,
+        QualityProfile = 11,
     }
 
     public enum ServiceRequirement

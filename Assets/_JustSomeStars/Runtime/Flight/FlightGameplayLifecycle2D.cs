@@ -153,6 +153,7 @@ namespace JustSomeStars.Runtime.Flight
 
         private void Update()
         {
+            using var performance = PerformanceMarkers.Flight.Auto();
             if (Dependencies != null)
             {
                 compositionCamera.SetTargetVelocity(targetBody.linearVelocity);

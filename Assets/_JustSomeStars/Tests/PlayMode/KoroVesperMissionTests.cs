@@ -155,7 +155,10 @@ namespace JustSomeStars.Tests.PlayMode
                              "SecondSignalFragment", "KoroObjective",
                          })
                 {
-                    Assert.That(FindNamed(roots, required), Is.Not.Null, required);
+                    var match = required == "Captain"
+                        ? FindNamedWithComponent<Rigidbody2D>(roots, required)
+                        : FindNamed(roots, required);
+                    Assert.That(match, Is.Not.Null, required);
                 }
 
                 var bands = FindNamed(roots, "Bands");
@@ -822,7 +825,9 @@ namespace JustSomeStars.Tests.PlayMode
                 var lensInstruments = ReadField<InstrumentDefinition[]>(
                     lifecycle,
                     "lensInstruments");
-                var captain = FindNamed(scene.GetRootGameObjects(), "Captain");
+                var captain = FindNamedWithComponent<Rigidbody2D>(
+                    scene.GetRootGameObjects(),
+                    "Captain");
                 var captainBody = captain.GetComponent<Rigidbody2D>();
                 var dialoguePresenter = controller.GetComponent<
                     JustSomeStars.Runtime.Dialogue.MirraDialoguePresenter2D>();
@@ -905,9 +910,12 @@ namespace JustSomeStars.Tests.PlayMode
                 Assert.That(Read<bool>(progression, "IsMissionComplete"), Is.True);
                 Assert.That(ReadField<TMP_Text>(controller, "objectiveLabel").text,
                     Is.EqualTo("CHAPTER COMPLETE · SECOND SIGNAL RECOVERED"));
-                await WaitUntilAsync(
-                    () => dialoguePresenter.PresentationCount >= 3,
-                    1.5f);
+                var dialogueTail = ReadField<Task>(controller, "m_DialogueTail");
+                await WaitUntilAsync(() => dialogueTail.IsCompleted, 20f);
+                Assert.That(dialogueTail.IsCompleted, Is.True,
+                    "All three production observations must finish their readable " +
+                    "HUD presentation within the bounded route timeout.");
+                await dialogueTail;
                 Assert.That(dialoguePresenter.PresentationCount,
                     Is.GreaterThanOrEqualTo(3),
                     "Mira, Bea and Ori observations must reach the live HUD.");
@@ -1133,6 +1141,19 @@ namespace JustSomeStars.Tests.PlayMode
                     root.GetComponentsInChildren<Transform>(true))
                 .Where(item => string.Equals(item.name, name, StringComparison.Ordinal))
                 .Select(item => item.gameObject)
+                .SingleOrDefault();
+        }
+
+        private static GameObject FindNamedWithComponent<T>(
+            IEnumerable<GameObject> roots,
+            string name)
+            where T : Component
+        {
+            return roots.SelectMany(root =>
+                    root.GetComponentsInChildren<Transform>(true))
+                .Where(item => string.Equals(item.name, name, StringComparison.Ordinal))
+                .Select(item => item.gameObject)
+                .Where(item => item.GetComponent<T>() != null)
                 .SingleOrDefault();
         }
 

@@ -41,6 +41,7 @@ namespace JustSomeStars.Tests.PlayMode
             typeof(GameModeController),
             typeof(FirebaseAccountService),
             typeof(UnavailableStoreService),
+            typeof(QualityProfileGameService),
         };
 
         private static readonly GameServiceRole[] s_ApplicationRoles =
@@ -48,6 +49,7 @@ namespace JustSomeStars.Tests.PlayMode
             {
                 GameServiceRole.Cloud,
                 GameServiceRole.Commerce,
+                GameServiceRole.QualityProfile,
             }).ToArray();
 
         private static readonly GameServiceRole[] s_ProductionRoles =
@@ -265,6 +267,7 @@ namespace JustSomeStars.Tests.PlayMode
                     ServiceStartupState.Available,
                     ServiceStartupState.Available,
                     ServiceStartupState.Unavailable,
+                    ServiceStartupState.Available,
                 }));
             Assert.That(transition.Destinations, Is.EqualTo(new[] { "Frontend" }));
             Assert.That(source.LoadCount, Is.EqualTo(1));
@@ -373,22 +376,30 @@ namespace JustSomeStars.Tests.PlayMode
                     {
                         GameServiceRole.Cloud,
                         GameServiceRole.Commerce,
+                        GameServiceRole.QualityProfile,
                         GameServiceRole.Progression,
                     })
                     : Is.EqualTo(new[]
                     {
                         GameServiceRole.Cloud,
                         GameServiceRole.Commerce,
+                        GameServiceRole.QualityProfile,
                     }));
 
             if (expectedTransition == null)
             {
                 Assert.That(composition.SceneTransition,
-                    Is.TypeOf<UnitySceneTransition>());
+                    Is.TypeOf<SceneRoutingTransition>());
+                var fallbackTransition = typeof(SceneRoutingTransition).GetField(
+                    "m_Fallback",
+                    BindingFlags.Instance | BindingFlags.NonPublic)
+                    ?.GetValue(composition.SceneTransition);
+                Assert.That(fallbackTransition, Is.TypeOf<UnitySceneTransition>());
+                var unityTransition = (UnitySceneTransition)fallbackTransition;
                 var surfaceDependencies = typeof(UnitySceneTransition).GetField(
                     "m_SurfaceDependencies",
                     BindingFlags.Instance | BindingFlags.NonPublic)
-                    ?.GetValue(composition.SceneTransition);
+                    ?.GetValue(unityTransition);
                 Assert.That(surfaceDependencies, Is.Not.Null,
                     "The permanent composition must push its real input, settings " +
                     "and mode services into routed 2.5D gameplay scenes.");
@@ -403,12 +414,13 @@ namespace JustSomeStars.Tests.PlayMode
                     Is.SameAs(composition.Services[4].Service));
                 Assert.That(
                     ReadProperty(surfaceDependencies, "ChapterProgression"),
-                    Is.SameAs(composition.Services[7].Service));
+                    Is.SameAs(composition.Services.Single(registration =>
+                        registration.Role == GameServiceRole.Progression).Service));
 
                 var frontendDependencies = typeof(UnitySceneTransition).GetField(
                     "m_FrontendDependencies",
                     BindingFlags.Instance | BindingFlags.NonPublic)
-                    ?.GetValue(composition.SceneTransition);
+                    ?.GetValue(unityTransition);
                 Assert.That(frontendDependencies, Is.Not.Null);
                 Assert.That(
                     ReadProperty(frontendDependencies, "Account"),
@@ -424,7 +436,19 @@ namespace JustSomeStars.Tests.PlayMode
             var stream = (SceneStreamService)composition.Services[3].Service;
             var modes = (GameModeController)composition.Services[4].Service;
             Assert.That(stream.ModeController, Is.SameAs(modes));
-            Assert.That(stream.FallbackTransition, Is.SameAs(composition.SceneTransition));
+            if (expectedTransition == null)
+            {
+                var fallbackTransition = typeof(SceneRoutingTransition).GetField(
+                    "m_Fallback",
+                    BindingFlags.Instance | BindingFlags.NonPublic)
+                    ?.GetValue(composition.SceneTransition);
+                Assert.That(stream.FallbackTransition, Is.SameAs(fallbackTransition));
+            }
+            else
+            {
+                Assert.That(stream.FallbackTransition,
+                    Is.SameAs(composition.SceneTransition));
+            }
             Assert.That(modes.RuntimeHooks, Is.TypeOf<InputRouterGameModeRuntimeHooks>());
             Assert.That(
                 ((InputRouterGameModeRuntimeHooks)modes.RuntimeHooks).Input,

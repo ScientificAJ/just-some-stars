@@ -12,6 +12,14 @@ namespace JustSomeStars.Runtime.Animation2D
         private CaptainSpriteLoadout loadout;
         private string currentMotion = "idle";
         private SpriteFacing currentFacing = SpriteFacing.Right;
+        private bool externallyControlled;
+
+        public bool ExternallyControlled => externallyControlled;
+
+        public void SetExternalControl(bool active)
+        {
+            externallyControlled = active;
+        }
 
         private void Start()
         {
@@ -26,7 +34,8 @@ namespace JustSomeStars.Runtime.Animation2D
 
         private void Update()
         {
-            if (characterRenderer == null || motionSource == null ||
+            if (externallyControlled || characterRenderer == null ||
+                motionSource == null ||
                 loadout == null)
             {
                 return;

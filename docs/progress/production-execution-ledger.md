@@ -480,17 +480,27 @@ wiring, deployed rules/indexes and two-device proof.
 
 ## Immediate next task: Task 30
 
-Run the one source-fresh Tasks 26–30 verification matrix, resolve only genuine
-failures caused by the implemented scope, then certify performance, memory,
-thermal behavior, the Android artifact and exact-device player experience.
+The corrected source-fresh Tasks 26–30 automated matrix is complete: full EditMode is
+`428/428`, isolated PlayMode is `235/235` across `37/37` fixtures, the project
+and media validators pass, and the locally inspected Android Internal APK is
+SHA-256
+`a7dba5e20f96a182f2a47e1a539aa4416f6195a4bdaafc2910734fba97402a0e`
+(619,148,779 bytes).
+
+Resume Task 30 at its remaining device boundary. The authorized Limrun create
+request was rejected before instance creation because the organization has no
+remaining credits and no active subscription, and no physical Android device
+is attached. Performance sampling, content-lock captures, the manual
+accessibility/foldable matrix, JSS-020 and JSS-025 remain unclaimed.
 
 ## User-help queue
 
-No user decision blocks Task 30 local verification. Tasks 26–29's source-fresh
-focused tests are queued in the user-requested final matrix.
-Task 24's Samsung activation remains JSS-024, and the corrected Task 25
-exact-APK completion spot-check remains JSS-025 for the Task 30 device pass;
-neither may be fabricated.
+Task 30 source/package verification needs no further decision and is complete.
+Its device boundary needs either restored Limrun capacity or an authorized
+attached Android target; JSS-026 records the exact pre-creation failure and
+clean postcondition. Task 24's Samsung activation remains JSS-024, and the
+corrected Task 25 exact-APK completion spot-check remains JSS-025; neither may
+be fabricated.
 
 ## Chronological checkpoint log
 
@@ -740,3 +750,20 @@ neither may be fabricated.
   critic returned `PROCEED`. Per the user's efficiency rule, Task 29 focused
   execution, playback, APK/device and performance evidence now join Tasks 26–28
   in the one Task 30 final matrix. Task 30 is next.
+- 2026-09-03: Task 30 completed its corrected performance architecture and one
+  source-final package batch. Device-local quality profiles own target FPS,
+  serialized-camera dynamic-resolution intent and adaptive render scale once;
+  scene quality defers global ownership; the fail-closed validator measures
+  real texture residency, active multi-sprite atlases, authored parallax-band
+  overlap, actors, lights, particles and an explicit 896 MiB ceiling; and real
+  player, crew, flight, Lens, UI and streaming hot paths publish markers. The
+  final matrix passes media/project/QA/sprite validation, EditMode `428/428`
+  and isolated PlayMode `235/235` across `37/37` fixtures. The one final APK is
+  619,148,779 bytes, SHA-256
+  `a7dba5e20f96a182f2a47e1a539aa4416f6195a4bdaafc2910734fba97402a0e`,
+  and passes local package/signature/manifest/license/forbidden-payload checks.
+  Task 30 is not marked complete: Limrun rejected the authorized instance
+  before creation due zero credits/no active subscription, no physical Android
+  target is attached, and post-checks show no leaked instance/tunnel/lease or
+  Argent server. JSS-020, JSS-025 and JSS-026 carry the remaining device,
+  memory-attribution and thermal evidence.

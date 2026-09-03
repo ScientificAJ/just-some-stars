@@ -191,7 +191,9 @@ namespace JustSomeStars.Tests.PlayMode
                         "the Captain's required hot/cold traversal route.");
                 }
 
-                Assert.That(FindNamed(roots, "Captain"), Is.Not.Null);
+                Assert.That(
+                    FindNamedWithComponent<Rigidbody2D>(roots, "Captain"),
+                    Is.Not.Null);
                 Assert.That(FindNamed(roots, "Mira"), Is.Not.Null);
                 Assert.That(FindNamed(roots, "Juno"), Is.Not.Null);
                 Assert.That(FindNamed(roots, "Ori"), Is.Not.Null);
@@ -219,9 +221,15 @@ namespace JustSomeStars.Tests.PlayMode
                 Assert.That(CountComponentsByTypeName(scene,
                     "UnityEngine.ParticleSystem"),
                     Is.LessThanOrEqualTo(3));
-                Assert.That(CountComponentsByTypeName(scene,
-                    "UnityEngine.Rendering.Volume"),
-                    Is.EqualTo(1));
+                var volumes = FindByTypeName(
+                    scene,
+                    "UnityEngine.Rendering.Volume");
+                Assert.That(volumes, Has.Length.EqualTo(2),
+                    "Mirra owns one gameplay grade and one dormant Photo Mode " +
+                    "motion-blur volume.");
+                Assert.That(volumes.Cast<Behaviour>().Count(item => item.enabled),
+                    Is.EqualTo(1),
+                    "Only the gameplay color grade may be active outside Photo Mode.");
 
                 Canvas.ForceUpdateCanvases();
                 var objective = FindNamed(roots, "MirraObjective")
@@ -297,7 +305,7 @@ namespace JustSomeStars.Tests.PlayMode
             var climate = FindByTypeName(
                 SceneManager.GetActiveScene(),
                 ClimateTypeName).Single();
-            var body = FindNamed(
+            var body = FindNamedWithComponent<Rigidbody2D>(
                 SceneManager.GetActiveScene().GetRootGameObjects(),
                 "Captain").GetComponent<Rigidbody2D>();
             var objectiveLabel = ReadField<TMP_Text>(controller, "objectiveLabel");
@@ -331,9 +339,7 @@ namespace JustSomeStars.Tests.PlayMode
                 AssistLevel.Ace => 0,
                 _ => throw new ArgumentOutOfRangeException(nameof(assist)),
             };
-            await WaitUntilAsync(
-                () => Read<int>(controller, "HintPresentationCount") == expectedHints,
-                expectedHints == 0 ? 0.05f : 1.5f);
+            await WaitForDialogueQuiescenceAsync(harness.Progression, 20f);
             Assert.That(Read<int>(controller, "HintPresentationCount"),
                 Is.EqualTo(expectedHints));
 
@@ -756,7 +762,10 @@ namespace JustSomeStars.Tests.PlayMode
 
         private static Type RequireType(string fullName)
         {
-            var type = typeof(SurfaceMotor2D).Assembly.GetType(fullName);
+            var type = typeof(SurfaceMotor2D).Assembly.GetType(fullName) ??
+                AppDomain.CurrentDomain.GetAssemblies()
+                    .Select(assembly => assembly.GetType(fullName))
+                    .FirstOrDefault(candidate => candidate != null);
             Assert.That(type, Is.Not.Null, $"Missing production type '{fullName}'.");
             return type;
         }
@@ -797,6 +806,19 @@ namespace JustSomeStars.Tests.PlayMode
                     root.GetComponentsInChildren<Transform>(true))
                 .Where(item => string.Equals(item.name, name, StringComparison.Ordinal))
                 .Select(item => item.gameObject)
+                .SingleOrDefault();
+        }
+
+        private static GameObject FindNamedWithComponent<T>(
+            IEnumerable<GameObject> roots,
+            string name)
+            where T : Component
+        {
+            return roots.SelectMany(root =>
+                    root.GetComponentsInChildren<Transform>(true))
+                .Where(item => string.Equals(item.name, name, StringComparison.Ordinal))
+                .Select(item => item.gameObject)
+                .Where(item => item.GetComponent<T>() != null)
                 .SingleOrDefault();
         }
 
@@ -984,6 +1006,77 @@ namespace JustSomeStars.Tests.PlayMode
             }
         }
 
+        private static async Task WaitForDialogueQuiescenceAsync(
+            object progression,
+            float timeoutSeconds)
+        {
+            var director = ReadField<object>(progression, "m_Dialogue");
+            var deadline = Time.realtimeSinceStartupAsDouble + timeoutSeconds;
+            while (Time.realtimeSinceStartupAsDouble < deadline)
+            {
+                var completion = ReadField<Task>(director, "m_CurrentCompletion");
+                var pending = (System.Collections.IEnumerable)Read<object>(
+                    director,
+                    "Pending");
+                if (completion.IsCompleted && !pending.Cast<object>().Any())
+                {
+                    await Task.Yield();
+                    var stableCompletion = ReadField<Task>(
+                        director,
+                        "m_CurrentCompletion");
+                    var stablePending = (System.Collections.IEnumerable)Read<object>(
+                        director,
+                        "Pending");
+                    if (ReferenceEquals(completion, stableCompletion) &&
+                        stableCompletion.IsCompleted &&
+                        !stablePending.Cast<object>().Any())
+                    {
+                        await stableCompletion;
+                        return;
+                    }
+                }
+
+                await Task.Yield();
+            }
+
+            var active = ReadField<Task>(director, "m_CurrentCompletion");
+            var queued = (System.Collections.IEnumerable)Read<object>(
+                director,
+                "Pending");
+            var router = ReadField<object>(progression, "m_DialogueRouter");
+            var presenter = ReadField<object>(router, "m_Presenter");
+            var dialogueId = presenter == null
+                ? "<unbound>"
+                : Read<string>(presenter, "CurrentDialogueId");
+            var presentationCount = presenter == null
+                ? 0
+                : Read<int>(presenter, "PresentationCount");
+            var actor = presenter == null
+                ? null
+                : ReadField<Component>(presenter, "m_CurrentActor");
+            var animator = actor == null
+                ? null
+                : ReadField<Component>(actor, "spriteAnimator");
+            var clip = animator == null
+                ? null
+                : Read<object>(animator, "CurrentClip");
+            var clipId = clip == null
+                ? "<none>"
+                : Read<string>(clip, "StableId");
+            var frame = animator == null
+                ? -1
+                : Read<int>(animator, "CurrentFrameIndex");
+            var playing = animator != null && Read<bool>(animator, "IsPlaying");
+            throw new TimeoutException(
+                $"Mirra dialogue did not become quiescent within " +
+                $"{timeoutSeconds:0.#} seconds (active={active.Status}, " +
+                $"pending={queued.Cast<object>().Count()}, " +
+                $"dialogue='{dialogueId}', presentations={presentationCount}, " +
+                $"actorActive={actor != null && actor.gameObject.activeInHierarchy}, " +
+                $"animatorEnabled={animator is Behaviour behaviour && behaviour.enabled}, " +
+                $"clip='{clipId}', frame={frame}, playing={playing}).");
+        }
+
         private sealed class RetryableTransition : ISceneTransition
         {
             public int AttemptCount { get; private set; }
@@ -1138,27 +1231,25 @@ namespace JustSomeStars.Tests.PlayMode
                 await ((IGameService)progression).InitializeAsync(
                     CancellationToken.None);
 
-                var dependenciesType = typeof(SurfaceGameplayDependencies);
-                var surfaceDependencies = Activator.CreateInstance(
-                    dependenciesType,
+                var surfaceDependencies = new SurfaceGameplayDependencies(
                     settings,
                     input,
                     modes,
                     bus,
                     saves,
-                    progression);
+                    (IChapterProgression)progression);
                 var transition = new UnitySceneTransition(
                     new FrontendDependencies(settings, input),
-                    (SurfaceGameplayDependencies)surfaceDependencies);
+                    surfaceDependencies);
                 Invoke(surfaceDependencies, "ConfigureSceneTransition", transition);
-                var flightDependencies = Activator.CreateInstance(
-                    typeof(FlightGameplayDependencies),
+                var flightDependencies = new FlightGameplayDependencies(
                     settings,
                     input,
                     modes,
                     bus,
                     transition,
-                    progression);
+                    (IChapterProgression)progression,
+                    saves: saves);
                 Invoke(transition, "ConfigureFlightDependencies", flightDependencies);
 
                 await LoadSceneAsync(FlightScene);

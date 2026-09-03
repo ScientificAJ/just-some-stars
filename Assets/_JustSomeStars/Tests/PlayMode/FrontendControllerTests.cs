@@ -29,7 +29,12 @@ namespace JustSomeStars.Tests.PlayMode
             "Every Android dependency line must remain visible.\n";
         private const string CreditsPrefix =
             "Just Some Stars is created by ScientificAJ.\n\n" +
-            "Liberation Sans and Noto Sans\n\n";
+            "Liberation Sans · Copyright 2010 Google Corporation and " +
+            "2012 Red Hat, Inc.\n" +
+            "Noto Sans · Copyright 2010, 2012–2020 Google Inc. and " +
+            "2015–2020 Google LLC.\n" +
+            "Both fonts are distributed under the SIL Open Font License " +
+            "1.1. The complete license follows.\n\n";
         private const string ApacheCreditsPrefix =
             "\n\nAndroid open-source components\n\n" +
             "This Android build includes AndroidX, Kotlin, Kotlin coroutines, " +

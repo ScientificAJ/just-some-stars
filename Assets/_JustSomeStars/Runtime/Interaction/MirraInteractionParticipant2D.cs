@@ -109,6 +109,10 @@ namespace JustSomeStars.Runtime.Interaction
                 atlasAnimator.FrameEventEmitted += OnFrameEvent;
             using var cancellation = cancellationToken.Register(() =>
                 released.TrySetCanceled(cancellationToken));
+            var motionPresenter = layeredRenderer != null
+                ? layeredRenderer.GetComponent<MirraCaptainMotionPresenter>()
+                : null;
+            motionPresenter?.SetExternalControl(true);
             try
             {
                 if (layeredRenderer != null)
@@ -122,7 +126,14 @@ namespace JustSomeStars.Runtime.Interaction
                 if (layeredRenderer != null)
                 {
                     layeredRenderer.FrameEventEmitted -= OnFrameEvent;
-                    layeredRenderer.Play("idle");
+                    try
+                    {
+                        layeredRenderer.Play("idle");
+                    }
+                    finally
+                    {
+                        motionPresenter?.SetExternalControl(false);
+                    }
                 }
                 else
                 {

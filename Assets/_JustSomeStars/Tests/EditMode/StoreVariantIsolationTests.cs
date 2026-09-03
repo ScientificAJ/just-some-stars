@@ -95,6 +95,21 @@ namespace JustSomeStars.Tests.EditMode
             Assert.That(
                 Directory.Exists(Path.Combine(galaxyRoot, "jssGalaxyBilling")),
                 Is.True);
+            var stagedBridge = Path.Combine(
+                galaxyRoot,
+                "jssGalaxyBilling",
+                "src",
+                "main",
+                "java",
+                "com",
+                "scientificaj",
+                "justsomestars",
+                "galaxy",
+                "JssSamsungIapBridge.java");
+            Assert.That(File.Exists(stagedBridge), Is.True,
+                "The Galaxy-only generated module must materialize the Java " +
+                "template with its compiler-visible .java extension.");
+            Assert.That(File.Exists(stagedBridge + ".txt"), Is.False);
 
             var google = CreateGeneratedProject("google");
             patch.Invoke(null, new object[] { google, false });
@@ -138,11 +153,18 @@ namespace JustSomeStars.Tests.EditMode
                 "scientificaj",
                 "justsomestars",
                 "galaxy",
-                "JssSamsungIapBridge.java");
+                "JssSamsungIapBridge.java.txt");
+            var importedBridgePath = bridgePath.Substring(
+                0,
+                bridgePath.Length - ".txt".Length);
 
             Assert.That(File.Exists(gradlePath), Is.True);
             Assert.That(File.Exists(manifestPath), Is.True);
             Assert.That(File.Exists(bridgePath), Is.True);
+            Assert.That(File.Exists(importedBridgePath), Is.False,
+                "Galaxy Java must remain a template outside generated Galaxy " +
+                "projects; a .java file below Plugins/Android is compiled into " +
+                "Google/internal builds before store isolation can remove it.");
             var gradle = File.ReadAllText(gradlePath);
             StringAssert.Contains("com.samsung.developer:iap:6.5.2", gradle);
             StringAssert.DoesNotContain("com.revenuecat", gradle);
@@ -175,7 +197,7 @@ namespace JustSomeStars.Tests.EditMode
             StringAssert.Contains("obfuscatedProfileId", bridge);
             StringAssert.Contains("getStatusCode", File.ReadAllText(Path.Combine(
                 Path.GetDirectoryName(bridgePath),
-                "GalaxyJson.java")));
+                "GalaxyJson.java.txt")));
             StringAssert.DoesNotContain("consumePurchasedItems", bridge);
             StringAssert.DoesNotContain("Purchases.configure", bridge);
         }

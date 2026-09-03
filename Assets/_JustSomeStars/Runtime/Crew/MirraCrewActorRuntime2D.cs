@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using JustSomeStars.Runtime.Animation2D;
 using JustSomeStars.Runtime.Core;
 using UnityEngine;
@@ -142,6 +143,11 @@ namespace JustSomeStars.Runtime.Crew
 
         private void Update()
         {
+            if (HasExternalClipOwnership())
+            {
+                m_HasMovementTarget = false;
+                return;
+            }
             if (!m_HasMovementTarget)
             {
                 return;
@@ -169,6 +175,10 @@ namespace JustSomeStars.Runtime.Crew
 
         private void Play(string clipId)
         {
+            if (HasExternalClipOwnership())
+            {
+                return;
+            }
             if (string.Equals(m_CurrentClipId, clipId, StringComparison.Ordinal))
             {
                 return;
@@ -176,6 +186,15 @@ namespace JustSomeStars.Runtime.Crew
 
             atlasAnimator.Play(spriteSet.FindClip(clipId));
             m_CurrentClipId = clipId;
+        }
+
+        private bool HasExternalClipOwnership()
+        {
+            var current = atlasAnimator != null
+                ? atlasAnimator.CurrentClip
+                : null;
+            return current != null && spriteSet != null &&
+                !spriteSet.Clips.Contains(current);
         }
 
         private bool IsVisible(Vector2 position)

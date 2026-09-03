@@ -98,6 +98,13 @@ namespace JustSomeStars.Runtime.Crew
 
         public void SetCinematicControl(bool enabled)
         {
+            if (enabled && actors != null)
+            {
+                foreach (var actor in actors)
+                {
+                    actor?.EnterCinematic();
+                }
+            }
             m_Director?.SetCinematicControl(enabled);
         }
 
@@ -151,6 +158,7 @@ namespace JustSomeStars.Runtime.Crew
 
         private void Update()
         {
+            using var performance = PerformanceMarkers.Crew.Auto();
             if (m_Director == null)
             {
                 return;

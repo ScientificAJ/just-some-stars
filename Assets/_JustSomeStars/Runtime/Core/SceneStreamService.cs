@@ -650,7 +650,10 @@ namespace JustSomeStars.Runtime.Core
             try
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                handle = m_Backend.BeginLoad(entry.Address, destinationId);
+                using (PerformanceMarkers.Streaming.Auto())
+                {
+                    handle = m_Backend.BeginLoad(entry.Address, destinationId);
+                }
                 if (handle == null)
                 {
                     throw new InvalidOperationException(
@@ -673,7 +676,12 @@ namespace JustSomeStars.Runtime.Core
 
                 cancellationToken.ThrowIfCancellationRequested();
                 progress.Publish(SceneStreamStage.Activating, 0.8f);
-                await handle.ActivateAsync();
+                Task activation;
+                using (PerformanceMarkers.Streaming.Auto())
+                {
+                    activation = handle.ActivateAsync();
+                }
+                await activation;
                 cancellationToken.ThrowIfCancellationRequested();
                 (m_FallbackTransition as ISceneBindingLifecycle)?
                     .BindActiveScene();

@@ -91,7 +91,11 @@ namespace JustSomeStars.Tests.EditMode
             var atlasPaths = Directory.GetFiles(
                 "Assets/_JustSomeStars/Art/2D/Characters/Captain/Atlases",
                 "*.png",
-                SearchOption.AllDirectories);
+                SearchOption.AllDirectories)
+                .Where(path => !path.Replace('\\', '/').Contains(
+                    "/Atlases/neutral/",
+                    StringComparison.Ordinal))
+                .ToArray();
             Assert.That(atlasPaths, Has.Length.EqualTo(30));
             foreach (var path in atlasPaths)
             {
@@ -115,18 +119,11 @@ namespace JustSomeStars.Tests.EditMode
                 "Assets/_JustSomeStars/Art/2D/Characters/Captain/Atlases",
                 "*.spriteatlas",
                 SearchOption.AllDirectories);
-            Assert.That(spriteAtlasPaths, Has.Length.EqualTo(30));
-            foreach (var path in spriteAtlasPaths)
-            {
-                var assetPath = path.Replace('\\', '/');
-                var spriteAtlas = AssetDatabase.LoadAssetAtPath<SpriteAtlas>(
-                    assetPath);
-                Assert.That(spriteAtlas, Is.Not.Null, assetPath);
-                Assert.That(spriteAtlas.GetPackables(), Has.Length.EqualTo(1));
-                Assert.That(
-                    AssetDatabase.GetAssetPath(spriteAtlas.GetPackables()[0]),
-                    Is.EqualTo(Path.ChangeExtension(assetPath, ".png")));
-            }
+            Assert.That(
+                spriteAtlasPaths,
+                Is.Empty,
+                "Published character sheets are deterministic atlases already; " +
+                "runtime repacking would duplicate their texture residency.");
 
             foreach (var entry in spriteSet.PaletteMasks)
             {

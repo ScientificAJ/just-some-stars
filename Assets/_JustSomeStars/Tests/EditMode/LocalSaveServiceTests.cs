@@ -35,7 +35,7 @@ namespace JustSomeStars.Tests.EditMode
         }
 
         [Test]
-        public void SchemaV3_RoundTripsEveryOwnedDomainWithoutDeviceSettings()
+        public void SchemaV5_RoundTripsEveryOwnedDomainWithoutDeviceSettings()
         {
             var serializer = new JsonSaveSerializer(SaveMigrator.CreateCurrent());
             var original = CreateSave(checkpointOrdinal: 4, revision: 7, updatedUtcTicks: 800);
@@ -77,7 +77,7 @@ namespace JustSomeStars.Tests.EditMode
 
             Assert.That(parsed, Is.True);
             Assert.That(reopened, Is.EqualTo(original));
-            Assert.That(document, Does.Contain("\"schemaVersion\": 3"));
+            Assert.That(document, Does.Contain("\"schemaVersion\": 5"));
             Assert.That(document, Does.Contain("\"story\""));
             Assert.That(document, Does.Contain("\"mission\""));
             Assert.That(document, Does.Contain("\"captain\""));
@@ -86,6 +86,7 @@ namespace JustSomeStars.Tests.EditMode
             Assert.That(document, Does.Contain("\"atlasEntryIds\""));
             Assert.That(document, Does.Contain("\"photographs\""));
             Assert.That(document, Does.Contain("\"birthday\""));
+            Assert.That(document, Does.Contain("\"chapterOne\""));
             Assert.That(document, Does.Contain("\"metadata\""));
             Assert.That(document, Does.Not.Contain("pilotingAssist"));
             Assert.That(document, Does.Not.Contain("presentationQuality"));

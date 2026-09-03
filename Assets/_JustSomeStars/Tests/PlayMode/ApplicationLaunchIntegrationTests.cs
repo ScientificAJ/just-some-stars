@@ -22,7 +22,12 @@ namespace JustSomeStars.Tests.PlayMode
     {
         private const string CreditsPrefix =
             "Just Some Stars is created by ScientificAJ.\n\n" +
-            "Liberation Sans and Noto Sans\n\n";
+            "Liberation Sans · Copyright 2010 Google Corporation and " +
+            "2012 Red Hat, Inc.\n" +
+            "Noto Sans · Copyright 2010, 2012–2020 Google Inc. and " +
+            "2015–2020 Google LLC.\n" +
+            "Both fonts are distributed under the SIL Open Font License " +
+            "1.1. The complete license follows.\n\n";
         private const string ApacheCreditsPrefix =
             "\n\nAndroid open-source components\n\n" +
             "This Android build includes AndroidX, Kotlin, Kotlin coroutines, " +
@@ -70,6 +75,14 @@ namespace JustSomeStars.Tests.PlayMode
             ApplicationBootstrapInstaller.Install();
             Assert.That(GameBootstrap.CompositionFactory, Is.Not.Null);
 
+            LogAssert.Expect(
+                LogType.Log,
+                "There are no audio listeners in the scene. Please ensure " +
+                "there is always one audio listener in the scene");
+            LogAssert.Expect(
+                LogType.Log,
+                "[JSS Performance] quality=Balanced targetFps=30 " +
+                "renderScale=1.00 adaptive=False");
             var bootLoad = SceneManager.LoadSceneAsync("Boot", LoadSceneMode.Single);
             Assert.That(bootLoad, Is.Not.Null);
             yield return bootLoad;
@@ -81,14 +94,18 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(bootstrap.gameObject.scene.name, Is.EqualTo("DontDestroyOnLoad"));
             Assert.That(SceneManager.GetActiveScene().name, Is.EqualTo("Frontend"));
             Assert.That(bootstrap.LastStartupReport, Is.Not.Null);
-            Assert.That(bootstrap.LastStartupReport.IsSuccessful, Is.True);
+            Assert.That(
+                bootstrap.LastStartupReport.IsSuccessful,
+                Is.True,
+                bootstrap.LastStartupReport.PrimaryFailure?.ToString() ??
+                "Startup report did not record a primary failure.");
             Assert.That(bootstrap.LastStartupReport.RoutedToFrontend, Is.True);
             Assert.That(
                 bootstrap.LastStartupReport.RequestedDestination,
                 Is.EqualTo("Frontend"));
             Assert.That(
                 bootstrap.LastStartupReport.Services.Count,
-                Is.EqualTo(7));
+                Is.EqualTo(9));
 
             var inputModule = UnityEngine.Object.FindFirstObjectByType<
                 InputSystemUIInputModule>(FindObjectsInactive.Include);

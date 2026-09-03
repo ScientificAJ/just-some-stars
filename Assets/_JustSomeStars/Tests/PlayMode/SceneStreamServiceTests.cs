@@ -38,6 +38,10 @@ namespace JustSomeStars.Tests.PlayMode
         [Test]
         public async Task LoadAndUnload_ActivatesAdditivelyAndRestoresPriorScene()
         {
+            var markerType = Type.GetType(
+                "JustSomeStars.Runtime.Core.PerformanceMarkers, JustSomeStars.Runtime");
+            Assert.That(markerType, Is.Not.Null);
+            markerType.GetMethod("ResetForTests")?.Invoke(null, null);
             var baselineCount = SceneManager.sceneCount;
             var baselineActive = SceneManager.GetActiveScene();
             var fixture = await CreateFixture(GameMode.Flight, autoComplete: true);
@@ -70,6 +74,10 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(SceneManager.GetActiveScene(), Is.EqualTo(baselineActive));
             Assert.That(fixture.Backend.LastHandle.UnloadCount, Is.EqualTo(1));
             Assert.That(fixture.Backend.LastHandle.ReleaseCount, Is.EqualTo(1));
+            var streamingSamples = markerType.GetProperty("StreamingSamples");
+            Assert.That(streamingSamples, Is.Not.Null);
+            Assert.That(Convert.ToInt64(streamingSamples.GetValue(null)),
+                Is.GreaterThan(0L));
         }
 
         [Test]

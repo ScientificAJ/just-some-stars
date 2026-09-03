@@ -293,11 +293,11 @@ namespace JustSomeStars.Tests.EditMode
         {
             var serializer = new JsonSaveSerializer(SaveMigrator.CreateCurrent());
             var legacy = JsonUtility.ToJson(CreateSaveWithBirthday(), prettyPrint: true)
-                .Replace("\"schemaVersion\": 3", "\"schemaVersion\": 2")
+                .Replace("\"schemaVersion\": 5", "\"schemaVersion\": 2")
                 .Replace("    \"correctionCount\": 0,\n", string.Empty);
 
             Assert.That(serializer.TryDeserialize(legacy, out var migrated), Is.True);
-            Assert.That(migrated.SchemaVersion, Is.EqualTo(3));
+            Assert.That(migrated.SchemaVersion, Is.EqualTo(5));
             Assert.That(migrated.Birthday.CorrectionCount, Is.Zero);
         }
 

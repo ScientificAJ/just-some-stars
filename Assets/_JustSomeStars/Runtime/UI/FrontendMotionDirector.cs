@@ -1,4 +1,5 @@
 using System.Collections;
+using JustSomeStars.Runtime.Core;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -108,6 +109,7 @@ namespace JustSomeStars.Runtime.UI
 
         private void Update()
         {
+            using var performance = PerformanceMarkers.UI.Auto();
             if (!IsSettled || m_MotionScale <= 0f)
             {
                 return;

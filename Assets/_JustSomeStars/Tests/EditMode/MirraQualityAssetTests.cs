@@ -203,6 +203,7 @@ namespace JustSomeStars.Tests.EditMode
                 var all = roots.SelectMany(root =>
                         root.GetComponentsInChildren<Transform>(true))
                     .ToArray();
+                var task28Ui = all.Single(item => item.name == "Task28PlayerUi");
                 foreach (var name in new[]
                 {
                     "Captain",
@@ -212,7 +213,11 @@ namespace JustSomeStars.Tests.EditMode
                     "OwnedPlayerShipPresentation",
                 })
                 {
-                    Assert.That(all.Count(item => item.name == name), Is.EqualTo(1), name);
+                    Assert.That(
+                        all.Count(item => item.name == name &&
+                            !item.IsChildOf(task28Ui)),
+                        Is.EqualTo(1),
+                        name);
                 }
 
                 var ownedShip = all.Single(item =>
@@ -248,8 +253,14 @@ namespace JustSomeStars.Tests.EditMode
                 Assert.That(roots.Sum(root =>
                         root.GetComponentsInChildren<ParticleSystem>(true).Length),
                     Is.InRange(1, 3));
-                Assert.That(roots.Sum(root => CountByType(root,
-                        "UnityEngine.Rendering.Volume")),
+                var volumeType = FindType("UnityEngine.Rendering.Volume");
+                var volumes = roots.SelectMany(root =>
+                        root.GetComponentsInChildren(volumeType, true))
+                    .Cast<Behaviour>()
+                    .ToArray();
+                Assert.That(volumes, Has.Length.EqualTo(2));
+                Assert.That(
+                    volumes.Count(volume => volume.isActiveAndEnabled),
                     Is.EqualTo(1));
 
                 var bandRoot = all.Single(item => item.name == "Bands");

@@ -134,9 +134,9 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(director.SetMusicState("music.test.2"), Is.True);
 
             Assert.That(director.IsCrossfading, Is.True);
-            var newFoundation = m_Root.GetComponents<AudioSource>()
+            var newFoundation = m_Root.GetComponentsInChildren<AudioSource>(true)
                 .Single(source => source.clip == m_Foundation2);
-            var newSignal = m_Root.GetComponents<AudioSource>()
+            var newSignal = m_Root.GetComponentsInChildren<AudioSource>(true)
                 .Single(source => source.clip == m_Signal2);
             Assert.That(newFoundation.timeSamples, Is.EqualTo(newSignal.timeSamples));
             Assert.That(oldFoundation.clip, Is.SameAs(m_Foundation));

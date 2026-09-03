@@ -160,7 +160,7 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(
                 view.PanelBody,
                 Is.EqualTo(
-                    "Device settings are saved locally and are not included " +
+                    "Device settings are saved locally and are never included " +
                     "in cloud backup."));
             Assert.That(settingsPanel.ShowCount, Is.EqualTo(1));
 
@@ -434,9 +434,9 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(GetSubscriberCount(input, "BackRequested"), Is.EqualTo(1));
             Assert.That(
                 GetSubscriberCount(settings, "SettingsChanged"),
-                Is.EqualTo(2),
-                "Only InputRouter and the current Frontend settings panel may " +
-                "observe settings.");
+                Is.EqualTo(3),
+                "InputRouter, AccessibilityApplier, and the current Frontend " +
+                "settings panel must observe settings exactly once.");
 
             var repeatedRoute = transition.RouteAsync(
                 "Frontend",
@@ -455,7 +455,7 @@ namespace JustSomeStars.Tests.PlayMode
             Assert.That(currentLifecycle.Dependencies, Is.SameAs(dependencies));
             Assert.That(currentSettingsPanel.Dependencies, Is.SameAs(dependencies));
             Assert.That(GetSubscriberCount(input, "BackRequested"), Is.EqualTo(1));
-            Assert.That(GetSubscriberCount(settings, "SettingsChanged"), Is.EqualTo(2));
+            Assert.That(GetSubscriberCount(settings, "SettingsChanged"), Is.EqualTo(3));
 
             var shutdown = coordinator.ShutdownAsync().AsTask();
             yield return WaitForTask(shutdown, "composition shutdown");

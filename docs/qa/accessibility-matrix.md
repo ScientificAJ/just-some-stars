@@ -2,11 +2,13 @@
 
 Date frozen: 2026-09-02
 
-This document records the Task 28 implementation checkpoint. The source,
-prefab, scenes and automated contracts are authored; Unity test execution and
-the manual device matrix are intentionally queued for the single Tasks 26–30
-verification batch. An unchecked runtime row is pending evidence, not a claim
-of failure or success.
+This document records the Task 28 implementation and final automated package
+checkpoint. The source, prefab, scenes and automated contracts are authored and
+the Tasks 26–30 source-final Unity batch is green. The manual device matrix is
+still pending because the authorized Limrun request was rejected before
+instance creation with zero remaining credits/no active subscription and no
+physical Android device is attached. An unchecked runtime row is pending
+evidence, not a claim of failure or success.
 
 ## Authored product contract
 
@@ -42,14 +44,14 @@ of failure or success.
 
 | Contract | Authored coverage | Execution |
 |---|---|---|
-| Frontend launch states | `FrontendControllerTests`, `ApplicationLaunchIntegrationTests` | Pending Tasks 26–30 batch |
-| Composition injection/release | `FrontendDependencyInjectionTests` | Pending Tasks 26–30 batch |
-| Localized assets and immutable licenses | `FrontendSceneAssetTests`, `AccessibilityUiTests` | Pending Tasks 26–30 batch |
-| 48dp controls and containment | 1920×1080 @ 420dpi and 2208×1768 @ 420dpi synthetic profiles | Pending Tasks 26–30 batch |
-| Maximum text and combined options | 1.35 text scale, readable font, captions, Protanopia symbols, reduced effects and left-handed controls | Pending Tasks 26–30 batch |
-| Photo Mode state restoration | Mode overlay, camera position/rotation/zoom, HUD, exposure and actor pose restoration | Pending Tasks 26–30 batch |
+| Frontend launch states | `FrontendControllerTests`, `ApplicationLaunchIntegrationTests` | Passed in Task 30 isolated PlayMode (`12/12`, `1/1`) |
+| Composition injection/release | `FrontendDependencyInjectionTests` | Passed in Task 30 isolated PlayMode (`6/6`) |
+| Localized assets and immutable licenses | `FrontendSceneAssetTests`, `AccessibilityUiTests` | Passed in Task 30 full EditMode/isolated PlayMode (`12/12`, `3/3`) |
+| 48dp controls and containment | 1920×1080 @ 420dpi and 2208×1768 @ 420dpi synthetic profiles | Passed in Task 30 full EditMode |
+| Maximum text and combined options | 1.35 text scale, readable font, captions, Protanopia symbols, reduced effects and left-handed controls | Passed in Task 30 isolated PlayMode (`3/3`) |
+| Photo Mode state restoration | Mode overlay, camera position/rotation/zoom, HUD, exposure and actor pose restoration | Passed in Task 30 package matrix |
 
-## Manual device matrix queued for Task 30
+## Manual device matrix pending device capacity
 
 For each row, verify both landscape directions, safe-area containment, scroll
 reachability, no overlap/clipping and at least 48dp touch targets.
@@ -90,8 +92,17 @@ reachability, no overlap/clipping and at least 48dp touch targets.
   available) and the canonical data volume has `93G` available. No storage
   cleanup or unrelated product work was performed during this checkpoint.
 
-## Final evidence rule
+## Final package evidence
 
-Do not mark the manual matrix or Task 28 runtime acceptance complete until the
-post-Task-30 batch has produced fresh focused XML, shared regression, exact-APK
-artifact checks and one cleaned-up Limrun/Argent device session.
+- Full EditMode: `428/428`, zero failed/skipped/inconclusive at
+  `Builds/TestResults/task30-final-corrected-full-editmode.xml`.
+- Isolated PlayMode: `235/235` across `37/37` fixtures at
+  `Builds/TestResults/task30-final-corrected-playmode/summary.json`.
+- Exact locally inspected APK SHA-256:
+  `a7dba5e20f96a182f2a47e1a539aa4416f6195a4bdaafc2910734fba97402a0e`.
+- Failed device-capacity preflight:
+  `Builds/DeviceEvidence/task30-final/limrun-capacity-blocker.txt`.
+
+Do not mark the manual matrix or Task 28 exact-device acceptance complete until
+the same final source is rebuilt if necessary and one cleaned-up device session
+executes every unchecked row.

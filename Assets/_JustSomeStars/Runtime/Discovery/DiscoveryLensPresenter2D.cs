@@ -1,4 +1,5 @@
 using System;
+using JustSomeStars.Runtime.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,6 +45,7 @@ namespace JustSomeStars.Runtime.Discovery
 
         private void LateUpdate()
         {
+            using var performance = PerformanceMarkers.Lens.Auto();
             Render();
         }
 

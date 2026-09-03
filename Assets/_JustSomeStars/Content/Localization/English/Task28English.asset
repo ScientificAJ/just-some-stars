@@ -71,6 +71,16 @@ MonoBehaviour:
     value: Home is the place we build between stars.
   - key: cinematic.dinner.mira
     value: We found the Signal. We also found our way home.
+  - key: dialogue.aster.mira.route
+    value: The opening moves with us. Follow my route.
+  - key: dialogue.aster.juno.motion
+    value: The fragments are drifting with the veil.
+  - key: dialogue.aster.kai.trust
+    value: I trust your line. Keep us moving.
+  - key: dialogue.aster.bea.fragment
+    value: There. The last piece is still shining.
+  - key: dialogue.aster.ori.pulse
+    value: Signal pulse aligned. The map remembers.
   - key: actor.captain
     value: Captain
   - key: actor.mira
@@ -293,9 +303,9 @@ MonoBehaviour:
   - key: menu.accessibility.applied
     value: Accessibility updated.
   - key: menu.accessibility.previous
-    value: Previous setting
+    value: Previous
   - key: menu.accessibility.next
-    value: Next setting
+    value: Next
   - key: menu.accessibility.decrease
     value: Decrease
   - key: menu.accessibility.increase
@@ -356,7 +366,7 @@ MonoBehaviour:
   - key: menu.customization.body
     value: Body family
   - key: menu.customization.appearance
-    value: Face and colors
+    value: Appearance
   - key: menu.customization.suit
     value: Field suit
   - key: menu.customization.cosmetic
@@ -398,7 +408,7 @@ MonoBehaviour:
   - key: shop.purchase
     value: Choose item
   - key: shop.restore
-    value: Restore purchases
+    value: Restore
   - key: shop.available
     value: '{0} optional cosmetic items
 
@@ -549,22 +559,22 @@ MonoBehaviour:
   - key: photo.zoom
     value: Zoom
   - key: photo.depth
-    value: Depth focus
+    value: Focus
   - key: photo.exposure
     value: Exposure
   - key: photo.cleanHud
-    value: Clean view
+    value: HUD
   - key: photo.frame
-    value: Earned frame
+    value: Frame
   - key: photo.capture
     value: Capture
   - key: photo.explorer
-    value: Explorer tools
+    value: Explorer
   - key: photo.lens
-    value: Cinematic lens
+    value: Lens
   - key: photo.pose
-    value: Expanded pose
+    value: Pose
   - key: photo.preset
-    value: Save preset
+    value: Save
   - key: photo.loadPreset
-    value: Load preset
+    value: Load

@@ -25,7 +25,7 @@ namespace JustSomeStars.Tests.EditMode
             var catalog = LoadCatalog();
 
             Assert.DoesNotThrow(catalog.ValidateOrThrow);
-            Assert.That(catalog.Items, Has.Count.EqualTo(128));
+            Assert.That(catalog.Items.Count, Is.EqualTo(128));
             Assert.That(
                 catalog.Items.Select(item => item.Id).Distinct(StringComparer.Ordinal).Count(),
                 Is.EqualTo(128));

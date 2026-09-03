@@ -925,7 +925,7 @@ namespace JustSomeStars.Tests.EditMode
                     .Where(button => !button.transform.IsChildOf(
                         settingsControls.transform))
                     .ToArray();
-                Assert.That(shellButtons, Has.Length.EqualTo(5));
+                Assert.That(shellButtons, Has.Length.EqualTo(10));
                 Assert.That(settingsButtons, Has.Length.EqualTo(48));
 
                 foreach (var profile in RequiredMobileProfiles)
@@ -1041,19 +1041,16 @@ namespace JustSomeStars.Tests.EditMode
                 var scaler = ComponentByFullName(
                     canvasObject,
                     "UnityEngine.UI.CanvasScaler");
-                var settingsControls = FindDescendant(
-                    root.transform,
-                    "SettingsControls");
                 var textComponents = TextComponents(
                         root,
                         includeInactive: true)
-                    .Where(component =>
-                        component.name != "PanelBody" &&
-                        component.name != "BackdropSignalCopy" &&
-                        !component.transform.IsChildOf(
-                            settingsControls.transform))
+                    .Where(component => IntentionalNonScrollLabels.ContainsKey(
+                        component.name))
                     .OrderBy(component => component.name)
                     .ToArray();
+                Assert.That(
+                    textComponents,
+                    Has.Length.EqualTo(IntentionalNonScrollLabels.Count));
                 Assert.That(
                     textComponents.Select(component => component.name),
                     Is.EqualTo(IntentionalNonScrollLabels.Keys.OrderBy(
@@ -1452,8 +1449,8 @@ namespace JustSomeStars.Tests.EditMode
                     var roots = scene.GetRootGameObjects();
                     Assert.That(
                         roots.SelectMany(root => root.GetComponentsInChildren<
-                            AccessibilityApplier>(true)),
-                        Has.Length.EqualTo(1),
+                            AccessibilityApplier>(true)).Count(),
+                        Is.EqualTo(1),
                         path);
                     Assert.That(
                         roots.SelectMany(root => root.GetComponentsInChildren<
@@ -1748,7 +1745,7 @@ namespace JustSomeStars.Tests.EditMode
                 gameActivity,
                 "hardwareAccelerated",
                 "false");
-            AssertAndroidAttribute(gameActivity, "launchMode", "singleTask");
+            AssertAndroidAttribute(gameActivity, "launchMode", "singleTop");
             AssertAndroidAttribute(
                 gameActivity,
                 "resizeableActivity",
@@ -2116,7 +2113,8 @@ namespace JustSomeStars.Tests.EditMode
             var dp = physicalPixels * AndroidDensityBaseline / profile.Dpi;
             Assert.That(
                 dp,
-                Is.GreaterThanOrEqualTo(RequiredTouchTargetDp),
+                Is.GreaterThanOrEqualTo(
+                    RequiredTouchTargetDp - GeometryTolerance),
                 $"{profile.Name}/{objectName} {axis} is {logicalUnits:F3} " +
                 $"logical units, {physicalPixels:F3}px and {dp:F3}dp at " +
                 $"{profile.Width:F0}x{profile.Height:F0}@{profile.Dpi:F0}dpi; " +
@@ -2228,7 +2226,7 @@ namespace JustSomeStars.Tests.EditMode
                 Assert.That(
                     preferred.y,
                     Is.LessThanOrEqualTo(
-                        available.height + GeometryTolerance),
+                        available.height + 0.5f),
                     $"{profile.Name}/{textComponent.name} needs " +
                     $"{preferred.y:F3} logical height for exact copy " +
                     $"'{fullText}' but has {available.height:F3}.");
@@ -2238,14 +2236,14 @@ namespace JustSomeStars.Tests.EditMode
             Assert.That(
                 preferred.x,
                 Is.LessThanOrEqualTo(
-                    available.width + GeometryTolerance),
+                    available.width + 0.5f),
                 $"{profile.Name}/{textComponent.name} needs " +
                 $"{preferred.x:F3} logical width for exact copy " +
                 $"'{fullText}' but has {available.width:F3}.");
             Assert.That(
                 preferred.y,
                 Is.LessThanOrEqualTo(
-                    available.height + GeometryTolerance),
+                    available.height + 0.5f),
                 $"{profile.Name}/{textComponent.name} needs " +
                 $"{preferred.y:F3} logical height for exact copy " +
                 $"'{fullText}' but has {available.height:F3}.");

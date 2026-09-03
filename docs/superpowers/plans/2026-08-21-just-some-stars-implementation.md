@@ -2606,19 +2606,30 @@ git commit -m "feat: complete animation audio and cinematics"
 
 **Files:**
 - Create: `Assets/_JustSomeStars/Runtime/Core/QualityProfileService.cs`
+- Create: `Assets/_JustSomeStars/Runtime/Core/PerformanceMarkers.cs`
 - Create: `Assets/_JustSomeStars/Editor/Validation/PerformanceBudgetValidator.cs`
+- Create: `Assets/_JustSomeStars/Tests/EditMode/PerformanceBudgetValidatorTests.cs`
 - Create: `Assets/_JustSomeStars/Tests/PlayMode/PerformanceSmokeTests.cs`
+- Modify: the player, crew, flight, Lens, UI, streaming and Mirra-quality
+  runtime owners instrumented by those contracts
+- Modify: every enabled player-scene camera and the high-cost Mirra/ship Android
+  texture import settings measured by the validator
+- Modify: the affected EditMode/PlayMode package tests, player-build scene list
+  and isolated PlayMode fixture manifest
 - Create: `docs/qa/device-matrix.md`
 - Create: `docs/qa/performance-results.md`
+- Create: `outputs/quality-reviews/task30-source-final-summary.md`
+- Modify: the issue register, production ledger, accessibility matrix and this
+  implementation plan
 
 **Interfaces:**
 - Produces: selectable Performance, Balanced, Cinematic and High Frame Rate runtime profiles with dynamic resolution.
 
-- [ ] **Step 1: Encode texture residency, atlas count, transparent overdraw, active-character, 2D-light, VFX and memory budgets into validator rules**
+- [x] **Step 1: Encode texture residency, atlas count, transparent overdraw, active-character, 2D-light, VFX and memory budgets into validator rules**
 
-- [ ] **Step 2: Add CPU/GPU frame markers around player, crew, flight, Lens, UI and streaming systems**
+- [x] **Step 2: Add CPU/GPU frame markers around player, crew, flight, Lens, UI and streaming systems**
 
-- [ ] **Step 3: Run automated representative-scene smoke tests**
+- [x] **Step 3: Run automated representative-scene smoke tests**
 
 - [ ] **Step 4: Run 20-minute Realme Narzo Mirra, flight and Aster thermal soaks**
 
@@ -2636,6 +2647,18 @@ Record median, 1% low, memory peak, thermal behavior and battery change in `perf
 This single final batch replaces repeated full suites, APK builds and device
 runs during Tasks 26–29. Preserve per-task result files and report failures
 against the owning task before accepting the final package.
+
+The source-final package portion is complete: EditMode passes `428/428`, the
+isolated PlayMode runner passes `235/235` across all `37/37` fixtures, project
+and media validators pass, and the one final Android Internal APK is
+`a7dba5e20f96a182f2a47e1a539aa4416f6195a4bdaafc2910734fba97402a0e`
+(619,148,779 bytes). The corrected source gate also proves composition-owned
+camera dynamic-resolution intent, low-memory downscaling for every profile and
+non-vacuous shipping atlas/overlap/actor budget metrics.
+Step 8 remains unchecked because the authorized Limrun request was rejected
+before instance creation with zero remaining credits/no active subscription,
+and no physical Android device is attached. Device, content-lock, JSS-020,
+JSS-025 and thermal acceptance are not claimed.
 
 ```bash
 git add Assets/_JustSomeStars/Runtime/Core Assets/_JustSomeStars/Editor/Validation Assets/_JustSomeStars/Tests docs/qa outputs/quality-reviews

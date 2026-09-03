@@ -39,7 +39,7 @@ namespace JustSomeStars.Tests.PlayMode
         [Test]
         public void SaveV3_MigratesToExplicitIncompleteChapterOneAndCloudRoundTrips()
         {
-            Assert.That(GameSave.CurrentSchemaVersion, Is.EqualTo(4),
+            Assert.That(GameSave.CurrentSchemaVersion, Is.EqualTo(5),
                 "Task 26 requires an explicit Chapter One durability schema.");
 
             var current = GameSave.CreateNew("save.task26.schema", 2600);
@@ -54,12 +54,12 @@ namespace JustSomeStars.Tests.PlayMode
                 string.Empty,
                 RegexOptions.CultureInvariant);
             legacyJson = legacyJson.Replace(
-                "\"schemaVersion\": 4",
+                "\"schemaVersion\": 5",
                 "\"schemaVersion\": 3");
 
             Assert.That(serializer.TryDeserialize(legacyJson, out var migrated),
                 Is.True, "A real schema-v3 save must migrate through the current chain.");
-            Assert.That(migrated.SchemaVersion, Is.EqualTo(4));
+            Assert.That(migrated.SchemaVersion, Is.EqualTo(5));
             AssertChapterState(
                 RequireProperty(migrated, "ChapterOne"),
                 "NotStarted",
@@ -97,7 +97,7 @@ namespace JustSomeStars.Tests.PlayMode
                 "\\s*\\\"chapterOne\\\"\\s*:\\s*\\{[^}]*\\},?",
                 string.Empty,
                 RegexOptions.CultureInvariant).Replace(
-                "\"schemaVersion\": 4",
+                "\"schemaVersion\": 5",
                 "\"schemaVersion\": 3");
             Assert.That(serializer.TryDeserialize(legacyJson, out migrated), Is.True);
             AssertChapterState(
@@ -235,6 +235,10 @@ namespace JustSomeStars.Tests.PlayMode
                     scenes,
                     mirra));
             await opening.CompleteOpeningAsync(CancellationToken.None);
+            SetPrivateField<ChapterOneSequenceDependencies>(
+                opening,
+                "m_Dependencies",
+                null);
             UnityEngine.Object.DestroyImmediate(openingObject);
             Assert.That(saves.Current.ChapterOne.Phase,
                 Is.EqualTo(ChapterOnePhase.OpeningComplete));
@@ -472,13 +476,14 @@ namespace JustSomeStars.Tests.PlayMode
                         "Aster must not render the cloned Mirra landscape beneath " +
                         "its authored debris field.");
                     Assert.That(
-                        roots.SelectMany(root =>
+                        roots.Where(root => !environmentBands.Contains(root.name))
+                            .SelectMany(root =>
                                 root.GetComponentsInChildren<SpriteRenderer>(true))
                             .Where(renderer => renderer.enabled &&
                                 renderer.sprite != null &&
                                 renderer.sortingOrder <= -10)
                             .Select(renderer => renderer.name),
-                        Is.EquivalentTo(new[] { "AsterSkyFar" }),
+                        Is.Empty,
                         "Aster must own the complete rendered background; no " +
                         "template landscape may remain enabled outside the named " +
                         "2.5D band roots.");

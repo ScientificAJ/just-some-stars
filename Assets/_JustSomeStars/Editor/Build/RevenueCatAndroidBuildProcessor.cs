@@ -481,6 +481,11 @@ namespace JustSomeStars.Editor.Build
                     continue;
                 }
 
+                if (name.EndsWith(".java.txt", StringComparison.Ordinal))
+                {
+                    name = name.Substring(0, name.Length - ".txt".Length);
+                }
+
                 File.Copy(file, Path.Combine(destination, name), overwrite: true);
             }
 
