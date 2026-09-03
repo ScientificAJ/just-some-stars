@@ -487,10 +487,11 @@ SHA-256
 `a7dba5e20f96a182f2a47e1a539aa4416f6195a4bdaafc2910734fba97402a0e`
 (619,148,779 bytes).
 
-Resume Task 30 at its remaining device boundary. The authorized Limrun create
-request was rejected before instance creation because the organization has no
-remaining credits and no active subscription, and no physical Android device
-is attached. Performance sampling, content-lock captures, the manual
+Resume Task 30 at its remaining device boundary. The initial Limrun request and
+a renewed authorized 2026-09-03 capacity check were both rejected before
+instance creation because the organization has no remaining credits and no
+active subscription, and no physical Android device is attached. Performance
+sampling, content-lock captures, the manual
 accessibility/foldable matrix, JSS-020 and JSS-025 remain unclaimed.
 
 ## User-help queue
@@ -762,8 +763,8 @@ be fabricated.
   619,148,779 bytes, SHA-256
   `a7dba5e20f96a182f2a47e1a539aa4416f6195a4bdaafc2910734fba97402a0e`,
   and passes local package/signature/manifest/license/forbidden-payload checks.
-  Task 30 is not marked complete: Limrun rejected the authorized instance
-  before creation due zero credits/no active subscription, no physical Android
+  Task 30 is not marked complete: Limrun rejected both the initial and renewed
+  authorized 2026-09-03 requests before creation due zero credits/no active subscription, no physical Android
   target is attached, and post-checks show no leaked instance/tunnel/lease or
   Argent server. JSS-020, JSS-025 and JSS-026 carry the remaining device,
   memory-attribution and thermal evidence.

@@ -11,11 +11,11 @@ Exact APK:
 (619,148,779 bytes).
 
 Device, content-lock, memory-attribution and thermal acceptance are not claimed.
-The single authorized Limrun create request failed before instance creation
-because the organization had zero credits and no active subscription. No
-physical device was attached; post-checks show no paid instance, tunnel, lease
-or running Argent server. JSS-020 and JSS-025 therefore remain open, and Task
-30 is not marked complete.
+The initial Limrun create request and a renewed authorized 2026-09-03 capacity
+check both failed before instance creation because the organization had zero
+credits and no active subscription. No physical device was attached;
+post-checks show no paid instance, tunnel, lease or running Argent server.
+JSS-020 and JSS-025 therefore remain open, and Task 30 is not marked complete.
 
 The bounded extreme critic accepted the corrected performance architecture and
 source contracts. Final device, memory and thermal acceptance remains blocked

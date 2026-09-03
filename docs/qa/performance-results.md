@@ -7,9 +7,10 @@ Last updated: 2026-09-03
 Task 30's performance architecture, deterministic budgets, representative-scene
 smoke coverage, final package regression and Android build are complete and
 source-fresh. Device frame-time, memory, thermal, battery and content-lock
-acceptance are **not complete**: Limrun rejected the one authorized instance
-request before creation because the organization has zero remaining credits and
-no active subscription, and no physical Android device is attached.
+acceptance are **not complete**: Limrun rejected both the initial request and a
+renewed authorized 2026-09-03 capacity check before creation because the
+organization has zero remaining credits and no active subscription, and no
+physical Android device is attached.
 
 This report deliberately separates proven results from pending measurements.
 It does not reuse an older APK or rename editor/emulator evidence as Realme
@@ -132,11 +133,12 @@ APK size nor editor memory is used as a substitute for process PSS.
 ## Device/thermal attempt
 
 The preserved sanitized attempt is
-`Builds/DeviceEvidence/task30-final/limrun-capacity-blocker.txt`. Limrun returned
-HTTP 400 before creation: no remaining credits and no active subscription.
-Follow-up checks found zero Limrun instances, zero attached ADB devices and zero
-Argent devices; the unused local Argent server was stopped. No paid time,
-tunnel, inspector lease or orphaned instance remains.
+`Builds/DeviceEvidence/task30-final/limrun-capacity-blocker.txt`. The initial
+request and renewed authorized 2026-09-03 attempt both returned HTTP 400 before
+creation: no remaining credits and no active subscription. The post-renewal
+list remained empty; prior cleanup evidence also records zero attached
+ADB/Argent devices and a stopped local Argent server. No paid time, tunnel,
+inspector lease or orphaned instance remains.
 
 Consequently the following remain pending and unclaimed:
 

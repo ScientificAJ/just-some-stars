@@ -17,10 +17,11 @@ behavior on a device.
 
 ## Session availability
 
-The user authorized one paid Limrun/Argent session and approved Limrun as a
-substitute for the unavailable physical Realme. The create request was rejected
-before instance creation because the organization has zero remaining credits
-and no active subscription. No physical Android device is attached.
+The user authorized the paid Limrun/Argent session and approved Limrun as a
+substitute for the unavailable physical Realme. Both the initial create request
+and a renewed authorized 2026-09-03 capacity check were rejected before
+instance creation because the organization has zero remaining credits and no
+active subscription. No physical Android device is attached.
 
 Evidence:
 `Builds/DeviceEvidence/task30-final/limrun-capacity-blocker.txt`.

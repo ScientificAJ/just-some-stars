@@ -2655,10 +2655,11 @@ and media validators pass, and the one final Android Internal APK is
 (619,148,779 bytes). The corrected source gate also proves composition-owned
 camera dynamic-resolution intent, low-memory downscaling for every profile and
 non-vacuous shipping atlas/overlap/actor budget metrics.
-Step 8 remains unchecked because the authorized Limrun request was rejected
-before instance creation with zero remaining credits/no active subscription,
-and no physical Android device is attached. Device, content-lock, JSS-020,
-JSS-025 and thermal acceptance are not claimed.
+Step 8 remains unchecked because both the initial Limrun request and a renewed
+authorized 2026-09-03 capacity check were rejected before instance creation
+with zero remaining credits/no active subscription, and no physical Android
+device is attached. Device, content-lock, JSS-020, JSS-025 and thermal
+acceptance are not claimed.
 
 ```bash
 git add Assets/_JustSomeStars/Runtime/Core Assets/_JustSomeStars/Editor/Validation Assets/_JustSomeStars/Tests docs/qa outputs/quality-reviews
