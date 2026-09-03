@@ -41,16 +41,22 @@ The active design and restart stage are documented in
 
 ## Limrun
 
-Status: **ready for agent use**.
+Status: **blocked — no remaining credits; do not create an instance**.
 
 - Account authentication is stored locally by the official CLI in `~/.lim/config.yaml`; never print or commit that file.
 - CLI: `lim` 0.28.6 on the user PATH.
 - Authentication was verified with the read-only `lim android list` command.
-- Balance: 2,000 free trial credits; the dashboard states that they do not expire.
+- Balance: zero remaining credits. Limrun's organization analytics, queried on
+  2026-09-03, report that the original 2,000-credit ShipKit grant was billed in
+  full across 67 Android instances between 2026-08-22 and 2026-09-01.
 - Metering shown by Limrun: one Android or Xcode minute uses one credit; one iOS minute uses two credits.
 - Official project-scoped Codex skills are installed in `.codex/skills/`: `limrun-android-emulator`, `limrun-gradle`, `limrun-maestro-testing`, `limrun-xcode`, `limrun-ios-simulator`, and `limrun-expo-development`.
 
-For this Unity Android game, the useful path is: build an APK with Unity CLI, create or reuse a Limrun Android emulator, install the APK, inspect the accessibility tree, exercise the app, capture screenshots/video, then delete the instance when finished. Read the matching installed Limrun skill before using credits. Label instances with the project/task and do not leave idle instances running.
+Do not create a Limrun instance unless legitimate capacity is restored. If it is
+restored, use one instance only, preflight the APK and exact test flow locally,
+set a short bounded timeout, reinstall corrected APKs onto that same instance
+where possible, and explicitly delete and verify the instance in cleanup. Never
+use a hard timeout as the normal cleanup mechanism and never overlap instances.
 
 The user selected Limrun instead of the physical Realme Narzo as the primary Android runtime on 2026-08-21. Argent is the preferred control and QA layer over the available Android target; Limrun supplies the cloud device. `lim android list` was verified authenticated with zero running instances, so no credits were being consumed. Do not create an instance before an APK or an immediate device test requires one.
 
@@ -91,7 +97,7 @@ lives only under ignored `Builds/DeviceSessions/`.
 | Junie | 30 credits claimed through September 30 | Install/configure after a compatible JetBrains IDE is installed. No supported JetBrains IDE is present yet. |
 | Codemagic | Account/repository/workflow connected; 500 free macOS minutes available | Remote Unity execution is deferred because the account has Unity Personal and no Plus/Pro serial. Revisit only if a valid CI license becomes available. |
 | Lance | Organization and credits ready | Preserve for a later iOS/App Store path; not part of the Android launch. |
-| Limrun | Fully configured; 2,000 non-expiring credits | Remote Android emulator, automated interaction, screenshots and demo video. |
+| Limrun | Authenticated but capacity exhausted; 2,000/2,000 ShipKit credits billed across 67 Android instances; zero active instances | Do not create an instance. Revisit only after legitimate capacity is restored, using the bounded single-instance cleanup contract above. |
 | Argent | CLI, MCP declaration and skills configured | Run/inspect/control the Android app and create repeatable QA evidence. |
 | Tenjin | Account/company ready | Add the actual app and privacy-gated attribution integration after package/store setup. |
 | OneSignal | Not activated | Requires company billing details/payment method; defer unless the user chooses it. |
